@@ -1,0 +1,86 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: read
+  checks: write
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-test:
+    name: ruff + pytest + wikipilot lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install dependencies
+        run: uv sync --frozen --extra dev
+
+      - name: ruff check
+        run: uv run ruff check .
+
+      - name: ruff format check
+        run: uv run ruff format --check .
+
+      - name: pytest
+        run: uv run pytest -q
+
+      - name: Compute changed paths (for ownership lint)
+        id: changed
+        if: github.event_name == 'pull_request'
+        run: |
+          base="${{ github.event.pull_request.base.sha }}"
+          head="${{ github.event.pull_request.head.sha }}"
+          paths=$(git diff --name-only "$base" "$head" | tr '\n' ' ')
+          echo "paths=$paths" >> "$GITHUB_OUTPUT"
+
+      - name: wikipilot lint wiki/ (with ownership check on PRs)
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            args=()
+            for p in ${{ steps.changed.outputs.paths }}; do
+              args+=(--changed-path "$p")
+            done
+            uv run wikipilot lint wiki/ \
+              --branch "${{ github.head_ref }}" \
+              "${args[@]}"
+          else
+            uv run wikipilot lint wiki/
+          fi
+
+      - name: wikipilot dry-run smoke (proposal apply path)
+        run: |
+          mkdir -p /tmp/dryrun-vault
+          uv run wikipilot init-vault /tmp/dryrun-vault
+          # Provide a tiny topics.yaml so dry-run has something to chew on.
+          cat > /tmp/dryrun-topics.yaml <<'EOF'
+          topics:
+            - id: smoke
+              display_name: "Smoke topic"
+              purpose: "Smoke-test the dry-run path during CI."
+          EOF
+          uv run wikipilot dry-run --topic smoke \
+            --vault /tmp/dryrun-vault --topics /tmp/dryrun-topics.yaml
+          uv run wikipilot dry-run --query "what is the smoke topic?" \
+            --vault /tmp/dryrun-vault --topics /tmp/dryrun-topics.yaml
+          uv run wikipilot lint /tmp/dryrun-vault

@@ -229,6 +229,55 @@ Routine-UI model picker only sets the orchestrator model; subagents pin their ow
 - Embedding-based semantic sweep (the LLM-judge sweep handles practical cases; embeddings stay deferred)
 - Hosted public-facing UI (Obsidian is the UI)
 
+## Commit policy
+
+Each routine produces one PR with conventional commits and per-route branch names. The auto-merge gate (Phase 3) decides whether the PR self-merges or stays open for human review.
+
+### Branch naming (set in `wikipilot.toml [branches]`)
+
+| Routine | Template | Example |
+|---|---|---|
+| Daily Research | `claude/daily-{date}/{topic_id}` | `claude/daily-2026-05-11/ai-agents` |
+| Wiki Query | `claude/query-{date}-{slug}` | `claude/query-2026-05-11-what-is-qmd` |
+| Weekly Health | `claude/health-{date}` | `claude/health-2026-05-17` |
+
+The `claude/` prefix is required by Claude Code Cloud Routines (cloud routines can only push to `claude/*` branches by default).
+
+### Commit messages
+
+Conventional commits, one staged commit per branch:
+
+| Routine | Commit message format |
+|---|---|
+| Daily Research | `feat(wiki/<topic-id>): daily research <YYYY-MM-DD> — N sources, M pages` |
+| Wiki Query | `feat(wiki/answers): <slug> — answer for "<question>"` |
+| Weekly Health | `feat(wiki/reports): weekly health <YYYY-MM-DD> — N disputes filed` |
+
+### PR titles
+
+| Routine | PR title format |
+|---|---|
+| Daily Research | `wiki(<topic-id>): daily YYYY-MM-DD` |
+| Wiki Query | `wiki(answers): "<question>"` |
+| Weekly Health | `wiki(health): weekly sweep YYYY-MM-DD` |
+
+### PR body (templated by `wikipilot.git_ops.render_pr_body_*`)
+
+- Daily: topic, sources added (URLs), pages touched, new disputes, new open questions, link to `wiki/reports/YYYY-MM-DD.md`.
+- Query: question, answer page path, sources added, back-filled pages, originating issue URL (if any).
+- Health: disputes newly filed, stale pages, lint summary, link to `wiki/reports/health-YYYY-MM-DD.md`.
+
+### Auto-merge gate
+
+Per `wikipilot.toml [automerge.*]`, the gate evaluates:
+
+1. **Common (`[automerge.common]`)**: CI checks green (`require_lint_green`, `require_tests_green`); block any PR touching a human-only path (`block_human_only_file_changes`).
+2. **Per-route**: file count and total diff lines under thresholds — daily uses `*_per_topic` (sized for ~15 page touches per source), wiki_query uses smaller per-question sizes, weekly_health is permissive.
+
+If every criterion passes: `gh pr merge --squash --auto`. Otherwise: `gh pr comment` with a structured review checklist explaining which criteria tripped.
+
+The gate logic lives in `wikipilot.git_ops.evaluate_gate` (pure function, fully unit-tested with mocked `gh`); the `scripts/maybe_automerge.py` shim wires it to a CLI the orchestrators call.
+
 ## Wiki schema (canonical, enforced by `wikipilot lint`)
 
 The Phase 1 Python lint is the gatekeeper for everything in this section. Run `uv run wikipilot lint wiki/` locally; the same command runs in CI (Phase 3) and gates auto-merge.

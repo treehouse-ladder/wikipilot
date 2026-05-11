@@ -119,11 +119,87 @@ uv run wikipilot query "what is the fastest way to dispatch parallel subagents?"
 
 This fires the Wiki Query routine via the `/fire` API. The answer appears as a new page under `wiki/answers/`, with back-fill into related concept pages, within ~1 minute. Alternatively, open a GitHub issue with the `query` label — the routine reads the issue body as the question and posts the answer back as an issue comment.
 
+## Reviewing or reverting a per-topic PR
+
+The Daily Research routine opens **one PR per topic per day** on `claude/daily-YYYY-MM-DD/<topic-id>`. Each PR is independent — you can review/merge/revert any single topic without touching the others.
+
+### To review
+
+```bash
+gh pr list --label daily
+gh pr view <pr-number>
+gh pr diff <pr-number>
+```
+
+The PR body lists every source added, every page touched, new disputes, new open questions, and a link to the per-run report under `wiki/reports/`.
+
+### To revert
+
+If a PR was auto-merged but introduced bad content:
+
+```bash
+gh pr revert <pr-number>
+```
+
+Or for a single-file undo without reverting the whole topic:
+
+```bash
+git checkout main
+git diff main~1 main -- wiki/concepts/<page>.md | git apply -R
+git commit -am "revert: bad content from <pr-number>"
+git push
+```
+
+The next Daily Research run for that topic will re-evaluate the affected page.
+
+## Tuning auto-merge thresholds
+
+Auto-merge thresholds live in `wikipilot.toml`. The defaults are sized for Karpathy's "10–15 pages per source" reality:
+
+```toml
+[automerge.daily_research]
+max_files_changed_per_topic = 40
+max_total_diff_lines_per_topic = 1500
+
+[automerge.wiki_query]
+max_files_changed = 8
+max_total_diff_lines = 400
+
+[automerge.weekly_health]
+max_files_changed = 60
+max_total_diff_lines = 2000
+```
+
+If your topics are small enough that Daily Research consistently auto-merges trivial PRs, reduce `max_files_changed_per_topic` so larger / riskier PRs require human review. If Wiki Query frequently spawns answers that touch many related pages, raise `max_files_changed` for `wiki_query`.
+
+The gate also reads `[automerge.common]`:
+
+- `require_lint_green = true` — block on any lint error.
+- `require_tests_green = true` — block on any failing CI check.
+- `block_human_only_file_changes = true` — block any PR that modifies a human-only path (`topics.yaml`, `CLAUDE.md`, `wikipilot.toml`, `prompts/`, `wiki/topics/<id>/purpose.md`, etc.).
+
+## What to do when human-only file changes block auto-merge
+
+The auto-merge gate refuses to land any `claude/*` PR that touches a human-only file. When this fires:
+
+1. Check the PR comment posted by `scripts/maybe_automerge.py` — it lists every blocked path.
+2. Decide whether the change is legitimate. Almost always: no, the agent strayed.
+3. If the change is wrong, drop the offending edit:
+   ```bash
+   gh pr checkout <pr-number>
+   git checkout HEAD~1 -- CLAUDE.md   # or whichever path
+   git commit --amend --no-edit
+   git push -f origin HEAD
+   ```
+4. If the change is genuinely needed (you've decided to update `topics.yaml` based on what the routine found), apply it manually as a separate PR from `main`. Never let an LLM-authored PR own a human file.
+5. Iterate on the agent prompt (`prompts/<routine>.md` or `.claude/agents/<agent>.md`) so future runs don't make the same mistake.
+
 ## Phase progress
 
 - **Phase 0**: bootstrap repo, docs spine, empty Obsidian vault, page conventions in CLAUDE.md.
 - **Phase 1**: Wiki primitives, source registry, freshness-aware lint, full CLI surface.
-- **Phase 2 (current)**: 5 subagents (topic-researcher, wiki-merger, wiki-linter, query-answerer, wiki-disputes-scanner), 8 skills, dry-run dispatcher.
+- **Phase 2**: 5 subagents (topic-researcher, wiki-merger, wiki-linter, query-answerer, wiki-disputes-scanner), 8 skills, dry-run dispatcher.
+- **Phase 3 (current)**: per-route git ops (`git_ops.py`), `maybe_automerge.py` per-route gate, `wikipilot.toml` thresholds, `.github/workflows/ci.yml`.
 - **Phase 2**: Subagent definitions, skill manifests, dry-run dispatcher.
 - **Phase 3**: Per-route git ops, auto-merge gate, CI workflow.
 - **Phase 4**: Daily Research routine prompt + qmd MCP + cloud setup.
