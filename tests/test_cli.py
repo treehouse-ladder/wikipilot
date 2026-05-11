@@ -156,6 +156,62 @@ class TestDeckCommand:
         assert "not found" in result.output
 
 
+class TestIngestCommand:
+    def test_creates_source_with_disabled_images(self, runner: CliRunner, tmp_path: Path) -> None:
+        vault = _copy_vault(tmp_path)
+        config = tmp_path / "wikipilot.toml"
+        config.write_text(
+            "[images]\nenabled = false\n",
+            encoding="utf-8",
+        )
+        result = runner.invoke(
+            main,
+            [
+                "ingest",
+                "--url",
+                "https://example.com/papers/cli-ingest",
+                "--topic",
+                "ai-agents",
+                "--title",
+                "CLI Ingest Test",
+                "--excerpt",
+                "A direct quote.",
+                "--vault",
+                str(vault),
+                "--config",
+                str(config),
+            ],
+        )
+        assert result.exit_code == 0, result.output
+        assert "Created source" in result.output
+        # The source page is on disk under the slug printed.
+        sources = list((vault / "sources").glob("cli-ingest-test-*.md"))
+        assert len(sources) == 1
+        text = sources[0].read_text(encoding="utf-8")
+        assert "> A direct quote." in text
+
+    def test_idempotent_repeat(self, runner: CliRunner, tmp_path: Path) -> None:
+        vault = _copy_vault(tmp_path)
+        config = tmp_path / "wikipilot.toml"
+        config.write_text("[images]\nenabled = false\n", encoding="utf-8")
+        args = [
+            "ingest",
+            "--url",
+            "https://example.com/papers/attention.pdf",  # already in fixture
+            "--topic",
+            "ai-agents",
+            "--title",
+            "Different title",
+            "--vault",
+            str(vault),
+            "--config",
+            str(config),
+        ]
+        result = runner.invoke(main, args)
+        assert result.exit_code == 0
+        assert "Existing source returned" in result.output
+
+
 class TestIndexWikiCommand:
     def test_no_qmd_exits_zero(self, runner: CliRunner, tmp_path: Path) -> None:
         vault = _copy_vault(tmp_path)

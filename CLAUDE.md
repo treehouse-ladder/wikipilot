@@ -296,6 +296,20 @@ The Phase 1 Python lint is the gatekeeper for everything in this section. Run `u
 
 Source pages live in `wiki/sources/<slug>.md`, where `<slug>` is `<title-slugified>-<sha-prefix-8>`. Dedupe is by SHA-256 of the *normalized* URL (lowercased scheme/host, sorted query params, fragment stripped, trailing slash stripped) — re-ingesting the same URL is a no-op rather than a duplicate. Required source frontmatter: `url`, `sha256`, `fetched_at`, `topic`, `image_count`, plus the standard frontmatter (with `freshness_window_days: 365` since sources don't go stale the way synthesis pages do). Body must include a `## Excerpts` section with at least one `>` quote block per cited claim — this is the evidence layer the citation discipline rule depends on.
 
+#### Source images (Phase 5)
+
+Source pages must be **self-contained**: every image referenced from a source page lives under `wiki/assets/<source-slug>/` so the wiki survives the original URLs disappearing. The `download-source-images` skill (driven by `wikipilot ingest`) handles this:
+
+- **Storage**: `wiki/assets/<source-slug>/<sha256_8>-<basename>.<ext>`. The SHA prefix prevents collisions when two URLs share a basename; the basename keeps filenames recognizable in Obsidian.
+- **Allowed MIMEs** (defaults, override in `wikipilot.toml [images]`): `image/png`, `image/jpeg`, `image/gif`, `image/webp`, `image/svg+xml`. Both the response `Content-Type` header **and** a first-bytes magic-number sniff must point at an allowed MIME before the file is written. A mismatch (e.g. server returns `text/html` but bytes look like PNG) is skipped with reason `mime-mismatch`.
+- **Size cap** (default 5 MB): enforced both via `Content-Length` header and a streaming hard-stop so partial downloads don't survive.
+- **Reference rewriting**: every `![alt](remote-url)` and `<img alt="..." src="remote-url">` becomes `![alt](../assets/<slug>/<file>)` / `<img alt="..." src="../assets/<slug>/<file>">`. Alt text is preserved verbatim.
+- **Orphan cleanup**: when `[images] cleanup_orphans = true` (default), files in `wiki/assets/<slug>/` that aren't in the post-rewrite mapping are removed at ingest time.
+- **Disabling**: set `[images] enabled = false` in `wikipilot.toml`. Source pages then keep their original remote image URLs.
+- **Lint**: `broken-image-ref` is an error — any local image ref that doesn't resolve to a file fails the lint and blocks auto-merge.
+
+The image step runs **only on first ingest** of a URL (idempotency: re-ingesting an existing source returns the existing slug with no work done). If the image pipeline must be re-run for an existing source, delete the source page and re-ingest.
+
 ### `log.md` format
 
 Every entry: `## [YYYY-MM-DD] kind | subject` followed by a one-line summary. `kind` in `{daily, query, health, manual}`. The lint rejects any `## ` heading in `log.md` outside a fenced code block that doesn't match this schema. Greppable with `grep "^## \[" wiki/log.md` (Karpathy's idiom).
@@ -307,6 +321,7 @@ Every entry: `## [YYYY-MM-DD] kind | subject` followed by a one-line summary. `k
 | `frontmatter` | error | required keys present, kind valid, dates parse, types match |
 | `log-format` | error | every `## ` heading in `log.md` matches the schema (code blocks excluded) |
 | `broken-wikilink` | error | every `[[link]]` resolves to a known page slug or alias |
+| `broken-image-ref` | error | every local `![](path)` / `<img src="path">` resolves to an existing file |
 | `orphan-page` | warning | synthesis pages with zero inbound links |
 | `stale-page` | warning | `now - last_verified > freshness_window_days` (page-level override; default 30) |
 | `citation-density` | warning | `## Summary` paragraphs without any `[[wikilink]]` (default min: 1 per paragraph) |
@@ -326,8 +341,10 @@ Errors fail the lint (exit code 1); warnings are reported but don't fail. The au
 | `freshness-report [vault]` | list pages by ascending freshness (most stale first) |
 | `deck <topic-id> [--out path] [--theme name]` | generate a Marp deck from `wiki/topics/<id>/index.md` |
 | `index-wiki [vault] [--full]` | refresh the qmd index over the vault |
+| `ingest --url ... --topic ... --title ... [--excerpt ...]` | write a source page and download its images (Phase 5) |
 | `research [--topic id]` | trigger Daily Research routine via the `/fire` API (Phase 6) |
 | `query "<question>"` | trigger Wiki Query routine via the `/fire` API (Phase 6) |
+| `dry-run --topic <id> \| --query "<q>"` | exercise the apply path locally (no Anthropic call) |
 
 ## Editing this file
 

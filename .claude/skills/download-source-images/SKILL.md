@@ -18,7 +18,9 @@ allowed_tools:
 
 Called by `ingest-source` immediately after the source page is written and before commit. Source pages should be self-contained — once committed they reference local image paths only, so the wiki survives the original URLs disappearing.
 
-## Contract (Phase 5 — full implementation)
+In practice the orchestration lives in `wikipilot.sources.ingest_source_with_images`, which is invoked by the `wikipilot ingest` CLI. This skill is the documented contract — agents do not call into Python directly; they shell out to `wikipilot ingest` and trust this skill's invariants.
+
+## Contract
 
 - Output filenames follow `<sha256_8>-<basename>.<ext>` to avoid collisions on shared basenames.
 - Allowed MIMEs (default): `image/png`, `image/jpeg`, `image/gif`, `image/webp`, `image/svg+xml`.

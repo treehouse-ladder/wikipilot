@@ -22,10 +22,15 @@ Call this skill from `topic-researcher` and `query-answerer` whenever a new URL 
 ## How to use
 
 ```bash
-uv run wikipilot ingest --url "<url>" --topic "<topic-id>" --title "<title>"
+uv run wikipilot ingest \
+  --url "<url>" \
+  --topic "<topic-id>" \
+  --title "<title>" \
+  --excerpt "<verbatim quote 1>" \
+  --excerpt "<verbatim quote 2>"
 ```
 
-Phase 5 wires the underlying `wikipilot ingest` subcommand. Until then, the dry-run path in `wikipilot.dryrun.apply_proposal` exercises the same `wikipilot.sources.write_source` helper this skill calls at runtime.
+The CLI calls `wikipilot.sources.ingest_source_with_images`, which writes the source page **and** runs the image-localization pipeline (`wikipilot.images.download_for_source`) before returning. Re-ingesting a known URL is a no-op (idempotent dedupe by SHA-256 of normalized URL).
 
 ## Contract
 

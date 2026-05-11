@@ -1,15 +1,66 @@
-"""Tests for the Phase 1 image-helper surface (full pipeline lands in Phase 5)."""
+"""Tests for the Phase 1 image-helper surface and the Phase 5 fetch pipeline."""
 
 from __future__ import annotations
+
+from collections.abc import Iterator
+from dataclasses import dataclass, field
+from pathlib import Path
+
+import pytest
 
 from wikipilot.images import (
     DEFAULT_ALLOWED_MIMES,
     DEFAULT_MAX_BYTES,
     MIME_TO_EXT,
+    SKIP_REASONS,
+    download_for_source,
+    fetch_image,
     parse_image_refs,
     rewrite_refs,
     safe_filename,
+    sniff_mime,
 )
+
+PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
+JPEG_MAGIC = b"\xff\xd8\xff\xe0"
+GIF_MAGIC = b"GIF89a"
+WEBP_MAGIC = b"RIFF\x00\x00\x00\x00WEBP"
+SVG_MAGIC = b"<svg xmlns='http://www.w3.org/2000/svg'></svg>"
+
+
+@dataclass
+class FakeResponse:
+    """Minimal stand-in for ``requests.Response``."""
+
+    status_code: int = 200
+    headers: dict[str, str] = field(default_factory=dict)
+    body: bytes = b""
+    chunk_size: int = 8192
+    raise_on_iter: Exception | None = None
+    closed: bool = False
+
+    def iter_content(self, chunk_size: int) -> Iterator[bytes]:
+        if self.raise_on_iter is not None:
+            raise self.raise_on_iter
+        for i in range(0, len(self.body), chunk_size):
+            yield self.body[i : i + chunk_size]
+
+    def close(self) -> None:
+        self.closed = True
+
+
+def make_getter(responses: dict[str, FakeResponse | Exception]) -> object:
+    """Return a callable that dispatches by URL to the prepared fakes."""
+
+    def getter(url: str, *, timeout: float) -> FakeResponse:
+        if url not in responses:
+            raise AssertionError(f"unexpected URL fetched in test: {url}")
+        prepared = responses[url]
+        if isinstance(prepared, Exception):
+            raise prepared
+        return prepared
+
+    return getter
 
 
 class TestSafeFilename:
@@ -177,3 +228,288 @@ class TestParseRefsOrderingAndEdgeCases:
         refs = parse_image_refs(text)
         assert len(refs) == 1
         assert refs[0].src.startswith("data:")
+
+
+class TestSniffMime:
+    @pytest.mark.parametrize(
+        "magic,expected",
+        [
+            (PNG_MAGIC, "image/png"),
+            (JPEG_MAGIC, "image/jpeg"),
+            (b"GIF87a", "image/gif"),
+            (b"GIF89a", "image/gif"),
+            (WEBP_MAGIC, "image/webp"),
+            (SVG_MAGIC, "image/svg+xml"),
+            (b"<?xml version='1.0'?><svg></svg>", "image/svg+xml"),
+        ],
+    )
+    def test_recognized(self, magic: bytes, expected: str) -> None:
+        assert sniff_mime(magic) == expected
+
+    def test_unknown(self) -> None:
+        assert sniff_mime(b"random garbage data not an image") is None
+
+    def test_empty(self) -> None:
+        assert sniff_mime(b"") is None
+
+
+class TestFetchImageMime:
+    def test_png_round_trip(self, tmp_path: Path) -> None:
+        url = "https://example.com/foo.png"
+        body = PNG_MAGIC + b"\x00" * 100
+        getter = make_getter(
+            {
+                url: FakeResponse(
+                    headers={"Content-Type": "image/png", "Content-Length": str(len(body))},
+                    body=body,
+                )
+            }
+        )
+        result = fetch_image(url, dest_dir=tmp_path, http_get=getter)
+        assert result.ok
+        assert result.path is not None
+        assert result.path.exists()
+        assert result.path.read_bytes() == body
+        assert result.mime == "image/png"
+        assert result.bytes_written == len(body)
+
+    def test_disallowed_mime_skipped(self, tmp_path: Path) -> None:
+        url = "https://example.com/page.html"
+        getter = make_getter(
+            {
+                url: FakeResponse(
+                    headers={"Content-Type": "text/html"},
+                    body=b"<html></html>",
+                )
+            }
+        )
+        result = fetch_image(url, dest_dir=tmp_path, http_get=getter)
+        assert not result.ok
+        assert result.skipped_reason == SKIP_REASONS["DISALLOWED_MIME"]
+        assert not list(tmp_path.iterdir())
+
+    def test_mime_mismatch_caught(self, tmp_path: Path) -> None:
+        url = "https://example.com/lying.png"
+        getter = make_getter(
+            {
+                url: FakeResponse(
+                    headers={"Content-Type": "image/png"},
+                    body=JPEG_MAGIC + b"\x00" * 100,
+                )
+            }
+        )
+        result = fetch_image(url, dest_dir=tmp_path, http_get=getter)
+        assert not result.ok
+        assert result.skipped_reason == SKIP_REASONS["MIME_MISMATCH"]
+
+    def test_header_only_unknown_bytes_uses_header(self, tmp_path: Path) -> None:
+        # When the bytes don't match a known signature but the header is
+        # allowed (e.g. WebP variant we don't sniff perfectly), accept the
+        # header rather than rejecting silently.
+        url = "https://example.com/odd.webp"
+        body = b"\x00" * 256  # not RIFF...WEBP, so sniff returns None
+        getter = make_getter({url: FakeResponse(headers={"Content-Type": "image/webp"}, body=body)})
+        result = fetch_image(url, dest_dir=tmp_path, http_get=getter)
+        assert result.ok
+        assert result.mime == "image/webp"
+
+
+class TestFetchImageSize:
+    def test_oversize_via_content_length(self, tmp_path: Path) -> None:
+        url = "https://example.com/huge.png"
+        getter = make_getter(
+            {
+                url: FakeResponse(
+                    headers={"Content-Type": "image/png", "Content-Length": "10000000"},
+                    body=PNG_MAGIC,
+                )
+            }
+        )
+        result = fetch_image(url, dest_dir=tmp_path, http_get=getter, max_bytes=1024)
+        assert not result.ok
+        assert result.skipped_reason == SKIP_REASONS["OVERSIZE"]
+        assert not list(tmp_path.iterdir())
+
+    def test_oversize_via_streaming(self, tmp_path: Path) -> None:
+        # Server lies about Content-Length (omits it) but the body is huge.
+        url = "https://example.com/sneaky.png"
+        body = PNG_MAGIC + b"\x00" * 5000
+        getter = make_getter({url: FakeResponse(headers={"Content-Type": "image/png"}, body=body)})
+        result = fetch_image(url, dest_dir=tmp_path, http_get=getter, max_bytes=1024)
+        assert not result.ok
+        assert result.skipped_reason == SKIP_REASONS["OVERSIZE"]
+        assert not list(tmp_path.iterdir())
+
+    def test_empty_body_skipped(self, tmp_path: Path) -> None:
+        url = "https://example.com/empty.png"
+        getter = make_getter({url: FakeResponse(headers={"Content-Type": "image/png"}, body=b"")})
+        result = fetch_image(url, dest_dir=tmp_path, http_get=getter)
+        assert not result.ok
+        assert result.skipped_reason == SKIP_REASONS["EMPTY_BODY"]
+
+
+class TestFetchImageErrors:
+    def test_non_http_scheme_rejected(self, tmp_path: Path) -> None:
+        result = fetch_image("ftp://example.com/foo.png", dest_dir=tmp_path)
+        assert not result.ok
+        assert result.skipped_reason == SKIP_REASONS["NON_HTTP"]
+
+    def test_fetch_exception_caught(self, tmp_path: Path) -> None:
+        url = "https://example.com/dead.png"
+        getter = make_getter({url: ConnectionError("boom")})
+        result = fetch_image(url, dest_dir=tmp_path, http_get=getter)
+        assert not result.ok
+        assert result.skipped_reason == SKIP_REASONS["FETCH_ERROR"]
+
+    def test_bad_status_skipped(self, tmp_path: Path) -> None:
+        url = "https://example.com/404.png"
+        getter = make_getter({url: FakeResponse(status_code=404)})
+        result = fetch_image(url, dest_dir=tmp_path, http_get=getter)
+        assert not result.ok
+        assert result.skipped_reason == SKIP_REASONS["BAD_STATUS"]
+
+
+class TestDownloadForSource:
+    def test_round_trip(self, tmp_path: Path) -> None:
+        url_a = "https://example.com/a.png"
+        url_b = "https://example.com/b.jpg"
+        body_a = PNG_MAGIC + b"\x00" * 200
+        body_b = JPEG_MAGIC + b"\x00" * 200
+        content = f'# Source\n\n![alpha]({url_a})\n\n<img src="{url_b}" alt="beta">\n\nEnd.'
+        getter = make_getter(
+            {
+                url_a: FakeResponse(headers={"Content-Type": "image/png"}, body=body_a),
+                url_b: FakeResponse(headers={"Content-Type": "image/jpeg"}, body=body_b),
+            }
+        )
+
+        new_content, report = download_for_source(
+            source_content=content,
+            assets_dir=tmp_path,
+            relative_assets_path="../assets/test-source",
+            http_get=getter,
+        )
+        assert report.downloaded == 2
+        assert report.skipped == 0
+        for url in (url_a, url_b):
+            assert url not in new_content
+        # All references rewritten to local relative paths.
+        assert "../assets/test-source/" in new_content
+        # Alt text preserved.
+        assert "![alpha]" in new_content
+        assert 'alt="beta"' in new_content
+
+    def test_local_and_data_refs_skipped(self, tmp_path: Path) -> None:
+        content = "![local](./already.png)\n\n![data](data:image/png;base64,xx)"
+        new_content, report = download_for_source(
+            source_content=content,
+            assets_dir=tmp_path,
+            relative_assets_path="../assets/x",
+            http_get=make_getter({}),
+        )
+        assert report.results == ()
+        assert new_content == content
+
+    def test_dedupes_repeated_urls(self, tmp_path: Path) -> None:
+        url = "https://example.com/dup.png"
+        body = PNG_MAGIC + b"\x00" * 50
+        content = f"![one]({url})\n\n![two]({url})"
+        getter = make_getter({url: FakeResponse(headers={"Content-Type": "image/png"}, body=body)})
+        new_content, report = download_for_source(
+            source_content=content,
+            assets_dir=tmp_path,
+            relative_assets_path="../assets/dup",
+            http_get=getter,
+        )
+        # Only one fetch performed.
+        assert len(report.results) == 1
+        assert report.downloaded == 1
+        # Both references rewritten to the same local path.
+        assert new_content.count("../assets/dup/") == 2
+
+    def test_skip_keeps_original_ref(self, tmp_path: Path) -> None:
+        url_good = "https://example.com/good.png"
+        url_bad = "https://example.com/bad.html"
+        body_good = PNG_MAGIC + b"\x00" * 50
+        content = f"![g]({url_good})\n\n![b]({url_bad})"
+        getter = make_getter(
+            {
+                url_good: FakeResponse(headers={"Content-Type": "image/png"}, body=body_good),
+                url_bad: FakeResponse(headers={"Content-Type": "text/html"}, body=b"<html/>"),
+            }
+        )
+        new_content, report = download_for_source(
+            source_content=content,
+            assets_dir=tmp_path,
+            relative_assets_path="../assets/mixed",
+            http_get=getter,
+        )
+        assert report.downloaded == 1
+        assert report.skipped == 1
+        # Good was rewritten; bad was left alone.
+        assert "../assets/mixed/" in new_content
+        assert url_bad in new_content
+        assert url_good not in new_content
+
+    def test_orphan_cleanup(self, tmp_path: Path) -> None:
+        # Pre-seed an orphan that the source no longer references.
+        orphan = tmp_path / "orphan.png"
+        orphan.write_bytes(b"old data")
+
+        url = "https://example.com/keep.png"
+        body = PNG_MAGIC + b"\x00" * 50
+        content = f"![keep]({url})"
+        getter = make_getter({url: FakeResponse(headers={"Content-Type": "image/png"}, body=body)})
+
+        new_content, report = download_for_source(
+            source_content=content,
+            assets_dir=tmp_path,
+            relative_assets_path="../assets/keep",
+            http_get=getter,
+            cleanup_orphans=True,
+        )
+        assert report.orphans_removed == 1
+        assert not orphan.exists()
+        # The newly downloaded asset survived.
+        kept = list(tmp_path.iterdir())
+        assert len(kept) == 1
+        assert kept[0].name in new_content
+
+    def test_orphan_cleanup_disabled(self, tmp_path: Path) -> None:
+        orphan = tmp_path / "orphan.png"
+        orphan.write_bytes(b"old data")
+        url = "https://example.com/keep.png"
+        body = PNG_MAGIC + b"\x00" * 50
+        content = f"![keep]({url})"
+        getter = make_getter({url: FakeResponse(headers={"Content-Type": "image/png"}, body=body)})
+        _, report = download_for_source(
+            source_content=content,
+            assets_dir=tmp_path,
+            relative_assets_path="../assets/keep",
+            http_get=getter,
+            cleanup_orphans=False,
+        )
+        assert report.orphans_removed == 0
+        assert orphan.exists()
+
+
+class TestSafeFilenameCollisionInPipeline:
+    """The pipeline must put two distinct URLs sharing a basename in
+    distinct files even when they land in the same per-source assets dir."""
+
+    def test_distinct_urls_distinct_files(self, tmp_path: Path) -> None:
+        body = PNG_MAGIC + b"\x00" * 32
+        urls = ["https://a.com/foo.png", "https://b.com/foo.png"]
+        content = "".join(f"![alt{i}]({u})\n" for i, u in enumerate(urls))
+        getter = make_getter(
+            {u: FakeResponse(headers={"Content-Type": "image/png"}, body=body) for u in urls}
+        )
+        _, report = download_for_source(
+            source_content=content,
+            assets_dir=tmp_path,
+            relative_assets_path="../assets/x",
+            http_get=getter,
+        )
+        assert report.downloaded == 2
+        files = list(tmp_path.iterdir())
+        assert len({f.name for f in files}) == 2

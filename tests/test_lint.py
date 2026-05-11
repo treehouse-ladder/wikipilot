@@ -9,6 +9,7 @@ from wikipilot.lint import (
     SEVERITY_ERROR,
     LintContext,
     Linter,
+    check_broken_local_image_links,
     check_broken_wikilinks,
     check_citation_density,
     check_disputes_open_questions_structure,
@@ -176,6 +177,46 @@ class TestCheckOwnershipViolations:
         assert any("purpose.md" in p for p in flagged)
         # The mixed-ownership concept page must NOT be flagged.
         assert "wiki/concepts/transformer-attention.md" not in flagged
+
+
+class TestCheckBrokenLocalImageLinks:
+    def test_clean_vault_passes(self, sample_vault: Vault) -> None:
+        issues = check_broken_local_image_links(_ctx(sample_vault))
+        assert issues == []
+
+    def test_remote_url_ignored(self, sample_vault: Vault) -> None:
+        target = sample_vault.dir_for("concepts") / "transformer-attention.md"
+        text = target.read_text(encoding="utf-8")
+        target.write_text(text + "\n![remote](https://example.com/foo.png)\n", encoding="utf-8")
+        issues = check_broken_local_image_links(_ctx(sample_vault))
+        assert issues == []
+
+    def test_broken_local_ref_flagged(self, sample_vault: Vault) -> None:
+        # Source page references a local asset that doesn't exist on disk.
+        target = sample_vault.dir_for("sources") / "example-paper-aabbccdd.md"
+        text = target.read_text(encoding="utf-8")
+        target.write_text(
+            text + "\n\n![missing](../assets/example-paper-aabbccdd/missing.png)\n",
+            encoding="utf-8",
+        )
+        issues = check_broken_local_image_links(_ctx(sample_vault))
+        assert any(i.code == "broken-image-ref" for i in issues)
+        assert all(i.severity == SEVERITY_ERROR for i in issues)
+
+    def test_existing_local_ref_passes(self, sample_vault: Vault) -> None:
+        # Drop a real asset on disk and reference it.
+        slug = "example-paper-aabbccdd"
+        asset_dir = sample_vault.assets_for(slug)
+        asset_dir.mkdir(parents=True, exist_ok=True)
+        (asset_dir / "fig.png").write_bytes(b"\x89PNG\r\n\x1a\nfake")
+        target = sample_vault.dir_for("sources") / f"{slug}.md"
+        text = target.read_text(encoding="utf-8")
+        target.write_text(
+            text + "\n\n![real](../assets/example-paper-aabbccdd/fig.png)\n",
+            encoding="utf-8",
+        )
+        issues = check_broken_local_image_links(_ctx(sample_vault))
+        assert not any(i.code == "broken-image-ref" for i in issues)
 
 
 class TestLinterEndToEnd:

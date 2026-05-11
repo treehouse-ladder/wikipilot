@@ -219,17 +219,52 @@ uv run wikipilot query "what is the fastest way to dispatch parallel subagents?"
 
 These POST to the routines' `/fire` endpoints with the bearer token from `~/.config/wikipilot/credentials.toml` (see [`docs/runbook.md`](runbook.md) "Storing the API tokens" — Phase 6).
 
+## Ingesting a source manually
+
+The `topic-researcher` and `query-answerer` agents normally call this for you, but you can drive it directly when seeding the wiki or testing a fixture:
+
+```bash
+uv run wikipilot ingest \
+  --url "https://example.com/papers/attention.pdf" \
+  --topic "ai-agents" \
+  --title "An example paper on attention" \
+  --excerpt "Attention is a weighted sum of value vectors." \
+  --excerpt "Anthropic builds Claude and publishes on safety alignment."
+```
+
+The CLI dedupes by SHA-256 of the normalized URL, writes `wiki/sources/<title>-<sha8>.md` with the documented frontmatter, then runs the Phase 5 image pipeline (configurable via `wikipilot.toml [images]`). Re-ingesting the same URL is a no-op.
+
+## Disabling image downloads
+
+The Phase 5 image pipeline is on by default. To turn it off for a routine run, edit `wikipilot.toml`:
+
+```toml
+[images]
+enabled = false
+```
+
+When disabled:
+
+- `wikipilot ingest` writes the source page but skips the fetch/store/rewrite step entirely.
+- Source pages keep their original remote image URLs in the body.
+- The `broken-image-ref` lint rule still fires on local refs that don't resolve, so a previously-downloaded source remains valid.
+
+Other knobs:
+
+- `max_image_bytes` (default `5_242_880` = 5 MB) — larger images are skipped with reason `oversize`.
+- `allowed_mimes` — restrict the accepted MIME list. The default covers PNG, JPEG, GIF, WebP, SVG.
+- `cleanup_orphans` (default `true`) — at ingest time, remove files in `wiki/assets/<slug>/` that aren't referenced by the post-rewrite source page. Disable if you have side-channel assets you want to keep.
+
+Bytes that pass `Content-Length` but fail the streaming size cap are stopped mid-download and never written to disk.
+
 ## Phase progress
 
 - **Phase 0**: bootstrap repo, docs spine, empty Obsidian vault, page conventions in CLAUDE.md.
 - **Phase 1**: Wiki primitives, source registry, freshness-aware lint, full CLI surface.
 - **Phase 2**: 5 subagents (topic-researcher, wiki-merger, wiki-linter, query-answerer, wiki-disputes-scanner), 8 skills, dry-run dispatcher.
 - **Phase 3**: per-route git ops (`git_ops.py`), `maybe_automerge.py` per-route gate, `wikipilot.toml` thresholds, `.github/workflows/ci.yml`.
-- **Phase 4 (current)**: Daily Research routine prompt, `scripts/preflight.py`, qmd MCP setup, three setup docs.
-- **Phase 2**: Subagent definitions, skill manifests, dry-run dispatcher.
-- **Phase 3**: Per-route git ops, auto-merge gate, CI workflow.
-- **Phase 4**: Daily Research routine prompt + qmd MCP + cloud setup.
-- **Phase 5**: Image download pipeline.
+- **Phase 4**: Daily Research routine prompt, `scripts/preflight.py`, qmd MCP setup, three setup docs.
+- **Phase 5 (current)**: Image download pipeline (`wikipilot ingest`, `download-source-images` skill, `broken-image-ref` lint rule).
 - **Phase 6**: Wiki Query routine + API client + GitHub-issue trigger.
 - **Phase 7**: Weekly Health routine + LLM-judge sweep + disputes scanner.
 - **Phase 8**: Live smoke test of all three routines.

@@ -41,6 +41,7 @@ from wikipilot.lint import (
     Linter,
 )
 from wikipilot.qmd_index import index_vault, qmd_available
+from wikipilot.sources import ingest_source_with_images
 from wikipilot.wiki import WIKI_DIRS, Vault
 
 DEFAULT_WIKI_PATH = Path("wiki")
@@ -307,6 +308,75 @@ def query_cmd(question: str) -> None:
     except ApiClientError as exc:
         click.echo(f"ERROR: {exc}", err=True)
         sys.exit(2)
+
+
+@main.command("ingest")
+@click.option("--url", required=True, help="URL of the source to ingest.")
+@click.option("--topic", "topic_id", required=True, help="Topic id this source belongs to.")
+@click.option("--title", required=True, help="Human-readable title for the source page.")
+@click.option(
+    "--body",
+    default="",
+    help="Optional human-readable summary for the source page body.",
+)
+@click.option(
+    "--excerpt",
+    "excerpts",
+    multiple=True,
+    help="Repeatable. Verbatim quote excerpt to include under '## Excerpts'.",
+)
+@click.option(
+    "--vault",
+    "vault_path",
+    type=click.Path(exists=True, file_okay=False, dir_okay=True, path_type=Path),
+    default=DEFAULT_WIKI_PATH,
+    show_default=True,
+)
+@click.option(
+    "--config",
+    "config_path",
+    type=click.Path(path_type=Path),
+    default=DEFAULT_CONFIG_PATH,
+    show_default=True,
+    help="Path to wikipilot.toml (image pipeline reads [images] from here).",
+)
+def ingest_cmd(
+    url: str,
+    topic_id: str,
+    title: str,
+    body: str,
+    excerpts: tuple[str, ...],
+    vault_path: Path,
+    config_path: Path,
+) -> None:
+    """Write a source page for URL and localize its images.
+
+    Idempotent: re-ingesting a known URL prints the existing slug and skips
+    image work. Driven by the ``ingest-source`` skill at runtime.
+    """
+    vault = Vault.at(vault_path)
+    config = load_wikipilot_config(config_path) if config_path.exists() else None
+    images_cfg = config.images if config is not None else None
+    result = ingest_source_with_images(
+        vault,
+        url=url,
+        title=title,
+        topic=topic_id,
+        body=body,
+        excerpts=list(excerpts) if excerpts else None,
+        images=images_cfg,
+    )
+    rec = result.record
+    if rec.created:
+        click.echo(f"Created source: {rec.slug}")
+        if result.download is not None:
+            click.echo(
+                f"Images: downloaded={result.download.downloaded} "
+                f"skipped={result.download.skipped} "
+                f"orphans_removed={result.download.orphans_removed}"
+            )
+    else:
+        click.echo(f"Existing source returned: {rec.slug} (no work done)")
 
 
 @main.command("dry-run")

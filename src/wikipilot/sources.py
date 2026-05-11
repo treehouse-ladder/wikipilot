@@ -34,6 +34,15 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
+from wikipilot.config import ImagesConfig
+from wikipilot.images import (
+    DEFAULT_ALLOWED_MIMES,
+    DEFAULT_MAX_BYTES,
+    DEFAULT_TIMEOUT_SECONDS,
+    DownloadReport,
+    HttpGet,
+    download_for_source,
+)
 from wikipilot.wiki import Page, Vault, slugify
 
 SOURCE_FRESHNESS_WINDOW_DAYS = 365
@@ -169,3 +178,83 @@ def update_image_count(page: Page, count: int) -> None:
 def assets_dir(vault: Vault, source_slug: str) -> Path:
     """Per-source asset directory (created lazily by the image pipeline)."""
     return vault.assets_for(source_slug)
+
+
+def relative_assets_path(source_slug: str) -> str:
+    """POSIX-relative path from a source page to its per-source assets dir.
+
+    Source pages live in ``wiki/sources/<slug>.md``; assets live in
+    ``wiki/assets/<slug>/``. The relative path is therefore stable for
+    every source page and Obsidian renders local images out of the box.
+    """
+    return f"../assets/{source_slug}"
+
+
+@dataclass(frozen=True)
+class IngestResult:
+    """Combined outcome of writing a source page and localizing its images."""
+
+    record: SourceRecord
+    download: DownloadReport | None
+
+    @property
+    def image_count(self) -> int:
+        return self.download.downloaded if self.download is not None else 0
+
+
+def ingest_source_with_images(
+    vault: Vault,
+    *,
+    url: str,
+    title: str,
+    topic: str,
+    body: str,
+    today: date | None = None,
+    excerpts: list[str] | None = None,
+    images: ImagesConfig | None = None,
+    http_get: HttpGet | None = None,
+) -> IngestResult:
+    """End-to-end ingest: write the source page, then localize its images.
+
+    This is the function the ``ingest-source`` skill ultimately drives via
+    the ``wikipilot ingest`` CLI. It is idempotent: re-ingesting a known URL
+    short-circuits in :func:`write_source` and the image step is skipped
+    (the existing source page already has localized refs).
+    """
+    record = write_source(
+        vault,
+        url=url,
+        title=title,
+        topic=topic,
+        body=body,
+        today=today,
+        excerpts=excerpts,
+    )
+    if not record.created:
+        return IngestResult(record=record, download=None)
+
+    cfg = images or ImagesConfig()
+    if not cfg.enabled:
+        return IngestResult(record=record, download=None)
+
+    target_dir = assets_dir(vault, record.slug)
+    rel_prefix = relative_assets_path(record.slug)
+    new_content, report = download_for_source(
+        source_content=record.page.content,
+        assets_dir=target_dir,
+        relative_assets_path=rel_prefix,
+        timeout=DEFAULT_TIMEOUT_SECONDS,
+        max_bytes=cfg.max_image_bytes or DEFAULT_MAX_BYTES,
+        allowed_mimes=cfg.allowed_mimes or DEFAULT_ALLOWED_MIMES,
+        cleanup_orphans=cfg.cleanup_orphans,
+        http_get=http_get,
+    )
+    if report.mapping:
+        record.page.content = new_content
+        record.page.metadata["image_count"] = report.downloaded
+        record.page.write()
+    elif report.downloaded == 0 and "image_count" in record.page.metadata:
+        record.page.metadata["image_count"] = 0
+        record.page.write()
+
+    return IngestResult(record=record, download=report)

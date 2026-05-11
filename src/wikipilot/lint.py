@@ -18,8 +18,9 @@ Rules implemented in Phase 1:
   parse cleanly
 - ``check_ownership_violations`` — when ``branch_name`` looks like a
   ``claude/*`` branch, flag any modified human-only paths
-
-The Phase 5 image pipeline adds ``check_broken_local_image_links`` here.
+- ``check_broken_local_image_links`` (Phase 5) — image refs that point at
+  local paths must resolve to a file under ``wiki/assets/`` (otherwise the
+  ``download-source-images`` skill probably didn't run)
 """
 
 from __future__ import annotations
@@ -31,6 +32,7 @@ from datetime import date
 from pathlib import Path
 
 from wikipilot.config import WikipilotConfig
+from wikipilot.images import parse_image_refs
 from wikipilot.wiki import (
     Page,
     Vault,
@@ -351,6 +353,46 @@ def check_disputes_open_questions_structure(ctx: LintContext) -> list[LintIssue]
     return issues
 
 
+_REMOTE_SCHEMES: tuple[str, ...] = ("http://", "https://", "data:", "mailto:")
+
+
+def check_broken_local_image_links(ctx: LintContext) -> list[LintIssue]:
+    """Flag image refs that point at local paths but resolve to nothing.
+
+    The ``download-source-images`` skill rewrites remote image URLs to
+    ``../assets/<slug>/<file>``. A broken local ref means either the asset
+    was never downloaded or the source page references a stale name; both
+    block auto-merge so the researcher can re-run the skill.
+    """
+    issues: list[LintIssue] = []
+    for page in ctx.pages:
+        if not page.content:
+            continue
+        for ref in parse_image_refs(page.content):
+            src = ref.src.strip()
+            if not src or src.startswith(_REMOTE_SCHEMES):
+                continue
+            if src.startswith("#"):
+                continue
+            try:
+                resolved = (page.path.parent / src).resolve()
+            except OSError:
+                continue
+            if resolved.exists():
+                continue
+            issues.append(
+                LintIssue(
+                    severity=SEVERITY_ERROR,
+                    code="broken-image-ref",
+                    path=page.path,
+                    message=(
+                        f"local image {src!r} does not exist (did download-source-images run?)"
+                    ),
+                )
+            )
+    return issues
+
+
 def check_ownership_violations(ctx: LintContext) -> list[LintIssue]:
     if not ctx.branch_name or not ctx.branch_name.startswith("claude/"):
         return []
@@ -400,6 +442,7 @@ class Linter:
         check_frontmatter,
         check_log_format,
         check_broken_wikilinks,
+        check_broken_local_image_links,
         check_orphans,
         check_staleness,
         check_citation_density,
