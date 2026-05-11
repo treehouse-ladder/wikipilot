@@ -119,3 +119,40 @@ def test_weekly_health_dispatches_in_parallel() -> None:
     body = _read("weekly_health").lower()
     assert "in parallel" in body
     assert "fork_subagent" in body or "fork-subagent" in body
+
+
+def test_daily_runner_renders_pr_body_via_helper() -> None:
+    """Step 4 should call render_pr_body_daily — never hand-write the body."""
+    body = _read("daily_runner")
+    assert "render_pr_body_daily" in body, (
+        "daily_runner.md must use render_pr_body_daily so PR shape stays canonical"
+    )
+
+
+def test_query_answerer_renders_pr_body_via_helper() -> None:
+    body = _read("query_answerer")
+    assert "render_pr_body_query" in body, (
+        "query_answerer.md must use render_pr_body_query so PR shape stays canonical"
+    )
+
+
+def test_weekly_health_renders_pr_body_via_helper() -> None:
+    body = _read("weekly_health")
+    assert "render_pr_body_health" in body, (
+        "weekly_health.md must use render_pr_body_health so PR shape stays canonical"
+    )
+
+
+def test_daily_runner_enforces_citation_discipline() -> None:
+    body = _read("daily_runner").lower()
+    assert "cite or refuse" in body or "[[source-slug]]" in body, (
+        "daily_runner.md must repeat the citation discipline as a hard rule"
+    )
+
+
+def test_weekly_health_forbids_bumping_last_verified() -> None:
+    body = _read("weekly_health").lower()
+    assert "last_updated" in body and "last_verified" in body
+    assert "never" in body or "not" in body, (
+        "weekly_health.md must explicitly forbid bumping last_verified"
+    )

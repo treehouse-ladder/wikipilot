@@ -6,20 +6,19 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Topics
 
-_(none yet — add topics to [`topics.yaml`](../topics.yaml) and write `purpose.md` files under `wiki/topics/<id>/`)_
+- [[ai-agents]]
+- [[llm-evals]]
 
 ## Concepts
 
-_(none yet)_
-
+- [[ai-agents-dryrun-concept]]
 ## Entities
 
 _(none yet)_
 
 ## Sources
 
-_(none yet — every URL the system ingests gets one page under [`wiki/sources/`](sources/))_
-
+- [[dry-run-paper-for-ai-agents-and-agentic-systems-719217a1]]
 ## Answers
 
 _(none yet — Wiki Query produces one page per question under [`wiki/answers/`](answers/))_

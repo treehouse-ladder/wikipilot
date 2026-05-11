@@ -25,9 +25,31 @@ class TestLoadTopics:
         assert topic.max_sources_per_run == 3
 
     def test_repo_topics_yaml_is_valid(self) -> None:
+        """The committed `topics.yaml` parses cleanly. Phase 8 seeded two
+        starter topics; future commits may add or remove. We only assert
+        that whatever's in the file is schema-valid (the parser raises on
+        malformed entries) and that every topic has a non-empty purpose."""
         repo_root = Path(__file__).resolve().parents[1]
         topics = load_topics(repo_root / "topics.yaml")
-        assert topics == []
+        for topic in topics:
+            assert topic.id
+            assert topic.display_name
+            assert topic.purpose.strip()
+            assert topic.frequency in {"daily", "weekly"}
+
+    def test_repo_topics_have_purpose_md(self) -> None:
+        """Every topic in `topics.yaml` must have a `wiki/topics/<id>/purpose.md`
+        — `scripts/preflight.py` aborts cloud routine runs without it. Catching
+        the violation in CI saves the user a failed Cloud Routine run."""
+        repo_root = Path(__file__).resolve().parents[1]
+        topics = load_topics(repo_root / "topics.yaml")
+        missing = [
+            t.id for t in topics if not (repo_root / "wiki/topics" / t.id / "purpose.md").exists()
+        ]
+        assert not missing, (
+            f"topics in topics.yaml without wiki/topics/<id>/purpose.md: {missing} "
+            "(see docs/runbook.md 'Adding a topic')"
+        )
 
     def test_missing_purpose_rejected(self, tmp_path: Path) -> None:
         path = tmp_path / "topics.yaml"

@@ -65,7 +65,26 @@ uv run wikipilot lint wiki/ --branch "$BRANCH" $(git diff --name-only origin/mai
 # 4e. Append the per-topic log entry.
 # (wiki-merger should have done this via append-log skill; double-check.)
 
-# 4f. Commit, push, open PR, apply gate.
+# 4f. Compute the commit/PR metadata from the proposal and the diff.
+N_SOURCES=$(echo "<PROPOSAL_JSON>" | jq '.sources | length')
+N_PAGES=$(git diff --name-only origin/main..HEAD | grep '^wiki/' | wc -l)
+
+# 4g. Render the PR body via the canonical helper (keeps shape consistent
+# across every routine — never hand-write the body in shell).
+python -c "
+from wikipilot.git_ops import render_pr_body_daily
+from datetime import date
+print(render_pr_body_daily(
+  topic_id='${TOPIC_ID}',
+  today=date.fromisoformat('${DATE}'),
+  sources_added=[...],            # from the proposal
+  pages_touched=[...],             # from git diff --name-only
+  new_disputes=[...],              # from the proposal
+  new_open_questions=[...],        # from the proposal
+  report_path='wiki/reports/${DATE}.md',
+))" > /tmp/pr-body-${TOPIC_ID}.md
+
+# 4h. Commit, push, open PR, apply gate.
 git add -A
 git commit -m "feat(wiki/${TOPIC_ID}): daily research ${DATE} — ${N_SOURCES} sources, ${N_PAGES} pages"
 git push -u origin "$BRANCH"
@@ -97,3 +116,6 @@ Append one final entry to `wiki/log.md` summarizing the whole run:
 - **Never skip the auto-merge gate.** It blocks PRs with failing checks, oversize diffs, or human-only-path edits — that's the whole point.
 - **One PR per topic.** Do not batch topics into a single PR; per-topic granularity is what makes review tractable and what matches Karpathy's "10–15 pages per source" reality.
 - **Parallel dispatch only for `topic-researcher`.** Mergers and linters MUST run in series per topic to avoid file-write contention.
+- **Cite or refuse.** Every claim in a synthesis page MUST have at least one `[[source-slug]]` wikilink and a `>` quote from that source. If the researcher couldn't substantiate a claim, drop the claim — never paraphrase without a citation.
+- **Read `wiki/topics/<id>/purpose.md` BEFORE deciding to ingest a source.** The charter is the off-topic-rejection ground truth. Off-topic ingests pollute the wiki for weeks.
+- **Bump `last_verified` only on pages whose claims you re-checked against a source this run.** Otherwise bump only `last_updated`. This is what makes the staleness lint actionable.

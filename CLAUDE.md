@@ -345,10 +345,10 @@ Errors fail the lint (exit code 1); warnings are reported but don't fail. The au
 | `freshness-report [vault]` | list pages by ascending freshness (most stale first) |
 | `deck <topic-id> [--out path] [--theme name]` | generate a Marp deck from `wiki/topics/<id>/index.md` |
 | `index-wiki [vault] [--full]` | refresh the qmd index over the vault |
-| `ingest --url ... --topic ... --title ... [--excerpt ...]` | write a source page and download its images (Phase 5) |
-| `research [--topic id]` | trigger Daily Research routine via the `/fire` API (Phase 6) |
-| `query "<question>"` | trigger Wiki Query routine via the `/fire` API (Phase 6) |
-| `dry-run --topic <id> \| --query "<q>"` | exercise the apply path locally (no Anthropic call) |
+| `ingest --url ... --topic ... --title ... [--excerpt ...]` | write a source page and download its images |
+| `research [--topic id]` | trigger Daily Research routine via the `/fire` API |
+| `query "<question>"` | trigger Wiki Query routine via the `/fire` API |
+| `dry-run --topic <id> \| --query "<q>" \| --weekly-health` | exercise the apply path locally (no Anthropic call) |
 
 ## Editing this file
 

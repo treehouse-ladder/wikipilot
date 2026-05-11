@@ -338,6 +338,130 @@ If you can't decide quickly, leave the dispute open. The scanner won't re-file t
 
 Larger K = more candidate sets dispatched in parallel = more scanner cost. The defaults are sized for hundreds of pages; if your wiki grows past ~500 pages, drop K or move the routine to bi-weekly.
 
+## Smoke-test checklist (Phase 8)
+
+This is the manual verification you run **once**, after creating all three routines in claude.ai/code/routines per [`routines-setup.md`](routines-setup.md). It covers the live integrations the dry-run can't exercise (cloud routine fan-out, real Anthropic API calls, GitHub triggers, auto-merge, image downloads from the live web, Obsidian rendering).
+
+The repo ships seeded with two starter topics (`ai-agents`, `llm-evals`); their `purpose.md` files are at `wiki/topics/<id>/purpose.md`. Add or edit topics in `topics.yaml` first if you want to swap them out before smoke-testing.
+
+### Prep
+
+- [ ] All three routines exist in claude.ai/code/routines (Daily Research, Wiki Query, Weekly Health).
+- [ ] `~/.config/wikipilot/credentials.toml` (or `%APPDATA%\wikipilot\credentials.toml`) holds `[research]` and `[query]` `fire_url` + `token`.
+- [ ] Local `wikipilot lint wiki/` is clean (`0 error(s), 0 warning(s)`).
+- [ ] Local `wikipilot validate-topics` shows the topic count you expect.
+- [ ] `wikipilot dry-run --topic ai-agents`, `--query "..."`, and `--weekly-health` all complete without error against a scratch vault.
+
+### Daily Research smoke test
+
+1. Click **Run now** on the Daily Research routine (does NOT count against the daily cap).
+2. Within ~3 minutes, check `gh pr list --label daily` — you should see one PR per `daily` topic on `claude/daily-YYYY-MM-DD/<topic-id>`.
+3. For each PR, verify:
+   - [ ] CI green (lint + tests).
+   - [ ] Auto-merge fired (or didn't, per the `[automerge.daily_research]` gate — both outcomes are valid; only failed gates are bugs).
+   - [ ] Every new synthesis page has `last_updated`, `last_verified`, `sources[]` frontmatter.
+   - [ ] Every non-trivial summary paragraph has at least one `[[source-slug]]` wikilink and a `>` quote from that source.
+   - [ ] Cross-page sweep happened: any concept mentioned in a page diff that's also mentioned by another existing page → that other page got `last_updated` bumped.
+   - [ ] Images downloaded under `wiki/assets/<source-slug>/` and source pages reference local paths (`../assets/...`).
+   - [ ] `wiki/reports/YYYY-MM-DD.md` written with the full audit (sources added, pages touched, runtime, token usage, PR links).
+   - [ ] `topics.yaml`, `CLAUDE.md`, `wikipilot.toml`, and `wiki/topics/<id>/purpose.md` are unchanged (ownership matrix preserved — if any of these changed, the gate should have blocked auto-merge).
+
+### Wiki Query smoke test
+
+1. **GitHub-issue path**: Open a new issue with the label `query`, body `What is the fastest way to dispatch parallel subagents?` (or any real question).
+2. **CLI path**: `uv run wikipilot query "what evaluation methodologies replicate?"` from the same machine.
+3. Within ~1 minute, verify (for each):
+   - [ ] One PR opens on `claude/query-YYYY-MM-DD-<slug>`.
+   - [ ] `wiki/answers/YYYY-MM-DD-<slug>.md` exists with citations + quotes.
+   - [ ] Back-fill: every related concept/entity page gained a `[[<answer-slug>]]` line under `## See also`.
+   - [ ] CI green; auto-merge fires (or doesn't, per `[automerge.wiki_query]`).
+   - [ ] For the GitHub-triggered question: a comment was posted on the originating issue with answer summary + page link + PR link.
+
+### Weekly Health smoke test
+
+1. Click **Run now** on the Weekly Health routine (don't wait a week).
+2. Within ~5 minutes, verify:
+   - [ ] One PR on `claude/health-YYYY-MM-DD`.
+   - [ ] If candidate sets were generated: dispute proposals filed under `## Disputes` on affected pages with `Status: unresolved (confidence: ...; sweep: <date>)`.
+   - [ ] No disputes were auto-resolved (check the diff: every `Status:` line says `unresolved`).
+   - [ ] `wiki/reports/health-YYYY-MM-DD.md` written with the lint/freshness summary.
+   - [ ] PR auto-merged per the permissive `[automerge.weekly_health]` gate.
+
+### Obsidian / Marp / Dataview spot-checks
+
+After at least one Daily Research run has landed real content:
+
+- [ ] Open `wiki/` in Obsidian (`docs/obsidian-setup.md` for setup); the graph view shows the new topic, concept, source, and answer pages with their cross-links.
+- [ ] The three example Dataview queries in `docs/obsidian-setup.md` render: recently-touched pages, stale pages, and open questions across the wiki.
+- [ ] `uv run wikipilot deck ai-agents` writes `wiki/decks/ai-agents.md`; the Obsidian Marp plugin opens it cleanly.
+
+### Iterating on the prompts
+
+If any verification step failed, the fix is almost always a prompt edit, not a code change. Edit one of:
+
+- `prompts/daily_runner.md` — for fan-out / cross-page sweep / report issues
+- `prompts/query_answerer.md` — for back-fill / issue-comment / answer-quality issues
+- `prompts/weekly_health.md` — for candidate seeding / dispute filing / report issues
+- `.claude/agents/<agent>.md` — for per-agent system prompt and model issues
+
+Then follow "Updating a routine prompt" above to push the change to claude.ai/code/routines. Re-run the smoke test for the affected routine.
+
+## Troubleshooting
+
+Symptoms grouped by where they originate.
+
+### Local CLI
+
+- **`wikipilot: command not found`** — the project venv isn't on PATH. Use `uv run wikipilot ...` (always works) or activate the venv (`source .venv/bin/activate` / `.venv\Scripts\Activate.ps1`).
+- **`uv: command not found`** — install uv (`curl -LsSf https://astral.sh/uv/install.sh | sh` or `pip install --user uv`); on Windows PowerShell, add `$env:APPDATA\Python\Python312\Scripts` to PATH for the current session.
+- **`tomllib` import error** — your interpreter is < Python 3.11. Use Python 3.12 (`uv python install 3.12`).
+- **`No such option: --topic` from `wikipilot dry-run`** — you're on an old commit. Pull `main`; the `--topic` / `--query` / `--weekly-health` flags landed in Phase 2 / Phase 7 respectively.
+- **`wikipilot lint` reports `disputes-format` on a placeholder line** — the lint requires bullets in `## Disputes` to start with `- ` and contain the literal substrings `claims` and `Status:`. Either delete the placeholder paragraph or convert it to `_(none yet — populated by the Weekly Health routine.)_` on a single line (lines starting with `_` are ignored).
+- **`wikipilot lint` reports `broken-wikilink` for `[[source-slug]]`** — the lint parses every `[[...]]` even inside backticks. Use prose like "the source-page slug appears in double square brackets" instead of the literal placeholder.
+
+### Cloud routine setup
+
+- **Routine fails immediately with `preflight: missing topic purpose.md`** — you added a topic to `topics.yaml` without writing `wiki/topics/<id>/purpose.md`. Create it (template in "Writing a topic purpose.md" above), commit, push, retry.
+- **Routine fails with `qmd index missing`** — the setup script didn't run, or the `wikipilot index-wiki` command failed. Re-trigger the routine; the `uv sync` cache will let the setup script complete in seconds the second time.
+- **`fire_url` returns 401** — the bearer token in `credentials.toml` is wrong or expired. Re-copy from the routine UI (Triggers → API trigger → "Show URL & token") and `chmod 600` the file again.
+- **`fire_url` returns 429** — you've hit the routine cap (Pro 5/day, Max 15/day, Team/Enterprise 25/day per Anthropic docs). The `api_client` retries up to 3× honoring `Retry-After`; beyond that you wait. Scheduled runs and API-triggered runs share the cap.
+- **GitHub-issue trigger doesn't fire** — verify the Claude GitHub App is installed on the repo (settings → Integrations → GitHub Apps), the routine's GitHub trigger is set to `issue.opened` filtered by `Labels include: query`, and the issue actually carries the `query` label.
+
+### Per-routine PR / auto-merge
+
+- **PR opens but auto-merge never fires** — read the comment posted by `scripts/maybe_automerge.py`. It lists the gate verdict (`pass`/`fail`) and the failure reason. Common reasons:
+  - `lint failed` — fix the lint error on the branch and push.
+  - `tests failed` — see CI logs.
+  - `human-only file modified` — see "What to do when human-only file changes block auto-merge" above.
+  - `diff too large` — either the routine actually shouldn't have touched that many files (revisit the prompt), or the gate is too tight for your wiki size; tune `wikipilot.toml [automerge.<route>]`.
+- **Auto-merge fired but the PR is wrong** — `gh pr revert <N>`, then iterate on the prompt before the next run.
+
+### Daily Research
+
+- **Topic researcher ingests an off-topic source** — `wiki/topics/<id>/purpose.md` isn't specific enough. Tighten the in-scope / out-of-scope sections; preflight reads it, the agent reads it. Re-trigger.
+- **No cross-page sweep happened** — the `wiki-merger` agent or the `update-index` skill didn't run. Re-read `prompts/daily_runner.md` Step 6 with the agent — usually the orchestrator skipped a step.
+- **Images didn't download** — check `wikipilot.toml [images]`: `enabled = true`? Check the source page body for `wiki/assets/...` paths; if the body still has remote URLs, the `download-source-images` skill didn't fire. The Phase 5 skill is wired into `wikipilot ingest`; if the agent didn't call `wikipilot ingest`, the images don't download. Look for `Skipped image download` in the run report.
+- **Hallucinated cross-link / `broken-wikilink` lint error** — the synthesizer named a page that doesn't exist. The auto-merge gate catches this. Iterate on the wiki-merger prompt: stress that *every* `[[link]]` must be either an existing slug or a slug created in this same proposal.
+
+### Wiki Query
+
+- **Answer page has no citations** — the `query-answerer` agent skipped or hallucinated. Re-read the agent's system prompt at `.claude/agents/query-answerer.md`; it MUST cite or refuse. Tighten the rule.
+- **Issue comment never posted** — the routine ran but the final `gh issue comment` step failed. Check the routine logs in claude.ai/code/routines for the actual `gh` exit code; usually the GitHub token in the routine env is missing.
+- **Back-fill didn't happen** — the `query-back-fill` skill wasn't called. The orchestrator must call it after the answer page is written. Re-read `prompts/query_answerer.md` Step 6.
+
+### Weekly Health
+
+- **No candidate sets generated** — `disputes_seed.py` produced an empty result. Most common reasons: no sources ingested in the last 7 days (default lookback), and/or no synthesis pages exist yet. Either wait until the Daily Research routine has populated the wiki, or run `python scripts/disputes_seed.py --lookback-days 30` to widen the window.
+- **Scanner filed a dispute that's actually correct** — false positive. The scanner's job is to file every plausible candidate; humans decide. Mark it `Status: both-can-be-true: ...` and move on. If false positives flood, tighten `.claude/agents/wiki-disputes-scanner.md`'s "what counts as a dispute" rules.
+- **Scanner auto-resolved a dispute** — bug. The scanner's mandate (and prompt) say it MUST file `Status: unresolved` only. Check the agent file at `.claude/agents/wiki-disputes-scanner.md` and the orchestrator at `prompts/weekly_health.md`; both stress this constraint.
+- **Health PR has 0 disputes but lots of `last_updated` bumps** — that's correct: the orchestrator runs `wikipilot freshness-report` and `wikipilot lint wiki/` and writes the report regardless of whether disputes were filed. The bumps come from the report being a new file and the log entry, not from page edits.
+
+### Obsidian / Marp / Dataview
+
+- **Graph view doesn't show new pages** — Obsidian needs a vault re-index. Press `Ctrl/Cmd-P` → "Force re-index vault".
+- **Marp deck doesn't render** — install the Marp Obsidian plugin (`docs/obsidian-setup.md`); confirm the deck's frontmatter has `marp: true`.
+- **Dataview queries empty** — install Dataview plugin; the example queries in `docs/obsidian-setup.md` need it. Make sure pages have `last_updated`/`last_verified` as proper date values (not strings) — the Phase 1 wiki primitives write them as `date`, but a hand-edited page might have them as `"2026-05-11"` (string).
+
 ## Phase progress
 
 - **Phase 0**: bootstrap repo, docs spine, empty Obsidian vault, page conventions in CLAUDE.md.
@@ -347,5 +471,5 @@ Larger K = more candidate sets dispatched in parallel = more scanner cost. The d
 - **Phase 4**: Daily Research routine prompt, `scripts/preflight.py`, qmd MCP setup, three setup docs.
 - **Phase 5**: Image download pipeline (`wikipilot ingest`, `download-source-images` skill, `broken-image-ref` lint rule).
 - **Phase 6**: Wiki Query routine prompt, real `api_client.py` (HTTP + 429 retry), wired `wikipilot research`/`query` CLI, GitHub-issue trigger setup.
-- **Phase 7 (current)**: Weekly Health routine prompt, `scripts/disputes_seed.py` overlap heuristics, health-report reader docs, dispute-resolution guidance.
-- **Phase 8**: Live smoke test of all three routines.
+- **Phase 7**: Weekly Health routine prompt, `scripts/disputes_seed.py` overlap heuristics, health-report reader docs, dispute-resolution guidance.
+- **Phase 8 (current)**: Two starter topics seeded (`ai-agents`, `llm-evals`) with real `purpose.md`, smoke-test checklist + Troubleshooting section, CI dry-run extended to weekly health.

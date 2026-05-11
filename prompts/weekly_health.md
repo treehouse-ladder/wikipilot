@@ -101,3 +101,5 @@ The `weekly_health` gate is intentionally permissive (60 files / 2000 lines) —
 - **Append-only on `## Disputes`.** Existing entries stay verbatim — even outdated ones. The dispute section is the audit trail.
 - **Scan in parallel only.** Apply edits in series in Step 5 to avoid file-write contention.
 - **One PR per week.** Don't split into per-set PRs; the weekly digest is a single artifact a human reviews end-to-end.
+- **Bump `last_updated` only — never `last_verified`.** The scanner did not re-verify the underlying claims; bumping `last_verified` would silently extend the staleness window. The `apply_weekly_health` helper enforces this; agents that hand-edit MUST follow the same rule.
+- **Drop dispute candidates that are stylistic differences or paraphrase variation.** Only mutually exclusive factual claims about the same entity are dispute-worthy. False positives flood the human review queue and erode trust in the sweep.
