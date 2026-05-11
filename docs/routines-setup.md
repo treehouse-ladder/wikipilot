@@ -47,7 +47,7 @@ Daily-cap note: scheduled routines count against your plan's daily cap (Pro 5/da
 
 Beta header note: Routines API uses `experimental-cc-routine-2026-04-01`.
 
-## Wiki Query routine (Phase 6)
+## Wiki Query routine
 
 | Field | Value |
 |---|---|
@@ -56,9 +56,24 @@ Beta header note: Routines API uses `experimental-cc-routine-2026-04-01`.
 | Setup script | same as Daily Research |
 | Connectors | qmd (same) |
 | Env vars | same |
-| Triggers | (a) **GitHub trigger**: install Claude GitHub App on this repo, trigger on `issue.opened` filtered to `Labels include: query`. (b) **API trigger**: copy URL + token, paste into `~/.config/wikipilot/credentials.toml` under `[query]`. No schedule trigger (on-demand only). |
+| Triggers | (a) **GitHub trigger** (preferred for human use): see [GitHub-issue trigger](#github-issue-trigger-for-wiki-query) below. (b) **API trigger**: copy URL + token from the routine UI, paste into `~/.config/wikipilot/credentials.toml` under `[query]`. No schedule trigger (on-demand only). |
 | Model | **Sonnet** (orchestrator); `query-answerer` subagent pins **Opus 4.7** via its frontmatter. |
-| Prompt | `prompts/query_answerer.md` (Phase 6 fills it in). |
+| Prompt | Copy [`prompts/query_answerer.md`](../prompts/query_answerer.md) into the routine UI. |
+
+### GitHub-issue trigger for Wiki Query
+
+The Claude GitHub App turns labeled GitHub issues into routine fires. Setup:
+
+1. **Install the Claude GitHub App** on this repo (Settings → GitHub Apps → Claude Code).
+2. **Add the `query` label** to your repo (Settings → Labels → New label, name `query`, description "Triggers Wikipilot Wiki Query routine").
+3. In the routine UI, **enable the GitHub trigger** with these filters:
+   - Event: `issue.opened`
+   - Filter: `Labels include: query`
+4. Save.
+
+Now any new issue with the `query` label kicks off a Wiki Query run. The orchestrator reads the issue body as the question (first non-empty line is the question; remaining lines are optional context), files an answer page back to `wiki/answers/`, opens a PR, and comments the answer on the issue with a link to the PR.
+
+If the GitHub App can't be installed (private org policy, etc.), the API trigger is a drop-in substitute — `wikipilot query "<question>"` from the CLI does the same thing without going through GitHub.
 
 ## Weekly Health routine (Phase 7)
 

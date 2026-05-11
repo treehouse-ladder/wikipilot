@@ -291,23 +291,42 @@ def index_wiki_cmd(vault_path: Path, full: bool) -> None:
     help="Research a single topic. Omit to fire the full daily run.",
 )
 def research_cmd(topic_id: str | None) -> None:
-    """Trigger the Daily Research routine via the /fire API (wired in Phase 6)."""
+    """Trigger the Daily Research routine via the /fire API."""
     try:
-        fire_research(topic=topic_id)
+        response = fire_research(topic=topic_id)
     except ApiClientError as exc:
         click.echo(f"ERROR: {exc}", err=True)
         sys.exit(2)
+    _render_fire_response(response, what=f"research (topic={topic_id or '*all*'})")
+    sys.exit(0 if response.ok else 1)
 
 
 @main.command("query")
 @click.argument("question", type=str)
 def query_cmd(question: str) -> None:
-    """Trigger the Wiki Query routine via the /fire API (wired in Phase 6)."""
+    """Trigger the Wiki Query routine via the /fire API."""
     try:
-        fire_query(question)
+        response = fire_query(question)
     except ApiClientError as exc:
         click.echo(f"ERROR: {exc}", err=True)
         sys.exit(2)
+    _render_fire_response(response, what=f"query: {question!r}")
+    sys.exit(0 if response.ok else 1)
+
+
+def _render_fire_response(response: object, *, what: str) -> None:
+    click.echo(f"Fired {what} (route: {getattr(response, 'routine', '?')})")
+    status = getattr(response, "status_code", 0)
+    retries = getattr(response, "retries", 0)
+    if getattr(response, "ok", False):
+        run_id = ""
+        body = getattr(response, "body", {}) or {}
+        if isinstance(body, dict):
+            run_id = body.get("run_id") or body.get("id") or ""
+        click.echo(f"  status={status} retries={retries} run_id={run_id or '<unknown>'}")
+    else:
+        msg = getattr(response, "error_message", None) or "(no error message)"
+        click.echo(f"  status={status} retries={retries} error={msg}", err=True)
 
 
 @main.command("ingest")

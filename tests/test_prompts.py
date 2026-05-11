@@ -57,3 +57,34 @@ def test_daily_runner_dispatches_topic_researcher_in_parallel() -> None:
     body = _read("daily_runner").lower()
     assert "in parallel" in body
     assert "fork_subagent" in body or "fork-subagent" in body
+
+
+def test_query_answerer_prompt_exists() -> None:
+    body = _read("query_answerer")
+    assert body.strip(), "query_answerer.md must not be empty"
+
+
+@pytest.mark.parametrize(
+    "required",
+    [
+        "preflight.py",
+        "query-answerer",
+        "query-back-fill",
+        "claude/query-",
+        "wiki/answers/",
+        "ingest-source",
+        "maybe_automerge.py --pr",
+        "wiki_query",
+        "gh issue comment",
+        "qmd-search",
+    ],
+)
+def test_query_answerer_mentions_each_required_step(required: str) -> None:
+    body = _read("query_answerer")
+    assert required in body, f"query_answerer.md must mention {required!r}"
+
+
+def test_query_answerer_handles_both_triggers() -> None:
+    body = _read("query_answerer").lower()
+    assert "github-triggered" in body or "github trigger" in body or "issue.opened" in body
+    assert "api-triggered" in body or "/fire" in body

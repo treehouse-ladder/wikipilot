@@ -109,15 +109,53 @@ After writing, validate the topic file:
 uv run wikipilot validate-topics
 ```
 
-## Asking an ad-hoc query
+## Asking the wiki a question
 
-Once Phase 6 ships:
+There are two equivalent ways to ask the Wiki Query routine a question. Both end up filing one PR per question, with the answer page under `wiki/answers/` and the related concept/entity pages back-filled to point at it.
+
+### From the CLI
 
 ```bash
 uv run wikipilot query "what is the fastest way to dispatch parallel subagents?"
 ```
 
-This fires the Wiki Query routine via the `/fire` API. The answer appears as a new page under `wiki/answers/`, with back-fill into related concept pages, within ~1 minute. Alternatively, open a GitHub issue with the `query` label — the routine reads the issue body as the question and posts the answer back as an issue comment.
+`wikipilot query` POSTs the question to the Wiki Query routine's `/fire` endpoint with the bearer token from your credentials file (see "Storing the API tokens" below). The CLI prints the routine's `run_id` so you can correlate logs in claude.ai/code/routines.
+
+### Via a GitHub issue
+
+1. Open a new issue in this repo.
+2. Apply the `query` label.
+3. Put the question in the issue body — the first non-empty line is the question; the rest is optional context.
+
+The routine fires within seconds, files the answer page, opens a PR, and comments back on the issue with a 2-3 sentence summary plus a link to the answer page and a link to the PR. Setup details live in [`routines-setup.md`](routines-setup.md#github-issue-trigger-for-wiki-query).
+
+## Storing the API tokens
+
+Both `wikipilot research` and `wikipilot query` POST to the routines' `/fire` endpoints with a bearer token. They look up the URL and token in:
+
+- Linux/macOS: `~/.config/wikipilot/credentials.toml`
+- Windows: `%APPDATA%\wikipilot\credentials.toml`
+
+Override the path with the `WIKIPILOT_CREDENTIALS_FILE` env var (CI uses this so tokens don't leak from the user's home directory).
+
+```toml
+[research]
+fire_url = "https://api.anthropic.com/v1/routines/<routine-id>/fire"
+token    = "<bearer token>"
+
+[query]
+fire_url = "https://api.anthropic.com/v1/routines/<routine-id>/fire"
+token    = "<bearer token>"
+```
+
+Get each routine's `fire_url` and `token` from the routine UI in claude.ai/code/routines (Triggers → API trigger → "Show URL & token"). Store the file with restrictive permissions:
+
+```bash
+chmod 600 ~/.config/wikipilot/credentials.toml   # *nix
+icacls "%APPDATA%\wikipilot\credentials.toml" /inheritance:r /grant:r "%USERNAME%:F"   # Windows
+```
+
+The CLI surfaces a clear error if the file is missing, the section is missing, or the token is blank. On HTTP 429 (rate-limited), the client retries up to 3 times honoring the `Retry-After` header.
 
 ## Reviewing or reverting a per-topic PR
 
@@ -264,7 +302,7 @@ Bytes that pass `Content-Length` but fail the streaming size cap are stopped mid
 - **Phase 2**: 5 subagents (topic-researcher, wiki-merger, wiki-linter, query-answerer, wiki-disputes-scanner), 8 skills, dry-run dispatcher.
 - **Phase 3**: per-route git ops (`git_ops.py`), `maybe_automerge.py` per-route gate, `wikipilot.toml` thresholds, `.github/workflows/ci.yml`.
 - **Phase 4**: Daily Research routine prompt, `scripts/preflight.py`, qmd MCP setup, three setup docs.
-- **Phase 5 (current)**: Image download pipeline (`wikipilot ingest`, `download-source-images` skill, `broken-image-ref` lint rule).
-- **Phase 6**: Wiki Query routine + API client + GitHub-issue trigger.
+- **Phase 5**: Image download pipeline (`wikipilot ingest`, `download-source-images` skill, `broken-image-ref` lint rule).
+- **Phase 6 (current)**: Wiki Query routine prompt, real `api_client.py` (HTTP + 429 retry), wired `wikipilot research`/`query` CLI, GitHub-issue trigger setup.
 - **Phase 7**: Weekly Health routine + LLM-judge sweep + disputes scanner.
 - **Phase 8**: Live smoke test of all three routines.

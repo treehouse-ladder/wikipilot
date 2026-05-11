@@ -143,15 +143,17 @@ The canonical prompt lives at [`prompts/daily_runner.md`](prompts/daily_runner.m
 4. For each topic, in series: branch `claude/daily-YYYY-MM-DD/<topic-id>`, dispatch `wiki-merger`, dispatch `wiki-linter`, run `pytest` + `wikipilot lint wiki/`, append per-topic log entry, commit, push, `gh pr create`, `python scripts/maybe_automerge.py --pr <num> --route daily_research`.
 5. After all topics: write `wiki/reports/YYYY-MM-DD.md`.
 
-## Query workflow (for `query_answerer.md` orchestrator — Phase 6)
+## Query workflow (for `query_answerer.md` orchestrator)
+
+The canonical prompt lives at [`prompts/query_answerer.md`](prompts/query_answerer.md). The cloud routine setup (including the GitHub-issue trigger) is documented in [`docs/routines-setup.md`](docs/routines-setup.md#wiki-query-routine).
 
 1. Run `python scripts/preflight.py`.
 2. Read `CLAUDE.md`, `wiki/index.md`, recent `wiki/log.md` (cache-warming prefix).
-3. Parse the question from the GitHub issue body (if triggered by `issue.opened` with the `query` label) or the API `text` field.
+3. Parse the question from the GitHub issue body (if triggered by `issue.opened` with the `query` label) or the API `question` field.
 4. Dispatch `query-answerer` (Opus 4.7) with the question — qmd-search first, WebSearch only as fallback.
 5. Apply the `Answer` to a fresh branch `claude/query-YYYY-MM-DD-<slug>`, run lint+tests.
 6. Call `query-back-fill` to add `[[answer-slug]]` references to related concept/entity pages.
-7. `gh pr create`; `python scripts/maybe_automerge.py --pr <num>` with the `wiki_query` gate.
+7. `gh pr create`; `python scripts/maybe_automerge.py --pr <num> --route wiki_query`.
 8. If GitHub-triggered, `gh issue comment` on the originating issue with the answer summary + page link + PR link.
 
 ## Weekly health workflow (for `weekly_health.md` orchestrator — Phase 7)

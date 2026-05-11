@@ -223,33 +223,91 @@ class TestIndexWikiCommand:
 
 
 class TestResearchAndQueryCommands:
-    def test_research_phase6_message(
-        self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-    ) -> None:
+    def _write_creds(self, tmp_path: Path) -> Path:
         creds = tmp_path / "creds.toml"
         creds.write_text(
-            '[research]\nfire_url = "https://x"\ntoken = "y"\n'
-            '[query]\nfire_url = "https://y"\ntoken = "z"\n',
+            '[research]\nfire_url = "https://x.example.com/fire"\ntoken = "y"\n'
+            '[query]\nfire_url = "https://y.example.com/fire"\ntoken = "z"\n',
             encoding="utf-8",
         )
-        monkeypatch.setenv("WIKIPILOT_CREDENTIALS_FILE", str(creds))
-        result = runner.invoke(main, ["research", "--topic", "ai-agents"])
-        assert result.exit_code == 2
-        assert "Phase 6" in result.output
+        return creds
 
-    def test_query_phase6_message(
+    def test_research_success(
         self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
     ) -> None:
-        creds = tmp_path / "creds.toml"
-        creds.write_text(
-            '[research]\nfire_url = "https://x"\ntoken = "y"\n'
-            '[query]\nfire_url = "https://y"\ntoken = "z"\n',
-            encoding="utf-8",
-        )
+        creds = self._write_creds(tmp_path)
         monkeypatch.setenv("WIKIPILOT_CREDENTIALS_FILE", str(creds))
+        from wikipilot import api_client
+
+        captured: dict[str, object] = {}
+
+        def fake_post(url: str, *, json: dict, headers: dict, timeout: float):  # noqa: A002
+            captured["url"] = url
+            captured["json"] = json
+
+            class R:
+                status_code = 202
+                text = "{}"
+                headers: dict[str, str] = {}
+
+                def json(self) -> dict[str, object]:
+                    return {"run_id": "r-cli"}
+
+            return R()
+
+        monkeypatch.setattr(api_client, "_default_post", fake_post)
+        result = runner.invoke(main, ["research", "--topic", "ai-agents"])
+        assert result.exit_code == 0, result.output
+        assert "run_id=r-cli" in result.output
+        assert captured["json"] == {"topic_id": "ai-agents"}
+        assert captured["url"] == "https://x.example.com/fire"
+
+    def test_query_success(
+        self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        creds = self._write_creds(tmp_path)
+        monkeypatch.setenv("WIKIPILOT_CREDENTIALS_FILE", str(creds))
+        from wikipilot import api_client
+
+        def fake_post(url: str, *, json: dict, headers: dict, timeout: float):  # noqa: A002
+            class R:
+                status_code = 202
+                text = "{}"
+                headers: dict[str, str] = {}
+
+                def json(self) -> dict[str, object]:
+                    return {"run_id": "q-cli"}
+
+            return R()
+
+        monkeypatch.setattr(api_client, "_default_post", fake_post)
         result = runner.invoke(main, ["query", "what is x?"])
-        assert result.exit_code == 2
-        assert "Phase 6" in result.output
+        assert result.exit_code == 0, result.output
+        assert "run_id=q-cli" in result.output
+
+    def test_query_failure_exits_1(
+        self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        creds = self._write_creds(tmp_path)
+        monkeypatch.setenv("WIKIPILOT_CREDENTIALS_FILE", str(creds))
+        from wikipilot import api_client
+
+        def fake_post(url: str, *, json: dict, headers: dict, timeout: float):  # noqa: A002
+            class R:
+                status_code = 500
+                text = ""
+                headers: dict[str, str] = {}
+
+                def json(self) -> dict[str, object]:
+                    return {"error": "boom"}
+
+            return R()
+
+        monkeypatch.setattr(api_client, "_default_post", fake_post)
+        result = runner.invoke(main, ["query", "what?"])
+        assert result.exit_code == 1
+        assert "status=500" in result.output
+        assert "boom" in result.output
 
     def test_query_credentials_missing(
         self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
