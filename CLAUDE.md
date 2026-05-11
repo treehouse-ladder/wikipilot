@@ -135,10 +135,12 @@ Routine-UI model picker only sets the orchestrator model; subagents pin their ow
 
 ## Daily run workflow (for `daily_runner.md` orchestrator)
 
+The canonical prompt lives at [`prompts/daily_runner.md`](prompts/daily_runner.md). The cloud routine setup is documented in [`docs/routines-setup.md`](docs/routines-setup.md).
+
 1. Run `python scripts/preflight.py` — fail fast if env broken.
 2. Read `CLAUDE.md`, `topics.yaml`, `wiki/index.md`, last 50 lines of `wiki/log.md`, every `wiki/topics/<id>/purpose.md`. This becomes the cache-warming prefix shared across parallel subagents.
 3. Set `CLAUDE_CODE_FORK_SUBAGENT=1` and dispatch `topic-researcher` **in parallel** via the Task tool, one per enabled topic. Each returns a structured `Proposal` (schema below).
-4. For each topic, in series: branch `claude/daily-YYYY-MM-DD/<topic-id>`, dispatch `wiki-merger`, dispatch `wiki-linter`, run `pytest` + `wikipilot lint wiki/`, append per-topic log entry, commit, push, `gh pr create`, `python scripts/maybe_automerge.py --pr <num>`.
+4. For each topic, in series: branch `claude/daily-YYYY-MM-DD/<topic-id>`, dispatch `wiki-merger`, dispatch `wiki-linter`, run `pytest` + `wikipilot lint wiki/`, append per-topic log entry, commit, push, `gh pr create`, `python scripts/maybe_automerge.py --pr <num> --route daily_research`.
 5. After all topics: write `wiki/reports/YYYY-MM-DD.md`.
 
 ## Query workflow (for `query_answerer.md` orchestrator — Phase 6)

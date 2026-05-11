@@ -194,12 +194,38 @@ The auto-merge gate refuses to land any `claude/*` PR that touches a human-only 
 4. If the change is genuinely needed (you've decided to update `topics.yaml` based on what the routine found), apply it manually as a separate PR from `main`. Never let an LLM-authored PR own a human file.
 5. Iterate on the agent prompt (`prompts/<routine>.md` or `.claude/agents/<agent>.md`) so future runs don't make the same mistake.
 
+## Updating a routine prompt
+
+Routine prompts (`prompts/daily_runner.md`, `prompts/query_answerer.md`, `prompts/weekly_health.md`) are versioned in this repo. Cloud routines aren't yet API-managed, so to update a routine:
+
+1. Edit the prompt file in `prompts/`.
+2. Open the routine in claude.ai/code/routines.
+3. Copy-paste the updated prompt into the routine UI.
+4. Save.
+
+The routine's next run uses the new prompt. We don't auto-sync because there's no public API for that yet.
+
+## Triggering a routine via API
+
+Once the API trigger is configured (see [`docs/routines-setup.md`](routines-setup.md) "Daily Research routine"):
+
+```bash
+# Fire Daily Research for one topic.
+uv run wikipilot research --topic ai-agents
+
+# Fire Wiki Query.
+uv run wikipilot query "what is the fastest way to dispatch parallel subagents?"
+```
+
+These POST to the routines' `/fire` endpoints with the bearer token from `~/.config/wikipilot/credentials.toml` (see [`docs/runbook.md`](runbook.md) "Storing the API tokens" — Phase 6).
+
 ## Phase progress
 
 - **Phase 0**: bootstrap repo, docs spine, empty Obsidian vault, page conventions in CLAUDE.md.
 - **Phase 1**: Wiki primitives, source registry, freshness-aware lint, full CLI surface.
 - **Phase 2**: 5 subagents (topic-researcher, wiki-merger, wiki-linter, query-answerer, wiki-disputes-scanner), 8 skills, dry-run dispatcher.
-- **Phase 3 (current)**: per-route git ops (`git_ops.py`), `maybe_automerge.py` per-route gate, `wikipilot.toml` thresholds, `.github/workflows/ci.yml`.
+- **Phase 3**: per-route git ops (`git_ops.py`), `maybe_automerge.py` per-route gate, `wikipilot.toml` thresholds, `.github/workflows/ci.yml`.
+- **Phase 4 (current)**: Daily Research routine prompt, `scripts/preflight.py`, qmd MCP setup, three setup docs.
 - **Phase 2**: Subagent definitions, skill manifests, dry-run dispatcher.
 - **Phase 3**: Per-route git ops, auto-merge gate, CI workflow.
 - **Phase 4**: Daily Research routine prompt + qmd MCP + cloud setup.
