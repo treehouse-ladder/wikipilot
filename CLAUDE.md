@@ -156,16 +156,18 @@ The canonical prompt lives at [`prompts/query_answerer.md`](prompts/query_answer
 7. `gh pr create`; `python scripts/maybe_automerge.py --pr <num> --route wiki_query`.
 8. If GitHub-triggered, `gh issue comment` on the originating issue with the answer summary + page link + PR link.
 
-## Weekly health workflow (for `weekly_health.md` orchestrator — Phase 7)
+## Weekly health workflow (for `weekly_health.md` orchestrator)
+
+The canonical prompt lives at [`prompts/weekly_health.md`](prompts/weekly_health.md). The cloud routine setup is documented in [`docs/routines-setup.md`](docs/routines-setup.md#weekly-health-routine).
 
 1. Run `python scripts/preflight.py`.
 2. Read `CLAUDE.md`, `wiki/index.md`, last 200 lines of `wiki/log.md` (broader cache prefix because the sweep is wiki-wide).
-3. Run `python scripts/disputes_seed.py` to produce candidate sets.
+3. Run `python scripts/disputes_seed.py --json` to produce candidate sets.
 4. Dispatch `wiki-disputes-scanner` **per candidate set in parallel** with `CLAUDE_CODE_FORK_SUBAGENT=1`.
 5. Apply all dispute proposals to a single branch `claude/health-YYYY-MM-DD` (append-only edits to `## Disputes` sections; never resolves anything).
 6. Run `wikipilot freshness-report` and `wikipilot lint wiki/`; append summaries to the health report.
 7. Write `wiki/reports/health-YYYY-MM-DD.md`.
-8. `gh pr create`; auto-merge per the permissive `weekly_health` gate.
+8. `gh pr create`; `python scripts/maybe_automerge.py --pr <num> --route weekly_health` (permissive gate).
 
 ## Schemas
 

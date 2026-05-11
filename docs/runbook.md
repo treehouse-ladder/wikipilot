@@ -295,6 +295,49 @@ Other knobs:
 
 Bytes that pass `Content-Length` but fail the streaming size cap are stopped mid-download and never written to disk.
 
+## Reading a weekly health report
+
+Each Weekly Health PR adds one `wiki/reports/health-YYYY-MM-DD.md` page summarizing the wiki's current state. Skim it in this order:
+
+1. **Summary** — counts: stale pages, citation-density failures, new disputes, orphans, broken wikilinks. If everything is zero except disputes, the wiki is healthy.
+2. **New disputes** — each entry links to the affected `[[page]]`. These are *candidates* the LLM-judge sweep flagged; the scanner files them as `Status: unresolved` and never decides on its own. Walk through them and resolve on the page itself (see "Resolving a dispute" below).
+3. **Stale pages** — pages whose `last_verified` is older than `freshness_window_days`. The Daily Research routine bumps `last_verified` whenever a researcher re-confirms claims. If a page stays stale across multiple weeks, either the topic isn't producing enough fresh sources or the page has drifted from the topic — consider editing the topic's `purpose.md`.
+4. **Citation-density failures** — synthesis paragraphs without any `[[wikilink]]`. Often these are introductory paragraphs that *don't* need a citation; the lint surfaces them so you can decide.
+5. **Orphans / broken wikilinks** — usually small. Broken wikilinks are an *error*-severity lint that blocks auto-merge, so by the time you see this you already know.
+
+The PR auto-merges by default (the `weekly_health` gate is permissive: 60 files / 2000 lines) — review afterward if the report flagged anything you want to act on.
+
+## Resolving a dispute
+
+When the scanner files a dispute it appends one bullet under `## Disputes` on the affected page:
+
+```markdown
+- [[source-A]] claims X; [[source-B]] claims not-X. Status: unresolved (confidence: medium; sweep: 2026-05-17)
+```
+
+To resolve:
+
+1. Read both source pages and the surrounding context on the affected synthesis page.
+2. Decide which side is correct (or whether both can be true with caveats).
+3. **Edit the bullet in place** to change `Status: unresolved` to one of:
+   - `Status: resolved-toward-A` (or `-B`)
+   - `Status: both-can-be-true: <one-line note>`
+   - `Status: superseded: <link to newer source>`
+4. **Do not delete the bullet.** The dispute history is the audit trail; future researchers should be able to see what was contested and why it was decided.
+5. If the resolution invalidates a synthesis claim, edit the `## Summary` accordingly and bump `last_verified`.
+
+If you can't decide quickly, leave the dispute open. The scanner won't re-file the same dispute (it's a per-sweep idempotent append), so leaving it alone has zero ongoing cost.
+
+## Tuning the disputes seed
+
+`scripts/disputes_seed.py` runs at the top of every Weekly Health routine and selects candidate sets via overlap heuristics. Defaults: K=10 per per-source set, K=10 in the stale set, 7-day lookback. Tune by editing `prompts/weekly_health.md` to pass:
+
+- `--top-k <N>` to widen/narrow the per-source overlap candidate sets
+- `--stale-k <N>` to control how many staleness-only candidates land in the sweep
+- `--lookback-days <D>` to adjust which sources count as "recent"
+
+Larger K = more candidate sets dispatched in parallel = more scanner cost. The defaults are sized for hundreds of pages; if your wiki grows past ~500 pages, drop K or move the routine to bi-weekly.
+
 ## Phase progress
 
 - **Phase 0**: bootstrap repo, docs spine, empty Obsidian vault, page conventions in CLAUDE.md.
@@ -303,6 +346,6 @@ Bytes that pass `Content-Length` but fail the streaming size cap are stopped mid
 - **Phase 3**: per-route git ops (`git_ops.py`), `maybe_automerge.py` per-route gate, `wikipilot.toml` thresholds, `.github/workflows/ci.yml`.
 - **Phase 4**: Daily Research routine prompt, `scripts/preflight.py`, qmd MCP setup, three setup docs.
 - **Phase 5**: Image download pipeline (`wikipilot ingest`, `download-source-images` skill, `broken-image-ref` lint rule).
-- **Phase 6 (current)**: Wiki Query routine prompt, real `api_client.py` (HTTP + 429 retry), wired `wikipilot research`/`query` CLI, GitHub-issue trigger setup.
-- **Phase 7**: Weekly Health routine + LLM-judge sweep + disputes scanner.
+- **Phase 6**: Wiki Query routine prompt, real `api_client.py` (HTTP + 429 retry), wired `wikipilot research`/`query` CLI, GitHub-issue trigger setup.
+- **Phase 7 (current)**: Weekly Health routine prompt, `scripts/disputes_seed.py` overlap heuristics, health-report reader docs, dispute-resolution guidance.
 - **Phase 8**: Live smoke test of all three routines.

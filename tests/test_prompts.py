@@ -88,3 +88,34 @@ def test_query_answerer_handles_both_triggers() -> None:
     body = _read("query_answerer").lower()
     assert "github-triggered" in body or "github trigger" in body or "issue.opened" in body
     assert "api-triggered" in body or "/fire" in body
+
+
+def test_weekly_health_prompt_exists() -> None:
+    body = _read("weekly_health")
+    assert body.strip(), "weekly_health.md must not be empty"
+
+
+@pytest.mark.parametrize(
+    "required",
+    [
+        "preflight.py",
+        "disputes_seed.py",
+        "wiki-disputes-scanner",
+        "CLAUDE_CODE_FORK_SUBAGENT",
+        "claude/health-",
+        "wiki/reports/health-",
+        "maybe_automerge.py --pr",
+        "weekly_health",
+        "append-only",
+        "Status: unresolved",
+    ],
+)
+def test_weekly_health_mentions_each_required_step(required: str) -> None:
+    body = _read("weekly_health")
+    assert required in body, f"weekly_health.md must mention {required!r}"
+
+
+def test_weekly_health_dispatches_in_parallel() -> None:
+    body = _read("weekly_health").lower()
+    assert "in parallel" in body
+    assert "fork_subagent" in body or "fork-subagent" in body

@@ -70,4 +70,4 @@ indent-style = "space"
 minversion = "8.0"
 addopts = ["-ra", "--strict-markers", "--strict-config"]
 testpaths = ["tests"]
-pythonpath = ["src"]
+pythonpath = ["src", "scripts"]

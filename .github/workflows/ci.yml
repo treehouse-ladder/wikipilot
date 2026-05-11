@@ -83,4 +83,6 @@ jobs:
             --vault /tmp/dryrun-vault --topics /tmp/dryrun-topics.yaml
           uv run wikipilot dry-run --query "what is the smoke topic?" \
             --vault /tmp/dryrun-vault --topics /tmp/dryrun-topics.yaml
+          uv run wikipilot dry-run --weekly-health \
+            --vault /tmp/dryrun-vault --topics /tmp/dryrun-topics.yaml
           uv run wikipilot lint /tmp/dryrun-vault

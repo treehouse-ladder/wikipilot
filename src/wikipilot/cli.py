@@ -32,8 +32,10 @@ from wikipilot.deck import DeckError, DeckOptions, generate_deck
 from wikipilot.dryrun import (
     apply_answer,
     apply_proposal,
+    apply_weekly_health,
     make_fake_answer,
     make_fake_proposal,
+    make_fake_weekly_health,
 )
 from wikipilot.lint import (
     SEVERITY_ERROR,
@@ -406,6 +408,13 @@ def ingest_cmd(
     "--query", "question", type=str, default=None, help="Dry-run a query answer for QUESTION."
 )
 @click.option(
+    "--weekly-health",
+    "weekly_health",
+    is_flag=True,
+    default=False,
+    help="Dry-run the weekly health sweep (seeds candidates, files dummy disputes).",
+)
+@click.option(
     "--vault",
     "vault_path",
     type=click.Path(exists=True, file_okay=False, dir_okay=True, path_type=Path),
@@ -422,16 +431,21 @@ def ingest_cmd(
 def dry_run_cmd(
     topic_id: str | None,
     question: str | None,
+    weekly_health: bool,
     vault_path: Path,
     topics_path: Path,
 ) -> None:
-    """Synthesize a fake proposal/answer and exercise the apply path locally.
+    """Synthesize a fake proposal/answer/sweep and exercise the apply path locally.
 
     No Anthropic call is made. CI uses this to verify the cross-page sweep,
-    image-ref handling, and back-fill flows end-to-end.
+    image-ref handling, back-fill, and weekly-health flows end-to-end.
     """
-    if (topic_id is None) == (question is None):
-        click.echo("ERROR: pass exactly one of --topic or --query", err=True)
+    chosen = sum(1 for x in (topic_id, question, weekly_health) if x)
+    if chosen != 1:
+        click.echo(
+            "ERROR: pass exactly one of --topic, --query, or --weekly-health",
+            err=True,
+        )
         sys.exit(2)
     vault = Vault.at(vault_path)
     if topic_id is not None:
@@ -450,14 +464,32 @@ def dry_run_cmd(
         click.echo(f"Touched {len(set(result.pages_touched))} page(s)")
         if result.report_path:
             click.echo(f"Run report: {result.report_path.relative_to(vault.root.parent)}")
-    else:
-        assert question is not None
+    elif question is not None:
         answer = make_fake_answer(question)
         result = apply_answer(vault, answer)
         click.echo(f"Wrote answer: {answer.answer_slug}.md")
         click.echo(
             f"Back-filled {len(result.pages_touched) - len(result.sources_added) - 1} related page(s)"
         )
+    else:
+        # --weekly-health: import the seed lazily so importing wikipilot.cli
+        # doesn't drag the scripts/ tree onto sys.path unnecessarily.
+        sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "scripts"))
+        try:
+            from disputes_seed import seed_candidates  # type: ignore[import-not-found]
+        except ImportError as exc:
+            click.echo(f"ERROR: scripts/disputes_seed.py not importable: {exc}", err=True)
+            sys.exit(2)
+        seed = seed_candidates(vault)
+        candidates = [{"trigger": c.trigger, "pages": list(c.pages)} for c in seed.candidate_sets]
+        weekly = make_fake_weekly_health(candidates)
+        result = apply_weekly_health(vault, weekly)
+        click.echo(
+            f"Sweep dispatched over {len(candidates)} candidate set(s); "
+            f"filed {len(weekly.disputes_filed)} dispute(s)"
+        )
+        if result.report_path:
+            click.echo(f"Health report: {result.report_path.relative_to(vault.root.parent)}")
 
 
 def _find_topic(topics: list[TopicConfig], topic_id: str) -> TopicConfig | None:

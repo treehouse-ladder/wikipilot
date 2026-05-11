@@ -75,7 +75,7 @@ Now any new issue with the `query` label kicks off a Wiki Query run. The orchest
 
 If the GitHub App can't be installed (private org policy, etc.), the API trigger is a drop-in substitute — `wikipilot query "<question>"` from the CLI does the same thing without going through GitHub.
 
-## Weekly Health routine (Phase 7)
+## Weekly Health routine
 
 | Field | Value |
 |---|---|
@@ -86,7 +86,11 @@ If the GitHub App can't be installed (private org policy, etc.), the API trigger
 | Env vars | same |
 | Triggers | Schedule: weekly Sunday 03:00 local. (No API trigger — weekly health is intentionally cheap and predictable.) |
 | Model | **Sonnet** (orchestrator AND `wiki-disputes-scanner` subagent — both pin Sonnet via their frontmatter). |
-| Prompt | `prompts/weekly_health.md` (Phase 7 fills it in). |
+| Prompt | Copy [`prompts/weekly_health.md`](../prompts/weekly_health.md) into the routine UI. |
+
+The routine seeds candidate page sets with `scripts/disputes_seed.py` (overlap heuristics: shared backlinks among recent-source citers, plus a generic stale-by-`last_verified` set), fans out one `wiki-disputes-scanner` subagent per set in parallel, then applies every scanner's `## Disputes` proposals to a single `claude/health-YYYY-MM-DD` branch in series (one PR per week). The scanner **never auto-resolves** — every dispute lands as `Status: unresolved` for human review.
+
+Tune the seed at the routine level by editing the prompt to pass `--top-k`, `--stale-k`, or `--lookback-days` (defaults: 10 / 10 / 7 days).
 
 Daily-cap note: weekly routines count against the daily cap on the day they run.
 
