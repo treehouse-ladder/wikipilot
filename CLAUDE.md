@@ -137,9 +137,91 @@ Routine-UI model picker only sets the orchestrator model; subagents pin their ow
 
 1. Run `python scripts/preflight.py` — fail fast if env broken.
 2. Read `CLAUDE.md`, `topics.yaml`, `wiki/index.md`, last 50 lines of `wiki/log.md`, every `wiki/topics/<id>/purpose.md`. This becomes the cache-warming prefix shared across parallel subagents.
-3. Set `CLAUDE_CODE_FORK_SUBAGENT=1` and dispatch `topic-researcher` **in parallel** via the Task tool, one per enabled topic.
+3. Set `CLAUDE_CODE_FORK_SUBAGENT=1` and dispatch `topic-researcher` **in parallel** via the Task tool, one per enabled topic. Each returns a structured `Proposal` (schema below).
 4. For each topic, in series: branch `claude/daily-YYYY-MM-DD/<topic-id>`, dispatch `wiki-merger`, dispatch `wiki-linter`, run `pytest` + `wikipilot lint wiki/`, append per-topic log entry, commit, push, `gh pr create`, `python scripts/maybe_automerge.py --pr <num>`.
 5. After all topics: write `wiki/reports/YYYY-MM-DD.md`.
+
+## Query workflow (for `query_answerer.md` orchestrator — Phase 6)
+
+1. Run `python scripts/preflight.py`.
+2. Read `CLAUDE.md`, `wiki/index.md`, recent `wiki/log.md` (cache-warming prefix).
+3. Parse the question from the GitHub issue body (if triggered by `issue.opened` with the `query` label) or the API `text` field.
+4. Dispatch `query-answerer` (Opus 4.7) with the question — qmd-search first, WebSearch only as fallback.
+5. Apply the `Answer` to a fresh branch `claude/query-YYYY-MM-DD-<slug>`, run lint+tests.
+6. Call `query-back-fill` to add `[[answer-slug]]` references to related concept/entity pages.
+7. `gh pr create`; `python scripts/maybe_automerge.py --pr <num>` with the `wiki_query` gate.
+8. If GitHub-triggered, `gh issue comment` on the originating issue with the answer summary + page link + PR link.
+
+## Weekly health workflow (for `weekly_health.md` orchestrator — Phase 7)
+
+1. Run `python scripts/preflight.py`.
+2. Read `CLAUDE.md`, `wiki/index.md`, last 200 lines of `wiki/log.md` (broader cache prefix because the sweep is wiki-wide).
+3. Run `python scripts/disputes_seed.py` to produce candidate sets.
+4. Dispatch `wiki-disputes-scanner` **per candidate set in parallel** with `CLAUDE_CODE_FORK_SUBAGENT=1`.
+5. Apply all dispute proposals to a single branch `claude/health-YYYY-MM-DD` (append-only edits to `## Disputes` sections; never resolves anything).
+6. Run `wikipilot freshness-report` and `wikipilot lint wiki/`; append summaries to the health report.
+7. Write `wiki/reports/health-YYYY-MM-DD.md`.
+8. `gh pr create`; auto-merge per the permissive `weekly_health` gate.
+
+## Schemas
+
+### Proposal (returned by `topic-researcher`)
+
+```json
+{
+  "topic_id": "<id from topics.yaml>",
+  "sources": [
+    {
+      "url": "https://...",
+      "title": "Source title",
+      "excerpt": "Verbatim quote(s) for the > evidence block(s).",
+      "image_urls": ["https://...", "..."]
+    }
+  ],
+  "page_diffs": [
+    {
+      "path": "topics/<id>/index.md | concepts/<slug>.md | entities/<slug>.md",
+      "kind": "topic | concept | entity",
+      "summary_addition": "Prose with [[source-slug]] inline citations and a > quote block.",
+      "new_disputes": ["[[A]] claims X; [[B]] claims not-X. Status: unresolved"],
+      "new_open_questions": ["What about under FP8?"]
+    }
+  ],
+  "new_disputes": ["..."],
+  "new_open_questions": ["..."]
+}
+```
+
+### Answer (returned by `query-answerer`)
+
+```json
+{
+  "question": "<verbatim user question>",
+  "answer_slug": "YYYY-MM-DD-<slug>",
+  "summary": "## Summary\n\n... [[source-slug]] ... \n\n> quote ...\n\n## See also\n- [[related]]",
+  "sources": [{"url": "...", "title": "...", "excerpt": "..."}],
+  "related_pages": ["concept-slug-1", "entity-slug-2"],
+  "issue_url": "https://github.com/.../issues/N",
+  "run_id": "..."
+}
+```
+
+### Disputes-candidate (returned by `wiki-disputes-scanner`)
+
+```json
+{
+  "trigger": "source_<slug> | stale_sweep",
+  "disputes_filed": [
+    {
+      "page": "wiki/concepts/<slug>.md",
+      "confidence": "high | medium | low",
+      "summary": "Short one-line description of the dispute.",
+      "evidence_quotes": ["> quote A", "> quote B"]
+    }
+  ],
+  "pages_examined": ["wiki/concepts/a.md", "wiki/concepts/b.md"]
+}
+```
 
 ## Out of scope (intentionally)
 

@@ -101,3 +101,79 @@ class TestImagesConstants:
     def test_mime_to_ext_complete(self) -> None:
         for mime in DEFAULT_ALLOWED_MIMES:
             assert mime in MIME_TO_EXT
+
+
+class TestSafeFilenameCollisions:
+    """Collision-safety: two URLs sharing a basename get distinct filenames."""
+
+    def test_distinct_urls_distinct_filenames(self) -> None:
+        a = safe_filename("https://example.com/foo.png", "png")
+        b = safe_filename("https://other.com/foo.png", "png")
+        assert a != b
+        # Both end with -foo.png but the SHA prefix differs.
+        assert a.endswith("-foo.png")
+        assert b.endswith("-foo.png")
+        assert a.split("-", 1)[0] != b.split("-", 1)[0]
+
+    def test_same_url_same_filename(self) -> None:
+        a = safe_filename("https://example.com/foo.png", "png")
+        b = safe_filename("https://example.com/foo.png", "png")
+        assert a == b
+
+    def test_basename_sanitized(self) -> None:
+        name = safe_filename("https://example.com/path/with spaces!@#.png", "png")
+        # No raw spaces or unsafe characters in the output.
+        assert " " not in name
+        assert "!" not in name
+        assert "@" not in name
+        assert "#" not in name
+
+
+class TestRewriteRefsAltTextPreserved:
+    """Alt-text preservation: rewriting must not strip alt attributes."""
+
+    def test_markdown_alt_kept(self) -> None:
+        text = "![accessible alt text](https://example.com/foo.png)"
+        rewritten = rewrite_refs(text, {"https://example.com/foo.png": "assets/foo.png"})
+        assert "accessible alt text" in rewritten
+
+    def test_html_alt_kept(self) -> None:
+        text = '<img alt="hello world" src="https://example.com/foo.png">'
+        rewritten = rewrite_refs(text, {"https://example.com/foo.png": "assets/foo.png"})
+        assert 'alt="hello world"' in rewritten
+
+    def test_multiple_images_rewritten(self) -> None:
+        text = (
+            '![a](https://x/1.png)\n\n<img src="https://x/2.png" alt="b">\n\n![c](https://x/3.png)'
+        )
+        mapping = {
+            "https://x/1.png": "assets/1.png",
+            "https://x/2.png": "assets/2.png",
+            "https://x/3.png": "assets/3.png",
+        }
+        rewritten = rewrite_refs(text, mapping)
+        assert "assets/1.png" in rewritten
+        assert "assets/2.png" in rewritten
+        assert "assets/3.png" in rewritten
+        # No URLs from the original mapping should remain.
+        for url in mapping:
+            assert url not in rewritten
+
+
+class TestParseRefsOrderingAndEdgeCases:
+    def test_order_preserved(self) -> None:
+        text = "![z](https://x/z.png)\n![a](https://x/a.png)"
+        refs = parse_image_refs(text)
+        assert [r.src for r in refs] == ["https://x/z.png", "https://x/a.png"]
+
+    def test_no_image_in_link(self) -> None:
+        # `[text](url)` (without leading !) is a link, not an image.
+        refs = parse_image_refs("[link](https://example.com/foo.png)")
+        assert refs == []
+
+    def test_data_uri_passthrough(self) -> None:
+        # We just record what's there; the fetch step would reject this.
+        text = "![inline](data:image/png;base64,iVBORw0KG)"
+        refs = parse_image_refs(text)
+        assert len(refs) == 1
+        assert refs[0].src.startswith("data:")

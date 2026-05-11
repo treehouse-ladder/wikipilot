@@ -29,6 +29,12 @@ from wikipilot.config import (
     load_wikipilot_config,
 )
 from wikipilot.deck import DeckError, DeckOptions, generate_deck
+from wikipilot.dryrun import (
+    apply_answer,
+    apply_proposal,
+    make_fake_answer,
+    make_fake_proposal,
+)
 from wikipilot.lint import (
     SEVERITY_ERROR,
     LintContext,
@@ -301,6 +307,68 @@ def query_cmd(question: str) -> None:
     except ApiClientError as exc:
         click.echo(f"ERROR: {exc}", err=True)
         sys.exit(2)
+
+
+@main.command("dry-run")
+@click.option(
+    "--topic", "topic_id", type=str, default=None, help="Dry-run a research proposal for TOPIC."
+)
+@click.option(
+    "--query", "question", type=str, default=None, help="Dry-run a query answer for QUESTION."
+)
+@click.option(
+    "--vault",
+    "vault_path",
+    type=click.Path(exists=True, file_okay=False, dir_okay=True, path_type=Path),
+    default=DEFAULT_WIKI_PATH,
+    show_default=True,
+)
+@click.option(
+    "--topics",
+    "topics_path",
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+    default=DEFAULT_TOPICS_PATH,
+    show_default=True,
+)
+def dry_run_cmd(
+    topic_id: str | None,
+    question: str | None,
+    vault_path: Path,
+    topics_path: Path,
+) -> None:
+    """Synthesize a fake proposal/answer and exercise the apply path locally.
+
+    No Anthropic call is made. CI uses this to verify the cross-page sweep,
+    image-ref handling, and back-fill flows end-to-end.
+    """
+    if (topic_id is None) == (question is None):
+        click.echo("ERROR: pass exactly one of --topic or --query", err=True)
+        sys.exit(2)
+    vault = Vault.at(vault_path)
+    if topic_id is not None:
+        try:
+            topics = load_topics(topics_path)
+        except ConfigError as exc:
+            click.echo(f"ERROR: {exc}", err=True)
+            sys.exit(2)
+        topic = _find_topic(topics, topic_id)
+        if topic is None:
+            click.echo(f"ERROR: topic {topic_id!r} not found in {topics_path}", err=True)
+            sys.exit(2)
+        proposal = make_fake_proposal(topic)
+        result = apply_proposal(vault, proposal)
+        click.echo(f"Wrote {len(result.sources_added)} new source(s)")
+        click.echo(f"Touched {len(set(result.pages_touched))} page(s)")
+        if result.report_path:
+            click.echo(f"Run report: {result.report_path.relative_to(vault.root.parent)}")
+    else:
+        assert question is not None
+        answer = make_fake_answer(question)
+        result = apply_answer(vault, answer)
+        click.echo(f"Wrote answer: {answer.answer_slug}.md")
+        click.echo(
+            f"Back-filled {len(result.pages_touched) - len(result.sources_added) - 1} related page(s)"
+        )
 
 
 def _find_topic(topics: list[TopicConfig], topic_id: str) -> TopicConfig | None:
