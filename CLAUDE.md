@@ -147,6 +147,55 @@ Routine-UI model picker only sets the orchestrator model; subagents pin their ow
 - Embedding-based semantic sweep (the LLM-judge sweep handles practical cases; embeddings stay deferred)
 - Hosted public-facing UI (Obsidian is the UI)
 
+## Wiki schema (canonical, enforced by `wikipilot lint`)
+
+The Phase 1 Python lint is the gatekeeper for everything in this section. Run `uv run wikipilot lint wiki/` locally; the same command runs in CI (Phase 3) and gates auto-merge.
+
+### Frontmatter (required keys)
+
+`title`, `kind`, `sources` (list), `last_updated`, `last_verified`, `freshness_window_days`. All required on every wiki page except `wiki/log.md`, `wiki/index.md`, and `wiki/topics/<id>/purpose.md`.
+
+`kind` must be one of: `topic`, `concept`, `entity`, `source`, `answer`, `report`.
+
+`last_updated` and `last_verified` are ISO dates (`YYYY-MM-DD`). The merger must bump `last_updated` on every write; researchers must bump `last_verified` only when they have re-confirmed the page's claims hold.
+
+### Source pages
+
+Source pages live in `wiki/sources/<slug>.md`, where `<slug>` is `<title-slugified>-<sha-prefix-8>`. Dedupe is by SHA-256 of the *normalized* URL (lowercased scheme/host, sorted query params, fragment stripped, trailing slash stripped) — re-ingesting the same URL is a no-op rather than a duplicate. Required source frontmatter: `url`, `sha256`, `fetched_at`, `topic`, `image_count`, plus the standard frontmatter (with `freshness_window_days: 365` since sources don't go stale the way synthesis pages do). Body must include a `## Excerpts` section with at least one `>` quote block per cited claim — this is the evidence layer the citation discipline rule depends on.
+
+### `log.md` format
+
+Every entry: `## [YYYY-MM-DD] kind | subject` followed by a one-line summary. `kind` in `{daily, query, health, manual}`. The lint rejects any `## ` heading in `log.md` outside a fenced code block that doesn't match this schema. Greppable with `grep "^## \[" wiki/log.md` (Karpathy's idiom).
+
+### Lint rules (`wikipilot lint wiki/`)
+
+| Rule | Severity | What it checks |
+|---|---|---|
+| `frontmatter` | error | required keys present, kind valid, dates parse, types match |
+| `log-format` | error | every `## ` heading in `log.md` matches the schema (code blocks excluded) |
+| `broken-wikilink` | error | every `[[link]]` resolves to a known page slug or alias |
+| `orphan-page` | warning | synthesis pages with zero inbound links |
+| `stale-page` | warning | `now - last_verified > freshness_window_days` (page-level override; default 30) |
+| `citation-density` | warning | `## Summary` paragraphs without any `[[wikilink]]` (default min: 1 per paragraph) |
+| `disputes-format` | warning | `## Disputes` entries that aren't `- ... claims ... Status: ...` bullets |
+| `open-questions-format` | warning | `## Open questions` entries that aren't `- [ ] ...` checkboxes |
+| `ownership-violation` | error | only fires when `--branch claude/...` and `--changed-path ...` are passed; flags any human-only path being modified on a Claude branch |
+
+Errors fail the lint (exit code 1); warnings are reported but don't fail. The auto-merge gate (Phase 3) blocks any PR where the lint reports errors *or* the changed paths trip the ownership-violation check.
+
+### CLI surface (`wikipilot --help`)
+
+| Subcommand | Purpose |
+|---|---|
+| `lint [vault] [--branch ... --changed-path ...]` | run all lint rules; exits 1 on any error |
+| `init-vault [path]` | create the standard `wiki/{index.md, log.md, ...}` skeleton |
+| `validate-topics [topics.yaml]` | parse + schema-check `topics.yaml` |
+| `freshness-report [vault]` | list pages by ascending freshness (most stale first) |
+| `deck <topic-id> [--out path] [--theme name]` | generate a Marp deck from `wiki/topics/<id>/index.md` |
+| `index-wiki [vault] [--full]` | refresh the qmd index over the vault |
+| `research [--topic id]` | trigger Daily Research routine via the `/fire` API (Phase 6) |
+| `query "<question>"` | trigger Wiki Query routine via the `/fire` API (Phase 6) |
+
 ## Editing this file
 
 This file co-evolves with the system. When you discover a new convention, add it here in the appropriate section. The Python lint and the agent system prompts both reference these conventions, so keep them tight and unambiguous.

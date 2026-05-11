@@ -22,10 +22,44 @@ uv run ruff check .
 uv run ruff format --check .
 ```
 
+## Linting locally
+
+```bash
+uv run wikipilot lint wiki/
+```
+
+Exit code is 1 on any error, 0 otherwise. Warnings (orphans, staleness, citation density) are reported but don't fail the lint — they're advisory and the daily routine can ignore them. The `--branch <name> --changed-path <path>` flags add the ownership-violation check (see [`CLAUDE.md`](../CLAUDE.md) lint table); CI passes them automatically when run on a `claude/*` branch.
+
+## Adding a topic
+
+1. Add the entry to [`topics.yaml`](../topics.yaml) following the documented schema. `purpose` is required and free-text — be specific about what's IN scope and what's OUT, since `topic-researcher` reads it before deciding whether to ingest a candidate source.
+2. Create `wiki/topics/<id>/purpose.md` with a longer-form scope statement. Preflight (Phase 4) blocks routine runs until this file exists.
+3. Validate the topics file:
+   ```bash
+   uv run wikipilot validate-topics
+   ```
+4. Commit. The next Daily Research run will pick the topic up automatically.
+
+## Reading freshness reports
+
+```bash
+uv run wikipilot freshness-report wiki/
+```
+
+Pages are listed most-stale first, with age in days, the page's `freshness_window_days` window, and an `!` marker on pages exceeding the window. Use this to prioritize manual re-verification or to spot pages that the Daily Research routine isn't touching.
+
+## Generating a Marp deck
+
+```bash
+uv run wikipilot deck <topic-id>
+```
+
+Writes `wiki/decks/<topic-id>.md` (Marp markdown) using the topic's `index.md` content. Open in Obsidian with the Marp plugin enabled to render. Pass `--out path` to write elsewhere, or `--theme name` to switch Marp themes.
+
 ## Phase progress
 
-- **Phase 0 (current)**: bootstrap repo, docs spine, empty Obsidian vault, page conventions in CLAUDE.md.
-- **Phase 1**: Wiki primitives, source registry, freshness-aware lint, full CLI surface.
+- **Phase 0**: bootstrap repo, docs spine, empty Obsidian vault, page conventions in CLAUDE.md.
+- **Phase 1 (current)**: Wiki primitives, source registry, freshness-aware lint, full CLI surface.
 - **Phase 2**: Subagent definitions, skill manifests, dry-run dispatcher.
 - **Phase 3**: Per-route git ops, auto-merge gate, CI workflow.
 - **Phase 4**: Daily Research routine prompt + qmd MCP + cloud setup.

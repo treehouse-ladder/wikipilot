@@ -1,0 +1,16 @@
+topics:
+  - id: ai-agents
+    display_name: "AI agents and agentic systems"
+    purpose: |
+      In-scope: research and engineering on autonomous LLM agents — frameworks, evaluations,
+      multi-agent orchestration, tool-use patterns, agent skills, cost/latency engineering.
+      Out-of-scope: general LLM research (architectures, training, non-agentic benchmarks).
+    search_hints:
+      - "agentic LLM evaluation benchmark"
+      - "claude code subagent parallel"
+    allowlist_domains:
+      - "arxiv.org"
+      - "anthropic.com"
+    frequency: daily
+    max_sources_per_run: 3
+    freshness_window_days: 30

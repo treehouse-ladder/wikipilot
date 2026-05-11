@@ -1,0 +1,25 @@
+[automerge.common]
+require_lint_green = true
+require_tests_green = true
+block_human_only_file_changes = true
+
+[automerge.daily_research]
+max_files_changed_per_topic = 40
+max_total_diff_lines_per_topic = 1500
+
+[automerge.wiki_query]
+max_files_changed = 8
+max_total_diff_lines = 400
+
+[automerge.weekly_health]
+max_files_changed = 60
+max_total_diff_lines = 2000
+
+[images]
+enabled = true
+max_image_bytes = 5_242_880
+allowed_mimes = ["image/png", "image/jpeg", "image/gif", "image/webp", "image/svg+xml"]
+cleanup_orphans = true
+
+[branches]
+prefix = "claude"
