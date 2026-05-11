@@ -1,0 +1,45 @@
+# wikipilot.toml — operational configuration.
+#
+# HUMAN-OWNED. The Python lint will fail if a `claude/*` branch modifies it.
+# Per-route auto-merge thresholds, image policy, and other knobs live here.
+#
+# Phases 3 and 5 fill out the implementation that reads this file. Defaults
+# below are sized for Karpathy's "10–15 pages per source" reality.
+
+[automerge.common]
+require_lint_green = true
+require_tests_green = true
+block_human_only_file_changes = true
+
+[automerge.daily_research]
+# One PR per topic per day. Sized for ~2 sources × ~15 page touches.
+max_files_changed_per_topic = 40
+max_total_diff_lines_per_topic = 1500
+
+[automerge.wiki_query]
+# One PR per question. Sized for one answer page + back-fill on a few related pages.
+max_files_changed = 8
+max_total_diff_lines = 400
+
+[automerge.weekly_health]
+# One PR per week. Sweep can touch many pages with small Disputes-section additions.
+max_files_changed = 60
+max_total_diff_lines = 2000
+
+[images]
+enabled = true
+max_image_bytes = 5_242_880  # 5 MB
+allowed_mimes = [
+  "image/png",
+  "image/jpeg",
+  "image/gif",
+  "image/webp",
+  "image/svg+xml",
+]
+cleanup_orphans = true
+
+[branches]
+prefix = "claude"  # Claude Code Cloud restricts pushes to `claude/*` branches by default.
+daily_template = "claude/daily-{date}/{topic_id}"
+query_template = "claude/query-{date}-{slug}"
+health_template = "claude/health-{date}"

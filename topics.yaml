@@ -1,0 +1,53 @@
+# topics.yaml — the list of topics the Daily Research routine maintains.
+#
+# This file is HUMAN-OWNED. The Python lint will fail if a `claude/*` branch
+# modifies it; routines never touch it.
+#
+# Each topic produces one PR per day on `claude/daily-YYYY-MM-DD/<id>`.
+#
+# Schema (validated by `wikipilot validate-topics`):
+#
+#   id:                    string, kebab-case, used in branch names and file paths
+#   display_name:          string, human-readable
+#   purpose:               string, free-text. The topic-researcher reads this BEFORE
+#                          deciding whether to ingest a found source. If the source
+#                          doesn't fit the purpose, it's rejected. Be specific about
+#                          what's IN scope and what's OUT — vague purposes produce
+#                          off-topic ingests.
+#   search_hints:          list of strings, seeds for WebSearch queries
+#   allowlist_domains:     list of strings, optional. If set, only sources from these
+#                          domains are ingested. Good for high-signal topics.
+#   frequency:             "daily" | "weekly" — Daily Research only runs `daily` topics
+#   max_sources_per_run:   int, caps how many new sources a single run can ingest for
+#                          this topic. Bounds cost.
+#   freshness_window_days: int, default 30. Lint flags pages whose last_verified is
+#                          older than this many days.
+#
+# Once you're ready to enable a topic, uncomment it (and add a real purpose.md at
+# `wiki/topics/<id>/purpose.md` — preflight will block runs without it).
+
+topics: []
+
+# Example (uncomment and edit):
+#
+# topics:
+#   - id: ai-agents
+#     display_name: "AI agents and agentic systems"
+#     purpose: |
+#       In-scope: research and engineering on autonomous LLM agents — agentic
+#       frameworks, evaluation methodologies, multi-agent orchestration, tool-use
+#       patterns, agent skills, and cost/latency engineering for agents.
+#       Out-of-scope: general LLM research (model architectures, training methods,
+#       benchmarks for non-agentic tasks). General industry news. Marketing posts.
+#     search_hints:
+#       - "agentic LLM evaluation benchmark"
+#       - "claude code subagent parallel"
+#       - "LLM agent tool use cost optimization"
+#     allowlist_domains:
+#       - "arxiv.org"
+#       - "anthropic.com"
+#       - "docs.anthropic.com"
+#       - "openai.com"
+#     frequency: daily
+#     max_sources_per_run: 3
+#     freshness_window_days: 30
