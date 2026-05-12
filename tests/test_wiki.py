@@ -162,3 +162,43 @@ class TestVault:
         assert "index.md" in names
         assert "log.md" in names
         assert "transformer-attention.md" in names
+
+    def test_comparisons_dir_known(self, tmp_path: Path) -> None:
+        # Phase 9: `comparisons` is a first-class wiki subdirectory, mirroring
+        # `concepts` and `entities`.
+        vault = Vault.at(tmp_path / "wiki")
+        assert vault.dir_for("comparisons") == (tmp_path / "wiki" / "comparisons").resolve()
+        assert (
+            vault.page_path("comparison", "cost-comparison")
+            == (tmp_path / "wiki" / "comparisons" / "cost-comparison.md").resolve()
+        )
+
+
+class TestComparisonKindRoundTrip:
+    def test_round_trip_through_page_read_write(self, tmp_path: Path) -> None:
+        # Phase 9 Pattern A: `comparison` is a valid kind; round-trip a minimal
+        # comparison page through Page.write -> Page.read and confirm the
+        # kind/comparison_of/compare_fields keys all survive.
+        from datetime import date
+
+        path = tmp_path / "comp.md"
+        page = Page.from_dict(
+            path,
+            metadata={
+                "title": "Cost comparison",
+                "kind": "comparison",
+                "comparison_of": ["alpha", "beta"],
+                "compare_fields": ["cost", "ctx"],
+                "sources": [],
+                "last_updated": date(2026, 5, 11),
+                "last_verified": date(2026, 5, 11),
+                "freshness_window_days": 30,
+            },
+            content="# Cost comparison\n\n| Entity | cost | ctx |\n| --- | --- | --- |\n",
+        )
+        page.write()
+        reread = Page.read(path)
+        assert reread.kind == "comparison"
+        assert reread.metadata["comparison_of"] == ["alpha", "beta"]
+        assert reread.metadata["compare_fields"] == ["cost", "ctx"]
+        assert reread.validate_frontmatter() == []

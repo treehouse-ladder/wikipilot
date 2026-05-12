@@ -249,6 +249,34 @@ class TestEvaluateGate:
         assert d.automerge is False
         assert any("lines" in r for r in d.reasons)
 
+    def test_phase9_busy_day_passes_with_bumped_thresholds(self) -> None:
+        # Phase 9 raised daily thresholds from 40/1500 to 80/3000 so a
+        # busy-but-legitimate day (6-8 sources × 10-15 page touches) lands
+        # cleanly. 75 files / 2800 lines should pass under the new gate.
+        bumped = AutomergeRoute(max_files_changed_per_topic=80, max_total_diff_lines_per_topic=3000)
+        files = [f"wiki/concepts/x{i}.md" for i in range(75)]
+        d = evaluate_gate(
+            self._view(files=files, additions=2700, deletions=100),
+            route=ROUTE_DAILY_RESEARCH,
+            config=_config(daily=bumped),
+        )
+        assert d.automerge is True, d.reasons
+
+    def test_phase9_safety_cap_day_blocks_for_human_review(self) -> None:
+        # A topic that hits the 20-source safety cap will commonly produce
+        # 90+ files / 3200+ diff lines — that's MEANT to trip the gate so a
+        # human reviews. 90 files at 80 max -> blocked.
+        bumped = AutomergeRoute(max_files_changed_per_topic=80, max_total_diff_lines_per_topic=3000)
+        files = [f"wiki/concepts/x{i}.md" for i in range(90)]
+        d = evaluate_gate(
+            self._view(files=files, additions=3200, deletions=100),
+            route=ROUTE_DAILY_RESEARCH,
+            config=_config(daily=bumped),
+        )
+        assert d.automerge is False
+        assert any("touches" in r and "files" in r for r in d.reasons)
+        assert any("lines" in r for r in d.reasons)
+
     def test_failing_checks_fails(self) -> None:
         d = evaluate_gate(
             self._view(checks_passing=False), route=ROUTE_DAILY_RESEARCH, config=_config()

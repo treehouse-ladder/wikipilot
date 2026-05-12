@@ -136,10 +136,19 @@ class LintContext:
                 slugs.add(page.path.parent.name)
             if title := page.title:
                 slugs.add(slugify(title))
+            for alias in page.aliases:
+                slugs.add(alias)
+                slugs.add(slugify(alias))
         return slugs
 
 
 def _is_synthesis_page(page: Page) -> bool:
+    """Pages where citation discipline + divergence-discipline lint apply.
+
+    Comparisons are explicitly excluded — they're tables aggregated from
+    entity pages, not prose synthesis. Citations live on the entity pages
+    and the comparison body is a generated view (see `compare.py`).
+    """
     return page.kind in {"topic", "concept", "entity", "answer"}
 
 
@@ -230,6 +239,8 @@ def check_orphans(ctx: LintContext) -> list[LintIssue]:
         slug = page.path.stem
         topic_slug = page.path.parent.name if page.kind == "topic" else None
         if inbound.get(slug) or (topic_slug and inbound.get(topic_slug)):
+            continue
+        if any(inbound.get(a) or inbound.get(slugify(a)) for a in page.aliases):
             continue
         issues.append(
             LintIssue(
@@ -393,6 +404,69 @@ def check_broken_local_image_links(ctx: LintContext) -> list[LintIssue]:
     return issues
 
 
+_DIVERGENCE_SENTINEL_RE = re.compile(
+    r"_no contradictions or gaps known yet \(last reviewed: \d{4}-\d{2}-\d{2}\)_",
+)
+
+
+def _section_is_only_placeholder(section: str | None) -> bool:
+    """Return True when a section is missing or only contains an italic placeholder.
+
+    The Phase 1 lint already accepts ``_(none)_`` / ``_(none yet ...)_`` in
+    ``## Disputes`` and ``## Open questions`` as the "nothing here" signal.
+    For divergence-discipline we treat any section whose every non-blank
+    line either starts with ``_`` (italic placeholder) or is empty as
+    "no real content".
+    """
+    if section is None:
+        return True
+    for line in section.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        if stripped.startswith("_") and stripped.endswith("_"):
+            continue
+        return False
+    return True
+
+
+def check_divergence_discipline(ctx: LintContext) -> list[LintIssue]:
+    """Warn on synthesis pages with no Disputes, no Open questions, and no sentinel.
+
+    From the Karpathy gist comment thread (localwolfpackai → okkie2): every
+    synthesis page should either flag at least one counter-argument / data
+    gap, or explicitly state that none were found. Easy to satisfy with a
+    one-line sentinel; severity is warning so a fresh page can land
+    without blocking auto-merge while reminding the author to think about
+    contradictions.
+    """
+    issues: list[LintIssue] = []
+    for page in ctx.pages:
+        if not _is_synthesis_page(page):
+            continue
+        disputes = _extract_section(page.content, "## Disputes")
+        open_qs = _extract_section(page.content, "## Open questions")
+        if not _section_is_only_placeholder(disputes):
+            continue
+        if not _section_is_only_placeholder(open_qs):
+            continue
+        if _DIVERGENCE_SENTINEL_RE.search(page.content):
+            continue
+        issues.append(
+            LintIssue(
+                severity=SEVERITY_WARNING,
+                code="divergence-discipline",
+                path=page.path,
+                message=(
+                    "synthesis page has no ## Disputes entries, no ## Open questions, "
+                    "and no '_no contradictions or gaps known yet (last reviewed: YYYY-MM-DD)_' "
+                    "sentinel — add one of the three (see CLAUDE.md 'Divergence check')"
+                ),
+            )
+        )
+    return issues
+
+
 def check_ownership_violations(ctx: LintContext) -> list[LintIssue]:
     if not ctx.branch_name or not ctx.branch_name.startswith("claude/"):
         return []
@@ -447,6 +521,7 @@ class Linter:
         check_staleness,
         check_citation_density,
         check_disputes_open_questions_structure,
+        check_divergence_discipline,
         check_ownership_violations,
     )
 

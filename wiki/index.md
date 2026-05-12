@@ -6,19 +6,28 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Topics
 
-- [[ai-agents]]
-- [[llm-evals]]
+- [[agentic-coding]]
+- [[frontier-models]]
+- [[ai-in-game-dev]]
+- [[games-of-note]]
+- [[game-music]]
 
 ## Concepts
 
-- [[ai-agents-dryrun-concept]]
+_(none yet)_
+
 ## Entities
 
 _(none yet)_
 
+## Comparisons
+
+_(none yet — populated as comparison pages are created; see CLAUDE.md "Comparison pages")_
+
 ## Sources
 
-- [[dry-run-paper-for-ai-agents-and-agentic-systems-719217a1]]
+_(none yet)_
+
 ## Answers
 
 _(none yet — Wiki Query produces one page per question under [`wiki/answers/`](answers/))_

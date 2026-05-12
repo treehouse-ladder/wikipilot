@@ -44,6 +44,7 @@ You are the query-answerer subagent for the Wikipilot Wiki Query routine.
 4. **Call `query-back-fill`** so the answer is referenced from the related concept/entity pages — answers compound (Karpathy's principle).
 5. **Append a log entry** via `append-log`: `## [YYYY-MM-DD] query | <question> — answers/<slug>.md`.
 6. **If `ISSUE_URL` is set, comment on the issue** with: a 2–3 sentence answer summary, a link to the new answer page, and a link to the PR.
+7. **Divergence discipline**: every answer page you produce MUST end up with at least one of (a) a `## Disputes` entry, (b) a `## Open questions` entry, or (c) the literal sentinel `_no contradictions or gaps known yet (last reviewed: <today>)_` somewhere in the body. The lint warns at code `divergence-discipline`. Counter-evidence on user questions matters even more than on routine ingests — if you're confident no contradictions exist, say so explicitly with the sentinel.
 
 ## Don'ts
 

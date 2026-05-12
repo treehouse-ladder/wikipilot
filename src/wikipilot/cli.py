@@ -22,6 +22,7 @@ from wikipilot.api_client import (
     fire_query,
     fire_research,
 )
+from wikipilot.compare import regenerate_comparison, write_comparison_page
 from wikipilot.config import (
     ConfigError,
     TopicConfig,
@@ -44,7 +45,7 @@ from wikipilot.lint import (
 )
 from wikipilot.qmd_index import index_vault, qmd_available
 from wikipilot.sources import ingest_source_with_images
-from wikipilot.wiki import WIKI_DIRS, Vault
+from wikipilot.wiki import WIKI_DIRS, Vault, WikiError
 
 DEFAULT_WIKI_PATH = Path("wiki")
 DEFAULT_TOPICS_PATH = Path("topics.yaml")
@@ -284,6 +285,88 @@ def index_wiki_cmd(vault_path: Path, full: bool) -> None:
     sys.exit(0 if result.ok else 1)
 
 
+@main.group("compare")
+def compare_cmd() -> None:
+    """Manage comparison pages (Phase 9 Pattern A).
+
+    A comparison page aggregates frontmatter fields across N entity pages
+    into one markdown table — e.g. cost-comparison reads `cost_per_mtoken`
+    from each frontier-model entity. The page is regenerable from its own
+    frontmatter (`comparison_of`, `compare_fields`).
+    """
+
+
+@compare_cmd.command("new")
+@click.argument("comparison_slug", type=str)
+@click.option(
+    "--of",
+    "entity_csv",
+    required=True,
+    help="Comma-separated entity slugs to include (>= 2).",
+)
+@click.option(
+    "--fields",
+    "fields_csv",
+    required=True,
+    help="Comma-separated frontmatter field names to aggregate (>= 1).",
+)
+@click.option("--title", required=True, help="Human-readable title for the comparison page.")
+@click.option(
+    "--vault",
+    "vault_path",
+    type=click.Path(exists=True, file_okay=False, dir_okay=True, path_type=Path),
+    default=DEFAULT_WIKI_PATH,
+    show_default=True,
+)
+def compare_new_cmd(
+    comparison_slug: str,
+    entity_csv: str,
+    fields_csv: str,
+    title: str,
+    vault_path: Path,
+) -> None:
+    """Create a new comparison page at wiki/comparisons/COMPARISON_SLUG.md."""
+    vault = Vault.at(vault_path)
+    entities = [s.strip() for s in entity_csv.split(",") if s.strip()]
+    fields = [f.strip() for f in fields_csv.split(",") if f.strip()]
+    try:
+        path = write_comparison_page(
+            vault,
+            comparison_slug,
+            title=title,
+            entity_slugs=entities,
+            fields=fields,
+        )
+    except WikiError as exc:
+        click.echo(f"ERROR: {exc}", err=True)
+        sys.exit(2)
+    click.echo(f"Created comparison: {path.relative_to(vault.root.parent)}")
+
+
+@compare_cmd.command("regen")
+@click.argument("comparison_slug", type=str)
+@click.option(
+    "--vault",
+    "vault_path",
+    type=click.Path(exists=True, file_okay=False, dir_okay=True, path_type=Path),
+    default=DEFAULT_WIKI_PATH,
+    show_default=True,
+)
+def compare_regen_cmd(comparison_slug: str, vault_path: Path) -> None:
+    """Regenerate the body of an existing comparison from its frontmatter.
+
+    Idempotent: bumps ``last_updated`` to today, leaves ``last_verified``
+    untouched (the underlying entity pages may not have been re-checked).
+    """
+    vault = Vault.at(vault_path)
+    try:
+        path = regenerate_comparison(vault, comparison_slug)
+    except WikiError as exc:
+        click.echo(f"ERROR: {exc}", err=True)
+        sys.exit(2)
+    click.echo(f"Regenerated comparison: {path.relative_to(vault.root.parent)}")
+
+
 @main.command("research")
 @click.option(
     "--topic",
@@ -514,6 +597,10 @@ _(none yet)_
 _(none yet)_
 
 ## Entities
+
+_(none yet)_
+
+## Comparisons
 
 _(none yet)_
 

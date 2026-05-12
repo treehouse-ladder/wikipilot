@@ -60,6 +60,16 @@ class ProposalSource:
     title: str
     excerpt: str
     image_urls: list[str] = field(default_factory=list)
+    also_relevant_to: list[str] = field(default_factory=list)
+    """Other topic ids this source is also highly relevant to (Phase 9 cross-topic flag).
+
+    Empty by default. The topic-researcher agent populates this when a source
+    spans the topic being researched and at least one other configured topic
+    (per the cross-cutting relevance criteria in CLAUDE.md). Phase 9 only
+    *records* the flag — a future routine iteration can wire routing logic on
+    top of it. Apply paths ignore the field; the source page is still written
+    once under the researched topic.
+    """
 
 
 @dataclass

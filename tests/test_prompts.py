@@ -156,3 +156,68 @@ def test_weekly_health_forbids_bumping_last_verified() -> None:
     assert "never" in body or "not" in body, (
         "weekly_health.md must explicitly forbid bumping last_verified"
     )
+
+
+# ---------------------------------------------------------------------------
+# Phase 9 invariants: cross-cutting criteria + divergence discipline
+# ---------------------------------------------------------------------------
+
+AGENTS_DIR = REPO_ROOT / ".claude" / "agents"
+CLAUDE_MD = REPO_ROOT / "CLAUDE.md"
+
+
+def _read_agent(name: str) -> str:
+    path = AGENTS_DIR / f"{name}.md"
+    assert path.exists(), f"agent file missing: {path}"
+    return path.read_text(encoding="utf-8")
+
+
+def test_topic_researcher_states_three_criteria_verbatim() -> None:
+    body = _read_agent("topic-researcher").lower()
+    assert "highly relevant" in body
+    assert "highly innovative" in body
+    assert "agentic workflow" in body
+    assert "video game development" in body or "game development" in body
+
+
+def test_topic_researcher_states_inclusion_bias() -> None:
+    body = _read_agent("topic-researcher").lower()
+    assert "when on the fence, include" in body, (
+        "topic-researcher.md must state the inclusion bias literally"
+    )
+
+
+def test_topic_researcher_documents_cross_topic_flag() -> None:
+    body = _read_agent("topic-researcher")
+    assert "also_relevant_to" in body, (
+        "topic-researcher.md must document the cross-topic flag in the Proposal schema"
+    )
+
+
+def test_claude_md_has_cross_cutting_criteria_section() -> None:
+    body = CLAUDE_MD.read_text(encoding="utf-8")
+    assert "Cross-cutting relevance criteria" in body, (
+        "CLAUDE.md must contain the 'Cross-cutting relevance criteria' section "
+        "(meta-charter — drift guard between agent prompt and human-owned charter)"
+    )
+    lower = body.lower()
+    assert "highly relevant" in lower
+    assert "highly innovative" in lower
+    assert "agentic workflow" in lower
+    assert "video game development" in lower or "game development" in lower
+
+
+@pytest.mark.parametrize("agent", ["topic-researcher", "wiki-merger", "query-answerer"])
+def test_synthesis_agents_mention_divergence_discipline(agent: str) -> None:
+    body = _read_agent(agent).lower()
+    assert "divergence-discipline" in body or "divergence discipline" in body, (
+        f"{agent}.md must mandate divergence-discipline (counter-argument or sentinel)"
+    )
+
+
+@pytest.mark.parametrize("prompt", ["daily_runner", "query_answerer"])
+def test_orchestrator_prompts_mention_divergence_discipline(prompt: str) -> None:
+    body = _read(prompt).lower()
+    assert "divergence-discipline" in body or "divergence discipline" in body, (
+        f"{prompt}.md must mandate divergence-discipline as a hard rule"
+    )

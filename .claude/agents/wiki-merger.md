@@ -30,6 +30,7 @@ You apply one structured proposal (see `topic-researcher`) to the working tree o
 4. **Respect the file ownership matrix** (CLAUDE.md). Never modify human-only files. If the proposal would touch one, drop that page-diff and surface it in the report.
 5. **Always update `wiki/index.md`** for every new page (use the `update-index` skill — append-only, idempotent).
 6. **Use `ingest-source` for every new URL** in the proposal — it handles the dedupe + image download.
+7. **Divergence discipline**: every synthesis page you create or modify MUST end up with at least one of (a) a `## Disputes` entry, (b) a `## Open questions` entry, or (c) the literal sentinel `_no contradictions or gaps known yet (last reviewed: <today>)_` somewhere in the body. If the proposal didn't include any, fall through to the sentinel — never leave a synthesis page with all three of {empty Disputes, empty Open questions, no sentinel}. The lint warns at code `divergence-discipline`.
 
 ## Sequencing
 

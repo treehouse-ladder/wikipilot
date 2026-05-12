@@ -5,8 +5,28 @@ You are maintaining a personal research wiki at `wiki/`, inspired by [Karpathy's
 ## The three layers
 
 1. **Raw sources** — every URL the system has read is captured as one markdown file in `wiki/sources/<slug>.md`, with frontmatter (`url`, `sha256`, `fetched_at`, `topic`, `image_count`) and verbatim `>` excerpts. Source pages are append-only after creation; never edit them after they're committed.
-2. **The wiki** — the LLM-generated synthesis layer: topic landing pages (`wiki/topics/<id>/index.md`), concept pages (`wiki/concepts/`), entity pages (`wiki/entities/`), answer pages (`wiki/answers/`), reports (`wiki/reports/`). The LLM owns this layer and keeps it consistent with the raw sources.
+2. **The wiki** — the LLM-generated synthesis layer: topic landing pages (`wiki/topics/<id>/index.md`), concept pages (`wiki/concepts/`), entity pages (`wiki/entities/`), comparison pages (`wiki/comparisons/`), answer pages (`wiki/answers/`), reports (`wiki/reports/`). The LLM owns this layer and keeps it consistent with the raw sources.
 3. **The schema** — this file (`CLAUDE.md`) plus per-topic `wiki/topics/<id>/purpose.md` files. Human-owned; the LLM reads but never writes them.
+
+### Three-tier framing (from the gist comment thread)
+
+The same three layers framed by intent rather than by directory:
+
+- **Facts** — `purpose.md` per topic + `topics.yaml` + this file. Immutable user guidance; the LLM consults these but cannot edit them.
+- **Working memory** — `wiki/sources/`. Raw ingest snapshots (URL + verbatim excerpts + assets); append-only, never re-edited after commit.
+- **Wisdom** — `wiki/topics/`, `wiki/concepts/`, `wiki/entities/`, `wiki/comparisons/`, `wiki/answers/`. Curated synthesis that distills the working memory through the lens of the facts.
+
+## Cross-cutting relevance criteria
+
+The `topic-researcher` agent and the `query-answerer` agent both consult these criteria *together with* the topic's `purpose.md` (which narrows further with topic-specific in-scope/out-of-scope). A candidate source is worth ingesting when **any one** of the following is true:
+
+1. **Highly relevant** to the topic's charter (in-scope per `purpose.md`).
+2. **Highly innovative** — novel technique, approach, or capability worth knowing about even if adjacent to the strict charter.
+3. **Directly impacts or improves any aspect of agentic workflow OR video game development** — these are the user's two anchor domains, intentionally cross-cutting. A `frontier-models` source that materially helps an agentic-coding workflow still qualifies; an `ai-in-game-dev` paper that improves an agentic content pipeline still qualifies.
+
+**Inclusion bias: when on the fence, include rather than exclude.** Better to ingest a slightly-too-broad source the user can prune later than to silently drop a genuinely interesting one. Tightening happens via charter and rubric edits over time, observed from the daily run reports — not via numeric quotas.
+
+`topics.yaml` per-topic `max_sources_per_run` (default 20) is a **safety cap, not a quality lever**. With these criteria the realistic flow is 5–12 sources per topic per busy day; hitting 20 is a runaway-day signal that should trip the auto-merge gate so a human reviews the run (see "Tuning auto-merge thresholds" in [`docs/runbook.md`](docs/runbook.md)).
 
 ## File ownership matrix
 
@@ -40,6 +60,7 @@ If a Claude branch (`claude/*`) modifies any of these files, the auto-merge gate
 - `wiki/topics/<id>/index.md` — topic synthesis pages
 - `wiki/concepts/**` — cross-topic concept pages
 - `wiki/entities/**` — people, projects, orgs
+- `wiki/comparisons/**` — N-way comparison tables (Phase 9 Pattern A)
 
 When a human edits a mixed file, they should bump `last_verified` manually. The wiki-merger respects existing `## Disputes` and `## Open questions` content (append-only there — never delete an entry, only mark it resolved).
 
@@ -61,6 +82,8 @@ freshness_window_days: 30                             # lint flags pages where n
 Source pages additionally carry: `url`, `sha256`, `fetched_at`, `topic`, `image_count`.
 Answer pages additionally carry: `question`, `issue_url` (optional, when triggered by GitHub), `run_id`.
 Report pages additionally carry: `run_id`, `routine` (`daily_research` | `wiki_query` | `weekly_health`).
+Comparison pages additionally carry: `comparison_of` (list of ≥ 2 entity slugs) and `compare_fields` (list of ≥ 1 frontmatter field name to aggregate).
+Entity pages MAY carry: `aliases` (list of strings) — Obsidian-native aliases that resolve in `[[wikilinks]]` so `[[GPT-4]]`, `[[GPT 4]]`, `[[gpt4]]` all resolve to the same entity page when the entity declares them.
 
 ## Standard page sections
 
@@ -71,6 +94,16 @@ Concept, entity, topic, and answer pages all share the same structure:
 - `## Open questions` — append-only. Each entry: `- [ ] question text`. Researchers pull these into the next run's agenda.
 - `## See also` — outbound `[[wikilinks]]` to related pages. The `query-back-fill` skill writes here when filing answer pages back into the wiki.
 
+### Divergence-check sentinel
+
+Every synthesis page (`topic`, `concept`, `entity`, `answer`) MUST end up with at least one of (a) a `## Disputes` entry, (b) a `## Open questions` entry, or (c) the literal sentinel below somewhere in the body:
+
+```markdown
+_no contradictions or gaps known yet (last reviewed: YYYY-MM-DD)_
+```
+
+The `divergence-discipline` lint warns when none of the three are present. Easy to satisfy with the one-line sentinel; the point is to force the author to actively look for counter-arguments before claiming there are none. Comparison pages are excluded — they're tables aggregated from entity pages, not prose synthesis.
+
 ## Citation discipline (mandatory for `topic-researcher` and `query-answerer`)
 
 - Every claim that isn't background context **must** have an inline `[[source-slug]]` wikilink.
@@ -79,6 +112,44 @@ Concept, entity, topic, and answer pages all share the same structure:
 - If a candidate finding contradicts an existing claim, file the disagreement under the affected page's `## Disputes` rather than overwriting.
 
 This addresses the recurring "lossy compression" critique — the wiki must be a faithful synthesis of its sources, not a paraphrase that drifts.
+
+## Comparison pages
+
+Phase 9 introduces `comparison` as a first-class wiki kind alongside `concept` / `entity`. A comparison page surfaces N-way data (or N-way disagreement) for a set of related entities — e.g. `cost-comparison` reads `cost_per_mtoken` from each frontier-model entity, `agentic-ide-comparison` reads parallel-subagent / prompt-caching / MCP support from each agentic-IDE entity.
+
+- **Location**: `wiki/comparisons/<slug>.md`.
+- **Frontmatter**: standard fields plus `comparison_of: [entity-slug-1, entity-slug-2, ...]` (≥ 2 entries) and `compare_fields: [field-name-1, ...]` (≥ 1 entry).
+- **Body**: a generated markdown table; one row per entity, one column per field. Cells render as `_unknown_` when the entity page omits the field — that's the explicit signal to backfill the value on the entity, not the comparison.
+- **Lifecycle**: create with `wikipilot compare new <slug> --of <e1,e2> --fields <f1,f2> --title "..."`; regenerate with `wikipilot compare regen <slug>`. Regeneration re-reads frontmatter and rewrites the body; idempotent (`last_updated` bumps to today, `last_verified` is left alone).
+- **Lint exclusions**: comparison pages are NOT subject to `citation-density` (the table is the synthesis; cited claims live on the entity pages) or `orphan-page` (comparisons are referenced from topic indices, but a missing backlink shouldn't block).
+
+## Entity aliases
+
+Obsidian-native `aliases:` frontmatter (Phase 9 Pattern C). Lets `[[GPT-4]]`, `[[GPT 4]]`, `[[gpt4]]` all resolve to the same entity page when the entity declares them. The lint's `broken-wikilink` and `orphan-page` rules both consult aliases when resolving links.
+
+```yaml
+---
+title: "GPT-4"
+kind: entity
+aliases: ["GPT 4", "gpt4", "OpenAI GPT-4"]
+sources: ["[[some-source-deadbeef]]"]
+last_updated: 2026-05-12
+last_verified: 2026-05-12
+freshness_window_days: 60
+---
+```
+
+Recommended for entity pages with multiple common names: model versions (e.g. `claude-opus-4.7` / `Claude Opus 4.7` / `Opus 4.7`), products with hyphen/space variants (e.g. `claude-code` / `Claude Code`), and legacy names that get retconned.
+
+## Divergence check
+
+Phase 9 Pattern B. The `divergence-discipline` lint warns when a synthesis page (`topic`, `concept`, `entity`, `answer`) has empty `## Disputes`, empty `## Open questions`, AND no sentinel anywhere in the body. The sentinel format is verbatim:
+
+```markdown
+_no contradictions or gaps known yet (last reviewed: YYYY-MM-DD)_
+```
+
+Severity is warning (not error) — a fresh page can land without blocking auto-merge, but the `topic-researcher`, `wiki-merger`, and `query-answerer` agents are all instructed to satisfy the rule on every page they create or modify. The intent (from the gist comment thread) is to force the author to actively look for counter-arguments before claiming there are none.
 
 ## Cross-page sweep (mandatory for `wiki-merger`)
 
@@ -322,15 +393,16 @@ Every entry: `## [YYYY-MM-DD] kind | subject` followed by a one-line summary. `k
 
 | Rule | Severity | What it checks |
 |---|---|---|
-| `frontmatter` | error | required keys present, kind valid, dates parse, types match |
+| `frontmatter` | error | required keys present, kind valid, dates parse, types match; comparison pages additionally require `comparison_of` (≥ 2) and `compare_fields` (≥ 1); `aliases` (when present) must be a list of strings |
 | `log-format` | error | every `## ` heading in `log.md` matches the schema (code blocks excluded) |
-| `broken-wikilink` | error | every `[[link]]` resolves to a known page slug or alias |
+| `broken-wikilink` | error | every `[[link]]` resolves to a known page slug, alias slug, or entity-declared alias |
 | `broken-image-ref` | error | every local `![](path)` / `<img src="path">` resolves to an existing file |
-| `orphan-page` | warning | synthesis pages with zero inbound links |
+| `orphan-page` | warning | synthesis pages with zero inbound links (aliases counted) |
 | `stale-page` | warning | `now - last_verified > freshness_window_days` (page-level override; default 30) |
-| `citation-density` | warning | `## Summary` paragraphs without any `[[wikilink]]` (default min: 1 per paragraph) |
+| `citation-density` | warning | `## Summary` paragraphs without any `[[wikilink]]` (default min: 1 per paragraph). Comparison pages exempt. |
 | `disputes-format` | warning | `## Disputes` entries that aren't `- ... claims ... Status: ...` bullets |
 | `open-questions-format` | warning | `## Open questions` entries that aren't `- [ ] ...` checkboxes |
+| `divergence-discipline` | warning | synthesis page has empty `## Disputes`, empty `## Open questions`, AND no `_no contradictions or gaps known yet (last reviewed: YYYY-MM-DD)_` sentinel anywhere in the body |
 | `ownership-violation` | error | only fires when `--branch claude/...` and `--changed-path ...` are passed; flags any human-only path being modified on a Claude branch |
 
 Errors fail the lint (exit code 1); warnings are reported but don't fail. The auto-merge gate (Phase 3) blocks any PR where the lint reports errors *or* the changed paths trip the ownership-violation check.
@@ -349,6 +421,8 @@ Errors fail the lint (exit code 1); warnings are reported but don't fail. The au
 | `research [--topic id]` | trigger Daily Research routine via the `/fire` API |
 | `query "<question>"` | trigger Wiki Query routine via the `/fire` API |
 | `dry-run --topic <id> \| --query "<q>" \| --weekly-health` | exercise the apply path locally (no Anthropic call) |
+| `compare new <slug> --of e1,e2,... --fields f1,f2,... --title "..."` | create a new comparison page reading frontmatter fields from each entity |
+| `compare regen <slug>` | regenerate the body of an existing comparison page from current entity frontmatter |
 
 ## Editing this file
 

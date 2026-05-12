@@ -115,3 +115,4 @@ EOF
 - **qmd-first.** WebSearch is a last resort; the wiki should be the canonical source. Capture every external source via `ingest-source` so future questions can hit the wiki.
 - **Cite or file under Open questions.** Never assert a claim without a source.
 - **Answers compound.** Always run `query-back-fill` so the answer is reachable from the related concept/entity pages.
+- **Divergence discipline.** Every answer page MUST end up with at least one of (a) a `## Disputes` entry, (b) a `## Open questions` entry, or (c) the literal sentinel `_no contradictions or gaps known yet (last reviewed: <today>)_`. The `divergence-discipline` lint warns when none are present.

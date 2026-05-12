@@ -33,6 +33,7 @@ WIKI_DIRS: tuple[str, ...] = (
     "topics",
     "concepts",
     "entities",
+    "comparisons",
     "sources",
     "answers",
     "reports",
@@ -44,6 +45,7 @@ VALID_KINDS: tuple[str, ...] = (
     "topic",
     "concept",
     "entity",
+    "comparison",
     "source",
     "answer",
     "report",
@@ -136,7 +138,7 @@ class Vault:
     def page_path(self, kind: str, slug: str) -> Path:
         if kind == "topic":
             return self.topic_index(slug)
-        if kind in {"concept", "entity"}:
+        if kind in {"concept", "entity", "comparison"}:
             return self.dir_for(kind + "s") / f"{slug}.md"
         if kind in {"source", "answer", "report"}:
             return self.dir_for(kind + "s") / f"{slug}.md"
@@ -216,6 +218,22 @@ class Page:
             return None
         return int(value)
 
+    @property
+    def aliases(self) -> list[str]:
+        """Obsidian-native ``aliases:`` frontmatter (Phase 9 Pattern C).
+
+        Lets ``[[GPT-4]]``, ``[[GPT 4]]``, ``[[gpt4]]`` all resolve to the same
+        page when the entity declares them. Returns an empty list when the
+        key is absent. Non-string entries are coerced via ``str()`` so a YAML
+        list of mixed types still produces something the lint can slugify.
+        """
+        raw = self.metadata.get("aliases") or []
+        if not isinstance(raw, list):
+            raise WikiError(
+                f"{self.path}: 'aliases' must be a list of strings, got {type(raw).__name__}"
+            )
+        return [str(item) for item in raw]
+
     def wikilinks(self) -> list[str]:
         return parse_wikilinks(self.content)
 
@@ -255,6 +273,19 @@ class Page:
                 errors.append("freshness_window_days must be an integer")
         if "sources" in self.metadata and not isinstance(self.metadata["sources"], list):
             errors.append("sources must be a list of [[wikilink]] strings")
+        if "aliases" in self.metadata and not isinstance(self.metadata["aliases"], list):
+            errors.append("aliases must be a list of strings")
+        if self.metadata.get("kind") == "comparison":
+            comparison_of = self.metadata.get("comparison_of")
+            if not isinstance(comparison_of, list) or len(comparison_of) < 2:
+                errors.append(
+                    "comparison pages require 'comparison_of' as a list of at least 2 entity slugs"
+                )
+            compare_fields = self.metadata.get("compare_fields")
+            if not isinstance(compare_fields, list) or len(compare_fields) < 1:
+                errors.append(
+                    "comparison pages require 'compare_fields' as a list of at least 1 field name"
+                )
         return errors
 
 

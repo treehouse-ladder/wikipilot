@@ -13,13 +13,14 @@ from wikipilot.lint import (
     check_broken_wikilinks,
     check_citation_density,
     check_disputes_open_questions_structure,
+    check_divergence_discipline,
     check_frontmatter,
     check_log_format,
     check_orphans,
     check_ownership_violations,
     check_staleness,
 )
-from wikipilot.wiki import Vault
+from wikipilot.wiki import Page, Vault
 
 
 def _ctx(vault: Vault, **kwargs: object) -> LintContext:
@@ -234,3 +235,230 @@ class TestLinterEndToEnd:
         assert "topics.yaml" in HUMAN_ONLY_PATHS
         assert "wikipilot.toml" in HUMAN_ONLY_PATHS
         assert "prompts/" in HUMAN_ONLY_PATHS
+
+
+def _write_synthesis_page(
+    sample_vault: Vault,
+    *,
+    name: str = "lonely.md",
+    body: str,
+    kind: str = "concept",
+) -> None:
+    """Helper: write a minimal synthesis page with the given body for divergence tests."""
+    target = sample_vault.dir_for("concepts" if kind == "concept" else "entities") / name
+    frontmatter = (
+        "---\n"
+        f'title: "Test Page"\n'
+        f"kind: {kind}\n"
+        "sources: []\n"
+        "last_updated: 2026-05-10\n"
+        "last_verified: 2026-05-10\n"
+        "freshness_window_days: 30\n"
+        "---\n\n"
+    )
+    target.write_text(frontmatter + body, encoding="utf-8")
+
+
+class TestCheckDivergenceDiscipline:
+    def test_warns_on_page_with_no_disputes_no_open_questions_no_sentinel(
+        self, sample_vault: Vault
+    ) -> None:
+        _write_synthesis_page(
+            sample_vault,
+            name="bare-claim.md",
+            body=("# Bare claim\n\n## Summary\n\nBare summary with [[example-paper-aabbccdd]].\n"),
+        )
+        issues = check_divergence_discipline(_ctx(sample_vault))
+        assert any(
+            i.code == "divergence-discipline" and i.path.name == "bare-claim.md" for i in issues
+        )
+
+    def test_dispute_entry_satisfies(self, sample_vault: Vault) -> None:
+        _write_synthesis_page(
+            sample_vault,
+            name="has-dispute.md",
+            body=(
+                "# Has dispute\n\n## Summary\n\nClaim [[example-paper-aabbccdd]].\n\n"
+                "## Disputes\n\n"
+                "- [[example-paper-aabbccdd]] claims X; "
+                "[[another-source-deadbeef]] claims not-X. Status: unresolved\n"
+            ),
+        )
+        issues = check_divergence_discipline(_ctx(sample_vault))
+        assert not any(
+            i.code == "divergence-discipline" and i.path.name == "has-dispute.md" for i in issues
+        )
+
+    def test_open_question_entry_satisfies(self, sample_vault: Vault) -> None:
+        _write_synthesis_page(
+            sample_vault,
+            name="has-question.md",
+            body=(
+                "# Has question\n\n## Summary\n\nClaim [[example-paper-aabbccdd]].\n\n"
+                "## Open questions\n\n- [ ] Real question we want to know about?\n"
+            ),
+        )
+        issues = check_divergence_discipline(_ctx(sample_vault))
+        assert not any(
+            i.code == "divergence-discipline" and i.path.name == "has-question.md" for i in issues
+        )
+
+    def test_sentinel_satisfies(self, sample_vault: Vault) -> None:
+        _write_synthesis_page(
+            sample_vault,
+            name="has-sentinel.md",
+            body=(
+                "# Has sentinel\n\n## Summary\n\nClaim [[example-paper-aabbccdd]].\n\n"
+                "_no contradictions or gaps known yet (last reviewed: 2026-05-11)_\n"
+            ),
+        )
+        issues = check_divergence_discipline(_ctx(sample_vault))
+        assert not any(
+            i.code == "divergence-discipline" and i.path.name == "has-sentinel.md" for i in issues
+        )
+
+    def test_does_not_apply_to_source_pages(self, sample_vault: Vault) -> None:
+        # Source pages aren't synthesis — divergence rule must not fire on them.
+        issues = check_divergence_discipline(_ctx(sample_vault))
+        assert not any(
+            i.code == "divergence-discipline" and "sources" in str(i.path).replace("\\", "/")
+            for i in issues
+        )
+
+    def test_placeholder_only_section_does_not_satisfy(self, sample_vault: Vault) -> None:
+        # The seeded `_(none yet ...)_` placeholder should NOT count as a real
+        # entry — that's the whole point of the divergence-discipline rule.
+        _write_synthesis_page(
+            sample_vault,
+            name="placeholders.md",
+            body=(
+                "# Placeholders\n\n## Summary\n\nClaim [[example-paper-aabbccdd]].\n\n"
+                "## Disputes\n\n_(none yet)_\n\n"
+                "## Open questions\n\n_(none yet)_\n"
+            ),
+        )
+        issues = check_divergence_discipline(_ctx(sample_vault))
+        assert any(
+            i.code == "divergence-discipline" and i.path.name == "placeholders.md" for i in issues
+        )
+
+
+class TestAliasResolution:
+    def test_alias_resolves_in_wikilinks(self, sample_vault: Vault) -> None:
+        # Add an entity page that declares aliases for a known abbreviation.
+        gpt_path = sample_vault.dir_for("entities") / "gpt-4.md"
+        gpt_path.write_text(
+            "---\n"
+            'title: "GPT-4"\n'
+            "kind: entity\n"
+            'sources: ["[[example-paper-aabbccdd]]"]\n'
+            "last_updated: 2026-05-10\n"
+            "last_verified: 2026-05-10\n"
+            "freshness_window_days: 60\n"
+            'aliases: ["GPT 4", "gpt4"]\n'
+            "---\n\n"
+            "# GPT-4\n\n## Summary\n\nGPT-4 is a frontier LLM [[example-paper-aabbccdd]].\n\n"
+            '> "GPT-4 quote."\n\n'
+            "_no contradictions or gaps known yet (last reviewed: 2026-05-11)_\n",
+            encoding="utf-8",
+        )
+        # Add a page that links via the alias slug rather than the canonical slug.
+        ref = sample_vault.dir_for("concepts") / "alias-ref.md"
+        ref.write_text(
+            "---\n"
+            'title: "Alias ref"\n'
+            "kind: concept\n"
+            'sources: ["[[example-paper-aabbccdd]]"]\n'
+            "last_updated: 2026-05-10\n"
+            "last_verified: 2026-05-10\n"
+            "freshness_window_days: 30\n"
+            "---\n\n"
+            "# Alias ref\n\n## Summary\n\n"
+            "See [[gpt4]] for the alias path [[example-paper-aabbccdd]].\n\n"
+            '> "Alias quote."\n\n'
+            "_no contradictions or gaps known yet (last reviewed: 2026-05-11)_\n",
+            encoding="utf-8",
+        )
+        issues = check_broken_wikilinks(_ctx(sample_vault))
+        assert not any(i.code == "broken-wikilink" and "gpt4" in i.message for i in issues), (
+            "alias slug 'gpt4' must resolve via the entity's aliases:[]"
+        )
+
+    def test_alias_prevents_orphan_warning(self, sample_vault: Vault) -> None:
+        # Same setup but only the alias is referenced — orphan check should still pass.
+        gpt_path = sample_vault.dir_for("entities") / "gpt-4.md"
+        gpt_path.write_text(
+            "---\n"
+            'title: "GPT-4"\n'
+            "kind: entity\n"
+            'sources: ["[[example-paper-aabbccdd]]"]\n'
+            "last_updated: 2026-05-10\n"
+            "last_verified: 2026-05-10\n"
+            "freshness_window_days: 60\n"
+            'aliases: ["GPT 4", "gpt4"]\n'
+            "---\n\n"
+            "# GPT-4\n\n## Summary\n\nGPT-4 is a frontier LLM [[example-paper-aabbccdd]].\n\n"
+            '> "GPT-4 quote."\n',
+            encoding="utf-8",
+        )
+        # Reference via alias only
+        ref = sample_vault.dir_for("concepts") / "alias-only.md"
+        ref.write_text(
+            "---\n"
+            'title: "Alias only"\n'
+            "kind: concept\n"
+            'sources: ["[[example-paper-aabbccdd]]"]\n'
+            "last_updated: 2026-05-10\n"
+            "last_verified: 2026-05-10\n"
+            "freshness_window_days: 30\n"
+            "---\n\n"
+            "# Alias only\n\n## Summary\n\nSee [[gpt4]] [[example-paper-aabbccdd]].\n",
+            encoding="utf-8",
+        )
+        issues = check_orphans(_ctx(sample_vault))
+        assert not any(i.code == "orphan-page" and i.path.name == "gpt-4.md" for i in issues), (
+            "entity referenced only via alias must not be flagged orphan"
+        )
+
+    def test_page_aliases_property_returns_empty_when_missing(self, sample_vault: Vault) -> None:
+        page = Page.read(sample_vault.dir_for("concepts") / "transformer-attention.md")
+        assert page.aliases == []
+
+    def test_page_aliases_property_returns_list_when_present(
+        self, sample_vault: Vault, tmp_path
+    ) -> None:
+        path = tmp_path / "with-aliases.md"
+        path.write_text(
+            "---\n"
+            'title: "X"\n'
+            "kind: entity\n"
+            "sources: []\n"
+            "last_updated: 2026-05-10\n"
+            "last_verified: 2026-05-10\n"
+            "freshness_window_days: 60\n"
+            'aliases: ["A", "B"]\n'
+            "---\n\nbody\n",
+            encoding="utf-8",
+        )
+        page = Page.read(path)
+        assert page.aliases == ["A", "B"]
+
+
+class TestComparisonFrontmatterLint:
+    def test_missing_comparison_of_flagged(self, sample_vault: Vault, tmp_path) -> None:
+        path = tmp_path / "bad-comp.md"
+        path.write_text(
+            "---\n"
+            'title: "Bad"\n'
+            "kind: comparison\n"
+            "sources: []\n"
+            "last_updated: 2026-05-10\n"
+            "last_verified: 2026-05-10\n"
+            "freshness_window_days: 30\n"
+            "compare_fields: [cost]\n"
+            "---\n\n# Bad\n",
+            encoding="utf-8",
+        )
+        page = Page.read(path)
+        errors = page.validate_frontmatter()
+        assert any("comparison_of" in e for e in errors)

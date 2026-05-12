@@ -62,7 +62,7 @@ Before Phase 8's live smoke test, you can rehearse the entire merge path without
 
 ```bash
 # Rehearse Daily Research for one topic.
-uv run wikipilot dry-run --topic ai-agents
+uv run wikipilot dry-run --topic agentic-coding
 
 # Rehearse Wiki Query for one question.
 uv run wikipilot dry-run --query "what is attention?"
@@ -73,7 +73,7 @@ Both commands synthesize a fake proposal/answer (with a citation, a contradictio
 When you have a real Claude Code routine prompt to test (Phase 4+), use the local `claude` CLI:
 
 ```bash
-claude --routine prompts/daily_runner.md --topic ai-agents
+claude --routine prompts/daily_runner.md --topic agentic-coding
 ```
 
 This runs the full agent stack against your local repo using your local Anthropic credentials, without going through the cloud routines API.
@@ -192,12 +192,12 @@ The next Daily Research run for that topic will re-evaluate the affected page.
 
 ## Tuning auto-merge thresholds
 
-Auto-merge thresholds live in `wikipilot.toml`. The defaults are sized for Karpathy's "10–15 pages per source" reality:
+Auto-merge thresholds live in `wikipilot.toml`. The defaults are sized for Phase 9's permissive-inclusion researcher: 6–8 high-quality sources × 10–15 pages per source per topic per day:
 
 ```toml
 [automerge.daily_research]
-max_files_changed_per_topic = 40
-max_total_diff_lines_per_topic = 1500
+max_files_changed_per_topic = 80
+max_total_diff_lines_per_topic = 3000
 
 [automerge.wiki_query]
 max_files_changed = 8
@@ -207,6 +207,8 @@ max_total_diff_lines = 400
 max_files_changed = 60
 max_total_diff_lines = 2000
 ```
+
+The `daily_research` thresholds are calibrated to absorb a busy day under the inclusion-bias rubric (`CLAUDE.md` "Cross-cutting relevance criteria") and to **trip on a safety-cap day**. With `max_sources_per_run: 20` per topic and 10–15 pages per source, a topic that hits the cap could push 200–300 files; the gate refusing to auto-merge that PR is the *signal* a human should eyeball the run report — see "When a topic hits the safety cap" below.
 
 If your topics are small enough that Daily Research consistently auto-merges trivial PRs, reduce `max_files_changed_per_topic` so larger / riskier PRs require human review. If Wiki Query frequently spawns answers that touch many related pages, raise `max_files_changed` for `wiki_query`.
 
@@ -249,7 +251,7 @@ Once the API trigger is configured (see [`docs/routines-setup.md`](routines-setu
 
 ```bash
 # Fire Daily Research for one topic.
-uv run wikipilot research --topic ai-agents
+uv run wikipilot research --topic agentic-coding
 
 # Fire Wiki Query.
 uv run wikipilot query "what is the fastest way to dispatch parallel subagents?"
@@ -264,7 +266,7 @@ The `topic-researcher` and `query-answerer` agents normally call this for you, b
 ```bash
 uv run wikipilot ingest \
   --url "https://example.com/papers/attention.pdf" \
-  --topic "ai-agents" \
+  --topic "frontier-models" \
   --title "An example paper on attention" \
   --excerpt "Attention is a weighted sum of value vectors." \
   --excerpt "Anthropic builds Claude and publishes on safety alignment."
@@ -342,7 +344,7 @@ Larger K = more candidate sets dispatched in parallel = more scanner cost. The d
 
 This is the manual verification you run **once**, after creating all three routines in claude.ai/code/routines per [`routines-setup.md`](routines-setup.md). It covers the live integrations the dry-run can't exercise (cloud routine fan-out, real Anthropic API calls, GitHub triggers, auto-merge, image downloads from the live web, Obsidian rendering).
 
-The repo ships seeded with two starter topics (`ai-agents`, `llm-evals`); their `purpose.md` files are at `wiki/topics/<id>/purpose.md`. Add or edit topics in `topics.yaml` first if you want to swap them out before smoke-testing.
+The repo ships seeded with five starter topics (`agentic-coding`, `frontier-models`, `ai-in-game-dev`, `games-of-note`, `game-music`); their `purpose.md` files are at `wiki/topics/<id>/purpose.md`. Add or edit topics in `topics.yaml` first if you want to swap them out before smoke-testing.
 
 ### Prep
 
@@ -350,7 +352,7 @@ The repo ships seeded with two starter topics (`ai-agents`, `llm-evals`); their 
 - [ ] `~/.config/wikipilot/credentials.toml` (or `%APPDATA%\wikipilot\credentials.toml`) holds `[research]` and `[query]` `fire_url` + `token`.
 - [ ] Local `wikipilot lint wiki/` is clean (`0 error(s), 0 warning(s)`).
 - [ ] Local `wikipilot validate-topics` shows the topic count you expect.
-- [ ] `wikipilot dry-run --topic ai-agents`, `--query "..."`, and `--weekly-health` all complete without error against a scratch vault.
+- [ ] `wikipilot dry-run --topic agentic-coding`, `--query "..."`, and `--weekly-health` all complete without error against a scratch vault.
 
 ### Daily Research smoke test
 
@@ -393,7 +395,7 @@ After at least one Daily Research run has landed real content:
 
 - [ ] Open `wiki/` in Obsidian (`docs/obsidian-setup.md` for setup); the graph view shows the new topic, concept, source, and answer pages with their cross-links.
 - [ ] The three example Dataview queries in `docs/obsidian-setup.md` render: recently-touched pages, stale pages, and open questions across the wiki.
-- [ ] `uv run wikipilot deck ai-agents` writes `wiki/decks/ai-agents.md`; the Obsidian Marp plugin opens it cleanly.
+- [ ] `uv run wikipilot deck agentic-coding` writes `wiki/decks/agentic-coding.md`; the Obsidian Marp plugin opens it cleanly.
 
 ### Iterating on the prompts
 
@@ -406,9 +408,88 @@ If any verification step failed, the fix is almost always a prompt edit, not a c
 
 Then follow "Updating a routine prompt" above to push the change to claude.ai/code/routines. Re-run the smoke test for the affected routine.
 
-## Troubleshooting
+## Generating a comparison page
 
-Symptoms grouped by where they originate.
+Comparison pages (Phase 9 Pattern A; see `CLAUDE.md` "Comparison pages") aggregate frontmatter fields across N entity pages into a single markdown table. Use them when you have ≥ 2 entity pages with parallel frontmatter and want a single-glance N-way view.
+
+To create a new comparison page from the CLI:
+
+```bash
+uv run wikipilot compare new cost-comparison \
+  --of claude-opus-4.7,gpt-5.5,gemini-2.5-pro \
+  --fields cost_per_mtoken_in,cost_per_mtoken_out,context_window \
+  --title "Frontier model cost comparison"
+```
+
+This writes `wiki/comparisons/cost-comparison.md` with `kind: comparison`, the `comparison_of` and `compare_fields` lists in frontmatter, and a table whose cells render `_unknown_` for any entity that doesn't carry the field. The `_unknown_` cells are an explicit prompt to backfill the value on the entity page (then re-run `regen` below) — comparison cells are never edited by hand.
+
+To regenerate the body after entity frontmatter changes:
+
+```bash
+uv run wikipilot compare regen cost-comparison
+```
+
+Idempotent: re-reads the comparison page's own `comparison_of` / `compare_fields`, queries each entity, rewrites the table. `last_updated` bumps to today; `last_verified` is left alone (regen is mechanical, not a re-verification of the underlying claims).
+
+Both commands write to `wiki/comparisons/<slug>.md`. Prefer slugs that read as comparison nouns (`cost-comparison`, `agentic-ide-comparison`, `text-to-3d-comparison`) over verbs.
+
+## Resolving a divergence-check warning
+
+Phase 9 Pattern B introduces the `divergence-discipline` lint warning (`CLAUDE.md` "Divergence check"). It fires on synthesis pages (`topic`, `concept`, `entity`, `answer`) that have an empty `## Disputes` section, an empty `## Open questions` section, AND no `_no contradictions or gaps known yet (last reviewed: YYYY-MM-DD)_` sentinel anywhere in the body.
+
+Severity is warning, so it doesn't block auto-merge — but the agents are mandated to satisfy it on every page they create. When you see the warning on a page you're editing manually, pick one of three remediation paths:
+
+1. **Found a counter-argument** — add a bullet to `## Disputes`:
+   ```markdown
+   - [[source-A]] claims the cap is 200k tokens; [[source-B]] reports the cap is 500k tokens. Status: unresolved (confidence: medium; sweep: 2026-05-12)
+   ```
+2. **Found a data gap** — add a checkbox to `## Open questions`:
+   ```markdown
+   - [ ] No public benchmark for this model on SWE-bench yet — re-check after the v2 release.
+   ```
+3. **Searched and genuinely found nothing** — add the sentinel verbatim somewhere in the body (convention: at the end, after `## See also`):
+   ```markdown
+   _no contradictions or gaps known yet (last reviewed: 2026-05-12)_
+   ```
+
+The intent (per the gist comment thread the rule absorbed) is to force the author to actively look for divergence before claiming none — the sentinel is a deliberate, dated assertion, not a placeholder. Refresh the date when re-verifying the page.
+
+## Adding an entity alias
+
+Phase 9 Pattern C (`CLAUDE.md` "Entity aliases"). Add `aliases:` to entity frontmatter when an entity has multiple common names — version stylings (`Claude Opus 4.7` / `claude-opus-4.7` / `Opus 4.7`), hyphen-vs-space variants (`GPT 4` / `GPT-4`), legacy names that get retconned, or product-vs-CLI splits (`claude-code` / `Claude Code`). Once declared, `[[any alias]]` resolves to this page and the lint stops flagging it as a broken wikilink or as an orphan if pages link via the alias slug.
+
+Edit the entity page's frontmatter:
+
+```yaml
+---
+title: "GPT-4"
+kind: entity
+aliases: ["GPT 4", "gpt4", "OpenAI GPT-4"]
+sources: ["[[some-source-deadbeef]]"]
+last_updated: 2026-05-12
+last_verified: 2026-05-12
+freshness_window_days: 60
+---
+```
+
+Aliases are slugified before resolution, so `"GPT 4"` matches `[[GPT 4]]`, `[[gpt-4]]`, and `[[gpt 4]]`. After adding aliases, re-run `uv run wikipilot lint wiki/` to confirm previously broken `[[gpt4]]` references now resolve. Don't list the entity's own slug as an alias — it's already resolvable.
+
+## When a topic hits the safety cap
+
+`max_sources_per_run: 20` is uniform across all 5 Phase 9 topics (`CLAUDE.md` "Cross-cutting relevance criteria"). It is a runaway guard, not a quality lever — under the inclusion-bias rubric a busy day should land 6–12 sources per topic, and 20 means something unusual happened.
+
+Detection signal: the daily_research auto-merge gate refuses to merge a per-topic PR (the gate thresholds — `max_files_changed_per_topic = 80`, `max_total_diff_lines_per_topic = 3000` — are calibrated to busy-day flow and trip on a safety-cap day). The PR comment from `scripts/maybe_automerge.py` will say `diff too large`.
+
+Remediation path:
+
+1. Read the per-run report at `wiki/reports/YYYY-MM-DD.md` for the affected topic. Skim the source list — are these all genuinely on-topic, or is the agent over-ingesting adjacent material?
+2. Decide which lever to pull:
+   - **Topic-specific drift**: tighten `wiki/topics/<id>/purpose.md` "Out of scope" with the specific noise pattern you saw (the most common case).
+   - **Cross-cutting drift**: tighten `CLAUDE.md` "Cross-cutting relevance criteria" if the over-ingest cuts across multiple topics (rare; the criteria are deliberately permissive).
+   - **Genuine busy day**: if the sources are all legitimate (a major model release, a Game Awards day, a Unity AI announcement), accept the PR by manually merging. No prompt change needed; the safety cap did its job.
+3. Spot-check the next 1–2 daily runs for the topic to confirm the rubric edit took effect — the cap should drop back to typical 6–12 sources.
+
+The cap is intentionally not raised in response to busy days — the auto-merge gate trip is the manual-review prompt, not a sign the cap is too low.
 
 ### Local CLI
 
@@ -472,4 +553,5 @@ Symptoms grouped by where they originate.
 - **Phase 5**: Image download pipeline (`wikipilot ingest`, `download-source-images` skill, `broken-image-ref` lint rule).
 - **Phase 6**: Wiki Query routine prompt, real `api_client.py` (HTTP + 429 retry), wired `wikipilot research`/`query` CLI, GitHub-issue trigger setup.
 - **Phase 7**: Weekly Health routine prompt, `scripts/disputes_seed.py` overlap heuristics, health-report reader docs, dispute-resolution guidance.
-- **Phase 8 (current)**: Two starter topics seeded (`ai-agents`, `llm-evals`) with real `purpose.md`, smoke-test checklist + Troubleshooting section, CI dry-run extended to weekly health.
+- **Phase 8**: Two starter topics seeded (`ai-agents`, `llm-evals`) with real `purpose.md`, smoke-test checklist + Troubleshooting section, CI dry-run extended to weekly health.
+- **Phase 9 (current)**: Five focused topics replace the seeded two (`agentic-coding`, `frontier-models`, `ai-in-game-dev`, `games-of-note`, `game-music`); three structural patterns absorbed from Karpathy's gist — comparison pages as a first-class wiki kind (`wikipilot compare new` / `regen`), `divergence-discipline` lint, entity `aliases:`. Source-ingestion shifted from numeric per-topic caps to qualitative "Cross-cutting relevance criteria" + inclusion bias in `CLAUDE.md` and `topic-researcher.md`; uniform `max_sources_per_run: 20` reframed as a runaway safety cap; `daily_research` auto-merge thresholds bumped to 80 files / 3000 lines so the gate trips on safety-cap days.

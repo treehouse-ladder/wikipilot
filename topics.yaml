@@ -11,78 +11,185 @@
 #   display_name:          string, human-readable
 #   purpose:               string, free-text. The topic-researcher reads this BEFORE
 #                          deciding whether to ingest a found source. If the source
-#                          doesn't fit the purpose, it's rejected. Be specific about
-#                          what's IN scope and what's OUT — vague purposes produce
-#                          off-topic ingests.
+#                          doesn't fit the purpose, it's rejected. The full charter
+#                          lives in wiki/topics/<id>/purpose.md (this is the summary).
 #   search_hints:          list of strings, seeds for WebSearch queries
 #   allowlist_domains:     list of strings, optional. If set, only sources from these
 #                          domains are ingested. Good for high-signal topics.
 #   frequency:             "daily" | "weekly" — Daily Research only runs `daily` topics
-#   max_sources_per_run:   int, caps how many new sources a single run can ingest for
-#                          this topic. Bounds cost.
+#   max_sources_per_run:   int. Phase 9 sets this uniformly to 20 as a SAFETY CAP, NOT
+#                          a quality lever. Inclusion is governed by the cross-cutting
+#                          relevance criteria in CLAUDE.md (highly relevant / highly
+#                          innovative / impacts agentic workflow or game dev). If a
+#                          topic routinely hits the cap, that signals the rubric needs
+#                          tightening — drop sources via charter edits, not quotas.
 #   freshness_window_days: int, default 30. Lint flags pages whose last_verified is
 #                          older than this many days.
 #
-# Once you're ready to enable a topic, uncomment it (and add a real purpose.md at
-# `wiki/topics/<id>/purpose.md` — preflight will block runs without it).
+# Adding a topic also requires a wiki/topics/<id>/purpose.md (preflight blocks the
+# routine without one) and a wiki/topics/<id>/index.md.
 
 topics:
-  - id: ai-agents
-    display_name: "AI agents and agentic systems"
+  - id: agentic-coding
+    display_name: "Agentic coding tools and harnesses"
     purpose: |
-      In-scope: research and engineering on autonomous LLM agents — agentic
-      frameworks, evaluation methodologies, multi-agent orchestration,
-      tool-use patterns, agent skills, sandboxing, and cost/latency
-      engineering for agents.
+      In-scope: agentic systems for software engineering — agentic IDE/CLI
+      tools (Claude Code, Cursor, Codex, Aider, Devin, OpenHands), the
+      loops, harnesses, skills, MCP, parallel subagents, prompt caching,
+      and sandboxing patterns that make them work; agentic-coding eval
+      harnesses (SWE-bench, METR RE-Bench).
 
-      Out-of-scope: general LLM research (model architectures, training
-      methods, benchmarks for non-agentic tasks); generic industry news or
-      product launches without technical content; marketing posts;
-      hypothetical "AGI is coming" essays without code or experiments.
+      Out-of-scope: non-coding agents (browser/computer-use unless
+      specifically used for coding); general LLM research not specifically
+      about coding agents; vendor marketing without methodology.
 
-      Read wiki/topics/ai-agents/purpose.md for the full charter (it wins
-      on conflict — keep both in sync).
+      Read wiki/topics/agentic-coding/purpose.md for the full charter and
+      the cross-cutting relevance criteria in CLAUDE.md.
     search_hints:
-      - "agentic LLM evaluation benchmark"
       - "claude code subagent parallel"
-      - "LLM agent tool use cost optimization"
-      - "multi-agent orchestration framework"
-      - "agent sandbox security"
+      - "cursor agent harness"
+      - "MCP server protocol"
+      - "SWE-bench agent eval"
+      - "agentic IDE prompt caching"
+      - "agent sandboxing capability"
     allowlist_domains:
-      - "arxiv.org"
       - "anthropic.com"
       - "docs.anthropic.com"
+      - "cursor.com"
       - "openai.com"
-      - "deepmind.google"
+      - "arxiv.org"
+      - "github.com"
+      - "simonwillison.net"
+      - "every.to"
     frequency: daily
-    max_sources_per_run: 3
+    max_sources_per_run: 20
     freshness_window_days: 30
 
-  - id: llm-evals
-    display_name: "LLM evaluation methods"
+  - id: frontier-models
+    display_name: "Frontier LLM landscape"
     purpose: |
-      In-scope: research on evaluation methodologies for large language
-      models — benchmark design and critique, contamination and leakage
-      detection, judged-eval reliability (LLM-as-judge), human-eval
-      protocols, agentic-eval frameworks (e.g. SWE-bench style), reward
-      model evaluation, and methodology papers that change how the field
-      evaluates models.
+      In-scope: frontier model releases; capability changes; cost / context
+      window; reasoning models; multi-modal; open-weight releases; benchmark
+      results that have methodological substance.
 
-      Out-of-scope: leaderboard score updates without methodological
-      novelty; vendor-published "we beat GPT-4" announcements; product
-      reviews; subjective takes without empirical evidence.
+      Out-of-scope: training methodology in depth (defer to a future
+      llm-pretraining topic); application-layer products (those go in
+      `agentic-coding` or `ai-in-game-dev`); marketing announcements
+      without methodology.
 
-      Read wiki/topics/llm-evals/purpose.md for the full charter.
+      Read wiki/topics/frontier-models/purpose.md for the full charter.
     search_hints:
-      - "LLM benchmark contamination"
-      - "LLM-as-judge reliability"
-      - "agentic evaluation SWE-bench"
-      - "evaluation methodology language model"
+      - "frontier model release"
+      - "reasoning model benchmark"
+      - "context window long-context"
+      - "open-weight LLM release"
+      - "multi-modal model release"
+      - "model cost per Mtoken"
     allowlist_domains:
-      - "arxiv.org"
       - "anthropic.com"
       - "openai.com"
+      - "deepmind.google"
+      - "ai.meta.com"
+      - "deepseek.com"
+      - "mistral.ai"
+      - "x.ai"
+      - "qwenlm.github.io"
       - "huggingface.co"
+      - "arxiv.org"
+      - "artificialanalysis.ai"
     frequency: daily
-    max_sources_per_run: 3
+    max_sources_per_run: 20
     freshness_window_days: 30
+
+  - id: ai-in-game-dev
+    display_name: "AI in game development"
+    purpose: |
+      In-scope: game engine AI tools (Unity AI, Unreal AI, Unity MCP,
+      Blender MCP); content generation pipelines (text-to-image,
+      text-to-3D, image-to-3D, 2D character rigs, sprite generation,
+      mocap); AI NPC behavior, dialog, voice synthesis; AI playtesting.
+
+      Out-of-scope: general-purpose image/3D generation outside game-dev
+      workflows; non-game procedural generation; engine-agnostic LLM
+      agentic tools (those go in `agentic-coding`).
+
+      Read wiki/topics/ai-in-game-dev/purpose.md for the full charter.
+    search_hints:
+      - "unity AI tools"
+      - "blender MCP"
+      - "text-to-3D pipeline"
+      - "AI NPC behavior dialog"
+      - "AI mocap pipeline"
+      - "2D character rig generation"
+    allowlist_domains:
+      - "unity.com"
+      - "unrealengine.com"
+      - "developer.nvidia.com"
+      - "huggingface.co"
+      - "arxiv.org"
+      - "gamedeveloper.com"
+      - "gdcvault.com"
+    frequency: daily
+    max_sources_per_run: 20
+    freshness_window_days: 30
+
+  - id: games-of-note
+    display_name: "Notable games and the games industry"
+    purpose: |
+      In-scope: notable AAA + indie releases; studio news (acquisitions,
+      closures, notable hires); awards (Game Awards, BAFTAs, IGF, Steam
+      awards); genre revivals; significant DLC/expansions;
+      commercial-vs-critical disconnects worth analyzing.
+
+      Out-of-scope: game music (covered by `game-music`); routine patch
+      notes; reviews of every release (only NOTABLE); marketing fluff;
+      esports tournaments.
+
+      Read wiki/topics/games-of-note/purpose.md for the full charter.
+    search_hints:
+      - "indie game release notable"
+      - "AAA game launch postmortem"
+      - "game awards 2026 nominee"
+      - "studio acquisition closure"
+      - "live service game postmortem"
+    allowlist_domains:
+      - "gamedeveloper.com"
+      - "polygon.com"
+      - "eurogamer.net"
+      - "rockpapershotgun.com"
+      - "ign.com"
+      - "gamespot.com"
+      - "kotaku.com"
+      - "vg247.com"
+      - "gamesindustry.biz"
+    frequency: daily
+    max_sources_per_run: 20
+    freshness_window_days: 60
+
+  - id: game-music
+    display_name: "Game composers and audio"
+    purpose: |
+      In-scope: notable composers and their works; soundtrack releases;
+      adaptive/interactive music technology (Wwise, FMOD, proprietary
+      systems); live concerts; notable music criticism. Low natural source
+      flow — the safety cap will rarely engage here.
+
+      Out-of-scope: general games coverage (`games-of-note`); general
+      music industry coverage not games-related.
+
+      Read wiki/topics/game-music/purpose.md for the full charter.
+    search_hints:
+      - "video game soundtrack release"
+      - "adaptive music wwise FMOD"
+      - "video game composer interview"
+      - "game OST review notable"
+      - "game audio middleware"
+    allowlist_domains:
+      - "vgmonline.com"
+      - "rpgfan.com"
+      - "gamemusic.tools"
+      - "gamedeveloper.com"
+      - "materiacollective.com"
+    frequency: daily
+    max_sources_per_run: 20
+    freshness_window_days: 60

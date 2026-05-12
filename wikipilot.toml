@@ -12,9 +12,13 @@ require_tests_green = true
 block_human_only_file_changes = true
 
 [automerge.daily_research]
-# One PR per topic per day. Sized for ~2 sources × ~15 page touches.
-max_files_changed_per_topic = 40
-max_total_diff_lines_per_topic = 1500
+# One PR per topic per day. Phase 9 raises these from 40 / 1500 to accommodate
+# the inclusion-biased researcher (see CLAUDE.md "Cross-cutting relevance
+# criteria"): a busy day commonly produces 6-8 sources × 10-15 page touches.
+# A topic that hits the 20-source safety cap blows through the gate by
+# design — that's the signal that a human should eyeball the run.
+max_files_changed_per_topic = 80
+max_total_diff_lines_per_topic = 3000
 
 [automerge.wiki_query]
 # One PR per question. Sized for one answer page + back-fill on a few related pages.

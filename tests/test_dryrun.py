@@ -265,3 +265,68 @@ class TestImageRefsInProposal:
             "every dry-run proposal must include at least one image URL "
             "to exercise the download-source-images path"
         )
+
+
+class TestProposalSourceAlsoRelevantTo:
+    """Phase 9: ProposalSource carries an optional cross-topic flag."""
+
+    def test_defaults_to_empty_list(self) -> None:
+        from wikipilot.dryrun import ProposalSource
+
+        src = ProposalSource(url="https://x", title="t", excerpt="e")
+        assert src.also_relevant_to == []
+
+    def test_accepts_populated_list(self) -> None:
+        from wikipilot.dryrun import ProposalSource
+
+        src = ProposalSource(
+            url="https://x",
+            title="t",
+            excerpt="e",
+            also_relevant_to=["other-topic-1", "other-topic-2"],
+        )
+        assert src.also_relevant_to == ["other-topic-1", "other-topic-2"]
+
+    def test_apply_proposal_unaffected_by_flag(self, sample_vault: Vault) -> None:
+        # Apply a proposal whose sole source carries `also_relevant_to`; the
+        # source page should still be written exactly once under the
+        # researched topic. The flag is recorded on the in-memory dataclass
+        # only — Phase 9 doesn't route on it yet.
+        from wikipilot.dryrun import (
+            PageDiff,
+            Proposal,
+            ProposalSource,
+            apply_proposal,
+        )
+
+        src = ProposalSource(
+            url="https://example.com/cross-topic",
+            title="Cross-topic source",
+            excerpt="A source that spans multiple topics.",
+            also_relevant_to=["games-of-note"],
+        )
+        proposal = Proposal(
+            topic_id="ai-agents",
+            sources=[src],
+            page_diffs=[
+                PageDiff(
+                    path="topics/ai-agents/index.md",
+                    kind="topic",
+                    summary_addition=(
+                        "A cross-topic finding [[cross-topic-source-"
+                        + _expected_short_sha(src)
+                        + "]]."
+                    ),
+                )
+            ],
+        )
+        result = apply_proposal(sample_vault, proposal, today=date(2026, 5, 11))
+        # Exactly one source page created.
+        assert len(result.sources_added) == 1
+        assert result.sources_added[0].name.startswith("cross-topic-source-")
+
+
+def _expected_short_sha(src) -> str:
+    from wikipilot.sources import url_sha256
+
+    return url_sha256(src.url)[:8]

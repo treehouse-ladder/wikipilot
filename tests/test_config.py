@@ -51,6 +51,32 @@ class TestLoadTopics:
             "(see docs/runbook.md 'Adding a topic')"
         )
 
+    def test_repo_topics_have_index_md(self) -> None:
+        """Every topic also needs a `wiki/topics/<id>/index.md` (the synthesis page)."""
+        repo_root = Path(__file__).resolve().parents[1]
+        topics = load_topics(repo_root / "topics.yaml")
+        missing = [
+            t.id for t in topics if not (repo_root / "wiki/topics" / t.id / "index.md").exists()
+        ]
+        assert not missing, f"topics in topics.yaml without wiki/topics/<id>/index.md: {missing}"
+
+    def test_repo_topics_carry_phase9_safety_cap(self) -> None:
+        """Phase 9 regression guard: every seeded topic MUST set
+        `max_sources_per_run: 20` (the uniform safety cap). Earlier phases
+        used a tiered scheme (3, 5, 8); Phase 9 deliberately moved away from
+        per-topic numeric quality levers in favor of cross-cutting relevance
+        criteria + an inclusion-biased prompt. If you find yourself wanting
+        to lower this number, edit `purpose.md` or `CLAUDE.md` instead.
+        """
+        repo_root = Path(__file__).resolve().parents[1]
+        topics = load_topics(repo_root / "topics.yaml")
+        wrong = [(t.id, t.max_sources_per_run) for t in topics if t.max_sources_per_run != 20]
+        assert not wrong, (
+            f"Phase 9 sets max_sources_per_run uniformly to 20 (safety cap, not a "
+            f"quality lever). These topics drifted: {wrong}. See "
+            "wiki/topics/<id>/purpose.md and CLAUDE.md 'Cross-cutting relevance criteria'."
+        )
+
     def test_missing_purpose_rejected(self, tmp_path: Path) -> None:
         path = tmp_path / "topics.yaml"
         path.write_text(
@@ -138,6 +164,9 @@ class TestLoadWikipilotConfig:
         assert config.images.enabled is True
 
     def test_repo_config_is_valid(self) -> None:
+        # Phase 9 bumped daily_research thresholds from 40 / 1500 to 80 / 3000
+        # to match the inclusion-biased researcher; see wikipilot.toml.
         repo_root = Path(__file__).resolve().parents[1]
         config = load_wikipilot_config(repo_root / "wikipilot.toml")
-        assert config.daily_research.max_files_changed_per_topic == 40
+        assert config.daily_research.max_files_changed_per_topic == 80
+        assert config.daily_research.max_total_diff_lines_per_topic == 3000
