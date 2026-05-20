@@ -54,47 +54,57 @@ qmd 0.1.2 doesn't ship an MCP server. [`scripts/qmd_mcp_server.py`](../scripts/q
 - Reads the DB path from the `WIKIPILOT_QMD_DB` env var (default: `.qmd/wiki.db` relative to the server's CWD).
 - Opens a fresh qmd client per tool call (no caching) — necessary because FastMCP runs sync tools in anyio's threadpool and `sqlite3.Connection` is thread-affine.
 
-### Registering the connector in claude.ai
+### How the connector is wired (no UI registration needed)
 
-claude.ai → Settings → Connectors → Add MCP server:
+Wikipilot ships a project-scoped `.mcp.json` at the repo root that registers the shim as a stdio MCP server. Claude Code (CLI, Cursor, and Cloud Routines) auto-loads it on every session that starts in the project.
 
-| Field | Value |
-|---|---|
-| Name | `wikipilot-qmd` |
-| Command | `python` |
-| Args | `scripts/qmd_mcp_server.py` |
-| Working directory | absolute path to your wikipilot repo |
-| Env | `WIKIPILOT_QMD_DB=<repo>/.qmd/wiki.db` (optional; only if you indexed somewhere non-default) |
-
-Save and verify both `qmd_search` and `qmd_collection_info` appear in the connector's tool list.
-
-### Registering the connector in Cursor
-
-Add to your project's MCP config (`.cursor/mcp.json` or your global Cursor MCP settings):
+`.mcp.json` (committed to git):
 
 ```json
 {
   "mcpServers": {
     "wikipilot-qmd": {
-      "command": "python",
-      "args": ["scripts/qmd_mcp_server.py"],
-      "cwd": "<absolute path to wikipilot repo>"
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "python", "scripts/qmd_mcp_server.py"],
+      "env": { "PYTHONUNBUFFERED": "1" }
     }
   }
 }
 ```
 
-Re-open Cursor and check `Cmd-Shift-P → MCP: Show servers` shows `wikipilot-qmd` connected with two tools.
+`uv run` is used so the shim always picks up the project's `.venv` (which has `qmd`, `mcp`, `rank_bm25` installed via `uv sync --frozen --extra dev`). No global `pip install qmd` is required.
+
+Project-scoped `.mcp.json` servers normally trigger a one-time approval prompt the first time you open the project. Wikipilot pre-approves `wikipilot-qmd` via `.claude/settings.json`:
+
+```json
+{
+  "enabledMcpjsonServers": ["wikipilot-qmd"]
+}
+```
+
+That keeps cloud routines from sitting on an approval prompt that no human is there to click.
+
+> **Note:** the **claude.ai → Settings → Connectors** dialog ("Add custom connector") is for **remote, URL-based** MCP servers only. It does not accept stdio servers. Don't try to register `wikipilot-qmd` there — leave the dialog closed and let the project-scoped `.mcp.json` do its job.
+
+### Verifying the connector loaded
+
+In Cursor (or any Claude Code CLI):
+
+- `Cmd/Ctrl-Shift-P → MCP: Show servers` should list `wikipilot-qmd` connected with **2 tools**: `qmd_search` and `qmd_collection_info`.
+- In the agent panel, `Should be in your tools list as `mcp__wikipilot-qmd__qmd_search` and `mcp__wikipilot-qmd__qmd_collection_info`.
+
+If the server doesn't appear, the most common cause is a stale `.venv` — run `uv sync --frozen --extra dev` from the repo root and reopen the editor.
 
 ### Local Windows caveat
 
 Running the MCP server end-to-end against an MCP **client** on Windows (e.g. testing with the Python MCP SDK's `stdio_client`) currently hangs after the first `tools/call` due to a known stdio interaction between subprocess pipes, anyio, and FastMCP's threadpool. This does not affect:
 
-- The server's correctness (18 unit tests cover the tool functions directly).
+- The server's correctness (unit + real-qmd integration tests cover the tool functions directly).
 - Cloud routine usage (cloud env is Linux, where the issue doesn't manifest).
-- Live registration in Claude Code or Cursor (both use their own MCP transport that doesn't hit the Python `stdio_client` path).
+- Live use in Claude Code / Cursor (both connect via their own MCP transport that doesn't hit the Python `stdio_client` path).
 
-If you need a local smoke test on Windows, use the `qmd_collection_info()` tool path — it returns quickly. For full end-to-end testing, defer to the cloud routine's first run.
+If you need a local smoke test on Windows, exercise `qmd_collection_info()` — it returns immediately. For full end-to-end testing, defer to the cloud routine's first run.
 
 ## Verifying the local index is alive
 
@@ -129,4 +139,6 @@ The trade-off: qmd doesn't ship an MCP server itself, so we maintain `scripts/qm
 | `pytest` fails with `ModuleNotFoundError: No module named 'rank_bm25'` on qmd's pytest plugin | Same fix — `pip install rank_bm25`. Pinned in `pyproject.toml` so this should self-resolve after `pip install -e ".[dev]"`. |
 | `qmd_search` returns empty / stale results | Re-index: `wikipilot index-wiki --full`. The full mode wipes the collection and re-embeds every file. |
 | First `index-wiki` takes forever | One-time HF model download (~600 MB). Watch `~/.cache/huggingface/hub/` grow; subsequent runs reuse the cached weights. |
-| `qmd_collection_info` reports zero docs after indexing | The MCP server is pointing at a different DB than `wikipilot index-wiki` wrote to. Set `WIKIPILOT_QMD_DB` in the connector env. |
+| `qmd_collection_info` reports zero docs after indexing | The MCP server is pointing at a different DB than `wikipilot index-wiki` wrote to. Set `WIKIPILOT_QMD_DB` in `.mcp.json`'s `env` block (or as a session env var). |
+| `wikipilot-qmd` server not in the MCP list | Claude Code didn't discover `.mcp.json`. Confirm you opened the project at the repo root (not a parent dir), and that `.claude/settings.json` includes `wikipilot-qmd` in `enabledMcpjsonServers`. Restart the session. |
+| Tried to add `wikipilot-qmd` in claude.ai → Settings → Connectors and it asks for a URL | That dialog is for **remote** MCP servers only. Cancel; our shim is stdio-based and is wired through `.mcp.json` automatically — no manual registration. |

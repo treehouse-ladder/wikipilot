@@ -1,6 +1,6 @@
 # Routines setup
 
-Step-by-step for creating each Wikipilot routine in `claude.ai/code/routines`. The qmd MCP connector is shared across all three; set it up once first.
+Step-by-step for creating each Wikipilot routine in `claude.ai/code/routines`. The qmd MCP server is wired automatically through the project's `.mcp.json` — there is **no** manual connector registration.
 
 ## Prerequisites
 
@@ -8,33 +8,30 @@ Step-by-step for creating each Wikipilot routine in `claude.ai/code/routines`. T
 - An Anthropic plan with routines enabled (Pro / Max / Team / Enterprise — daily run caps differ).
 - Local: `gh auth login`, `uv` installed, `python 3.12+`.
 
-## qmd MCP connector (one-time, shared by all routines)
+## qmd MCP server (auto-wired, no UI registration)
 
 Wikipilot uses [qmd](https://pypi.org/project/qmd/) as its hybrid BM25 + vector search layer over `wiki/`, exposed to subagents via MCP. Without it, `topic-researcher` and `query-answerer` would have to grep the wiki manually.
 
-qmd 0.1.2 doesn't ship its own MCP server — we provide a small FastMCP-based shim at [`scripts/qmd_mcp_server.py`](../scripts/qmd_mcp_server.py) that exposes a `qmd_search` and `qmd_collection_info` tool over stdio.
+qmd 0.1.2 doesn't ship its own MCP server — we provide a small FastMCP-based shim at [`scripts/qmd_mcp_server.py`](../scripts/qmd_mcp_server.py) that exposes `qmd_search` and `qmd_collection_info` tools over stdio. Two committed files do all the wiring:
 
-1. **Local install** (only needed for local dev / dry-runs; cloud install happens via the setup script): `pip install -e ".[dev]"` from the repo root. This pulls in `qmd`, `rank_bm25`, and the `mcp` Python SDK as declared dependencies.
+- [`/.mcp.json`](../.mcp.json) — declares the `wikipilot-qmd` stdio server (`uv run python scripts/qmd_mcp_server.py`).
+- [`/.claude/settings.json`](../.claude/settings.json) — `enabledMcpjsonServers: ["wikipilot-qmd"]` so cloud routines auto-approve it without an interactive prompt.
+
+When a Cloud Routine container clones the repo and starts a Claude Code session, both files are picked up automatically and the agent gets `mcp__wikipilot-qmd__qmd_search` + `mcp__wikipilot-qmd__qmd_collection_info` in its tool list.
+
+> **Do NOT try to register `wikipilot-qmd` in claude.ai → Settings → Connectors.** That dialog is for **remote URL-based** MCP servers only and will reject our stdio command. The `.mcp.json` mechanism replaces it entirely for stdio servers.
+
+What you still need to do once, locally:
+
+1. **Local install** (only needed for local dev / dry-runs; cloud install happens via the setup script): `uv sync --frozen --extra dev` from the repo root. This pulls in `qmd`, `rank_bm25`, and the `mcp` Python SDK as declared dependencies.
 2. **Index your vault** (run from repo root):
    ```bash
-   wikipilot index-wiki --full
+   uv run wikipilot index-wiki --full
    ```
    Writes `.qmd/wiki.db` (gitignored). Subsequent runs are incremental (the cloud setup script calls this on every routine start). First-time call also downloads the `Qwen/Qwen3-Embedding-0.6B` model to `~/.cache/huggingface/` (~600 MB, one-time).
-3. **Register the connector in claude.ai** → Settings → Connectors → Add MCP server:
+3. Confirm the connector loaded by opening any routine's first dry-run output (Step 4 below) and looking for `mcp__wikipilot-qmd__qmd_search` in the tool list.
 
-   | Field | Value |
-   |---|---|
-   | Name | `wikipilot-qmd` |
-   | Command | `python` |
-   | Args | `scripts/qmd_mcp_server.py` |
-   | Working directory | absolute path to the wikipilot repo |
-   | Env | (optional) `WIKIPILOT_QMD_DB=<repo>/.qmd/wiki.db` |
-
-   Save and verify both `qmd_search` and `qmd_collection_info` appear in the connector's tool list.
-
-4. Confirm the connector by running a routine in dry-run mode (Step 4 below).
-
-See [`docs/qmd-setup.md`](qmd-setup.md) for local-dev qmd setup details and the Cursor MCP registration syntax.
+See [`docs/qmd-setup.md`](qmd-setup.md) for the full local-dev qmd reference, troubleshooting, and the Windows stdio caveat.
 
 ## Daily Research routine
 
@@ -45,7 +42,8 @@ claude.ai/code/routines → New routine → Remote.
 | Name | `Wikipilot Daily Research` |
 | Repository | this repo, default branch `main` |
 | Setup script | `curl -LsSf https://astral.sh/uv/install.sh \| sh && uv sync --frozen --extra dev && uv run wikipilot index-wiki` (qmd, rank_bm25, and mcp are declared deps in `pyproject.toml` — `uv sync` brings them in) |
-| Connectors | `wikipilot-qmd` (the shim at `scripts/qmd_mcp_server.py`) — minimize attack surface |
+| Connectors | **Leave empty.** The "Connectors" field is for remote URL-based MCP servers; our stdio shim is wired through `.mcp.json` automatically. |
+| Allowed tools | Add `mcp__wikipilot-qmd__qmd_search` and `mcp__wikipilot-qmd__qmd_collection_info` to the routine's allowed-tools list (the routine UI does not auto-populate MCP tool names; see [`anthropics/claude-code#51189`](https://github.com/anthropics/claude-code/issues/51189)). Also keep `Bash`, `Read`, `Write`, `Edit`, `Grep`, `Glob`, `Task`, `WebSearch`. |
 | Env vars | `WIKIPILOT_AUTO_MERGE=true`, `CLAUDE_CODE_FORK_SUBAGENT=1` |
 | Branch policy | Default. Cloud routines can only push to `claude/*` (which is what `git_ops.branch_for_daily` produces). |
 | Network | Default policy is fine — WebSearch goes through Anthropic infra. |
@@ -64,7 +62,8 @@ Beta header note: Routines API uses `experimental-cc-routine-2026-04-01`.
 | Name | `Wikipilot Query` |
 | Repository | same repo, default branch `main` |
 | Setup script | same as Daily Research |
-| Connectors | qmd (same) |
+| Connectors | **Leave empty** (same reason as Daily Research — wired via `.mcp.json`). |
+| Allowed tools | same as Daily Research (`mcp__wikipilot-qmd__qmd_search`, `mcp__wikipilot-qmd__qmd_collection_info`, plus the standard `Bash`/`Read`/`Write`/`Edit`/`Grep`/`Glob`/`Task`/`WebSearch`). |
 | Env vars | same |
 | Triggers | (a) **GitHub trigger** (preferred for human use): see [GitHub-issue trigger](#github-issue-trigger-for-wiki-query) below. (b) **API trigger**: copy URL + token from the routine UI, paste into `~/.config/wikipilot/credentials.toml` under `[query]`. No schedule trigger (on-demand only). |
 | Model | **Sonnet** (orchestrator); `query-answerer` subagent pins **Opus 4.7** via its frontmatter. |
@@ -92,7 +91,8 @@ If the GitHub App can't be installed (private org policy, etc.), the API trigger
 | Name | `Wikipilot Weekly Health` |
 | Repository | same |
 | Setup script | same |
-| Connectors | qmd (same) |
+| Connectors | **Leave empty** (wired via `.mcp.json`). |
+| Allowed tools | same as Daily Research. |
 | Env vars | same |
 | Triggers | Schedule: weekly Sunday 03:00 local. (No API trigger — weekly health is intentionally cheap and predictable.) |
 | Model | **Sonnet** (orchestrator AND `wiki-disputes-scanner` subagent — both pin Sonnet via their frontmatter). |

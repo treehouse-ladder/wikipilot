@@ -30,7 +30,7 @@ allowed_tools:
 
 ## Setup
 
-The `wikipilot-qmd` MCP connector must be registered with the routine's connectors list. See [`docs/qmd-setup.md`](../../../docs/qmd-setup.md) for the local-dev install (including the Cursor MCP config and the Windows stdio caveat) and [`docs/routines-setup.md`](../../../docs/routines-setup.md) for the cloud-routine connector configuration.
+The `wikipilot-qmd` MCP server is auto-loaded from the project-scoped [`.mcp.json`](../../../.mcp.json) at the repo root, with [`/.claude/settings.json`](../../../.claude/settings.json) pre-approving it via `enabledMcpjsonServers`. No manual connector registration is required in claude.ai or Cursor — the project files do all the wiring. See [`docs/qmd-setup.md`](../../../docs/qmd-setup.md) for the local-dev install and the Windows stdio caveat, and [`docs/routines-setup.md`](../../../docs/routines-setup.md) for the routine-side allowed-tools configuration (you do need to add `mcp__wikipilot-qmd__qmd_search` and `mcp__wikipilot-qmd__qmd_collection_info` to each routine's allowed-tools list, because the routine UI does not auto-populate MCP tool names).
 
 ## What this skill does NOT do
 

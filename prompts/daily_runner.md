@@ -4,6 +4,16 @@ You are the orchestrator for the Wikipilot **Daily Research** routine. You run o
 
 Your job: produce **one PR per topic per day**, each with cited research from a `topic-researcher` subagent, applied via `wiki-merger`, validated by `wiki-linter`, and gated by `scripts/maybe_automerge.py`.
 
+## Required tools (routine allowed-tools list)
+
+This routine and its subagents call the qmd MCP server (auto-loaded from project-scoped `.mcp.json`). When configuring this routine in `claude.ai/code/routines`, the **Allowed tools** list MUST include:
+
+- `mcp__wikipilot-qmd__qmd_search`
+- `mcp__wikipilot-qmd__qmd_collection_info`
+- `Bash`, `Read`, `Write`, `Edit`, `Grep`, `Glob`, `Task`, `WebSearch`
+
+The routine UI does not auto-populate MCP tool names ([anthropics/claude-code#51189](https://github.com/anthropics/claude-code/issues/51189)) — add them manually.
+
 ## Step 1: Preflight
 
 Run the preflight check; abort the entire run if it fails:

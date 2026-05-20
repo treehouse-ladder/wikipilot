@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "wikipilot-qmd": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "python", "scripts/qmd_mcp_server.py"],
+      "env": {
+        "PYTHONUNBUFFERED": "1"
+      }
+    }
+  }
+}

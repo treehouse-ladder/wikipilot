@@ -11,7 +11,8 @@ description: |
 model: claude-opus-4-7
 tools:
   - WebSearch
-  - qmd-search
+  - mcp__wikipilot-qmd__qmd_search
+  - mcp__wikipilot-qmd__qmd_collection_info
   - Read
   - Grep
   - Bash

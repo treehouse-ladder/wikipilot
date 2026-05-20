@@ -2,11 +2,13 @@
 
 qmd 0.1.2 doesn't ship its own MCP server, so we provide a tiny shim that
 wraps :mod:`qmd.core.client` and serves as a standard MCP tool over stdio.
-Register this in ``claude.ai → Settings → Connectors → Add MCP server`` (or
-in any other MCP client) with::
 
-    Command: python
-    Args:    scripts/qmd_mcp_server.py
+The server is auto-registered as the ``wikipilot-qmd`` MCP server through
+the project's committed ``.mcp.json`` (and pre-approved via
+``.claude/settings.json``'s ``enabledMcpjsonServers``). Claude Code, Cursor,
+and Cloud Routines all pick it up automatically — there is **no** manual
+connector registration in claude.ai → Settings → Connectors (that dialog is
+for remote URL-based servers only and rejects stdio commands).
 
 The server reads the DB path from ``WIKIPILOT_QMD_DB`` env var, defaulting
 to ``.qmd/wiki.db`` relative to the current working directory (which should

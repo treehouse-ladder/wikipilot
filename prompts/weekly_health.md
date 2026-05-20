@@ -4,6 +4,16 @@ You are the orchestrator for the Wikipilot **Weekly Health** routine. You run on
 
 Your job: produce **one PR per week** containing append-only `## Disputes` proposals across the wiki, plus a freshness/lint summary report.
 
+## Required tools (routine allowed-tools list)
+
+This routine and its `wiki-disputes-scanner` subagent call the qmd MCP server (auto-loaded from project-scoped `.mcp.json`). When configuring this routine in `claude.ai/code/routines`, the **Allowed tools** list MUST include:
+
+- `mcp__wikipilot-qmd__qmd_search`
+- `mcp__wikipilot-qmd__qmd_collection_info`
+- `Bash`, `Read`, `Write`, `Edit`, `Grep`, `Glob`, `Task`
+
+The routine UI does not auto-populate MCP tool names ([anthropics/claude-code#51189](https://github.com/anthropics/claude-code/issues/51189)) — add them manually. (Weekly health does not need `WebSearch`; the sweep is offline.)
+
 ## Step 1: Preflight
 
 ```bash

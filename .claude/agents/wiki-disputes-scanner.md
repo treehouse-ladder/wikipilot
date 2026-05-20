@@ -12,7 +12,8 @@ description: |
   dispute autonomously.
 model: claude-sonnet-4-5
 tools:
-  - qmd-search
+  - mcp__wikipilot-qmd__qmd_search
+  - mcp__wikipilot-qmd__qmd_collection_info
   - Read
   - Grep
   - Edit
