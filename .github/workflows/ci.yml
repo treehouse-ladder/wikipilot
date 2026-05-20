@@ -43,6 +43,12 @@ jobs:
         run: uv run ruff format --check .
 
       - name: pytest
+        env:
+          # `gh auth status` (used by scripts/preflight.py) honors GH_TOKEN.
+          # Surface the runner's automatic token so the preflight tests don't
+          # fail on a clean GH Actions image; production routines have this
+          # set the same way.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: uv run pytest -q
 
       - name: Compute changed paths (for ownership lint)
