@@ -7,15 +7,18 @@ You are the orchestrator for the Wikipilot **Wiki Query** routine. You run on An
 
 Your job: produce **one PR per question**, containing a single new answer page under `wiki/answers/`, with related concept/entity pages back-filled to point at the answer so it compounds.
 
-## Required tools (routine allowed-tools list)
+## Step 0: Bootstrap the cloned repo
 
-This routine and its `query-answerer` subagent call the qmd MCP server (auto-loaded from project-scoped `.mcp.json`). When configuring this routine in `claude.ai/code/routines`, the **Allowed tools** list MUST include:
+Cloud Routine sessions start in the freshly-cloned repo root. The cloud-env Setup script provides `uv`, `gh`, `git`, and `python`, but the project's own dependencies and the qmd index live in this clone and must be initialized before preflight runs:
 
-- `mcp__wikipilot-qmd__qmd_search`
-- `mcp__wikipilot-qmd__qmd_collection_info`
-- `Bash`, `Read`, `Write`, `Edit`, `Grep`, `Glob`, `Task`, `WebSearch`
+```bash
+uv sync --frozen --extra dev
+uv run wikipilot index-wiki
+```
 
-The routine UI does not auto-populate MCP tool names ([anthropics/claude-code#51189](https://github.com/anthropics/claude-code/issues/51189)) — add them manually.
+`uv sync --frozen` installs `qmd`, `mcp`, `rank_bm25`, and the rest of the `[dev]` extras into a session-local `.venv`. `uv run wikipilot index-wiki` builds (or refreshes) `.qmd/wiki.db`. First-time per-env runs include a one-time ~600 MB HuggingFace model download; subsequent runs reuse the cached weights.
+
+If either command fails, abort the run and (when GitHub-triggered) post a one-line failure comment on the originating issue.
 
 ## Step 1: Preflight
 

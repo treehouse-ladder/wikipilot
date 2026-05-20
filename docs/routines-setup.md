@@ -41,10 +41,12 @@ claude.ai/code/routines → New routine → Remote.
 |---|---|
 | Name | `Wikipilot Daily Research` |
 | Repository | this repo, default branch `main` |
-| Setup script | `curl -LsSf https://astral.sh/uv/install.sh \| sh && uv sync --frozen --extra dev && uv run wikipilot index-wiki` (qmd, rank_bm25, and mcp are declared deps in `pyproject.toml` — `uv sync` brings them in) |
-| Connectors | **Leave empty.** The "Connectors" field is for remote URL-based MCP servers; our stdio shim is wired through `.mcp.json` automatically. |
-| Allowed tools | Add `mcp__wikipilot-qmd__qmd_search` and `mcp__wikipilot-qmd__qmd_collection_info` to the routine's allowed-tools list (the routine UI does not auto-populate MCP tool names; see [`anthropics/claude-code#51189`](https://github.com/anthropics/claude-code/issues/51189)). Also keep `Bash`, `Read`, `Write`, `Edit`, `Grep`, `Glob`, `Task`, `WebSearch`. |
-| Env vars | `WIKIPILOT_AUTO_MERGE=true`, `CLAUDE_CODE_FORK_SUBAGENT=1` |
+| Cloud env Setup script | `uv --version` (sanity check). The Anthropic cloud-env container ships with `uv`, `gh`, `git`, and Python pre-installed — we don't install anything. Repo-specific bootstrap (`uv sync --frozen --extra dev` + `uv run wikipilot index-wiki`) cannot run here because the setup script executes **before** the per-session repo clone; it is therefore moved into the routine prompt's Step 0. |
+| Cloud env Network access | **Trusted** is fine. PyPI, GitHub, and HuggingFace are on the default allowlist. `astral.sh` is **not** on it (so the Astral installer would 403), but we don't need it because `uv` is pre-installed. If you ever need a host outside the default list, switch to **Custom** and add the domain. |
+| Connectors | **Leave empty.** The "Connectors" field is for remote URL-based MCP servers; our stdio shim is wired through `.mcp.json` automatically when the agent session starts in the cloned repo. |
+| Permissions tab | "Allow unrestricted git push" → **OFF**. Routines push to `claude/*` branches by design; the auto-merge gate handles the move to `main` via `gh pr merge`, never via direct `git push`. |
+| Behavior tab | "Auto-fix pull requests" → **OFF** initially. Turn it on later, after several routine runs land cleanly, if you want Claude to babysit failing CI on its own PRs. |
+| Env vars (cloud env) | `WIKIPILOT_AUTO_MERGE=true`, `CLAUDE_CODE_FORK_SUBAGENT=1` |
 | Branch policy | Default. Cloud routines can only push to `claude/*` (which is what `git_ops.branch_for_daily` produces). |
 | Network | Default policy is fine — WebSearch goes through Anthropic infra. |
 | Triggers | (a) Schedule: daily 06:00 local. (b) **API trigger** (added after first save): copy URL + bearer token, paste into `~/.config/wikipilot/credentials.toml` under `[research]` for `wikipilot research --topic <id>`. |
@@ -61,10 +63,11 @@ Beta header note: Routines API uses `experimental-cc-routine-2026-04-01`.
 |---|---|
 | Name | `Wikipilot Query` |
 | Repository | same repo, default branch `main` |
-| Setup script | same as Daily Research |
-| Connectors | **Leave empty** (same reason as Daily Research — wired via `.mcp.json`). |
-| Allowed tools | same as Daily Research (`mcp__wikipilot-qmd__qmd_search`, `mcp__wikipilot-qmd__qmd_collection_info`, plus the standard `Bash`/`Read`/`Write`/`Edit`/`Grep`/`Glob`/`Task`/`WebSearch`). |
-| Env vars | same |
+| Cloud env | reuse the same env you configured for Daily Research (one env can be selected by all three routines). |
+| Connectors | **Leave empty** (wired via `.mcp.json`). |
+| Permissions tab | "Allow unrestricted git push" → **OFF**. |
+| Behavior tab | "Auto-fix pull requests" → **OFF** initially. |
+| Env vars | inherited from the cloud env. |
 | Triggers | (a) **GitHub trigger** (preferred for human use): see [GitHub-issue trigger](#github-issue-trigger-for-wiki-query) below. (b) **API trigger**: copy URL + token from the routine UI, paste into `~/.config/wikipilot/credentials.toml` under `[query]`. No schedule trigger (on-demand only). |
 | Model | **Sonnet** (orchestrator); `query-answerer` subagent pins **Opus 4.7** via its frontmatter. |
 | Prompt | Copy [`prompts/query_answerer.md`](../prompts/query_answerer.md) into the routine UI. |
@@ -90,10 +93,11 @@ If the GitHub App can't be installed (private org policy, etc.), the API trigger
 |---|---|
 | Name | `Wikipilot Weekly Health` |
 | Repository | same |
-| Setup script | same |
+| Cloud env | reuse the same env. |
 | Connectors | **Leave empty** (wired via `.mcp.json`). |
-| Allowed tools | same as Daily Research. |
-| Env vars | same |
+| Permissions tab | "Allow unrestricted git push" → **OFF**. |
+| Behavior tab | "Auto-fix pull requests" → **OFF** initially. |
+| Env vars | inherited from the cloud env. |
 | Triggers | Schedule: weekly Sunday 03:00 local. (No API trigger — weekly health is intentionally cheap and predictable.) |
 | Model | **Sonnet** (orchestrator AND `wiki-disputes-scanner` subagent — both pin Sonnet via their frontmatter). |
 | Prompt | Copy [`prompts/weekly_health.md`](../prompts/weekly_health.md) into the routine UI. |
