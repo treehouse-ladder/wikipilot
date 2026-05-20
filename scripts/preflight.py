@@ -155,7 +155,7 @@ def _check_qmd_indexed(wiki_path: Path) -> PreflightCheck:
         return PreflightCheck(
             name="qmd indexed",
             status=CheckStatus.FAIL,
-            message="qmd not on PATH; install with `pip install qmd` (see docs/qmd-setup.md)",
+            message=("qmd not importable; install with `pip install qmd` (see docs/qmd-setup.md)"),
         )
     qmd_dir = wiki_path.parent / ".qmd"
     if not qmd_dir.exists():

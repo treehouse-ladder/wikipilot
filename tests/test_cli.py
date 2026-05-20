@@ -213,13 +213,70 @@ class TestIngestCommand:
 
 
 class TestIndexWikiCommand:
-    def test_no_qmd_exits_zero(self, runner: CliRunner, tmp_path: Path) -> None:
+    def test_missing_qmd_exits_one(
+        self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
         vault = _copy_vault(tmp_path)
-        # Whether or not qmd is installed on CI, the command should give a
-        # graceful exit; we don't mock here because the CLI handles both paths
-        # by exiting 0 when qmd is missing.
+        monkeypatch.setattr("wikipilot.cli.qmd_available", lambda: False)
         result = runner.invoke(main, ["index-wiki", str(vault)])
-        assert result.exit_code == 0
+        assert result.exit_code == 1
+        # Click's CliRunner merges stderr into output by default.
+        assert "qmd not importable" in result.output
+
+    def test_qmd_present_indexes_and_exits_zero(
+        self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        from wikipilot.qmd_index import IndexResult
+
+        vault = _copy_vault(tmp_path)
+        monkeypatch.setattr("wikipilot.cli.qmd_available", lambda: True)
+        called: dict[str, object] = {}
+
+        def fake_index_vault(vault_path: Path, *, full: bool = False) -> IndexResult:
+            called["vault_path"] = vault_path
+            called["full"] = full
+            return IndexResult(
+                ok=True,
+                qmd_available=True,
+                indexed_files=2,
+                added=2,
+                updated=0,
+                deleted=0,
+                skipped=0,
+                message="indexed 2 file(s)",
+            )
+
+        monkeypatch.setattr("wikipilot.cli.index_vault", fake_index_vault)
+        result = runner.invoke(main, ["index-wiki", str(vault), "--full"])
+        assert result.exit_code == 0, result.output
+        assert called["full"] is True
+        assert called["vault_path"] == vault
+        assert "indexed 2 file(s)" in result.output
+
+    def test_qmd_present_index_failure_exits_one(
+        self, runner: CliRunner, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        from wikipilot.qmd_index import IndexResult
+
+        vault = _copy_vault(tmp_path)
+        monkeypatch.setattr("wikipilot.cli.qmd_available", lambda: True)
+
+        def fake_index_vault(vault_path: Path, *, full: bool = False) -> IndexResult:
+            return IndexResult(
+                ok=False,
+                qmd_available=True,
+                indexed_files=0,
+                added=0,
+                updated=0,
+                deleted=0,
+                skipped=0,
+                message="boom",
+            )
+
+        monkeypatch.setattr("wikipilot.cli.index_vault", fake_index_vault)
+        result = runner.invoke(main, ["index-wiki", str(vault)])
+        assert result.exit_code == 1
+        assert "boom" in result.output
 
 
 class TestResearchAndQueryCommands:

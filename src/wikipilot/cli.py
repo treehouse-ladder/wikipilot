@@ -278,8 +278,11 @@ def deck_cmd(
 def index_wiki_cmd(vault_path: Path, full: bool) -> None:
     """Refresh the qmd index over the wiki/ vault."""
     if not qmd_available():
-        click.echo("qmd not found on PATH. Install with `pip install qmd` (see docs/qmd-setup.md).")
-        sys.exit(0)
+        click.echo(
+            "qmd not importable. Install with `pip install qmd` (see docs/qmd-setup.md).",
+            err=True,
+        )
+        sys.exit(1)
     result = index_vault(Path(vault_path), full=full)
     click.echo(result.message)
     sys.exit(0 if result.ok else 1)

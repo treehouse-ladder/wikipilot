@@ -99,7 +99,7 @@ class TestRunPreflight:
             result = run_preflight(repo_root=fake_repo)
         qmd_check = next(c for c in result.checks if c.name == "qmd indexed")
         assert qmd_check.status == CheckStatus.FAIL
-        assert "qmd not on PATH" in qmd_check.message
+        assert "qmd not importable" in qmd_check.message
 
     def test_qmd_installed_but_no_index(self, fake_repo: Path) -> None:
         with patch("scripts.preflight.qmd_available", return_value=True):

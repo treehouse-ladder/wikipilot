@@ -1,64 +1,132 @@
 # qmd setup
 
-[qmd](https://pypi.org/project/qmd/) is the local hybrid BM25 + vector search tool Wikipilot exposes to subagents via MCP. The cloud routines install it during their setup script (see [`routines-setup.md`](routines-setup.md)); this page covers local-dev install for offline `wikipilot lint` / `wikipilot dry-run` workflows.
+[qmd](https://pypi.org/project/qmd/) is the on-device hybrid BM25 + vector search library Wikipilot indexes the wiki into. Subagents read it over MCP via the small shim at [`scripts/qmd_mcp_server.py`](../scripts/qmd_mcp_server.py) — qmd itself does **not** ship an MCP server, so we provide one.
+
+The cloud routines install qmd during their setup script (see [`routines-setup.md`](routines-setup.md)). This page covers local-dev install for `wikipilot index-wiki`, `wikipilot dry-run`, and registering the MCP server with Claude Code / Cursor locally.
+
+## What gets installed
+
+`pip install qmd` pulls down qmd 0.1.2 (`chengzhag/qmd-py`) and its heavyweight transitives: `sentence-transformers`, `torch`, `transformers`, `scikit-learn`, `sqlite-vec`. First-time installs are ~1–2 GB on disk and a few minutes on a typical connection. Subsequent reinstalls are fast.
+
+`qmd` 0.1.2 has a packaging gap: its pytest plugin imports `rank_bm25` without declaring it as a dep. We add it explicitly in `pyproject.toml` so `uv sync` / `pip install -e .` always include it.
 
 ## Local install
 
-```bash
+```powershell
 # Inside the wikipilot venv:
-uv pip install qmd
-qmd --version
+.\.venv\Scripts\Activate.ps1
+pip install -e ".[dev]"
+qmd --help
 ```
 
-Or system-wide:
+If you previously installed qmd into your system Python by accident, install it into the venv explicitly:
 
-```bash
-pip install --user qmd
+```powershell
+.\.venv\Scripts\python.exe -m pip install qmd rank_bm25 mcp
 ```
 
 ## Initial index
 
-```bash
-uv run wikipilot index-wiki --full
+```powershell
+wikipilot index-wiki --full
 ```
 
-This builds the index under `.qmd/` (gitignored). On a small wiki (< 100 pages) it takes seconds. The `--full` flag is only needed for first index or after major schema changes; subsequent calls without `--full` are incremental.
+The first index call also triggers a one-time download of the `Qwen/Qwen3-Embedding-0.6B` model (~600 MB) from HuggingFace into `~/.cache/huggingface/`. After that, the embedding model is cached for the life of the machine. Total first-run cost for the wiki: ~30 s including model load.
+
+The DB lands at `.qmd/wiki.db` (sibling of `wiki/`). `.qmd/` is already in `.gitignore` — don't commit it.
 
 ## Refresh after writes
 
-The cloud setup script runs `wikipilot index-wiki` (incremental, no `--full`) on every routine start, so cloud runs are always fresh. Locally, you can:
+```powershell
+wikipilot index-wiki   # incremental: skips files whose mtime is unchanged
+```
 
-- Run `uv run wikipilot index-wiki` after every batch of edits.
-- Or set up a pre-commit hook that runs it before every commit:
-  ```bash
-  # .git/hooks/pre-commit
-  #!/usr/bin/env bash
-  set -e
-  uv run wikipilot index-wiki
-  git add .qmd/  # NOT recommended — keep .qmd/ gitignored
-  ```
-  (We don't actually want `.qmd/` checked in; the hook just keeps your local index current. The line above is illustrative — most users skip the `git add`.)
+The incremental indexer compares each file's `st_mtime_ns` against the value stored on the document's metadata. Unchanged files are skipped; new files are added; removed files are deleted from the collection. Typical incremental run on the real wiki: under a second.
 
-## Verifying the MCP connector
+The cloud setup script runs `wikipilot index-wiki` on every routine start so cloud runs always see fresh content. Locally you can run it after every batch of edits, or wire it into a pre-commit hook.
 
-Once registered in claude.ai → Settings → Connectors:
+## MCP server (subagents talk to qmd through this)
 
-1. Open Claude Code locally.
-2. Confirm the `qmd-search` tool appears in the available tools list.
-3. Run a smoke search: ask Claude "search the wiki for 'attention'" — it should call `qmd-search` and return ranked results from `wiki/concepts/transformer-attention.md` (or wherever your real content lives).
+qmd 0.1.2 doesn't ship an MCP server. [`scripts/qmd_mcp_server.py`](../scripts/qmd_mcp_server.py) is the small (~150-line) FastMCP-based shim that:
+
+- Exposes a `qmd_search(query, top_k, rerank, filters_json)` tool that proxies to `qmd.core.collection.SqliteCollection.hybrid_search`.
+- Exposes a `qmd_collection_info()` tool for diagnostics (doc count, embedding dim).
+- Reads the DB path from the `WIKIPILOT_QMD_DB` env var (default: `.qmd/wiki.db` relative to the server's CWD).
+- Opens a fresh qmd client per tool call (no caching) — necessary because FastMCP runs sync tools in anyio's threadpool and `sqlite3.Connection` is thread-affine.
+
+### Registering the connector in claude.ai
+
+claude.ai → Settings → Connectors → Add MCP server:
+
+| Field | Value |
+|---|---|
+| Name | `wikipilot-qmd` |
+| Command | `python` |
+| Args | `scripts/qmd_mcp_server.py` |
+| Working directory | absolute path to your wikipilot repo |
+| Env | `WIKIPILOT_QMD_DB=<repo>/.qmd/wiki.db` (optional; only if you indexed somewhere non-default) |
+
+Save and verify both `qmd_search` and `qmd_collection_info` appear in the connector's tool list.
+
+### Registering the connector in Cursor
+
+Add to your project's MCP config (`.cursor/mcp.json` or your global Cursor MCP settings):
+
+```json
+{
+  "mcpServers": {
+    "wikipilot-qmd": {
+      "command": "python",
+      "args": ["scripts/qmd_mcp_server.py"],
+      "cwd": "<absolute path to wikipilot repo>"
+    }
+  }
+}
+```
+
+Re-open Cursor and check `Cmd-Shift-P → MCP: Show servers` shows `wikipilot-qmd` connected with two tools.
+
+### Local Windows caveat
+
+Running the MCP server end-to-end against an MCP **client** on Windows (e.g. testing with the Python MCP SDK's `stdio_client`) currently hangs after the first `tools/call` due to a known stdio interaction between subprocess pipes, anyio, and FastMCP's threadpool. This does not affect:
+
+- The server's correctness (18 unit tests cover the tool functions directly).
+- Cloud routine usage (cloud env is Linux, where the issue doesn't manifest).
+- Live registration in Claude Code or Cursor (both use their own MCP transport that doesn't hit the Python `stdio_client` path).
+
+If you need a local smoke test on Windows, use the `qmd_collection_info()` tool path — it returns quickly. For full end-to-end testing, defer to the cloud routine's first run.
+
+## Verifying the local index is alive
+
+A quick Python REPL check (with the venv active):
+
+```python
+from qmd.core.client import SqliteQmdClient
+client = SqliteQmdClient(db_path=".qmd/wiki.db")
+coll = client.collection("wikipilot")
+info = coll.info()
+print(f"docs={info.document_count} chunks={info.chunk_count} dim={info.embedding_dim}")
+for h in coll.hybrid_search("parallel subagents", top_k=3):
+    print(f"  {h.metadata.get('path')!r} score={h.score:.3f}")
+client.close()
+```
+
+You should see your indexed pages with non-zero scores.
 
 ## Why qmd specifically
 
 - Hybrid BM25 + vector means typo-tolerance + synonym-tolerance without an external API call.
 - Local-only — no data leaves the machine.
-- MCP-native — drops into the routine's connector list with one command.
 - Sized for personal-wiki scale (hundreds to low thousands of pages); we'd revisit if your wiki grew past ~10k pages.
+
+The trade-off: qmd doesn't ship an MCP server itself, so we maintain `scripts/qmd_mcp_server.py`. The shim is ~150 lines and unit-tested; the upstream coupling is minimal (just `qmd.core.client.SqliteQmdClient`).
 
 ## Troubleshooting
 
 | Symptom | Fix |
 |---|---|
-| `qmd not found` from `wikipilot index-wiki` | `pip install qmd`; ensure your shell PATH includes the user-scripts dir. |
-| `qmd serve --mcp` fails to register in claude.ai | Check the qmd version is recent enough to support `--mcp` (≥ 0.5). |
-| Search returns stale results | Run `uv run wikipilot index-wiki --full`. |
-| Index builds slowly | `qmd index --jobs 4 wiki/` to parallelize. |
+| `wikipilot index-wiki` → `qmd not importable. Install with pip install qmd` | qmd isn't installed in your active interpreter. Activate the venv (`.\.venv\Scripts\Activate.ps1`), then `pip install qmd rank_bm25 mcp`. |
+| `pytest` fails with `ModuleNotFoundError: No module named 'rank_bm25'` on qmd's pytest plugin | Same fix — `pip install rank_bm25`. Pinned in `pyproject.toml` so this should self-resolve after `pip install -e ".[dev]"`. |
+| `qmd_search` returns empty / stale results | Re-index: `wikipilot index-wiki --full`. The full mode wipes the collection and re-embeds every file. |
+| First `index-wiki` takes forever | One-time HF model download (~600 MB). Watch `~/.cache/huggingface/hub/` grow; subsequent runs reuse the cached weights. |
+| `qmd_collection_info` reports zero docs after indexing | The MCP server is pointing at a different DB than `wikipilot index-wiki` wrote to. Set `WIKIPILOT_QMD_DB` in the connector env. |

@@ -12,19 +12,29 @@ Step-by-step for creating each Wikipilot routine in `claude.ai/code/routines`. T
 
 Wikipilot uses [qmd](https://pypi.org/project/qmd/) as its hybrid BM25 + vector search layer over `wiki/`, exposed to subagents via MCP. Without it, `topic-researcher` and `query-answerer` would have to grep the wiki manually.
 
-1. **Local install**: `pip install qmd` (or `uv pip install qmd` inside your venv).
+qmd 0.1.2 doesn't ship its own MCP server — we provide a small FastMCP-based shim at [`scripts/qmd_mcp_server.py`](../scripts/qmd_mcp_server.py) that exposes a `qmd_search` and `qmd_collection_info` tool over stdio.
+
+1. **Local install** (only needed for local dev / dry-runs; cloud install happens via the setup script): `pip install -e ".[dev]"` from the repo root. This pulls in `qmd`, `rank_bm25`, and the `mcp` Python SDK as declared dependencies.
 2. **Index your vault** (run from repo root):
    ```bash
-   uv run wikipilot index-wiki --full
+   wikipilot index-wiki --full
    ```
-   Subsequent runs are incremental (the cloud setup script calls this on every routine start).
-3. **Register the connector in claude.ai**:
-   - claude.ai → Settings → Connectors → Add MCP server
-   - Server command: `qmd serve --mcp --vault wiki/`
-   - Save and verify the `qmd-search` tool appears in your connector list.
+   Writes `.qmd/wiki.db` (gitignored). Subsequent runs are incremental (the cloud setup script calls this on every routine start). First-time call also downloads the `Qwen/Qwen3-Embedding-0.6B` model to `~/.cache/huggingface/` (~600 MB, one-time).
+3. **Register the connector in claude.ai** → Settings → Connectors → Add MCP server:
+
+   | Field | Value |
+   |---|---|
+   | Name | `wikipilot-qmd` |
+   | Command | `python` |
+   | Args | `scripts/qmd_mcp_server.py` |
+   | Working directory | absolute path to the wikipilot repo |
+   | Env | (optional) `WIKIPILOT_QMD_DB=<repo>/.qmd/wiki.db` |
+
+   Save and verify both `qmd_search` and `qmd_collection_info` appear in the connector's tool list.
+
 4. Confirm the connector by running a routine in dry-run mode (Step 4 below).
 
-See [`docs/qmd-setup.md`](qmd-setup.md) for local-dev qmd setup details.
+See [`docs/qmd-setup.md`](qmd-setup.md) for local-dev qmd setup details and the Cursor MCP registration syntax.
 
 ## Daily Research routine
 
@@ -34,8 +44,8 @@ claude.ai/code/routines → New routine → Remote.
 |---|---|
 | Name | `Wikipilot Daily Research` |
 | Repository | this repo, default branch `main` |
-| Setup script | `curl -LsSf https://astral.sh/uv/install.sh \| sh && uv sync --frozen --extra dev && pip install qmd && uv run wikipilot index-wiki` |
-| Connectors | qmd (only) — minimize attack surface |
+| Setup script | `curl -LsSf https://astral.sh/uv/install.sh \| sh && uv sync --frozen --extra dev && uv run wikipilot index-wiki` (qmd, rank_bm25, and mcp are declared deps in `pyproject.toml` — `uv sync` brings them in) |
+| Connectors | `wikipilot-qmd` (the shim at `scripts/qmd_mcp_server.py`) — minimize attack surface |
 | Env vars | `WIKIPILOT_AUTO_MERGE=true`, `CLAUDE_CODE_FORK_SUBAGENT=1` |
 | Branch policy | Default. Cloud routines can only push to `claude/*` (which is what `git_ops.branch_for_daily` produces). |
 | Network | Default policy is fine — WebSearch goes through Anthropic infra. |

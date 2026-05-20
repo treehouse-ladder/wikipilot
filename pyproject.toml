@@ -21,6 +21,9 @@ dependencies = [
   "click>=8.1.7",
   "jinja2>=3.1.4",
   "requests>=2.32.3",
+  "qmd>=0.1.2",
+  "rank_bm25>=0.2.2",  # transitive missing from qmd 0.1.2 packaging; declare explicitly
+  "mcp>=1.27.0",  # FastMCP server for scripts/qmd_mcp_server.py
 ]
 
 [project.optional-dependencies]
@@ -71,3 +74,7 @@ minversion = "8.0"
 addopts = ["-ra", "--strict-markers", "--strict-config"]
 testpaths = ["tests"]
 pythonpath = ["src", "scripts"]
+markers = [
+  "slow: tests that take more than ~5 seconds (e.g. real qmd model load)",
+  "integration: tests that exercise real third-party dependencies (qmd, network, etc.)",
+]
