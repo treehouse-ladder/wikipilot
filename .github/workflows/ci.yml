@@ -85,6 +85,48 @@ jobs:
               display_name: "Smoke topic"
               purpose: "Smoke-test the dry-run path during CI."
           EOF
+          # Seed the two prerequisite slugs the dry-run fake-proposal hardcodes
+          # (the production unit tests rely on these existing in the
+          # tests/fixtures/sample_vault/ checkout, but a fresh init-vault
+          # doesn't have them).
+          mkdir -p /tmp/dryrun-vault/concepts /tmp/dryrun-vault/sources
+          cat > /tmp/dryrun-vault/concepts/transformer-attention.md <<'EOF'
+          ---
+          title: "Transformer attention"
+          kind: concept
+          sources: ["[[example-paper-aabbccdd]]"]
+          last_updated: 2026-05-11
+          last_verified: 2026-05-11
+          freshness_window_days: 30
+          ---
+
+          ## Summary
+
+          Stub concept page seeded by the CI dry-run smoke test.
+
+          ## See also
+
+          _no contradictions or gaps known yet (last reviewed: 2026-05-11)_
+          EOF
+          cat > /tmp/dryrun-vault/sources/example-paper-aabbccdd.md <<'EOF'
+          ---
+          title: "Example paper"
+          kind: source
+          url: "https://example.com/paper"
+          sha256: "aabbccdd00000000000000000000000000000000000000000000000000000000"
+          fetched_at: "2026-05-11T00:00:00Z"
+          topic: "smoke"
+          image_count: 0
+          sources: []
+          last_updated: 2026-05-11
+          last_verified: 2026-05-11
+          freshness_window_days: 365
+          ---
+
+          ## Excerpts
+
+          > Stub source page seeded by the CI dry-run smoke test.
+          EOF
           uv run wikipilot dry-run --topic smoke \
             --vault /tmp/dryrun-vault --topics /tmp/dryrun-topics.yaml
           uv run wikipilot dry-run --query "what is the smoke topic?" \
