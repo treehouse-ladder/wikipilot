@@ -9,7 +9,7 @@ freshness_window_days: 30
 
 # AI in game development
 
-See [[purpose]] for the topic charter (in-scope / out-of-scope) and
+See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 `CLAUDE.md` "Cross-cutting relevance criteria" for the meta-bar.
 
 ## Summary
@@ -78,4 +78,4 @@ until the underlying entity pages exist:
 
 ## See also
 
-- [[purpose]]
+- [purpose](purpose.md)

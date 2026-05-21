@@ -5,6 +5,12 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  # GitHub Merge Queue dispatches CI against a synthetic merge_group ref
+  # (PR + base preview). Required so the queue can verify CI is green
+  # against the *would-be* merge state, not just the PR head. Without
+  # this trigger the queue waits forever for a check that never runs.
+  merge_group:
+    branches: [main]
 
 permissions:
   contents: read
