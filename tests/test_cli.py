@@ -316,7 +316,7 @@ class TestResearchAndQueryCommands:
         result = runner.invoke(main, ["research", "--topic", "ai-agents"])
         assert result.exit_code == 0, result.output
         assert "run_id=r-cli" in result.output
-        assert captured["json"] == {"topic_id": "ai-agents"}
+        assert captured["json"] == {"text": "topic_id=ai-agents"}
         assert captured["url"] == "https://x.example.com/fire"
 
     def test_query_success(

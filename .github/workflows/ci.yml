@@ -54,10 +54,17 @@ jobs:
       - name: Compute changed paths (for ownership lint)
         id: changed
         if: github.event_name == 'pull_request'
+        env:
+          # `gh pr view` reads the same merge-base diff that powers GitHub's
+          # "Files changed" tab, so it ignores commits that landed on `main`
+          # while the PR was open. The bare `git diff base..head` fallback
+          # used to mis-flag such commits as "changed by the PR" — and on
+          # claude/* branches that tripped ownership-violation for files
+          # like docs/routines-setup.md the PR never actually touched.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          base="${{ github.event.pull_request.base.sha }}"
-          head="${{ github.event.pull_request.head.sha }}"
-          paths=$(git diff --name-only "$base" "$head" | tr '\n' ' ')
+          paths=$(gh pr view "${{ github.event.pull_request.number }}" \
+            --json files --jq '.files[].path' | tr '\n' ' ')
           echo "paths=$paths" >> "$GITHUB_OUTPUT"
 
       - name: wikipilot lint wiki/ (with ownership check on PRs)

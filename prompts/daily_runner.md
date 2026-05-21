@@ -39,7 +39,12 @@ Read these files into your context BEFORE dispatching any subagent. They become 
 
 ## Step 3: Parallel research dispatch
 
-For every topic in `topics.yaml` with `frequency: daily`, dispatch a `topic-researcher` subagent **in parallel** via the Task tool, sharing the cached prefix:
+Decide which topics to run:
+
+- **Default (scheduled or empty API payload)**: every topic in `topics.yaml` with `frequency: daily`.
+- **API-restricted run**: the Routines `/fire` API delivers payloads as a single freeform `text` field (per [the Routines docs](https://code.claude.com/docs/en/routines.md#trigger-a-routine)). If `text` is present and matches `topic_id=<id>` (encoded that way by `wikipilot research --topic <id>`), restrict this run to that single topic — handy for ad-hoc re-runs after iterating on a `purpose.md`. If the id doesn't match an enabled topic in `topics.yaml`, abort with a structured error in the run report.
+
+For each selected topic, dispatch a `topic-researcher` subagent **in parallel** via the Task tool, sharing the cached prefix:
 
 ```
 Task(agent="topic-researcher", input={topic_id: <id>}, fork_subagent=True)
