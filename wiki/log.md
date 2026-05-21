@@ -20,6 +20,22 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 Empty wiki initialized. No topics enabled yet.
 
-## [2026-05-20] daily | 5 topics — 58 sources, ~29 pages, 5 PRs (#1–#5)
+## [2026-05-20] daily | game-music — 6 sources, 1 page
 
-First full daily research run: agentic-coding (12 sources), frontier-models (14), ai-in-game-dev (15), games-of-note (11), game-music (6); new entity and comparison directories created; 6 disputes filed, 13 open questions added; auto-merge gate skipped (gh CLI unavailable).
+First daily research pass for game-music topic covering vinyl releases, notable 2026 scores, and adaptive-audio middleware comparison.
+
+## [2026-05-20] daily | games-of-note — 11 sources, 1 page
+
+Daily research run for games-of-note topic.
+
+## [2026-05-20] daily | ai-in-game-dev — 15 sources, 1 page
+
+Applied proposal to topic index with engine-native AI assistants, generative content pipelines, AI-driven NPCs, and world-model research.
+
+## [2026-05-20] daily | frontier-models — 14 sources, 6 pages
+
+Applied proposal from topic-researcher: 14 sources ingested, topic index updated with 2026-05-20 summary, 4 entity pages created (claude-opus-4.7, gpt-5.5, gemini-3.1-pro, deepseek-v4), 1 comparison page created (cost-comparison).
+
+## [2026-05-20] daily | agentic-coding — 12 sources, 1 page
+
+Added Agent Skills pattern, long-running-agent harnesses, Claude Agent SDK rename, code execution with MCP, context engineering, infrastructure noise in evals, Opus 4.7, and OpenAI Codex subagents documentation.
