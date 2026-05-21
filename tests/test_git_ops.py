@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import json
 import subprocess
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date
 
 import pytest
@@ -14,9 +14,11 @@ from wikipilot.config import (
     AutomergeRoute,
     BranchesConfig,
     ImagesConfig,
+    PRWatcherConfig,
     WikipilotConfig,
 )
 from wikipilot.git_ops import (
+    DEFAULT_GATE_DEDUPE_KEY,
     ROUTE_DAILY_RESEARCH,
     ROUTE_WEEKLY_HEALTH,
     ROUTE_WIKI_QUERY,
@@ -28,27 +30,39 @@ from wikipilot.git_ops import (
     checkout_new_branch,
     comment_pr,
     create_pr,
+    disable_automerge,
     enable_automerge,
     evaluate_gate,
+    infer_route_from_branch,
     push_branch,
     render_pr_body_daily,
     render_pr_body_health,
     render_pr_body_query,
     stage_and_commit,
     view_pr,
+    wait_for_ci,
 )
 
 
 @dataclass
 class FakeRunner:
-    """Records every subprocess call and replays canned responses."""
+    """Records every subprocess call and replays canned responses.
+
+    Accepts ``**kwargs`` so callers that pass ``timeout=...`` (e.g.
+    :func:`wait_for_ci`) don't error out. The ``raises`` mapping lets a test
+    say "raise this exception on the next call whose prefix matches" — used
+    by the timeout/error-path tests.
+    """
 
     responses: dict[str, subprocess.CompletedProcess[str]]
     calls: list[list[str]]
+    raises: dict[str, BaseException] = field(default_factory=dict)
 
-    def __call__(self, args, capture_output=True, text=True, check=False):
+    def __call__(self, args, **kwargs):
         self.calls.append(list(args))
         key = " ".join(args[:3])
+        if key in self.raises:
+            raise self.raises[key]
         return self.responses.get(key, subprocess.CompletedProcess(args, 0, "", ""))
 
 
@@ -70,6 +84,8 @@ def _config(
     weekly: AutomergeRoute | None = None,
     block_human: bool = True,
     require_checks: bool = True,
+    branches: BranchesConfig | None = None,
+    pr_watcher: PRWatcherConfig | None = None,
 ) -> WikipilotConfig:
     return WikipilotConfig(
         automerge_common=AutomergeCommon(
@@ -81,8 +97,9 @@ def _config(
         or AutomergeRoute(max_files_changed_per_topic=40, max_total_diff_lines_per_topic=1500),
         wiki_query=query or AutomergeRoute(max_files_changed=8, max_total_diff_lines=400),
         weekly_health=weekly or AutomergeRoute(max_files_changed=60, max_total_diff_lines=2000),
+        pr_watcher=pr_watcher or PRWatcherConfig(),
         images=ImagesConfig(),
-        branches=BranchesConfig(),
+        branches=branches or BranchesConfig(),
     )
 
 
@@ -312,6 +329,23 @@ class TestEvaluateGate:
         )
         assert any("purpose.md" in p for p in d.blocked_paths)
 
+    def test_human_only_underscore_scratch_blocks(self) -> None:
+        """``wiki/_*.md`` is the personal-scratch convention; LLM PRs must not touch it."""
+        d = evaluate_gate(
+            self._view(
+                files=[
+                    "wiki/_dashboard.md",
+                    "wiki/concepts/_scratch.md",
+                    "wiki/concepts/transformer-attention.md",
+                ]
+            ),
+            route=ROUTE_DAILY_RESEARCH,
+            config=_config(),
+        )
+        assert any("_dashboard.md" in p for p in d.blocked_paths)
+        assert any("_scratch.md" in p for p in d.blocked_paths)
+        assert "wiki/concepts/transformer-attention.md" not in d.blocked_paths
+
     def test_block_human_disabled(self) -> None:
         d = evaluate_gate(
             self._view(files=["CLAUDE.md"]),
@@ -437,3 +471,267 @@ class TestPRBodyTemplates:
         )
         for section in ("Disputes newly filed", "Stale pages", "Lint summary", "Health report"):
             assert section in body
+
+
+# ---------------------------------------------------------------------------
+# PR Watcher additions (Phase: PR Watcher routine)
+# ---------------------------------------------------------------------------
+
+
+class TestInferRouteFromBranch:
+    def test_daily_branch_maps_to_daily_research(self) -> None:
+        assert (
+            infer_route_from_branch("claude/daily-2026-05-21/ai-agents", _config())
+            == ROUTE_DAILY_RESEARCH
+        )
+
+    def test_query_branch_maps_to_wiki_query(self) -> None:
+        assert (
+            infer_route_from_branch("claude/query-2026-05-21-what-is-qmd", _config())
+            == ROUTE_WIKI_QUERY
+        )
+
+    def test_health_branch_maps_to_weekly_health(self) -> None:
+        assert infer_route_from_branch("claude/health-2026-05-21", _config()) == ROUTE_WEEKLY_HEALTH
+
+    @pytest.mark.parametrize(
+        "branch",
+        [
+            "fix/some-branch",
+            "main",
+            "claude/random-branch",
+            "",
+            "feature/claude-impostor",
+        ],
+    )
+    def test_non_matching_branches_return_none(self, branch: str) -> None:
+        assert infer_route_from_branch(branch, _config()) is None
+
+    def test_config_none_uses_defaults(self) -> None:
+        """Calling without a config falls back to the BranchesConfig defaults."""
+        assert infer_route_from_branch("claude/daily-2026-05-21/foo") == ROUTE_DAILY_RESEARCH
+        assert infer_route_from_branch("claude/health-2026-05-21") == ROUTE_WEEKLY_HEALTH
+
+    def test_custom_template_is_honoured(self) -> None:
+        """Overriding [branches].daily_template moves the prefix accordingly."""
+        custom = BranchesConfig(
+            daily_template="bot/research-{date}/{topic_id}",
+            query_template="bot/ask-{date}-{slug}",
+            health_template="bot/sweep-{date}",
+        )
+        cfg = _config(branches=custom)
+        assert infer_route_from_branch("bot/research-2026-05-21/x", cfg) == ROUTE_DAILY_RESEARCH
+        assert infer_route_from_branch("bot/ask-2026-05-21-q", cfg) == ROUTE_WIKI_QUERY
+        assert infer_route_from_branch("bot/sweep-2026-05-21", cfg) == ROUTE_WEEKLY_HEALTH
+        # The old claude/* prefixes no longer match under the custom config.
+        assert infer_route_from_branch("claude/daily-2026-05-21/x", cfg) is None
+
+    def test_topic_id_with_slash_still_matches(self) -> None:
+        """A topic-id containing a slash shouldn't break prefix matching."""
+        assert (
+            infer_route_from_branch("claude/daily-2026-05-21/games/of-note", _config())
+            == ROUTE_DAILY_RESEARCH
+        )
+
+    def test_case_sensitive_prefix(self) -> None:
+        """Branch matching is case-sensitive (GitHub refs are case-sensitive)."""
+        assert infer_route_from_branch("CLAUDE/daily-2026-05-21/x", _config()) is None
+
+
+class TestWaitForCi:
+    def test_green_when_gh_exits_zero(self, runner: FakeRunner) -> None:
+        runner.responses = {"gh pr checks": _ok()}
+        assert wait_for_ci(7, runner=runner) is True
+
+    def test_red_when_gh_exits_nonzero(self, runner: FakeRunner) -> None:
+        runner.responses = {"gh pr checks": _ok(returncode=1, stderr="fail")}
+        assert wait_for_ci(7, runner=runner) is False
+
+    def test_timeout_returns_false_no_crash(self, runner: FakeRunner) -> None:
+        runner.raises = {"gh pr checks": subprocess.TimeoutExpired(cmd="gh", timeout=1)}
+        assert wait_for_ci(7, timeout_sec=1, runner=runner) is False
+
+    def test_passes_interval_to_gh_args(self, runner: FakeRunner) -> None:
+        runner.responses = {"gh pr checks": _ok()}
+        wait_for_ci(99, interval_sec=15, runner=runner)
+        call = runner.calls[0]
+        assert "--watch" in call
+        assert "--interval" in call
+        assert call[call.index("--interval") + 1] == "15"
+        assert "99" in call
+
+    def test_timeout_forwarded_as_kwarg(self) -> None:
+        """The hard timeout passes through to the runner's ``timeout`` kwarg."""
+        captured: dict[str, object] = {}
+
+        def fake_run(args, **kwargs):
+            captured.update(kwargs)
+            return subprocess.CompletedProcess(args, 0, "", "")
+
+        wait_for_ci(7, timeout_sec=900, runner=fake_run)
+        assert captured.get("timeout") == 900
+
+
+def _gh_pr_view_payload(
+    *,
+    files: list[str] | None = None,
+    additions: int = 5,
+    deletions: int = 0,
+    conclusion: str = "SUCCESS",
+    state: str = "OPEN",
+    is_draft: bool = False,
+    number: int = 1,
+) -> str:
+    return json.dumps(
+        {
+            "number": number,
+            "state": state,
+            "files": [{"path": p} for p in (files or ["wiki/concepts/x.md"])],
+            "additions": additions,
+            "deletions": deletions,
+            "isDraft": is_draft,
+            "statusCheckRollup": [{"conclusion": conclusion}],
+        }
+    )
+
+
+def _gh_comments_payload(comments: list[dict]) -> str:
+    return json.dumps({"comments": comments})
+
+
+class TestApplyGateModes:
+    def test_read_only_pass_only_comments(self, runner: FakeRunner) -> None:
+        runner.responses = {
+            "gh pr view": _ok(stdout=_gh_pr_view_payload()),
+        }
+        decision = apply_gate(
+            1, route=ROUTE_DAILY_RESEARCH, config=_config(), mode="read_only", runner=runner
+        )
+        assert decision.automerge is True
+        assert any(c[:3] == ["gh", "pr", "comment"] for c in runner.calls)
+        assert not any(c[:3] == ["gh", "pr", "merge"] for c in runner.calls)
+
+    def test_read_only_block_only_comments(self, runner: FakeRunner) -> None:
+        runner.responses = {
+            "gh pr view": _ok(stdout=_gh_pr_view_payload(files=["CLAUDE.md"])),
+        }
+        decision = apply_gate(
+            1, route=ROUTE_DAILY_RESEARCH, config=_config(), mode="read_only", runner=runner
+        )
+        assert decision.automerge is False
+        assert any(c[:3] == ["gh", "pr", "comment"] for c in runner.calls)
+        assert not any(c[:3] == ["gh", "pr", "merge"] for c in runner.calls)
+
+    def test_enforce_pass_enables_automerge(self, runner: FakeRunner) -> None:
+        runner.responses = {
+            "gh pr view": _ok(stdout=_gh_pr_view_payload()),
+        }
+        decision = apply_gate(
+            1, route=ROUTE_DAILY_RESEARCH, config=_config(), mode="enforce", runner=runner
+        )
+        assert decision.automerge is True
+        merges = [c for c in runner.calls if c[:3] == ["gh", "pr", "merge"]]
+        assert merges, "enforce mode + pass must call gh pr merge"
+        assert "--squash" in merges[0]
+        assert "--auto" in merges[0]
+
+    def test_enforce_red_ci_disables_automerge_and_comments(self, runner: FakeRunner) -> None:
+        runner.responses = {
+            "gh pr view": _ok(stdout=_gh_pr_view_payload(conclusion="FAILURE")),
+        }
+        decision = apply_gate(
+            1, route=ROUTE_DAILY_RESEARCH, config=_config(), mode="enforce", runner=runner
+        )
+        assert decision.automerge is False
+        merges = [c for c in runner.calls if c[:3] == ["gh", "pr", "merge"]]
+        assert merges, "enforce mode + red CI must call gh pr merge --disable-auto"
+        assert "--disable-auto" in merges[0]
+        assert any(c[:3] == ["gh", "pr", "comment"] for c in runner.calls)
+
+    def test_enforce_red_ci_uses_allow_fail_on_disable_auto(self, runner: FakeRunner) -> None:
+        """Calling --disable-auto on a PR with no queued auto-merge must not raise."""
+        runner.responses = {
+            "gh pr view": _ok(stdout=_gh_pr_view_payload(conclusion="FAILURE")),
+            "gh pr merge": _ok(returncode=1, stderr="no auto-merge to disable"),
+        }
+        decision = apply_gate(
+            1, route=ROUTE_DAILY_RESEARCH, config=_config(), mode="enforce", runner=runner
+        )
+        assert decision.automerge is False
+
+
+class TestCommentDedupe:
+    def test_no_dedupe_posts_new_comment(self, runner: FakeRunner) -> None:
+        comment_pr(7, "hello", runner=runner)
+        assert runner.calls[0][:3] == ["gh", "pr", "comment"]
+        assert "hello" in runner.calls[0]
+
+    def test_dedupe_with_no_existing_comment_posts_new(self, runner: FakeRunner) -> None:
+        runner.responses = {"gh pr view": _ok(stdout=_gh_comments_payload([]))}
+        comment_pr(7, "hello", runner=runner, dedupe_key=DEFAULT_GATE_DEDUPE_KEY)
+        # First call inspects existing comments; second posts a new one.
+        posts = [c for c in runner.calls if c[:3] == ["gh", "pr", "comment"]]
+        assert posts, "must fall through to gh pr comment when no marker found"
+        body = posts[0][posts[0].index("--body") + 1]
+        assert f"<!-- {DEFAULT_GATE_DEDUPE_KEY} -->" in body
+        assert "hello" in body
+
+    def test_dedupe_with_existing_marker_edits_via_api(self, runner: FakeRunner) -> None:
+        marker = f"<!-- {DEFAULT_GATE_DEDUPE_KEY} -->"
+        existing = [{"id": 999, "body": f"{marker}\nold body"}]
+        runner.responses = {
+            "gh pr view": _ok(stdout=_gh_comments_payload(existing)),
+            "gh repo view": _ok(stdout=json.dumps({"nameWithOwner": "owner/repo"})),
+        }
+        comment_pr(7, "fresh body", runner=runner, dedupe_key=DEFAULT_GATE_DEDUPE_KEY)
+        api_calls = [c for c in runner.calls if c[:2] == ["gh", "api"]]
+        posts = [c for c in runner.calls if c[:3] == ["gh", "pr", "comment"]]
+        assert api_calls, "expected an edit via gh api"
+        assert not posts, "must NOT post a new comment when an existing one was edited"
+        edit_call = api_calls[0]
+        assert "PATCH" in edit_call
+        assert any("issues/comments/999" in arg for arg in edit_call)
+
+    def test_dedupe_falls_back_when_owner_repo_unknown(self, runner: FakeRunner) -> None:
+        """If gh repo view fails we must still post a new comment (no silent loss)."""
+        marker = f"<!-- {DEFAULT_GATE_DEDUPE_KEY} -->"
+        existing = [{"id": 999, "body": f"{marker}\nold body"}]
+        runner.responses = {
+            "gh pr view": _ok(stdout=_gh_comments_payload(existing)),
+            "gh repo view": _ok(returncode=1, stderr="not a git repo"),
+        }
+        comment_pr(7, "fresh body", runner=runner, dedupe_key=DEFAULT_GATE_DEDUPE_KEY)
+        posts = [c for c in runner.calls if c[:3] == ["gh", "pr", "comment"]]
+        assert posts, "expected a fallback gh pr comment when repo view fails"
+
+    def test_dedupe_marker_anchored_to_wikipilot_key(self, runner: FakeRunner) -> None:
+        """A comment containing an unrelated HTML comment must NOT be matched."""
+        existing = [{"id": 42, "body": "<!-- some-other-tool -->\nold body"}]
+        runner.responses = {
+            "gh pr view": _ok(stdout=_gh_comments_payload(existing)),
+        }
+        comment_pr(7, "fresh body", runner=runner, dedupe_key=DEFAULT_GATE_DEDUPE_KEY)
+        api_calls = [c for c in runner.calls if c[:2] == ["gh", "api"]]
+        posts = [c for c in runner.calls if c[:3] == ["gh", "pr", "comment"]]
+        assert not api_calls
+        assert posts, "must post a new comment when no matching wikipilot marker found"
+
+    def test_dedupe_with_empty_comments_payload(self, runner: FakeRunner) -> None:
+        """Malformed/empty gh pr view output must fall back to posting a new comment."""
+        runner.responses = {"gh pr view": _ok(stdout="")}
+        comment_pr(7, "hello", runner=runner, dedupe_key=DEFAULT_GATE_DEDUPE_KEY)
+        posts = [c for c in runner.calls if c[:3] == ["gh", "pr", "comment"]]
+        assert posts
+
+
+class TestDisableAutomerge:
+    def test_disable_args(self, runner: FakeRunner) -> None:
+        disable_automerge(7, runner=runner)
+        assert runner.calls[0][:3] == ["gh", "pr", "merge"]
+        assert "--disable-auto" in runner.calls[0]
+        assert "7" in runner.calls[0]
+
+    def test_swallows_no_queued_automerge_error(self, runner: FakeRunner) -> None:
+        runner.responses = {"gh pr merge": _ok(returncode=1, stderr="not enabled")}
+        # Must not raise.
+        disable_automerge(7, runner=runner)

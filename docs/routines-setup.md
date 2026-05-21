@@ -98,7 +98,7 @@ claude.ai/code/routines → New routine → Remote.
 | Env vars (cloud env) | `WIKIPILOT_AUTO_MERGE=true`, `CLAUDE_CODE_FORK_SUBAGENT=1` |
 | Branch policy | Default. Cloud routines can only push to `claude/*` (which is what `git_ops.branch_for_daily` produces). |
 | Network | Default policy is fine — WebSearch goes through Anthropic infra. |
-| Triggers | (a) Schedule: daily 06:00 local. (b) **API trigger** (added after first save): copy URL + bearer token, paste into `~/.config/wikipilot/credentials.toml` under `[research]` for `wikipilot research --topic <id>`. |
+| Triggers | (a) Schedule: daily 06:00 local. (b) **API trigger** (added after first save): copy URL + bearer token, paste into `~/.config/wikipilot/credentials.toml` (Windows: `%APPDATA%\wikipilot\credentials.toml`) under `[research]` for `wikipilot research --topic <id>`. |
 | Model | **Sonnet** (orchestrator only — `topic-researcher` and `wiki-merger` subagents pin their own models via `.claude/agents/*.md` frontmatter). |
 | Prompt | Copy `prompts/daily_runner.md` into the routine UI. We don't auto-sync because routines aren't yet API-managed. |
 
@@ -117,7 +117,7 @@ Beta header note: Routines API uses `experimental-cc-routine-2026-04-01`.
 | Permissions tab | "Allow unrestricted git push" → **OFF**. |
 | Behavior tab | "Auto-fix pull requests" → **OFF** initially. |
 | Env vars | inherited from the cloud env. |
-| Triggers | (a) **GitHub trigger** (preferred for human use): see [GitHub-issue trigger](#github-issue-trigger-for-wiki-query) below. (b) **API trigger**: copy URL + token from the routine UI, paste into `~/.config/wikipilot/credentials.toml` under `[query]`. No schedule trigger (on-demand only). |
+| Triggers | (a) **GitHub trigger** (preferred for human use): see [GitHub-issue trigger](#github-issue-trigger-for-wiki-query) below. (b) **API trigger**: copy URL + token from the routine UI, paste into `~/.config/wikipilot/credentials.toml` (Windows: `%APPDATA%\wikipilot\credentials.toml`) under `[query]`. No schedule trigger (on-demand only). |
 | Model | **Sonnet** (orchestrator); `query-answerer` subagent pins **Opus 4.7** via its frontmatter. |
 | Prompt | Copy [`prompts/query_answerer.md`](../prompts/query_answerer.md) into the routine UI. |
 
@@ -156,6 +156,63 @@ The routine seeds candidate page sets with `scripts/disputes_seed.py` (overlap h
 Tune the seed at the routine level by editing the prompt to pass `--top-k`, `--stale-k`, or `--lookback-days` (defaults: 10 / 10 / 7 days).
 
 Daily-cap note: weekly routines count against the daily cap on the day they run.
+
+## PR Watcher routine
+
+This fourth routine **doesn't synthesize wiki content**. It fires on every pull-request webhook from this repo, waits for CI to finish, and re-runs the per-route auto-merge gate against the real CI signal — closing the race condition where each content routine calls `scripts/maybe_automerge.py` *before* the CI rollup is populated (so an empty rollup is treated as green and `gh pr merge --squash --auto` is queued without ever knowing whether lint/pytest passed). It also rescues PRs that never had `maybe_automerge.py` run on them (manual pushes to `claude/*`, content routines that crashed mid-loop, etc.).
+
+| Field | Value |
+|---|---|
+| Name | `Wikipilot PR Watcher` |
+| Repository | same repo, default branch `main` |
+| Cloud env | reuse the same env you configured for Daily Research. |
+| Connectors | **Leave empty** (this routine never needs qmd; it only reads PR metadata). |
+| Permissions tab | "Allow unrestricted git push" → **OFF**. The watcher only pushes to `claude/*` branches via `git push origin "$HEAD_REF"` (self-heal commits land on the same branch the PR is targeting). |
+| Behavior tab | "Auto-fix pull requests" → **OFF**. The watcher already implements that surface explicitly via the `wiki-linter` self-heal loop; toggling the Anthropic feature on top would double-fire. |
+| Env vars | inherited from the cloud env. |
+| Triggers | **GitHub trigger** (only): see [GitHub PR trigger](#github-pr-trigger-for-pr-watcher) below. No schedule, no API trigger. |
+| Model | **Sonnet** (orchestrator); `wiki-linter` subagent pins **Haiku 4.5** via its frontmatter. |
+| Prompt | Copy [`prompts/pr_watcher.md`](../prompts/pr_watcher.md) into the routine UI. |
+
+### GitHub PR trigger for PR Watcher
+
+1. The Claude GitHub App must already be installed on this repo (the [Wiki Query routine setup](#github-issue-trigger-for-wiki-query) walks through this if it isn't).
+2. In the routine UI, **enable the GitHub trigger** with these filters:
+   - **Event**: `Pull request`
+   - **Actions**: `opened`, `synchronize` (select both; do **not** add `closed` — a merge-time `closed` event would re-fire the watcher on an already-merged PR for no reason).
+   - **Filters** (all required):
+     - `Base branch` `equals` `main`
+     - `Is draft` `equals` `false`
+     - `Is merged` `equals` `false`
+3. Save.
+
+Now every new PR to `main` (or every push to an open PR) spawns one watcher session. The orchestrator inspects the head branch:
+
+- Matches a `claude/*` template from [`wikipilot.toml [branches]`](../wikipilot.toml) → infers the route (`daily_research` / `wiki_query` / `weekly_health`), waits for CI, then runs the gate in **enforce** mode (queues auto-merge or, on red CI, calls `gh pr merge --disable-auto` to undo any prior premature queue and posts a checklist comment).
+- Any other head (human PRs, fix branches, future automation) → runs the gate in **read-only** mode using the conservative `wiki_query` thresholds, never queues auto-merge, only posts a single dedupe-keyed status comment.
+
+Daily-cap note: every PR event consumes one daily routine slot. With ~7 topics and ~1-2 query PRs per day, the watcher comfortably fits within Max/Team caps (15/25 per day) but is **not** free — see [`runbook.md`](runbook.md) "PR Watcher cost budget" for how to monitor.
+
+### Self-heal loop
+
+When CI fails on a `claude/*` PR, the orchestrator checks the PR's `wikipilot:heal-attempt-{n}` labels. If the highest attempt is below `[automerge.pr_watcher].self_heal_max_attempts` (default 3), it:
+
+1. Adds label `wikipilot:heal-attempt-{n+1}`.
+2. Dispatches the `wiki-linter` subagent (Haiku) to apply mechanical fixes (frontmatter, broken wikilinks, log format, ownership reverts).
+3. Commits the fixes with `fix(wiki): wiki-linter mechanical fixes (attempt {n+1})` and pushes to the same branch.
+4. The push fires `pull_request.synchronize`, which spawns a fresh watcher session — re-running CI and re-evaluating the gate.
+
+If the heal cap is reached, the gate script posts a `## Self-heal cap reached` comment (under dedupe key `wikipilot:heal-cap`) so a human knows to take a look. `wiki-linter` only handles errors it knows how to fix mechanically; pytest and ruff failures are surfaced via comment only.
+
+### Recovering stranded PRs by hand
+
+If the watcher itself misfires (or you have PRs from before the watcher was wired up), run:
+
+```bash
+uv run wikipilot recover-prs
+```
+
+This enumerates every open `claude/*` PR to `main` and runs `apply_gate` on each in `enforce` mode, inferring the route per PR. See [`runbook.md`](runbook.md) "Recovering stranded PRs" for the troubleshooting workflow.
 
 ## Triggering via API
 

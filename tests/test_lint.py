@@ -179,6 +179,48 @@ class TestCheckOwnershipViolations:
         # The mixed-ownership concept page must NOT be flagged.
         assert "wiki/concepts/transformer-attention.md" not in flagged
 
+    def test_claude_branch_underscore_scratch_flagged(self, sample_vault: Vault) -> None:
+        """``wiki/_*.md`` is the personal-scratch convention and is human-only."""
+        ctx = LintContext.collect(
+            sample_vault,
+            branch_name="claude/daily-2026-05-11/ai-agents",
+            changed_paths=(
+                "wiki/_dashboard.md",
+                "wiki/_inbox.md",
+                "wiki/concepts/_local-scratch.md",
+                "wiki/concepts/transformer-attention.md",  # OK
+            ),
+        )
+        issues = check_ownership_violations(ctx)
+        flagged = {str(i.path) for i in issues if i.severity == SEVERITY_ERROR}
+        assert any("_dashboard.md" in p for p in flagged)
+        assert any("_inbox.md" in p for p in flagged)
+        assert any("_local-scratch.md" in p for p in flagged)
+        assert "wiki/concepts/transformer-attention.md" not in flagged
+
+
+class TestUnderscoreScratchExempt:
+    """``_*.md`` files are exempt from frontmatter/citation/orphan rules."""
+
+    def test_dashboard_with_no_frontmatter_does_not_lint(self, sample_vault: Vault) -> None:
+        dashboard = sample_vault.root / "_dashboard.md"
+        dashboard.write_text(
+            "# Dashboard\n\nThis file has no frontmatter and no citations on purpose.\n",
+            encoding="utf-8",
+        )
+        issues = Linter().run(_ctx(sample_vault))
+        flagged_paths = {str(i.path) for i in issues}
+        assert not any("_dashboard.md" in p for p in flagged_paths), (
+            f"_dashboard.md should be exempt from all lint rules, got: {flagged_paths}"
+        )
+
+    def test_underscore_file_in_subfolder_also_exempt(self, sample_vault: Vault) -> None:
+        scratch = sample_vault.dir_for("concepts") / "_scratch.md"
+        scratch.write_text("# Scratch notes\n\nNo frontmatter on purpose.\n", encoding="utf-8")
+        issues = Linter().run(_ctx(sample_vault))
+        flagged_paths = {str(i.path) for i in issues}
+        assert not any("_scratch.md" in p for p in flagged_paths)
+
 
 class TestCheckBrokenLocalImageLinks:
     def test_clean_vault_passes(self, sample_vault: Vault) -> None:

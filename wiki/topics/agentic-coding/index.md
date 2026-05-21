@@ -18,14 +18,20 @@ sources:
   - "[[best-practices-for-claude-code-anthropic-engineering-b7723535]]"
   - "[[subagents-openai-codex-developers-openai-com-8334be02]]"
   - "[[building-agents-with-the-claude-agent-sdk-anthropic-engineering-cf56e261]]"
-last_updated: 2026-05-20
-last_verified: 2026-05-20
+  - "[[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]]"
+  - "[[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]]"
+  - "[[saving-swe-bench-a-benchmark-mutation-approach-for-realistic-agent-evaluation-0404d7de]]"
+  - "[[subagents-agentic-engineering-patterns-3262892c]]"
+  - "[[2026-agentic-coding-trends-report-27fe0474]]"
+  - "[[swe-context-bench-a-benchmark-for-context-learning-in-coding-aba13bd3]]"
+last_updated: 2026-05-21
+last_verified: 2026-05-21
 freshness_window_days: 30
 ---
 
 # Agentic coding tools and harnesses
 
-See [[purpose]] for the topic charter (in-scope / out-of-scope) and
+See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 `CLAUDE.md` "Cross-cutting relevance criteria" for the meta-bar.
 
 ## Summary
@@ -98,6 +104,40 @@ Finally, the **subagent convergence** noted in the prior synthesis is now backed
 
 > Codex handles orchestration across agents, including spawning new subagents, routing follow-up instructions, waiting for results, and closing agent threads. When many agents are running, Codex waits until all requested results are available, then returns a consolidated response.
 
+## Harness automation and the eval-realism debate (added 2026-05-21)
+
+The harness layer is no longer purely hand-crafted. **Agentic Harness Engineering (AHE)** treats the harness itself as the optimization target, holding the base model fixed while an evolution agent edits "system prompts, tool descriptions, tool implementations, middleware, skills, sub-agents, and long-term memory" under three observability pillars — component, experience, and decision observability — so that "every edit [becomes] a falsifiable contract" [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]]. The headline result is that "Ten AHE iterations lift pass@1 on Terminal-Bench 2 from 69.7% to 77.0%, surpassing the human-designed harness Codex-CLI (71.9%)" and the "frozen harness transfers to SWE-bench-verified" with "+5.1 to +10.1 percentage points" across base-model families [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]]. The paper's central claim — "the bottleneck for harness evolution is observability, not agent capability" — is a direct counterweight to the assumption that better harnesses require human craft.
+
+> AHE is a closed loop that addresses [harness evolution] through three matched observability pillars: (1) component observability gives every editable harness component a file-level representation so the action space is explicit and revertible; (2) experience observability distills millions of raw trajectory tokens into a layered, drill-down evidence corpus that an evolving agent can actually consume; and (3) decision observability pairs every edit with a self-declared prediction, later verified against the next round's task-level outcomes.
+
+> Ten AHE iterations lift pass@1 on Terminal-Bench 2 from 69.7% to 77.0%, surpassing the human-designed harness Codex-CLI (71.9%) and the self-evolving baselines ACE and TF-GRPO.
+
+On **evaluation realism**, the existing infrastructure-noise critique now has a companion: a benchmark-mutation study argues SWE-bench Verified "fail[s] to reflect how developers interact with chat-based coding assistants in IDEs, leading to systematic overestimation of agent capabilities," measuring that "traditional benchmarks overestimate agent capabilities by 20-50% for publicly available datasets" while "the performance gap narrows to 10-16% for internal benchmarks like SWE-Bench C#" [[saving-swe-bench-a-benchmark-mutation-approach-for-realistic-agent-evaluation-0404d7de]].
+
+> Current benchmarks like SWE-Bench Verified are derived from GitHub issues and fail to reflect how developers interact with chat-based coding assistants in IDEs, leading to systematic overestimation of agent capabilities in real-world scenarios, especially bug fixing.
+
+A distinct eval axis — **context learning** — is staked out by SWE Context Bench, which "groups base tasks and related tasks with shared context across 51 unique repositories and 9 programming languages, evaluating how accurately and efficiently agents solve related issues when prior cases are available in context" [[swe-context-bench-a-benchmark-for-context-learning-in-coding-aba13bd3]]. This measures whether an agent's earlier work on a repo improves its later work — something SWE-bench Verified does not.
+
+> SWE Context Bench groups base tasks and related tasks with shared context across 51 unique repositories and 9 programming languages, evaluating how accurately and efficiently agents solve related issues when prior cases are available in context.
+
+## Subagent practice and the security floor (added 2026-05-21)
+
+Simon Willison's Agentic Engineering Patterns guide frames a subagent as a dispatch where "a coding agent effectively dispatches a fresh copy of itself to achieve a specified goal, with a new context window that starts with a fresh prompt," whose "principle advantage is that it can work with a fresh context in a way that avoids spending tokens from the parent's available limit" [[subagents-agentic-engineering-patterns-3262892c]]. He warns against over-decomposition — "the main value of subagents is in preserving that valuable root context and managing token-heavy operations" — and notes the cost/latency lever of routing subagents to "faster and cheaper models such as Claude Haiku" [[subagents-agentic-engineering-patterns-3262892c]]. This nuances the wiki's prior framing of subagents as primarily a parallelism primitive: the dominant payoff is context preservation, with parallelism and model-routing as secondary wins.
+
+> While it can be tempting to go overboard breaking up tasks across dozens of different specialist subagents, it's important to remember that the main value of subagents is in preserving that valuable root context and managing token-heavy operations.
+
+The **security floor** for shell-and-tool-using agents is sobering. A systematization-of-knowledge study finds that "tool outputs are treated as trusted instructions, which enabled arbitrary behavior redirection since agents process tool outputs with the same trust level as system instructions," and that across 78 studies "attack success rates against state-of-the-art defenses exceed 85% when adaptive attack strategies are employed" [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]]. The most dangerous class is compound: "a malicious MCP server triggering poisoned skill installation followed by persistent data exfiltration" — directly implicating the Skills and MCP primitives otherwise covered as productivity wins here.
+
+> A meta-analysis of 78 recent studies from 2021-2026 found that attack success rates against state-of-the-art defenses exceed 85% when adaptive attack strategies are employed.
+
+> Compound attacks involving multi-layer attack chains - such as a malicious MCP server triggering poisoned skill installation followed by persistent data exfiltration - were the most damaging and hardest to detect.
+
+Anthropic's **2026 Agentic Coding Trends Report** quantifies the orchestration shift: "software development is shifting from writing code to orchestrating agents that write code," with "multi-agent architectures us[ing] an orchestrator to coordinate specialized agents working in parallel" [[2026-agentic-coding-trends-report-27fe0474]]. The most useful data point counters AI-replaces-engineers framing: "engineers use AI in roughly 60% of their work but report being able to 'fully delegate' only 0-20% of tasks" [[2026-agentic-coding-trends-report-27fe0474]]. As a first-party Anthropic report drawing on customer case studies, it carries a vendor-incentive caveat (filed under Disputes).
+
+> Software development is shifting from writing code to orchestrating agents that write code.
+
+> Anthropic's internal research found that engineers use AI in roughly 60% of their work but report being able to 'fully delegate' only 0-20% of tasks, with the gap explained by effective AI collaboration requiring active human participation - setup, prompting, supervision, validation, and judgment.
+
 ## Comparisons
 
 The comparison pages below are pre-declared by the charter; they are
@@ -116,6 +156,9 @@ lint stays quiet until each page actually exists:
 - [[introducing-claude-opus-4-7-b8af8104]] claims a '3x more production tasks than Opus 4.6' result on Rakuten-SWE-Bench, a partner-internal benchmark whose composition and scoring methodology is not publicly described; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] explicitly notes that even within the public SWE-bench Verified harness, leaderboard rows can be incomparable across mini-SWE-agent versions, suggesting any cross-benchmark 'Nx better' claim should be treated as unfalsifiable until the partner benchmark is published. Status: unresolved
 - [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] claims infrastructure configuration can swing agentic coding benchmark scores by 'sometimes more than the leaderboard gap between top models', with measured infrastructure error rates of 5.8% under strict enforcement vs 0.5% uncapped; this directly undercuts the comparability of any SWE-bench Verified score that does not pin the resource configuration used. Status: unresolved
 - [[harness-design-for-long-running-application-development-anthropic-engineering-9fa759b7]] claims 'Claude Opus 4.5 largely removed context anxiety behavior, so context resets could be dropped from this harness entirely', while [[effective-harnesses-for-long-running-agents-anthropic-engineering-7f7a70a6]] presents the opposing pattern of explicit session-bridging via initializer + coding agents handing off via on-disk artifacts; the two patterns may be complementary or may represent unresolved disagreement about whether compaction-within-a-session is sufficient. Status: unresolved
+- [[saving-swe-bench-a-benchmark-mutation-approach-for-realistic-agent-evaluation-0404d7de]] claims SWE-bench Verified systematically overestimates real-world agent capability by 20-50% on public datasets (and only 10-16% on a private C# benchmark); [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents SWE-bench Verified as the human-filtered, annotator-reviewed gold standard for coding-agent capability. Status: unresolved
+- [[2026-agentic-coding-trends-report-27fe0474]] is a first-party Anthropic report whose "orchestration era" framing is supported primarily by case studies drawn from Anthropic's own customers (Rakuten, CRED, TELUS, Zapier), creating a vendor-incentive asymmetry; this shares Rakuten-partner-benchmark provenance with [[introducing-claude-opus-4-7-b8af8104]], so cross-report claims should not be treated as independent corroboration. Status: unresolved
+- [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]] claims an automatically-evolved harness surpasses the human-designed Codex-CLI harness (77.0% vs 71.9% pass@1 on Terminal-Bench 2) and transfers frozen to SWE-bench-verified; [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] shows Terminal-Bench scores can swing several percentage points from infrastructure resource configuration, so a 5.1-point harness gain may be partly confounded unless resource configuration was pinned identically. Status: unresolved
 
 ## Open questions
 
@@ -127,7 +170,12 @@ lint stays quiet until each page actually exists:
 - [ ] Are Codex custom-agent TOML files [[subagents-openai-codex-developers-openai-com-8334be02]] portable to Claude Code's markdown-based `.claude/agents/` definitions, or is the cross-vendor subagent convergence purely conceptual?
 - [ ] What is the cost-per-completed-app on Opus 4.5/4.6/4.7 in the three-agent planner/generator/evaluator harness [[harness-design-for-long-running-application-development-anthropic-engineering-9fa759b7]] vs single-agent baselines?
 - [ ] Does the Claude Agent SDK rename [[building-agents-with-the-claude-agent-sdk-anthropic-engineering-cf56e261]] change the surface API in a backward-incompatible way, or is it purely a brand change?
+- [ ] Does Agentic Harness Engineering [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]] hold the resource/infrastructure configuration fixed across human-designed and evolved harnesses, given that [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] showed several-percent swings from config alone?
+- [ ] Can the Skills-as-attack-surface finding from [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]] (poisoned skill installation) be reconciled with the productivity framing of Skills in [[introducing-agent-skills-anthropic-5fb2ccf0]] — what containment does Anthropic's Skills loader provide against a malicious SKILL.md?
+- [ ] Does the 20-50% public-vs-10-16% private overestimation gap in [[saving-swe-bench-a-benchmark-mutation-approach-for-realistic-agent-evaluation-0404d7de]] hold when controlling for benchmark difficulty/language rather than just public-vs-private provenance?
+- [ ] How does SWE Context Bench's context-learning metric [[swe-context-bench-a-benchmark-for-context-learning-in-coding-aba13bd3]] correlate with the session-bridging long-running-agent harness [[effective-harnesses-for-long-running-agents-anthropic-engineering-7f7a70a6]]?
+- [ ] Simon Willison's subagents guidance [[subagents-agentic-engineering-patterns-3262892c]] frames context-preservation as the primary subagent payoff over parallelism; does any published wall-clock measurement separate the context-preservation benefit from the parallelism benefit?
 
 ## See also
 
-- [[purpose]]
+- [purpose](purpose.md)

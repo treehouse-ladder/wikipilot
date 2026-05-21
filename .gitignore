@@ -51,10 +51,18 @@ coverage.xml
 .DS_Store
 Thumbs.db
 
-# Obsidian
-.obsidian/workspace*
-.obsidian/cache
-.obsidian/plugins/*/data.json
+# Obsidian (gitignore needs `**/` because the vault is at wiki/.obsidian/, not the repo root)
+**/.obsidian/workspace*
+**/.obsidian/cache
+# Third-party plugin source code — users install plugins themselves
+# from the list in .obsidian/community-plugins.json
+**/.obsidian/plugins/
+# Iconize plugin's per-user icon library
+**/.obsidian/icons/
+# Personal-only config; users build their own
+**/.obsidian/bookmarks.json
+**/.obsidian/hotkeys.json
+**/.obsidian/workspaces.json
 
 # qmd index (rebuilt on demand)
 .qmd/

@@ -64,6 +64,16 @@ If a Claude branch (`claude/*`) modifies any of these files, the auto-merge gate
 
 When a human edits a mixed file, they should bump `last_verified` manually. The wiki-merger respects existing `## Disputes` and `## Open questions` content (append-only there — never delete an entry, only mark it resolved).
 
+### Personal scratch convention (`_*.md`, human-only)
+
+Any markdown file whose name starts with `_` is **personal scratch**: `wiki/_dashboard.md`, `wiki/_inbox.md`, `wiki/concepts/_local-notes.md`, etc. These files are:
+
+- **Exempt from the schema lint** — no frontmatter required, no citation density, no orphan check (`_is_lint_exempt` in `wikipilot.lint`).
+- **Exempt from the cross-page sweep** — agents do not read, link to, or modify them.
+- **Treated as human-only by the auto-merge gate** — any `claude/*` PR that touches a `_*.md` file is blocked the same way it is for `CLAUDE.md` or `topics.yaml`.
+
+Use them for dashboards (Dataview-driven status pages), reading inboxes, personal notes, or anything else that lives in the vault but isn't part of the wiki's canonical knowledge layer. The Obsidian setup ships with `wiki/_dashboard.md` as a starter; see [`docs/obsidian-setup.md`](docs/obsidian-setup.md) for the workflow that uses it.
+
 ## Frontmatter contract
 
 Every wiki page **except** `log.md` and `index.md` carries this frontmatter:
@@ -196,9 +206,10 @@ After every routine run, the orchestrator writes `wiki/reports/YYYY-MM-DD.md` (o
 | Daily Research orchestrator | Sonnet | tool-use + control flow |
 | Wiki Query orchestrator | Sonnet | tool-use + control flow |
 | Weekly Health orchestrator | Sonnet | tool-use + control flow |
+| PR Watcher orchestrator | Sonnet | tool-use + control flow; no synthesis (re-runs the deterministic gate after CI) |
 | `topic-researcher` | **Opus 4.7** | judgment-heavy synthesis at every ingest entry point |
 | `wiki-merger` | Sonnet | mostly mechanical edits + cross-page sweep |
-| `wiki-linter` | **Haiku** | Python linter does the analysis; agent only applies mechanical fixes |
+| `wiki-linter` | **Haiku** | Python linter does the analysis; agent only applies mechanical fixes (also dispatched by PR Watcher for self-heal) |
 | `query-answerer` | **Opus 4.7** | user-facing synthesis on demand |
 | `wiki-disputes-scanner` | Sonnet | judgment task, but cost-sensitive (many pages × candidate sets); never auto-resolves disputes |
 
@@ -239,6 +250,27 @@ The canonical prompt lives at [`prompts/weekly_health.md`](prompts/weekly_health
 6. Run `wikipilot freshness-report` and `wikipilot lint wiki/`; append summaries to the health report.
 7. Write `wiki/reports/health-YYYY-MM-DD.md`.
 8. `gh pr create`; `python scripts/maybe_automerge.py --pr <num> --route weekly_health` (permissive gate).
+
+## Per-PR workflow (for `pr_watcher.md` orchestrator)
+
+The canonical prompt lives at [`prompts/pr_watcher.md`](prompts/pr_watcher.md). The cloud routine setup is documented in [`docs/routines-setup.md`](docs/routines-setup.md#pr-watcher-routine).
+
+Unlike the three content-producing routines, the PR Watcher **does not write to the wiki**. It exists to close the race condition where each content routine calls `scripts/maybe_automerge.py` immediately after `gh pr create` — *before* CI populates the rollup — so an empty `statusCheckRollup` is treated as green and `gh pr merge --squash --auto` is queued without ever knowing whether the lint/test signal the gate requires actually passed. It also rescues PRs that never had `maybe_automerge.py` run at all (manual pushes to `claude/*`, content-routine sessions that crashed mid-loop, etc.).
+
+1. Triggered by GitHub webhook on `pull_request.opened` and `pull_request.synchronize`, filtered to `base=main`, `is_draft=false`, `is_merged=false`.
+2. Run `python scripts/preflight.py` (no `wikipilot index-wiki` — the watcher never searches the vault).
+3. Read `CLAUDE.md`, `wikipilot.toml` (gate thresholds and `[automerge.pr_watcher]`), last 30 lines of `wiki/log.md`.
+4. Parse the PR number and head ref from the trigger payload; defensively re-check `gh pr view --json state,isDraft,baseRefName`. Exit if any guardrail fails.
+5. Invoke `python scripts/pr_watcher_gate.py --pr <num>` which:
+   a. Calls `wikipilot.git_ops.infer_route_from_branch(head, config)` to map the head to `daily_research` / `wiki_query` / `weekly_health` / `None`.
+   b. Waits up to `[automerge.pr_watcher].ci_wait_timeout_sec` (default 1200s) for `gh pr checks --watch`.
+   c. Calls `apply_gate(..., mode="enforce")` for `claude/*` heads or `mode="read_only"` for human / non-routine heads. Uses dedupe key `wikipilot:gate` so re-runs *edit* the existing comment instead of spamming.
+   d. On enforce + red CI, calls `gh pr merge --disable-auto` to undo any prior premature queue from the in-routine `maybe_automerge.py` call.
+6. If the gate script prints `HEAL_NEEDED pr=<n> next_attempt=<m>` (CI is red on `claude/*` and attempts < `self_heal_max_attempts`): add label `wikipilot:heal-attempt-<m>`, dispatch `wiki-linter` (Haiku) for mechanical fixes, commit `fix(wiki): wiki-linter mechanical fixes (attempt <m>)`, push. The push fires `pull_request.synchronize` and a fresh watcher session runs the cycle again.
+7. If the gate script prints `HEAL_CAPPED pr=<n> attempt=<m> max=<k>`: do nothing further. The script has already posted a `## Self-heal cap reached` comment under the `wikipilot:heal-cap` dedupe key.
+8. Only append a `manual` entry to `wiki/log.md` when something noteworthy happened (heal commit, cap reached, unusual gate outcome). Routine pass/fail comments stay on the GitHub PR thread.
+
+Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to `main` and runs `apply_gate` on each, inferring the route per PR. Use it when the watcher misfires or to clear a backlog of stranded PRs from before the watcher was wired up.
 
 ## Schemas
 
@@ -423,6 +455,7 @@ Errors fail the lint (exit code 1); warnings are reported but don't fail. The au
 | `dry-run --topic <id> \| --query "<q>" \| --weekly-health` | exercise the apply path locally (no Anthropic call) |
 | `compare new <slug> --of e1,e2,... --fields f1,f2,... --title "..."` | create a new comparison page reading frontmatter fields from each entity |
 | `compare regen <slug>` | regenerate the body of an existing comparison page from current entity frontmatter |
+| `recover-prs [--dry-run] [--base main]` | enumerate every open `claude/*` PR to `main` and re-run `apply_gate` per PR (escape hatch when the PR Watcher misfires or for a backlog of stranded PRs) |
 
 ## Editing this file
 

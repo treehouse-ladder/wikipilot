@@ -92,6 +92,22 @@ class BranchesConfig:
 
 
 @dataclass(frozen=True)
+class PRWatcherConfig:
+    """``[automerge.pr_watcher]`` — knobs for the PR Watcher routine.
+
+    ``ci_wait_timeout_sec`` bounds the ``gh pr checks --watch`` wait inside
+    the watcher session; a timeout is recoverable (the next
+    ``pull_request.synchronize`` event re-fires the watcher). ``self_heal_max_attempts``
+    caps the loop where the watcher dispatches ``wiki-linter`` to fix
+    mechanical errors on ``claude/*`` PRs — tracked via the
+    ``wikipilot:heal-attempt-{n}`` PR label.
+    """
+
+    ci_wait_timeout_sec: int = 1200
+    self_heal_max_attempts: int = 3
+
+
+@dataclass(frozen=True)
 class WikipilotConfig:
     """Parsed ``wikipilot.toml``."""
 
@@ -99,6 +115,7 @@ class WikipilotConfig:
     daily_research: AutomergeRoute = field(default_factory=AutomergeRoute)
     wiki_query: AutomergeRoute = field(default_factory=AutomergeRoute)
     weekly_health: AutomergeRoute = field(default_factory=AutomergeRoute)
+    pr_watcher: PRWatcherConfig = field(default_factory=PRWatcherConfig)
     images: ImagesConfig = field(default_factory=ImagesConfig)
     branches: BranchesConfig = field(default_factory=BranchesConfig)
 
@@ -234,6 +251,7 @@ def _config_from_dict(data: dict[str, Any], *, source: str) -> WikipilotConfig:
     daily = AutomergeRoute(**(automerge.get("daily_research", {}) or {}))
     query = AutomergeRoute(**(automerge.get("wiki_query", {}) or {}))
     weekly = AutomergeRoute(**(automerge.get("weekly_health", {}) or {}))
+    pr_watcher = _pr_watcher_from_dict(automerge.get("pr_watcher", {}) or {}, source=source)
     images_data = data.get("images", {}) or {}
     if "allowed_mimes" in images_data:
         images_data = {**images_data, "allowed_mimes": tuple(images_data["allowed_mimes"])}
@@ -245,12 +263,31 @@ def _config_from_dict(data: dict[str, Any], *, source: str) -> WikipilotConfig:
             daily_research=daily,
             wiki_query=query,
             weekly_health=weekly,
+            pr_watcher=pr_watcher,
             images=images,
             branches=branches,
         )
     except TypeError as exc:
         # Surface unknown keys with the file path attached.
         raise ConfigError(f"{source}: invalid wikipilot.toml: {exc}") from exc
+
+
+def _pr_watcher_from_dict(data: dict[str, Any], *, source: str) -> PRWatcherConfig:
+    timeout = _coerce_positive_int(
+        data.get("ci_wait_timeout_sec", 1200),
+        where=f"{source}: [automerge.pr_watcher].ci_wait_timeout_sec",
+    )
+    attempts = _coerce_positive_int(
+        data.get("self_heal_max_attempts", 3),
+        where=f"{source}: [automerge.pr_watcher].self_heal_max_attempts",
+    )
+    unknown = set(data.keys()) - {"ci_wait_timeout_sec", "self_heal_max_attempts"}
+    if unknown:
+        raise ConfigError(f"{source}: [automerge.pr_watcher] has unknown keys: {sorted(unknown)}")
+    return PRWatcherConfig(
+        ci_wait_timeout_sec=timeout,
+        self_heal_max_attempts=attempts,
+    )
 
 
 if __name__ == "__main__":  # pragma: no cover

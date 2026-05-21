@@ -38,6 +38,12 @@ from wikipilot.dryrun import (
     make_fake_proposal,
     make_fake_weekly_health,
 )
+from wikipilot.git_ops import (
+    apply_gate,
+    evaluate_gate,
+    infer_route_from_branch,
+    view_pr,
+)
 from wikipilot.lint import (
     SEVERITY_ERROR,
     LintContext,
@@ -583,6 +589,140 @@ def _find_topic(topics: list[TopicConfig], topic_id: str) -> TopicConfig | None:
         if topic.id == topic_id:
             return topic
     return None
+
+
+@main.command("recover-prs")
+@click.option(
+    "--config",
+    "config_path",
+    type=click.Path(path_type=Path),
+    default=DEFAULT_CONFIG_PATH,
+    show_default=True,
+    help="Path to wikipilot.toml (gate thresholds + branch templates).",
+)
+@click.option(
+    "--base",
+    "base_branch",
+    type=str,
+    default="main",
+    show_default=True,
+    help="Base branch to enumerate open PRs against.",
+)
+@click.option(
+    "--dry-run/--no-dry-run",
+    default=False,
+    help="Print per-PR gate decisions without invoking gh pr merge/comment.",
+)
+@click.option(
+    "--all/--claude-only",
+    "include_all",
+    default=False,
+    help="Include non-claude/* heads (default: claude/* only). Non-claude heads are listed with route=None and skipped.",
+)
+def recover_prs_cmd(
+    config_path: Path,
+    base_branch: str,
+    dry_run: bool,
+    include_all: bool,
+) -> None:
+    """Re-run the auto-merge gate on every open ``claude/*`` PR to ``BASE``.
+
+    Escape hatch for two recovery scenarios:
+
+    \b
+    1. A content routine crashed mid-loop and left PRs open with green CI but
+       no gate decision recorded (no auto-merge queued, no checklist comment).
+    2. The PR Watcher routine is itself unhealthy and needs a manual one-shot
+       sweep to clear the backlog.
+
+    Per-PR route is inferred from ``[branches]`` templates in wikipilot.toml.
+    Heads that match no template are listed with ``route=None`` and skipped.
+    ``--dry-run`` evaluates the gate without mutating GitHub (no merge,
+    no comment).
+    """
+    config = load_wikipilot_config(config_path)
+    pr_list = _list_recoverable_prs(base_branch=base_branch, include_all=include_all)
+    if not pr_list:
+        click.echo(f"0 PRs to recover (base={base_branch}).")
+        return
+
+    click.echo(f"{'PR':>5}  {'ROUTE':<16}  {'DECISION':<10}  REASONS / HEAD")
+    click.echo("-" * 78)
+    for entry in pr_list:
+        pr_number = entry["number"]
+        head_ref = entry["headRefName"]
+        route = infer_route_from_branch(head_ref, config)
+        if route is None:
+            click.echo(f"{pr_number:>5}  {'-':<16}  {'skip':<10}  head={head_ref} (no route)")
+            continue
+        if dry_run:
+            try:
+                pr_view = view_pr(pr_number)
+            except Exception as exc:  # noqa: BLE001 — surface any gh failure inline
+                click.echo(f"{pr_number:>5}  {route:<16}  {'error':<10}  view_pr failed: {exc}")
+                continue
+            decision = evaluate_gate(pr_view, route=route, config=config)
+            label = "automerge" if decision.automerge else "blocked"
+            reasons = "; ".join(decision.reasons) or "all gate criteria pass"
+            click.echo(f"{pr_number:>5}  {route:<16}  {label:<10}  {reasons}")
+        else:
+            try:
+                decision = apply_gate(pr_number, route=route, config=config)
+            except Exception as exc:  # noqa: BLE001
+                click.echo(f"{pr_number:>5}  {route:<16}  {'error':<10}  apply_gate failed: {exc}")
+                continue
+            label = "merged" if decision.automerge else "comment"
+            reasons = "; ".join(decision.reasons) or "all gate criteria pass"
+            click.echo(f"{pr_number:>5}  {route:<16}  {label:<10}  {reasons}")
+
+
+def _list_recoverable_prs(*, base_branch: str, include_all: bool) -> list[dict]:
+    """Enumerate open PRs via ``gh pr list --json``, filter client-side to ``claude/*``.
+
+    ``gh pr list --head`` doesn't accept globs, so the prefix filter happens
+    here in Python after the API call. Limit is 200 PRs — way more than any
+    reasonable Wikipilot backlog and below GitHub's max page size.
+    """
+    import json as _json
+    import subprocess as _subprocess
+
+    args = [
+        "gh",
+        "pr",
+        "list",
+        "--state",
+        "open",
+        "--base",
+        base_branch,
+        "--json",
+        "number,headRefName",
+        "--limit",
+        "200",
+    ]
+    try:
+        result = _subprocess.run(args, capture_output=True, text=True, check=False)
+    except (OSError, _subprocess.SubprocessError) as exc:
+        click.echo(f"ERROR: gh pr list failed: {exc}", err=True)
+        sys.exit(2)
+    if result.returncode != 0:
+        click.echo(
+            f"ERROR: gh pr list returned {result.returncode}: "
+            f"{result.stderr.strip() or result.stdout.strip()}",
+            err=True,
+        )
+        sys.exit(2)
+    body = result.stdout.strip() or "[]"
+    try:
+        data = _json.loads(body)
+    except (ValueError, TypeError) as exc:
+        click.echo(f"ERROR: could not parse gh pr list output: {exc}", err=True)
+        sys.exit(2)
+    if not isinstance(data, list):
+        click.echo("ERROR: gh pr list returned non-list payload", err=True)
+        sys.exit(2)
+    if not include_all:
+        data = [pr for pr in data if str(pr.get("headRefName", "")).startswith("claude/")]
+    return data
 
 
 _INDEX_SKELETON = """# Index
