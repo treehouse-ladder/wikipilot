@@ -43,3 +43,27 @@ Added Agent Skills pattern, long-running-agent harnesses, Claude Agent SDK renam
 ## [2026-05-21] health | weekly sweep — 1 dispute filed
 
 Scanned 6 candidate sets (5 source-triggered, 1 stale sweep); 1 dispute filed on gpt-5.5 entity (release date discrepancy between two sources: April 24 vs April 23, 2026).
+
+## [2026-05-21] daily | game-music — 3 sources, 5 pages
+
+Haptics convergence in FMOD/Wwise middleware; David Wise interview (Gamescom LATAM 2026); Distant Worlds Carnegie Hall June 2026 concert.
+
+## [2026-05-21] daily | games-of-note — 4 sources, 6 pages
+
+Nacon publisher collapse and Spiders liquidation; STJV boycott and Kylotonn strike; Zero Parades: For Dead Spies launch (May 21) and ZA/UM founder controversy.
+
+## [2026-05-21] daily | ai-in-game-dev — 6 sources, 8 pages
+
+Unity AI open beta; Autodesk acquires Radical AI mocap; production-ready 3D gen survey + Hunyuan3D Studio; NVIGI SDK; NVIDIA reliable AI coding for UE.
+
+## [2026-05-21] daily | frontier-models — 4 sources, 6 pages
+
+Gemini 3.5 Flash beats Gemini 3.1 Pro on agentic benchmarks; Claude Mythos Preview (93.9% SWE-bench, withheld via Project Glasswing); Kimi K2.6 new open-weights leader.
+
+## [2026-05-21] daily | agentic-coding — 6 sources, 8 pages
+
+Agentic Harness Engineering (automated harness evolution beats human-designed); prompt injection SoK (>85% attack success); Saving SWE-Bench (20-50% overestimation); Willison subagents guide; Anthropic 2026 Trends Report; SWE Context Bench.
+
+## [2026-05-21] daily | 5 topics, 23 sources, 33 pages
+
+Daily research run complete: 5 topics, 23 new sources, 33 pages touched, 5 PRs opened (#7–#11).
