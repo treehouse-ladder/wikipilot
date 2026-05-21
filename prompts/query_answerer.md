@@ -77,7 +77,9 @@ The skill appends `[[${DATE}-${SLUG}]]` under the `## See also` section of every
 ## Step 7: Validate, commit, PR, gate
 
 ```bash
-uv run pytest -q
+# Skip "slow"-marked tests (qmd integration tests that download HuggingFace models);
+# CI on the resulting PR will run the full suite under its own network policy.
+uv run pytest -q -m "not slow"
 uv run wikipilot lint wiki/ --branch "$BRANCH" $(git diff --name-only origin/main..HEAD | xargs -I{} echo --changed-path {})
 
 git add -A

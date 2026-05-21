@@ -72,7 +72,9 @@ Task(agent="wiki-linter", input={branch: "$BRANCH", changed_paths: [...]})
 
 ```bash
 # 4d. Validate locally.
-uv run pytest -q
+# Skip "slow"-marked tests (qmd integration tests that download HuggingFace models);
+# CI on the resulting PR will run the full suite under its own network policy.
+uv run pytest -q -m "not slow"
 uv run wikipilot lint wiki/ --branch "$BRANCH" $(git diff --name-only origin/main..HEAD | xargs -I{} echo --changed-path {})
 
 # 4e. Append the per-topic log entry.

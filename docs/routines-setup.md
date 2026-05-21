@@ -33,6 +33,55 @@ What you still need to do once, locally:
 
 See [`docs/qmd-setup.md`](qmd-setup.md) for the full local-dev qmd reference, troubleshooting, and the Windows stdio caveat.
 
+## Cloud env setup script
+
+Paste verbatim into the routine cloud env's "Setup script" field. Runs **once per session, before the repo is cloned** — so it can install OS-level binaries but cannot reach `pyproject.toml`. Repo-specific bootstrap (`uv sync`, `wikipilot index-wiki`) lives in the routine prompt's Step 0.
+
+```bash
+#!/bin/bash
+set -e
+
+# Sanity-check uv (Anthropic cloud-env images ship with uv, git, python pre-installed).
+uv --version
+
+# Install gh CLI if missing — `scripts/maybe_automerge.py` shells out to `gh pr merge`.
+# We download the static binary from a GitHub release rather than apt to avoid needing
+# `cli.github.com` on the network allowlist; `github.com` and `objects.githubusercontent.com`
+# are both on the default Trusted set.
+if ! command -v gh >/dev/null 2>&1; then
+  echo "Installing gh CLI from GitHub releases..."
+  GH_VERSION=2.62.0
+  ARCH=$(dpkg --print-architecture)
+  curl -fsSL "https://github.com/cli/cli/releases/download/v${GH_VERSION}/gh_${GH_VERSION}_linux_${ARCH}.tar.gz" -o /tmp/gh.tar.gz
+  tar -xzf /tmp/gh.tar.gz -C /tmp
+  install -m 0755 "/tmp/gh_${GH_VERSION}_linux_${ARCH}/bin/gh" /usr/local/bin/gh
+  rm -rf /tmp/gh.tar.gz "/tmp/gh_${GH_VERSION}_linux_${ARCH}"
+fi
+gh --version
+```
+
+If your sandbox image already includes `gh` (recent Anthropic cloud-env releases do), the `if !` block becomes a no-op and adds <1s.
+
+## Cloud env network allowlist
+
+Switch the cloud env's network access from **Trusted** to **Custom** and add the following domains. The first two are needed for `wikipilot index-wiki` to download the embedding model on first run; the rest are HF CDN hosts the `huggingface_hub` library hits transparently.
+
+| Domain | Why |
+|---|---|
+| `huggingface.co` | qmd's embedding model (`Qwen/Qwen3-Embedding-0.6B`) lives here. |
+| `cdn-lfs.huggingface.co` | LFS-stored model weights (the actual `.safetensors` blobs). |
+| `cdn-lfs-us-1.huggingface.co` | Region-routed LFS CDN. |
+| `cas-bridge.xethub.hf.co` | XetHub CDN that some HF models use for chunked uploads. |
+| `huggingface-hub.com` | `huggingface_hub` Python client telemetry/metadata. |
+
+The default **Trusted** set already includes `github.com`, `objects.githubusercontent.com`, `pypi.org`, and `files.pythonhosted.org`, which is everything the rest of the bootstrap path needs. You do **not** need to add `astral.sh` (uv is pre-installed) or `cli.github.com` (we install gh from a GitHub release).
+
+After saving, the first cloud-env spin-up downloads the embedding model (~600 MB, one-time per env). Subsequent runs reuse the cached model from `~/.cache/huggingface/`.
+
+## A note on slow tests in routines
+
+Routine prompts run `pytest -q -m "not slow"` (see Step 7 in `prompts/daily_runner.md`, `query_answerer.md`, and `weekly_health.md`). The `slow`-marked tests are the qmd round-trip integration tests, which depend on a real embedding-model download — fine for CI on the resulting PR (which has its own network policy), but would unnecessarily extend every routine run by ~30s and re-download the HF model on cold envs. CI on the merged PR still runs the full suite.
+
 ## Daily Research routine
 
 claude.ai/code/routines → New routine → Remote.
@@ -41,8 +90,8 @@ claude.ai/code/routines → New routine → Remote.
 |---|---|
 | Name | `Wikipilot Daily Research` |
 | Repository | this repo, default branch `main` |
-| Cloud env Setup script | `uv --version` (sanity check). The Anthropic cloud-env container ships with `uv`, `gh`, `git`, and Python pre-installed — we don't install anything. Repo-specific bootstrap (`uv sync --frozen --extra dev` + `uv run wikipilot index-wiki`) cannot run here because the setup script executes **before** the per-session repo clone; it is therefore moved into the routine prompt's Step 0. |
-| Cloud env Network access | **Trusted** is fine. PyPI, GitHub, and HuggingFace are on the default allowlist. `astral.sh` is **not** on it (so the Astral installer would 403), but we don't need it because `uv` is pre-installed. If you ever need a host outside the default list, switch to **Custom** and add the domain. |
+| Cloud env Setup script | See [Setup script](#cloud-env-setup-script) below — installs `gh` from a GitHub release if missing, sanity-checks `uv`. Repo-specific bootstrap (`uv sync --frozen --extra dev` + `uv run wikipilot index-wiki`) cannot run here because the setup script executes **before** the per-session repo clone; it is therefore moved into the routine prompt's Step 0. |
+| Cloud env Network access | **Custom** with the domains listed in [Network allowlist](#cloud-env-network-allowlist) below. The default **Trusted** policy blocks `huggingface.co` (which `wikipilot index-wiki` needs to download the embedding model on first run) and `astral.sh` (which we don't need because `uv` is pre-installed). |
 | Connectors | **Leave empty.** The "Connectors" field is for remote URL-based MCP servers; our stdio shim is wired through `.mcp.json` automatically when the agent session starts in the cloned repo. |
 | Permissions tab | "Allow unrestricted git push" → **OFF**. Routines push to `claude/*` branches by design; the auto-merge gate handles the move to `main` via `gh pr merge`, never via direct `git push`. |
 | Behavior tab | "Auto-fix pull requests" → **OFF** initially. Turn it on later, after several routine runs land cleanly, if you want Claude to babysit failing CI on its own PRs. |
