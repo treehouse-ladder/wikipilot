@@ -25,7 +25,7 @@ freshness_window_days: 30
 
 # Agentic coding tools and harnesses
 
-See [[purpose]] for the topic charter (in-scope / out-of-scope) and
+See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 `CLAUDE.md` "Cross-cutting relevance criteria" for the meta-bar.
 
 ## Summary
@@ -130,4 +130,4 @@ lint stays quiet until each page actually exists:
 
 ## See also
 
-- [[purpose]]
+- [purpose](purpose.md)

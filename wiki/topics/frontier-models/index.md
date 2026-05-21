@@ -9,7 +9,7 @@ freshness_window_days: 30
 
 # Frontier LLM landscape
 
-See [[purpose]] for the topic charter (in-scope / out-of-scope) and
+See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 `CLAUDE.md` "Cross-cutting relevance criteria" for the meta-bar.
 
 ## Summary (2026-05-20 update)
@@ -106,7 +106,7 @@ the topic-researcher (or `wikipilot compare new`) writes them to
 
 ## See also
 
-- [[purpose]]
+- [purpose](purpose.md)
 - [[claude-opus-4.7]]
 - [[gpt-5.5]]
 - [[gemini-3.1-pro]]
