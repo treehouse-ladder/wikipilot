@@ -31,3 +31,7 @@ Daily research run for games-of-note topic.
 ## [2026-05-20] daily | ai-in-game-dev — 15 sources, 1 page
 
 Applied proposal to topic index with engine-native AI assistants, generative content pipelines, AI-driven NPCs, and world-model research.
+
+## [2026-05-20] daily | frontier-models — 14 sources, 6 pages
+
+Applied proposal from topic-researcher: 14 sources ingested, topic index updated with 2026-05-20 summary, 4 entity pages created (claude-opus-4.7, gpt-5.5, gemini-3.1-pro, deepseek-v4), 1 comparison page created (cost-comparison).
