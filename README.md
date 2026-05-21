@@ -131,7 +131,19 @@ Walk the Phase 8 checklist in [`docs/runbook.md`](docs/runbook.md#smoke-test-che
 
 ### Open the wiki in Obsidian
 
-`File → Open vault → Open folder as vault → wiki/`. Obsidian will prompt to enable the bundled community plugins (Dataview + Front Matter Title) — click "Trust author and enable plugins". Bookmark [`wiki/_dashboard.md`](wiki/_dashboard.md). Full Obsidian guide (graph color groups, CSS snippet, daily workflow, plugin tier list, troubleshooting matrix) in [`docs/obsidian-setup.md`](docs/obsidian-setup.md).
+`File → Open vault → Open folder as vault → wiki/`. Obsidian will prompt to enable the bundled community plugins — click "Trust author and enable plugins". Bookmark [`wiki/_dashboard.md`](wiki/_dashboard.md).
+
+Five plugins are bundled in [`wiki/.obsidian/community-plugins.json`](wiki/.obsidian/community-plugins.json), each chosen for a schema-specific reason:
+
+| Plugin | Why |
+|---|---|
+| **[Dataview](https://blacksmithgu.github.io/obsidian-dataview/)** | Drives `_dashboard.md` — source counts, stale pages, open questions, unresolved disputes |
+| **[Front Matter Title](https://github.com/snezhig/obsidian-front-matter-title)** | Fixes the six-`index.md` graph hairball |
+| **[Hover Editor](https://github.com/nothingislost/obsidian-hover-editor)** | Peek source pages without leaving — the citation-check loop |
+| **[Omnisearch](https://github.com/scambier/obsidian-omnisearch)** | Fuzzy full-text search when you forget the exact phrasing |
+| **[Iconize](https://github.com/FlorianWoelki/obsidian-iconize)** | Per-`kind` folder icons in the file explorer |
+
+Per-plugin config toggles, graph color groups, CSS snippet, daily workflow, and troubleshooting matrix in [`docs/obsidian-setup.md`](docs/obsidian-setup.md).
 
 ## What you'll spend your time on
 
