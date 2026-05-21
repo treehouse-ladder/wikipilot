@@ -23,3 +23,7 @@ Empty wiki initialized. No topics enabled yet.
 ## [2026-05-20] daily | game-music — 6 sources, 1 page
 
 First daily research pass for game-music topic covering vinyl releases, notable 2026 scores, and adaptive-audio middleware comparison.
+
+## [2026-05-20] daily | games-of-note — 11 sources, 1 page
+
+Daily research run for games-of-note topic.
