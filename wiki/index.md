@@ -26,6 +26,12 @@ _(none yet — populated as comparison pages are created; see CLAUDE.md "Compari
 
 ## Sources
 
+- [[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]
+- [[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]
+- [[the-best-video-game-soundtracks-of-2026-so-far-11501826]]
+- [[mick-gordon-in-conversation-sonic-state-jan-2026-53ed29e8]]
+- [[pragmata-soundtrack-and-vinyl-release-review-2026-31dc604e]]
+- [[elden-ring-nightreign-soundtrack-is-coming-to-vinyl-30e2c324]]
 - [[playstation-boss-blames-bluepoint-cuts-on-budgets-and-players-f38a5da9]]
 - [[nioh-3-review-rise-of-the-shogun-95af04fb]]
 - [[forza-horizon-6-review-the-best-racing-series-is-back-and-better-2679cc0e]]
