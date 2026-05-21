@@ -29,6 +29,9 @@ _(none yet)_
 
 ## Sources
 
+- [[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]
+- [[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]]
+- [[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]]
 - [[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]
 - [[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]
 - [[the-best-video-game-soundtracks-of-2026-so-far-11501826]]
