@@ -71,3 +71,7 @@ Daily research run complete: 5 topics, 23 new sources, 33 pages touched, 5 PRs o
 ## [2026-05-21] query | Wwise vs FMOD vs MetaSounds for UE5 audio middleware — answers/2026-05-21-wwise-fmod-metasounds-ue5-comparison.md
 
 Answer page created with 5 sources (1 existing, 4 new); back-filled into game-music topic page.
+
+## [2026-05-21] daily | games-of-note — 4 sources, 1 page
+
+EA Battlefield layoffs post-record-launch; MercurySteam layoffs post-harassment allegations; Arc Raiders live-service counter-narrative (14M+ sales, ~6M WAU); Mixtape review (Annapurna, Beethoven & Dinosaur, GameSpot 9/10).
