@@ -98,6 +98,10 @@ _(none yet)_
 - [[subagents-agentic-engineering-patterns-3262892c]]
 - [[2026-agentic-coding-trends-report-27fe0474]]
 - [[swe-context-bench-a-benchmark-for-context-learning-in-coding-aba13bd3]]
+- [[creating-procedural-music-with-metasounds-ue5-7-documentation-07a8651e]]
+- [[fmod-licensing-c7ac9c17]]
+- [[metasounds-in-unreal-engine-ue5-7-documentation-abcafae8]]
+- [[wwise-for-games-pricing-audiokinetic-4ed3898c]]
 - [[automate-work-with-routines-claude-code-routines-docs-d09f612e]]
 - [[best-practices-for-claude-code-anthropic-engineering-b7723535]]
 - [[building-agents-with-the-claude-agent-sdk-anthropic-engineering-cf56e261]]
@@ -117,7 +121,7 @@ _(none yet)_
 
 ## Answers
 
-_(none yet — Wiki Query produces one page per question under [`wiki/answers/`](answers/))_
+- [[2026-05-21-wwise-fmod-metasounds-ue5-comparison]]
 
 ## Reports
 

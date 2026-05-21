@@ -67,3 +67,7 @@ Agentic Harness Engineering (automated harness evolution beats human-designed); 
 ## [2026-05-21] daily | 5 topics, 23 sources, 33 pages
 
 Daily research run complete: 5 topics, 23 new sources, 33 pages touched, 5 PRs opened (#7–#11).
+
+## [2026-05-21] query | Wwise vs FMOD vs MetaSounds for UE5 audio middleware — answers/2026-05-21-wwise-fmod-metasounds-ue5-comparison.md
+
+Answer page created with 5 sources (1 existing, 4 new); back-filled into game-music topic page.
