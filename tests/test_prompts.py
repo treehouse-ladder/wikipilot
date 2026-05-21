@@ -143,6 +143,76 @@ def test_weekly_health_renders_pr_body_via_helper() -> None:
     )
 
 
+# ---------------------------------------------------------------------------
+# PR Watcher routine (prompts/pr_watcher.md)
+# ---------------------------------------------------------------------------
+
+
+def test_pr_watcher_prompt_exists() -> None:
+    body = _read("pr_watcher")
+    assert body.strip(), "pr_watcher.md must not be empty"
+
+
+@pytest.mark.parametrize(
+    "required",
+    [
+        "preflight.py",
+        "gh pr checks --watch",
+        "scripts/pr_watcher_gate.py",
+        "wiki-linter",
+        "wikipilot:heal-attempt-",
+        "claude/",
+        "read_only",
+        "enforce",
+        "Is merged = false",
+        "Is draft = false",
+        "Base branch = main",
+        "pull_request.opened",
+        "pull_request.synchronize",
+        "HEAL_NEEDED",
+        "HEAL_CAPPED",
+        "self_heal_max_attempts",
+    ],
+)
+def test_pr_watcher_mentions_each_required_step(required: str) -> None:
+    body = _read("pr_watcher")
+    assert required in body, (
+        f"pr_watcher.md must mention {required!r} so the routine follows the documented workflow"
+    )
+
+
+def test_pr_watcher_uses_correct_trigger_filters() -> None:
+    """All three webhook filters (base, draft, merged) must be present together."""
+    body = _read("pr_watcher")
+    assert "Base branch = main" in body
+    assert "Is draft = false" in body
+    assert "Is merged = false" in body
+
+
+def test_pr_watcher_caps_self_heal_attempts() -> None:
+    """The prompt must reference both the config knob and a default attempt cap."""
+    body = _read("pr_watcher")
+    assert "self_heal_max_attempts" in body
+    # Either the literal 3 (default) or the config token must be present so
+    # operators know the cap is finite.
+    assert "3" in body or "[automerge.pr_watcher]" in body
+
+
+def test_pr_watcher_dedupe_key_is_documented() -> None:
+    body = _read("pr_watcher")
+    assert "wikipilot:gate" in body, (
+        "pr_watcher.md must document the dedupe key so future edits don't collide with it"
+    )
+
+
+def test_pr_watcher_skips_index_wiki_for_cost() -> None:
+    """The watcher is fire-many-times-per-day; it intentionally skips the qmd index step."""
+    body = _read("pr_watcher").lower()
+    # We want the prompt to explicitly call out that it does NOT need index-wiki.
+    assert "index-wiki" in body
+    assert "do not need" in body or "intentionally" in body or "skip" in body
+
+
 def test_daily_runner_enforces_citation_discipline() -> None:
     body = _read("daily_runner").lower()
     assert "cite or refuse" in body or "[[source-slug]]" in body, (

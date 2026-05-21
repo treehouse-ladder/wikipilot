@@ -141,3 +141,16 @@ jobs:
           uv run wikipilot dry-run --weekly-health \
             --vault /tmp/dryrun-vault --topics /tmp/dryrun-topics.yaml
           uv run wikipilot lint /tmp/dryrun-vault
+
+      - name: wikipilot recover-prs smoke (dry-run, never mutates)
+        # `recover-prs --dry-run` enumerates open `claude/*` PRs and runs
+        # `evaluate_gate` per PR without touching `gh pr merge` or
+        # `gh pr comment`. The smoke catches CLI regressions early —
+        # without it the subcommand could rot silently between routine
+        # invocations. Uses the actions-runner GH_TOKEN so `gh pr list`
+        # works against the real repo (no mutations, dry-run guarantees).
+        if: github.event_name == 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          uv run wikipilot recover-prs --dry-run --config wikipilot.toml

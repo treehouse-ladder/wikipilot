@@ -14,12 +14,13 @@ the real git or gh binaries. The expected signature is
 
 from __future__ import annotations
 
+import json as _json
 import re
 import subprocess
 from collections.abc import Callable
 from dataclasses import dataclass
 from datetime import date
-from typing import Any
+from typing import Any, Literal
 
 from wikipilot.config import (
     AutomergeRoute,
@@ -33,6 +34,9 @@ ROUTE_DAILY_RESEARCH = "daily_research"
 ROUTE_WIKI_QUERY = "wiki_query"
 ROUTE_WEEKLY_HEALTH = "weekly_health"
 VALID_ROUTES: tuple[str, ...] = (ROUTE_DAILY_RESEARCH, ROUTE_WIKI_QUERY, ROUTE_WEEKLY_HEALTH)
+
+GateMode = Literal["enforce", "read_only"]
+DEFAULT_GATE_DEDUPE_KEY = "wikipilot:gate"
 
 
 @dataclass(frozen=True)
@@ -117,19 +121,56 @@ def apply_gate(
     route: str,
     config: WikipilotConfig,
     runner: PRRunner | None = None,
+    mode: GateMode = "enforce",
+    dedupe_key: str = DEFAULT_GATE_DEDUPE_KEY,
 ) -> GateDecision:
-    """View ``pr_number``, evaluate the gate, and either enable auto-merge or comment.
+    """View ``pr_number``, evaluate the gate, and act on the decision.
 
-    Returns the :class:`GateDecision` so callers (e.g. ``maybe_automerge.py``)
-    can log the outcome.
+    Modes:
+      - ``"enforce"`` (default; used by the in-routine ``maybe_automerge.py``
+        call and the PR Watcher for ``claude/*`` branches): on pass, calls
+        ``gh pr merge --squash --auto``; on fail with red CI, calls
+        ``gh pr merge --disable-auto`` to undo any premature queue and then
+        posts/edits a dedupe-keyed review-checklist comment.
+      - ``"read_only"`` (used by the PR Watcher for non-routine branches):
+        never invokes ``gh pr merge`` in either direction. Only posts/edits
+        the dedupe-keyed checklist comment so the human sees the gate's
+        decision without the watcher trying to merge their PR for them.
+
+    ``dedupe_key`` is embedded as an HTML comment (``<!-- ... -->``) inside
+    the posted body so subsequent calls *edit* the existing comment instead
+    of spamming a new one. Returns the :class:`GateDecision`.
     """
     pr_view = view_pr(pr_number, runner=runner)
     decision = evaluate_gate(pr_view, route=route, config=config)
     if decision.automerge:
-        enable_automerge(pr_number, runner=runner)
-    else:
-        comment_pr(pr_number, decision.render_review_checklist(), runner=runner)
+        if mode == "enforce":
+            enable_automerge(pr_number, runner=runner)
+        else:
+            comment_pr(
+                pr_number,
+                _RENDER_READONLY_PASS,
+                runner=runner,
+                dedupe_key=dedupe_key,
+            )
+        return decision
+    if mode == "enforce" and not pr_view.checks_passing:
+        disable_automerge(pr_number, runner=runner)
+    comment_pr(
+        pr_number,
+        decision.render_review_checklist(),
+        runner=runner,
+        dedupe_key=dedupe_key,
+    )
     return decision
+
+
+_RENDER_READONLY_PASS = (
+    "## Auto-merge gate would pass\n\n"
+    "The PR Watcher is running in read-only mode for this branch (no "
+    "auto-merge is queued). All gate criteria are currently satisfied; "
+    "merge manually when ready."
+)
 
 
 def _route_config(config: WikipilotConfig, route: str) -> AutomergeRoute:
@@ -140,6 +181,83 @@ def _route_config(config: WikipilotConfig, route: str) -> AutomergeRoute:
     if route == ROUTE_WEEKLY_HEALTH:
         return config.weekly_health
     raise ValueError(f"unknown route {route!r}")
+
+
+def infer_route_from_branch(branch: str, config: WikipilotConfig | None = None) -> str | None:
+    """Infer which routine produced ``branch`` by matching the templates in ``[branches]``.
+
+    Returns one of :data:`VALID_ROUTES` for templates the PR Watcher recognises,
+    or ``None`` for human / unknown / non-claude branches. ``None`` is the
+    explicit signal the watcher uses to switch to read-only-comment mode.
+
+    Matching is anchored to the template prefix up to the first ``{`` (e.g.
+    ``claude/daily-{date}/{topic_id}`` becomes prefix ``claude/daily-``). This
+    keeps the rule simple and template-driven so a ``wikipilot.toml [branches]``
+    override is honoured automatically.
+    """
+    if not branch:
+        return None
+    branches_cfg = (config or WikipilotConfig()).branches
+    candidates: tuple[tuple[str, str], ...] = (
+        (branches_cfg.daily_template, ROUTE_DAILY_RESEARCH),
+        (branches_cfg.query_template, ROUTE_WIKI_QUERY),
+        (branches_cfg.health_template, ROUTE_WEEKLY_HEALTH),
+    )
+    for template, route in candidates:
+        prefix = _template_prefix(template)
+        if not prefix:
+            continue
+        if branch.startswith(prefix):
+            return route
+    return None
+
+
+def _template_prefix(template: str) -> str:
+    """Return the literal prefix of a branch template (everything before the first ``{``)."""
+    idx = template.find("{")
+    return template if idx < 0 else template[:idx]
+
+
+def wait_for_ci(
+    pr_number: int,
+    *,
+    timeout_sec: int = 1200,
+    interval_sec: int = 30,
+    runner: PRRunner | None = None,
+) -> bool:
+    """Block until ``gh pr checks --watch`` exits, then return CI pass/fail.
+
+    Returns ``True`` when the wrapped ``gh pr checks`` invocation exits zero
+    (every required check green); ``False`` on a non-zero exit (any check
+    failed) **or** when the subprocess raised :class:`subprocess.TimeoutExpired`
+    after ``timeout_sec``.
+
+    ``interval_sec`` is forwarded to ``gh`` as ``--interval``; ``timeout_sec``
+    drives the hard timeout passed to the runner. The watcher prompt always
+    polls again on the next ``pull_request.synchronize`` event so a False here
+    is recoverable.
+    """
+    runner = runner or subprocess.run
+    args = [
+        "gh",
+        "pr",
+        "checks",
+        str(pr_number),
+        "--watch",
+        "--interval",
+        str(interval_sec),
+    ]
+    try:
+        result = runner(
+            args,
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=timeout_sec,
+        )
+    except subprocess.TimeoutExpired:
+        return False
+    return result.returncode == 0
 
 
 def _resolve_files_limit(route_cfg: AutomergeRoute) -> int | None:
@@ -283,8 +401,6 @@ def view_pr(pr_number: int, *, runner: PRRunner | None = None) -> PRView:
     runner = runner or subprocess.run
     fields = "number,state,files,additions,deletions,statusCheckRollup,isDraft"
     result = _run(runner, ["gh", "pr", "view", str(pr_number), "--json", fields])
-    import json as _json
-
     data = _json.loads(result.stdout)
     files = [f["path"] for f in data.get("files", [])]
     rollup = data.get("statusCheckRollup", []) or []
@@ -300,15 +416,114 @@ def view_pr(pr_number: int, *, runner: PRRunner | None = None) -> PRView:
     )
 
 
-def comment_pr(pr_number: int, body: str, *, runner: PRRunner | None = None) -> None:
+def comment_pr(
+    pr_number: int,
+    body: str,
+    *,
+    runner: PRRunner | None = None,
+    dedupe_key: str | None = None,
+) -> None:
+    """Post a comment on the PR, or edit an existing one when ``dedupe_key`` matches.
+
+    When ``dedupe_key`` is provided, the body is prefixed with
+    ``<!-- {dedupe_key} -->`` and the function scans existing comments via
+    ``gh pr view --json comments`` for that exact marker. If found, the
+    matching comment is edited in place via ``gh api -X PATCH``; otherwise a
+    new comment is posted with ``gh pr comment``. This keeps the watcher from
+    spamming a fresh comment every time CI flips.
+    """
     runner = runner or subprocess.run
+    if dedupe_key:
+        marker = f"<!-- {dedupe_key} -->"
+        body = f"{marker}\n{body}" if not body.startswith(marker) else body
+        existing_id = _find_existing_comment_id(pr_number, marker, runner=runner)
+        if existing_id is not None:
+            owner_repo = _resolve_owner_repo(runner=runner)
+            if owner_repo is not None:
+                _run(
+                    runner,
+                    [
+                        "gh",
+                        "api",
+                        "-X",
+                        "PATCH",
+                        f"repos/{owner_repo}/issues/comments/{existing_id}",
+                        "-f",
+                        f"body={body}",
+                    ],
+                )
+                return
     _run(runner, ["gh", "pr", "comment", str(pr_number), "--body", body])
+
+
+def _find_existing_comment_id(pr_number: int, marker: str, *, runner: PRRunner) -> int | None:
+    """Return the id of the first comment whose body contains ``marker``, or ``None``."""
+    try:
+        result = _run(
+            runner,
+            ["gh", "pr", "view", str(pr_number), "--json", "comments"],
+            allow_fail=True,
+        )
+    except GitOpsError:
+        return None
+    if not result or result.returncode != 0 or not result.stdout.strip():
+        return None
+    try:
+        data = _json.loads(result.stdout)
+    except (ValueError, TypeError):
+        return None
+    for comment in data.get("comments") or []:
+        body = comment.get("body") or ""
+        if marker in body:
+            comment_id = comment.get("id") or comment.get("databaseId")
+            if isinstance(comment_id, int):
+                return comment_id
+            if isinstance(comment_id, str) and comment_id.isdigit():
+                return int(comment_id)
+    return None
+
+
+def _resolve_owner_repo(*, runner: PRRunner) -> str | None:
+    """Return ``owner/repo`` for the current GitHub remote via ``gh repo view``."""
+    try:
+        result = _run(
+            runner,
+            ["gh", "repo", "view", "--json", "nameWithOwner"],
+            allow_fail=True,
+        )
+    except GitOpsError:
+        return None
+    if not result or result.returncode != 0 or not result.stdout.strip():
+        return None
+    try:
+        data = _json.loads(result.stdout)
+    except (ValueError, TypeError):
+        return None
+    value = data.get("nameWithOwner")
+    return value if isinstance(value, str) and value else None
 
 
 def enable_automerge(pr_number: int, *, runner: PRRunner | None = None) -> None:
     """``gh pr merge --squash --auto``."""
     runner = runner or subprocess.run
     _run(runner, ["gh", "pr", "merge", str(pr_number), "--squash", "--auto"])
+
+
+def disable_automerge(pr_number: int, *, runner: PRRunner | None = None) -> None:
+    """``gh pr merge --disable-auto`` — undo a previously-queued auto-merge.
+
+    Used by :func:`apply_gate` in ``enforce`` mode when re-evaluation finds CI
+    has gone red, so a queued ``--auto`` from the in-routine call doesn't
+    merge the PR once branch protection later allows it. Idempotent: if no
+    auto-merge is queued, ``gh`` returns non-zero and we swallow it via
+    ``allow_fail``.
+    """
+    runner = runner or subprocess.run
+    _run(
+        runner,
+        ["gh", "pr", "merge", str(pr_number), "--disable-auto"],
+        allow_fail=True,
+    )
 
 
 def render_pr_body_daily(

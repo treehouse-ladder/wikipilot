@@ -170,3 +170,63 @@ class TestLoadWikipilotConfig:
         config = load_wikipilot_config(repo_root / "wikipilot.toml")
         assert config.daily_research.max_files_changed_per_topic == 80
         assert config.daily_research.max_total_diff_lines_per_topic == 3000
+
+
+class TestPRWatcherConfig:
+    """Coverage for the ``[automerge.pr_watcher]`` block added with the watcher routine."""
+
+    def test_block_parses(self, tmp_path: Path) -> None:
+        path = tmp_path / "wikipilot.toml"
+        path.write_text(
+            "[automerge.pr_watcher]\nci_wait_timeout_sec = 600\nself_heal_max_attempts = 2\n",
+            encoding="utf-8",
+        )
+        config = load_wikipilot_config(path)
+        assert config.pr_watcher.ci_wait_timeout_sec == 600
+        assert config.pr_watcher.self_heal_max_attempts == 2
+
+    def test_defaults_when_block_omitted(self, tmp_path: Path) -> None:
+        path = tmp_path / "wikipilot.toml"
+        path.write_text("[automerge.common]\nrequire_lint_green = true\n", encoding="utf-8")
+        config = load_wikipilot_config(path)
+        assert config.pr_watcher.ci_wait_timeout_sec == 1200
+        assert config.pr_watcher.self_heal_max_attempts == 3
+
+    def test_defaults_when_config_missing(self, tmp_path: Path) -> None:
+        config = load_wikipilot_config(tmp_path / "missing.toml")
+        assert config.pr_watcher.ci_wait_timeout_sec == 1200
+        assert config.pr_watcher.self_heal_max_attempts == 3
+
+    def test_negative_timeout_rejected(self, tmp_path: Path) -> None:
+        path = tmp_path / "wikipilot.toml"
+        path.write_text(
+            "[automerge.pr_watcher]\nci_wait_timeout_sec = -1\n",
+            encoding="utf-8",
+        )
+        with pytest.raises(ConfigError, match="positive integer"):
+            load_wikipilot_config(path)
+
+    def test_negative_attempts_rejected(self, tmp_path: Path) -> None:
+        path = tmp_path / "wikipilot.toml"
+        path.write_text(
+            "[automerge.pr_watcher]\nself_heal_max_attempts = 0\n",
+            encoding="utf-8",
+        )
+        with pytest.raises(ConfigError, match="positive integer"):
+            load_wikipilot_config(path)
+
+    def test_unknown_key_rejected(self, tmp_path: Path) -> None:
+        path = tmp_path / "wikipilot.toml"
+        path.write_text(
+            "[automerge.pr_watcher]\nbogus_field = 1\n",
+            encoding="utf-8",
+        )
+        with pytest.raises(ConfigError, match="unknown keys"):
+            load_wikipilot_config(path)
+
+    def test_repo_config_has_pr_watcher_block(self) -> None:
+        """The committed wikipilot.toml ships the PR Watcher knobs."""
+        repo_root = Path(__file__).resolve().parents[1]
+        config = load_wikipilot_config(repo_root / "wikipilot.toml")
+        assert config.pr_watcher.ci_wait_timeout_sec == 1200
+        assert config.pr_watcher.self_heal_max_attempts == 3

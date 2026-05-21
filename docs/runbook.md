@@ -218,6 +218,48 @@ The gate also reads `[automerge.common]`:
 - `require_tests_green = true` — block on any failing CI check.
 - `block_human_only_file_changes = true` — block any PR that modifies a human-only path (`topics.yaml`, `CLAUDE.md`, `wikipilot.toml`, `prompts/`, `wiki/topics/<id>/purpose.md`, etc.).
 
+## Recovering stranded PRs
+
+When a Daily Research session crashes mid-loop (orchestrator OOMs, networking blip, the cloud env terminates the session before the per-topic merge series completes, etc.), the topic PRs that already landed are left **open with green CI, no auto-merge queued, and no gate-blocked comment** — because `scripts/maybe_automerge.py` never ran on them. The PR Watcher routine catches this case on the next `pull_request.synchronize` event, but if you have a backlog from before the watcher was wired up (or the watcher itself was unhealthy), recover by hand:
+
+```bash
+# Default: enumerates every open claude/* PR to main and runs apply_gate in
+# enforce mode, inferring the route from the branch template per PR.
+uv run wikipilot recover-prs
+
+# Preview first without enabling auto-merge / posting comments.
+uv run wikipilot recover-prs --dry-run
+
+# Restrict to a non-default base branch.
+uv run wikipilot recover-prs --base release-2026-05
+```
+
+For each PR, the command prints `pr_number | route | decision | reasons` so you can see at a glance which ones auto-merged and which got a checklist comment. Re-runnable: the gate is idempotent, so a stuck-on-comment PR can be retried after pushing a fix.
+
+If a PR is stranded *and* the watcher routine itself is misbehaving, fall back to the per-PR shim:
+
+```bash
+python scripts/maybe_automerge.py --pr <num> --route daily_research
+```
+
+## PR Watcher cost budget
+
+The PR Watcher fires one cloud-routine session per `pull_request.opened` and per `pull_request.synchronize` event matching its filters (`base=main`, `is_draft=false`, `is_merged=false`). With the current vault:
+
+| Source | Sessions per day (typical) |
+|---|---|
+| Daily Research | one per topic = 5–8 |
+| Wiki Query | one per question = 0–3 |
+| Weekly Health | one per week, amortized = <1 |
+| Self-heal push after CI fix | one per fix = 0–3 |
+| Human PRs to `main` | one per PR open + one per push = 0–10 |
+
+Comfortably below Max (15/day) and Team/Enterprise (25/day) caps in normal operation. If you're consistently exceeding caps:
+
+1. Check `gh pr list --state open --base main --head 'claude/*' --json title,createdAt,updatedAt` for PRs being repeatedly synchronized — every push is a new session. A flaky self-heal that keeps re-pushing the same fix burns sessions fast.
+2. Lower `[automerge.pr_watcher].self_heal_max_attempts` in [`wikipilot.toml`](../wikipilot.toml) (default 3 → try 2) to cap how many heal sessions a single PR can consume.
+3. Add a routine-UI Author filter excluding bots if a third-party bot is opening unrelated PRs to `main`.
+
 ## What to do when human-only file changes block auto-merge
 
 The auto-merge gate refuses to land any `claude/*` PR that touches a human-only file. When this fires:

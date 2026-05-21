@@ -30,6 +30,21 @@ max_total_diff_lines = 400
 max_files_changed = 60
 max_total_diff_lines = 2000
 
+[automerge.pr_watcher]
+# Wikipilot PR Watcher routine — fires on every pull_request.opened /
+# pull_request.synchronize to `main`, waits for CI, and re-runs the
+# per-route auto-merge gate with the real CI signal. Closes the race
+# condition where the in-routine `maybe_automerge.py` call evaluates the
+# gate before CI has populated the rollup.
+#
+# `ci_wait_timeout_sec` bounds the `gh pr checks --watch` wait. A timeout
+# is recoverable — the next `pull_request.synchronize` event re-fires the
+# watcher. `self_heal_max_attempts` caps the loop where the watcher
+# dispatches `wiki-linter` to fix mechanical errors on `claude/*` PRs;
+# attempts are tracked via the `wikipilot:heal-attempt-{n}` PR label.
+ci_wait_timeout_sec = 1200
+self_heal_max_attempts = 3
+
 [images]
 enabled = true
 max_image_bytes = 5_242_880  # 5 MB
