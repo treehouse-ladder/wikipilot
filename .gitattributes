@@ -1,0 +1,30 @@
+# Normalize all text files to LF in the repo. On checkout, git converts to
+# the platform's native line ending (CRLF on Windows, LF elsewhere) via
+# core.autocrlf, so editors that re-save with CRLF (e.g. Obsidian on Windows)
+# don't show up as spurious modifications in `git status`.
+
+* text=auto
+
+# Explicit text overrides for the file kinds this repo cares about.
+*.md       text
+*.json     text
+*.py       text
+*.toml     text
+*.yml      text
+*.yaml     text
+*.txt      text
+*.cfg      text
+*.ini      text
+*.sh       text eol=lf
+*.ps1      text eol=crlf
+
+# Explicit binary types so git doesn't try to diff/normalize them.
+*.png      binary
+*.jpg      binary
+*.jpeg     binary
+*.gif      binary
+*.webp     binary
+*.ico      binary
+*.pdf      binary
+*.zip      binary
+*.gz       binary
