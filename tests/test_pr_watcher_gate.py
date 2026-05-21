@@ -72,15 +72,48 @@ def _meta(
     state: str = "OPEN",
     is_draft: bool = False,
     labels: list[str] | None = None,
+    author_login: str = "rauriemo",
+    is_cross_repository: bool = False,
+    head_owner: str = "treehouse-ladder",
 ) -> str:
+    """Render the ``gh pr view --json`` payload the watcher fetches.
+
+    Defaults to a trusted-author shape (org member, head ref in this repo)
+    so existing assertions keep firing the enforce path. Tests that want
+    to exercise the read_only / untrusted path pass overrides explicitly.
+    """
     return json.dumps(
         {
             "headRefName": head,
             "state": state,
             "isDraft": is_draft,
             "labels": [{"name": name} for name in (labels or [])],
+            "isCrossRepository": is_cross_repository,
+            "author": {"login": author_login},
+            "headRepositoryOwner": {"login": head_owner},
         }
     )
+
+
+def _rest_payload(
+    *,
+    author_association: str = "MEMBER",
+    author_login: str = "rauriemo",
+) -> str:
+    """Render the ``gh api repos/.../pulls/<n>`` REST payload (subset).
+
+    The watcher only reads ``author_association`` off this response so the
+    rest of the upstream REST schema is omitted.
+    """
+    return json.dumps(
+        {
+            "user": {"login": author_login},
+            "author_association": author_association,
+        }
+    )
+
+
+_DEFAULT_OWNER_REPO_PAYLOAD = json.dumps({"nameWithOwner": "treehouse-ladder/wikipilot"})
 
 
 def _pr_view_payload(
@@ -106,21 +139,43 @@ def _pr_view_payload(
 
 
 def _build_fake_run(
-    handlers: dict[str, list[subprocess.CompletedProcess[str]]], calls: list[list[str]]
+    handlers: dict[str, list[subprocess.CompletedProcess[str]]],
+    calls: list[list[str]],
+    *,
+    api_payload: str | None = None,
+    owner_repo_payload: str = _DEFAULT_OWNER_REPO_PAYLOAD,
 ):
     """Build a ``subprocess.run`` stand-in that pops from a per-prefix queue.
 
-    Each ``handlers[prefix]`` is a list of canned responses returned in order
-    for calls whose ``args[:3]`` joined by spaces equals ``prefix``. Falls
-    back to a generic 0-exit ``CompletedProcess`` when no handler matches.
+    Match order:
+
+    1. Exact ``args[:3]`` match against ``handlers``.
+    2. ``args[:2]`` prefix match against ``handlers`` (so a test can stub
+       every ``gh api ...`` call with a single ``"gh api"`` handler).
+    3. Trust-guard fallbacks. The watcher always issues ``gh repo view --json
+       nameWithOwner`` (for owner/repo resolution) and ``gh api repos/<o>/<r>/pulls/<n>``
+       (for ``author_association``) when the head ref matches a claude/*
+       template. To avoid duplicating those handlers in every test, the
+       helper synthesizes defaults: a fixed ``nameWithOwner`` payload and a
+       ``MEMBER`` association unless the test overrides via ``api_payload``.
+    4. Final fallback: a generic 0-exit ``CompletedProcess``.
     """
+    default_api = api_payload if api_payload is not None else _rest_payload()
 
     def fake_run(args, capture_output=True, text=True, check=False, **kwargs):
         calls.append(list(args))
-        key = " ".join(args[:3])
-        queue = handlers.get(key)
+        key3 = " ".join(args[:3])
+        queue = handlers.get(key3)
         if queue:
             return queue.pop(0) if len(queue) > 1 else queue[0]
+        key2 = " ".join(args[:2])
+        queue = handlers.get(key2)
+        if queue:
+            return queue.pop(0) if len(queue) > 1 else queue[0]
+        if args[:3] == ["gh", "repo", "view"]:
+            return _ok(stdout=owner_repo_payload)
+        if args[:2] == ["gh", "api"]:
+            return _ok(stdout=default_api)
         return _ok()
 
     return fake_run
@@ -348,3 +403,401 @@ def test_missing_pr_metadata_exits_zero(repo_with_config: Path, capsys) -> None:
     assert rc == 0
     out = capsys.readouterr().out
     assert "could not fetch metadata" in out
+
+
+# ---------------------------------------------------------------------------
+# Trust-guard regression suite
+# ---------------------------------------------------------------------------
+#
+# A hostile fork PR (or any non-trusted contributor) can in principle pick a
+# claude/daily-… branch name and try to coerce the watcher into queueing
+# auto-merge. The guard added in `_is_trusted_for_enforce` must demote every
+# such PR to read_only regardless of how the branch name is shaped.
+#
+# The matrix below covers:
+#   - fork PR + claude/* head + MEMBER author     -> read_only (fork beats assoc)
+#   - same-repo PR + claude/* + NONE association  -> read_only (untrusted)
+#   - same-repo PR + claude/* + MEMBER            -> enforce (control)
+#   - same-repo PR + claude/* + NONE in allowlist -> enforce (override)
+#   - REST API failure on author_association      -> read_only (fail closed)
+#   - human (non-claude) head                     -> read_only (trust check skipped)
+
+
+def test_fork_pr_with_claude_branch_forces_readonly(repo_with_config: Path, capsys) -> None:
+    """A claude/* branch coming from a fork must NOT enable auto-merge.
+
+    The author_association is MEMBER (i.e. the attacker happens to also be
+    an org member), so the trust check passes on association alone — the
+    ``isCrossRepository`` belt-and-suspenders is what catches this.
+    """
+    cli_main = _import_main()
+    calls: list[list[str]] = []
+    handlers = {
+        "gh pr view": [
+            _ok(
+                stdout=_meta(
+                    head="claude/daily-2026-05-21/agentic-coding",
+                    is_cross_repository=True,
+                    head_owner="attacker",
+                )
+            ),
+            _ok(stdout=_pr_view_payload()),
+        ],
+        "gh pr checks": [_ok()],
+    }
+    with patch("subprocess.run", side_effect=_build_fake_run(handlers, calls)):
+        rc = cli_main(["--pr", "42", "--config", str(repo_with_config)])
+    assert rc == 0
+    out = capsys.readouterr().out
+    assert "not trusted" in out
+    assert "fork=True" in out
+    assert "read_only" in out
+    assert not any(c[:3] == ["gh", "pr", "merge"] and "--auto" in c for c in calls)
+
+
+def test_untrusted_association_forces_readonly(repo_with_config: Path, capsys) -> None:
+    """``author_association == NONE`` on a claude/* head is demoted to read_only.
+
+    The fork bit is false (so an external contributor pushing to a branch
+    they somehow have write access to) — the association check alone has
+    to catch this case.
+    """
+    cli_main = _import_main()
+    calls: list[list[str]] = []
+    handlers = {
+        "gh pr view": [
+            _ok(
+                stdout=_meta(
+                    head="claude/daily-2026-05-21/x",
+                    author_login="random-contributor",
+                )
+            ),
+            _ok(stdout=_pr_view_payload()),
+        ],
+        "gh pr checks": [_ok()],
+    }
+    fake = _build_fake_run(
+        handlers,
+        calls,
+        api_payload=_rest_payload(author_association="NONE", author_login="random-contributor"),
+    )
+    with patch("subprocess.run", side_effect=fake):
+        rc = cli_main(["--pr", "42", "--config", str(repo_with_config)])
+    assert rc == 0
+    out = capsys.readouterr().out
+    assert "not trusted" in out
+    assert "assoc='NONE'" in out
+    assert "read_only" in out
+    assert not any(c[:3] == ["gh", "pr", "merge"] and "--auto" in c for c in calls)
+
+
+def test_member_author_with_claude_branch_enforces(repo_with_config: Path, capsys) -> None:
+    """Control case: the canonical happy path (MEMBER + same-repo + claude/daily)
+    still drives the enforce path and queues auto-merge on green CI."""
+    cli_main = _import_main()
+    calls: list[list[str]] = []
+    handlers = {
+        "gh pr view": [_ok(stdout=_meta()), _ok(stdout=_pr_view_payload())],
+        "gh pr checks": [_ok()],
+    }
+    with patch("subprocess.run", side_effect=_build_fake_run(handlers, calls)):
+        rc = cli_main(["--pr", "42", "--config", str(repo_with_config)])
+    assert rc == 0
+    out = capsys.readouterr().out
+    assert "mode=enforce" in out
+    assert "auto-merge enabled" in out
+    assert any(c[:3] == ["gh", "pr", "merge"] and "--auto" in c for c in calls)
+
+
+def test_explicit_trusted_author_allowlist(tmp_path: Path, capsys) -> None:
+    """An untrusted association is overridden when the author is in
+    ``trusted_authors``. Lets the user whitelist a dedicated bot account
+    that has no org membership without granting it collaborator status."""
+    config_path = tmp_path / "wikipilot.toml"
+    config_path.write_text(
+        "[automerge.daily_research]\n"
+        "max_files_changed_per_topic = 40\n"
+        "max_total_diff_lines_per_topic = 1500\n"
+        "\n"
+        "[automerge.wiki_query]\n"
+        "max_files_changed = 8\n"
+        "max_total_diff_lines = 400\n"
+        "\n"
+        "[automerge.weekly_health]\n"
+        "max_files_changed = 60\n"
+        "max_total_diff_lines = 2000\n"
+        "\n"
+        "[automerge.pr_watcher]\n"
+        "ci_wait_timeout_sec = 60\n"
+        "self_heal_max_attempts = 3\n"
+        'trusted_authors = ["wikipilot-bot"]\n',
+        encoding="utf-8",
+    )
+    cli_main = _import_main()
+    calls: list[list[str]] = []
+    handlers = {
+        "gh pr view": [
+            _ok(
+                stdout=_meta(
+                    head="claude/daily-2026-05-21/x",
+                    author_login="wikipilot-bot",
+                )
+            ),
+            _ok(stdout=_pr_view_payload()),
+        ],
+        "gh pr checks": [_ok()],
+    }
+    fake = _build_fake_run(
+        handlers,
+        calls,
+        api_payload=_rest_payload(author_association="NONE", author_login="wikipilot-bot"),
+    )
+    with patch("subprocess.run", side_effect=fake):
+        rc = cli_main(["--pr", "42", "--config", str(config_path)])
+    assert rc == 0
+    out = capsys.readouterr().out
+    assert "mode=enforce" in out
+    assert "auto-merge enabled" in out
+    assert any(c[:3] == ["gh", "pr", "merge"] and "--auto" in c for c in calls)
+
+
+def test_author_association_fetch_failure_fails_closed(repo_with_config: Path, capsys) -> None:
+    """If ``gh api`` fails (network blip, missing scope, unauth), the trust
+    check must return False — never queue auto-merge on a missing signal."""
+    cli_main = _import_main()
+    calls: list[list[str]] = []
+    handlers = {
+        "gh pr view": [_ok(stdout=_meta()), _ok(stdout=_pr_view_payload())],
+        "gh pr checks": [_ok()],
+        "gh api": [_ok(returncode=1, stderr="HTTP 401")],
+    }
+    with patch("subprocess.run", side_effect=_build_fake_run(handlers, calls)):
+        rc = cli_main(["--pr", "42", "--config", str(repo_with_config)])
+    assert rc == 0
+    out = capsys.readouterr().out
+    assert "not trusted" in out
+    assert "read_only" in out
+    assert not any(c[:3] == ["gh", "pr", "merge"] and "--auto" in c for c in calls)
+
+
+def test_repo_view_failure_fails_closed(repo_with_config: Path, capsys) -> None:
+    """If ``gh repo view`` fails so owner/repo can't be resolved, the trust
+    check must still return False (no association = untrusted)."""
+    cli_main = _import_main()
+    calls: list[list[str]] = []
+    handlers = {
+        "gh pr view": [_ok(stdout=_meta()), _ok(stdout=_pr_view_payload())],
+        "gh pr checks": [_ok()],
+        "gh repo view": [_ok(returncode=1, stderr="not a gh repo")],
+    }
+    with patch("subprocess.run", side_effect=_build_fake_run(handlers, calls)):
+        rc = cli_main(["--pr", "42", "--config", str(repo_with_config)])
+    assert rc == 0
+    out = capsys.readouterr().out
+    assert "not trusted" in out
+    assert not any(c[:3] == ["gh", "pr", "merge"] and "--auto" in c for c in calls)
+
+
+def test_non_claude_branch_skips_author_check_entirely(repo_with_config: Path, capsys) -> None:
+    """For a non-claude head ref the route is already None so the trust
+    check is short-circuited — no ``gh api`` call is made (saves one RTT
+    on every human PR the watcher sees)."""
+    cli_main = _import_main()
+    calls: list[list[str]] = []
+    handlers = {
+        "gh pr view": [
+            _ok(stdout=_meta(head="fix/some-thing", author_login="external-contributor")),
+            _ok(stdout=_pr_view_payload()),
+        ],
+        "gh pr checks": [_ok()],
+    }
+    with patch("subprocess.run", side_effect=_build_fake_run(handlers, calls)):
+        rc = cli_main(["--pr", "42", "--config", str(repo_with_config)])
+    assert rc == 0
+    out = capsys.readouterr().out
+    assert "read_only" in out
+    assert not any(c[:2] == ["gh", "api"] for c in calls)
+    assert not any(c[:3] == ["gh", "pr", "merge"] for c in calls)
+
+
+def test_collaborator_association_is_trusted(repo_with_config: Path, capsys) -> None:
+    """COLLABORATOR (external contributor invited via Settings) is in the
+    default trust set — first-class support for invited collaborators."""
+    cli_main = _import_main()
+    calls: list[list[str]] = []
+    handlers = {
+        "gh pr view": [
+            _ok(stdout=_meta(author_login="invited-friend")),
+            _ok(stdout=_pr_view_payload()),
+        ],
+        "gh pr checks": [_ok()],
+    }
+    fake = _build_fake_run(
+        handlers,
+        calls,
+        api_payload=_rest_payload(author_association="COLLABORATOR", author_login="invited-friend"),
+    )
+    with patch("subprocess.run", side_effect=fake):
+        rc = cli_main(["--pr", "42", "--config", str(repo_with_config)])
+    assert rc == 0
+    out = capsys.readouterr().out
+    assert "mode=enforce" in out
+
+
+def test_contributor_association_is_not_trusted_by_default(repo_with_config: Path, capsys) -> None:
+    """``CONTRIBUTOR`` (any previous successful PR) is intentionally NOT in
+    the default trusted set — letting it in would mean anyone who's ever
+    landed a typo fix could later open a claude/* PR that auto-merges."""
+    cli_main = _import_main()
+    calls: list[list[str]] = []
+    handlers = {
+        "gh pr view": [
+            _ok(stdout=_meta(author_login="past-contributor")),
+            _ok(stdout=_pr_view_payload()),
+        ],
+        "gh pr checks": [_ok()],
+    }
+    fake = _build_fake_run(
+        handlers,
+        calls,
+        api_payload=_rest_payload(
+            author_association="CONTRIBUTOR", author_login="past-contributor"
+        ),
+    )
+    with patch("subprocess.run", side_effect=fake):
+        rc = cli_main(["--pr", "42", "--config", str(repo_with_config)])
+    assert rc == 0
+    out = capsys.readouterr().out
+    assert "not trusted" in out
+    assert "read_only" in out
+
+
+class TestIsTrustedForEnforce:
+    """Direct unit tests for the trust helper, independent of the gh layer.
+
+    The end-to-end watcher tests above pin behavior through the CLI; these
+    pin the pure-function semantics so refactors of the helper can't drift
+    without a test fire.
+    """
+
+    @pytest.fixture
+    def default_config(self):
+        from wikipilot.config import PRWatcherConfig
+
+        return PRWatcherConfig()
+
+    @pytest.fixture
+    def authors_only_config(self):
+        from wikipilot.config import PRWatcherConfig
+
+        return PRWatcherConfig(
+            trusted_associations=(),
+            trusted_authors=("wikipilot-bot",),
+        )
+
+    @staticmethod
+    def _is_trusted(**kwargs):
+        from scripts.pr_watcher_gate import _is_trusted_for_enforce
+
+        return _is_trusted_for_enforce(**kwargs)
+
+    def test_fork_pr_is_never_trusted(self, default_config) -> None:
+        assert (
+            self._is_trusted(
+                is_fork=True,
+                association="MEMBER",
+                author_login="rauriemo",
+                config=default_config,
+            )
+            is False
+        )
+
+    def test_fork_pr_with_explicit_allowlist_still_not_trusted(self, authors_only_config) -> None:
+        """Even a whitelisted login can't merge from a fork. The
+        ``isCrossRepository`` bit is the strongest signal we have that
+        the head ref is outside our control."""
+        assert (
+            self._is_trusted(
+                is_fork=True,
+                association="NONE",
+                author_login="wikipilot-bot",
+                config=authors_only_config,
+            )
+            is False
+        )
+
+    def test_member_in_same_repo_is_trusted(self, default_config) -> None:
+        assert (
+            self._is_trusted(
+                is_fork=False,
+                association="MEMBER",
+                author_login="rauriemo",
+                config=default_config,
+            )
+            is True
+        )
+
+    def test_none_association_without_allowlist_match_is_untrusted(self, default_config) -> None:
+        assert (
+            self._is_trusted(
+                is_fork=False,
+                association="NONE",
+                author_login="stranger",
+                config=default_config,
+            )
+            is False
+        )
+
+    def test_explicit_author_allowlist_overrides_untrusted_association(
+        self, authors_only_config
+    ) -> None:
+        assert (
+            self._is_trusted(
+                is_fork=False,
+                association="NONE",
+                author_login="wikipilot-bot",
+                config=authors_only_config,
+            )
+            is True
+        )
+
+    def test_empty_author_login_does_not_match_empty_allowlist(self, default_config) -> None:
+        """The default ``trusted_authors`` is empty; an empty author_login
+        must not coincidentally satisfy ``"" in ()``. Both sides being
+        falsy can't be allowed to short-circuit to True."""
+        assert (
+            self._is_trusted(
+                is_fork=False,
+                association="NONE",
+                author_login="",
+                config=default_config,
+            )
+            is False
+        )
+
+
+def test_trust_check_runs_before_ci_wait(repo_with_config: Path, capsys) -> None:
+    """Untrusted PRs should still go through the CI wait (read_only mode
+    still wants to *report* on CI status), but they must NOT call
+    ``gh pr merge`` at any point. This guards against a future refactor
+    that swaps the order of operations."""
+    cli_main = _import_main()
+    calls: list[list[str]] = []
+    handlers = {
+        "gh pr view": [
+            _ok(stdout=_meta(head="claude/daily-2026-05-21/x", author_login="stranger")),
+            _ok(stdout=_pr_view_payload()),
+        ],
+        "gh pr checks": [_ok()],
+    }
+    fake = _build_fake_run(
+        handlers,
+        calls,
+        api_payload=_rest_payload(author_association="NONE", author_login="stranger"),
+    )
+    with patch("subprocess.run", side_effect=fake):
+        cli_main(["--pr", "42", "--config", str(repo_with_config)])
+    # CI wait runs (it's harmless and informative).
+    assert any(c[:3] == ["gh", "pr", "checks"] for c in calls)
+    # But absolutely no merge mutation.
+    assert not any(c[:3] == ["gh", "pr", "merge"] for c in calls)

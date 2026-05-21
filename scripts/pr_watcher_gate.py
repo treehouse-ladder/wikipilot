@@ -5,17 +5,24 @@ session by ``prompts/pr_watcher.md``. Reads ``wikipilot.toml``, fetches the
 PR via ``gh pr view --json`` (twice: once for branch metadata, once after
 the CI wait for the rollup), waits for ``gh pr checks --watch`` to finish,
 and then dispatches to :func:`wikipilot.git_ops.apply_gate` in either
-``enforce`` or ``read_only`` mode depending on the head branch:
+``enforce`` or ``read_only`` mode depending on the head branch AND the PR
+author's trust state:
 
   - Head matches a configured ``[branches]`` template
-    (``claude/daily-…``, ``claude/query-…``, ``claude/health-…``) →
-    ``--route`` is inferred from the prefix and the gate runs in
+    (``claude/daily-…``, ``claude/query-…``, ``claude/health-…``) AND the
+    PR is authored by a trusted identity (``author_association`` in
+    ``[automerge.pr_watcher].trusted_associations`` *or* ``author.login`` in
+    ``trusted_authors``) AND the head ref lives in this repo (not a fork)
+    → ``--route`` is inferred from the prefix and the gate runs in
     ``enforce`` mode (queues auto-merge on green, undoes a premature queue
     + posts a checklist comment on red).
-  - Any other head → ``--route`` defaults to ``wiki_query`` (smallest gate)
-    and the gate runs in ``read_only`` mode (comment only, never merge).
+  - Any other case (non-claude/* head, fork PR, or untrusted author with a
+    ``claude/*``-shaped head) → the gate runs in ``read_only`` mode
+    (comment only, never merge). The dual head-and-author check exists so
+    a hostile fork PR with a ``claude/daily-…``-shaped branch name cannot
+    coerce the watcher into queueing auto-merge against ``main``.
 
-Self-heal signalling: when CI is red on a ``claude/*`` PR and the
+Self-heal signalling: when CI is red on a trusted ``claude/*`` PR and the
 ``wikipilot:heal-attempt-{n}`` label count is below
 ``[automerge.pr_watcher].self_heal_max_attempts``, the script prints a
 machine-readable ``HEAL_NEEDED`` line so the orchestrator prompt knows to
@@ -40,7 +47,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from wikipilot.config import load_wikipilot_config
+from wikipilot.config import PRWatcherConfig, load_wikipilot_config
 from wikipilot.git_ops import (
     DEFAULT_GATE_DEDUPE_KEY,
     ROUTE_WIKI_QUERY,
@@ -54,6 +61,7 @@ DEFAULT_CONFIG_PATH = Path("wikipilot.toml")
 HEAL_LABEL_PREFIX = "wikipilot:heal-attempt-"
 HEAL_NEEDED_TOKEN = "HEAL_NEEDED"
 HEAL_CAPPED_TOKEN = "HEAL_CAPPED"
+UNKNOWN_ASSOCIATION = "NONE"
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -81,6 +89,8 @@ def main(argv: list[str] | None = None) -> int:
     state = pr_meta["state"].upper()
     is_draft = bool(pr_meta.get("isDraft"))
     labels = [lbl.get("name", "") for lbl in pr_meta.get("labels", [])]
+    is_fork = bool(pr_meta.get("isCrossRepository"))
+    author_login = ((pr_meta.get("author") or {}).get("login")) or ""
 
     if state in {"MERGED", "CLOSED"}:
         print(f"PR #{args.pr}: state={state}; nothing to gate.")
@@ -90,17 +100,42 @@ def main(argv: list[str] | None = None) -> int:
         return 0
 
     route = infer_route_from_branch(head_ref, config)
+    association = UNKNOWN_ASSOCIATION
+    if route is not None:
+        # Defense-in-depth: branch name matched a claude/* template, but only
+        # enforce when the PR is in this repo (not a fork) AND the author is
+        # trusted. Without this guard a hostile fork PR with a synthetic
+        # claude/daily-… head ref could coerce the watcher into queueing
+        # auto-merge against main. See CLAUDE.md "Per-PR workflow" trust model.
+        association = _fetch_pr_author_association(args.pr) or UNKNOWN_ASSOCIATION
+        if not _is_trusted_for_enforce(
+            is_fork=is_fork,
+            association=association,
+            author_login=author_login,
+            config=config.pr_watcher,
+        ):
+            print(
+                f"PR #{args.pr}: head={head_ref!r} matches claude/* but author "
+                f"is not trusted (author={author_login!r} "
+                f"assoc={association!r} fork={is_fork}); forcing read_only mode."
+            )
+            route = None
+
     if route is None:
         gate_route = ROUTE_WIKI_QUERY
         mode = "read_only"
         print(
-            f"PR #{args.pr}: head={head_ref!r} is not a claude/* branch; "
-            f"running gate in read_only mode (route={gate_route})."
+            f"PR #{args.pr}: head={head_ref!r} author={author_login!r} "
+            f"assoc={association!r} fork={is_fork}; running gate in "
+            f"read_only mode (route={gate_route})."
         )
     else:
         gate_route = route
         mode = "enforce"
-        print(f"PR #{args.pr}: head={head_ref!r} -> route={route}, mode=enforce.")
+        print(
+            f"PR #{args.pr}: head={head_ref!r} author={author_login!r} "
+            f"assoc={association!r} -> route={route}, mode=enforce."
+        )
 
     ci_green = True
     if not args.skip_ci_wait:
@@ -143,13 +178,21 @@ def main(argv: list[str] | None = None) -> int:
 
 
 def _fetch_pr_metadata(pr_number: int) -> dict | None:
+    """Fetch the gh-CLI-visible subset of PR metadata.
+
+    Returns the parsed ``gh pr view --json`` payload, extended to include the
+    ``isCrossRepository`` and ``author`` fields the trust guard consumes.
+    Note: GitHub's ``author_association`` is *not* exposed by
+    ``gh pr view --json`` (verified empirically against ``gh 2.x``); the
+    watcher reads it via :func:`_fetch_pr_author_association`.
+    """
     args = [
         "gh",
         "pr",
         "view",
         str(pr_number),
         "--json",
-        "headRefName,state,isDraft,labels",
+        "headRefName,state,isDraft,labels,isCrossRepository,author,headRepositoryOwner",
     ]
     try:
         result = subprocess.run(args, capture_output=True, text=True, check=False)
@@ -161,6 +204,85 @@ def _fetch_pr_metadata(pr_number: int) -> dict | None:
         return json.loads(result.stdout)
     except (ValueError, TypeError):
         return None
+
+
+def _fetch_pr_author_association(pr_number: int) -> str | None:
+    """Read ``author_association`` for ``pr_number`` via the GitHub REST API.
+
+    GitHub's ``gh pr view --json`` does not expose this field even though
+    the underlying REST endpoint does, so the watcher calls
+    ``gh api repos/<owner>/<repo>/pulls/<num>`` directly. Returns the
+    upper-case association string (e.g. ``"MEMBER"``, ``"COLLABORATOR"``,
+    ``"NONE"``) on success and ``None`` on any failure mode — the caller
+    treats ``None`` as untrusted so transient gh outages fail closed.
+    """
+    owner_repo = _resolve_owner_repo()
+    if owner_repo is None:
+        return None
+    args = ["gh", "api", f"repos/{owner_repo}/pulls/{pr_number}"]
+    try:
+        result = subprocess.run(args, capture_output=True, text=True, check=False)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    if result.returncode != 0 or not result.stdout.strip():
+        return None
+    try:
+        data = json.loads(result.stdout)
+    except (ValueError, TypeError):
+        return None
+    assoc = data.get("author_association")
+    if not isinstance(assoc, str) or not assoc.strip():
+        return None
+    return assoc.strip().upper()
+
+
+def _resolve_owner_repo() -> str | None:
+    """Return ``owner/repo`` for the current gh context, or ``None`` on failure."""
+    try:
+        result = subprocess.run(
+            ["gh", "repo", "view", "--json", "nameWithOwner"],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+    if result.returncode != 0 or not result.stdout.strip():
+        return None
+    try:
+        data = json.loads(result.stdout)
+    except (ValueError, TypeError):
+        return None
+    value = data.get("nameWithOwner")
+    return value if isinstance(value, str) and value else None
+
+
+def _is_trusted_for_enforce(
+    *,
+    is_fork: bool,
+    association: str,
+    author_login: str,
+    config: PRWatcherConfig,
+) -> bool:
+    """Return True iff the PR's author may drive the watcher's enforce path.
+
+    Trust requires *all* of:
+
+    1. The head ref lives in this repo (``isCrossRepository`` is false).
+       Fork PRs are never trusted, even when the author also belongs to the
+       trusted set — GitHub's `pull_request` event still fires from forks
+       and an attacker can name their fork branch anything they like.
+    2. Either ``association`` (already upper-cased upstream) is in
+       ``config.trusted_associations``, or ``author_login`` is in the
+       explicit ``config.trusted_authors`` allowlist. The login check is
+       case-sensitive (GitHub logins themselves are case-insensitive but
+       the canonical form ``gh`` returns is what we compare against).
+    """
+    if is_fork:
+        return False
+    if association in config.trusted_associations:
+        return True
+    return bool(author_login) and author_login in config.trusted_authors
 
 
 def _current_heal_attempt(labels: list[str]) -> int:

@@ -263,14 +263,15 @@ Unlike the three content-producing routines, the PR Watcher **does not write to 
 4. Parse the PR number and head ref from the trigger payload; defensively re-check `gh pr view --json state,isDraft,baseRefName`. Exit if any guardrail fails.
 5. Invoke `python scripts/pr_watcher_gate.py --pr <num>` which:
    a. Calls `wikipilot.git_ops.infer_route_from_branch(head, config)` to map the head to `daily_research` / `wiki_query` / `weekly_health` / `None`.
-   b. Waits up to `[automerge.pr_watcher].ci_wait_timeout_sec` (default 1200s) for `gh pr checks --watch`.
-   c. Calls `apply_gate(..., mode="enforce")` for `claude/*` heads or `mode="read_only"` for human / non-routine heads. Uses dedupe key `wikipilot:gate` so re-runs *edit* the existing comment instead of spamming.
-   d. On enforce + red CI, calls `gh pr merge --disable-auto` to undo any prior premature queue from the in-routine `maybe_automerge.py` call.
+   b. **Trust check.** Even when (a) returns a route, the script re-checks the PR author via `gh pr view --json isCrossRepository,author` plus `gh api repos/<owner>/<repo>/pulls/<n>` (the REST API exposes `author_association`, the CLI does not). The PR is treated as enforce-eligible only when `isCrossRepository=false` AND the author's `author_association` is in `[automerge.pr_watcher].trusted_associations` (default `OWNER,MEMBER,COLLABORATOR`) OR the author's login is in `trusted_authors`. Untrusted PRs are demoted to `read_only` mode regardless of how the branch name is shaped. Fail-closed: any gh failure during the check (network blip, missing scope, ambiguous owner/repo) is treated as untrusted. This is what stops a fork PR with a synthetic `claude/daily-…` head ref from coercing the watcher into queueing auto-merge.
+   c. Waits up to `[automerge.pr_watcher].ci_wait_timeout_sec` (default 1200s) for `gh pr checks --watch`.
+   d. Calls `apply_gate(..., mode="enforce")` for trusted `claude/*` PRs or `mode="read_only"` for human / non-routine / untrusted heads. Uses dedupe key `wikipilot:gate` so re-runs *edit* the existing comment instead of spamming.
+   e. On enforce + red CI, calls `gh pr merge --disable-auto` to undo any prior premature queue from the in-routine `maybe_automerge.py` call.
 6. If the gate script prints `HEAL_NEEDED pr=<n> next_attempt=<m>` (CI is red on `claude/*` and attempts < `self_heal_max_attempts`): add label `wikipilot:heal-attempt-<m>`, dispatch `wiki-linter` (Haiku) for mechanical fixes, commit `fix(wiki): wiki-linter mechanical fixes (attempt <m>)`, push. The push fires `pull_request.synchronize` and a fresh watcher session runs the cycle again.
 7. If the gate script prints `HEAL_CAPPED pr=<n> attempt=<m> max=<k>`: do nothing further. The script has already posted a `## Self-heal cap reached` comment under the `wikipilot:heal-cap` dedupe key.
 8. Only append a `manual` entry to `wiki/log.md` when something noteworthy happened (heal commit, cap reached, unusual gate outcome). Routine pass/fail comments stay on the GitHub PR thread.
 
-Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to `main` and runs `apply_gate` on each, inferring the route per PR. Use it when the watcher misfires or to clear a backlog of stranded PRs from before the watcher was wired up.
+Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to `main` and runs `apply_gate` on each, inferring the route per PR. Use it when the watcher misfires or to clear a backlog of stranded PRs from before the watcher was wired up. The trust check above lives in the PR Watcher only; `recover-prs` assumes the operator is already vetting which PRs they want gated.
 
 ## Schemas
 
