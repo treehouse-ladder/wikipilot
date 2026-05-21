@@ -79,3 +79,7 @@ Aether & Iron score (Christopher Tin / Alex Williamson, RPGFan review); Octopath
 ## [2026-05-21] daily | frontier-models — 3 sources, 1 page (run 2)
 
 Growing Pains of Frontier Models (h-field benchmark methodology paper; DeepSeek capability-emphasis reversal); GPT-Rosalind (OpenAI life-sciences reasoning model, gated research preview); Qwen3.6-27B (256k/1M context, preserve_thinking agentic feature).
+
+## [2026-05-21] daily | games-of-note — 4 sources, 1 page (run 2)
+
+EA Battlefield layoffs post-record-launch; MercurySteam layoffs post-harassment allegations; Arc Raiders live-service counter-narrative (14M+ sales, ~6M WAU); Mixtape review (Annapurna, Beethoven & Dinosaur, GameSpot 9/10).
