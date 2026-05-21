@@ -98,4 +98,4 @@ _(none yet — Wiki Query produces one page per question under [`wiki/answers/`]
 
 ## Reports
 
-_(none yet — daily and weekly reports land under [`wiki/reports/`](reports/))_
+- [[health-2026-05-21]]
