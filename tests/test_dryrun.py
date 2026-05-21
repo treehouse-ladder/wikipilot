@@ -8,7 +8,9 @@ from pathlib import Path
 from wikipilot.config import TopicConfig
 from wikipilot.dryrun import (
     apply_answer,
+    apply_daily_aggregate,
     apply_proposal,
+    apply_proposal_topic_only,
     make_fake_answer,
     make_fake_proposal,
 )
@@ -21,6 +23,14 @@ def _topic() -> TopicConfig:
         id="ai-agents",
         display_name="AI agents and agentic systems",
         purpose="In-scope: research and engineering on autonomous LLM agents.",
+    )
+
+
+def _topic_b() -> TopicConfig:
+    return TopicConfig(
+        id="game-music",
+        display_name="Game music",
+        purpose="In-scope: game soundtracks, composers, audio middleware.",
     )
 
 
@@ -83,6 +93,199 @@ class TestApplyProposal:
 
             slug = source_slug(src.url, title=src.title)
             assert f"[[{slug}]]" in index_text
+
+
+class TestApplyProposalTopicOnly:
+    """`apply_proposal_topic_only` mirrors what `wiki-merger` does on a per-topic
+    branch. It MUST NOT touch wiki/log.md or wiki/index.md — that's what makes
+    parallel topic PRs file-disjoint and merge-queue-safe.
+    """
+
+    def test_does_not_touch_log_md(self, sample_vault: Vault) -> None:
+        before = sample_vault.log_path.read_text(encoding="utf-8")
+        apply_proposal_topic_only(
+            sample_vault,
+            make_fake_proposal(_topic(), today=date(2026, 5, 11)),
+            today=date(2026, 5, 11),
+        )
+        after = sample_vault.log_path.read_text(encoding="utf-8")
+        assert after == before, "topic-only apply must not modify wiki/log.md"
+
+    def test_does_not_touch_index_md(self, sample_vault: Vault) -> None:
+        before = sample_vault.index_path.read_text(encoding="utf-8")
+        apply_proposal_topic_only(
+            sample_vault,
+            make_fake_proposal(_topic(), today=date(2026, 5, 11)),
+            today=date(2026, 5, 11),
+        )
+        after = sample_vault.index_path.read_text(encoding="utf-8")
+        assert after == before, "topic-only apply must not modify wiki/index.md"
+
+    def test_does_not_write_run_report(self, sample_vault: Vault) -> None:
+        result = apply_proposal_topic_only(
+            sample_vault,
+            make_fake_proposal(_topic(), today=date(2026, 5, 11)),
+            today=date(2026, 5, 11),
+        )
+        assert result.report_path is None, "topic-only apply must not write wiki/reports/<DATE>.md"
+
+    def test_writes_topic_and_source_pages(self, sample_vault: Vault) -> None:
+        proposal = make_fake_proposal(_topic(), today=date(2026, 5, 11))
+        result = apply_proposal_topic_only(sample_vault, proposal, today=date(2026, 5, 11))
+        assert result.sources_added, "at least one source page must be created"
+        for diff in proposal.page_diffs:
+            target = sample_vault.root / diff.path
+            assert target.exists(), f"page {target} must be written by apply_proposal_topic_only"
+
+    def test_runs_cross_page_sweep(self, sample_vault: Vault) -> None:
+        from wikipilot.dryrun import PageDiff
+
+        proposal = make_fake_proposal(_topic(), today=date(2026, 5, 11))
+        proposal.page_diffs.append(
+            PageDiff(
+                path="concepts/transformer-attention.md",
+                kind="concept",
+                summary_addition=(
+                    "Topic-only sweep finding [[example-paper-aabbccdd]] confirms "
+                    "the cross-page sweep still runs without the index update."
+                ),
+            )
+        )
+        backlinkers = {
+            sample_vault.dir_for("concepts") / "stale-concept.md",
+            sample_vault.topic_index("ai-agents"),
+            sample_vault.dir_for("answers") / "2026-05-10-what-is-attention.md",
+        }
+        backlinkers = {p for p in backlinkers if p.exists()}
+        apply_proposal_topic_only(sample_vault, proposal, today=date(2026, 5, 11))
+        for path in backlinkers:
+            after = Page.read(path).last_updated
+            assert after == date(2026, 5, 11), (
+                f"{path} not bumped by cross-page sweep in topic-only path"
+            )
+
+    def test_disjoint_writes_for_two_proposals(self, sample_vault: Vault) -> None:
+        """Regression test for the parallel-merge conflict cascade.
+
+        Two topic-only applies must each leave wiki/log.md and wiki/index.md
+        untouched. The merge queue can then process the two corresponding
+        topic PRs in parallel without conflict, which is the property this
+        whole refactor exists to establish.
+        """
+        log_before = sample_vault.log_path.read_text(encoding="utf-8")
+        index_before = sample_vault.index_path.read_text(encoding="utf-8")
+
+        proposal_a = make_fake_proposal(_topic(), today=date(2026, 5, 11))
+        proposal_b = make_fake_proposal(_topic_b(), today=date(2026, 5, 11))
+        result_a = apply_proposal_topic_only(sample_vault, proposal_a, today=date(2026, 5, 11))
+        result_b = apply_proposal_topic_only(sample_vault, proposal_b, today=date(2026, 5, 11))
+
+        assert sample_vault.log_path.read_text(encoding="utf-8") == log_before
+        assert sample_vault.index_path.read_text(encoding="utf-8") == index_before
+
+        a_paths = {p.resolve() for p in result_a.pages_touched}
+        b_paths = {p.resolve() for p in result_b.pages_touched}
+        assert sample_vault.log_path.resolve() not in a_paths | b_paths
+        assert sample_vault.index_path.resolve() not in a_paths | b_paths
+
+
+class TestApplyDailyAggregate:
+    """`apply_daily_aggregate` mirrors what the daily orchestrator does on
+    the `claude/daily-<DATE>/_report` branch after every per-topic PR has
+    merged. It is the only place wiki/log.md and wiki/index.md are written
+    during a Daily Research run.
+    """
+
+    def test_appends_one_log_entry_per_proposal_plus_summary(self, sample_vault: Vault) -> None:
+        before = parse_log_headings(sample_vault.log_path.read_text(encoding="utf-8"))
+        proposals = [
+            make_fake_proposal(_topic(), today=date(2026, 5, 11)),
+            make_fake_proposal(_topic_b(), today=date(2026, 5, 11)),
+        ]
+        apply_daily_aggregate(sample_vault, proposals, today=date(2026, 5, 11))
+        after = parse_log_headings(sample_vault.log_path.read_text(encoding="utf-8"))
+        # N per-topic entries + 1 aggregate-summary entry.
+        assert len(after) == len(before) + len(proposals) + 1
+
+    def test_per_topic_log_entries_carry_topic_id(self, sample_vault: Vault) -> None:
+        proposals = [
+            make_fake_proposal(_topic(), today=date(2026, 5, 11)),
+            make_fake_proposal(_topic_b(), today=date(2026, 5, 11)),
+        ]
+        apply_daily_aggregate(sample_vault, proposals, today=date(2026, 5, 11))
+        log_text = sample_vault.log_path.read_text(encoding="utf-8")
+        # Every topic id must appear in at least one log subject.
+        assert "ai-agents" in log_text
+        assert "game-music" in log_text
+
+    def test_summary_log_entry_shape(self, sample_vault: Vault) -> None:
+        proposals = [make_fake_proposal(_topic(), today=date(2026, 5, 11))]
+        apply_daily_aggregate(sample_vault, proposals, today=date(2026, 5, 11))
+        last_subject = parse_log_headings(sample_vault.log_path.read_text(encoding="utf-8"))[-1][2]
+        # Summary entry mentions the aggregate counts, not a single topic id.
+        assert "topics" in last_subject and "sources" in last_subject
+
+    def test_updates_index_for_all_sources_across_proposals(self, sample_vault: Vault) -> None:
+        from wikipilot.sources import source_slug
+
+        proposals = [
+            make_fake_proposal(_topic(), today=date(2026, 5, 11)),
+            make_fake_proposal(_topic_b(), today=date(2026, 5, 11)),
+        ]
+        apply_daily_aggregate(sample_vault, proposals, today=date(2026, 5, 11))
+        index_text = sample_vault.index_path.read_text(encoding="utf-8")
+        for proposal in proposals:
+            for src in proposal.sources:
+                slug = source_slug(src.url, title=src.title)
+                assert f"[[{slug}]]" in index_text, (
+                    f"index.md must contain the source slug for {proposal.topic_id}"
+                )
+
+    def test_writes_run_report(self, sample_vault: Vault) -> None:
+        proposals = [
+            make_fake_proposal(_topic(), today=date(2026, 5, 11)),
+            make_fake_proposal(_topic_b(), today=date(2026, 5, 11)),
+        ]
+        result = apply_daily_aggregate(sample_vault, proposals, today=date(2026, 5, 11))
+        assert result.report_path is not None and result.report_path.exists()
+        report = Page.read(result.report_path)
+        assert report.kind == "report"
+        body = report.content
+        # Both topic ids must appear in the topics-processed section.
+        assert "ai-agents" in body
+        assert "game-music" in body
+
+    def test_index_only_in_pages_touched(self, sample_vault: Vault) -> None:
+        """The aggregate phase must declare that it only touches the index
+        (plus the report file written separately). Reports are written via
+        `write_run_report`, not appended to pages_touched, so the only
+        path that should appear here is the index path.
+        """
+        proposals = [make_fake_proposal(_topic(), today=date(2026, 5, 11))]
+        result = apply_daily_aggregate(sample_vault, proposals, today=date(2026, 5, 11))
+        assert sample_vault.index_path in result.pages_touched
+
+    def test_handles_empty_proposals(self, sample_vault: Vault) -> None:
+        log_before = sample_vault.log_path.read_text(encoding="utf-8")
+        index_before = sample_vault.index_path.read_text(encoding="utf-8")
+        result = apply_daily_aggregate(sample_vault, [], today=date(2026, 5, 11))
+        assert result.report_path is None
+        assert result.log_entries == []
+        assert sample_vault.log_path.read_text(encoding="utf-8") == log_before
+        assert sample_vault.index_path.read_text(encoding="utf-8") == index_before
+
+    def test_pr_links_propagate_to_report(self, sample_vault: Vault) -> None:
+        proposals = [make_fake_proposal(_topic(), today=date(2026, 5, 11))]
+        result = apply_daily_aggregate(
+            sample_vault,
+            proposals,
+            pr_links=["https://github.com/x/y/pull/1", "https://github.com/x/y/pull/2"],
+            today=date(2026, 5, 11),
+        )
+        assert result.report_path is not None
+        body = Page.read(result.report_path).content
+        assert "https://github.com/x/y/pull/1" in body
+        assert "https://github.com/x/y/pull/2" in body
 
 
 class TestCrossPageSweep:
