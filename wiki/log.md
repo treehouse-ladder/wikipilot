@@ -71,3 +71,7 @@ Daily research run complete: 5 topics, 23 new sources, 33 pages touched, 5 PRs o
 ## [2026-05-21] query | Wwise vs FMOD vs MetaSounds for UE5 audio middleware — answers/2026-05-21-wwise-fmod-metasounds-ue5-comparison.md
 
 Answer page created with 5 sources (1 existing, 4 new); back-filled into game-music topic page.
+
+## [2026-05-21] daily | frontier-models — 3 sources, 1 page
+
+Growing Pains of Frontier Models (h-field benchmark methodology paper; DeepSeek capability-emphasis reversal); GPT-Rosalind (OpenAI life-sciences reasoning model, gated research preview); Qwen3.6-27B (256k/1M context, preserve_thinking agentic feature).
