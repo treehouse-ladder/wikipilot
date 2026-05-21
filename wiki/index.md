@@ -118,6 +118,12 @@ _(none yet)_
 - [[subagents-openai-codex-developers-openai-com-8334be02]]
 - [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]]
 - [[use-subagents-and-custom-agents-in-codex-simon-willison-march-2026-7be24bde]]
+- [[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]]
+- [[cursor-changelog-pr-review-build-plan-in-parallel-and-split-prs-may-7-2026-29f64665]]
+- [[improving-cursor-s-agent-for-openai-codex-models-cursor-blog-a876aa9c]]
+- [[continually-improving-our-agent-harness-cursor-blog-173ad132]]
+- [[swe-webdevbench-evaluating-coding-agent-application-platforms-as-virtual-software-agencies-c47cb7a6]]
+- [[enabling-claude-code-to-work-more-autonomously-anthropic-270c90d1]]
 
 ## Answers
 

@@ -24,6 +24,12 @@ sources:
   - "[[subagents-agentic-engineering-patterns-3262892c]]"
   - "[[2026-agentic-coding-trends-report-27fe0474]]"
   - "[[swe-context-bench-a-benchmark-for-context-learning-in-coding-aba13bd3]]"
+  - "[[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]]"
+  - "[[cursor-changelog-pr-review-build-plan-in-parallel-and-split-prs-may-7-2026-29f64665]]"
+  - "[[improving-cursor-s-agent-for-openai-codex-models-cursor-blog-a876aa9c]]"
+  - "[[continually-improving-our-agent-harness-cursor-blog-173ad132]]"
+  - "[[swe-webdevbench-evaluating-coding-agent-application-platforms-as-virtual-software-agencies-c47cb7a6]]"
+  - "[[enabling-claude-code-to-work-more-autonomously-anthropic-270c90d1]]"
 last_updated: 2026-05-21
 last_verified: 2026-05-21
 freshness_window_days: 30
@@ -138,6 +144,28 @@ Anthropic's **2026 Agentic Coding Trends Report** quantifies the orchestration s
 
 > Anthropic's internal research found that engineers use AI in roughly 60% of their work but report being able to 'fully delegate' only 0-20% of tasks, with the gap explained by effective AI collaboration requiring active human participation - setup, prompting, supervision, validation, and judgment.
 
+## Sandboxing-as-autonomy and the Cursor harness layer (added 2026-05-21 run 2)
+
+The sandboxing story now has an Anthropic first-party writeup with concrete numbers: Claude Code's OS-level sandbox "safely reduces permission prompts by 84%" by enforcing two boundaries — filesystem and network isolation — "built on top of OS level primitives such as Linux bubblewrap and MacOS seatbelt" [[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]]. Network egress is gated through "a unix domain socket connected to a proxy server running outside the sandbox." This is the operational containment story the prompt-injection SoK on this page called for — it directly addresses the data-exfiltration class, though it does not by itself defend against the trusted-tool-output trust-level problem.
+
+> Claude Code's sandboxing safely reduces permission prompts by 84%. These restrictions are built on top of OS level primitives such as Linux bubblewrap and MacOS seatbelt to enforce restrictions at the OS level. Network isolation is achieved by only allowing internet access through a unix domain socket connected to a proxy server running outside the sandbox.
+
+The same autonomy push ships at the product layer as **checkpoints**: "a checkpoint system [that] automatically saves your code state before each change" with instant rewind via `/rewind` (or double-Esc), scoped to "Claude's edits and not user edits or bash commands" [[enabling-claude-code-to-work-more-autonomously-anthropic-270c90d1]]. Checkpoints frame subagents, hooks, and background tasks as safe for unattended work.
+
+> Anthropic's new checkpoint system automatically saves your code state before each change, and you can instantly rewind to previous versions by tapping Esc twice or using the /rewind command. Checkpoints apply to Claude's edits and not user edits or bash commands.
+
+Cursor's harness layer is now documented across three first-party posts. The May 7 2026 release adds in-editor PR review, plan-level parallelism, and an automated **Split PRs** flow; the `/multitask` command "break[s] down larger tasks into smaller chunks for a fleet of async subagents to tackle simultaneously" [[cursor-changelog-pr-review-build-plan-in-parallel-and-split-prs-may-7-2026-29f64665]]. On harness construction, Cursor frames the harness and the model as jointly determinative — "the harness and the model together determine how good the agent is" — and runs both public benchmarks and a private suite, **CursorBench** [[continually-improving-our-agent-harness-cursor-blog-173ad132]]. Cross-vendor interop: aligning Cursor's harness to OpenAI's Codex models required making "the names and definitions of tools in Cursor closer to their shell equivalents like rg (ripgrep)" and capturing reasoning items via the Responses API [[improving-cursor-s-agent-for-openai-codex-models-cursor-blog-a876aa9c]] — evidence that subagent/tool convergence is shallow at the API surface.
+
+> The /multitask command is now available in the editor for running async subagents to parallelize your requests; it will break down larger tasks into smaller chunks for a fleet of async subagents to tackle simultaneously.
+
+> The harness and the model together determine how good the agent is, maintaining public benchmarks alongside their own eval suite called CursorBench.
+
+> To encourage tool calling, they made the names and definitions of tools in Cursor closer to their shell equivalents like rg (ripgrep).
+
+On the **eval-realism** axis, SWE-WebDevBench extends the benchmark-realism debate to full-stack app-generation platforms using "a 68-metric evaluation framework spanning 25 primary and 43 diagnostic metrics" across six platforms [[swe-webdevbench-evaluating-coding-agent-application-platforms-as-virtual-software-agencies-c47cb7a6]]. Its headline finding is a "steep production-readiness cliff, where no platform scores above 60% on engineering quality" alongside "frontend-backend decoupling, where visually polished UIs mask absent or broken backend infrastructure" and "no platform exceeding 65% Security Score."
+
+> A steep production-readiness cliff, where no platform scores above 60% on engineering quality. Widespread security and infrastructure failures, with no platform exceeding 65% Security Score.
+
 ## Comparisons
 
 The comparison pages below are pre-declared by the charter; they are
@@ -159,6 +187,8 @@ lint stays quiet until each page actually exists:
 - [[saving-swe-bench-a-benchmark-mutation-approach-for-realistic-agent-evaluation-0404d7de]] claims SWE-bench Verified systematically overestimates real-world agent capability by 20-50% on public datasets (and only 10-16% on a private C# benchmark); [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents SWE-bench Verified as the human-filtered, annotator-reviewed gold standard for coding-agent capability. Status: unresolved
 - [[2026-agentic-coding-trends-report-27fe0474]] is a first-party Anthropic report whose "orchestration era" framing is supported primarily by case studies drawn from Anthropic's own customers (Rakuten, CRED, TELUS, Zapier), creating a vendor-incentive asymmetry; this shares Rakuten-partner-benchmark provenance with [[introducing-claude-opus-4-7-b8af8104]], so cross-report claims should not be treated as independent corroboration. Status: unresolved
 - [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]] claims an automatically-evolved harness surpasses the human-designed Codex-CLI harness (77.0% vs 71.9% pass@1 on Terminal-Bench 2) and transfers frozen to SWE-bench-verified; [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] shows Terminal-Bench scores can swing several percentage points from infrastructure resource configuration, so a 5.1-point harness gain may be partly confounded unless resource configuration was pinned identically. Status: unresolved
+- [[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]] claims OS-level sandboxing (bubblewrap/seatbelt + network proxy) reduces permission prompts by 84% and contains prompt-injected agents from exfiltration; [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]] claims attack success rates exceed 85% against state-of-the-art defenses with adaptive strategies and that tool outputs are trusted at system-instruction level — so the sandbox bounds blast radius but does not address the underlying trust-level confusion the SoK identifies as the root cause. Status: unresolved
+- [[swe-webdevbench-evaluating-coding-agent-application-platforms-as-virtual-software-agencies-c47cb7a6]] claims no app-generation platform scores above 60% on engineering quality (a 'production-readiness cliff'); [[2026-agentic-coding-trends-report-27fe0474]] claims 2026 is the era where development shifts to orchestrating agents that write code, implying production-grade output is increasingly delegable. The two are in tension on how production-ready autonomous full-stack output actually is. Status: unresolved
 
 ## Open questions
 
@@ -175,6 +205,11 @@ lint stays quiet until each page actually exists:
 - [ ] Does the 20-50% public-vs-10-16% private overestimation gap in [[saving-swe-bench-a-benchmark-mutation-approach-for-realistic-agent-evaluation-0404d7de]] hold when controlling for benchmark difficulty/language rather than just public-vs-private provenance?
 - [ ] How does SWE Context Bench's context-learning metric [[swe-context-bench-a-benchmark-for-context-learning-in-coding-aba13bd3]] correlate with the session-bridging long-running-agent harness [[effective-harnesses-for-long-running-agents-anthropic-engineering-7f7a70a6]]?
 - [ ] Simon Willison's subagents guidance [[subagents-agentic-engineering-patterns-3262892c]] frames context-preservation as the primary subagent payoff over parallelism; does any published wall-clock measurement separate the context-preservation benefit from the parallelism benefit?
+- [ ] Does Claude Code's OS-level sandbox [[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]] compose with Claude Code Routines' Anthropic-managed cloud infra [[automate-work-with-routines-claude-code-routines-docs-d09f612e]] — i.e. is the cloud routine sandbox the same bubblewrap/proxy model, or a different containerization tier?
+- [ ] Cursor's per-model tool alignment for Codex (renaming tools to rg-style shell equivalents, Responses-API reasoning capture) [[improving-cursor-s-agent-for-openai-codex-models-cursor-blog-a876aa9c]] suggests the cross-vendor subagent/tool 'convergence' is shallow at the API surface — is there any published measurement of how much harness-level per-model tuning moves SWE-bench/Terminal-Bench scores independent of the base model?
+- [ ] Does CursorBench [[continually-improving-our-agent-harness-cursor-blog-173ad132]] pin infrastructure/resource configuration, given that [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] showed several-percent score swings from config alone?
+- [ ] Cursor's automated Split PRs flow [[cursor-changelog-pr-review-build-plan-in-parallel-and-split-prs-may-7-2026-29f64665]] proposes independent PRs from chat context — how does it detect cross-slice dependencies, and what is the false-independence rate (slices marked independent that actually conflict on merge)?
+- [ ] Does SWE-WebDevBench's frontend-backend decoupling finding [[swe-webdevbench-evaluating-coding-agent-application-platforms-as-virtual-software-agencies-c47cb7a6]] persist under the autonomous three-agent planner/generator/evaluator harness [[harness-design-for-long-running-application-development-anthropic-engineering-9fa759b7]], or is the decoupling an artifact of single-pass app-platform generation?
 
 ## See also
 

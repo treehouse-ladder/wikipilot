@@ -71,3 +71,11 @@ Daily research run complete: 5 topics, 23 new sources, 33 pages touched, 5 PRs o
 ## [2026-05-21] query | Wwise vs FMOD vs MetaSounds for UE5 audio middleware — answers/2026-05-21-wwise-fmod-metasounds-ue5-comparison.md
 
 Answer page created with 5 sources (1 existing, 4 new); back-filled into game-music topic page.
+
+## [2026-05-21] daily | agentic-coding — 6 sources, 1 page (run 2)
+
+Sandboxing-as-autonomy: Claude Code OS-level sandbox (84% permission-prompt reduction), checkpoints/rewind autonomy feature; Cursor harness layer (Split PRs, CursorBench, per-model Codex alignment); SWE-WebDevBench production-readiness cliff (no platform >60% engineering quality).
+
+## [2026-05-21] daily | 5 topics, 18 sources, 5 pages (run 2)
+
+Second daily research pass for 2026-05-21: 5 topics, 18 new sources, 5 topic pages updated, 5 PRs created.
