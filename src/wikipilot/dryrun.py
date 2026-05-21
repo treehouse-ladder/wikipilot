@@ -194,13 +194,22 @@ def make_fake_answer(question: str, *, today: date | None = None) -> Answer:
     )
 
 
-def apply_proposal(
+def apply_proposal_topic_only(
     vault: Vault,
     proposal: Proposal,
     *,
     today: date | None = None,
 ) -> ApplyResult:
-    """Apply a proposal: ingest sources, write/update pages, sweep, log."""
+    """Apply only the topic-scoped writes: source ingest, page diffs, cross-sweep.
+
+    Mirrors what the ``wiki-merger`` agent does on a per-topic branch in the
+    Daily Research routine. **Does not write** to ``wiki/log.md``,
+    ``wiki/index.md``, or ``wiki/reports/``. Those three files are batched
+    on the daily report PR by :func:`apply_daily_aggregate`, after every
+    per-topic PR has merged into ``main``. This split is what makes per-topic
+    PRs file-disjoint and therefore parallel-mergeable through the queue —
+    see ``CLAUDE.md`` "Daily run workflow".
+    """
     today = today or date.today()
     result = ApplyResult()
 
@@ -233,37 +242,139 @@ def apply_proposal(
 
     swept = _cross_page_sweep(vault, proposal, today=today)
     result.pages_touched.extend(swept)
+    return result
 
-    summary_line = (
-        f"{proposal.topic_id} — "
-        f"{len(proposal.sources)} sources, "
-        f"{len(set(result.pages_touched))} pages"
-    )
-    append_log_entry(
-        vault,
-        kind="daily",
-        subject=summary_line,
-        summary=f"Dry-run proposal applied for topic {proposal.topic_id}.",
-        today=today,
-    )
-    result.log_entries.append(summary_line)
+
+def apply_daily_aggregate(
+    vault: Vault,
+    proposals: list[Proposal],
+    *,
+    pr_links: list[str] | None = None,
+    notes: str | None = None,
+    include_summary: bool = True,
+    today: date | None = None,
+) -> ApplyResult:
+    """Batched aggregate writes for a Daily Research run.
+
+    Writes one ``## [DATE] daily | <topic-id> ...`` log entry per proposal,
+    updates ``wiki/index.md`` with every new source/page across all
+    proposals, appends the run-summary log entry (when ``include_summary``
+    is True), and writes the per-run report at ``wiki/reports/YYYY-MM-DD.md``.
+    Idempotent on the index path (``_update_index`` is append-only). Empty
+    ``proposals`` is allowed and is a no-op except that no report is written.
+
+    Mirrors what the daily orchestrator does on the
+    ``claude/daily-<DATE>/_report`` branch after every per-topic PR has
+    merged. This is the ONLY place ``wiki/log.md`` and ``wiki/index.md`` are
+    written during a Daily Research run. The single-topic dryrun CLI
+    (:func:`apply_proposal`) sets ``include_summary=False`` because for
+    one proposal the per-topic line already serves as the summary; in the
+    multi-topic production flow the summary line is what backs the
+    "<N> topics, <S> sources, <P> pages" entry in ``wiki/log.md``.
+    """
+    today = today or date.today()
+    result = ApplyResult()
+
+    if not proposals:
+        return result
+
+    all_source_relpaths: list[str] = []
+    all_page_relpaths: list[str] = []
+    all_disputes: list[str] = []
+    all_open_questions: list[str] = []
+    topic_ids: list[str] = []
+
+    for proposal in proposals:
+        # The page count in the per-topic log entry is approximate: counted
+        # from the proposal payload (sources + page_diffs) rather than from
+        # the filesystem, because in production this function runs on the
+        # report branch which doesn't see the topic branches' work. The
+        # exact pages_touched figure is captured in the run report instead.
+        n_sources = len(proposal.sources)
+        n_pages = n_sources + len(proposal.page_diffs)
+        summary_line = f"{proposal.topic_id} — {n_sources} sources, {n_pages} pages"
+        append_log_entry(
+            vault,
+            kind="daily",
+            subject=summary_line,
+            summary=f"Daily research applied for topic {proposal.topic_id}.",
+            today=today,
+        )
+        result.log_entries.append(summary_line)
+
+        _update_index(vault, proposal, today=today)
+
+        topic_ids.append(proposal.topic_id)
+        for src in proposal.sources:
+            slug = _expected_source_slug(src)
+            all_source_relpaths.append(f"sources/{slug}.md")
+        for diff in proposal.page_diffs:
+            all_page_relpaths.append(diff.path)
+        all_disputes.extend(proposal.new_disputes)
+        all_open_questions.extend(proposal.new_open_questions)
+
+    result.pages_touched.append(vault.index_path)
+
+    if include_summary:
+        summary_subject = (
+            f"{len(proposals)} topics, "
+            f"{sum(len(p.sources) for p in proposals)} sources, "
+            f"{len(set(all_page_relpaths) | set(all_source_relpaths))} pages"
+        )
+        append_log_entry(
+            vault,
+            kind="daily",
+            subject=summary_subject,
+            summary=f"Daily research run complete: {len(proposals)} topics aggregated.",
+            today=today,
+        )
+        result.log_entries.append(summary_subject)
 
     report = RunReport(
         routine="daily_research",
         run_date=today,
-        run_id=f"dryrun-daily-{today.isoformat()}-{proposal.topic_id}",
-        topics_processed=[proposal.topic_id],
-        sources_added=[str(p.relative_to(vault.root)) for p in result.sources_added],
-        pages_touched=sorted({str(p.relative_to(vault.root)) for p in result.pages_touched}),
+        run_id=f"dryrun-daily-{today.isoformat()}",
+        topics_processed=topic_ids,
+        sources_added=sorted(set(all_source_relpaths)),
+        pages_touched=sorted(set(all_page_relpaths) | set(all_source_relpaths)),
         runtime_seconds=None,
         token_usage={},
-        pr_links=[],
-        new_disputes=proposal.new_disputes,
-        new_open_questions=proposal.new_open_questions,
-        notes="Generated by `wikipilot dry-run --topic`; no Anthropic call was made.",
+        pr_links=list(pr_links) if pr_links else [],
+        new_disputes=all_disputes,
+        new_open_questions=all_open_questions,
+        notes=notes
+        or "Generated by `apply_daily_aggregate`; no Anthropic call was made.",
     )
     result.report_path = write_run_report(vault, report)
     return result
+
+
+def apply_proposal(
+    vault: Vault,
+    proposal: Proposal,
+    *,
+    today: date | None = None,
+) -> ApplyResult:
+    """Single-topic dryrun helper: runs the topic-only and aggregate phases as one unit.
+
+    Used by ``wikipilot dry-run --topic`` (one-shot, no parallelism). In the
+    real Daily Research routine the two phases live on different branches —
+    see :func:`apply_proposal_topic_only` and :func:`apply_daily_aggregate`.
+    """
+    today = today or date.today()
+    topic_result = apply_proposal_topic_only(vault, proposal, today=today)
+    aggregate_result = apply_daily_aggregate(
+        vault, [proposal], include_summary=False, today=today
+    )
+
+    merged = ApplyResult()
+    merged.pages_touched = list(topic_result.pages_touched) + list(
+        aggregate_result.pages_touched
+    )
+    merged.sources_added = list(topic_result.sources_added)
+    merged.log_entries = list(aggregate_result.log_entries)
+    merged.report_path = aggregate_result.report_path
+    return merged
 
 
 @dataclass
@@ -513,8 +624,14 @@ def _append_section_bullet(page: Page, heading: str, bullet_text: str) -> None:
 def _cross_page_sweep(vault: Vault, proposal: Proposal, *, today: date) -> list[Path]:
     """For each page diff, find pages backlinking the touched slug and bump them.
 
-    Returns the paths that were updated. Idempotent — running twice updates
-    ``last_updated`` only.
+    Returns the paths that were updated (freshness-bumped). Idempotent —
+    running twice updates ``last_updated`` only.
+
+    Does NOT touch ``wiki/index.md`` or ``wiki/log.md``. Index updates are
+    batched on the daily report PR via :func:`apply_daily_aggregate`; log
+    appends are written there too. Per-topic merger writes to those two
+    files would re-introduce the parallel-merge conflict cascade documented
+    in ``CLAUDE.md`` "Daily run workflow".
     """
     swept: list[Path] = []
     touched_slugs = set()
@@ -537,8 +654,6 @@ def _cross_page_sweep(vault: Vault, proposal: Proposal, *, today: date) -> list[
         page.write()
         swept.append(path)
 
-    _update_index(vault, proposal, today=today)
-    swept.append(vault.index_path)
     return swept
 
 

@@ -82,14 +82,13 @@ Task(agent="wiki-linter", input={branch: "$BRANCH", changed_paths: [...]})
 uv run pytest -q -m "not slow"
 uv run wikipilot lint wiki/ --branch "$BRANCH" $(git diff --name-only origin/main..HEAD | xargs -I{} echo --changed-path {})
 
-# 4e. Append the per-topic log entry.
-# (wiki-merger should have done this via append-log skill; double-check.)
-
-# 4f. Compute the commit/PR metadata from the proposal and the diff.
+# 4e. Compute the commit/PR metadata from the proposal and the diff.
+# (wiki-merger no longer writes wiki/log.md or wiki/index.md — those are
+# batched on the report PR in Step 6 after every topic PR has merged.)
 N_SOURCES=$(echo "<PROPOSAL_JSON>" | jq '.sources | length')
 N_PAGES=$(git diff --name-only origin/main..HEAD | grep '^wiki/' | wc -l)
 
-# 4g. Render the PR body via the canonical helper (keeps shape consistent
+# 4f. Render the PR body via the canonical helper (keeps shape consistent
 # across every routine — never hand-write the body in shell).
 python -c "
 from wikipilot.git_ops import render_pr_body_daily
@@ -104,7 +103,7 @@ print(render_pr_body_daily(
   report_path='wiki/reports/${DATE}.md',
 ))" > /tmp/pr-body-${TOPIC_ID}.md
 
-# 4h. Commit, push, open PR, apply gate.
+# 4g. Commit, push, open PR, apply gate.
 git add -A
 git commit -m "feat(wiki/${TOPIC_ID}): daily research ${DATE} — ${N_SOURCES} sources, ${N_PAGES} pages"
 git push -u origin "$BRANCH"
@@ -114,28 +113,85 @@ gh pr create \
   --body "$(< /tmp/pr-body-${TOPIC_ID}.md)"
 PR_NUM=$(gh pr list --head "$BRANCH" --json number -q '.[0].number')
 python scripts/maybe_automerge.py --pr "$PR_NUM" --route daily_research
+
+# 4h. Record the result for Step 5/6 aggregation.
+# Append {topic_id, pr_number, branch, proposal} to an in-memory `topic_results`
+# list. The report step iterates this list to build log entries and the index.
 ```
 
 If `pytest` or `wikipilot lint` fails for a topic, do NOT skip the PR — open it anyway with the failure surfaced in the PR body so a human can review. Continue to the next topic.
 
-## Step 5: Per-run report
+**Why per-topic PRs no longer touch `wiki/log.md` or `wiki/index.md`:** every topic PR previously appended to the *same line range* of these two shared files. Once any one PR merged, the others' branches went `mergeable_state: dirty` and the merge queue dequeued them — the cascade documented in [`docs/runbook.md`](../docs/runbook.md). The fix is structural: per-topic PRs write only topic-specific files (topic page + source pages + cross-page sweep targets), and the report PR batches all log/index writes once. See `wiki-merger.md` Don'ts for the agent-side contract.
 
-After every topic has been processed, write `wiki/reports/<DATE>.md` summarizing the entire run. Use `wikipilot.log.write_run_report` (or its equivalent skill) so the schema stays canonical. The report belongs on whichever topic branch ran last, OR on a dedicated `claude/daily-${DATE}/_report` branch if you want to keep it independent.
+## Step 5: Wait for every topic PR to merge
 
-## Step 6: Final log entry
+Before starting the report PR, every topic PR must reach a terminal state. Poll each PR opened in Step 4 until it is `MERGED` or terminally failed:
 
-Append one final entry to `wiki/log.md` summarizing the whole run:
-
+```bash
+for entry in topic_results:
+  PR_NUM="${entry.pr_number}"
+  TIMEOUT_SEC=600  # 10 min; merge queue typically completes in <3 min for parallel-mergeable PRs
+  DEADLINE=$(( $(date +%s) + TIMEOUT_SEC ))
+  while [ $(date +%s) -lt $DEADLINE ]; do
+    STATE=$(gh pr view "$PR_NUM" --json state,mergedAt -q '.state')
+    if [ "$STATE" = "MERGED" ]; then
+      mark "${entry.topic_id}" merged
+      break
+    fi
+    if [ "$STATE" = "CLOSED" ]; then
+      mark "${entry.topic_id}" closed_without_merge
+      break
+    fi
+    sleep 15
+  done
+  if not marked: mark "${entry.topic_id}" timed_out
 ```
-## [<DATE>] daily | <N> topics, <N_SOURCES> sources, <N_PAGES> pages
+
+After this step, `topic_results` partitions cleanly into `merged_topics` (eligible for log/index/report) and `failed_topics` (will be surfaced in the report's Notes section).
+
+## Step 6: Report PR — log + index + reports/<DATE>.md
+
+The report PR is the only place `wiki/log.md` and `wiki/index.md` get touched during a daily run. It runs on its own branch, cut from the post-topic-merge `main`:
+
+```bash
+git fetch origin main
+git checkout -B "claude/daily-${DATE}/_report" origin/main
 ```
+
+Then for every topic in `merged_topics`:
+
+1. **Append per-topic log entry** via the `append-log` skill: `## [${DATE}] daily | ${topic_id} — N sources, M pages` with a one-line summary derived from the proposal.
+2. **Update `wiki/index.md`** via the `update-index` skill (or call `wikipilot.dryrun._update_index` directly): adds every source slug from the proposal under `## Sources` and every page-diff slug under the appropriate kind heading. Append-only and idempotent.
+
+After all topics are aggregated:
+
+3. **Write `wiki/reports/${DATE}.md`** via `wikipilot.log.write_run_report` with the merged topics in `topics_processed`, every new source path in `sources_added`, every page touched (across all topic PRs) in `pages_touched`, every PR URL in `pr_links`, and any `failed_topics` listed in `notes`.
+4. **Append the final summary log entry**: `## [${DATE}] daily | <N> topics, <total> sources, <total> pages`.
+
+Then commit, push, open the report PR, and gate it the same way as every other route:
+
+```bash
+git add -A
+git commit -m "feat(wiki/reports): daily research ${DATE} — N topics, S sources, P pages"
+git push -u origin "claude/daily-${DATE}/_report"
+gh pr create --base main \
+  --title "wiki(reports): daily ${DATE}" \
+  --body "$(< /tmp/pr-body-report.md)"
+REPORT_PR=$(gh pr list --head "claude/daily-${DATE}/_report" --json number -q '.[0].number')
+python scripts/maybe_automerge.py --pr "$REPORT_PR" --route daily_research
+```
+
+The report PR's diff touches `wiki/log.md`, `wiki/index.md`, and `wiki/reports/${DATE}.md` exclusively (plus possibly the report PR body). It cannot conflict with anything because no other open PR touches those three files at this point in the run.
+
+If the report PR itself fails to merge for any reason, the daily run is recoverable: the topic content is already on `main`; only the aggregate journal is missing. Surface this prominently in the run output and leave the report PR open for human review — do NOT retry mechanically.
 
 ## Hard rules
 
 - **Never modify a human-only file** (per `CLAUDE.md` ownership matrix). If a `topic-researcher` proposes one, drop the change and surface it in the report.
 - **Never skip the auto-merge gate.** It blocks PRs with failing checks, oversize diffs, or human-only-path edits — that's the whole point.
-- **One PR per topic.** Do not batch topics into a single PR; per-topic granularity is what makes review tractable and what matches Karpathy's "10–15 pages per source" reality.
-- **Parallel dispatch only for `topic-researcher`.** Mergers and linters MUST run in series per topic to avoid file-write contention.
+- **One PR per topic, plus one report PR.** Do not batch topics into a single PR; per-topic granularity is what makes review tractable and what matches Karpathy's "10–15 pages per source" reality. The report PR (`claude/daily-<DATE>/_report`) is separate and runs last — it owns every write to `wiki/log.md` and `wiki/index.md` for the run.
+- **Parallel dispatch only for `topic-researcher`.** Mergers and linters still run in series per topic in the orchestrator loop for operational simplicity, but topic PRs are now structurally parallel-mergeable in the queue (file-disjoint by construction). Only the report PR depends on every topic PR landing first.
+- **Topic PRs MUST NOT touch `wiki/log.md` or `wiki/index.md`.** Both belong to the report PR. If a `wiki-merger` proposal or its skill set tries to write either file, that's a regression — the per-topic merger conflict cascade is exactly what this design prevents.
 - **Cite or refuse.** Every claim in a synthesis page MUST have at least one `[[source-slug]]` wikilink and a `>` quote from that source. If the researcher couldn't substantiate a claim, drop the claim — never paraphrase without a citation.
 - **Read `wiki/topics/<id>/purpose.md` AND `CLAUDE.md` 'Cross-cutting relevance criteria' BEFORE deciding to ingest a source.** The charter narrows the cross-cutting bar with topic-specific in-scope/out-of-scope. The cross-cutting criteria (highly relevant / highly innovative / impacts agentic workflow or game dev) can independently justify inclusion. Bias toward inclusion when on the fence.
 - **Bump `last_verified` only on pages whose claims you re-checked against a source this run.** Otherwise bump only `last_updated`. This is what makes the staleness lint actionable.

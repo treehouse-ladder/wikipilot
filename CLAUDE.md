@@ -47,8 +47,8 @@ If a Claude branch (`claude/*`) modifies any of these files, the auto-merge gate
 
 ### LLM-only (humans read, don't edit)
 
-- `wiki/index.md` — the catalog
-- `wiki/log.md` — chronological append-only journal
+- `wiki/index.md` — the catalog. **During Daily Research runs, written exclusively by the `claude/daily-<DATE>/_report` PR — never by per-topic PRs** (the topic-merger conflict cascade lived here; see "Daily run workflow" below).
+- `wiki/log.md` — chronological append-only journal. **Same rule as `wiki/index.md` for Daily Research**: only the report PR appends. The Wiki Query and Weekly Health routines append once per run from their own single PR, so no contention there.
 - `wiki/sources/**` — one file per ingested URL
 - `wiki/reports/**` — daily run reports + weekly health reports
 - `wiki/answers/**` — Wiki Query answer pages
@@ -167,8 +167,9 @@ When applying a proposal that touches concept X:
 
 1. Update the topic landing page that owns X.
 2. Update **every** concept/entity page that backlinks X (use Grep on `[[X]]` or the page's slug).
-3. Update `wiki/index.md` for any new pages.
-4. Bump `last_updated` and `last_verified` on every page modified.
+3. Bump `last_updated` and `last_verified` on every page modified.
+
+`wiki/index.md` updates for new pages are NOT part of the per-topic sweep during Daily Research — they are batched on the report PR (see "Daily run workflow" below). For the Wiki Query and Weekly Health routines, which produce a single PR per run, the answerer/scanner agents update `wiki/index.md` on their own branch.
 
 Karpathy's "10–15 wiki pages per source" expectation is normal, not a red flag — the per-topic auto-merge gate is sized for it.
 
@@ -222,8 +223,9 @@ The canonical prompt lives at [`prompts/daily_runner.md`](prompts/daily_runner.m
 1. Run `python scripts/preflight.py` — fail fast if env broken.
 2. Read `CLAUDE.md`, `topics.yaml`, `wiki/index.md`, last 50 lines of `wiki/log.md`, every `wiki/topics/<id>/purpose.md`. This becomes the cache-warming prefix shared across parallel subagents.
 3. Set `CLAUDE_CODE_FORK_SUBAGENT=1` and dispatch `topic-researcher` **in parallel** via the Task tool, one per enabled topic. Each returns a structured `Proposal` (schema below).
-4. For each topic, in series: branch `claude/daily-YYYY-MM-DD/<topic-id>`, dispatch `wiki-merger`, dispatch `wiki-linter`, run `pytest` + `wikipilot lint wiki/`, append per-topic log entry, commit, push, `gh pr create`, `python scripts/maybe_automerge.py --pr <num> --route daily_research`.
-5. After all topics: write `wiki/reports/YYYY-MM-DD.md`.
+4. For each topic, in series: branch `claude/daily-YYYY-MM-DD/<topic-id>`, dispatch `wiki-merger`, dispatch `wiki-linter`, run `pytest` + `wikipilot lint wiki/`, commit, push, `gh pr create`, `python scripts/maybe_automerge.py --pr <num> --route daily_research`. **Per-topic PRs do not write to `wiki/log.md` or `wiki/index.md`** — those writes are batched on the report PR in step 6 to avoid the parallel-merge conflict cascade. Topic PRs end up file-disjoint by construction (topic page + source pages + cross-page sweep targets only) and merge cleanly through the queue in parallel.
+5. Wait for every topic PR to reach a terminal state (`MERGED` or terminally failed) before starting step 6. Topic PRs are parallel-mergeable so the wait is typically <3 min.
+6. On a fresh `claude/daily-YYYY-MM-DD/_report` branch cut from post-merge `main`: append one `## [DATE] daily | <topic-id> — N sources, M pages` entry per merged topic via `append-log`, update `wiki/index.md` for every new source/page across all merged topics via `update-index`, write `wiki/reports/YYYY-MM-DD.md` via `wikipilot.log.write_run_report`, append the final summary log entry, commit, push, `gh pr create`, gate. The report PR's diff touches `wiki/log.md`, `wiki/index.md`, and `wiki/reports/<DATE>.md` exclusively — no other open PR competes for those files at this point in the run, so it cannot conflict.
 
 ## Query workflow (for `query_answerer.md` orchestrator)
 
@@ -347,11 +349,12 @@ Each routine produces one PR with conventional commits and per-route branch name
 
 | Routine | Template | Example |
 |---|---|---|
-| Daily Research | `claude/daily-{date}/{topic_id}` | `claude/daily-2026-05-11/ai-agents` |
+| Daily Research (per topic) | `claude/daily-{date}/{topic_id}` | `claude/daily-2026-05-11/ai-agents` |
+| Daily Research (report) | `claude/daily-{date}/_report` | `claude/daily-2026-05-11/_report` |
 | Wiki Query | `claude/query-{date}-{slug}` | `claude/query-2026-05-11-what-is-qmd` |
 | Weekly Health | `claude/health-{date}` | `claude/health-2026-05-17` |
 
-The `claude/` prefix is required by Claude Code Cloud Routines (cloud routines can only push to `claude/*` branches by default).
+The `claude/` prefix is required by Claude Code Cloud Routines (cloud routines can only push to `claude/*` branches by default). The `_report` branch is the only Daily Research branch that writes to `wiki/log.md` and `wiki/index.md`; per-topic branches are file-disjoint (see "Daily run workflow").
 
 ### Commit messages
 
@@ -359,7 +362,8 @@ Conventional commits, one staged commit per branch:
 
 | Routine | Commit message format |
 |---|---|
-| Daily Research | `feat(wiki/<topic-id>): daily research <YYYY-MM-DD> — N sources, M pages` |
+| Daily Research (per topic) | `feat(wiki/<topic-id>): daily research <YYYY-MM-DD> — N sources, M pages` |
+| Daily Research (report) | `feat(wiki/reports): daily research <YYYY-MM-DD> — N topics, S sources, P pages` |
 | Wiki Query | `feat(wiki/answers): <slug> — answer for "<question>"` |
 | Weekly Health | `feat(wiki/reports): weekly health <YYYY-MM-DD> — N disputes filed` |
 
@@ -367,7 +371,8 @@ Conventional commits, one staged commit per branch:
 
 | Routine | PR title format |
 |---|---|
-| Daily Research | `wiki(<topic-id>): daily YYYY-MM-DD` |
+| Daily Research (per topic) | `wiki(<topic-id>): daily YYYY-MM-DD` |
+| Daily Research (report) | `wiki(reports): daily YYYY-MM-DD` |
 | Wiki Query | `wiki(answers): "<question>"` |
 | Weekly Health | `wiki(health): weekly sweep YYYY-MM-DD` |
 
