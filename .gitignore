@@ -63,6 +63,8 @@ Thumbs.db
 **/.obsidian/bookmarks.json
 **/.obsidian/hotkeys.json
 **/.obsidian/workspaces.json
+# Per-session UI state (zoom scale, collapse-filter toggle) — churns on every Obsidian launch
+**/.obsidian/graph.json
 
 # qmd index (rebuilt on demand)
 .qmd/
