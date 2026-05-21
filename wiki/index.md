@@ -112,6 +112,8 @@ _(none yet)_
 - [[ea-has-laid-off-an-undisclosed-number-of-battlefield-developers-55eb4720]]
 - [[arc-raiders-branded-global-blockbuster-after-hitting-14m-sales-6022f364]]
 - [[metroid-dread-developer-mercurysteam-conducts-layoffs-4b9b2a2b]]
+- [[unreal-engine-5-7-is-now-available-1ce294ef]]
+- [[nvidia-rtx-innovations-are-powering-the-next-era-of-game-development-e8368934]]
 - [[automate-work-with-routines-claude-code-routines-docs-d09f612e]]
 - [[best-practices-for-claude-code-anthropic-engineering-b7723535]]
 - [[building-agents-with-the-claude-agent-sdk-anthropic-engineering-cf56e261]]

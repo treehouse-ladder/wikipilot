@@ -83,3 +83,7 @@ Growing Pains of Frontier Models (h-field benchmark methodology paper; DeepSeek 
 ## [2026-05-21] daily | games-of-note — 4 sources, 1 page (run 2)
 
 EA Battlefield layoffs post-record-launch; MercurySteam layoffs post-harassment allegations; Arc Raiders live-service counter-narrative (14M+ sales, ~6M WAU); Mixtape review (Annapurna, Beethoven & Dinosaur, GameSpot 9/10).
+
+## [2026-05-21] daily | ai-in-game-dev — 2 sources, 1 page (run 2)
+
+UE 5.7 in-editor AI assistant (C++/Verse code gen, F1 context help, scriptable MetaHuman); NVIDIA RTX Kit 2026.2 GDC roundup (ReSTIR PT, RTX Mega Geometry foliage, on-device ACE SLM/TTS).
