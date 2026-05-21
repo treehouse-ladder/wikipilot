@@ -2,13 +2,13 @@
 
 Wikipilot's `wiki/` directory is a plain markdown vault — Obsidian opens it as-is. The setup below makes the experience feel native: the graph view colors every node by `kind:`, source pages look distinct from synthesis pages, a single dashboard surfaces everything that needs your attention, and the daily workflow takes one or two keystrokes.
 
-The repo ships with a working Obsidian config under `wiki/.obsidian/` — graph color groups, CSS snippet, attachment folder, and the two essential community plugins (Dataview + Front Matter Title) are already declared. After opening the vault, you'll only need to **install** the community plugins Obsidian asks for; the configuration is already in place.
+The repo ships with a working Obsidian config under `wiki/.obsidian/` — graph color groups, CSS snippet, attachment folder, and five bundled community plugins (Dataview, Front Matter Title, Hover Editor, Omnisearch, Iconize) are already declared. After opening the vault, you'll only need to **install** the community plugins Obsidian asks for; the configuration is already in place.
 
 ## 1. Open the vault
 
 1. File → **Open vault** → **Open folder as vault** → select **`wiki/`** (the subfolder, **not** the repo root — opening the repo root pollutes the graph with `src/`, `tests/`, etc.).
 2. Obsidian uses the committed `wiki/.obsidian/` config. The `.gitignore` excludes the noisy parts (`workspace*`, `cache`, plugin internal `data.json`).
-3. On first open, Obsidian will prompt you to enable community plugins listed in `wiki/.obsidian/community-plugins.json` — click "Trust author and enable plugins". This installs **Dataview** and **Front Matter Title**.
+3. On first open, Obsidian will prompt you to enable community plugins listed in `wiki/.obsidian/community-plugins.json` — click "Trust author and enable plugins". This installs **Dataview**, **Front Matter Title**, **Hover Editor**, **Omnisearch**, and **Iconize**.
 
 ## 2. Vault settings (already pre-configured)
 
@@ -22,9 +22,11 @@ The `wiki/.obsidian/app.json` and the per-plugin configs commit these values; ve
 | Use [[Wikilinks]] | **On** | Required by the citation discipline. |
 | Strict line breaks | **Off** | Standard markdown rendering. |
 
-## 3. Essential community plugins
+## 3. Community plugins
 
-### Dataview (essential — drives the dashboard)
+Five plugins are bundled (declared in `community-plugins.json`); a few more are worth installing as you go. Together they shape the vault into something that reads as a wiki rather than a folder of markdown.
+
+### Dataview (bundled — drives the dashboard)
 
 Already listed in `community-plugins.json`. Powers the `wiki/_dashboard.md` page and any other frontmatter-based queries you write. Verify Settings → Community plugins → **Dataview** is enabled, and turn on:
 
@@ -64,7 +66,7 @@ GROUP BY file.path
 
 (Every open `## Open questions` checkbox across the wiki, grouped by host page.)
 
-### Front Matter Title (essential — fixes the "six index files" problem)
+### Front Matter Title (bundled — fixes the "six index files" problem)
 
 Already listed in `community-plugins.json`. Replaces every node label that would otherwise show as `index` (six topic/catalog files all named `index.md`) with the page's frontmatter `title:`. After enabling, turn on these features in the plugin's settings:
 
@@ -73,13 +75,22 @@ Already listed in `community-plugins.json`. Replaces every node label that would
 - **Tab header**
 - **Backlink panel**
 
-### Recommended additions (install on demand)
+### Other bundled plugins (quality-of-life)
 
-| Plugin | Why it matters here |
+These three are also enabled via `community-plugins.json` and don't need per-plugin configuration beyond install + enable.
+
+| Plugin | Why it's bundled |
 |---|---|
-| **Hover Editor** | Peek any source page without leaving the synthesis page you're reading — huge for the "is this claim really supported by the source?" loop. |
-| **Omnisearch** | Fuzzy full-text search across the whole vault with relevance ranking. Obsidian's built-in search is exact-match; Omnisearch finds things when you forget the precise phrasing. |
-| **Iconize** | Folder icons (set `topics/` = 🎯, `concepts/` = 💡, `entities/` = 👤, `sources/` = 📥, `answers/` = 💬, `comparisons/` = 📊, `reports/` = 📋). Cuts visual scan time. |
+| **[Hover Editor](https://github.com/nothingislost/obsidian-hover-editor)** | Peek any source page without leaving the synthesis page you're reading — huge for the "is this claim really supported by the source?" loop the citation discipline encourages. |
+| **[Omnisearch](https://github.com/scambier/obsidian-omnisearch)** | Fuzzy full-text search across the whole vault with relevance ranking. Obsidian's built-in search is exact-match; Omnisearch finds things when you forget the precise phrasing. |
+| **[Iconize](https://github.com/FlorianWoelki/obsidian-iconize)** | Folder icons (set `topics/` = 🎯, `concepts/` = 💡, `entities/` = 👤, `sources/` = 📥, `answers/` = 💬, `comparisons/` = 📊, `reports/` = 📋). Cuts visual scan time. |
+
+### Worth installing later (not bundled)
+
+Install on demand — none of these are required for the vault to work, but each one fills a specific gap.
+
+| Plugin | When you'll want it |
+|---|---|
 | **Bases** *(core in Obsidian 1.9.10+, no install needed)* | Native database-like views over folders with sort/filter UI. Complements Dataview — use Bases for browseable tables, Dataview for computed dashboards. |
 | **Linter** | Auto-format on save. **Caveat**: turn off "format YAML frontmatter" and "format dates", or it'll fight the agents on `last_updated` / `last_verified` whenever you open an LLM-edited file. Keep it for whitespace/heading normalization only. |
 | **Marp** | Required to render `wiki/decks/<topic-id>.md` (output of `uv run wikipilot deck`). Optional unless you actually share decks. |
