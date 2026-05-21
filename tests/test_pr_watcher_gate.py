@@ -737,9 +737,7 @@ class TestIsTrustedForEnforce:
             is True
         )
 
-    def test_none_association_without_allowlist_match_is_untrusted(
-        self, default_config
-    ) -> None:
+    def test_none_association_without_allowlist_match_is_untrusted(self, default_config) -> None:
         assert (
             self._is_trusted(
                 is_fork=False,

@@ -284,8 +284,7 @@ class TestPRWatcherTrustModel:
         REST API returns associations in upper-case, so we normalize on read."""
         path = tmp_path / "wikipilot.toml"
         path.write_text(
-            "[automerge.pr_watcher]\n"
-            'trusted_associations = ["owner", "member"]\n',
+            '[automerge.pr_watcher]\ntrusted_associations = ["owner", "member"]\n',
             encoding="utf-8",
         )
         config = load_wikipilot_config(path)
@@ -294,8 +293,7 @@ class TestPRWatcherTrustModel:
     def test_unknown_association_rejected(self, tmp_path: Path) -> None:
         path = tmp_path / "wikipilot.toml"
         path.write_text(
-            "[automerge.pr_watcher]\n"
-            'trusted_associations = ["MEMBER", "BOGUS"]\n',
+            '[automerge.pr_watcher]\ntrusted_associations = ["MEMBER", "BOGUS"]\n',
             encoding="utf-8",
         )
         with pytest.raises(ConfigError, match="BOGUS"):
