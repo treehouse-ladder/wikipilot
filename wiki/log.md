@@ -35,3 +35,7 @@ Applied proposal to topic index with engine-native AI assistants, generative con
 ## [2026-05-20] daily | frontier-models — 14 sources, 6 pages
 
 Applied proposal from topic-researcher: 14 sources ingested, topic index updated with 2026-05-20 summary, 4 entity pages created (claude-opus-4.7, gpt-5.5, gemini-3.1-pro, deepseek-v4), 1 comparison page created (cost-comparison).
+
+## [2026-05-20] daily | agentic-coding — 12 sources, 1 page
+
+Added Agent Skills pattern, long-running-agent harnesses, Claude Agent SDK rename, code execution with MCP, context engineering, infrastructure noise in evals, Opus 4.7, and OpenAI Codex subagents documentation.
