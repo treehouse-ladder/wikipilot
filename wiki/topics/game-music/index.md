@@ -1,9 +1,9 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]", "[[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]", "[[the-best-video-game-soundtracks-of-2026-so-far-11501826]]", "[[mick-gordon-in-conversation-sonic-state-jan-2026-53ed29e8]]", "[[pragmata-soundtrack-and-vinyl-release-review-2026-31dc604e]]", "[[elden-ring-nightreign-soundtrack-is-coming-to-vinyl-30e2c324]]"]
-last_updated: 2026-05-20
-last_verified: 2026-05-20
+sources: ["[[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]", "[[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]", "[[the-best-video-game-soundtracks-of-2026-so-far-11501826]]", "[[mick-gordon-in-conversation-sonic-state-jan-2026-53ed29e8]]", "[[pragmata-soundtrack-and-vinyl-release-review-2026-31dc604e]]", "[[elden-ring-nightreign-soundtrack-is-coming-to-vinyl-30e2c324]]", "[[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]", "[[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]]", "[[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]]"]
+last_updated: 2026-05-21
+last_verified: 2026-05-21
 freshness_window_days: 60
 ---
 
@@ -34,6 +34,20 @@ The first daily research pass surfaces a 2026 dominated by retrospective vinyl r
 
 > In 2026, Unreal Engine 5 developers have three serious options: Wwise (the AAA industry standard), FMOD (the indie-friendly powerhouse), and MetaSounds (Epic's built-in procedural audio system) ... MetaSounds is workable for simple adaptive music but lacks dedicated music authoring tools.
 
+**Audio middleware — haptics convergence.** A May 2026 Meta developer post details Meta Haptics Studio's integration with both major audio-middleware packages, folding controller-haptic authoring into the sound designer's existing toolchain: FMOD supports the `.haptic` format today via the Haptics Instrument in FMOD 2.03.11, and Wwise gains native `.haptic` support in early 2026 [[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]. The post frames `.haptic` as a candidate de-facto interchange standard for controller haptics, analogous to `.wav` for audio, covering essentially every commercial VR title in production through the two middleware integrations [[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]. This extends the existing Wwise/FMOD/MetaSounds comparison from purely musical/SFX authoring into unified audio-plus-haptic feedback.
+
+> FMOD support is available today through the Haptics Instrument in FMOD 2.03.11, while Wwise will natively support .haptic in early 2026.
+
+> the .haptic format is on track to become the de facto interchange spec for controller haptics across platforms, the same way .wav became the universal audio interchange format.
+
+**Composer interviews.** Screen Rant interviewed Donkey Kong Country composer David Wise at Gamescom LATAM 2026, where he performed on the main stage on May 1–2; the conversation covers his 40-year career from Rare (1985–2009) through ongoing NDA projects, with Wise stressing continuous tool-learning as central to his evolving process [[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]].
+
+> With a career spanning over 40 years, the musician has created soundtracks for some of the most popular games ever. Wise began his career in games at Rare in 1985 and remained there until 2009. His best-known work is for the fantastic Donkey Kong Country, which was released by Rare in 1994 for the SNES.
+
+**Live performance.** Distant Worlds: Music from FINAL FANTASY returns to the U.S. through 2026, including a two-night Carnegie Hall event on June 12–13, 2026, "Celebrating Nobuo Uematsu!", with a program chosen by Uematsu (in attendance) and vocalists RIKKI and Amanda Achen [[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]].
+
+> On June 12 and 13, 2026, Distant Worlds returns to the famed Carnegie Hall in New York City for "Celebrating Nobuo Uematsu!," a special concert event featuring beloved Final Fantasy music compositions chosen by Nobuo Uematsu himself.
+
 ## Recent updates
 
 _(none yet — populated by the Daily Research routine.)_
@@ -56,6 +70,9 @@ until the underlying entity pages exist:
 - [ ] Is there a confirmed Pragmata OST vinyl release planned, or only the streaming OST? The review notes Capcom often does limited vinyl runs for major new IPs but no Pragmata vinyl was announced as of the review date.
 - [ ] Did Mick Gordon discuss the still-unresolved DOOM Eternal soundtrack credit dispute in the January 2026 Sonic State conversation?
 - [ ] Which 2026-shipping AAA titles are using MetaSounds in production for music — not just sound effects? Adoption data for music specifically would close the middleware comparison.
+- [ ] Does the `.haptic` interchange-standard claim hold beyond VR titles? The Meta source frames adoption around "essentially every commercial VR title," but flat-panel/console controller-haptic adoption of `.haptic` via FMOD/Wwise is not quantified.
+- [ ] What are the licensing terms for shipping `.haptic`-authored content through FMOD vs Wwise on PSVR2/PC VR, and do they differ from each middleware's existing audio licensing?
+- [ ] Which (if any) of David Wise's NDA projects are game scores, and for what platform/studio?
 
 ## See also
 
