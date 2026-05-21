@@ -98,7 +98,7 @@ claude.ai/code/routines → New routine → Remote.
 | Env vars (cloud env) | `WIKIPILOT_AUTO_MERGE=true`, `CLAUDE_CODE_FORK_SUBAGENT=1` |
 | Branch policy | Default. Cloud routines can only push to `claude/*` (which is what `git_ops.branch_for_daily` produces). |
 | Network | Default policy is fine — WebSearch goes through Anthropic infra. |
-| Triggers | (a) Schedule: daily 06:00 local. (b) **API trigger** (added after first save): copy URL + bearer token, paste into `~/.config/wikipilot/credentials.toml` under `[research]` for `wikipilot research --topic <id>`. |
+| Triggers | (a) Schedule: daily 06:00 local. (b) **API trigger** (added after first save): copy URL + bearer token, paste into `~/.config/wikipilot/credentials.toml` (Windows: `%APPDATA%\wikipilot\credentials.toml`) under `[research]` for `wikipilot research --topic <id>`. |
 | Model | **Sonnet** (orchestrator only — `topic-researcher` and `wiki-merger` subagents pin their own models via `.claude/agents/*.md` frontmatter). |
 | Prompt | Copy `prompts/daily_runner.md` into the routine UI. We don't auto-sync because routines aren't yet API-managed. |
 
@@ -117,7 +117,7 @@ Beta header note: Routines API uses `experimental-cc-routine-2026-04-01`.
 | Permissions tab | "Allow unrestricted git push" → **OFF**. |
 | Behavior tab | "Auto-fix pull requests" → **OFF** initially. |
 | Env vars | inherited from the cloud env. |
-| Triggers | (a) **GitHub trigger** (preferred for human use): see [GitHub-issue trigger](#github-issue-trigger-for-wiki-query) below. (b) **API trigger**: copy URL + token from the routine UI, paste into `~/.config/wikipilot/credentials.toml` under `[query]`. No schedule trigger (on-demand only). |
+| Triggers | (a) **GitHub trigger** (preferred for human use): see [GitHub-issue trigger](#github-issue-trigger-for-wiki-query) below. (b) **API trigger**: copy URL + token from the routine UI, paste into `~/.config/wikipilot/credentials.toml` (Windows: `%APPDATA%\wikipilot\credentials.toml`) under `[query]`. No schedule trigger (on-demand only). |
 | Model | **Sonnet** (orchestrator); `query-answerer` subagent pins **Opus 4.7** via its frontmatter. |
 | Prompt | Copy [`prompts/query_answerer.md`](../prompts/query_answerer.md) into the routine UI. |
 
