@@ -72,6 +72,10 @@ Daily research run complete: 5 topics, 23 new sources, 33 pages touched, 5 PRs o
 
 Answer page created with 5 sources (1 existing, 4 new); back-filled into game-music topic page.
 
-## [2026-05-21] daily | games-of-note — 4 sources, 1 page
+## [2026-05-21] daily | game-music — 3 sources, 1 page
+
+Aether & Iron score (Christopher Tin / Alex Williamson, RPGFan review); Octopath Traveler 0 OST (Yasunori Nishiki, 2-CD Square Enix); Prescription for Sleep: Ocarina of Time (GENTLE LOVE arrangement album).
+
+## [2026-05-21] daily | games-of-note — 4 sources, 1 page (run 2)
 
 EA Battlefield layoffs post-record-launch; MercurySteam layoffs post-harassment allegations; Arc Raiders live-service counter-narrative (14M+ sales, ~6M WAU); Mixtape review (Annapurna, Beethoven & Dinosaur, GameSpot 9/10).
