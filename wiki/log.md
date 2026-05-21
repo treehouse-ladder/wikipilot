@@ -87,3 +87,11 @@ EA Battlefield layoffs post-record-launch; MercurySteam layoffs post-harassment 
 ## [2026-05-21] daily | ai-in-game-dev — 2 sources, 1 page (run 2)
 
 UE 5.7 in-editor AI assistant (C++/Verse code gen, F1 context help, scriptable MetaHuman); NVIDIA RTX Kit 2026.2 GDC roundup (ReSTIR PT, RTX Mega Geometry foliage, on-device ACE SLM/TTS).
+
+## [2026-05-21] daily | agentic-coding — 6 sources, 1 page (run 2)
+
+Sandboxing-as-autonomy: Claude Code OS-level sandbox (84% permission-prompt reduction), checkpoints/rewind autonomy feature; Cursor harness layer (Split PRs, CursorBench, per-model Codex alignment); SWE-WebDevBench production-readiness cliff (no platform >60% engineering quality).
+
+## [2026-05-21] daily | 5 topics, 18 sources, 5 pages (run 2)
+
+Second daily research pass for 2026-05-21: 5 topics, 18 new sources, 5 topic pages updated, 5 PRs created.
