@@ -80,7 +80,7 @@ The starter repo ships with five seeded topics so you have a working baseline be
 ### Fork + clone + verify
 
 ```bash
-gh repo fork rauriemo/wikipilot --clone --remote
+gh repo fork treehouse-ladder/wikipilot --clone --remote
 cd wikipilot
 uv sync --extra dev
 
