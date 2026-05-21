@@ -39,7 +39,7 @@ Read these files into your context BEFORE dispatching the answerer subagent. The
 ## Step 3: Parse the question
 
 - **GitHub-triggered**: read the issue body via `gh issue view <num> --json body,url`. The first non-empty line of the body is the question; the rest is optional context. Capture `ISSUE_URL` for Step 7.
-- **API-triggered**: the `question` field of the request payload is verbatim the question. `ISSUE_URL` is unset.
+- **API-triggered**: the Routines `/fire` API delivers payloads as a single freeform `text` field (per [the Routines docs](https://code.claude.com/docs/en/routines.md#trigger-a-routine)). The `text` value is the question verbatim — strip leading/trailing whitespace and use the result. `ISSUE_URL` is unset.
 
 If the question is empty after trimming, comment "no question provided" on the issue (if GitHub-triggered) and exit successfully.
 

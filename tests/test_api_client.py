@@ -154,17 +154,18 @@ class TestFireSuccess:
         fire_research(
             topic="ai-agents", path=credentials_file, http_post=post, sleep=RecordingSleep()
         )
-        assert post.calls[0]["json"] == {"topic_id": "ai-agents"}
+        assert post.calls[0]["json"] == {"text": "topic_id=ai-agents"}
         assert post.calls[0]["url"].endswith("/abc/fire")
 
     def test_query_payload_and_headers(self, credentials_file: Path) -> None:
         post = _post_factory([FakeResponse(status_code=202, json_payload={"run_id": "q-1"})])
         fire_query("what is X?", path=credentials_file, http_post=post, sleep=RecordingSleep())
         call = post.calls[0]
-        assert call["json"] == {"question": "what is X?"}
+        assert call["json"] == {"text": "what is X?"}
         assert call["headers"]["Authorization"] == "Bearer tok-query"
         assert call["headers"]["Content-Type"] == "application/json"
-        assert "anthropic-beta" in call["headers"]
+        assert call["headers"]["anthropic-beta"] == "experimental-cc-routine-2026-04-01"
+        assert call["headers"]["anthropic-version"] == "2023-06-01"
         assert call["headers"]["User-Agent"].startswith("wikipilot-cli/")
 
     def test_query_strips_whitespace(self, credentials_file: Path) -> None:
@@ -175,7 +176,7 @@ class TestFireSuccess:
             http_post=post,
             sleep=RecordingSleep(),
         )
-        assert post.calls[0]["json"] == {"question": "hello world"}
+        assert post.calls[0]["json"] == {"text": "hello world"}
 
     def test_query_rejects_empty(self, credentials_file: Path) -> None:
         with pytest.raises(ApiClientError, match="non-empty"):
