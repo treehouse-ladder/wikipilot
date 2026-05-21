@@ -19,3 +19,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 ## [2026-05-11] manual | bootstrap
 
 Empty wiki initialized. No topics enabled yet.
+
+## [2026-05-20] daily | ai-in-game-dev — 15 sources, 1 page
+
+Applied proposal to topic index with engine-native AI assistants, generative content pipelines, AI-driven NPCs, and world-model research.
