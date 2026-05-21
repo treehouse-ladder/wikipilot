@@ -1,7 +1,7 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]", "[[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]", "[[the-best-video-game-soundtracks-of-2026-so-far-11501826]]", "[[mick-gordon-in-conversation-sonic-state-jan-2026-53ed29e8]]", "[[pragmata-soundtrack-and-vinyl-release-review-2026-31dc604e]]", "[[elden-ring-nightreign-soundtrack-is-coming-to-vinyl-30e2c324]]", "[[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]", "[[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]]", "[[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]]"]
+sources: ["[[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]", "[[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]", "[[the-best-video-game-soundtracks-of-2026-so-far-11501826]]", "[[mick-gordon-in-conversation-sonic-state-jan-2026-53ed29e8]]", "[[pragmata-soundtrack-and-vinyl-release-review-2026-31dc604e]]", "[[elden-ring-nightreign-soundtrack-is-coming-to-vinyl-30e2c324]]", "[[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]", "[[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]]", "[[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]]", "[[aether-iron-soundtrack-music-review-5b0c61bb]]", "[[octopath-traveler-0-original-soundtrack-music-review-81d13f2c]]", "[[prescription-for-sleep-ocarina-of-time-music-review-f69d5aa2]]"]
 last_updated: 2026-05-21
 last_verified: 2026-05-21
 freshness_window_days: 60
@@ -50,7 +50,15 @@ The first daily research pass surfaces a 2026 dominated by retrospective vinyl r
 
 ## Recent updates
 
-_(none yet — populated by the Daily Research routine.)_
+**Original scores of note (cont.).** The second daily pass on 2026-05-21 surfaces RPGFan's mid-May review run. The standout new original score is *Aether & Iron*, co-composed by two-time Grammy winner Christopher Tin and Grammy-nominee Alex Williamson — a noir-leaning orchestral score (strings, horns, light percussion) recorded with a live orchestra, with RPGFan calling its "Nations Crusade Adagio" a choir-and-orchestra piece sitting "somewhere between the romantic era of classical composition and a good Hans Zimmer film score," and flagging the album as a plausible Grammy shortlist contender for next year [[aether-iron-soundtrack-music-review-5b0c61bb]]. On the JRPG side, Yasunori Nishiki's *Octopath Traveler 0 Original Soundtrack* (Square Enix, SQEX-11181~2, released 2025-12-10) spreads across 2 CDs, with the first disc built around the main theme and four elaborated variants ("Fury," "Sorrow," "Compassion," "Requiem") plus a full "Wishvale" town suite, while roughly 40 percent of the set is carried over from Champions of the Continent [[octopath-traveler-0-original-soundtrack-music-review-81d13f2c]].
+
+> The Aether & Iron Soundtrack was co-composed by Christopher Tin and Alex Williamson. Tin is a two-time Grammy-winning composer, while Williamson is a Grammy-nominee.
+
+> About 40 percent of the OST is music lifted from Champions of the Continent, all found on the second of the soundtrack's two CDs. The first disc features the main theme and four elaborated versions (Fury, Sorrow, Compassion, and Requiem).
+
+**Arrangement releases.** Scarlet Moon Records' jazz duo GENTLE LOVE — saxophonist Norihiko Hibino (a Metal Gear Solid series composer) and pianist AYAKI — released their first all-Zelda album, *Prescription for Sleep: Ocarina of Time*, marking The Legend of Zelda's 40th anniversary; RPGFan characterizes it as roughly "25% Zelda, 75% GENTLE LOVE" with four-to-seven-minute tracks given over to soloing and calm sonic exploration [[prescription-for-sleep-ocarina-of-time-music-review-f69d5aa2]].
+
+> Scarlet Moon Records' prolific jazz duo GENTLE LOVE released their first-ever all-Zelda album, Prescription for Sleep: Ocarina of Time, with saxophonist Norihiko Hibino (composer on the Metal Gear Solid series) and pianist AYAKI celebrating the 40th anniversary of The Legend of Zelda.
 
 ## Comparisons
 
@@ -73,6 +81,8 @@ until the underlying entity pages exist:
 - [ ] Does the `.haptic` interchange-standard claim hold beyond VR titles? The Meta source frames adoption around "essentially every commercial VR title," but flat-panel/console controller-haptic adoption of `.haptic` via FMOD/Wwise is not quantified.
 - [ ] What are the licensing terms for shipping `.haptic`-authored content through FMOD vs Wwise on PSVR2/PC VR, and do they differ from each middleware's existing audio licensing?
 - [ ] Which (if any) of David Wise's NDA projects are game scores, and for what platform/studio?
+- [ ] Is there a physical (vinyl/CD) release planned for the Aether & Iron soundtrack [[aether-iron-soundtrack-music-review-5b0c61bb]], or streaming-only? RPGFan's review covers the music but does not note a physical edition.
+- [ ] Does the Octopath Traveler 0 OST overlap with Champions of the Continent constitute padding, or is the carried-over 40 percent re-recorded/re-arranged [[octopath-traveler-0-original-soundtrack-music-review-81d13f2c]]?
 
 ## See also
 
