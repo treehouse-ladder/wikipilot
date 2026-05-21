@@ -102,6 +102,8 @@ _(none yet)_
 - [[fmod-licensing-c7ac9c17]]
 - [[metasounds-in-unreal-engine-ue5-7-documentation-abcafae8]]
 - [[wwise-for-games-pricing-audiokinetic-4ed3898c]]
+- [[unreal-engine-5-7-is-now-available-1ce294ef]]
+- [[nvidia-rtx-innovations-are-powering-the-next-era-of-game-development-e8368934]]
 - [[automate-work-with-routines-claude-code-routines-docs-d09f612e]]
 - [[best-practices-for-claude-code-anthropic-engineering-b7723535]]
 - [[building-agents-with-the-claude-agent-sdk-anthropic-engineering-cf56e261]]

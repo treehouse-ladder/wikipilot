@@ -71,3 +71,7 @@ Daily research run complete: 5 topics, 23 new sources, 33 pages touched, 5 PRs o
 ## [2026-05-21] query | Wwise vs FMOD vs MetaSounds for UE5 audio middleware — answers/2026-05-21-wwise-fmod-metasounds-ue5-comparison.md
 
 Answer page created with 5 sources (1 existing, 4 new); back-filled into game-music topic page.
+
+## [2026-05-21] daily | ai-in-game-dev — 2 sources, 1 page
+
+UE 5.7 in-editor AI assistant (C++/Verse code gen, F1 context help, scriptable MetaHuman); NVIDIA RTX Kit 2026.2 GDC roundup (ReSTIR PT, RTX Mega Geometry foliage, on-device ACE SLM/TTS).
