@@ -1,7 +1,7 @@
 ---
 title: Frontier LLM landscape
 kind: topic
-sources: ["[[introducing-claude-opus-47-b8af8104]]", "[[claude-opus-47-everything-you-need-to-know-751c1827]]", "[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[gemini-31-pro-model-card-225ab705]]", "[[gemini-3-deep-think-advancing-science-research-and-engineering-e98b788f]]", "[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[introducing-claude-sonnet-46-c4a45eed]]", "[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]", "[[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]]", "[[introducing-mistral-3-3772caab]]", "[[artificial-analysis-intelligence-index-07e9d51e]]", "[[gdpval-measuring-the-performance-of-our-models-on-real-world-tasks-bc53ab6b]]", "[[the-llama-4-herd-a-new-era-of-natively-multimodal-ai-7554c7f6]]", "[[gemini-35-flash-model-card-de99f770]]", "[[gemini-35-flash-the-new-leader-in-intelligence-versus-speed-d886178d]]", "[[claude-mythos-preview-d737ab91]]", "[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]"]
+sources: ["[[introducing-claude-opus-47-b8af8104]]", "[[claude-opus-47-everything-you-need-to-know-751c1827]]", "[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[gemini-31-pro-model-card-225ab705]]", "[[gemini-3-deep-think-advancing-science-research-and-engineering-e98b788f]]", "[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[introducing-claude-sonnet-46-c4a45eed]]", "[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]", "[[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]]", "[[introducing-mistral-3-3772caab]]", "[[artificial-analysis-intelligence-index-07e9d51e]]", "[[gdpval-measuring-the-performance-of-our-models-on-real-world-tasks-bc53ab6b]]", "[[the-llama-4-herd-a-new-era-of-natively-multimodal-ai-7554c7f6]]", "[[gemini-35-flash-model-card-de99f770]]", "[[gemini-35-flash-the-new-leader-in-intelligence-versus-speed-d886178d]]", "[[claude-mythos-preview-d737ab91]]", "[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]", "[[the-growing-pains-of-frontier-models-when-leaderboards-stop-separating-and-what-to-measure-next-b0488a82]]", "[[introducing-gpt-rosalind-for-life-sciences-research-078f0d54]]", "[[qwen3-6-27b-on-hugging-face-20e9d0e7]]"]
 last_updated: 2026-05-21
 last_verified: 2026-05-21
 freshness_window_days: 30
@@ -94,7 +94,25 @@ On open weights, Moonshot's Kimi K2.6 (released April 20, 2026) is the new leadi
 
 ## Recent updates
 
-_(none yet — populated by the Daily Research routine.)_
+### Updates 2026-05-21 (second run)
+
+A new benchmark-methodology paper argues the frontier leaderboards have stopped separating models on independent axes, and that the more informative signal is whether capabilities reinforce or trade off across releases [[the-growing-pains-of-frontier-models-when-leaderboards-stop-separating-and-what-to-measure-next-b0488a82]]. The authors decompose paired SWE-bench and GPQA Diamond scores into a population coupling trend plus a per-release residual ("h-field") that diagnoses each release's capability emphasis. Across 34 models from 10 labs (2024–2026) capabilities mostly cooperate, but cooperation varies by lab and over time: DeepSeek reversed from reasoning-rich to coding-first, Google maintains consistent reasoning emphasis, and Anthropic oscillates between coding excursions and recovery — with five April 2026 releases confirming the diagnostic out of sample.
+
+> We decompose paired SWE-bench and GPQA Diamond scores into a population coupling trend and per-release residual (h-field) that diagnoses capability emphasis and identifies which measurement or stress test is most informative next.
+
+> DeepSeek reversed from reasoning-rich to coding-first; Google maintains consistent reasoning emphasis; Anthropic oscillates between coding excursions and recovery.
+
+On the model-release side, OpenAI introduced GPT-Rosalind, a frontier reasoning model specialized for life-sciences R&D (target discovery/validation, genomics interpretation, pathway analysis, hypothesis generation), optimized for scientific tool use across chemistry, protein engineering, and genomics [[introducing-gpt-rosalind-for-life-sciences-research-078f0d54]]. Like Claude Mythos Preview, it is deliberately gated: research preview, enterprise/eligible-institution access only via a trusted-access deployment structure, with no public pricing — a continuation of the pattern where the most specialized frontier capabilities ship behind restricted access rather than open API.
+
+> GPT-Rosalind is a frontier reasoning model built to support research across biology, drug discovery, and translational medicine, with optimization for scientific workflows that combines improved tool use with deeper understanding across chemistry, protein engineering, and genomics.
+
+> GPT-Rosalind is currently in research preview, deployed to eligible institutions, available to eligible U.S. customers with Enterprise agreements, launching through a trusted-access deployment structure.
+
+On open weights, Alibaba shipped Qwen3.6-27B with a 262,144-token native context extensible to ~1.01M tokens, and a notable agentic feature: a `preserve_thinking` option that retains full reasoning context across turns (interleaved thinking), which the model card claims improves decision consistency and can reduce overall token consumption by minimizing redundant reasoning — explicitly framed as beneficial for agent scenarios [[qwen3-6-27b-on-hugging-face-20e9d0e7]].
+
+> The model supports a preserve_thinking option that can be enabled when making API calls to maintain full reasoning context across multiple turns.
+
+> Maintaining full reasoning context can enhance decision consistency and, in many cases, reduce overall token consumption by minimizing redundant reasoning, which is particularly beneficial for agent scenarios.
 
 ## Comparisons
 
@@ -113,7 +131,8 @@ the topic-researcher (or `wikipilot compare new`) writes them to
 
 - [[deepseek-v4-pro-on-hugging-face-a0d5aaf3]] claims V4-Pro-Max scores 80.6% on SWE-bench Verified, but OpenAI has stopped reporting SWE-bench Verified scores after an audit found every frontier model tested could reproduce verbatim gold patches or problem-statement specifics, indicating training-data contamination; on SWE-bench Pro the leaderboard inverts. Status: unresolved — SWE-bench Pro is the more credible frontier signal in 2026 but Verified scores are still widely quoted in launch materials.
 - [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]] claims GPT-5.5 ranks #1 on aggregate AA Intelligence Index at 60, but [[claude-opus-47-everything-you-need-to-know-751c1827]] claims Claude Opus 4.7 leads GDPval-AA (the agentic/economic-value sub-benchmark) by 79 Elo points. Status: unresolved — aggregate-index leadership and agentic-task leadership are coming apart, so 'best model' is task-dependent in mid-2026.
-- [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]] frames GPT-5.5 (xhigh) as the #1 frontier model at AA Intelligence Index 60, but [[claude-mythos-preview-d737ab91]] reports an unreleased Anthropic model (Claude Mythos Preview) at state-of-the-art across SWE-bench Verified (93.9%), GPQA Diamond (94.6%), and Terminal-Bench 2.0 (82.0%), withheld from GA for safety. Status: unresolved — public-leaderboard #1 and true-frontier-capability are decoupled when the most capable model is deliberately not released.
+- [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]] claims GPT-5.5 (xhigh) as the #1 frontier model at AA Intelligence Index 60, but [[claude-mythos-preview-d737ab91]] reports an unreleased Anthropic model (Claude Mythos Preview) at state-of-the-art across SWE-bench Verified (93.9%), GPQA Diamond (94.6%), and Terminal-Bench 2.0 (82.0%), withheld from GA for safety. Status: unresolved — public-leaderboard #1 and true-frontier-capability are decoupled when the most capable model is deliberately not released.
+- [[the-growing-pains-of-frontier-models-when-leaderboards-stop-separating-and-what-to-measure-next-b0488a82]] claims DeepSeek reversed from reasoning-rich to coding-first across recent releases, while the topic page narrative treats DeepSeek V4's strong coding scores (e.g. 80.6% SWE-bench Verified, 3,206 Codeforces per [[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]) as straightforward frontier progress rather than a deliberate capability-emphasis shift away from reasoning. Status: unresolved — the h-field framing reads DeepSeek's coding gains as a trade-off signal, not pure cooperation.
 
 ## Open questions
 
@@ -125,6 +144,10 @@ the topic-researcher (or `wikipilot compare new`) writes them to
 - [ ] Does Kimi K2.6's AA Intelligence Index 54 hold on the contamination-resistant SWE-bench Pro, or does the open/closed gap re-widen there?
 - [ ] Claude Mythos Preview reports a saturated Cybench (100% pass@1) — is there an independent replication of these autonomous-cybersecurity scores, given the model is invitation-only?
 - [ ] Is Gemini 3.5 Flash beating Gemini 3.1 Pro on Terminal-Bench 2.1 (76.2%) a genuine Flash-over-Pro inversion on agentic coding, or an artifact of Terminal-Bench 2.1 vs 2.0 version differences?
+- [ ] Does the h-field 'leaderboards stop separating' thesis from [[the-growing-pains-of-frontier-models-when-leaderboards-stop-separating-and-what-to-measure-next-b0488a82]] reconcile with the AA Intelligence Index v4.0 still producing a clear #1 (GPT-5.5 xhigh at 60), or is the separation now driven mostly by agentic sub-benchmarks rather than SWE-bench/GPQA?
+- [ ] Which of the paper's seven timestamped falsifiable predictions about the next 12 months of frontier releases have come true as of mid-2026 [[the-growing-pains-of-frontier-models-when-leaderboards-stop-separating-and-what-to-measure-next-b0488a82]]?
+- [ ] Is GPT-Rosalind a fine-tune/specialization of an existing GPT-5.x base or a distinct model, and how does its life-sciences reasoning compare to general frontier models [[introducing-gpt-rosalind-for-life-sciences-research-078f0d54]]?
+- [ ] Does Qwen3.6-27B's preserve_thinking interleaved-reasoning mode measurably reduce total tokens vs re-deriving reasoning each turn in long agentic loops [[qwen3-6-27b-on-hugging-face-20e9d0e7]]?
 
 ## See also
 
