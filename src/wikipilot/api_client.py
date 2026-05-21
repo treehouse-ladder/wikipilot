@@ -25,6 +25,14 @@ Retry policy: on HTTP 429 (rate limit) we honor the ``Retry-After`` header
 when present, otherwise back off exponentially up to ``MAX_RETRIES``. All
 other 4xx/5xx responses surface immediately as a non-``ok``
 :class:`FireResponse` so the caller can decide.
+
+Payload contract: the Routines ``/fire`` endpoint only accepts a single
+freeform ``text`` field (see
+https://code.claude.com/docs/en/routines.md#trigger-a-routine). The
+``text`` value is not parsed by the platform — the routine prompt itself
+is responsible for extracting whatever structure it needs. We ship the
+``experimental-cc-routine-2026-04-01`` beta header and
+``anthropic-version: 2023-06-01`` per the docs.
 """
 
 from __future__ import annotations
@@ -182,7 +190,8 @@ def fire(
     headers = {
         "Authorization": f"Bearer {creds.token}",
         "Content-Type": "application/json",
-        "anthropic-beta": "claude-code-routines-2025-01-01",
+        "anthropic-beta": "experimental-cc-routine-2026-04-01",
+        "anthropic-version": "2023-06-01",
         "User-Agent": "wikipilot-cli/0.1",
     }
     attempts = 0
@@ -254,10 +263,15 @@ def fire_research(
     ``topic=None`` runs the full daily fan-out; ``topic="<id>"`` restricts
     the run to one topic — handy for ad-hoc re-runs after iterating on a
     purpose.md.
+
+    The Routines ``/fire`` API only accepts a single freeform ``text``
+    field (see https://code.claude.com/docs/en/routines.md#trigger-a-routine).
+    When a topic is supplied we encode it as ``text="topic_id=<id>"`` and
+    rely on the daily_runner prompt to parse that prefix.
     """
     payload: dict[str, Any] = {}
     if topic:
-        payload["topic_id"] = topic
+        payload["text"] = f"topic_id={topic}"
     return fire("research", payload, path=path, http_post=http_post, sleep=sleep)
 
 
@@ -268,12 +282,16 @@ def fire_query(
     http_post: HttpPost | None = None,
     sleep: SleepFn | None = None,
 ) -> FireResponse:
-    """Fire the Wiki Query routine with a free-text ``question``."""
+    """Fire the Wiki Query routine with a free-text ``question``.
+
+    The Routines ``/fire`` API only accepts a freeform ``text`` field; the
+    query_answerer prompt reads ``text`` verbatim as the question.
+    """
     if not question or not question.strip():
         raise ApiClientError("question must be a non-empty string")
     return fire(
         "query",
-        {"question": question.strip()},
+        {"text": question.strip()},
         path=path,
         http_post=http_post,
         sleep=sleep,
