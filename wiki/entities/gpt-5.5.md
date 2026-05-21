@@ -2,7 +2,7 @@
 title: "GPT-5.5"
 kind: entity
 sources: ["[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]"]
-last_updated: "2026-05-20"
+last_updated: "2026-05-21"
 last_verified: "2026-05-20"
 freshness_window_days: 30
 ---
@@ -18,6 +18,7 @@ GPT-5.5 was released April 23, 2026, alongside GPT-5.5 Pro [[introducing-gpt-55-
 ## Disputes
 
 - [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]] claims GPT-5.5 #1 on aggregate AA Intelligence Index, but [[claude-opus-47-everything-you-need-to-know-751c1827]] claims Claude Opus 4.7 leads GDPval-AA (the agentic/economic-value sub-benchmark) by 79 Elo points. Status: unresolved — top-of-leaderboard depends on whether you weight aggregate intelligence or agentic task performance.
+- [[introducing-gpt-55-dfe7e0c6]] claims GPT-5.5 was released "April 24, 2026"; [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]] claims "April 23, 2026". Status: unresolved — one-day discrepancy may reflect announcement vs. API availability dates. Confidence: high. Sweep: 2026-05-21.
 
 ## Open questions
 

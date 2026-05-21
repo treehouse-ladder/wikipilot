@@ -39,3 +39,7 @@ Applied proposal from topic-researcher: 14 sources ingested, topic index updated
 ## [2026-05-20] daily | agentic-coding — 12 sources, 1 page
 
 Added Agent Skills pattern, long-running-agent harnesses, Claude Agent SDK rename, code execution with MCP, context engineering, infrastructure noise in evals, Opus 4.7, and OpenAI Codex subagents documentation.
+
+## [2026-05-21] health | weekly sweep — 1 dispute filed
+
+Scanned 6 candidate sets (5 source-triggered, 1 stale sweep); 1 dispute filed on gpt-5.5 entity (release date discrepancy between two sources: April 24 vs April 23, 2026).
