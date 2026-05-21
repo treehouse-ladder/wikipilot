@@ -91,6 +91,20 @@ class BranchesConfig:
     health_template: str = "claude/health-{date}"
 
 
+VALID_AUTHOR_ASSOCIATIONS: frozenset[str] = frozenset(
+    {
+        "OWNER",
+        "MEMBER",
+        "COLLABORATOR",
+        "CONTRIBUTOR",
+        "FIRST_TIME_CONTRIBUTOR",
+        "FIRST_TIMER",
+        "MANNEQUIN",
+        "NONE",
+    }
+)
+
+
 @dataclass(frozen=True)
 class PRWatcherConfig:
     """``[automerge.pr_watcher]`` — knobs for the PR Watcher routine.
@@ -101,10 +115,36 @@ class PRWatcherConfig:
     caps the loop where the watcher dispatches ``wiki-linter`` to fix
     mechanical errors on ``claude/*`` PRs — tracked via the
     ``wikipilot:heal-attempt-{n}`` PR label.
+
+    ``trusted_associations`` and ``trusted_authors`` together define which
+    PR authors the watcher treats as "trusted enough to enforce against"
+    when the head branch matches a ``claude/*`` template. Untrusted
+    authors (including all forked-PR authors regardless of association)
+    are demoted to ``read_only`` mode so the watcher only ever *comments*
+    on their PRs — never queues an auto-merge. The defaults catch:
+
+    - ``OWNER`` — only set for user-owned repos (e.g. ``rauriemo/wikipilot``);
+      irrelevant for the canonical org-owned repo, but kept so a fork that
+      lives at ``someuser/wikipilot`` works without config edits.
+    - ``MEMBER`` — set for *any* member of the org that owns the repo,
+      including the org owner. This is the association you (the org owner)
+      get when opening a PR against ``treehouse-ladder/wikipilot`` — the
+      ``OWNER`` association is only emitted for repos owned by a user
+      account, not an org.
+    - ``COLLABORATOR`` — set for external contributors you've explicitly
+      invited via Settings → Collaborators.
+
+    ``trusted_authors`` is an explicit allowlist of GitHub logins,
+    independent of any association. Use it to whitelist a dedicated bot
+    account that isn't an org member or a one-off contributor whose
+    association is ``CONTRIBUTOR``/``NONE`` but whom you've decided to
+    trust for the watcher's enforcement path.
     """
 
     ci_wait_timeout_sec: int = 1200
     self_heal_max_attempts: int = 3
+    trusted_associations: tuple[str, ...] = ("OWNER", "MEMBER", "COLLABORATOR")
+    trusted_authors: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -273,6 +313,12 @@ def _config_from_dict(data: dict[str, Any], *, source: str) -> WikipilotConfig:
 
 
 def _pr_watcher_from_dict(data: dict[str, Any], *, source: str) -> PRWatcherConfig:
+    known_keys = {
+        "ci_wait_timeout_sec",
+        "self_heal_max_attempts",
+        "trusted_associations",
+        "trusted_authors",
+    }
     timeout = _coerce_positive_int(
         data.get("ci_wait_timeout_sec", 1200),
         where=f"{source}: [automerge.pr_watcher].ci_wait_timeout_sec",
@@ -281,13 +327,38 @@ def _pr_watcher_from_dict(data: dict[str, Any], *, source: str) -> PRWatcherConf
         data.get("self_heal_max_attempts", 3),
         where=f"{source}: [automerge.pr_watcher].self_heal_max_attempts",
     )
-    unknown = set(data.keys()) - {"ci_wait_timeout_sec", "self_heal_max_attempts"}
+    associations = _coerce_trusted_associations(
+        data.get("trusted_associations", ["OWNER", "MEMBER", "COLLABORATOR"]),
+        where=f"{source}: [automerge.pr_watcher].trusted_associations",
+    )
+    authors = _coerce_str_list(
+        data.get("trusted_authors", []),
+        where=f"{source}: [automerge.pr_watcher].trusted_authors",
+    )
+    unknown = set(data.keys()) - known_keys
     if unknown:
         raise ConfigError(f"{source}: [automerge.pr_watcher] has unknown keys: {sorted(unknown)}")
     return PRWatcherConfig(
         ci_wait_timeout_sec=timeout,
         self_heal_max_attempts=attempts,
+        trusted_associations=tuple(associations),
+        trusted_authors=tuple(authors),
     )
+
+
+def _coerce_trusted_associations(value: Any, *, where: str) -> list[str]:
+    """Coerce a list of association strings, normalizing case and validating."""
+    items = _coerce_str_list(value, where=where)
+    normalized: list[str] = []
+    for i, item in enumerate(items):
+        upper = item.upper()
+        if upper not in VALID_AUTHOR_ASSOCIATIONS:
+            raise ConfigError(
+                f"{where}[{i}]={item!r} is not a recognized GitHub author_association "
+                f"(valid values: {sorted(VALID_AUTHOR_ASSOCIATIONS)})"
+            )
+        normalized.append(upper)
+    return normalized
 
 
 if __name__ == "__main__":  # pragma: no cover

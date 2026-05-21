@@ -45,6 +45,28 @@ max_total_diff_lines = 2000
 ci_wait_timeout_sec = 1200
 self_heal_max_attempts = 3
 
+# Trust model for the enforce-mode auto-merge path. A PR is treated as
+# "trusted enough to enforce against" only when its head ref lives in
+# this repo (not a fork) AND either its GitHub `author_association` is
+# in `trusted_associations` OR its `author.login` is in `trusted_authors`.
+# Every other PR — including a fork PR with a synthetic `claude/daily-…`
+# branch name — is demoted to read-only mode so the watcher only
+# *comments* on it and never queues `gh pr merge --auto`. See CLAUDE.md
+# "Per-PR workflow" for the threat model this closes.
+#
+# `OWNER` only fires on user-owned repos (e.g. `someuser/wikipilot`);
+# org-owned repos like `treehouse-ladder/wikipilot` get `MEMBER` even
+# for the org owner. `COLLABORATOR` covers contributors explicitly
+# invited via Settings → Collaborators.
+trusted_associations = ["OWNER", "MEMBER", "COLLABORATOR"]
+
+# Optional allowlist of GitHub logins, independent of association.
+# Use sparingly — only for bot accounts or one-off contributors you've
+# decided to trust without granting them org/collaborator status. An
+# empty list (the default) means the trust check relies entirely on
+# `trusted_associations`.
+trusted_authors = []
+
 [images]
 enabled = true
 max_image_bytes = 5_242_880  # 5 MB

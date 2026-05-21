@@ -186,12 +186,30 @@ This fourth routine **doesn't synthesize wiki content**. It fires on every pull-
      - `Is merged` `equals` `false`
 3. Save.
 
-Now every new PR to `main` (or every push to an open PR) spawns one watcher session. The orchestrator inspects the head branch:
+Now every new PR to `main` (or every push to an open PR) spawns one watcher session. The orchestrator inspects the head branch and the PR author:
 
-- Matches a `claude/*` template from [`wikipilot.toml [branches]`](../wikipilot.toml) → infers the route (`daily_research` / `wiki_query` / `weekly_health`), waits for CI, then runs the gate in **enforce** mode (queues auto-merge or, on red CI, calls `gh pr merge --disable-auto` to undo any prior premature queue and posts a checklist comment).
-- Any other head (human PRs, fix branches, future automation) → runs the gate in **read-only** mode using the conservative `wiki_query` thresholds, never queues auto-merge, only posts a single dedupe-keyed status comment.
+- Matches a `claude/*` template from [`wikipilot.toml [branches]`](../wikipilot.toml) **and** the PR author passes the trust check (see below) → infers the route (`daily_research` / `wiki_query` / `weekly_health`), waits for CI, then runs the gate in **enforce** mode (queues auto-merge or, on red CI, calls `gh pr merge --disable-auto` to undo any prior premature queue and posts a checklist comment).
+- Any other case — non-`claude/*` head, fork PR, or untrusted author with a synthetic `claude/*`-shaped head — runs the gate in **read-only** mode using the conservative `wiki_query` thresholds, never queues auto-merge, only posts a single dedupe-keyed status comment.
 
 Daily-cap note: every PR event consumes one daily routine slot. With ~7 topics and ~1-2 query PRs per day, the watcher comfortably fits within Max/Team caps (15/25 per day) but is **not** free — see [`runbook.md`](runbook.md) "PR Watcher cost budget" for how to monitor.
+
+### Author trust model
+
+The trust check exists because `pull_request.opened` fires for **any** PR — including PRs from forks opened by non-collaborators — and the branch name alone is not a security boundary (anyone can name their fork branch `claude/daily-2026-…/anything`). The watcher demotes a `claude/*` PR to read-only mode whenever any of the following is true:
+
+- `isCrossRepository` is `true` (the head ref lives in a fork). Fork PRs are never enforce-eligible, even when the author also happens to be an org member.
+- `author_association` is **not** in `[automerge.pr_watcher].trusted_associations` (default `["OWNER", "MEMBER", "COLLABORATOR"]`) **and** `author.login` is **not** in `trusted_authors` (default empty).
+- `gh repo view --json nameWithOwner` or `gh api repos/<owner>/<repo>/pulls/<num>` fails for any reason — the watcher fails closed, treating any missing signal as untrusted.
+
+The defaults are sized for the canonical setup (one user with org-owner membership): every PR you open against `treehouse-ladder/wikipilot` carries `author_association: MEMBER` (GitHub only sets `OWNER` for user-owned repos, not org-owned ones), which is in the default list. Cloud Routine PRs created by the orchestrator use the same identity and pass the same check.
+
+To extend trust to additional contributors:
+
+- **Invite them as collaborators** via Settings → Collaborators. Their PRs to this repo will carry `author_association: COLLABORATOR`, which is in the default trusted list.
+- **Whitelist a specific GitHub login** (e.g. a bot account that has no org membership) by adding it to `[automerge.pr_watcher] trusted_authors` in [`wikipilot.toml`](../wikipilot.toml).
+- **Loosen the association set** by editing `trusted_associations` directly. Adding `"CONTRIBUTOR"` would mean any GitHub user with even one prior merged PR auto-trusts — generally not what you want on a public repo.
+
+Untrusted PRs still get a dedupe-keyed status comment so the contributor sees what the gate decided; the watcher just never calls `gh pr merge --auto` on them.
 
 ### Self-heal loop
 

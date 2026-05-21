@@ -68,8 +68,9 @@ If `state != "OPEN"`, `isDraft = true`, or `baseRefName != "main"`, exit success
 The thin script `scripts/pr_watcher_gate.py` wraps the entire wait+gate+signal flow. It internally:
 
 1. Calls `wikipilot.git_ops.infer_route_from_branch(HEAD_REF, config)` to map the head to one of `daily_research` / `wiki_query` / `weekly_health` / `None`.
-2. If route is `None` → gates in `read_only` mode (posts a single dedupe-keyed comment summarising the gate decision; never queues a merge).
-3. Otherwise → waits up to `[automerge.pr_watcher].ci_wait_timeout_sec` for `gh pr checks --watch`, then calls `apply_gate(..., mode="enforce")`.
+2. **Author trust check.** When (1) returns a route, the script ALSO verifies the PR is in this repo (`isCrossRepository=false`) AND the author is trusted — `author_association` (via `gh api repos/<owner>/<repo>/pulls/<num>`, since `gh pr view --json` does not expose it) must be in `[automerge.pr_watcher].trusted_associations` OR the `author.login` must be in `trusted_authors`. Any failure of any of those — including a fork PR with a synthetic `claude/daily-…` head ref, an external contributor with `author_association: NONE`, or a transient gh-API outage — demotes the PR to `read_only` mode. The check fails closed; the watcher never enables auto-merge on a missing signal.
+3. If route is `None` (no template match OR trust check failed) → gates in `read_only` mode (posts a single dedupe-keyed comment summarising the gate decision; never queues a merge).
+4. Otherwise → waits up to `[automerge.pr_watcher].ci_wait_timeout_sec` for `gh pr checks --watch`, then calls `apply_gate(..., mode="enforce")`.
 
 Invoke it once per session:
 
@@ -77,7 +78,7 @@ Invoke it once per session:
 python scripts/pr_watcher_gate.py --pr "$PR_NUM" 2>&1 | tee /tmp/pr-watcher-gate.log
 ```
 
-The script always exits 0. Failure modes (CI red, gate blocked, size cap exceeded) are all surfaced as dedupe-keyed comments on the PR — the orchestrator session never crashes on a gate failure.
+The script always exits 0. Failure modes (CI red, gate blocked, size cap exceeded, untrusted author) are all surfaced as dedupe-keyed comments on the PR — the orchestrator session never crashes on a gate failure.
 
 ## Step 5: Self-heal loop (claude/* PRs only)
 
@@ -136,7 +137,8 @@ Skip the log entry when the only thing that happened was a normal gate pass/fail
 ## Hard rules
 
 - **Never modify a human-only file** (per [`CLAUDE.md`](../CLAUDE.md) ownership matrix). The `wiki-linter` agent reverts such changes when CI surfaces them; do not introduce new ones from this orchestrator.
-- **Never enable auto-merge in read_only mode.** When `infer_route_from_branch` returns `None`, the only side-effect on the PR is one dedupe-keyed comment. Humans push their own merges.
+- **Never enable auto-merge in read_only mode.** When `infer_route_from_branch` returns `None` OR the trust check demotes a `claude/*` PR, the only side-effect is one dedupe-keyed comment. Humans push their own merges.
+- **Never override the trust check from inside this orchestrator.** If the gate script demotes a PR to `read_only` because the author is untrusted or the PR is from a fork, leave it. Adding a trusted author or association is a deliberate human edit to [`wikipilot.toml`](../wikipilot.toml) `[automerge.pr_watcher].trusted_authors` / `trusted_associations`, not an orchestrator-side workaround. The same applies to forcing a fork PR through — there is no override path because `isCrossRepository=true` is the strongest signal available that the head ref is outside our control.
 - **Respect the heal-attempt cap.** If `HEAL_CAPPED` is printed, do NOT push another fix even if the failure looks trivial; the cap is what prevents adversarial inputs from burning your daily routine cap.
 - **One push per session.** A second push within the same session would also trigger another `pull_request.synchronize` and another watcher fire — keep the cycle bounded by doing at most one `wiki-linter` dispatch per watcher session.
 - **The dedupe key is `wikipilot:gate`** (set by `DEFAULT_GATE_DEDUPE_KEY` in `wikipilot.git_ops`). Every checklist comment edits the same comment in place; do not post separate comments from this orchestrator.

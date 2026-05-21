@@ -172,6 +172,12 @@ def test_pr_watcher_prompt_exists() -> None:
         "HEAL_NEEDED",
         "HEAL_CAPPED",
         "self_heal_max_attempts",
+        # Trust model — must stay visible so a future edit doesn't silently
+        # drop the fork/author guard.
+        "trusted_associations",
+        "trusted_authors",
+        "isCrossRepository",
+        "author_association",
     ],
 )
 def test_pr_watcher_mentions_each_required_step(required: str) -> None:
@@ -179,6 +185,24 @@ def test_pr_watcher_mentions_each_required_step(required: str) -> None:
     assert required in body, (
         f"pr_watcher.md must mention {required!r} so the routine follows the documented workflow"
     )
+
+
+def test_pr_watcher_documents_fail_closed_trust_check() -> None:
+    """The prompt must call out that the trust check fails closed — a missing
+    or ambiguous author signal demotes the PR to read_only, never enforce.
+    This is the security-critical property; if a refactor flips it to fail
+    open, the prompt assertion catches the drift before it ships."""
+    body = _read("pr_watcher")
+    assert "fails closed" in body or "fail closed" in body, (
+        "pr_watcher.md must explicitly document fail-closed semantics for the trust check"
+    )
+
+
+def test_pr_watcher_documents_no_orchestrator_trust_override() -> None:
+    """The prompt must forbid the orchestrator from overriding the trust check
+    in-session. Trust changes go through wikipilot.toml, not the LLM."""
+    body = _read("pr_watcher")
+    assert "Never override the trust check" in body
 
 
 def test_pr_watcher_uses_correct_trigger_filters() -> None:
