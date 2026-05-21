@@ -27,3 +27,7 @@ First daily research pass for game-music topic covering vinyl releases, notable 
 ## [2026-05-20] daily | games-of-note — 11 sources, 1 page
 
 Daily research run for games-of-note topic.
+
+## [2026-05-20] daily | ai-in-game-dev — 15 sources, 1 page
+
+Applied proposal to topic index with engine-native AI assistants, generative content pipelines, AI-driven NPCs, and world-model research.
