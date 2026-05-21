@@ -127,21 +127,15 @@ class TestApplyProposalTopicOnly:
             make_fake_proposal(_topic(), today=date(2026, 5, 11)),
             today=date(2026, 5, 11),
         )
-        assert result.report_path is None, (
-            "topic-only apply must not write wiki/reports/<DATE>.md"
-        )
+        assert result.report_path is None, "topic-only apply must not write wiki/reports/<DATE>.md"
 
     def test_writes_topic_and_source_pages(self, sample_vault: Vault) -> None:
         proposal = make_fake_proposal(_topic(), today=date(2026, 5, 11))
-        result = apply_proposal_topic_only(
-            sample_vault, proposal, today=date(2026, 5, 11)
-        )
+        result = apply_proposal_topic_only(sample_vault, proposal, today=date(2026, 5, 11))
         assert result.sources_added, "at least one source page must be created"
         for diff in proposal.page_diffs:
             target = sample_vault.root / diff.path
-            assert target.exists(), (
-                f"page {target} must be written by apply_proposal_topic_only"
-            )
+            assert target.exists(), f"page {target} must be written by apply_proposal_topic_only"
 
     def test_runs_cross_page_sweep(self, sample_vault: Vault) -> None:
         from wikipilot.dryrun import PageDiff
@@ -183,12 +177,8 @@ class TestApplyProposalTopicOnly:
 
         proposal_a = make_fake_proposal(_topic(), today=date(2026, 5, 11))
         proposal_b = make_fake_proposal(_topic_b(), today=date(2026, 5, 11))
-        result_a = apply_proposal_topic_only(
-            sample_vault, proposal_a, today=date(2026, 5, 11)
-        )
-        result_b = apply_proposal_topic_only(
-            sample_vault, proposal_b, today=date(2026, 5, 11)
-        )
+        result_a = apply_proposal_topic_only(sample_vault, proposal_a, today=date(2026, 5, 11))
+        result_b = apply_proposal_topic_only(sample_vault, proposal_b, today=date(2026, 5, 11))
 
         assert sample_vault.log_path.read_text(encoding="utf-8") == log_before
         assert sample_vault.index_path.read_text(encoding="utf-8") == index_before
@@ -206,9 +196,7 @@ class TestApplyDailyAggregate:
     during a Daily Research run.
     """
 
-    def test_appends_one_log_entry_per_proposal_plus_summary(
-        self, sample_vault: Vault
-    ) -> None:
+    def test_appends_one_log_entry_per_proposal_plus_summary(self, sample_vault: Vault) -> None:
         before = parse_log_headings(sample_vault.log_path.read_text(encoding="utf-8"))
         proposals = [
             make_fake_proposal(_topic(), today=date(2026, 5, 11)),
@@ -233,15 +221,11 @@ class TestApplyDailyAggregate:
     def test_summary_log_entry_shape(self, sample_vault: Vault) -> None:
         proposals = [make_fake_proposal(_topic(), today=date(2026, 5, 11))]
         apply_daily_aggregate(sample_vault, proposals, today=date(2026, 5, 11))
-        last_subject = parse_log_headings(
-            sample_vault.log_path.read_text(encoding="utf-8")
-        )[-1][2]
+        last_subject = parse_log_headings(sample_vault.log_path.read_text(encoding="utf-8"))[-1][2]
         # Summary entry mentions the aggregate counts, not a single topic id.
         assert "topics" in last_subject and "sources" in last_subject
 
-    def test_updates_index_for_all_sources_across_proposals(
-        self, sample_vault: Vault
-    ) -> None:
+    def test_updates_index_for_all_sources_across_proposals(self, sample_vault: Vault) -> None:
         from wikipilot.sources import source_slug
 
         proposals = [
@@ -262,9 +246,7 @@ class TestApplyDailyAggregate:
             make_fake_proposal(_topic(), today=date(2026, 5, 11)),
             make_fake_proposal(_topic_b(), today=date(2026, 5, 11)),
         ]
-        result = apply_daily_aggregate(
-            sample_vault, proposals, today=date(2026, 5, 11)
-        )
+        result = apply_daily_aggregate(sample_vault, proposals, today=date(2026, 5, 11))
         assert result.report_path is not None and result.report_path.exists()
         report = Page.read(result.report_path)
         assert report.kind == "report"
@@ -280,9 +262,7 @@ class TestApplyDailyAggregate:
         path that should appear here is the index path.
         """
         proposals = [make_fake_proposal(_topic(), today=date(2026, 5, 11))]
-        result = apply_daily_aggregate(
-            sample_vault, proposals, today=date(2026, 5, 11)
-        )
+        result = apply_daily_aggregate(sample_vault, proposals, today=date(2026, 5, 11))
         assert sample_vault.index_path in result.pages_touched
 
     def test_handles_empty_proposals(self, sample_vault: Vault) -> None:
