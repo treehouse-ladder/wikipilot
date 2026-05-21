@@ -119,3 +119,4 @@ _(none yet — Wiki Query produces one page per question under [`wiki/answers/`]
 ## Reports
 
 - [[health-2026-05-21]]
+- [[2026-05-21]]
