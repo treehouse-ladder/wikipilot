@@ -64,6 +64,16 @@ If a Claude branch (`claude/*`) modifies any of these files, the auto-merge gate
 
 When a human edits a mixed file, they should bump `last_verified` manually. The wiki-merger respects existing `## Disputes` and `## Open questions` content (append-only there — never delete an entry, only mark it resolved).
 
+### Personal scratch convention (`_*.md`, human-only)
+
+Any markdown file whose name starts with `_` is **personal scratch**: `wiki/_dashboard.md`, `wiki/_inbox.md`, `wiki/concepts/_local-notes.md`, etc. These files are:
+
+- **Exempt from the schema lint** — no frontmatter required, no citation density, no orphan check (`_is_lint_exempt` in `wikipilot.lint`).
+- **Exempt from the cross-page sweep** — agents do not read, link to, or modify them.
+- **Treated as human-only by the auto-merge gate** — any `claude/*` PR that touches a `_*.md` file is blocked the same way it is for `CLAUDE.md` or `topics.yaml`.
+
+Use them for dashboards (Dataview-driven status pages), reading inboxes, personal notes, or anything else that lives in the vault but isn't part of the wiki's canonical knowledge layer. The Obsidian setup ships with `wiki/_dashboard.md` as a starter; see [`docs/obsidian-setup.md`](docs/obsidian-setup.md) for the workflow that uses it.
+
 ## Frontmatter contract
 
 Every wiki page **except** `log.md` and `index.md` carries this frontmatter:

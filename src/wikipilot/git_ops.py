@@ -159,7 +159,14 @@ def _is_human_only_path(path: str) -> bool:
     for prefix in HUMAN_ONLY_PATHS:
         if prefix.endswith("/") and normalized.startswith(prefix):
             return True
-    return normalized.startswith("wiki/topics/") and normalized.endswith("/purpose.md")
+    if normalized.startswith("wiki/topics/") and normalized.endswith("/purpose.md"):
+        return True
+    last_segment = normalized.rsplit("/", 1)[-1]
+    return (
+        normalized.startswith("wiki/")
+        and normalized.endswith(".md")
+        and last_segment.startswith("_")
+    )
 
 
 PRRunner = Callable[..., subprocess.CompletedProcess[str]]

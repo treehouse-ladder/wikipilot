@@ -114,7 +114,7 @@ class LintContext:
         pages = [
             Page.read(p)
             for p in sorted(vault.iter_markdown_files())
-            if p.name not in {"index.md", "log.md", "purpose.md"} or p.parent != vault.root
+            if not _is_lint_exempt(p, vault)
         ]
         return cls(
             vault=vault,
@@ -153,6 +153,26 @@ def _is_synthesis_page(page: Page) -> bool:
 
 
 def _is_purpose_md(path: Path, vault: Vault) -> bool:
+    return path.name == "purpose.md" and path.parent.parent == vault.dir_for("topics")
+
+
+def _is_lint_exempt(path: Path, vault: Vault) -> bool:
+    """True if ``path`` is exempt from every schema-enforcing lint rule.
+
+    Exemptions:
+
+    - ``wiki/index.md`` and ``wiki/log.md`` — special files with their own
+      structural rules (catalog + journal).
+    - ``wiki/topics/<id>/purpose.md`` — human-only topic charter, schema-free.
+    - Any ``_*.md`` file anywhere in the vault — personal scratch convention
+      (leading-underscore == private). The auto-merge gate also treats these
+      as human-only (see :func:`_is_human_only`) so a Claude branch touching
+      them blocks the gate.
+    """
+    if path.name.startswith("_"):
+        return True
+    if path.parent == vault.root and path.name in {"index.md", "log.md"}:
+        return True
     return path.name == "purpose.md" and path.parent.parent == vault.dir_for("topics")
 
 
@@ -494,7 +514,13 @@ def _is_human_only(path: str) -> bool:
     for prefix in HUMAN_ONLY_PATHS:
         if prefix.endswith("/") and path.startswith(prefix):
             return True
-    return path.startswith("wiki/topics/") and path.endswith("/purpose.md")
+    if path.startswith("wiki/topics/") and path.endswith("/purpose.md"):
+        return True
+    # Personal scratch convention: any ``_*.md`` file anywhere in the vault is
+    # human-owned (dashboards, inboxes, hand-written notes). Mirrors the same
+    # leading-underscore check in :func:`_is_lint_exempt`.
+    last_segment = path.rsplit("/", 1)[-1]
+    return path.startswith("wiki/") and path.endswith(".md") and last_segment.startswith("_")
 
 
 def _extract_section(content: str, heading: str) -> str | None:

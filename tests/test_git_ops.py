@@ -312,6 +312,23 @@ class TestEvaluateGate:
         )
         assert any("purpose.md" in p for p in d.blocked_paths)
 
+    def test_human_only_underscore_scratch_blocks(self) -> None:
+        """``wiki/_*.md`` is the personal-scratch convention; LLM PRs must not touch it."""
+        d = evaluate_gate(
+            self._view(
+                files=[
+                    "wiki/_dashboard.md",
+                    "wiki/concepts/_scratch.md",
+                    "wiki/concepts/transformer-attention.md",
+                ]
+            ),
+            route=ROUTE_DAILY_RESEARCH,
+            config=_config(),
+        )
+        assert any("_dashboard.md" in p for p in d.blocked_paths)
+        assert any("_scratch.md" in p for p in d.blocked_paths)
+        assert "wiki/concepts/transformer-attention.md" not in d.blocked_paths
+
     def test_block_human_disabled(self) -> None:
         d = evaluate_gate(
             self._view(files=["CLAUDE.md"]),
