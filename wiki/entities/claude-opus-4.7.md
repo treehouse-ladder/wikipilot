@@ -1,10 +1,23 @@
 ---
 title: "Claude Opus 4.7"
 kind: entity
-sources: ["[[introducing-claude-opus-47-b8af8104]]", "[[claude-opus-47-everything-you-need-to-know-751c1827]]", "[[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]]", "[[building-a-c-compiler-with-a-team-of-parallel-claudes-1eba12a4]]"]
+sources: ["[[introducing-claude-opus-47-b8af8104]]", "[[claude-opus-47-everything-you-need-to-know-751c1827]]", "[[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]]", "[[building-a-c-compiler-with-a-team-of-parallel-claudes-1eba12a4]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]"]
 last_updated: "2026-05-22"
 last_verified: "2026-05-22"
 freshness_window_days: 30
+input_cost_per_mtoken: 5.00
+output_cost_per_mtoken: 25.00
+cost_source: "[[introducing-claude-opus-47-b8af8104]]"
+aa_intelligence_index: 57
+aa_intelligence_index_source: "[[claude-opus-47-everything-you-need-to-know-751c1827]]"
+gdpval_aa_elo: 1753
+gdpval_aa_elo_source: "[[claude-opus-47-everything-you-need-to-know-751c1827]]"
+swe_bench_verified: 0.876
+swe_bench_verified_source: "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]"
+cybergym: 0.731
+cybergym_source: "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]"
+arc_agi_2: 0.758
+arc_agi_2_source: "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]"
 ---
 
 ## Summary
@@ -15,17 +28,28 @@ Claude Opus 4.7 is Anthropic's flagship model released April 16, 2026 [[introduc
 
 > Opus 4.7 is the new leader on GDPval-AA, scoring 1,753 Elo, around 79 Elo points ahead of the next closest models.
 
+> Pricing remains the same as Opus 4.6: $5 per million input tokens and $25 per million output tokens.
+
+On the current `[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]`, Opus 4.7 scores 87.6% — dropped to #2 in May 2026 when GPT-5.5 took the lead at 88.7%. On `[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]`, Opus 4.7 (Adaptive) scores 75.8%, ranking #4 overall — solidly mid-pack among reasoning configurations. On `[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]` (the active successor to the now-saturated original Cybench), Opus 4.7 (Adaptive) scores 73.1%, third behind the invitation-only Claude Mythos Preview (83.1%) and GPT-5.5 (81.8%).
+
+> Claude Opus 4.7 drops to 87.6% at #2 (April 16, 2026, 1M context).
+
+> Claude Opus 4.7 (Adaptive) — 75.8.
+
+> Claude Opus 4.7 (Adaptive) ... 73.1%.
+
 On multi-step package upgrades, Claude Opus 4.7 (Claude Code) scores 60.8% resolving, 80.6% precision, and 68.5% F1 on SWE-Chain, which measures chained release-level upgrades where each transition builds on the agent's prior codebase [[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]]. The C compiler parallel-agents case study ran on Opus 4.7 (then referred to as Claude Code) across "nearly 2,000 Claude Code sessions and $20,000 in API costs" producing a 100,000-line compiler consuming "2 billion input tokens and 140 million output tokens across two weeks" [[building-a-c-compiler-with-a-team-of-parallel-claudes-1eba12a4]].
 
 > SWE-Chain contains 12 upgrade chains across 9 real Python packages, with 155 version transitions and 1,660 grounded upgrade requirements, where each transition builds on the agent's prior codebase. Claude-Opus-4.7 (Claude Code) leads at 60.8% resolving, 80.6% precision, and 68.5% F1.
 
 > Over nearly 2,000 Claude Code sessions and $20,000 in API costs, the agent team produced a 100,000-line compiler that can build Linux 6.9 on x86, ARM, and RISC-V. The project consumed 2 billion input tokens and 140 million output tokens across two weeks.
 
-_no contradictions or gaps known yet (last reviewed: 2026-05-22)_
+## Disputes
+
+- [[claude-opus-47-everything-you-need-to-know-751c1827]] claims Opus 4.7 leads GDPval-AA at 1753 Elo "around 79 Elo points ahead of the next closest models"; the live [[gdpval-aa-leaderboard-artificial-analysis-5d24e844]] now shows GPT-5.5 (xhigh) ahead at 1769 Elo and GPT-5.5 (high) at 1754 — both released after the Opus 4.7 article. Status: resolved-toward-current-leaderboard — Opus 4.7's "ahead by 79 Elo" was true at its April 16 launch but was overtaken by GPT-5.5 on April 23.
 
 ## Open questions
 
-- [ ] What are Opus 4.7's SWE-bench Pro and ARC-AGI-2 scores? The launch materials emphasize coding and GDPval-AA but the contamination-sensitive frontier benchmarks aren't called out.
 - [ ] How does Claude-Opus-4.7's 60.8% on SWE-Chain [[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]] degrade across the chain length — is the per-transition success rate roughly constant, or does error accumulate so that long chains collapse?
 
 ## See also

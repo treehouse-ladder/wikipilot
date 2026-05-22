@@ -1,10 +1,23 @@
 ---
 title: "GPT-5.5"
 kind: entity
-sources: ["[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]"]
-last_updated: "2026-05-21"
-last_verified: "2026-05-20"
+sources: ["[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[openai-api-pricing-fa525e16]]", "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]"]
+last_updated: "2026-05-22"
+last_verified: "2026-05-22"
 freshness_window_days: 30
+input_cost_per_mtoken: 5.00
+output_cost_per_mtoken: 30.00
+cost_source: "[[openai-api-pricing-fa525e16]]"
+aa_intelligence_index: 60
+aa_intelligence_index_source: "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]"
+gdpval_aa_elo: 1769
+gdpval_aa_elo_source: "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]"
+swe_bench_verified: 0.887
+swe_bench_verified_source: "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]"
+cybergym: 0.818
+cybergym_source: "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]"
+arc_agi_2: 0.850
+arc_agi_2_source: "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]"
 ---
 
 ## Summary
@@ -15,6 +28,20 @@ GPT-5.5 was released April 23, 2026, alongside GPT-5.5 Pro [[introducing-gpt-55-
 
 > GPT-5.5 (xhigh) currently ranks #1 on the Artificial Analysis LLM Leaderboard with an Intelligence Index score of 60.
 
+GPT-5.5 standard API pricing is $5.00 per million input tokens and $30.00 per million output tokens; cached input is $0.50/M [[openai-api-pricing-fa525e16]]. Prompts above 272K input tokens are priced at 2x input and 1.5x output for the full session.
+
+> GPT-5.5: Input $5.00 / 1M tokens. Cached input $0.50 / 1M tokens. Output $30.00 / 1M tokens.
+
+On the live [[gdpval-aa-leaderboard-artificial-analysis-5d24e844]], GPT-5.5 (xhigh) is now the new #1 at 1769 Elo, with GPT-5.5 (high) at 1754 — both ahead of Claude Opus 4.7's 1753, ending Opus 4.7's brief week-long lead. GPT-5.5 also leads [[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]] at 88.7% (April 23 release), edging Opus 4.7's 87.6%. On [[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]] (the hardest public abstract-reasoning benchmark), GPT-5.5 leads at 85.0% — well clear of GPT-5.4 Pro (83.3%) and Gemini 3.1 Pro (77.1%). And on [[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]], GPT-5.5 is the highest-scoring generally-available model at 81.8% (behind only the invitation-only Mythos Preview at 83.1%).
+
+> GPT-5.5 (xhigh) scores the highest on GDPval with a score of 1769.
+
+> GPT-5.5 from OpenAI takes the new #1 spot on SWE-Bench Verified at 88.7%.
+
+> GPT-5.5 leads the ARC-AGI-2 leaderboard with 85%.
+
+> GPT-5.5 sits at 81.8% [on CyberGym].
+
 ## Disputes
 
 - [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]] claims GPT-5.5 #1 on aggregate AA Intelligence Index, but [[claude-opus-47-everything-you-need-to-know-751c1827]] claims Claude Opus 4.7 leads GDPval-AA (the agentic/economic-value sub-benchmark) by 79 Elo points. Status: unresolved — top-of-leaderboard depends on whether you weight aggregate intelligence or agentic task performance.
@@ -22,7 +49,7 @@ GPT-5.5 was released April 23, 2026, alongside GPT-5.5 Pro [[introducing-gpt-55-
 
 ## Open questions
 
-- [ ] What is GPT-5.5's exact input/output cost per Mtoken?
+- [ ] How much of GPT-5.5's GDPval-AA advantage over GPT-5.4 (1769 vs 1676) is attributable to the new tokenizer + extended-thinking behavior vs. base model improvements — knowing this would help estimate where GPT-5.6 lands.
 
 ## See also
 

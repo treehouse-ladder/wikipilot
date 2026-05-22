@@ -486,10 +486,11 @@ To create a new comparison page from the CLI:
 uv run wikipilot compare new cost-comparison \
   --of claude-opus-4.7,gpt-5.5,gemini-2.5-pro \
   --fields cost_per_mtoken_in,cost_per_mtoken_out,context_window \
-  --title "Frontier model cost comparison"
+  --title "Frontier model cost comparison" \
+  --highlight-leaders --show-glosses
 ```
 
-This writes `wiki/comparisons/cost-comparison.md` with `kind: comparison`, the `comparison_of` and `compare_fields` lists in frontmatter, and a table whose cells render `_unknown_` for any entity that doesn't carry the field. The `_unknown_` cells are an explicit prompt to backfill the value on the entity page (then re-run `regen` below) — comparison cells are never edited by hand.
+This writes `wiki/comparisons/cost-comparison.md` with `kind: comparison`, the `comparison_of` and `compare_fields` lists in frontmatter, and a table whose cells render `_unknown_` for any entity that doesn't carry the field. The `_unknown_` cells are an explicit prompt to backfill the value on the entity page (then re-run `regen` below) — comparison cells are never edited by hand. `--highlight-leaders` bolds the per-column #1 and italicizes #2 (cost-style columns from `wikipilot.toml [frontier_models].cost_fields` are inverted lower-is-better). `--show-glosses` renders a "What each column means for me" legend above the table, pulled from the same config block. Both flags persist in the page's frontmatter so subsequent regens preserve them.
 
 To regenerate the body after entity frontmatter changes:
 
@@ -497,9 +498,43 @@ To regenerate the body after entity frontmatter changes:
 uv run wikipilot compare regen cost-comparison
 ```
 
-Idempotent: re-reads the comparison page's own `comparison_of` / `compare_fields`, queries each entity, rewrites the table. `last_updated` bumps to today; `last_verified` is left alone (regen is mechanical, not a re-verification of the underlying claims).
+Idempotent: re-reads the comparison page's own `comparison_of` / `compare_fields`, queries each entity, rewrites the table. `last_updated` bumps to today; `last_verified` is left alone (regen is mechanical, not a re-verification of the underlying claims). When the page has `highlight_leaders: true`, a "Leader changes since last regen" paragraph is appended below the table by diffing against the previous git revision of the same file — useful for spotting #1 swaps day-over-day.
 
 Both commands write to `wiki/comparisons/<slug>.md`. Prefer slugs that read as comparison nouns (`cost-comparison`, `agentic-ide-comparison`, `text-to-3d-comparison`) over verbs.
+
+### Persistent comparisons regenerated daily
+
+Two comparison pages are regenerated automatically by the Daily Research report PR (Step 6 in [`prompts/daily_runner.md`](../prompts/daily_runner.md)):
+
+- [`wiki/comparisons/cost-comparison.md`](../wiki/comparisons/cost-comparison.md) — input/output per-Mtoken pricing across the full `[frontier_models].roster`.
+- [`wiki/comparisons/benchmark-leaders.md`](../wiki/comparisons/benchmark-leaders.md) — AA Intelligence Index, GDPval-AA Elo, SWE-bench Verified, Cybench, ARC-AGI-2 across the same roster.
+
+The `frontier-models` `topic-researcher` (per its agent prompt) does a full daily roster sweep, re-confirming every contract field on every entity. The merger applies the updates as in-place frontmatter writes, and the report PR runs `compare regen` on both pages so the snapshot inside `wiki/reports/<DATE>.md` always reflects today's truth.
+
+To force-refresh both locally:
+
+```bash
+uv run wikipilot compare regen cost-comparison
+uv run wikipilot compare regen benchmark-leaders
+```
+
+## Reading the daily brief
+
+`wiki/reports/<DATE>.md` is the user's primary daily read. The editorial sections (curator-generated, see [`.claude/agents/daily-brief-curator.md`](../.claude/agents/daily-brief-curator.md)) land at the top of the page; the accounting tail (counts, PR links, runtime, notes) lives under a collapsible `<details>` block.
+
+Section order, top-to-bottom:
+
+1. **`## Today's brief`** — 3–7 must-read bullets ranked through the user's "best games + most-optimized agentic workflow" lens (see [`prompts/daily_brief_curator.md`](../prompts/daily_brief_curator.md)). Every bullet carries at least one `[[source-slug]]` citation and a one-line "why it matters to you" rationale.
+2. **`## Leader changes`** — only present when a #1 swapped on either comparison page today. Each bullet calls out the new leader, the metric, and the configured `[frontier_models].benchmark_glosses` / `cost_glosses` gloss verbatim so the same one-liner the user sees on the leaderboard appears in the brief.
+3. **`## Frontier model snapshot`** — the regenerated cost + benchmark tables, transcluded so the report is self-contained even if the comparison files change.
+4. **`## Watchlist`** — 0–10 high-signal-but-not-must-read items.
+5. **`## Notable findings by topic`** — one bullet per merged topic (head sentence of the researcher's `summary_addition`).
+6. **`## Disputes & open questions`** — newly raised today.
+7. **Run accounting** (collapsed) — counts, PRs, runtime, token usage, notes.
+
+Open the report in Obsidian to get the live transclusions and graph linkbacks. If you want a one-keystroke surface, [`wiki/_dashboard.md`](../wiki/_dashboard.md) carries an Obsidian transclusion of today's `## Today's brief` and a Dataview-driven freshness indicator for both comparison pages.
+
+If the curator output looks light or off-topic, the rubric in [`prompts/daily_brief_curator.md`](../prompts/daily_brief_curator.md) is the place to tune. Adding to or sharpening the "Anchor priorities" / tier definitions there changes what the next run prioritizes — no code change required.
 
 ## Resolving a divergence-check warning
 

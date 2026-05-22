@@ -15,3 +15,5 @@ freshness_window_days: 365
 ## Excerpts
 
 > Claude Opus 4.7 is our most intelligent model, with state-of-the-art performance on coding, agentic tasks, and reasoning. Released April 16, 2026.
+
+> Pricing remains the same as Opus 4.6: $5 per million input tokens and $25 per million output tokens. Developers can use `claude-opus-4-7` via the Claude API.

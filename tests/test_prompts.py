@@ -59,6 +59,20 @@ def test_daily_runner_dispatches_topic_researcher_in_parallel() -> None:
     assert "fork_subagent" in body or "fork-subagent" in body
 
 
+def test_daily_runner_includes_curator_and_compare_regen_steps() -> None:
+    """Step 6 must explicitly: (a) regen both persistent comparison pages,
+    (b) dispatch the daily-brief-curator subagent, (c) thread the curator's
+    output into write_run_report. Catching prompt regressions early keeps
+    the editorial top of the daily report from quietly disappearing."""
+    body = _read("daily_runner")
+    assert "wikipilot compare regen cost-comparison" in body
+    assert "wikipilot compare regen benchmark-leaders" in body
+    assert "daily-brief-curator" in body
+    assert "todays_brief" in body or "Today's brief" in body
+    assert "model_snapshot" in body
+    assert "notable_findings_by_topic" in body
+
+
 def test_query_answerer_prompt_exists() -> None:
     body = _read("query_answerer")
     assert body.strip(), "query_answerer.md must not be empty"

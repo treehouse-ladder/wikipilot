@@ -1,40 +1,54 @@
 ---
-title: "Frontier model cost comparison (May 2026)"
-kind: comparison
-comparison_of: ["claude-sonnet-4.6", "gemini-3.1-pro", "grok-4.3"]
-compare_fields: ["input_cost_per_mtoken", "output_cost_per_mtoken"]
-sources: ["[[introducing-claude-sonnet-46-c4a45eed]]", "[[gemini-31-pro-model-card-225ab705]]", "[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]"]
-last_updated: "2026-05-20"
-last_verified: "2026-05-20"
+compare_fields:
+- input_cost_per_mtoken
+- output_cost_per_mtoken
+comparison_of:
+- claude-opus-4.7
+- claude-sonnet-4.6
+- gpt-5.5
+- gemini-3.1-pro
+- grok-4.3
+- deepseek-v4
+- glm-5
+- kimi-k2.6
+- qwen3.7-max
 freshness_window_days: 30
+highlight_leaders: true
+kind: comparison
+last_updated: 2026-05-22
+last_verified: '2026-05-22'
+show_glosses: true
+sources:
+- '[[introducing-claude-sonnet-46-c4a45eed]]'
+- '[[gemini-31-pro-model-card-225ab705]]'
+- '[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]'
+title: Frontier model cost comparison
 ---
 
-## Frontier model pricing snapshot (May 2026)
+# Frontier model cost comparison
 
-Prices are USD per million tokens (input / output). Cited per entity below.
+## Summary
 
-| Model | Input $/Mtoken | Output $/Mtoken | Notes | Source |
-|---|---|---|---|---|
-| Claude Sonnet 4.6 | $3 | $15 | 1M context window (beta) | [[introducing-claude-sonnet-46-c4a45eed]] |
-| Gemini 3.1 Pro Preview | $2 (≤200k) / $4 (>200k) | $12 (≤200k) / $18 (>200k) | First frontier model with context-length pricing tier | [[gemini-31-pro-model-card-225ab705]] |
-| Grok 4.3 (high) | $1.25 | $2.50 | Well below reasoning-model median ($1.65/$8.00) | [[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]] |
+This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` across 9 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-cost-comparison` to refresh.
 
-> Grok 4.3 (high) costs $1.25 per 1M input tokens and $2.50 per 1M output tokens.
+## What each column means for me
 
-> Pricing remains the same as Sonnet 4.5, starting at $3/$15 per million tokens.
+- **`input_cost_per_mtoken`** — USD/Mtoken input. Lower = cheaper to feed long codebases + cached prompts to the agent.
+- **`output_cost_per_mtoken`** — USD/Mtoken output. Lower = cheaper for long-running parallel-agent sessions.
 
-> Input price: $2.00 for prompts <= 200k tokens, $4.00 for prompts > 200k tokens.
+| Entity | input_cost_per_mtoken | output_cost_per_mtoken |
+| --- | --- | --- |
+| [[claude-opus-4.7]] | 5.0 | 25.0 |
+| [[claude-sonnet-4.6]] | 3.0 | 15.0 |
+| [[gpt-5.5]] | 5.0 | 30.0 |
+| [[gemini-3.1-pro]] | 2.0 | 12.0 |
+| [[grok-4.3]] | 1.25 | **2.5** |
+| [[deepseek-v4]] | 1.74 | 3.48 |
+| [[glm-5]] | _1.0_ | _3.2_ |
+| [[kimi-k2.6]] | **0.95** | 4.0 |
+| [[qwen3.7-max]] | _unknown_ | _unknown_ |
 
-_no contradictions or gaps known yet (last reviewed: 2026-05-20)_
+## Leader changes since last regen
 
-## Open questions
-
-- [ ] Need to pin Claude Opus 4.7, GPT-5.5, Qwen3.7 Max, and DeepSeek V4-Pro per-Mtoken pricing before this comparison page can be regenerated mechanically via `wikipilot compare regen`.
-
-## See also
-
-- [[frontier-models]]
-- [[claude-opus-4.7]]
-- [[gpt-5.5]]
-- [[gemini-3.1-pro]]
-- [[deepseek-v4]]
+- **`input_cost_per_mtoken`**: first leader recorded — [[kimi-k2.6]].
+- **`output_cost_per_mtoken`**: first leader recorded — [[grok-4.3]].
