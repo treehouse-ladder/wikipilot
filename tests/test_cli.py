@@ -95,9 +95,7 @@ class TestInitVaultCommand:
         assert result.exit_code == 0
         assert (vault / "index.md").read_text(encoding="utf-8") != original_index
 
-    def test_seeds_obsidian_graph_from_template(
-        self, runner: CliRunner, tmp_path: Path
-    ) -> None:
+    def test_seeds_obsidian_graph_from_template(self, runner: CliRunner, tmp_path: Path) -> None:
         """``init-vault`` seeds ``.obsidian/graph.json`` from the tracked
         ``graph.template.json`` when the target file is missing — the
         forker/fresh-clone path that restores the default color groups
@@ -292,9 +290,7 @@ class TestResetVaultCommand:
         assert second.exit_code == 0
         assert "already at the empty-skeleton state" in second.output
 
-    def test_seeds_obsidian_graph_after_reset(
-        self, runner: CliRunner, tmp_path: Path
-    ) -> None:
+    def test_seeds_obsidian_graph_after_reset(self, runner: CliRunner, tmp_path: Path) -> None:
         """``reset-vault`` seeds ``.obsidian/graph.json`` from the tracked
         template after wiping content — so a fresh fork ends up with the
         maintainer's default color groups even though ``graph.json`` is
@@ -314,9 +310,7 @@ class TestResetVaultCommand:
         )
 
         assert result.exit_code == 0, result.output
-        assert "Seeded Obsidian default: .obsidian/graph.json" in result.output.replace(
-            "\\", "/"
-        )
+        assert "Seeded Obsidian default: .obsidian/graph.json" in result.output.replace("\\", "/")
         assert (obsidian / "graph.json").read_text(encoding="utf-8") == (
             '{"colorGroups": ["template-marker"]}'
         )
