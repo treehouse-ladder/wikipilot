@@ -1,7 +1,7 @@
 ---
 title: "DeepSeek V4"
 kind: entity
-sources: ["[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]"]
+sources: ["[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]"]
 last_updated: "2026-05-22"
 last_verified: "2026-05-22"
 freshness_window_days: 30
@@ -22,9 +22,11 @@ DeepSeek V4 was released April 24, 2026 as two models: V4-Pro (1.6T parameter Mo
 
 - [ ] Has DeepSeek R2 (the reasoning-model sibling to V4) actually been released as of 2026-05-20?
 - [ ] What is DeepSeek V4-Pro's SWE-bench Pro score?
+- [ ] Does DeepSeek V4 include DeepSeek Sparse Attention (now documented in GLM-5 [[glm-5-everything-you-need-to-know-a53ff5c1]]), or is that a technique Z.AI integrated independently?
 
 ## See also
 
 - [[frontier-models]]
 - [[claude-opus-4.7]]
 - [[gpt-5.5]]
+- [[glm-5]]
