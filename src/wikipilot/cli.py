@@ -59,6 +59,7 @@ from wikipilot.wiki import (
     WikiError,
     render_log_skeleton,
     reset_vault,
+    seed_obsidian_config,
 )
 
 DEFAULT_WIKI_PATH = Path("wiki")
@@ -157,6 +158,9 @@ def init_vault_cmd(vault_path: Path, force: bool) -> None:
     log_path = vault_path / "log.md"
     if force or not log_path.exists():
         log_path.write_text(render_log_skeleton(), encoding="utf-8")
+    seeded = seed_obsidian_config(vault_path)
+    for target in seeded:
+        click.echo(f"Seeded Obsidian default: {target.relative_to(vault_path)}")
     click.echo(f"Initialized vault at {vault_path}")
 
 
@@ -264,6 +268,14 @@ def reset_vault_cmd(
             click.echo(f"Reset {topics_path} to an empty stub.")
         except OSError as exc:  # pragma: no cover - defensive
             click.echo(f"WARNING: could not rewrite {topics_path}: {exc}", err=True)
+
+    # Seed any missing .obsidian/*.json from its sibling *.template.json.
+    # Existing user-customized files are never overwritten (this is the
+    # safety contract that keeps the morning pull from clobbering local
+    # graph zoom / color tweaks).
+    seeded = seed_obsidian_config(result.root)
+    for target in seeded:
+        click.echo(f"Seeded Obsidian default: {target.relative_to(result.root)}")
 
     click.echo(
         f"\nReset complete. Deleted {len(result.files_to_delete)} file(s) "

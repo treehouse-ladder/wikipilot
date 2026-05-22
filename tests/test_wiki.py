@@ -17,6 +17,7 @@ from wikipilot.wiki import (
     parse_log_headings,
     parse_wikilinks,
     reset_vault,
+    seed_obsidian_config,
     slugify,
 )
 
@@ -472,6 +473,100 @@ class TestResetVaultGuards:
         # Untouched.
         assert (unrelated / "personal-notes.md").exists()
         assert (unrelated / "photos" / "vacation.jpg").exists()
+
+
+class TestSeedObsidianConfig:
+    """Coverage for the ``*.template.json`` -> ``*.json`` seed step.
+
+    The contract: copy each template to its sibling target when the target
+    does not exist; never overwrite an existing target (so a morning pull
+    of a fresh template never clobbers the user's customized graph view).
+    """
+
+    def _make_obsidian_dir(self, root: Path) -> Path:
+        obsidian = root / ".obsidian"
+        obsidian.mkdir(parents=True)
+        return obsidian
+
+    def test_copies_template_when_target_missing(self, tmp_path: Path) -> None:
+        obsidian = self._make_obsidian_dir(tmp_path)
+        template = obsidian / "graph.template.json"
+        template.write_text('{"colorGroups": ["sentinel"]}', encoding="utf-8")
+
+        seeded = seed_obsidian_config(tmp_path)
+
+        target = obsidian / "graph.json"
+        assert seeded == [target]
+        assert target.read_text(encoding="utf-8") == '{"colorGroups": ["sentinel"]}'
+
+    def test_skips_when_target_already_exists(self, tmp_path: Path) -> None:
+        obsidian = self._make_obsidian_dir(tmp_path)
+        template = obsidian / "graph.template.json"
+        template.write_text('{"colorGroups": ["template"]}', encoding="utf-8")
+        target = obsidian / "graph.json"
+        target.write_text('{"colorGroups": ["user-customized"]}', encoding="utf-8")
+
+        seeded = seed_obsidian_config(tmp_path)
+
+        assert seeded == []
+        # User's customization preserved verbatim.
+        assert target.read_text(encoding="utf-8") == '{"colorGroups": ["user-customized"]}'
+
+    def test_idempotent_second_call_is_noop(self, tmp_path: Path) -> None:
+        obsidian = self._make_obsidian_dir(tmp_path)
+        (obsidian / "graph.template.json").write_text("{}", encoding="utf-8")
+
+        first = seed_obsidian_config(tmp_path)
+        second = seed_obsidian_config(tmp_path)
+
+        assert len(first) == 1
+        assert second == []  # already seeded, no-op the second time
+
+    def test_multiple_templates_handled_together(self, tmp_path: Path) -> None:
+        obsidian = self._make_obsidian_dir(tmp_path)
+        (obsidian / "graph.template.json").write_text('{"k": "graph"}', encoding="utf-8")
+        (obsidian / "app.template.json").write_text('{"k": "app"}', encoding="utf-8")
+
+        seeded = seed_obsidian_config(tmp_path)
+
+        names = sorted(p.name for p in seeded)
+        assert names == ["app.json", "graph.json"]
+        assert (obsidian / "graph.json").read_text(encoding="utf-8") == '{"k": "graph"}'
+        assert (obsidian / "app.json").read_text(encoding="utf-8") == '{"k": "app"}'
+
+    def test_partial_seed_when_only_some_targets_exist(self, tmp_path: Path) -> None:
+        """One template seeds, the other is skipped because target exists."""
+        obsidian = self._make_obsidian_dir(tmp_path)
+        (obsidian / "graph.template.json").write_text('{"k": "graph"}', encoding="utf-8")
+        (obsidian / "app.template.json").write_text('{"k": "app"}', encoding="utf-8")
+        # User already customized app.json — must NOT be overwritten.
+        (obsidian / "app.json").write_text('{"k": "user-customized"}', encoding="utf-8")
+
+        seeded = seed_obsidian_config(tmp_path)
+
+        assert [p.name for p in seeded] == ["graph.json"]
+        assert (obsidian / "app.json").read_text(encoding="utf-8") == '{"k": "user-customized"}'
+
+    def test_noop_when_obsidian_dir_missing(self, tmp_path: Path) -> None:
+        """Vault has no ``.obsidian/`` at all — return empty list gracefully."""
+        # No mkdir; the directory truly does not exist.
+        assert not (tmp_path / ".obsidian").exists()
+        assert seed_obsidian_config(tmp_path) == []
+
+    def test_noop_when_no_templates_present(self, tmp_path: Path) -> None:
+        """``.obsidian/`` exists but ships no ``*.template.json`` files."""
+        obsidian = self._make_obsidian_dir(tmp_path)
+        (obsidian / "graph.json").write_text("{}", encoding="utf-8")
+        (obsidian / "app.json").write_text("{}", encoding="utf-8")
+        assert seed_obsidian_config(tmp_path) == []
+
+    def test_ignores_subdirectories_named_like_templates(self, tmp_path: Path) -> None:
+        """A directory shaped like a template name is ignored, not copied."""
+        obsidian = self._make_obsidian_dir(tmp_path)
+        # Glob would match this; the helper must skip non-files.
+        (obsidian / "weird.template.json").mkdir()
+        seeded = seed_obsidian_config(tmp_path)
+        assert seeded == []
 
 
 def test_no_test_targets_workspace_vault() -> None:
