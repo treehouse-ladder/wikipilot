@@ -207,12 +207,13 @@ After every routine run, the orchestrator writes `wiki/reports/YYYY-MM-DD.md` (o
 | Daily Research orchestrator | Sonnet | tool-use + control flow |
 | Wiki Query orchestrator | Sonnet | tool-use + control flow |
 | Weekly Health orchestrator | Sonnet | tool-use + control flow |
-| PR Watcher orchestrator | Sonnet | tool-use + control flow; no synthesis (re-runs the deterministic gate after CI) |
+| Conflict Resolver orchestrator | Sonnet | tool-use + control flow; no synthesis (scans for stuck PRs, dispatches the Opus subagent only when something needs rebasing) |
 | `topic-researcher` | **Opus 4.7** | judgment-heavy synthesis at every ingest entry point |
 | `wiki-merger` | Sonnet | mostly mechanical edits + cross-page sweep |
-| `wiki-linter` | **Haiku** | Python linter does the analysis; agent only applies mechanical fixes (also dispatched by PR Watcher for self-heal) |
+| `wiki-linter` | **Haiku** | Python linter does the analysis; agent only applies mechanical fixes |
 | `query-answerer` | **Opus 4.7** | user-facing synthesis on demand |
 | `wiki-disputes-scanner` | Sonnet | judgment task, but cost-sensitive (many pages × candidate sets); never auto-resolves disputes |
+| `conflict-resolver` | **Opus 4.7** | intelligent text-conflict resolution (append-only Disputes/Open questions, cross-page sweep awareness); dispatched only when GitHub reports `mergeStateStatus in {DIRTY, BEHIND}` |
 
 Routine-UI model picker only sets the orchestrator model; subagents pin their own model via YAML frontmatter.
 
@@ -223,7 +224,7 @@ The canonical prompt lives at [`prompts/daily_runner.md`](prompts/daily_runner.m
 1. Run `python scripts/preflight.py` — fail fast if env broken.
 2. Read `CLAUDE.md`, `topics.yaml`, `wiki/index.md`, last 50 lines of `wiki/log.md`, every `wiki/topics/<id>/purpose.md`. This becomes the cache-warming prefix shared across parallel subagents.
 3. Set `CLAUDE_CODE_FORK_SUBAGENT=1` and dispatch `topic-researcher` **in parallel** via the Task tool, one per enabled topic. Each returns a structured `Proposal` (schema below).
-4. For each topic, in series: branch `claude/daily-YYYY-MM-DD/<topic-id>`, dispatch `wiki-merger`, dispatch `wiki-linter`, run `pytest` + `wikipilot lint wiki/`, commit, push, `gh pr create`, `python scripts/maybe_automerge.py --pr <num> --route daily_research`. **Per-topic PRs do not write to `wiki/log.md` or `wiki/index.md`** — those writes are batched on the report PR in step 6 to avoid the parallel-merge conflict cascade. Topic PRs end up file-disjoint by construction (topic page + source pages + cross-page sweep targets only) and merge cleanly through the queue in parallel.
+4. For each topic, in series: branch `claude/daily-YYYY-MM-DD/<topic-id>`, dispatch `wiki-merger`, dispatch `wiki-linter`, run `pytest` + `wikipilot lint wiki/`, commit, push, `gh pr create`, `python scripts/maybe_automerge.py --pr <num> --route daily_research`. The shim calls `apply_static_gate` — it queues `gh pr merge --squash --auto` whenever every deterministic criterion passes (file count, diff lines, human-only paths, trust) and lets GitHub's required-status-checks rule hold the merge until CI is green. The local Python deliberately does NOT predict CI status: predicting CI was what stranded PRs in May 2026 (empty rollup parsed as "all checks passed"); the Conflict Resolver routine (see below) handles the only remaining failure mode. **Per-topic PRs do not write to `wiki/log.md` or `wiki/index.md`** — those writes are batched on the report PR in step 6 to avoid the parallel-merge conflict cascade. Topic PRs end up file-disjoint by construction (topic page + source pages + cross-page sweep targets only) and merge cleanly through the queue in parallel.
 5. Wait for every topic PR to reach a terminal state (`MERGED` or terminally failed) before starting step 6. Topic PRs are parallel-mergeable so the wait is typically <3 min.
 6. On a fresh `claude/daily-YYYY-MM-DD/_report` branch cut from post-merge `main`: append one `## [DATE] daily | <topic-id> — N sources, M pages` entry per merged topic via `append-log`, update `wiki/index.md` for every new source/page across all merged topics via `update-index`, write `wiki/reports/YYYY-MM-DD.md` via `wikipilot.log.write_run_report`, append the final summary log entry, commit, push, `gh pr create`, gate. The report PR's diff touches `wiki/log.md`, `wiki/index.md`, and `wiki/reports/<DATE>.md` exclusively — no other open PR competes for those files at this point in the run, so it cannot conflict.
 
@@ -253,27 +254,30 @@ The canonical prompt lives at [`prompts/weekly_health.md`](prompts/weekly_health
 7. Write `wiki/reports/health-YYYY-MM-DD.md`.
 8. `gh pr create`; `python scripts/maybe_automerge.py --pr <num> --route weekly_health` (permissive gate).
 
-## Per-PR workflow (for `pr_watcher.md` orchestrator)
+## Conflict resolution workflow (for `conflict_resolver.md` orchestrator)
 
-The canonical prompt lives at [`prompts/pr_watcher.md`](prompts/pr_watcher.md). The cloud routine setup is documented in [`docs/routines-setup.md`](docs/routines-setup.md#pr-watcher-routine).
+The canonical prompt lives at [`prompts/conflict_resolver.md`](prompts/conflict_resolver.md). The cloud routine setup is documented in [`docs/routines-setup.md`](docs/routines-setup.md#conflict-resolver-routine).
 
-Unlike the three content-producing routines, the PR Watcher **does not write to the wiki**. It exists to close the race condition where each content routine calls `scripts/maybe_automerge.py` immediately after `gh pr create` — *before* CI populates the rollup — so an empty `statusCheckRollup` is treated as green and `gh pr merge --squash --auto` is queued without ever knowing whether the lint/test signal the gate requires actually passed. It also rescues PRs that never had `maybe_automerge.py` run at all (manual pushes to `claude/*`, content-routine sessions that crashed mid-loop, etc.).
+Unlike the three content-producing routines, the Conflict Resolver **does not write to the wiki**. It exists for the one merge-queue failure mode that GitHub's native auto-merge can't handle on its own: a `claude/*` PR has become `DIRTY` (text conflicts vs `main`) or `BEHIND` (out-of-date with `main`) because a sibling PR landed first. GitHub will refuse to auto-merge such a PR until something rebases it; the Conflict Resolver is that something.
 
-1. Triggered by GitHub webhook on `pull_request.opened` and `pull_request.synchronize`, filtered to `base=main`, `is_draft=false`, `is_merged=false`.
-2. Run `python scripts/preflight.py` (no `wikipilot index-wiki` — the watcher never searches the vault).
-3. Read `CLAUDE.md`, `wikipilot.toml` (gate thresholds and `[automerge.pr_watcher]`), last 30 lines of `wiki/log.md`.
-4. Parse the PR number and head ref from the trigger payload; defensively re-check `gh pr view --json state,isDraft,baseRefName`. Exit if any guardrail fails.
-5. Invoke `python scripts/pr_watcher_gate.py --pr <num>` which:
-   a. Calls `wikipilot.git_ops.infer_route_from_branch(head, config)` to map the head to `daily_research` / `wiki_query` / `weekly_health` / `None`.
-   b. **Trust check.** Even when (a) returns a route, the script re-checks the PR author via `gh pr view --json isCrossRepository,author` plus `gh api repos/<owner>/<repo>/pulls/<n>` (the REST API exposes `author_association`, the CLI does not). The PR is treated as enforce-eligible only when `isCrossRepository=false` AND the author's `author_association` is in `[automerge.pr_watcher].trusted_associations` (default `OWNER,MEMBER,COLLABORATOR`) OR the author's login is in `trusted_authors`. Untrusted PRs are demoted to `read_only` mode regardless of how the branch name is shaped. Fail-closed: any gh failure during the check (network blip, missing scope, ambiguous owner/repo) is treated as untrusted. This is what stops a fork PR with a synthetic `claude/daily-…` head ref from coercing the watcher into queueing auto-merge.
-   c. Waits up to `[automerge.pr_watcher].ci_wait_timeout_sec` (default 1200s) for `gh pr checks --watch`.
-   d. Calls `apply_gate(..., mode="enforce")` for trusted `claude/*` PRs or `mode="read_only"` for human / non-routine / untrusted heads. Uses dedupe key `wikipilot:gate` so re-runs *edit* the existing comment instead of spamming.
-   e. On enforce + red CI, calls `gh pr merge --disable-auto` to undo any prior premature queue from the in-routine `maybe_automerge.py` call.
-6. If the gate script prints `HEAL_NEEDED pr=<n> next_attempt=<m>` (CI is red on `claude/*` and attempts < `self_heal_max_attempts`): add label `wikipilot:heal-attempt-<m>`, dispatch `wiki-linter` (Haiku) for mechanical fixes, commit `fix(wiki): wiki-linter mechanical fixes (attempt <m>)`, push. The push fires `pull_request.synchronize` and a fresh watcher session runs the cycle again.
-7. If the gate script prints `HEAL_CAPPED pr=<n> attempt=<m> max=<k>`: do nothing further. The script has already posted a `## Self-heal cap reached` comment under the `wikipilot:heal-cap` dedupe key.
-8. Only append a `manual` entry to `wiki/log.md` when something noteworthy happened (heal commit, cap reached, unusual gate outcome). Routine pass/fail comments stay on the GitHub PR thread.
+The PR Watcher v2 architecture splits responsibilities like this:
 
-Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to `main` and runs `apply_gate` on each, inferring the route per PR. Use it when the watcher misfires or to clear a backlog of stranded PRs from before the watcher was wired up. The trust check above lives in the PR Watcher only; `recover-prs` assumes the operator is already vetting which PRs they want gated.
+- **Happy path (~95% of PRs)** — `scripts/maybe_automerge.py` runs once per PR right after the content routine creates it. It calls `apply_static_gate` (gate without the CI check), which queues `gh pr merge --squash --auto`. GitHub's required-status-checks rule holds the merge until CI is green. Zero LLM tokens are spent.
+- **Conflict path (~5% of PRs)** — when a PR ends up `DIRTY` or `BEHIND`, the Conflict Resolver fires on the next push to `main`, scans, and dispatches the Opus `conflict-resolver` subagent once per stuck PR. The subagent rebases, resolves, force-pushes, then calls `apply_static_gate` again so GitHub re-queues the merge.
+
+1. Triggered by GitHub webhook on `push` events filtered to `base=main`. Unlike the v1 PR Watcher (one fire per PR event), v2 fires at most once per merge to `main` — typically 5-10 times per day, 90%+ of which are no-ops.
+2. Run `python scripts/preflight.py` (no `wikipilot index-wiki` — the resolver never searches the vault).
+3. Read `CLAUDE.md`, `wikipilot.toml` (`[automerge.conflict_resolver]` trust knobs + per-route gate thresholds), last 30 lines of `wiki/log.md`.
+4. Run `python scripts/conflict_resolver_scan.py --base main` which:
+ a. Calls `gh pr list --state open --base main --json ...` and filters client-side to `claude/*` heads with `mergeStateStatus in {DIRTY, BEHIND}`.
+ b. **Centralized trust check.** For each candidate, calls `wikipilot.git_ops.is_pr_trusted` (which consults `[automerge.conflict_resolver].trusted_associations` / `trusted_authors`) and drops untrusted entries from the output. The trust check fails closed: any `gh` failure during the check (network blip, missing scope, ambiguous owner/repo) is treated as untrusted. This is what stops a fork PR with a synthetic `claude/daily-…` head ref from coercing the resolver into dispatching the Opus subagent.
+ c. Emits a JSON list `[{number, head_ref, base_ref, route, merge_state_status, author_login, author_association, title}, ...]` to stdout.
+5. For each entry, dispatch the `conflict-resolver` subagent (Opus 4.7). **Sequentially, not in parallel** — rebasing one PR can change the next PR's mergeability, and a parallel rebase race is the failure mode this routine exists to prevent. The subagent rebases, resolves any text conflicts (respecting append-only `## Disputes` / `## Open questions` and the cross-page sweep), force-pushes with `--force-with-lease`, and then runs `python scripts/maybe_automerge.py --pr <num> --route <route>` to re-queue GitHub's auto-merge.
+6. Append a single `manual | conflict-resolver — N PRs rebased, M failed` log entry **only when at least one subagent was dispatched**. The no-op (empty-scan) case is the steady state; logging it would flood `wiki/log.md`.
+
+The same centralized trust check lives in `wikipilot.git_ops.is_pr_trusted` and is consulted by every code path that may queue `gh pr merge --squash --auto`: `apply_static_gate` (called from `maybe_automerge.py`), `apply_gate` (called from `wikipilot recover-prs`), and the conflict-resolver scan. The trust check is structurally impossible to bypass from a calling site because it lives inside the gate.
+
+Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to `main` and runs `apply_gate` (full gate, including CI) on each, inferring the route per PR. Use it when the Conflict Resolver routine misfires or when the in-routine `maybe_automerge.py` call was skipped (manual pushes to `claude/*`, content-routine sessions that crashed mid-loop, etc.). The centralized trust check applies here too — the operator does not need to vet PRs out-of-band.
 
 ## Schemas
 
@@ -386,12 +390,16 @@ Conventional commits, one staged commit per branch:
 
 Per `wikipilot.toml [automerge.*]`, the gate evaluates:
 
-1. **Common (`[automerge.common]`)**: CI checks green (`require_lint_green`, `require_tests_green`); block any PR touching a human-only path (`block_human_only_file_changes`).
+1. **Common (`[automerge.common]`)**: CI checks green (`require_lint_green`, `require_tests_green` — full-gate path only); block any PR touching a human-only path (`block_human_only_file_changes`).
 2. **Per-route**: file count and total diff lines under thresholds — daily uses `*_per_topic` (sized for ~15 page touches per source), wiki_query uses smaller per-question sizes, weekly_health is permissive.
+3. **Centralized trust check (`[automerge.conflict_resolver]`)**: the PR's head ref must live in this repo (not a fork) AND the author's `author_association` must be in `trusted_associations` OR the `author.login` must be in `trusted_authors`. The check fails closed — any missing or ambiguous trust signal blocks `--auto`. The same helper backs every code path that may queue `gh pr merge --squash --auto` (see "Conflict resolution workflow").
 
 If every criterion passes: `gh pr merge --squash --auto`. Otherwise: `gh pr comment` with a structured review checklist explaining which criteria tripped.
 
-The gate logic lives in `wikipilot.git_ops.evaluate_gate` (pure function, fully unit-tested with mocked `gh`); the `scripts/maybe_automerge.py` shim wires it to a CLI the orchestrators call.
+Two flavors live in `wikipilot.git_ops` (both pure, fully unit-tested with mocked `gh`):
+
+- `evaluate_static_gate` / `apply_static_gate` — *skips* the CI check (criterion 1 above). Used by the in-routine `scripts/maybe_automerge.py` shim, where GitHub's required-status-checks rule is what holds the merge until CI is green.
+- `evaluate_gate` / `apply_gate` — full gate, including CI. Used by `wikipilot recover-prs` and any future "verify against current state" path.
 
 ## Wiki schema (canonical, enforced by `wikipilot lint`)
 
@@ -462,7 +470,7 @@ Errors fail the lint (exit code 1); warnings are reported but don't fail. The au
 | `dry-run --topic <id> \| --query "<q>" \| --weekly-health` | exercise the apply path locally (no Anthropic call) |
 | `compare new <slug> --of e1,e2,... --fields f1,f2,... --title "..."` | create a new comparison page reading frontmatter fields from each entity |
 | `compare regen <slug>` | regenerate the body of an existing comparison page from current entity frontmatter |
-| `recover-prs [--dry-run] [--base main]` | enumerate every open `claude/*` PR to `main` and re-run `apply_gate` per PR (escape hatch when the PR Watcher misfires or for a backlog of stranded PRs) |
+| `recover-prs [--dry-run] [--base main]` | enumerate every open `claude/*` PR to `main` and re-run `apply_gate` per PR (escape hatch when a content routine crashes mid-loop and leaves PRs open without a gate decision, or when the Conflict Resolver routine itself is unhealthy) |
 
 ## Editing this file
 

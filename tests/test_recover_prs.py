@@ -69,8 +69,34 @@ def _pr_view_payload(
             "deletions": 0,
             "isDraft": False,
             "statusCheckRollup": [{"conclusion": conclusion}],
+            "isCrossRepository": False,
+            "author": {"login": "rauriemo"},
         }
     )
+
+
+# PR Watcher v2's centralized trust check now fires inside every gate call.
+# The recover-prs CLI uses ``apply_gate`` (full gate, including CI) which
+# means ``view_pr`` makes two extra subprocess calls per PR:
+#   - ``gh repo view --json nameWithOwner`` to resolve owner/repo
+#   - ``gh api repos/<owner>/<repo>/pulls/<num>`` to fetch author_association
+# Tests that want recover-prs to succeed on a "trusted MEMBER PR" baseline
+# must mock those two endpoints; tests that want to exercise the untrusted
+# path override the api response.
+_OWNER_REPO_PAYLOAD = json.dumps({"nameWithOwner": "treehouse-ladder/wikipilot"})
+_TRUSTED_API_PAYLOAD = json.dumps(
+    {"user": {"login": "rauriemo"}, "author_association": "MEMBER"}
+)
+
+
+def _trusted_handler(args):
+    """Return canned ``gh repo view`` / ``gh api`` responses for the trusted
+    baseline, or ``None`` to let the caller's fake_run handle the args."""
+    if args[:3] == ["gh", "repo", "view"]:
+        return _ok(stdout=_OWNER_REPO_PAYLOAD)
+    if args[:2] == ["gh", "api"]:
+        return _ok(stdout=_TRUSTED_API_PAYLOAD)
+    return None
 
 
 def test_empty_pr_list_exits_zero(cli_runner: CliRunner, repo_with_config: Path) -> None:
@@ -146,6 +172,9 @@ def test_enumerates_claude_branches_and_invokes_apply_gate(
         if args[:3] == ["gh", "pr", "view"]:
             pr_num = int(args[3])
             return _ok(stdout=pr_views[pr_num])
+        trusted = _trusted_handler(args)
+        if trusted is not None:
+            return trusted
         return _ok()
 
     with patch("subprocess.run", side_effect=fake_run):
@@ -182,6 +211,9 @@ def test_skips_non_claude_branches_in_all_mode(
         if args[:3] == ["gh", "pr", "view"]:
             pr_num = int(args[3])
             return _ok(stdout=pr_views[pr_num])
+        trusted = _trusted_handler(args)
+        if trusted is not None:
+            return trusted
         return _ok()
 
     with patch("subprocess.run", side_effect=fake_run):

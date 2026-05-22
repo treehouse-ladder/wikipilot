@@ -30,29 +30,19 @@ max_total_diff_lines = 400
 max_files_changed = 60
 max_total_diff_lines = 2000
 
-[automerge.pr_watcher]
-# Wikipilot PR Watcher routine — fires on every pull_request.opened /
-# pull_request.synchronize to `main`, waits for CI, and re-runs the
-# per-route auto-merge gate with the real CI signal. Closes the race
-# condition where the in-routine `maybe_automerge.py` call evaluates the
-# gate before CI has populated the rollup.
-#
-# `ci_wait_timeout_sec` bounds the `gh pr checks --watch` wait. A timeout
-# is recoverable — the next `pull_request.synchronize` event re-fires the
-# watcher. `self_heal_max_attempts` caps the loop where the watcher
-# dispatches `wiki-linter` to fix mechanical errors on `claude/*` PRs;
-# attempts are tracked via the `wikipilot:heal-attempt-{n}` PR label.
-ci_wait_timeout_sec = 1200
-self_heal_max_attempts = 3
-
-# Trust model for the enforce-mode auto-merge path. A PR is treated as
-# "trusted enough to enforce against" only when its head ref lives in
-# this repo (not a fork) AND either its GitHub `author_association` is
-# in `trusted_associations` OR its `author.login` is in `trusted_authors`.
-# Every other PR — including a fork PR with a synthetic `claude/daily-…`
-# branch name — is demoted to read-only mode so the watcher only
-# *comments* on it and never queues `gh pr merge --auto`. See CLAUDE.md
-# "Per-PR workflow" for the threat model this closes.
+[automerge.conflict_resolver]
+# Centralized trust model for every code path that may queue
+# `gh pr merge --squash --auto`. Read by `wikipilot.git_ops.is_pr_trusted`,
+# which is called from `apply_static_gate` (the in-routine
+# `maybe_automerge.py` shim), `apply_gate` (`wikipilot recover-prs`),
+# and the Conflict Resolver scan. A PR is treated as "trusted enough to
+# auto-merge" only when its head ref lives in this repo (not a fork)
+# AND either its GitHub `author_association` is in `trusted_associations`
+# OR its `author.login` is in `trusted_authors`. Every other PR — including
+# a fork PR with a synthetic `claude/daily-…` branch name — fails the
+# gate's trust criterion and lands in the review-checklist comment path
+# instead of auto-merge. See CLAUDE.md "Conflict resolution workflow"
+# for the threat model this closes.
 #
 # `OWNER` only fires on user-owned repos (e.g. `someuser/wikipilot`);
 # org-owned repos like `treehouse-ladder/wikipilot` get `MEMBER` even

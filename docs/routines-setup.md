@@ -157,80 +157,75 @@ Tune the seed at the routine level by editing the prompt to pass `--top-k`, `--s
 
 Daily-cap note: weekly routines count against the daily cap on the day they run.
 
-## PR Watcher routine
+## Conflict Resolver routine
 
-This fourth routine **doesn't synthesize wiki content**. It fires on every pull-request webhook from this repo, waits for CI to finish, and re-runs the per-route auto-merge gate against the real CI signal — closing the race condition where each content routine calls `scripts/maybe_automerge.py` *before* the CI rollup is populated (so an empty rollup is treated as green and `gh pr merge --squash --auto` is queued without ever knowing whether lint/pytest passed). It also rescues PRs that never had `maybe_automerge.py` run on them (manual pushes to `claude/*`, content routines that crashed mid-loop, etc.).
+This fourth routine **doesn't synthesize wiki content**. It fires on every push to `main` and dispatches an Opus subagent only for the small number of `claude/*` PRs that GitHub's native auto-merge can't move on its own — those whose `mergeStateStatus` is `DIRTY` (text conflicts) or `BEHIND` (out-of-date with base). The 95% happy path runs entirely through `scripts/maybe_automerge.py` (which calls `apply_static_gate` and lets GitHub's required-status-checks rule hold the merge until CI is green), so this routine is a precision tool that fires Opus only when there is actual conflict work to do.
+
+This replaces the previous PR Watcher routine, which fired on every PR event and was unfortunately racing the CI rollup (an empty rollup was being treated as green, which silently stranded PRs in May 2026). See [`CLAUDE.md`](../CLAUDE.md) "Conflict resolution workflow" for the design rationale.
 
 | Field | Value |
 |---|---|
-| Name | `Wikipilot PR Watcher` |
+| Name | `Wikipilot Conflict Resolver` |
 | Repository | same repo, default branch `main` |
 | Cloud env | reuse the same env you configured for Daily Research. |
-| Connectors | **Leave empty** (this routine never needs qmd; it only reads PR metadata). |
-| Permissions tab | "Allow unrestricted git push" → **OFF**. The watcher only pushes to `claude/*` branches via `git push origin "$HEAD_REF"` (self-heal commits land on the same branch the PR is targeting). |
-| Behavior tab | "Auto-fix pull requests" → **OFF**. The watcher already implements that surface explicitly via the `wiki-linter` self-heal loop; toggling the Anthropic feature on top would double-fire. |
+| Connectors | **Leave empty** (this routine never needs qmd; it only inspects PR metadata + the diff of one PR at a time). |
+| Permissions tab | "Allow unrestricted git push" → **OFF**. The `conflict-resolver` subagent only force-pushes to `claude/*` branches via `git push --force-with-lease origin "$HEAD_REF"`. |
+| Behavior tab | "Auto-fix pull requests" → **OFF**. The routine already implements its narrow surface explicitly; toggling the Anthropic feature would double-fire. |
 | Env vars | inherited from the cloud env. |
-| Triggers | **GitHub trigger** (only): see [GitHub PR trigger](#github-pr-trigger-for-pr-watcher) below. No schedule, no API trigger. |
-| Model | **Sonnet** (orchestrator); `wiki-linter` subagent pins **Haiku 4.5** via its frontmatter. |
-| Prompt | Copy [`prompts/pr_watcher.md`](../prompts/pr_watcher.md) into the routine UI. |
+| Triggers | **GitHub trigger** (only): see [GitHub push trigger](#github-push-trigger-for-conflict-resolver) below. No schedule, no API trigger. |
+| Model | **Sonnet** (orchestrator); `conflict-resolver` subagent pins **Opus 4.7** via its frontmatter. |
+| Prompt | Copy [`prompts/conflict_resolver.md`](../prompts/conflict_resolver.md) into the routine UI. |
 
-### GitHub PR trigger for PR Watcher
+### GitHub push trigger for Conflict Resolver
 
 1. The Claude GitHub App must already be installed on this repo (the [Wiki Query routine setup](#github-issue-trigger-for-wiki-query) walks through this if it isn't).
 2. In the routine UI, **enable the GitHub trigger** with these filters:
-   - **Event**: `Pull request`
-   - **Actions**: `opened`, `synchronize` (select both; do **not** add `closed` — a merge-time `closed` event would re-fire the watcher on an already-merged PR for no reason).
-   - **Filters** (all required):
-     - `Base branch` `equals` `main`
-     - `Is draft` `equals` `false`
-     - `Is merged` `equals` `false`
+   - **Event**: `Push`
+   - **Filters**:
+     - `Branch` `equals` `main`
 3. Save.
 
-Now every new PR to `main` (or every push to an open PR) spawns one watcher session. The orchestrator inspects the head branch and the PR author:
+Now every push to `main` (whether from a merge of a `claude/*` PR or a direct push from a human) spawns one Conflict Resolver session. The orchestrator runs `scripts/conflict_resolver_scan.py`, which returns the JSON list of dispatch-worthy PRs (trusted `claude/*` heads with `mergeStateStatus in {DIRTY, BEHIND}`). The vast majority of fires see an empty list and exit in seconds without any Opus dispatch.
 
-- Matches a `claude/*` template from [`wikipilot.toml [branches]`](../wikipilot.toml) **and** the PR author passes the trust check (see below) → infers the route (`daily_research` / `wiki_query` / `weekly_health`), waits for CI, then runs the gate in **enforce** mode (queues auto-merge or, on red CI, calls `gh pr merge --disable-auto` to undo any prior premature queue and posts a checklist comment).
-- Any other case — non-`claude/*` head, fork PR, or untrusted author with a synthetic `claude/*`-shaped head — runs the gate in **read-only** mode using the conservative `wiki_query` thresholds, never queues auto-merge, only posts a single dedupe-keyed status comment.
+Daily-cap note: ~5-10 pushes to `main` per day on a busy day. Each fires the Sonnet orchestrator; 90%+ of fires are no-ops. Opus tokens only burn when there is real conflict work (typically 1-3 dispatches per day). Comfortably within Pro/Max/Team caps (5/15/25 per day).
 
-Daily-cap note: every PR event consumes one daily routine slot. With ~7 topics and ~1-2 query PRs per day, the watcher comfortably fits within Max/Team caps (15/25 per day) but is **not** free — see [`runbook.md`](runbook.md) "PR Watcher cost budget" for how to monitor.
+### Author trust model (centralized, applies to every gate path)
 
-### Author trust model
-
-The trust check exists because `pull_request.opened` fires for **any** PR — including PRs from forks opened by non-collaborators — and the branch name alone is not a security boundary (anyone can name their fork branch `claude/daily-2026-…/anything`). The watcher demotes a `claude/*` PR to read-only mode whenever any of the following is true:
+The trust check exists because GitHub fires `push` events for every commit landing on `main` and the conflict-resolver scan needs to decide which `claude/*` PRs to dispatch the Opus subagent for. The branch name alone is not a security boundary (anyone can name a fork branch `claude/daily-2026-…/anything`). The centralized check at `wikipilot.git_ops.is_pr_trusted` — called by `apply_static_gate`, `apply_gate`, AND the conflict-resolver scan — refuses to queue `--auto` or dispatch the resolver whenever any of the following is true:
 
 - `isCrossRepository` is `true` (the head ref lives in a fork). Fork PRs are never enforce-eligible, even when the author also happens to be an org member.
-- `author_association` is **not** in `[automerge.pr_watcher].trusted_associations` (default `["OWNER", "MEMBER", "COLLABORATOR"]`) **and** `author.login` is **not** in `trusted_authors` (default empty).
-- `gh repo view --json nameWithOwner` or `gh api repos/<owner>/<repo>/pulls/<num>` fails for any reason — the watcher fails closed, treating any missing signal as untrusted.
+- `author_association` is **not** in `[automerge.conflict_resolver].trusted_associations` (default `["OWNER", "MEMBER", "COLLABORATOR"]`) **and** `author.login` is **not** in `trusted_authors` (default empty).
+- `gh repo view --json nameWithOwner` or `gh api repos/<owner>/<repo>/pulls/<num>` fails for any reason — the check fails closed, treating any missing signal as untrusted.
 
 The defaults are sized for the canonical setup (one user with org-owner membership): every PR you open against `treehouse-ladder/wikipilot` carries `author_association: MEMBER` (GitHub only sets `OWNER` for user-owned repos, not org-owned ones), which is in the default list. Cloud Routine PRs created by the orchestrator use the same identity and pass the same check.
 
 To extend trust to additional contributors:
 
 - **Invite them as collaborators** via Settings → Collaborators. Their PRs to this repo will carry `author_association: COLLABORATOR`, which is in the default trusted list.
-- **Whitelist a specific GitHub login** (e.g. a bot account that has no org membership) by adding it to `[automerge.pr_watcher] trusted_authors` in [`wikipilot.toml`](../wikipilot.toml).
+- **Whitelist a specific GitHub login** (e.g. a bot account that has no org membership) by adding it to `[automerge.conflict_resolver] trusted_authors` in [`wikipilot.toml`](../wikipilot.toml).
 - **Loosen the association set** by editing `trusted_associations` directly. Adding `"CONTRIBUTOR"` would mean any GitHub user with even one prior merged PR auto-trusts — generally not what you want on a public repo.
 
-Untrusted PRs still get a dedupe-keyed status comment so the contributor sees what the gate decided; the watcher just never calls `gh pr merge --auto` on them.
-
-### Self-heal loop
-
-When CI fails on a `claude/*` PR, the orchestrator checks the PR's `wikipilot:heal-attempt-{n}` labels. If the highest attempt is below `[automerge.pr_watcher].self_heal_max_attempts` (default 3), it:
-
-1. Adds label `wikipilot:heal-attempt-{n+1}`.
-2. Dispatches the `wiki-linter` subagent (Haiku) to apply mechanical fixes (frontmatter, broken wikilinks, log format, ownership reverts).
-3. Commits the fixes with `fix(wiki): wiki-linter mechanical fixes (attempt {n+1})` and pushes to the same branch.
-4. The push fires `pull_request.synchronize`, which spawns a fresh watcher session — re-running CI and re-evaluating the gate.
-
-If the heal cap is reached, the gate script posts a `## Self-heal cap reached` comment (under dedupe key `wikipilot:heal-cap`) so a human knows to take a look. `wiki-linter` only handles errors it knows how to fix mechanically; pytest and ruff failures are surfaced via comment only.
+Untrusted PRs still get a dedupe-keyed checklist comment from `scripts/maybe_automerge.py` so the contributor sees what the gate decided; the gate just never calls `gh pr merge --auto` on them, and the Conflict Resolver routine never dispatches the Opus subagent on them.
 
 ### Recovering stranded PRs by hand
 
-If the watcher itself misfires (or you have PRs from before the watcher was wired up), run:
+If the Conflict Resolver routine misfires (or you have PRs from before it was wired up), run:
 
 ```bash
 uv run wikipilot recover-prs
 ```
 
-This enumerates every open `claude/*` PR to `main` and runs `apply_gate` on each in `enforce` mode, inferring the route per PR. See [`runbook.md`](runbook.md) "Recovering stranded PRs" for the troubleshooting workflow.
+This enumerates every open `claude/*` PR to `main` and runs `apply_gate` (full gate, including CI) on each in `enforce` mode, inferring the route per PR. The centralized trust check applies here too — no out-of-band vetting needed. See [`runbook.md`](runbook.md) "Recovering stranded PRs" for the troubleshooting workflow.
+
+### Operator handoff (rolling out the new routine)
+
+The code changes in this branch are all additive plus one delete: the new routine is ready to run, but the **routine surface** (claude.ai/code/routines UI) still has the old PR Watcher configured. The handoff has three steps, all on the routine surface — no code edits are needed:
+
+1. **Create the new routine.** In claude.ai/code/routines, create a new routine with the table values above. Paste the contents of `prompts/conflict_resolver.md` into the prompt field. Save. Click "Run now" once with no recent push to verify the prompt parses and the scan exits cleanly with an empty list.
+2. **Verify on a real conflict.** Wait for a daily run that produces a known-conflicting pair of PRs (or manually fabricate one by pushing a conflicting commit to one `claude/*` branch). Confirm that on the next merge to `main`, the routine fires, the scan lists the dirty PR, the `conflict-resolver` subagent rebases it, and `apply_static_gate` re-queues auto-merge. The PR should land on `main` within minutes.
+3. **Disable the old PR Watcher routine.** In claude.ai/code/routines, find the previous `Wikipilot PR Watcher` entry and either delete it or toggle its triggers off. Do this **only after** step 2 has succeeded — disabling the old routine before the new one is verified would leave the merge queue unguarded.
+
+The trust check, the in-routine `apply_static_gate` call (queues `--auto` immediately, before CI even starts), and `wikipilot recover-prs` all keep working independently of the routine surface — so even during the handoff window, no PR can land without passing the gate.
 
 ## Triggering via API
 

@@ -13,8 +13,8 @@ from wikipilot.config import (
     AutomergeCommon,
     AutomergeRoute,
     BranchesConfig,
+    ConflictResolverConfig,
     ImagesConfig,
-    PRWatcherConfig,
     WikipilotConfig,
 )
 from wikipilot.git_ops import (
@@ -24,6 +24,7 @@ from wikipilot.git_ops import (
     ROUTE_WIKI_QUERY,
     PRView,
     apply_gate,
+    apply_static_gate,
     branch_for_daily,
     branch_for_health,
     branch_for_query,
@@ -33,7 +34,10 @@ from wikipilot.git_ops import (
     disable_automerge,
     enable_automerge,
     evaluate_gate,
+    evaluate_static_gate,
+    fetch_author_association,
     infer_route_from_branch,
+    is_pr_trusted,
     push_branch,
     render_pr_body_daily,
     render_pr_body_health,
@@ -52,6 +56,10 @@ class FakeRunner:
     :func:`wait_for_ci`) don't error out. The ``raises`` mapping lets a test
     say "raise this exception on the next call whose prefix matches" — used
     by the timeout/error-path tests.
+
+    Match order: first ``args[:3]`` (e.g. ``"gh pr view"``), then
+    ``args[:2]`` (e.g. ``"gh api"`` — so a test can stub every ``gh api ...``
+    call with one entry instead of pinning the exact endpoint URL).
     """
 
     responses: dict[str, subprocess.CompletedProcess[str]]
@@ -60,10 +68,15 @@ class FakeRunner:
 
     def __call__(self, args, **kwargs):
         self.calls.append(list(args))
-        key = " ".join(args[:3])
-        if key in self.raises:
-            raise self.raises[key]
-        return self.responses.get(key, subprocess.CompletedProcess(args, 0, "", ""))
+        key3 = " ".join(args[:3])
+        if key3 in self.raises:
+            raise self.raises[key3]
+        if key3 in self.responses:
+            return self.responses[key3]
+        key2 = " ".join(args[:2])
+        if key2 in self.responses:
+            return self.responses[key2]
+        return subprocess.CompletedProcess(args, 0, "", "")
 
 
 def _ok(
@@ -85,7 +98,7 @@ def _config(
     block_human: bool = True,
     require_checks: bool = True,
     branches: BranchesConfig | None = None,
-    pr_watcher: PRWatcherConfig | None = None,
+    conflict_resolver: ConflictResolverConfig | None = None,
 ) -> WikipilotConfig:
     return WikipilotConfig(
         automerge_common=AutomergeCommon(
@@ -97,7 +110,7 @@ def _config(
         or AutomergeRoute(max_files_changed_per_topic=40, max_total_diff_lines_per_topic=1500),
         wiki_query=query or AutomergeRoute(max_files_changed=8, max_total_diff_lines=400),
         weekly_health=weekly or AutomergeRoute(max_files_changed=60, max_total_diff_lines=2000),
-        pr_watcher=pr_watcher or PRWatcherConfig(),
+        conflict_resolver=conflict_resolver or ConflictResolverConfig(),
         images=ImagesConfig(),
         branches=branches or BranchesConfig(),
     )
@@ -210,14 +223,23 @@ class TestViewPr:
                 "deletions": 5,
                 "isDraft": False,
                 "statusCheckRollup": [{"conclusion": "SUCCESS"}],
+                "isCrossRepository": False,
+                "author": {"login": "rauriemo"},
             }
         )
-        runner.responses = {"gh pr view": _ok(stdout=payload)}
+        runner.responses = {
+            "gh pr view": _ok(stdout=payload),
+            "gh repo view": _ok(stdout=_DEFAULT_OWNER_REPO_PAYLOAD),
+            "gh api": _ok(stdout=_DEFAULT_TRUSTED_API_PAYLOAD),
+        }
         view = view_pr(7, runner=runner)
         assert view.number == 7
         assert view.files == ["wiki/concepts/x.md", "wiki/concepts/y.md"]
         assert view.additions == 50
         assert view.checks_passing is True
+        assert view.is_cross_repository is False
+        assert view.author_login == "rauriemo"
+        assert view.author_association == "MEMBER"
 
     def test_failing_checks_detected(self, runner: FakeRunner) -> None:
         payload = json.dumps(
@@ -229,26 +251,69 @@ class TestViewPr:
                 "deletions": 0,
                 "isDraft": False,
                 "statusCheckRollup": [{"conclusion": "FAILURE"}, {"conclusion": "SUCCESS"}],
+                "isCrossRepository": False,
+                "author": {"login": "rauriemo"},
             }
         )
-        runner.responses = {"gh pr view": _ok(stdout=payload)}
+        runner.responses = {
+            "gh pr view": _ok(stdout=payload),
+            "gh repo view": _ok(stdout=_DEFAULT_OWNER_REPO_PAYLOAD),
+            "gh api": _ok(stdout=_DEFAULT_TRUSTED_API_PAYLOAD),
+        }
         view = view_pr(7, runner=runner)
         assert view.checks_passing is False
+
+    def test_author_association_fail_closes_to_none(self, runner: FakeRunner) -> None:
+        """If ``gh api`` returns a non-zero exit code, ``author_association``
+        must be ``None`` (not silently coerced to a trusted default) so the
+        gate's trust check fails closed."""
+        payload = _gh_pr_view_payload(number=7)
+        runner.responses = {
+            "gh pr view": _ok(stdout=payload),
+            "gh repo view": _ok(stdout=_DEFAULT_OWNER_REPO_PAYLOAD),
+            "gh api": _ok(returncode=1, stderr="HTTP 401"),
+        }
+        view = view_pr(7, runner=runner)
+        assert view.author_association is None
+
+    def test_repo_view_failure_fail_closes_to_none(self, runner: FakeRunner) -> None:
+        """If owner/repo can't be resolved, the REST call is skipped and
+        ``author_association`` falls back to ``None``."""
+        payload = _gh_pr_view_payload(number=7)
+        runner.responses = {
+            "gh pr view": _ok(stdout=payload),
+            "gh repo view": _ok(returncode=1, stderr="not a gh repo"),
+        }
+        view = view_pr(7, runner=runner)
+        assert view.author_association is None
+
+
+def _trusted_pr_view(**overrides) -> PRView:
+    """Default PRView shape used by gate tests.
+
+    Trust fields default to "trusted same-repo MEMBER" so existing gate
+    tests stay green without each one having to spell out the trust
+    payload. Trust-check-specific tests override these explicitly.
+    """
+    defaults = {
+        "number": 1,
+        "state": "OPEN",
+        "files": ["wiki/concepts/x.md"],
+        "additions": 10,
+        "deletions": 1,
+        "checks_passing": True,
+        "is_draft": False,
+        "is_cross_repository": False,
+        "author_login": "rauriemo",
+        "author_association": "MEMBER",
+    }
+    defaults.update(overrides)
+    return PRView(**defaults)
 
 
 class TestEvaluateGate:
     def _view(self, **overrides) -> PRView:
-        defaults = {
-            "number": 1,
-            "state": "OPEN",
-            "files": ["wiki/concepts/x.md"],
-            "additions": 10,
-            "deletions": 1,
-            "checks_passing": True,
-            "is_draft": False,
-        }
-        defaults.update(overrides)
-        return PRView(**defaults)
+        return _trusted_pr_view(**overrides)
 
     def test_clean_pr_passes_daily(self) -> None:
         d = evaluate_gate(self._view(), route=ROUTE_DAILY_RESEARCH, config=_config())
@@ -387,36 +452,23 @@ class TestEvaluateGate:
 
 class TestApplyGate:
     def test_passes_calls_automerge(self, runner: FakeRunner) -> None:
-        payload = json.dumps(
-            {
-                "number": 1,
-                "state": "OPEN",
-                "files": [{"path": "wiki/concepts/x.md"}],
-                "additions": 5,
-                "deletions": 0,
-                "isDraft": False,
-                "statusCheckRollup": [{"conclusion": "SUCCESS"}],
-            }
-        )
-        runner.responses = {"gh pr view": _ok(stdout=payload), "gh pr merge": _ok()}
+        runner.responses = {
+            "gh pr view": _ok(stdout=_gh_pr_view_payload()),
+            "gh pr merge": _ok(),
+        }
+        _trusted_runner_baseline(runner)
         decision = apply_gate(1, route=ROUTE_DAILY_RESEARCH, config=_config(), runner=runner)
         assert decision.automerge is True
         assert any(c[:3] == ["gh", "pr", "merge"] for c in runner.calls)
         assert not any(c[:3] == ["gh", "pr", "comment"] for c in runner.calls)
 
     def test_fails_calls_comment(self, runner: FakeRunner) -> None:
-        payload = json.dumps(
-            {
-                "number": 1,
-                "state": "OPEN",
-                "files": [{"path": "CLAUDE.md"}],  # human-only -> block
-                "additions": 5,
-                "deletions": 0,
-                "isDraft": False,
-                "statusCheckRollup": [{"conclusion": "SUCCESS"}],
-            }
-        )
-        runner.responses = {"gh pr view": _ok(stdout=payload), "gh pr comment": _ok()}
+        # human-only path -> block
+        runner.responses = {
+            "gh pr view": _ok(stdout=_gh_pr_view_payload(files=["CLAUDE.md"])),
+            "gh pr comment": _ok(),
+        }
+        _trusted_runner_baseline(runner)
         decision = apply_gate(1, route=ROUTE_DAILY_RESEARCH, config=_config(), runner=runner)
         assert decision.automerge is False
         assert any(c[:3] == ["gh", "pr", "comment"] for c in runner.calls)
@@ -581,6 +633,8 @@ def _gh_pr_view_payload(
     state: str = "OPEN",
     is_draft: bool = False,
     number: int = 1,
+    is_cross_repository: bool = False,
+    author_login: str = "rauriemo",
 ) -> str:
     return json.dumps(
         {
@@ -591,8 +645,33 @@ def _gh_pr_view_payload(
             "deletions": deletions,
             "isDraft": is_draft,
             "statusCheckRollup": [{"conclusion": conclusion}],
+            "isCrossRepository": is_cross_repository,
+            "author": {"login": author_login},
         }
     )
+
+
+_DEFAULT_OWNER_REPO_PAYLOAD = json.dumps({"nameWithOwner": "treehouse-ladder/wikipilot"})
+_DEFAULT_TRUSTED_API_PAYLOAD = json.dumps(
+    {"user": {"login": "rauriemo"}, "author_association": "MEMBER"}
+)
+
+
+def _trusted_runner_baseline(
+    runner: FakeRunner, *, pr_view_payload: str | None = None
+) -> None:
+    """Populate ``runner.responses`` with the trusted-PR baseline.
+
+    Every ``apply_*`` test that uses ``view_pr`` end-to-end needs the
+    extra ``gh repo view`` + ``gh api`` calls mocked so the centralized
+    trust check sees a MEMBER association on a same-repo PR. Tests that
+    want to exercise an *untrusted* path override the relevant entry
+    after calling this helper.
+    """
+    if pr_view_payload is not None:
+        runner.responses.setdefault("gh pr view", _ok(stdout=pr_view_payload))
+    runner.responses.setdefault("gh repo view", _ok(stdout=_DEFAULT_OWNER_REPO_PAYLOAD))
+    runner.responses.setdefault("gh api", _ok(stdout=_DEFAULT_TRUSTED_API_PAYLOAD))
 
 
 def _gh_comments_payload(comments: list[dict]) -> str:
@@ -604,6 +683,7 @@ class TestApplyGateModes:
         runner.responses = {
             "gh pr view": _ok(stdout=_gh_pr_view_payload()),
         }
+        _trusted_runner_baseline(runner)
         decision = apply_gate(
             1, route=ROUTE_DAILY_RESEARCH, config=_config(), mode="read_only", runner=runner
         )
@@ -615,6 +695,7 @@ class TestApplyGateModes:
         runner.responses = {
             "gh pr view": _ok(stdout=_gh_pr_view_payload(files=["CLAUDE.md"])),
         }
+        _trusted_runner_baseline(runner)
         decision = apply_gate(
             1, route=ROUTE_DAILY_RESEARCH, config=_config(), mode="read_only", runner=runner
         )
@@ -626,6 +707,7 @@ class TestApplyGateModes:
         runner.responses = {
             "gh pr view": _ok(stdout=_gh_pr_view_payload()),
         }
+        _trusted_runner_baseline(runner)
         decision = apply_gate(
             1, route=ROUTE_DAILY_RESEARCH, config=_config(), mode="enforce", runner=runner
         )
@@ -639,6 +721,7 @@ class TestApplyGateModes:
         runner.responses = {
             "gh pr view": _ok(stdout=_gh_pr_view_payload(conclusion="FAILURE")),
         }
+        _trusted_runner_baseline(runner)
         decision = apply_gate(
             1, route=ROUTE_DAILY_RESEARCH, config=_config(), mode="enforce", runner=runner
         )
@@ -654,6 +737,7 @@ class TestApplyGateModes:
             "gh pr view": _ok(stdout=_gh_pr_view_payload(conclusion="FAILURE")),
             "gh pr merge": _ok(returncode=1, stderr="no auto-merge to disable"),
         }
+        _trusted_runner_baseline(runner)
         decision = apply_gate(
             1, route=ROUTE_DAILY_RESEARCH, config=_config(), mode="enforce", runner=runner
         )
@@ -735,3 +819,324 @@ class TestDisableAutomerge:
         runner.responses = {"gh pr merge": _ok(returncode=1, stderr="not enabled")}
         # Must not raise.
         disable_automerge(7, runner=runner)
+
+
+# ---------------------------------------------------------------------------
+# PR Watcher v2 additions: static gate, centralized trust check, fetch helper.
+# ---------------------------------------------------------------------------
+
+
+class TestEvaluateStaticGate:
+    """The static gate enforces every criterion except CI green.
+
+    This is what ``maybe_automerge.py`` calls — GitHub's required-status-checks
+    rule holds the merge until CI actually goes green, so the local
+    prediction was just adding a race condition.
+    """
+
+    def test_pending_ci_passes_when_other_criteria_pass(self) -> None:
+        view = _trusted_pr_view(checks_passing=False)
+        d = evaluate_static_gate(view, route=ROUTE_DAILY_RESEARCH, config=_config())
+        assert d.automerge is True, d.reasons
+        assert not any("CI" in r for r in d.reasons)
+
+    def test_human_only_change_still_blocks(self) -> None:
+        view = _trusted_pr_view(files=["CLAUDE.md"])
+        d = evaluate_static_gate(view, route=ROUTE_DAILY_RESEARCH, config=_config())
+        assert d.automerge is False
+        assert "CLAUDE.md" in d.blocked_paths
+
+    def test_too_many_files_still_blocks(self) -> None:
+        view = _trusted_pr_view(files=[f"wiki/concepts/x{i}.md" for i in range(200)])
+        d = evaluate_static_gate(view, route=ROUTE_DAILY_RESEARCH, config=_config())
+        assert d.automerge is False
+        assert any("files" in r for r in d.reasons)
+
+    def test_draft_still_blocks(self) -> None:
+        view = _trusted_pr_view(is_draft=True)
+        d = evaluate_static_gate(view, route=ROUTE_DAILY_RESEARCH, config=_config())
+        assert d.automerge is False
+        assert any("draft" in r for r in d.reasons)
+
+
+class TestGateTrustCheck:
+    """The centralized trust check applies to both gates (static + full)."""
+
+    def test_fork_pr_blocks_full_gate(self) -> None:
+        view = _trusted_pr_view(is_cross_repository=True)
+        d = evaluate_gate(view, route=ROUTE_DAILY_RESEARCH, config=_config())
+        assert d.automerge is False
+        assert any("not trusted" in r and "fork=True" in r for r in d.reasons)
+
+    def test_fork_pr_blocks_static_gate(self) -> None:
+        view = _trusted_pr_view(is_cross_repository=True)
+        d = evaluate_static_gate(view, route=ROUTE_DAILY_RESEARCH, config=_config())
+        assert d.automerge is False
+        assert any("not trusted" in r for r in d.reasons)
+
+    def test_none_association_blocks(self) -> None:
+        view = _trusted_pr_view(author_association="NONE", author_login="stranger")
+        d = evaluate_gate(view, route=ROUTE_DAILY_RESEARCH, config=_config())
+        assert d.automerge is False
+        assert any("not trusted" in r for r in d.reasons)
+
+    def test_missing_association_blocks_fail_closed(self) -> None:
+        view = _trusted_pr_view(author_association=None, author_login="stranger")
+        d = evaluate_gate(view, route=ROUTE_DAILY_RESEARCH, config=_config())
+        assert d.automerge is False
+        assert any("not trusted" in r for r in d.reasons)
+
+    def test_collaborator_in_defaults_passes(self) -> None:
+        view = _trusted_pr_view(
+            author_association="COLLABORATOR", author_login="invited-friend"
+        )
+        d = evaluate_gate(view, route=ROUTE_DAILY_RESEARCH, config=_config())
+        assert d.automerge is True, d.reasons
+
+    def test_contributor_blocks_by_default(self) -> None:
+        """``CONTRIBUTOR`` (any previous successful PR) is intentionally NOT
+        in the default trusted set — letting it in would mean anyone who's
+        ever landed a typo fix could later open a claude/* PR that
+        auto-merges."""
+        view = _trusted_pr_view(
+            author_association="CONTRIBUTOR", author_login="past-contributor"
+        )
+        d = evaluate_gate(view, route=ROUTE_DAILY_RESEARCH, config=_config())
+        assert d.automerge is False
+        assert any("not trusted" in r for r in d.reasons)
+
+    def test_explicit_author_allowlist_overrides_untrusted_association(self) -> None:
+        cfg = _config(
+            conflict_resolver=ConflictResolverConfig(
+                trusted_associations=(),
+                trusted_authors=("wikipilot-bot",),
+            )
+        )
+        view = _trusted_pr_view(
+            author_association="NONE", author_login="wikipilot-bot"
+        )
+        d = evaluate_gate(view, route=ROUTE_DAILY_RESEARCH, config=cfg)
+        assert d.automerge is True, d.reasons
+
+    def test_fork_pr_with_allowlisted_login_still_blocks(self) -> None:
+        """The fork bit is the strongest signal we have that the head ref
+        is outside our control — even a whitelisted login can't override it."""
+        cfg = _config(
+            conflict_resolver=ConflictResolverConfig(
+                trusted_associations=(),
+                trusted_authors=("wikipilot-bot",),
+            )
+        )
+        view = _trusted_pr_view(
+            is_cross_repository=True,
+            author_association="NONE",
+            author_login="wikipilot-bot",
+        )
+        d = evaluate_gate(view, route=ROUTE_DAILY_RESEARCH, config=cfg)
+        assert d.automerge is False
+        assert any("not trusted" in r for r in d.reasons)
+
+
+class TestIsPrTrusted:
+    """Direct unit tests for the pure trust helper (no gh layer involved)."""
+
+    def _default_config(self) -> ConflictResolverConfig:
+        return ConflictResolverConfig()
+
+    def _authors_only_config(self) -> ConflictResolverConfig:
+        return ConflictResolverConfig(
+            trusted_associations=(),
+            trusted_authors=("wikipilot-bot",),
+        )
+
+    def test_fork_pr_is_never_trusted(self) -> None:
+        assert (
+            is_pr_trusted(
+                is_cross_repository=True,
+                association="MEMBER",
+                author_login="rauriemo",
+                config=self._default_config(),
+            )
+            is False
+        )
+
+    def test_fork_pr_with_explicit_allowlist_still_not_trusted(self) -> None:
+        assert (
+            is_pr_trusted(
+                is_cross_repository=True,
+                association="NONE",
+                author_login="wikipilot-bot",
+                config=self._authors_only_config(),
+            )
+            is False
+        )
+
+    def test_member_in_same_repo_is_trusted(self) -> None:
+        assert (
+            is_pr_trusted(
+                is_cross_repository=False,
+                association="MEMBER",
+                author_login="rauriemo",
+                config=self._default_config(),
+            )
+            is True
+        )
+
+    def test_none_association_without_allowlist_match_is_untrusted(self) -> None:
+        assert (
+            is_pr_trusted(
+                is_cross_repository=False,
+                association="NONE",
+                author_login="stranger",
+                config=self._default_config(),
+            )
+            is False
+        )
+
+    def test_missing_association_is_untrusted(self) -> None:
+        assert (
+            is_pr_trusted(
+                is_cross_repository=False,
+                association=None,
+                author_login="rauriemo",
+                config=self._default_config(),
+            )
+            is False
+        )
+
+    def test_explicit_author_allowlist_overrides_untrusted_association(self) -> None:
+        assert (
+            is_pr_trusted(
+                is_cross_repository=False,
+                association="NONE",
+                author_login="wikipilot-bot",
+                config=self._authors_only_config(),
+            )
+            is True
+        )
+
+    def test_empty_author_login_does_not_match_empty_allowlist(self) -> None:
+        """The default ``trusted_authors`` is empty; an empty author_login
+        must not coincidentally satisfy ``"" in ()``. Both sides being
+        falsy can't be allowed to short-circuit to True."""
+        assert (
+            is_pr_trusted(
+                is_cross_repository=False,
+                association="NONE",
+                author_login="",
+                config=self._default_config(),
+            )
+            is False
+        )
+
+
+class TestFetchAuthorAssociation:
+    """``fetch_author_association`` is the only ``gh api`` call view_pr
+    makes; it must fail-graceful on every error mode."""
+
+    def test_success_returns_uppercased_assoc(self, runner: FakeRunner) -> None:
+        runner.responses = {
+            "gh repo view": _ok(stdout=_DEFAULT_OWNER_REPO_PAYLOAD),
+            "gh api": _ok(stdout=json.dumps({"author_association": "member"})),
+        }
+        assert fetch_author_association(42, runner=runner) == "MEMBER"
+
+    def test_repo_view_failure_returns_none(self, runner: FakeRunner) -> None:
+        runner.responses = {"gh repo view": _ok(returncode=1, stderr="not a gh repo")}
+        assert fetch_author_association(42, runner=runner) is None
+
+    def test_api_failure_returns_none(self, runner: FakeRunner) -> None:
+        runner.responses = {
+            "gh repo view": _ok(stdout=_DEFAULT_OWNER_REPO_PAYLOAD),
+            "gh api": _ok(returncode=1, stderr="HTTP 401"),
+        }
+        assert fetch_author_association(42, runner=runner) is None
+
+    def test_empty_stdout_returns_none(self, runner: FakeRunner) -> None:
+        runner.responses = {
+            "gh repo view": _ok(stdout=_DEFAULT_OWNER_REPO_PAYLOAD),
+            "gh api": _ok(stdout=""),
+        }
+        assert fetch_author_association(42, runner=runner) is None
+
+    def test_malformed_json_returns_none(self, runner: FakeRunner) -> None:
+        runner.responses = {
+            "gh repo view": _ok(stdout=_DEFAULT_OWNER_REPO_PAYLOAD),
+            "gh api": _ok(stdout="not json{"),
+        }
+        assert fetch_author_association(42, runner=runner) is None
+
+    def test_missing_assoc_field_returns_none(self, runner: FakeRunner) -> None:
+        runner.responses = {
+            "gh repo view": _ok(stdout=_DEFAULT_OWNER_REPO_PAYLOAD),
+            "gh api": _ok(stdout=json.dumps({"user": {"login": "x"}})),
+        }
+        assert fetch_author_association(42, runner=runner) is None
+
+
+class TestApplyStaticGate:
+    """End-to-end coverage of the in-routine call site."""
+
+    def test_pass_queues_automerge_with_pending_ci(self, runner: FakeRunner) -> None:
+        """The whole point of the static gate: a PR with pending CI
+        (rollup empty / not yet populated) should still queue ``--auto``."""
+        runner.responses = {
+            "gh pr view": _ok(
+                stdout=json.dumps(
+                    {
+                        "number": 1,
+                        "state": "OPEN",
+                        "files": [{"path": "wiki/concepts/x.md"}],
+                        "additions": 5,
+                        "deletions": 0,
+                        "isDraft": False,
+                        "statusCheckRollup": [],  # CI not yet started
+                        "isCrossRepository": False,
+                        "author": {"login": "rauriemo"},
+                    }
+                )
+            ),
+            "gh pr merge": _ok(),
+        }
+        _trusted_runner_baseline(runner)
+        decision = apply_static_gate(1, route=ROUTE_DAILY_RESEARCH, config=_config(), runner=runner)
+        assert decision.automerge is True
+        merges = [c for c in runner.calls if c[:3] == ["gh", "pr", "merge"]]
+        assert merges, "static gate pass must queue gh pr merge"
+        assert "--squash" in merges[0]
+        assert "--auto" in merges[0]
+        assert not any(c[:3] == ["gh", "pr", "comment"] for c in runner.calls)
+
+    def test_block_comments_no_merge(self, runner: FakeRunner) -> None:
+        runner.responses = {
+            "gh pr view": _ok(stdout=_gh_pr_view_payload(files=["CLAUDE.md"])),
+        }
+        _trusted_runner_baseline(runner)
+        decision = apply_static_gate(1, route=ROUTE_DAILY_RESEARCH, config=_config(), runner=runner)
+        assert decision.automerge is False
+        assert any(c[:3] == ["gh", "pr", "comment"] for c in runner.calls)
+        assert not any(c[:3] == ["gh", "pr", "merge"] for c in runner.calls)
+
+    def test_untrusted_author_blocks(self, runner: FakeRunner) -> None:
+        """An untrusted author should never queue --auto, even when every
+        other criterion would pass. The trust check is centralized so
+        every call site picks it up."""
+        runner.responses = {
+            "gh pr view": _ok(stdout=_gh_pr_view_payload()),
+            "gh repo view": _ok(stdout=_DEFAULT_OWNER_REPO_PAYLOAD),
+            "gh api": _ok(stdout=json.dumps({"author_association": "NONE"})),
+        }
+        decision = apply_static_gate(1, route=ROUTE_DAILY_RESEARCH, config=_config(), runner=runner)
+        assert decision.automerge is False
+        assert any("not trusted" in r for r in decision.reasons)
+        assert not any(c[:3] == ["gh", "pr", "merge"] for c in runner.calls)
+
+    def test_fork_pr_blocks(self, runner: FakeRunner) -> None:
+        runner.responses = {
+            "gh pr view": _ok(stdout=_gh_pr_view_payload(is_cross_repository=True)),
+        }
+        _trusted_runner_baseline(runner)
+        decision = apply_static_gate(1, route=ROUTE_DAILY_RESEARCH, config=_config(), runner=runner)
+        assert decision.automerge is False
+        assert any("not trusted" in r for r in decision.reasons)
+        assert not any(c[:3] == ["gh", "pr", "merge"] for c in runner.calls)

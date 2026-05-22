@@ -25,6 +25,7 @@ from typing import Any, Literal
 from wikipilot.config import (
     AutomergeRoute,
     BranchesConfig,
+    ConflictResolverConfig,
     WikipilotConfig,
 )
 from wikipilot.lint import HUMAN_ONLY_PATHS
@@ -37,6 +38,7 @@ VALID_ROUTES: tuple[str, ...] = (ROUTE_DAILY_RESEARCH, ROUTE_WIKI_QUERY, ROUTE_W
 
 GateMode = Literal["enforce", "read_only"]
 DEFAULT_GATE_DEDUPE_KEY = "wikipilot:gate"
+UNKNOWN_ASSOCIATION = "NONE"
 
 
 @dataclass(frozen=True)
@@ -61,6 +63,28 @@ class GateDecision:
         return "\n".join(lines)
 
 
+def evaluate_static_gate(
+    pr_view: PRView,
+    *,
+    route: str,
+    config: WikipilotConfig,
+) -> GateDecision:
+    """Return a :class:`GateDecision` for the *deterministic* gate criteria.
+
+    Identical to :func:`evaluate_gate` except it does NOT check
+    ``pr_view.checks_passing``. This is the gate the in-routine
+    ``maybe_automerge.py`` call uses to decide whether to queue
+    ``gh pr merge --squash --auto``: CI is enforced separately by GitHub's
+    own required-status-checks ruleset, so the local prediction added
+    nothing but a race condition (the empty-rollup-as-green bug that
+    stranded PRs in May 2026 — see PR Watcher v2 design notes).
+
+    All other criteria still fire: draft, state, file count, diff lines,
+    human-only paths, and the centralized trust check.
+    """
+    return _evaluate_gate_impl(pr_view, route=route, config=config, check_ci=False)
+
+
 def evaluate_gate(
     pr_view: PRView,
     *,
@@ -81,7 +105,22 @@ def evaluate_gate(
       - ``block_human_only_file_changes`` blocks any PR that touches a path
         in :data:`wikipilot.lint.HUMAN_ONLY_PATHS` or any
         ``wiki/topics/<id>/purpose.md``.
+
+    Plus the centralized trust check (``[automerge.conflict_resolver]``):
+    a PR from a fork or from an untrusted author is blocked regardless of
+    other criteria. See :func:`is_pr_trusted` for the semantics.
     """
+    return _evaluate_gate_impl(pr_view, route=route, config=config, check_ci=True)
+
+
+def _evaluate_gate_impl(
+    pr_view: PRView,
+    *,
+    route: str,
+    config: WikipilotConfig,
+    check_ci: bool,
+) -> GateDecision:
+    """Shared body of :func:`evaluate_gate` and :func:`evaluate_static_gate`."""
     if route not in VALID_ROUTES:
         raise ValueError(f"Unknown route {route!r}; expected one of {VALID_ROUTES}")
     common = config.automerge_common
@@ -93,7 +132,11 @@ def evaluate_gate(
         reasons.append("PR is a draft")
     if pr_view.state.upper() != "OPEN":
         reasons.append(f"PR state is {pr_view.state} (must be OPEN)")
-    if (common.require_lint_green or common.require_tests_green) and not pr_view.checks_passing:
+    if (
+        check_ci
+        and (common.require_lint_green or common.require_tests_green)
+        and not pr_view.checks_passing
+    ):
         reasons.append("CI checks are not green")
 
     max_files = _resolve_files_limit(route_cfg)
@@ -111,6 +154,18 @@ def evaluate_gate(
         if blocked:
             reasons.append(f"PR modifies {len(blocked)} human-only path(s) — see review checklist")
 
+    if not is_pr_trusted(
+        is_cross_repository=pr_view.is_cross_repository,
+        association=pr_view.author_association or UNKNOWN_ASSOCIATION,
+        author_login=pr_view.author_login,
+        config=config.conflict_resolver,
+    ):
+        reasons.append(
+            f"PR author is not trusted "
+            f"(assoc={(pr_view.author_association or UNKNOWN_ASSOCIATION)!r}, "
+            f"login={pr_view.author_login!r}, fork={pr_view.is_cross_repository})"
+        )
+
     automerge = not reasons
     return GateDecision(automerge=automerge, reasons=reasons, blocked_paths=blocked)
 
@@ -124,18 +179,22 @@ def apply_gate(
     mode: GateMode = "enforce",
     dedupe_key: str = DEFAULT_GATE_DEDUPE_KEY,
 ) -> GateDecision:
-    """View ``pr_number``, evaluate the gate, and act on the decision.
+    """View ``pr_number``, evaluate the full gate (including CI), and act.
+
+    Used by :func:`wikipilot.cli.recover_prs_cmd` and any caller that wants
+    to re-validate a PR against the current CI signal. The in-routine
+    ``maybe_automerge.py`` shim uses :func:`apply_static_gate` instead,
+    since the static gate is what GitHub's required-status-checks can't
+    enforce on its own.
 
     Modes:
-      - ``"enforce"`` (default; used by the in-routine ``maybe_automerge.py``
-        call and the PR Watcher for ``claude/*`` branches): on pass, calls
-        ``gh pr merge --squash --auto``; on fail with red CI, calls
-        ``gh pr merge --disable-auto`` to undo any premature queue and then
-        posts/edits a dedupe-keyed review-checklist comment.
-      - ``"read_only"`` (used by the PR Watcher for non-routine branches):
-        never invokes ``gh pr merge`` in either direction. Only posts/edits
-        the dedupe-keyed checklist comment so the human sees the gate's
-        decision without the watcher trying to merge their PR for them.
+      - ``"enforce"`` (default): on pass, calls ``gh pr merge --squash --auto``;
+        on fail with red CI, calls ``gh pr merge --disable-auto`` to undo any
+        premature queue and then posts/edits a dedupe-keyed review-checklist
+        comment.
+      - ``"read_only"``: never invokes ``gh pr merge`` in either direction.
+        Only posts/edits the dedupe-keyed checklist comment so the caller
+        sees the gate's decision without the gate trying to merge.
 
     ``dedupe_key`` is embedded as an HTML comment (``<!-- ... -->``) inside
     the posted body so subsequent calls *edit* the existing comment instead
@@ -165,11 +224,46 @@ def apply_gate(
     return decision
 
 
+def apply_static_gate(
+    pr_number: int,
+    *,
+    route: str,
+    config: WikipilotConfig,
+    runner: PRRunner | None = None,
+    dedupe_key: str = DEFAULT_GATE_DEDUPE_KEY,
+) -> GateDecision:
+    """View ``pr_number``, evaluate the *static* gate, and act on the decision.
+
+    Same shape as :func:`apply_gate` but skips the CI check: it queues
+    ``gh pr merge --squash --auto`` if every deterministic criterion passes
+    (draft, state, file count, diff lines, human-only paths, trust) and
+    lets GitHub's own required-status-checks ruleset hold the merge until
+    CI is green. This is the in-routine shim's contract — see
+    ``scripts/maybe_automerge.py``.
+
+    Always runs in enforce mode. The trust check is baked into the static
+    gate itself (see :func:`is_pr_trusted`), so this call site is safe to
+    invoke from any orchestrator that creates a PR.
+    """
+    pr_view = view_pr(pr_number, runner=runner)
+    decision = evaluate_static_gate(pr_view, route=route, config=config)
+    if decision.automerge:
+        enable_automerge(pr_number, runner=runner)
+        return decision
+    comment_pr(
+        pr_number,
+        decision.render_review_checklist(),
+        runner=runner,
+        dedupe_key=dedupe_key,
+    )
+    return decision
+
+
 _RENDER_READONLY_PASS = (
     "## Auto-merge gate would pass\n\n"
-    "The PR Watcher is running in read-only mode for this branch (no "
-    "auto-merge is queued). All gate criteria are currently satisfied; "
-    "merge manually when ready."
+    "The gate is running in read-only mode for this branch (no auto-merge "
+    "is queued). All gate criteria are currently satisfied; merge manually "
+    "when ready."
 )
 
 
@@ -186,9 +280,10 @@ def _route_config(config: WikipilotConfig, route: str) -> AutomergeRoute:
 def infer_route_from_branch(branch: str, config: WikipilotConfig | None = None) -> str | None:
     """Infer which routine produced ``branch`` by matching the templates in ``[branches]``.
 
-    Returns one of :data:`VALID_ROUTES` for templates the PR Watcher recognises,
-    or ``None`` for human / unknown / non-claude branches. ``None`` is the
-    explicit signal the watcher uses to switch to read-only-comment mode.
+    Returns one of :data:`VALID_ROUTES` for branches that match a known
+    routine template, or ``None`` for human / unknown / non-claude branches.
+    ``None`` is the explicit signal callers (``recover-prs``, the conflict
+    resolver scan) use to switch to read-only mode for that PR.
 
     Matching is anchored to the template prefix up to the first ``{`` (e.g.
     ``claude/daily-{date}/{topic_id}`` becomes prefix ``claude/daily-``). This
@@ -304,7 +399,20 @@ class PRRef:
 
 @dataclass(frozen=True)
 class PRView:
-    """Subset of ``gh pr view --json`` we consume."""
+    """Subset of ``gh pr view --json`` (+ trust info) the gate consumes.
+
+    Trust fields (``is_cross_repository``, ``author_login``,
+    ``author_association``) are populated by :func:`view_pr` via two
+    additional ``gh`` calls: ``gh pr view --json author,isCrossRepository``
+    (already part of the main view) and ``gh api repos/<o>/<r>/pulls/<n>``
+    (since ``author_association`` is exposed by the REST API but not by
+    ``gh pr view --json``).
+
+    Defaults intentionally trip the gate's centralized trust check
+    (``author_association=None`` is treated as untrusted) — fail-closed
+    when the trust info couldn't be fetched. Test fixtures that want to
+    exercise the trusted path must set the trust fields explicitly.
+    """
 
     number: int
     state: str
@@ -313,6 +421,9 @@ class PRView:
     deletions: int
     checks_passing: bool
     is_draft: bool
+    is_cross_repository: bool = False
+    author_login: str = ""
+    author_association: str | None = None
 
 
 def branch_for_daily(
@@ -397,14 +508,36 @@ def create_pr(
 
 
 def view_pr(pr_number: int, *, runner: PRRunner | None = None) -> PRView:
-    """Fetch PR metadata via ``gh pr view --json``."""
+    """Fetch PR metadata via ``gh pr view --json`` + trust info via ``gh api``.
+
+    Issues up to three ``gh`` calls per invocation:
+
+    1. ``gh pr view --json`` — the main payload (always).
+    2. ``gh repo view --json nameWithOwner`` — only when the trust check
+       needs to resolve ``owner/repo`` for the REST endpoint (memoized at
+       the call-site is a future optimization).
+    3. ``gh api repos/<o>/<r>/pulls/<n>`` — fetches ``author_association``,
+       which is not exposed by ``gh pr view --json``.
+
+    Failures of (2) or (3) are tolerated and leave the corresponding
+    ``PRView`` fields at their fail-closed defaults — the gate's trust
+    check then refuses to enable auto-merge, which is the desired
+    fail-closed semantics for the missing-signal case.
+    """
     runner = runner or subprocess.run
-    fields = "number,state,files,additions,deletions,statusCheckRollup,isDraft"
+    fields = (
+        "number,state,files,additions,deletions,statusCheckRollup,"
+        "isDraft,isCrossRepository,author"
+    )
     result = _run(runner, ["gh", "pr", "view", str(pr_number), "--json", fields])
     data = _json.loads(result.stdout)
     files = [f["path"] for f in data.get("files", [])]
     rollup = data.get("statusCheckRollup", []) or []
     checks_passing = all(_check_is_green(c) for c in rollup) if rollup else True
+    author = data.get("author") or {}
+    author_login = str(author.get("login") or "") if isinstance(author, dict) else ""
+    is_cross_repository = bool(data.get("isCrossRepository", False))
+    author_association = fetch_author_association(pr_number, runner=runner)
     return PRView(
         number=int(data.get("number", pr_number)),
         state=str(data.get("state", "OPEN")),
@@ -413,7 +546,83 @@ def view_pr(pr_number: int, *, runner: PRRunner | None = None) -> PRView:
         deletions=int(data.get("deletions", 0)),
         checks_passing=checks_passing,
         is_draft=bool(data.get("isDraft", False)),
+        is_cross_repository=is_cross_repository,
+        author_login=author_login,
+        author_association=author_association,
     )
+
+
+def fetch_author_association(
+    pr_number: int, *, runner: PRRunner | None = None
+) -> str | None:
+    """Read ``author_association`` for ``pr_number`` via the GitHub REST API.
+
+    ``gh pr view --json`` does not expose this field even though the
+    underlying REST endpoint does, so callers reach for ``gh api
+    repos/<owner>/<repo>/pulls/<num>`` directly. Returns the upper-case
+    association string (e.g. ``"MEMBER"``, ``"COLLABORATOR"``, ``"NONE"``)
+    on success and ``None`` on any failure mode. Callers treat ``None``
+    as untrusted so transient ``gh`` outages fail closed.
+    """
+    runner = runner or subprocess.run
+    owner_repo = _resolve_owner_repo(runner=runner)
+    if owner_repo is None:
+        return None
+    try:
+        result = _run(
+            runner,
+            ["gh", "api", f"repos/{owner_repo}/pulls/{pr_number}"],
+            allow_fail=True,
+        )
+    except GitOpsError:
+        return None
+    if result is None or result.returncode != 0 or not result.stdout.strip():
+        return None
+    try:
+        data = _json.loads(result.stdout)
+    except (ValueError, TypeError):
+        return None
+    assoc = data.get("author_association")
+    if not isinstance(assoc, str) or not assoc.strip():
+        return None
+    return assoc.strip().upper()
+
+
+def is_pr_trusted(
+    *,
+    is_cross_repository: bool,
+    association: str | None,
+    author_login: str,
+    config: ConflictResolverConfig,
+) -> bool:
+    """Return True iff the PR's author may drive the enforce-mode path.
+
+    Trust requires *all* of:
+
+    1. The head ref lives in this repo (``is_cross_repository`` is False).
+       Fork PRs are never trusted, even when the author also belongs to
+       the trusted set — GitHub's ``pull_request`` event fires from forks
+       and an attacker can name their fork branch anything they like
+       (including a synthetic ``claude/daily-…`` shape).
+    2. Either ``association`` (upper-cased upstream) is in
+       ``config.trusted_associations``, or ``author_login`` is in the
+       explicit ``config.trusted_authors`` allowlist. The login check is
+       case-sensitive against the canonical form ``gh`` returns.
+
+    Defense in depth: any caller that calls ``gh pr merge --squash --auto``
+    is expected to pass through the gate, which calls this helper. The
+    structural guarantee that orchestrators only invoke
+    ``maybe_automerge.py`` on PRs they themselves created remains as
+    belt-and-suspenders, but the trust check is no longer the only thing
+    protecting auto-merge — this function is.
+    """
+    if is_cross_repository:
+        return False
+    if association is None:
+        return False
+    if association in config.trusted_associations:
+        return True
+    return bool(author_login) and author_login in config.trusted_authors
 
 
 def comment_pr(
