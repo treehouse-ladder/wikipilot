@@ -153,6 +153,40 @@ class ConflictResolverConfig:
 
 
 @dataclass(frozen=True)
+class FrontierModelsConfig:
+    """``[frontier_models]`` — roster, benchmarks, cost fields, and the
+    human-curated one-line "what this means for me" gloss per column.
+
+    Owned by the Daily Research routine. Three users touch this block:
+
+    - The ``frontier-models`` ``topic-researcher`` sweeps every entity in
+      ``roster`` and re-confirms every ``benchmarks`` / ``cost_fields``
+      value against current sources, emitting ``entity_field_updates`` in
+      its proposal.
+    - The ``compare`` renderer reads ``benchmark_glosses`` / ``cost_glosses``
+      when ``show_glosses: true`` is set on a comparison page; it also
+      uses ``cost_fields`` to invert the leader ordering (lower-is-better)
+      under ``highlight_leaders: true``.
+    - The ``daily-brief-curator`` reuses the glosses verbatim (or
+      near-paraphrase) when explaining a ``## Leader changes`` entry,
+      so the same one-liner the user sees on the leaderboard shows up
+      in the brief — no on-the-fly reinterpretation.
+
+    Validation is strict on glosses: every entry in ``benchmarks`` and
+    ``cost_fields`` MUST have a matching key in ``benchmark_glosses`` /
+    ``cost_glosses``. Adding a benchmark without writing its gloss fails
+    config load on purpose — forces the user to explain to themselves
+    what good-at-this means before the column ships.
+    """
+
+    roster: tuple[str, ...] = ()
+    benchmarks: tuple[str, ...] = ()
+    cost_fields: tuple[str, ...] = ()
+    benchmark_glosses: dict[str, str] = field(default_factory=dict)
+    cost_glosses: dict[str, str] = field(default_factory=dict)
+
+
+@dataclass(frozen=True)
 class WikipilotConfig:
     """Parsed ``wikipilot.toml``."""
 
@@ -163,6 +197,7 @@ class WikipilotConfig:
     conflict_resolver: ConflictResolverConfig = field(default_factory=ConflictResolverConfig)
     images: ImagesConfig = field(default_factory=ImagesConfig)
     branches: BranchesConfig = field(default_factory=BranchesConfig)
+    frontier_models: FrontierModelsConfig = field(default_factory=FrontierModelsConfig)
 
 
 def load_topics(path: Path | str) -> list[TopicConfig]:
@@ -304,6 +339,9 @@ def _config_from_dict(data: dict[str, Any], *, source: str) -> WikipilotConfig:
         images_data = {**images_data, "allowed_mimes": tuple(images_data["allowed_mimes"])}
     images = ImagesConfig(**images_data)
     branches = BranchesConfig(**(data.get("branches", {}) or {}))
+    frontier_models = _frontier_models_from_dict(
+        data.get("frontier_models", {}) or {}, source=source
+    )
     try:
         return WikipilotConfig(
             automerge_common=common,
@@ -313,6 +351,7 @@ def _config_from_dict(data: dict[str, Any], *, source: str) -> WikipilotConfig:
             conflict_resolver=conflict_resolver,
             images=images,
             branches=branches,
+            frontier_models=frontier_models,
         )
     except TypeError as exc:
         # Surface unknown keys with the file path attached.
@@ -341,6 +380,79 @@ def _conflict_resolver_from_dict(data: dict[str, Any], *, source: str) -> Confli
         trusted_associations=tuple(associations),
         trusted_authors=tuple(authors),
     )
+
+
+def _frontier_models_from_dict(data: dict[str, Any], *, source: str) -> FrontierModelsConfig:
+    """Parse ``[frontier_models]`` with strict gloss validation.
+
+    Why strict: a benchmark column without a one-line "what good-at-this
+    means for me" gloss is exactly the kind of acronym soup the daily
+    brief redesign exists to eliminate. Failing config load here forces
+    the user to write the gloss before the column ships.
+    """
+    known_keys = {
+        "roster",
+        "benchmarks",
+        "cost_fields",
+        "benchmark_glosses",
+        "cost_glosses",
+    }
+    unknown = set(data.keys()) - known_keys
+    if unknown:
+        raise ConfigError(f"{source}: [frontier_models] has unknown keys: {sorted(unknown)}")
+    roster = _coerce_str_list(
+        data.get("roster", []), where=f"{source}: [frontier_models].roster"
+    )
+    benchmarks = _coerce_str_list(
+        data.get("benchmarks", []), where=f"{source}: [frontier_models].benchmarks"
+    )
+    cost_fields = _coerce_str_list(
+        data.get("cost_fields", []), where=f"{source}: [frontier_models].cost_fields"
+    )
+    benchmark_glosses = _coerce_str_dict(
+        data.get("benchmark_glosses", {}) or {},
+        where=f"{source}: [frontier_models.benchmark_glosses]",
+    )
+    cost_glosses = _coerce_str_dict(
+        data.get("cost_glosses", {}) or {},
+        where=f"{source}: [frontier_models.cost_glosses]",
+    )
+    missing_benchmark_glosses = [b for b in benchmarks if b not in benchmark_glosses]
+    if missing_benchmark_glosses:
+        raise ConfigError(
+            f"{source}: [frontier_models.benchmark_glosses] is missing entries for "
+            f"{sorted(missing_benchmark_glosses)} (every benchmark in `benchmarks` must "
+            "have a one-line gloss — see CLAUDE.md `Comparison pages`)"
+        )
+    missing_cost_glosses = [c for c in cost_fields if c not in cost_glosses]
+    if missing_cost_glosses:
+        raise ConfigError(
+            f"{source}: [frontier_models.cost_glosses] is missing entries for "
+            f"{sorted(missing_cost_glosses)} (every field in `cost_fields` must "
+            "have a one-line gloss — see CLAUDE.md `Comparison pages`)"
+        )
+    return FrontierModelsConfig(
+        roster=tuple(roster),
+        benchmarks=tuple(benchmarks),
+        cost_fields=tuple(cost_fields),
+        benchmark_glosses=dict(benchmark_glosses),
+        cost_glosses=dict(cost_glosses),
+    )
+
+
+def _coerce_str_dict(value: Any, *, where: str) -> dict[str, str]:
+    if value is None:
+        return {}
+    if not isinstance(value, dict):
+        raise ConfigError(f"{where} must be a mapping (got {type(value).__name__})")
+    out: dict[str, str] = {}
+    for key, item in value.items():
+        if not isinstance(key, str):
+            raise ConfigError(f"{where} keys must be strings (got {type(key).__name__})")
+        if not isinstance(item, str) or not item.strip():
+            raise ConfigError(f"{where}[{key!r}] must be a non-empty string")
+        out[key] = item
+    return out
 
 
 def _coerce_trusted_associations(value: Any, *, where: str) -> list[str]:

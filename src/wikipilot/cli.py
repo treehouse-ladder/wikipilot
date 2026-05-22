@@ -531,10 +531,27 @@ def compare_cmd() -> None:
 )
 @click.option("--title", required=True, help="Human-readable title for the comparison page.")
 @click.option(
+    "--highlight-leaders/--no-highlight-leaders",
+    default=False,
+    help="Bold per-column #1, italic #2. Cost-field columns (from wikipilot.toml [frontier_models].cost_fields) invert ordering.",
+)
+@click.option(
+    "--show-glosses/--no-show-glosses",
+    default=False,
+    help="Render a 'What each column means for me' legend above the table, pulled from wikipilot.toml [frontier_models].",
+)
+@click.option(
     "--vault",
     "vault_path",
     type=click.Path(exists=True, file_okay=False, dir_okay=True, path_type=Path),
     default=DEFAULT_WIKI_PATH,
+    show_default=True,
+)
+@click.option(
+    "--config",
+    "config_path",
+    type=click.Path(file_okay=True, dir_okay=False, path_type=Path),
+    default=Path("wikipilot.toml"),
     show_default=True,
 )
 def compare_new_cmd(
@@ -542,12 +559,18 @@ def compare_new_cmd(
     entity_csv: str,
     fields_csv: str,
     title: str,
+    highlight_leaders: bool,
+    show_glosses: bool,
     vault_path: Path,
+    config_path: Path,
 ) -> None:
     """Create a new comparison page at wiki/comparisons/COMPARISON_SLUG.md."""
     vault = Vault.at(vault_path)
     entities = [s.strip() for s in entity_csv.split(",") if s.strip()]
     fields = [f.strip() for f in fields_csv.split(",") if f.strip()]
+    config = load_wikipilot_config(config_path) if config_path.exists() else None
+    cost_fields = tuple(config.frontier_models.cost_fields) if config else ()
+    glosses = _merge_glosses(config)
     try:
         path = write_comparison_page(
             vault,
@@ -555,6 +578,10 @@ def compare_new_cmd(
             title=title,
             entity_slugs=entities,
             fields=fields,
+            highlight_leaders=highlight_leaders,
+            show_glosses=show_glosses,
+            cost_fields=cost_fields,
+            glosses=glosses,
         )
     except WikiError as exc:
         click.echo(f"ERROR: {exc}", err=True)
@@ -571,19 +598,49 @@ def compare_new_cmd(
     default=DEFAULT_WIKI_PATH,
     show_default=True,
 )
-def compare_regen_cmd(comparison_slug: str, vault_path: Path) -> None:
+@click.option(
+    "--config",
+    "config_path",
+    type=click.Path(file_okay=True, dir_okay=False, path_type=Path),
+    default=Path("wikipilot.toml"),
+    show_default=True,
+)
+def compare_regen_cmd(comparison_slug: str, vault_path: Path, config_path: Path) -> None:
     """Regenerate the body of an existing comparison from its frontmatter.
 
     Idempotent: bumps ``last_updated`` to today, leaves ``last_verified``
     untouched (the underlying entity pages may not have been re-checked).
+    Reads ``wikipilot.toml [frontier_models]`` for the ``cost_fields``
+    ordering inversion and the gloss legend (when the comparison page's
+    frontmatter declares ``highlight_leaders: true`` or ``show_glosses: true``).
     """
     vault = Vault.at(vault_path)
+    config = load_wikipilot_config(config_path) if config_path.exists() else None
+    cost_fields = tuple(config.frontier_models.cost_fields) if config else ()
+    glosses = _merge_glosses(config)
     try:
-        path = regenerate_comparison(vault, comparison_slug)
+        path = regenerate_comparison(
+            vault,
+            comparison_slug,
+            cost_fields=cost_fields,
+            glosses=glosses,
+        )
     except WikiError as exc:
         click.echo(f"ERROR: {exc}", err=True)
         sys.exit(2)
     click.echo(f"Regenerated comparison: {path.relative_to(vault.root.parent)}")
+
+
+def _merge_glosses(config: Any) -> dict[str, str]:
+    """Merge ``[frontier_models].benchmark_glosses`` + ``cost_glosses``.
+
+    Returns an empty dict when no config is available; otherwise a single
+    flat mapping the comparison renderer can index by column name.
+    """
+    if config is None:
+        return {}
+    fm = config.frontier_models
+    return {**fm.benchmark_glosses, **fm.cost_glosses}
 
 
 @main.command("research")

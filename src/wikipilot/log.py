@@ -15,7 +15,7 @@ so the log is greppable with ``grep "^## \[" wiki/log.md`` (Karpathy's idiom).
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
 
@@ -30,6 +30,17 @@ class RunReport:
 
     Stored on disk as a regular wiki page (frontmatter + markdown body) so
     Obsidian renders it natively and the lint can validate frontmatter.
+
+    The render order is intentionally editorial-first: the curator's
+    ``## Today's brief``, ``## Leader changes`` (cost / benchmark #1 swaps),
+    ``## Frontier model snapshot`` (transcluded comparison tables),
+    ``## Watchlist``, and ``## Notable findings by topic`` come BEFORE the
+    accounting tail (which lives under a collapsible ``<details>``). The
+    user is the primary reader; counts and PR links are bookkeeping.
+
+    Legacy callers that don't populate the curator fields still produce a
+    valid report — the new sections render as ``_None._`` or are omitted
+    cleanly when their input is empty.
     """
 
     routine: str
@@ -44,6 +55,20 @@ class RunReport:
     new_disputes: list[str]
     new_open_questions: list[str]
     notes: str = ""
+    # Curator output (see `.claude/agents/daily-brief-curator.md`).
+    # Each is already-formatted markdown that begins with its `## Heading`.
+    brief: str = ""
+    leader_changes: str = ""
+    watchlist: str = ""
+    # Already-formatted markdown showing the regenerated cost + benchmark
+    # comparison tables. Typically assembled by the orchestrator from the
+    # body (minus frontmatter) of `wiki/comparisons/cost-comparison.md` and
+    # `wiki/comparisons/benchmark-leaders.md`.
+    model_snapshot: str = ""
+    # One markdown bullet per topic — the head sentence of the
+    # researcher's `summary_addition`, prefixed with `[[topic-id]]`. Renders
+    # as `## Notable findings by topic`.
+    notable_findings_by_topic: list[str] = field(default_factory=list)
 
 
 @dataclass(frozen=True)
@@ -139,46 +164,98 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 
 def _render_run_report_body(report: RunReport) -> str:
-    sections = [
-        "## Summary",
-        f"- Routine: `{report.routine}`",
-        f"- Run id: `{report.run_id}`",
-        f"- Topics processed: {len(report.topics_processed)}",
-        f"- Sources added: {len(report.sources_added)}",
-        f"- Pages touched: {len(report.pages_touched)}",
-    ]
+    """Render a Daily Research report body, editorial-first.
+
+    Section order (top is what the user reads first):
+
+    1. ``## Today's brief`` — the curator's must-reads.
+    2. ``## Leader changes`` — only when a #1 swapped today.
+    3. ``## Frontier model snapshot`` — the regenerated cost + benchmark tables.
+    4. ``## Watchlist`` — the curator's high-signal-but-not-must-read items.
+    5. ``## Notable findings by topic`` — one bullet per topic.
+    6. ``## Disputes & open questions`` — append-only state, all topics.
+    7. ``## Run accounting`` (``<details>``) — counts, PRs, runtime, notes.
+    """
+    sections: list[str] = []
+    if report.brief.strip():
+        sections.append(report.brief.strip())
+    else:
+        sections.append("## Today's brief\n\n_Curator produced no must-read items today._")
+    if report.leader_changes.strip():
+        sections.append("")
+        sections.append(report.leader_changes.strip())
+    if report.model_snapshot.strip():
+        sections.append("")
+        sections.append("## Frontier model snapshot")
+        sections.append("")
+        sections.append(report.model_snapshot.strip())
+    if report.watchlist.strip():
+        sections.append("")
+        sections.append(report.watchlist.strip())
+    if report.notable_findings_by_topic:
+        sections.append("")
+        sections.append("## Notable findings by topic")
+        sections.append("")
+        sections.append("\n".join(report.notable_findings_by_topic))
+    sections.append("")
+    sections.append("## Disputes & open questions")
+    sections.append("")
+    sections.append("### New disputes")
+    sections.append(_bullet_list(report.new_disputes) or "_None._")
+    sections.append("")
+    sections.append("### New open questions")
+    sections.append(_bullet_list(report.new_open_questions) or "_None._")
+    sections.append("")
+    sections.append(_render_run_accounting(report))
+    return "\n".join(sections) + "\n"
+
+
+def _render_run_accounting(report: RunReport) -> str:
+    """Render the collapsible bookkeeping block at the bottom of the report.
+
+    Wrapped in ``<details>`` so the editorial top of the page stays the
+    landing surface in Obsidian. Counts, PR links, runtime, token usage,
+    and notes all live here — they're useful for audit and recovery but
+    not the user's primary read.
+    """
+    inner: list[str] = ["", "## Run accounting", ""]
+    inner.append(f"- Routine: `{report.routine}`")
+    inner.append(f"- Run id: `{report.run_id}`")
+    inner.append(f"- Topics processed: {len(report.topics_processed)}")
+    inner.append(f"- Sources added: {len(report.sources_added)}")
+    inner.append(f"- Pages touched: {len(report.pages_touched)}")
     if report.runtime_seconds is not None:
-        sections.append(f"- Runtime: {report.runtime_seconds:.1f}s")
+        inner.append(f"- Runtime: {report.runtime_seconds:.1f}s")
     if report.token_usage:
         usage_lines = [
             f"  - {model}: {tokens:,}" for model, tokens in sorted(report.token_usage.items())
         ]
-        sections.append("- Token usage by tier:\n" + "\n".join(usage_lines))
-    sections.extend(
+        inner.append("- Token usage by tier:\n" + "\n".join(usage_lines))
+    inner.extend(
         [
             "",
-            "## Topics processed",
+            "### Topics processed",
             _bullet_list(report.topics_processed) or "_None._",
             "",
-            "## Sources added",
+            "### Sources added",
             _bullet_list(report.sources_added) or "_None._",
             "",
-            "## Pages touched",
+            "### Pages touched",
             _bullet_list(report.pages_touched) or "_None._",
             "",
-            "## Pull requests",
+            "### Pull requests",
             _bullet_list(report.pr_links) or "_None._",
-            "",
-            "## New disputes",
-            _bullet_list(report.new_disputes) or "_None._",
-            "",
-            "## New open questions",
-            _bullet_list(report.new_open_questions) or "_None._",
         ]
     )
     if report.notes:
-        sections.extend(["", "## Notes", report.notes.strip()])
-    return "\n".join(sections) + "\n"
+        inner.extend(["", "### Notes", report.notes.strip()])
+    body = "\n".join(inner)
+    return (
+        "<details>\n"
+        "<summary>Run accounting (counts, PRs, runtime, notes)</summary>\n"
+        f"{body}\n"
+        "\n</details>"
+    )
 
 
 def _render_health_report_body(report: HealthReport) -> str:

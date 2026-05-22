@@ -165,8 +165,45 @@ Then for every topic in `merged_topics`:
 
 After all topics are aggregated:
 
-3. **Write `wiki/reports/${DATE}.md`** via `wikipilot.log.write_run_report` with the merged topics in `topics_processed`, every new source path in `sources_added`, every page touched (across all topic PRs) in `pages_touched`, every PR URL in `pr_links`, and any `failed_topics` listed in `notes`.
-4. **Append the final summary log entry**: `## [${DATE}] daily | <N> topics, <total> sources, <total> pages`.
+3. **Regenerate the persistent comparison snapshots.** The `frontier-models` topic-researcher has (in Step 3) populated `entity_field_updates` for any cost/benchmark fields that moved today; the `wiki-merger` applied those to entity frontmatter on `main` during Step 4. Now regenerate both comparison pages from the freshly-updated entity frontmatter, then read each one's *body* (minus frontmatter) for the curator and the report snapshot:
+
+   ```bash
+   uv run wikipilot compare regen cost-comparison
+   uv run wikipilot compare regen benchmark-leaders
+   COST_TABLE=$(awk '/^---$/{c++; next} c>=2' wiki/comparisons/cost-comparison.md)
+   BENCH_TABLE=$(awk '/^---$/{c++; next} c>=2' wiki/comparisons/benchmark-leaders.md)
+   ```
+
+4. **Dispatch the `daily-brief-curator` (Opus) subagent.** Assemble its inputs:
+
+   - `PROPOSALS_PATH`: write every merged proposal (the JSON each `topic-researcher` returned in Step 3) to a tempfile.
+   - `COST_TABLE_PATH` / `BENCHMARK_TABLE_PATH`: `wiki/comparisons/cost-comparison.md` / `benchmark-leaders.md` (already regenerated above).
+   - `PRIOR_REPORT_PATH`: `wiki/reports/$(date -u -d yesterday +%Y-%m-%d).md` if it exists, otherwise omit.
+   - `TODAY`: `${DATE}`.
+
+   ```
+   Task(agent="daily-brief-curator", input={
+     proposals_path: <tempfile>,
+     cost_table_path: "wiki/comparisons/cost-comparison.md",
+     benchmark_table_path: "wiki/comparisons/benchmark-leaders.md",
+     prior_report_path: "<resolved-or-empty>",
+     today: "${DATE}",
+   })
+   ```
+
+   The curator returns JSON with `todays_brief`, `leader_changes`, `watchlist` — see `.claude/agents/daily-brief-curator.md` for the schema and the citation/gloss-reuse hard rules.
+
+5. **Assemble the model snapshot.** Concatenate the two table bodies into one markdown string. The orchestrator passes this as `model_snapshot` to `write_run_report`:
+
+   ```bash
+   MODEL_SNAPSHOT="### Cost\n\n${COST_TABLE}\n\n### Benchmarks\n\n${BENCH_TABLE}"
+   ```
+
+6. **Build the per-topic `notable_findings_by_topic` list.** One markdown bullet per merged topic, of the form `- **[[<topic-id>]]**: <first sentence of the proposal's primary `summary_addition`> [[<top-cited-source-slug>]].`. The curator's `## Today's brief` is for cross-topic editorial — this section keeps the per-topic head-line accessible without re-reading the proposals.
+
+7. **Write `wiki/reports/${DATE}.md`** via `wikipilot.log.write_run_report` with the merged topics in `topics_processed`, every new source path in `sources_added`, every page touched (across all topic PRs) in `pages_touched`, every PR URL in `pr_links`, any `failed_topics` listed in `notes`, AND the curator output (`brief`, `leader_changes`, `watchlist`), the `model_snapshot`, and `notable_findings_by_topic` populated as above.
+
+8. **Append the final summary log entry**: `## [${DATE}] daily | <N> topics, <total> sources, <total> pages`.
 
 Then commit, push, open the report PR, and gate it the same way as every other route:
 
