@@ -242,11 +242,12 @@ The gate also reads `[automerge.common]`:
 
 ## Recovering stranded PRs
 
-When a Daily Research session crashes mid-loop (orchestrator OOMs, networking blip, the cloud env terminates the session before the per-topic merge series completes, etc.), the topic PRs that already landed are left **open with green CI, no auto-merge queued, and no gate-blocked comment** — because `scripts/maybe_automerge.py` never ran on them. The PR Watcher routine catches this case on the next `pull_request.synchronize` event, but if you have a backlog from before the watcher was wired up (or the watcher itself was unhealthy), recover by hand:
+When a Daily Research session crashes mid-loop (orchestrator OOMs, networking blip, the cloud env terminates the session before the per-topic merge series completes, etc.), the topic PRs that already landed are left **open with no auto-merge queued and no gate-blocked comment** — because `scripts/maybe_automerge.py` never ran on them. The Conflict Resolver routine doesn't fix this case (it only triggers on push to `main`, and these PRs never landed); use `recover-prs` to retry the gate:
 
 ```bash
-# Default: enumerates every open claude/* PR to main and runs apply_gate in
-# enforce mode, inferring the route from the branch template per PR.
+# Default: enumerates every open claude/* PR to main and runs apply_gate
+# (full gate, including CI) in enforce mode, inferring the route from
+# the branch template per PR.
 uv run wikipilot recover-prs
 
 # Preview first without enabling auto-merge / posting comments.
@@ -256,31 +257,34 @@ uv run wikipilot recover-prs --dry-run
 uv run wikipilot recover-prs --base release-2026-05
 ```
 
-For each PR, the command prints `pr_number | route | decision | reasons` so you can see at a glance which ones auto-merged and which got a checklist comment. Re-runnable: the gate is idempotent, so a stuck-on-comment PR can be retried after pushing a fix.
+For each PR, the command prints `pr_number | route | decision | reasons` so you can see at a glance which ones auto-merged and which got a checklist comment. Re-runnable: the gate is idempotent, so a stuck-on-comment PR can be retried after pushing a fix. The centralized trust check applies here too — `apply_gate` will refuse to queue `--auto` on an untrusted PR even if every other criterion passes.
 
-If a PR is stranded *and* the watcher routine itself is misbehaving, fall back to the per-PR shim:
+If a PR is stranded *and* `recover-prs` won't unblock it (e.g. you want to skip the CI check because the static gate is what failed), fall back to the per-PR shim — it calls `apply_static_gate`, which mirrors what `maybe_automerge.py` does in-routine:
 
 ```bash
 python scripts/maybe_automerge.py --pr <num> --route daily_research
 ```
 
-## PR Watcher cost budget
+## Conflict Resolver cost budget
 
-The PR Watcher fires one cloud-routine session per `pull_request.opened` and per `pull_request.synchronize` event matching its filters (`base=main`, `is_draft=false`, `is_merged=false`). With the current vault:
+The Conflict Resolver fires one Sonnet orchestrator session per push to `main` matching the trigger filter (`branch=main`). With the current vault:
 
-| Source | Sessions per day (typical) |
-|---|---|
-| Daily Research | one per topic = 5–8 |
-| Wiki Query | one per question = 0–3 |
-| Weekly Health | one per week, amortized = <1 |
-| Self-heal push after CI fix | one per fix = 0–3 |
-| Human PRs to `main` | one per PR open + one per push = 0–10 |
+| Source | Push events per day (typical) | Orchestrator fires |
+|---|---|---|
+| Daily Research per-topic PRs landing | 5–8 | 5–8 (most resolve to empty scan) |
+| Daily Research report PR landing | 1 | 1 |
+| Wiki Query PRs landing | 0–3 | 0–3 |
+| Weekly Health PR landing | ~1/7 day | ~0 |
+| Human pushes to `main` | 0–5 | 0–5 |
+| **Total Sonnet sessions per day** | **6–17** | **6–17** |
+| Opus subagent dispatches per day | 0–3 (only when scan returns non-empty) | |
 
-Comfortably below Max (15/day) and Team/Enterprise (25/day) caps in normal operation. If you're consistently exceeding caps:
+Comfortably below Max (15/day) and Team/Enterprise (25/day) caps in normal operation. 90%+ of orchestrator fires scan to empty and exit in <10s, burning minimal Sonnet tokens; Opus only fires on actual conflict work.
 
-1. Check `gh pr list --state open --base main --head 'claude/*' --json title,createdAt,updatedAt` for PRs being repeatedly synchronized — every push is a new session. A flaky self-heal that keeps re-pushing the same fix burns sessions fast.
-2. Lower `[automerge.pr_watcher].self_heal_max_attempts` in [`wikipilot.toml`](../wikipilot.toml) (default 3 → try 2) to cap how many heal sessions a single PR can consume.
-3. Add a routine-UI Author filter excluding bots if a third-party bot is opening unrelated PRs to `main`.
+If you're consistently exceeding caps:
+
+1. Check `gh pr list --state open --base main --head 'claude/*' --json title,mergeStateStatus` for PRs stuck in `DIRTY` / `BEHIND` — if the same PR is dispatched on every push because the resolver can't unblock it, look at the `conflict-resolver` subagent's reported `reason` to decide whether to merge by hand or close the PR.
+2. Add a routine-UI Author filter excluding bots if a third-party bot is pushing unrelated commits to `main`.
 
 ## What to do when human-only file changes block auto-merge
 

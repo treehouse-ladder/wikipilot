@@ -144,97 +144,92 @@ def test_weekly_health_renders_pr_body_via_helper() -> None:
 
 
 # ---------------------------------------------------------------------------
-# PR Watcher routine (prompts/pr_watcher.md)
+# Conflict Resolver routine (prompts/conflict_resolver.md)
 # ---------------------------------------------------------------------------
 
 
-def test_pr_watcher_prompt_exists() -> None:
-    body = _read("pr_watcher")
-    assert body.strip(), "pr_watcher.md must not be empty"
+def test_conflict_resolver_prompt_exists() -> None:
+    body = _read("conflict_resolver")
+    assert body.strip(), "conflict_resolver.md must not be empty"
 
 
 @pytest.mark.parametrize(
     "required",
     [
         "preflight.py",
-        "gh pr checks --watch",
-        "scripts/pr_watcher_gate.py",
-        "wiki-linter",
-        "wikipilot:heal-attempt-",
+        "scripts/conflict_resolver_scan.py",
+        "conflict-resolver",
         "claude/",
-        "read_only",
-        "enforce",
-        "Is merged = false",
-        "Is draft = false",
-        "Base branch = main",
-        "pull_request.opened",
-        "pull_request.synchronize",
-        "HEAL_NEEDED",
-        "HEAL_CAPPED",
-        "self_heal_max_attempts",
-        # Trust model — must stay visible so a future edit doesn't silently
-        # drop the fork/author guard.
+        "Branch equals main",
+        "Push",
+        "apply_static_gate",
+        "is_pr_trusted",
         "trusted_associations",
         "trusted_authors",
-        "isCrossRepository",
-        "author_association",
+        "[automerge.conflict_resolver]",
+        # The merge state shapes the scan filters on:
+        "DIRTY",
+        "BEHIND",
+        # Sequential-only dispatch is the core safety property:
+        "Sequential, not parallel",
     ],
 )
-def test_pr_watcher_mentions_each_required_step(required: str) -> None:
-    body = _read("pr_watcher")
+def test_conflict_resolver_mentions_each_required_step(required: str) -> None:
+    body = _read("conflict_resolver")
     assert required in body, (
-        f"pr_watcher.md must mention {required!r} so the routine follows the documented workflow"
+        f"conflict_resolver.md must mention {required!r} so the routine "
+        "follows the documented workflow"
     )
 
 
-def test_pr_watcher_documents_fail_closed_trust_check() -> None:
+def test_conflict_resolver_documents_fail_closed_trust_check() -> None:
     """The prompt must call out that the trust check fails closed — a missing
-    or ambiguous author signal demotes the PR to read_only, never enforce.
-    This is the security-critical property; if a refactor flips it to fail
+    or ambiguous author signal keeps the PR out of the dispatch list. This
+    is the security-critical property; if a refactor flips it to fail
     open, the prompt assertion catches the drift before it ships."""
-    body = _read("pr_watcher")
+    body = _read("conflict_resolver")
     assert "fails closed" in body or "fail closed" in body, (
-        "pr_watcher.md must explicitly document fail-closed semantics for the trust check"
+        "conflict_resolver.md must explicitly document fail-closed semantics for the trust check"
     )
 
 
-def test_pr_watcher_documents_no_orchestrator_trust_override() -> None:
+def test_conflict_resolver_documents_no_orchestrator_trust_override() -> None:
     """The prompt must forbid the orchestrator from overriding the trust check
     in-session. Trust changes go through wikipilot.toml, not the LLM."""
-    body = _read("pr_watcher")
-    assert "Never override the trust check" in body
+    body = _read("conflict_resolver")
+    assert "Never bypass the centralized trust check" in body
 
 
-def test_pr_watcher_uses_correct_trigger_filters() -> None:
-    """All three webhook filters (base, draft, merged) must be present together."""
-    body = _read("pr_watcher")
-    assert "Base branch = main" in body
-    assert "Is draft = false" in body
-    assert "Is merged = false" in body
+def test_conflict_resolver_uses_correct_trigger_filter() -> None:
+    """The push-to-main trigger is the core architecture decision — the
+    routine fires once per push, not once per PR event."""
+    body = _read("conflict_resolver")
+    assert "Branch equals main" in body
+    assert "Push" in body
 
 
-def test_pr_watcher_caps_self_heal_attempts() -> None:
-    """The prompt must reference both the config knob and a default attempt cap."""
-    body = _read("pr_watcher")
-    assert "self_heal_max_attempts" in body
-    # Either the literal 3 (default) or the config token must be present so
-    # operators know the cap is finite.
-    assert "3" in body or "[automerge.pr_watcher]" in body
-
-
-def test_pr_watcher_dedupe_key_is_documented() -> None:
-    body = _read("pr_watcher")
-    assert "wikipilot:gate" in body, (
-        "pr_watcher.md must document the dedupe key so future edits don't collide with it"
+def test_conflict_resolver_dispatches_sequentially() -> None:
+    """Parallel rebase races would defeat the whole purpose — the prompt
+    must explicitly forbid them."""
+    body = _read("conflict_resolver")
+    assert "Sequential, not parallel" in body, (
+        "conflict_resolver.md must explicitly forbid parallel dispatch"
     )
 
 
-def test_pr_watcher_skips_index_wiki_for_cost() -> None:
-    """The watcher is fire-many-times-per-day; it intentionally skips the qmd index step."""
-    body = _read("pr_watcher").lower()
-    # We want the prompt to explicitly call out that it does NOT need index-wiki.
+def test_conflict_resolver_skips_index_wiki_for_cost() -> None:
+    """The orchestrator fires once per push; it intentionally skips the qmd index step."""
+    body = _read("conflict_resolver").lower()
     assert "index-wiki" in body
     assert "do not need" in body or "intentionally" in body or "skip" in body
+
+
+def test_conflict_resolver_skips_log_on_no_op_scans() -> None:
+    """Logging every push fire would flood wiki/log.md. The prompt must
+    explicitly call out the "scan empty → no log entry" rule so the
+    no-op path stays cheap."""
+    body = _read("conflict_resolver")
+    assert "scan returned empty" in body or "Skip the log entry" in body
 
 
 def test_daily_runner_enforces_citation_discipline() -> None:

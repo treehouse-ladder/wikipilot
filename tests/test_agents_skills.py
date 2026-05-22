@@ -28,6 +28,7 @@ EXPECTED_AGENTS: dict[str, str] = {
     "wiki-linter": "claude-haiku-4-5",
     "query-answerer": "claude-opus-4-7",
     "wiki-disputes-scanner": "claude-sonnet-4-5",
+    "conflict-resolver": "claude-opus-4-7",
 }
 
 EXPECTED_SKILLS: tuple[str, ...] = (

@@ -854,8 +854,9 @@ def recover_prs_cmd(
     \b
     1. A content routine crashed mid-loop and left PRs open with green CI but
        no gate decision recorded (no auto-merge queued, no checklist comment).
-    2. The PR Watcher routine is itself unhealthy and needs a manual one-shot
-       sweep to clear the backlog.
+    2. The Conflict Resolver routine is itself unhealthy (or hasn't fired
+       because a stranded PR never landed on main) and needs a manual
+       one-shot sweep to clear the backlog.
 
     Per-PR route is inferred from ``[branches]`` templates in wikipilot.toml.
     Heads that match no template are listed with ``route=None`` and skipped.

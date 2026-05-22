@@ -172,109 +172,54 @@ class TestLoadWikipilotConfig:
         assert config.daily_research.max_total_diff_lines_per_topic == 3000
 
 
-class TestPRWatcherConfig:
-    """Coverage for the ``[automerge.pr_watcher]`` block added with the watcher routine."""
+class TestConflictResolverConfig:
+    """Coverage for the ``[automerge.conflict_resolver]`` trust-model block.
 
-    def test_block_parses(self, tmp_path: Path) -> None:
-        path = tmp_path / "wikipilot.toml"
-        path.write_text(
-            "[automerge.pr_watcher]\nci_wait_timeout_sec = 600\nself_heal_max_attempts = 2\n",
-            encoding="utf-8",
-        )
-        config = load_wikipilot_config(path)
-        assert config.pr_watcher.ci_wait_timeout_sec == 600
-        assert config.pr_watcher.self_heal_max_attempts == 2
-
-    def test_defaults_when_block_omitted(self, tmp_path: Path) -> None:
-        path = tmp_path / "wikipilot.toml"
-        path.write_text("[automerge.common]\nrequire_lint_green = true\n", encoding="utf-8")
-        config = load_wikipilot_config(path)
-        assert config.pr_watcher.ci_wait_timeout_sec == 1200
-        assert config.pr_watcher.self_heal_max_attempts == 3
-
-    def test_defaults_when_config_missing(self, tmp_path: Path) -> None:
-        config = load_wikipilot_config(tmp_path / "missing.toml")
-        assert config.pr_watcher.ci_wait_timeout_sec == 1200
-        assert config.pr_watcher.self_heal_max_attempts == 3
-
-    def test_negative_timeout_rejected(self, tmp_path: Path) -> None:
-        path = tmp_path / "wikipilot.toml"
-        path.write_text(
-            "[automerge.pr_watcher]\nci_wait_timeout_sec = -1\n",
-            encoding="utf-8",
-        )
-        with pytest.raises(ConfigError, match="positive integer"):
-            load_wikipilot_config(path)
-
-    def test_negative_attempts_rejected(self, tmp_path: Path) -> None:
-        path = tmp_path / "wikipilot.toml"
-        path.write_text(
-            "[automerge.pr_watcher]\nself_heal_max_attempts = 0\n",
-            encoding="utf-8",
-        )
-        with pytest.raises(ConfigError, match="positive integer"):
-            load_wikipilot_config(path)
-
-    def test_unknown_key_rejected(self, tmp_path: Path) -> None:
-        path = tmp_path / "wikipilot.toml"
-        path.write_text(
-            "[automerge.pr_watcher]\nbogus_field = 1\n",
-            encoding="utf-8",
-        )
-        with pytest.raises(ConfigError, match="unknown keys"):
-            load_wikipilot_config(path)
-
-    def test_repo_config_has_pr_watcher_block(self) -> None:
-        """The committed wikipilot.toml ships the PR Watcher knobs."""
-        repo_root = Path(__file__).resolve().parents[1]
-        config = load_wikipilot_config(repo_root / "wikipilot.toml")
-        assert config.pr_watcher.ci_wait_timeout_sec == 1200
-        assert config.pr_watcher.self_heal_max_attempts == 3
-
-
-class TestPRWatcherTrustModel:
-    """Coverage for ``trusted_associations`` / ``trusted_authors`` (PR Watcher
-    enforce-mode guard added on top of branch-name routing).
+    PR Watcher v2 dropped ``ci_wait_timeout_sec`` and
+    ``self_heal_max_attempts`` (GitHub's native auto-merge handles CI
+    waits; self-heal is parked until observed-need data justifies it).
+    The trust knobs survive because they're consulted by every gate code
+    path that may queue ``gh pr merge --squash --auto``.
     """
 
     def test_defaults_when_block_omitted(self, tmp_path: Path) -> None:
         config = load_wikipilot_config(tmp_path / "missing.toml")
-        assert config.pr_watcher.trusted_associations == (
+        assert config.conflict_resolver.trusted_associations == (
             "OWNER",
             "MEMBER",
             "COLLABORATOR",
         )
-        assert config.pr_watcher.trusted_authors == ()
+        assert config.conflict_resolver.trusted_authors == ()
 
     def test_defaults_when_keys_omitted_from_block(self, tmp_path: Path) -> None:
-        """Setting only ci_wait_timeout_sec leaves trust knobs at the documented
-        defaults — important because the live wikipilot.toml today does not
-        ship these keys yet, and we don't want the watcher to suddenly demote
-        every PR to read_only just because the config wasn't updated."""
+        """Setting only one trust key leaves the other at the documented
+        default — important because the live wikipilot.toml may ship one
+        without the other, and we don't want the gate to suddenly demote
+        every PR just because the config wasn't fully updated."""
         path = tmp_path / "wikipilot.toml"
         path.write_text(
-            "[automerge.pr_watcher]\nci_wait_timeout_sec = 60\n",
+            '[automerge.conflict_resolver]\ntrusted_authors = ["wikipilot-bot"]\n',
             encoding="utf-8",
         )
         config = load_wikipilot_config(path)
-        assert config.pr_watcher.trusted_associations == (
+        assert config.conflict_resolver.trusted_associations == (
             "OWNER",
             "MEMBER",
             "COLLABORATOR",
         )
-        assert config.pr_watcher.trusted_authors == ()
+        assert config.conflict_resolver.trusted_authors == ("wikipilot-bot",)
 
     def test_explicit_override_parses(self, tmp_path: Path) -> None:
         path = tmp_path / "wikipilot.toml"
         path.write_text(
-            "[automerge.pr_watcher]\n"
+            "[automerge.conflict_resolver]\n"
             'trusted_associations = ["OWNER"]\n'
             'trusted_authors = ["wikipilot-bot", "dependabot[bot]"]\n',
             encoding="utf-8",
         )
         config = load_wikipilot_config(path)
-        assert config.pr_watcher.trusted_associations == ("OWNER",)
-        assert config.pr_watcher.trusted_authors == (
+        assert config.conflict_resolver.trusted_associations == ("OWNER",)
+        assert config.conflict_resolver.trusted_authors == (
             "wikipilot-bot",
             "dependabot[bot]",
         )
@@ -284,37 +229,37 @@ class TestPRWatcherTrustModel:
         REST API returns associations in upper-case, so we normalize on read."""
         path = tmp_path / "wikipilot.toml"
         path.write_text(
-            '[automerge.pr_watcher]\ntrusted_associations = ["owner", "member"]\n',
+            '[automerge.conflict_resolver]\ntrusted_associations = ["owner", "member"]\n',
             encoding="utf-8",
         )
         config = load_wikipilot_config(path)
-        assert config.pr_watcher.trusted_associations == ("OWNER", "MEMBER")
+        assert config.conflict_resolver.trusted_associations == ("OWNER", "MEMBER")
 
     def test_unknown_association_rejected(self, tmp_path: Path) -> None:
         path = tmp_path / "wikipilot.toml"
         path.write_text(
-            '[automerge.pr_watcher]\ntrusted_associations = ["MEMBER", "BOGUS"]\n',
+            '[automerge.conflict_resolver]\ntrusted_associations = ["MEMBER", "BOGUS"]\n',
             encoding="utf-8",
         )
         with pytest.raises(ConfigError, match="BOGUS"):
             load_wikipilot_config(path)
 
     def test_empty_trusted_associations_allowed(self, tmp_path: Path) -> None:
-        """An empty list means "no association is trusted" — every claude/*
-        PR is demoted to read_only unless its author is in trusted_authors.
+        """An empty list means "no association is trusted" — every PR is
+        blocked from auto-merge unless its author is in trusted_authors.
         Niche but valid configuration; do not reject it as malformed."""
         path = tmp_path / "wikipilot.toml"
         path.write_text(
-            "[automerge.pr_watcher]\ntrusted_associations = []\n",
+            "[automerge.conflict_resolver]\ntrusted_associations = []\n",
             encoding="utf-8",
         )
         config = load_wikipilot_config(path)
-        assert config.pr_watcher.trusted_associations == ()
+        assert config.conflict_resolver.trusted_associations == ()
 
     def test_trusted_associations_must_be_list(self, tmp_path: Path) -> None:
         path = tmp_path / "wikipilot.toml"
         path.write_text(
-            "[automerge.pr_watcher]\ntrusted_associations = 'MEMBER'\n",
+            "[automerge.conflict_resolver]\ntrusted_associations = 'MEMBER'\n",
             encoding="utf-8",
         )
         with pytest.raises(ConfigError, match="list of strings"):
@@ -323,8 +268,29 @@ class TestPRWatcherTrustModel:
     def test_trusted_authors_must_be_list_of_strings(self, tmp_path: Path) -> None:
         path = tmp_path / "wikipilot.toml"
         path.write_text(
-            "[automerge.pr_watcher]\ntrusted_authors = [1, 2]\n",
+            "[automerge.conflict_resolver]\ntrusted_authors = [1, 2]\n",
             encoding="utf-8",
         )
         with pytest.raises(ConfigError, match="must be a string"):
             load_wikipilot_config(path)
+
+    def test_unknown_key_rejected(self, tmp_path: Path) -> None:
+        path = tmp_path / "wikipilot.toml"
+        path.write_text(
+            "[automerge.conflict_resolver]\nbogus_field = 1\n",
+            encoding="utf-8",
+        )
+        with pytest.raises(ConfigError, match="unknown keys"):
+            load_wikipilot_config(path)
+
+    def test_repo_config_ships_trust_block(self) -> None:
+        """The committed wikipilot.toml ships the trust knobs with the
+        documented defaults."""
+        repo_root = Path(__file__).resolve().parents[1]
+        config = load_wikipilot_config(repo_root / "wikipilot.toml")
+        assert config.conflict_resolver.trusted_associations == (
+            "OWNER",
+            "MEMBER",
+            "COLLABORATOR",
+        )
+        assert config.conflict_resolver.trusted_authors == ()

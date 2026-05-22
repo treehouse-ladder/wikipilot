@@ -106,22 +106,29 @@ VALID_AUTHOR_ASSOCIATIONS: frozenset[str] = frozenset(
 
 
 @dataclass(frozen=True)
-class PRWatcherConfig:
-    """``[automerge.pr_watcher]`` — knobs for the PR Watcher routine.
+class ConflictResolverConfig:
+    """``[automerge.conflict_resolver]`` — trust model for the auto-merge gate.
 
-    ``ci_wait_timeout_sec`` bounds the ``gh pr checks --watch`` wait inside
-    the watcher session; a timeout is recoverable (the next
-    ``pull_request.synchronize`` event re-fires the watcher). ``self_heal_max_attempts``
-    caps the loop where the watcher dispatches ``wiki-linter`` to fix
-    mechanical errors on ``claude/*`` PRs — tracked via the
-    ``wikipilot:heal-attempt-{n}`` PR label.
+    Owned by the Conflict Resolver routine (``prompts/conflict_resolver.md``),
+    but the trust check it defines is *centralized* in
+    :func:`wikipilot.git_ops.is_pr_trusted` and consulted by every gate
+    code path — including the in-routine ``maybe_automerge.py`` shim and
+    ``wikipilot recover-prs``. So this config block is read by anything
+    that might queue ``gh pr merge --squash --auto``.
 
     ``trusted_associations`` and ``trusted_authors`` together define which
-    PR authors the watcher treats as "trusted enough to enforce against"
-    when the head branch matches a ``claude/*`` template. Untrusted
-    authors (including all forked-PR authors regardless of association)
-    are demoted to ``read_only`` mode so the watcher only ever *comments*
-    on their PRs — never queues an auto-merge. The defaults catch:
+    PR authors may drive the enforce-mode auto-merge path. A PR is treated
+    as trusted only when:
+
+    - Its head ref lives in this repo (``isCrossRepository`` is false).
+      Fork PRs are never trusted, even when the author also happens to be
+      an org member — GitHub's ``pull_request`` event fires from forks
+      and an attacker can name their fork branch anything (including a
+      synthetic ``claude/daily-…`` shape).
+    - Its ``author_association`` is in ``trusted_associations`` OR its
+      ``author.login`` is in ``trusted_authors``.
+
+    Defaults catch:
 
     - ``OWNER`` — only set for user-owned repos (e.g. ``rauriemo/wikipilot``);
       irrelevant for the canonical org-owned repo, but kept so a fork that
@@ -138,11 +145,9 @@ class PRWatcherConfig:
     independent of any association. Use it to whitelist a dedicated bot
     account that isn't an org member or a one-off contributor whose
     association is ``CONTRIBUTOR``/``NONE`` but whom you've decided to
-    trust for the watcher's enforcement path.
+    trust for the enforce path.
     """
 
-    ci_wait_timeout_sec: int = 1200
-    self_heal_max_attempts: int = 3
     trusted_associations: tuple[str, ...] = ("OWNER", "MEMBER", "COLLABORATOR")
     trusted_authors: tuple[str, ...] = ()
 
@@ -155,7 +160,7 @@ class WikipilotConfig:
     daily_research: AutomergeRoute = field(default_factory=AutomergeRoute)
     wiki_query: AutomergeRoute = field(default_factory=AutomergeRoute)
     weekly_health: AutomergeRoute = field(default_factory=AutomergeRoute)
-    pr_watcher: PRWatcherConfig = field(default_factory=PRWatcherConfig)
+    conflict_resolver: ConflictResolverConfig = field(default_factory=ConflictResolverConfig)
     images: ImagesConfig = field(default_factory=ImagesConfig)
     branches: BranchesConfig = field(default_factory=BranchesConfig)
 
@@ -291,7 +296,9 @@ def _config_from_dict(data: dict[str, Any], *, source: str) -> WikipilotConfig:
     daily = AutomergeRoute(**(automerge.get("daily_research", {}) or {}))
     query = AutomergeRoute(**(automerge.get("wiki_query", {}) or {}))
     weekly = AutomergeRoute(**(automerge.get("weekly_health", {}) or {}))
-    pr_watcher = _pr_watcher_from_dict(automerge.get("pr_watcher", {}) or {}, source=source)
+    conflict_resolver = _conflict_resolver_from_dict(
+        automerge.get("conflict_resolver", {}) or {}, source=source
+    )
     images_data = data.get("images", {}) or {}
     if "allowed_mimes" in images_data:
         images_data = {**images_data, "allowed_mimes": tuple(images_data["allowed_mimes"])}
@@ -303,7 +310,7 @@ def _config_from_dict(data: dict[str, Any], *, source: str) -> WikipilotConfig:
             daily_research=daily,
             wiki_query=query,
             weekly_health=weekly,
-            pr_watcher=pr_watcher,
+            conflict_resolver=conflict_resolver,
             images=images,
             branches=branches,
         )
@@ -312,35 +319,25 @@ def _config_from_dict(data: dict[str, Any], *, source: str) -> WikipilotConfig:
         raise ConfigError(f"{source}: invalid wikipilot.toml: {exc}") from exc
 
 
-def _pr_watcher_from_dict(data: dict[str, Any], *, source: str) -> PRWatcherConfig:
+def _conflict_resolver_from_dict(data: dict[str, Any], *, source: str) -> ConflictResolverConfig:
     known_keys = {
-        "ci_wait_timeout_sec",
-        "self_heal_max_attempts",
         "trusted_associations",
         "trusted_authors",
     }
-    timeout = _coerce_positive_int(
-        data.get("ci_wait_timeout_sec", 1200),
-        where=f"{source}: [automerge.pr_watcher].ci_wait_timeout_sec",
-    )
-    attempts = _coerce_positive_int(
-        data.get("self_heal_max_attempts", 3),
-        where=f"{source}: [automerge.pr_watcher].self_heal_max_attempts",
-    )
     associations = _coerce_trusted_associations(
         data.get("trusted_associations", ["OWNER", "MEMBER", "COLLABORATOR"]),
-        where=f"{source}: [automerge.pr_watcher].trusted_associations",
+        where=f"{source}: [automerge.conflict_resolver].trusted_associations",
     )
     authors = _coerce_str_list(
         data.get("trusted_authors", []),
-        where=f"{source}: [automerge.pr_watcher].trusted_authors",
+        where=f"{source}: [automerge.conflict_resolver].trusted_authors",
     )
     unknown = set(data.keys()) - known_keys
     if unknown:
-        raise ConfigError(f"{source}: [automerge.pr_watcher] has unknown keys: {sorted(unknown)}")
-    return PRWatcherConfig(
-        ci_wait_timeout_sec=timeout,
-        self_heal_max_attempts=attempts,
+        raise ConfigError(
+            f"{source}: [automerge.conflict_resolver] has unknown keys: {sorted(unknown)}"
+        )
+    return ConflictResolverConfig(
         trusted_associations=tuple(associations),
         trusted_authors=tuple(authors),
     )
