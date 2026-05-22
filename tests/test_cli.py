@@ -95,6 +95,55 @@ class TestInitVaultCommand:
         assert result.exit_code == 0
         assert (vault / "index.md").read_text(encoding="utf-8") != original_index
 
+    def test_seeds_obsidian_graph_from_template(self, runner: CliRunner, tmp_path: Path) -> None:
+        """``init-vault`` seeds ``.obsidian/graph.json`` from the tracked
+        ``graph.template.json`` when the target file is missing — the
+        forker/fresh-clone path that restores the default color groups
+        without overwriting any existing user customizations."""
+        target = tmp_path / "vault"
+        target.mkdir()
+        obsidian = target / ".obsidian"
+        obsidian.mkdir()
+        (obsidian / "graph.template.json").write_text(
+            '{"colorGroups": ["template-marker"]}', encoding="utf-8"
+        )
+        # No graph.json yet (the gitignored-but-missing-on-fresh-clone state).
+        assert not (obsidian / "graph.json").exists()
+
+        result = runner.invoke(main, ["init-vault", str(target)])
+
+        assert result.exit_code == 0, result.output
+        assert "Seeded Obsidian default: .obsidian/graph.json" in result.output.replace("\\", "/")
+        assert (obsidian / "graph.json").read_text(encoding="utf-8") == (
+            '{"colorGroups": ["template-marker"]}'
+        )
+
+    def test_does_not_overwrite_existing_graph_json(
+        self, runner: CliRunner, tmp_path: Path
+    ) -> None:
+        """A re-run of ``init-vault`` on a vault where the user already
+        customized ``graph.json`` must leave it untouched. This is the
+        contract that lets users run ``init-vault`` as an idempotent
+        ``ensure-defaults`` step without losing local tweaks."""
+        target = tmp_path / "vault"
+        target.mkdir()
+        obsidian = target / ".obsidian"
+        obsidian.mkdir()
+        (obsidian / "graph.template.json").write_text(
+            '{"colorGroups": ["template-marker"]}', encoding="utf-8"
+        )
+        (obsidian / "graph.json").write_text(
+            '{"colorGroups": ["user-customized"]}', encoding="utf-8"
+        )
+
+        result = runner.invoke(main, ["init-vault", str(target)])
+
+        assert result.exit_code == 0, result.output
+        assert "Seeded Obsidian default" not in result.output
+        assert (obsidian / "graph.json").read_text(encoding="utf-8") == (
+            '{"colorGroups": ["user-customized"]}'
+        )
+
 
 class TestResetVaultCommand:
     """End-to-end coverage of the `reset-vault` CLI command.
@@ -240,6 +289,31 @@ class TestResetVaultCommand:
         )
         assert second.exit_code == 0
         assert "already at the empty-skeleton state" in second.output
+
+    def test_seeds_obsidian_graph_after_reset(self, runner: CliRunner, tmp_path: Path) -> None:
+        """``reset-vault`` seeds ``.obsidian/graph.json`` from the tracked
+        template after wiping content — so a fresh fork ends up with the
+        maintainer's default color groups even though ``graph.json`` is
+        gitignored. Pre-existing customized ``graph.json`` files are
+        preserved unchanged."""
+        vault = _copy_vault(tmp_path)
+        topics = self._topics_with_seeded_topic(tmp_path)
+        obsidian = vault / ".obsidian"
+        obsidian.mkdir(parents=True, exist_ok=True)
+        (obsidian / "graph.template.json").write_text(
+            '{"colorGroups": ["template-marker"]}', encoding="utf-8"
+        )
+
+        result = runner.invoke(
+            main,
+            ["reset-vault", str(vault), "--yes", "--topics-file", str(topics)],
+        )
+
+        assert result.exit_code == 0, result.output
+        assert "Seeded Obsidian default: .obsidian/graph.json" in result.output.replace("\\", "/")
+        assert (obsidian / "graph.json").read_text(encoding="utf-8") == (
+            '{"colorGroups": ["template-marker"]}'
+        )
 
     def test_topics_file_defaults_to_vault_sibling_not_cwd(
         self, runner: CliRunner, tmp_path: Path

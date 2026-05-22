@@ -1,0 +1,72 @@
+{
+  "collapse-filter": true,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": true,
+  "colorGroups": [
+    {
+      "query": "[kind:topic]",
+      "color": {
+        "a": 1,
+        "rgb": 16766720
+      }
+    },
+    {
+      "query": "[kind:concept]",
+      "color": {
+        "a": 1,
+        "rgb": 4886754
+      }
+    },
+    {
+      "query": "[kind:entity]",
+      "color": {
+        "a": 1,
+        "rgb": 8311585
+      }
+    },
+    {
+      "query": "[kind:comparison]",
+      "color": {
+        "a": 1,
+        "rgb": 16098851
+      }
+    },
+    {
+      "query": "[kind:answer]",
+      "color": {
+        "a": 1,
+        "rgb": 12390624
+      }
+    },
+    {
+      "query": "[kind:report]",
+      "color": {
+        "a": 1,
+        "rgb": 16739179
+      }
+    },
+    {
+      "query": "[kind:source]",
+      "color": {
+        "a": 1,
+        "rgb": 7041664
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 250,
+  "scale": 1,
+  "close": false
+}

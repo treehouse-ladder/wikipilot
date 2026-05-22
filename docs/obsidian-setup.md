@@ -97,7 +97,7 @@ Install on demand — none of these are required for the vault to work, but each
 
 ## 4. Graph view (pre-configured)
 
-`wiki/.obsidian/graph.json` ships with color groups that match the schema, using Obsidian's property-query syntax `[kind:value]` (single brackets, no outer quotes — see [Obsidian Search docs](https://help.obsidian.md/Plugins/Search#Search+properties)):
+The repo ships color groups that match the schema, using Obsidian's property-query syntax `[kind:value]` (single brackets, no outer quotes — see [Obsidian Search docs](https://help.obsidian.md/Plugins/Search#Search+properties)):
 
 | Kind | Color | Query |
 |---|---|---|
@@ -111,7 +111,26 @@ Install on demand — none of these are required for the vault to work, but each
 
 The intent: topics are the **landing hubs** (gold draws the eye), synthesis layers (concept / entity / comparison / answer) get distinct colors so cluster boundaries are visible, sources are muted gray because they're the raw ingest layer beneath everything else, and reports stand out coral when you want to find them.
 
-To tweak: Settings → Core plugins → Graph view → click the **Filters → Groups** disclosure (it's the same UI editing `graph.json`).
+### How the colors ship (template + seed, not a tracked `graph.json`)
+
+`wiki/.obsidian/graph.json` mutates on every Obsidian launch (zoom scale jitters, the collapse-filter toggle flips when any panel opens), so we can't track it directly — every pull would carry spurious diffs and create merge conflicts across machines. Instead the repo ships **two** files:
+
+- `wiki/.obsidian/graph.template.json` — **tracked**. Stable canonical defaults (the color groups above plus neutral starting values for everything else). This is what defines the repo-wide default initial state.
+- `wiki/.obsidian/graph.json` — **gitignored**. Your personal live config. Obsidian rewrites it constantly; pulls never touch it.
+
+`wikipilot init-vault` and `wikipilot reset-vault` both run a **seed step** at the end: for every `<name>.template.json` under `.obsidian/`, if `<name>.json` doesn't exist, copy template → real file. Existing `<name>.json` files are **never** overwritten — once Obsidian has materialized your local copy, your customizations are sticky against future seeds.
+
+The result, end-to-end:
+
+| When | What happens to your `graph.json` |
+|---|---|
+| First fork → `uv run wikipilot reset-vault` | Seeded from `graph.template.json`. You get the canonical colors. |
+| Fresh clone → `uv run wikipilot init-vault wiki/` | Same. (Run this if you cloned but never reset.) |
+| Daily `git pull` | Untouched. The morning routine cannot replace your local graph state. |
+| You open Obsidian and tweak the graph | Your tweaks land in `graph.json` and stay. |
+| You lose your colors somehow | `rm wiki/.obsidian/graph.json` then `uv run wikipilot init-vault wiki/` — the seed step re-runs and you're back. |
+
+To tweak the colors live: Settings → Core plugins → Graph view → click the **Filters → Groups** disclosure (it's the same UI editing `graph.json`). If you want your tweaks to propagate to other clones / forks of the repo, edit `graph.template.json` and commit it — your local `graph.json` won't change (already exists) but anyone who runs `init-vault`/`reset-vault` after pulling will get your new defaults.
 
 ### The killer pattern: local graph per topic
 
@@ -235,7 +254,7 @@ Source pages reference local assets under `wiki/assets/<source-slug>/<filename>`
 | Symptom | Fix |
 |---|---|
 | Six nodes labeled "index" in the graph | Front Matter Title plugin not installed/enabled, or its "Graph view" feature toggle is off |
-| All graph nodes are gray | Either Obsidian wasn't restarted after pulling `graph.json` (close + reopen the vault), or the color-group query syntax doesn't parse. Open Graph view → cog icon → Filters → Groups → check each row's query box. Correct format is `[kind:topic]` with **single brackets, no outer quotes** (the `["kind: topic"]` double-quote form does not match anything — it tries to find a property literally named `kind: topic`). |
+| All graph nodes are gray | Most common cause: your local `wiki/.obsidian/graph.json` exists but has `"colorGroups": []` (Obsidian regenerated it with defaults — e.g. you opened the vault after a clone before running `init-vault`/`reset-vault`). Fix: `rm wiki/.obsidian/graph.json` then `uv run wikipilot init-vault wiki/` to re-seed from `graph.template.json` (preserves the rest of your `.obsidian/` config). Less commonly: the color-group query syntax doesn't parse. Open Graph view → cog icon → Filters → Groups → check each row's query box. Correct format is `[kind:topic]` with **single brackets, no outer quotes** (the `["kind: topic"]` double-quote form does not match anything — it tries to find a property literally named `kind: topic`). |
 | Dataview blocks show raw markdown | Dataview not enabled — Settings → Community plugins → Dataview → enable. The `dataviewjs` disputes block additionally requires **Enable JavaScript Queries** in Dataview settings. |
 | Dataview blocks show "0 results" | Frontmatter may use string dates (`"2026-05-11"`) instead of YAML date values. Wikipilot's writers emit proper date types, but a hand-edited page might have strings. Fix the page, or wrap with `date(last_verified)` in the query. |
 | Graph view is empty | You opened the repo root instead of `wiki/`. Close the vault and re-open at `wiki/`. |

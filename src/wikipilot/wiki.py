@@ -368,6 +368,72 @@ def render_log_skeleton(today: date | None = None) -> str:
     return LOG_SKELETON_TEMPLATE.format(date=today.isoformat())
 
 
+# ---------------------------------------------------------------------------
+# Obsidian config seeding (default initial state for forkers/fresh clones)
+# ---------------------------------------------------------------------------
+#
+# Some files under ``wiki/.obsidian/`` (notably ``graph.json``) mutate on every
+# Obsidian launch — zoom scale jitters, the collapse-filter toggle flips when
+# any panel is opened — which produces noisy diffs that conflict with merges.
+# We solve this by:
+#
+# 1. ``.gitignore`` excludes the mutating file itself (``graph.json``), so a
+#    user's local state is never replaced by a pull.
+# 2. We track a sibling template (``graph.template.json``) that carries the
+#    canonical default state (schema-aligned color groups). This file does
+#    NOT mutate at runtime, so it diffs cleanly across machines and is safe
+#    to ship as the maintainer-curated default.
+# 3. ``seed_obsidian_config`` runs at vault setup (``init-vault`` / ``reset-
+#    vault``) and copies each ``<name>.template.json`` to ``<name>.json``
+#    IFF the target is missing. Existing user-customized files are never
+#    touched. The result: brand-new vaults boot with the maintainer's
+#    default colors; established vaults keep whatever the user customized.
+#
+# This pattern generalizes: any future ``*.template.json`` dropped into
+# ``.obsidian/`` is auto-seeded the same way (e.g. a future
+# ``app.template.json`` if we ever ship one).
+
+# Suffix used to mark a tracked default-state template file. Lives next to
+# the real file it seeds, with the same stem (so ``graph.json`` is seeded
+# from ``graph.template.json``).
+_OBSIDIAN_TEMPLATE_SUFFIX = ".template.json"
+
+
+def _target_for_template(template: Path) -> Path:
+    """Return the ``<name>.json`` path a ``<name>.template.json`` file seeds.
+
+    ``foo.template.json`` -> ``foo.json``. Lives in the same directory.
+    """
+    stem = template.name[: -len(_OBSIDIAN_TEMPLATE_SUFFIX)]
+    return template.parent / f"{stem}.json"
+
+
+def seed_obsidian_config(vault_root: Path) -> list[Path]:
+    """Copy every ``*.template.json`` under ``<vault>/.obsidian/`` to its
+    sibling target IFF the target file does not already exist.
+
+    Returns the list of target paths that were freshly created. An existing
+    target is never overwritten (this is what guarantees a pull-and-reset
+    never clobbers a user's customized graph view, bookmarks, etc.).
+
+    No-ops gracefully when ``<vault>/.obsidian/`` does not exist or contains
+    no templates — callers can invoke unconditionally.
+    """
+    obsidian_dir = vault_root / ".obsidian"
+    if not obsidian_dir.is_dir():
+        return []
+    seeded: list[Path] = []
+    for template in sorted(obsidian_dir.glob(f"*{_OBSIDIAN_TEMPLATE_SUFFIX}")):
+        if not template.is_file():
+            continue
+        target = _target_for_template(template)
+        if target.exists():
+            continue
+        shutil.copyfile(template, target)
+        seeded.append(target)
+    return seeded
+
+
 def _file_matches_skeleton(path: Path, skeleton: str) -> bool:
     """True when ``path`` exists and its content equals ``skeleton``."""
     if not path.exists():
