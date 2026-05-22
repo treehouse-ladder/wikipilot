@@ -21,7 +21,9 @@ import pytest
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
-def _ok(stdout: str = "", *, returncode: int = 0, stderr: str = "") -> subprocess.CompletedProcess[str]:
+def _ok(
+    stdout: str = "", *, returncode: int = 0, stderr: str = ""
+) -> subprocess.CompletedProcess[str]:
     return subprocess.CompletedProcess([], returncode, stdout, stderr)
 
 
@@ -144,9 +146,7 @@ def test_behind_claude_pr_is_emitted(empty_config: Path, capsys) -> None:
 
 def test_clean_pr_is_filtered_out(empty_config: Path, capsys) -> None:
     cli_main = _import_main()
-    payload = json.dumps(
-        [_pr(number=30, head="claude/daily-2026-05-22/foo", state="CLEAN")]
-    )
+    payload = json.dumps([_pr(number=30, head="claude/daily-2026-05-22/foo", state="CLEAN")])
     fake_run, _ = _fake_run(pr_list_payload=payload)
     with patch("subprocess.run", side_effect=fake_run):
         rc = cli_main(["--base", "main", "--config", str(empty_config)])
@@ -159,9 +159,7 @@ def test_unknown_merge_state_is_skipped(empty_config: Path, capsys) -> None:
     """GitHub hasn't computed mergeability yet — skip rather than race;
     the next push will re-evaluate."""
     cli_main = _import_main()
-    payload = json.dumps(
-        [_pr(number=31, head="claude/daily-2026-05-22/foo", state="UNKNOWN")]
-    )
+    payload = json.dumps([_pr(number=31, head="claude/daily-2026-05-22/foo", state="UNKNOWN")])
     fake_run, _ = _fake_run(pr_list_payload=payload)
     with patch("subprocess.run", side_effect=fake_run):
         rc = cli_main(["--base", "main", "--config", str(empty_config)])

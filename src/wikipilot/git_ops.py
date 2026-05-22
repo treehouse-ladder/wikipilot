@@ -526,8 +526,7 @@ def view_pr(pr_number: int, *, runner: PRRunner | None = None) -> PRView:
     """
     runner = runner or subprocess.run
     fields = (
-        "number,state,files,additions,deletions,statusCheckRollup,"
-        "isDraft,isCrossRepository,author"
+        "number,state,files,additions,deletions,statusCheckRollup,isDraft,isCrossRepository,author"
     )
     result = _run(runner, ["gh", "pr", "view", str(pr_number), "--json", fields])
     data = _json.loads(result.stdout)
@@ -552,9 +551,7 @@ def view_pr(pr_number: int, *, runner: PRRunner | None = None) -> PRView:
     )
 
 
-def fetch_author_association(
-    pr_number: int, *, runner: PRRunner | None = None
-) -> str | None:
+def fetch_author_association(pr_number: int, *, runner: PRRunner | None = None) -> str | None:
     """Read ``author_association`` for ``pr_number`` via the GitHub REST API.
 
     ``gh pr view --json`` does not expose this field even though the

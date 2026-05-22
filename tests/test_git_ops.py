@@ -657,9 +657,7 @@ _DEFAULT_TRUSTED_API_PAYLOAD = json.dumps(
 )
 
 
-def _trusted_runner_baseline(
-    runner: FakeRunner, *, pr_view_payload: str | None = None
-) -> None:
+def _trusted_runner_baseline(runner: FakeRunner, *, pr_view_payload: str | None = None) -> None:
     """Populate ``runner.responses`` with the trusted-PR baseline.
 
     Every ``apply_*`` test that uses ``view_pr`` end-to-end needs the
@@ -887,9 +885,7 @@ class TestGateTrustCheck:
         assert any("not trusted" in r for r in d.reasons)
 
     def test_collaborator_in_defaults_passes(self) -> None:
-        view = _trusted_pr_view(
-            author_association="COLLABORATOR", author_login="invited-friend"
-        )
+        view = _trusted_pr_view(author_association="COLLABORATOR", author_login="invited-friend")
         d = evaluate_gate(view, route=ROUTE_DAILY_RESEARCH, config=_config())
         assert d.automerge is True, d.reasons
 
@@ -898,9 +894,7 @@ class TestGateTrustCheck:
         in the default trusted set — letting it in would mean anyone who's
         ever landed a typo fix could later open a claude/* PR that
         auto-merges."""
-        view = _trusted_pr_view(
-            author_association="CONTRIBUTOR", author_login="past-contributor"
-        )
+        view = _trusted_pr_view(author_association="CONTRIBUTOR", author_login="past-contributor")
         d = evaluate_gate(view, route=ROUTE_DAILY_RESEARCH, config=_config())
         assert d.automerge is False
         assert any("not trusted" in r for r in d.reasons)
@@ -912,9 +906,7 @@ class TestGateTrustCheck:
                 trusted_authors=("wikipilot-bot",),
             )
         )
-        view = _trusted_pr_view(
-            author_association="NONE", author_login="wikipilot-bot"
-        )
+        view = _trusted_pr_view(author_association="NONE", author_login="wikipilot-bot")
         d = evaluate_gate(view, route=ROUTE_DAILY_RESEARCH, config=cfg)
         assert d.automerge is True, d.reasons
 

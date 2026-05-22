@@ -132,9 +132,7 @@ def _list_prs(*, base: str, limit: int) -> list[dict]:
     log entry reflects the actual failure mode rather than silently
     moving on with an empty list.
     """
-    fields = (
-        "number,headRefName,baseRefName,mergeStateStatus,isCrossRepository,author,title"
-    )
+    fields = "number,headRefName,baseRefName,mergeStateStatus,isCrossRepository,author,title"
     cmd = [
         "gh",
         "pr",

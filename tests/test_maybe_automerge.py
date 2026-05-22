@@ -85,9 +85,7 @@ def _gh_payload(
 
 
 _OWNER_REPO_PAYLOAD = json.dumps({"nameWithOwner": "treehouse-ladder/wikipilot"})
-_TRUSTED_API_PAYLOAD = json.dumps(
-    {"user": {"login": "rauriemo"}, "author_association": "MEMBER"}
-)
+_TRUSTED_API_PAYLOAD = json.dumps({"user": {"login": "rauriemo"}, "author_association": "MEMBER"})
 
 
 def _fake_run(

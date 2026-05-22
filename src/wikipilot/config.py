@@ -319,9 +319,7 @@ def _config_from_dict(data: dict[str, Any], *, source: str) -> WikipilotConfig:
         raise ConfigError(f"{source}: invalid wikipilot.toml: {exc}") from exc
 
 
-def _conflict_resolver_from_dict(
-    data: dict[str, Any], *, source: str
-) -> ConflictResolverConfig:
+def _conflict_resolver_from_dict(data: dict[str, Any], *, source: str) -> ConflictResolverConfig:
     known_keys = {
         "trusted_associations",
         "trusted_authors",
