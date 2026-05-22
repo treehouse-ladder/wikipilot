@@ -96,6 +96,230 @@ class TestInitVaultCommand:
         assert (vault / "index.md").read_text(encoding="utf-8") != original_index
 
 
+class TestResetVaultCommand:
+    """End-to-end coverage of the `reset-vault` CLI command.
+
+    Hard rule: every test in this class targets a tmp_path-rooted vault.
+    See the regression guard at the bottom of this file.
+    """
+
+    def _topics_with_seeded_topic(self, tmp_path: Path) -> Path:
+        """Write a topics.yaml that has the documented header + one seeded topic."""
+        path = tmp_path / "topics.yaml"
+        path.write_text(
+            "# topics.yaml — header comment that must survive reset.\n"
+            "#\n"
+            "# Schema docs go here.\n"
+            "\n"
+            "topics:\n"
+            "  - id: seeded-topic\n"
+            '    display_name: "Seeded"\n'
+            "    purpose: |\n"
+            "      Seeded purpose.\n"
+            '    search_hints: ["x"]\n'
+            "    frequency: daily\n"
+            "    max_sources_per_run: 20\n"
+            "    freshness_window_days: 30\n",
+            encoding="utf-8",
+        )
+        return path
+
+    def test_yes_flag_wipes_and_preserves(self, runner: CliRunner, tmp_path: Path) -> None:
+        vault = _copy_vault(tmp_path)
+        # Add a personal scratch file deep in the vault to confirm preservation.
+        (vault / "_dashboard.md").write_text("# Dashboard\n", encoding="utf-8")
+        topics = self._topics_with_seeded_topic(tmp_path)
+
+        result = runner.invoke(
+            main,
+            ["reset-vault", str(vault), "--yes", "--topics-file", str(topics)],
+        )
+
+        assert result.exit_code == 0, result.output
+        # Maintainer content gone.
+        assert not (vault / "concepts" / "transformer-attention.md").exists()
+        assert not (vault / "sources" / "example-paper-aabbccdd.md").exists()
+        assert not (vault / "topics" / "ai-agents").exists()
+        # Personal scratch survives.
+        assert (vault / "_dashboard.md").exists()
+        # Skeleton restored.
+        assert (vault / "index.md").exists()
+        assert (vault / "log.md").exists()
+        for sub in ("topics", "concepts", "entities", "sources", "answers", "reports"):
+            assert (vault / sub / ".gitkeep").exists()
+        # topics.yaml reset, header preserved.
+        new_topics = topics.read_text(encoding="utf-8")
+        assert "header comment that must survive reset" in new_topics
+        assert "topics: []" in new_topics
+        assert "seeded-topic" not in new_topics
+
+    def test_typed_basename_confirmation_accepts(self, runner: CliRunner, tmp_path: Path) -> None:
+        vault = _copy_vault(tmp_path)
+        topics = self._topics_with_seeded_topic(tmp_path)
+        # Vault basename is "wiki" (per _copy_vault).
+        result = runner.invoke(
+            main,
+            ["reset-vault", str(vault), "--topics-file", str(topics)],
+            input=f"{vault.name}\n",
+        )
+        assert result.exit_code == 0, result.output
+        assert "Reset complete" in result.output
+        assert not (vault / "concepts" / "transformer-attention.md").exists()
+
+    def test_typed_basename_confirmation_rejects_wrong_input(
+        self, runner: CliRunner, tmp_path: Path
+    ) -> None:
+        vault = _copy_vault(tmp_path)
+        topics = self._topics_with_seeded_topic(tmp_path)
+        result = runner.invoke(
+            main,
+            ["reset-vault", str(vault), "--topics-file", str(topics)],
+            input="yes\n",  # wrong: should be the basename, not "yes"
+        )
+        assert result.exit_code == 1
+        assert "Aborted" in result.output
+        # Vault and topics untouched.
+        assert (vault / "concepts" / "transformer-attention.md").exists()
+        assert "seeded-topic" in topics.read_text(encoding="utf-8")
+
+    def test_aborts_when_no_tty_and_no_yes(self, runner: CliRunner, tmp_path: Path) -> None:
+        vault = _copy_vault(tmp_path)
+        topics = self._topics_with_seeded_topic(tmp_path)
+        result = runner.invoke(
+            main,
+            ["reset-vault", str(vault), "--topics-file", str(topics)],
+            input="",  # empty stdin -> EOF
+        )
+        assert result.exit_code == 1
+        assert (vault / "concepts" / "transformer-attention.md").exists()
+
+    def test_keep_topics_preserves_topics_yaml_and_topic_dirs(
+        self, runner: CliRunner, tmp_path: Path
+    ) -> None:
+        vault = _copy_vault(tmp_path)
+        topics = self._topics_with_seeded_topic(tmp_path)
+        result = runner.invoke(
+            main,
+            [
+                "reset-vault",
+                str(vault),
+                "--yes",
+                "--keep-topics",
+                "--topics-file",
+                str(topics),
+            ],
+        )
+        assert result.exit_code == 0, result.output
+        # Topic folders preserved.
+        assert (vault / "topics" / "ai-agents" / "purpose.md").exists()
+        # topics.yaml unchanged (still has the seeded topic).
+        assert "seeded-topic" in topics.read_text(encoding="utf-8")
+        # Other content still wiped.
+        assert not (vault / "sources" / "example-paper-aabbccdd.md").exists()
+
+    def test_unrelated_directory_refused(self, runner: CliRunner, tmp_path: Path) -> None:
+        unrelated = tmp_path / "Documents"
+        unrelated.mkdir()
+        (unrelated / "personal.md").write_text("notes", encoding="utf-8")
+        result = runner.invoke(main, ["reset-vault", str(unrelated), "--yes"])
+        assert result.exit_code == 2
+        assert "does not look like a Wikipilot vault" in result.output
+        assert (unrelated / "personal.md").exists()
+
+    def test_idempotent(self, runner: CliRunner, tmp_path: Path) -> None:
+        vault = _copy_vault(tmp_path)
+        topics = self._topics_with_seeded_topic(tmp_path)
+        first = runner.invoke(
+            main,
+            ["reset-vault", str(vault), "--yes", "--topics-file", str(topics)],
+        )
+        assert first.exit_code == 0
+        second = runner.invoke(
+            main,
+            ["reset-vault", str(vault), "--yes", "--topics-file", str(topics)],
+        )
+        assert second.exit_code == 0
+        assert "already at the empty-skeleton state" in second.output
+
+    def test_topics_file_defaults_to_vault_sibling_not_cwd(
+        self, runner: CliRunner, tmp_path: Path
+    ) -> None:
+        """Regression: --topics-file must default to the vault's sibling,
+        not a CWD-relative path. A smoke test against /tmp/foo must NEVER
+        reach across to the workspace's topics.yaml."""
+        vault = _copy_vault(tmp_path)
+        sibling_topics = tmp_path / "topics.yaml"
+        sibling_topics.write_text(
+            "# header\n\ntopics:\n  - id: sibling-topic\n"
+            "    display_name: 'X'\n    purpose: 'x'\n"
+            "    search_hints: ['x']\n    frequency: daily\n"
+            "    max_sources_per_run: 20\n    freshness_window_days: 30\n",
+            encoding="utf-8",
+        )
+        # Create a decoy "topics.yaml" in a separate CWD that should NOT be touched.
+        decoy_cwd = tmp_path / "decoy"
+        decoy_cwd.mkdir()
+        decoy = decoy_cwd / "topics.yaml"
+        decoy.write_text(
+            "# DECOY — must not be modified\ntopics:\n  - id: decoy\n",
+            encoding="utf-8",
+        )
+
+        with runner.isolated_filesystem(temp_dir=decoy_cwd):
+            # Symlink the decoy into the isolated CWD, then run from there.
+            # We can't use isolated_filesystem's auto-CWD because we want
+            # to assert against the persistent decoy file.
+
+            try:
+                (Path() / "topics.yaml").symlink_to(decoy)
+            except (OSError, NotImplementedError):
+                # Symlinks may fail on Windows without elevation; fall back
+                # to a copy and assert on the copy + the persistent decoy.
+                (Path() / "topics.yaml").write_text(
+                    decoy.read_text(encoding="utf-8"), encoding="utf-8"
+                )
+
+            result = runner.invoke(main, ["reset-vault", str(vault), "--yes"])
+
+            assert result.exit_code == 0, result.output
+            # The CLI prints the absolute resolved topics target so the
+            # safety scaffolding is auditable from the output.
+            assert "Topics file target:" in result.output
+            assert str(sibling_topics.resolve()) in result.output
+            # Sibling was reset.
+            assert "topics: []" in sibling_topics.read_text(encoding="utf-8")
+            # The persistent decoy outside the isolated CWD is untouched.
+            assert "DECOY" in decoy.read_text(encoding="utf-8")
+            # The CWD-local copy/symlink is also untouched (because the CLI
+            # derived the target from the vault's parent, not from CWD).
+            assert "DECOY" in (Path() / "topics.yaml").read_text(encoding="utf-8")
+
+
+def test_no_test_targets_workspace_vault_in_test_cli() -> None:
+    """Regression guard for tests/test_cli.py — see test_wiki.py for rationale.
+
+    Forbidden tokens are constructed at runtime so they never appear as
+    literals anywhere else in this file.
+    """
+    source_path = Path(__file__)
+    text = source_path.read_text(encoding="utf-8")
+    vault_dirname = "wiki"
+    forbidden_tokens = [
+        f'Path("{vault_dirname}")',
+        f"Path('{vault_dirname}')",
+        f'reset_vault("{vault_dirname}")',
+        f"reset_vault('{vault_dirname}')",
+        f'"reset-vault", "{vault_dirname}"',
+        f"'reset-vault', '{vault_dirname}'",
+    ]
+    for token in forbidden_tokens:
+        assert token not in text, (
+            f"tests/test_cli.py contains the forbidden literal {token!r} — "
+            "this file must only target tmp_path-rooted vaults to keep the "
+            "workspace's live vault safe."
+        )
+
+
 class TestValidateTopicsCommand:
     def test_valid_topics(self, runner: CliRunner, tmp_path: Path) -> None:
         topics = _copy_topics(tmp_path)

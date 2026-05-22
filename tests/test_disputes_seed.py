@@ -128,14 +128,14 @@ class TestSeedResultJsonRoundtrip:
 
 class TestSeedCandidatesEdgeCases:
     def test_empty_vault_no_sets(self, tmp_path: Path) -> None:
-        from wikipilot.cli import _INDEX_SKELETON, _LOG_SKELETON
+        from wikipilot.wiki import INDEX_SKELETON, render_log_skeleton
 
         empty = tmp_path / "wiki"
         empty.mkdir()
         for sub in ("topics", "concepts", "entities", "sources", "answers", "reports"):
             (empty / sub).mkdir()
-        (empty / "index.md").write_text(_INDEX_SKELETON, encoding="utf-8")
-        (empty / "log.md").write_text(_LOG_SKELETON.format(date="2026-05-11"), encoding="utf-8")
+        (empty / "index.md").write_text(INDEX_SKELETON, encoding="utf-8")
+        (empty / "log.md").write_text(render_log_skeleton(date(2026, 5, 11)), encoding="utf-8")
         result = seed_candidates(Vault.at(empty), today=date(2026, 5, 11))
         assert result.candidate_sets == ()
 
