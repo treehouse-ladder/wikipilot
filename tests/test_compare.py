@@ -288,3 +288,203 @@ class TestComparisonExcludedFromSynthesisLints:
         issues = check_citation_density(ctx)
         for issue in issues:
             assert issue.path.name != "cost-comparison.md"
+
+
+class TestHighlightLeaders:
+    def test_bolds_first_italicizes_second_higher_is_better(self) -> None:
+        aggregated = {
+            "alpha": {"score": 60},
+            "beta": {"score": 57},
+            "gamma": {"score": 50},
+        }
+        out = render_comparison_table(
+            aggregated,
+            entity_slugs=["alpha", "beta", "gamma"],
+            fields=["score"],
+            title="t",
+            highlight_leaders=True,
+        )
+        assert "**60**" in out  # leader bolded
+        assert "_57_" in out  # runner-up italicized
+        assert "| 50 |" in out  # third place untouched
+
+    def test_inverts_ordering_for_cost_fields(self) -> None:
+        aggregated = {
+            "cheap": {"cost": 1.25},
+            "mid": {"cost": 3.00},
+            "premium": {"cost": 15.00},
+        }
+        out = render_comparison_table(
+            aggregated,
+            entity_slugs=["cheap", "mid", "premium"],
+            fields=["cost"],
+            title="t",
+            highlight_leaders=True,
+            cost_fields=["cost"],
+        )
+        assert "**1.25**" in out
+        assert "_3.0_" in out
+        assert "| 15.0 |" in out
+
+    def test_unknown_values_excluded_from_ranking(self) -> None:
+        aggregated = {
+            "alpha": {"score": 60},
+            "beta": {},
+            "gamma": {"score": 70},
+        }
+        out = render_comparison_table(
+            aggregated,
+            entity_slugs=["alpha", "beta", "gamma"],
+            fields=["score"],
+            title="t",
+            highlight_leaders=True,
+        )
+        assert "**70**" in out  # gamma is #1
+        assert "_60_" in out  # alpha is #2 (beta has no value)
+        assert UNKNOWN_VALUE in out
+
+    def test_single_numeric_value_only_bolds_no_italic(self) -> None:
+        aggregated = {"alpha": {"score": 42}, "beta": {}}
+        out = render_comparison_table(
+            aggregated,
+            entity_slugs=["alpha", "beta"],
+            fields=["score"],
+            title="t",
+            highlight_leaders=True,
+        )
+        assert "**42**" in out
+        assert "_42_" not in out  # no runner-up to italicize
+
+
+class TestShowGlosses:
+    def test_renders_legend_block_above_table(self) -> None:
+        aggregated = {"alpha": {"score": 60}, "beta": {"score": 50}}
+        out = render_comparison_table(
+            aggregated,
+            entity_slugs=["alpha", "beta"],
+            fields=["score"],
+            title="Benchmark",
+            show_glosses=True,
+            glosses={"score": "Aggregate intelligence; higher is better."},
+        )
+        legend_pos = out.find("## What each column means for me")
+        table_pos = out.find("| Entity |")
+        assert legend_pos > 0
+        assert table_pos > legend_pos
+        assert "Aggregate intelligence" in out
+
+    def test_missing_gloss_falls_back_to_placeholder(self) -> None:
+        from wikipilot.compare import NO_GLOSS_PLACEHOLDER
+
+        aggregated = {"alpha": {"score": 60}, "beta": {"score": 50}}
+        out = render_comparison_table(
+            aggregated,
+            entity_slugs=["alpha", "beta"],
+            fields=["score"],
+            title="t",
+            show_glosses=True,
+            glosses={},
+        )
+        assert NO_GLOSS_PLACEHOLDER in out
+
+
+class TestComputeLeaderChanges:
+    """Cover the prior-revision diff path.
+
+    The implementation calls ``_find_repo_root`` on the vault root to bound
+    the ``git -C`` invocation. Tests seed a ``.git`` placeholder dir inside
+    the tempdir vault so the resolution succeeds, then inject a fake
+    runner to stand in for the real ``git show HEAD:<path>`` call.
+    """
+
+    @staticmethod
+    def _seed_git_marker(vault: Vault) -> None:
+        (vault.root.parent / ".git").mkdir(exist_ok=True)
+
+    def test_returns_none_when_git_show_fails(self, sample_vault: Vault) -> None:
+        from wikipilot.compare import compute_leader_changes
+
+        self._seed_git_marker(sample_vault)
+        path = sample_vault.dir_for("comparisons") / "x.md"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("", encoding="utf-8")
+
+        def fake_runner(args: list[str]):  # type: ignore[no-untyped-def]
+            import subprocess
+
+            return subprocess.CompletedProcess(args, returncode=128, stdout="", stderr="not found")
+
+        result = compute_leader_changes(
+            sample_vault,
+            path,
+            aggregated={"alpha": {"score": 60}, "beta": {"score": 50}},
+            entity_slugs=["alpha", "beta"],
+            fields=["score"],
+            git_runner=fake_runner,
+        )
+        assert result is None
+
+    def test_detects_leader_swap_from_prior_revision(self, sample_vault: Vault) -> None:
+        """When the prior revision had `**beta**` bolded for `score` and today's
+        aggregated puts alpha at #1, emit a bullet announcing the swap."""
+        from wikipilot.compare import compute_leader_changes
+
+        self._seed_git_marker(sample_vault)
+        prior_table = (
+            "# title\n\n## Summary\n\nblah\n\n"
+            "| Entity | score |\n"
+            "| --- | --- |\n"
+            "| [[alpha]] | _50_ |\n"
+            "| [[beta]] | **60** |\n"
+        )
+
+        def fake_runner(args: list[str]):  # type: ignore[no-untyped-def]
+            import subprocess
+
+            return subprocess.CompletedProcess(args, returncode=0, stdout=prior_table, stderr="")
+
+        path = sample_vault.dir_for("comparisons") / "x.md"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("", encoding="utf-8")
+        result = compute_leader_changes(
+            sample_vault,
+            path,
+            aggregated={"alpha": {"score": 70}, "beta": {"score": 60}},
+            entity_slugs=["alpha", "beta"],
+            fields=["score"],
+            git_runner=fake_runner,
+        )
+        assert result is not None
+        assert "[[alpha]]" in result
+        assert "[[beta]]" in result
+        assert "took #1" in result
+
+    def test_no_change_returns_none(self, sample_vault: Vault) -> None:
+        from wikipilot.compare import compute_leader_changes
+
+        self._seed_git_marker(sample_vault)
+        prior_table = (
+            "# title\n\n## Summary\n\nblah\n\n"
+            "| Entity | score |\n"
+            "| --- | --- |\n"
+            "| [[alpha]] | **60** |\n"
+            "| [[beta]] | _50_ |\n"
+        )
+
+        def fake_runner(args: list[str]):  # type: ignore[no-untyped-def]
+            import subprocess
+
+            return subprocess.CompletedProcess(args, returncode=0, stdout=prior_table, stderr="")
+
+        path = sample_vault.dir_for("comparisons") / "x.md"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text("", encoding="utf-8")
+        result = compute_leader_changes(
+            sample_vault,
+            path,
+            aggregated={"alpha": {"score": 70}, "beta": {"score": 50}},
+            entity_slugs=["alpha", "beta"],
+            fields=["score"],
+            git_runner=fake_runner,
+        )
+        assert result is None  # alpha was leader before and after

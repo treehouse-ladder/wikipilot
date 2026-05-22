@@ -58,7 +58,8 @@ class TestAppendLogEntry:
 
 
 class TestWriteRunReport:
-    def test_writes_report(self, sample_vault: Vault) -> None:
+    def test_writes_report_legacy_caller(self, sample_vault: Vault) -> None:
+        """Callers that don't populate the curator fields still produce a valid report."""
         report = RunReport(
             routine="daily_research",
             run_date=date(2026, 5, 11),
@@ -78,10 +79,95 @@ class TestWriteRunReport:
         assert page.kind == "report"
         assert page.metadata["routine"] == "daily_research"
         assert page.metadata["run_id"] == "daily-2026-05-11-001"
-        assert "## Topics processed" in page.content
-        assert "ai-agents" in page.content
-        assert "Token usage by tier" in page.content
+        # New editorial sections still render even when empty:
+        assert "## Today's brief" in page.content
+        assert "_Curator produced no must-read items today._" in page.content
+        # Accounting moved under a <details> block:
+        assert "<details>" in page.content
+        assert "## Run accounting" in page.content
         assert "12,345" in page.content
+
+    def test_writes_report_with_curator_output(self, sample_vault: Vault) -> None:
+        report = RunReport(
+            routine="daily_research",
+            run_date=date(2026, 5, 22),
+            run_id="daily-2026-05-22-002",
+            topics_processed=["frontier-models", "agentic-coding"],
+            sources_added=[],
+            pages_touched=[],
+            runtime_seconds=180.0,
+            token_usage={},
+            pr_links=[],
+            new_disputes=[],
+            new_open_questions=[],
+            brief=(
+                "## Today's brief\n\n"
+                "- **[[claude-opus-4.7]]**: took #1 on GDPval-AA [[src-a]]. "
+                "**Why it matters:** ships agentic work to production."
+            ),
+            leader_changes=(
+                "## Leader changes\n\n- **`gdpval_aa_elo`**: [[claude-opus-4.7]] took #1 [[src-a]]."
+            ),
+            watchlist=("## Watchlist\n\n- **[[muse-spark]]**: open-weights candidate [[src-b]]."),
+            model_snapshot=(
+                "### Cost\n\n| Entity | input |\n| --- | --- |\n"
+                "| [[opus]] | _unknown_ |\n\n"
+                "### Benchmarks\n\n| Entity | gdp |\n| --- | --- |\n"
+                "| [[opus]] | **1753** |"
+            ),
+            notable_findings_by_topic=[
+                "- **[[frontier-models]]**: GLM-5 released [[glm-5]].",
+                "- **[[agentic-coding]]**: SWE-Chain numbers [[swe-chain]].",
+            ],
+        )
+        path = write_run_report(sample_vault, report)
+        page = Page.read(path)
+        body = page.content
+        # Editorial sections render verbatim.
+        assert "## Today's brief\n\n- **[[claude-opus-4.7]]**" in body
+        assert "## Leader changes\n\n- **`gdpval_aa_elo`**" in body
+        assert "## Watchlist\n\n- **[[muse-spark]]**" in body
+        # Frontier model snapshot wraps the transcluded tables.
+        assert "## Frontier model snapshot" in body
+        assert "**1753**" in body
+        # Notable findings section renders one bullet per topic.
+        assert "## Notable findings by topic" in body
+        assert "GLM-5 released" in body
+        assert "SWE-Chain numbers" in body
+        # Section order: brief BEFORE accounting.
+        assert body.index("## Today's brief") < body.index("## Run accounting")
+        assert body.index("## Frontier model snapshot") < body.index("## Run accounting")
+
+    def test_section_order_editorial_first(self, sample_vault: Vault) -> None:
+        """`## Today's brief` precedes `## Leader changes` precedes `## Frontier model snapshot`."""
+        report = RunReport(
+            routine="daily_research",
+            run_date=date(2026, 5, 22),
+            run_id="order-test",
+            topics_processed=[],
+            sources_added=[],
+            pages_touched=[],
+            runtime_seconds=None,
+            token_usage={},
+            pr_links=[],
+            new_disputes=[],
+            new_open_questions=[],
+            brief="## Today's brief\n\n- a [[s]]",
+            leader_changes="## Leader changes\n\n- b [[s]]",
+            watchlist="## Watchlist\n\n- c [[s]]",
+            model_snapshot="snapshot body",
+            notable_findings_by_topic=["- d"],
+        )
+        path = write_run_report(sample_vault, report)
+        body = path.read_text(encoding="utf-8")
+        brief = body.index("## Today's brief")
+        leaders = body.index("## Leader changes")
+        snapshot = body.index("## Frontier model snapshot")
+        watchlist = body.index("## Watchlist")
+        notable = body.index("## Notable findings by topic")
+        disputes = body.index("## Disputes & open questions")
+        accounting = body.index("## Run accounting")
+        assert brief < leaders < snapshot < watchlist < notable < disputes < accounting
 
 
 class TestWriteHealthReport:

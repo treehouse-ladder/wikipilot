@@ -1,0 +1,49 @@
+---
+title: "Kimi K2.6"
+kind: entity
+sources: ["[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]", "[[multi-modal-model-kimi-k2-6-pricing-774b549a]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]"]
+last_updated: "2026-05-22"
+last_verified: "2026-05-21"
+freshness_window_days: 30
+input_cost_per_mtoken: 0.95
+output_cost_per_mtoken: 4.00
+cost_source: "[[multi-modal-model-kimi-k2-6-pricing-774b549a]]"
+aa_intelligence_index: 54
+aa_intelligence_index_source: "[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]"
+gdpval_aa_elo: 1520
+gdpval_aa_elo_source: "[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]"
+swe_bench_verified: 0.802
+swe_bench_verified_source: "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]"
+cybergym: 0.413
+cybergym_source: "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]"
+arc_agi_2: null
+arc_agi_2_source: null
+---
+
+## Summary
+
+Kimi K2.6 is Moonshot AI's frontier open-weights model. It scored 54 on the Artificial Analysis Intelligence Index on release (April 2026), placing it within 3 AA-Index points of the closed-frontier leader [[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]. Kimi K2.6 also scores 1,520 Elo on GDPval-AA — the highest open-weights GDPval-AA score recorded at its release.
+
+> Moonshot's Kimi K2.6 is the new leading open weights model, landing at #4 on the Artificial Analysis Intelligence Index (54) behind only Anthropic, Google, and OpenAI (all 57). Kimi K2.6 achieves an Elo of 1520 on the GDPval-AA evaluation.
+
+Moonshot's hosted Kimi K2.6 API is priced at $0.95 per million input tokens (cache miss) and $4.00 per million output tokens; cache-hit input drops to $0.16/M [[multi-modal-model-kimi-k2-6-pricing-774b549a]]. Context window is 262,144 tokens.
+
+> Kimi K2.6 ... Input Price (Cache Hit) `$0.16` ... Input Price (Cache Miss) `$0.95` ... Output Price `$4.00` ... Context Window 262,144 tokens.
+
+On [[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]] Kimi K2.6 scores 80.2% — the leading open-weights score on SWE-bench Verified, within 8.5 points of GPT-5.5. On [[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]] it scores only 41.3%, well behind the frontier closed models — suggesting Kimi K2.6's strengths are concentrated in generalist code/reasoning rather than adversarial cyber-security agentic tasks.
+
+> Kimi K2.6 (80.2%, new open-weight) ties MiniMax M2.5.
+
+> Kimi K2.6 ... 0.413 [CyberGym].
+
+_no contradictions or gaps known yet (last reviewed: 2026-05-22)_
+
+## Open questions
+
+- [ ] ARC-AGI-2 score for Kimi K2.6 — not yet on the BenchLM ARC-AGI-2 leaderboard as of 2026-05-20.
+
+## See also
+
+- [[frontier-models]]
+- [[glm-5]]
+- [[claude-opus-4.7]]

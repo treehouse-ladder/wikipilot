@@ -29,6 +29,7 @@ EXPECTED_AGENTS: dict[str, str] = {
     "query-answerer": "claude-opus-4-7",
     "wiki-disputes-scanner": "claude-sonnet-4-5",
     "conflict-resolver": "claude-opus-4-7",
+    "daily-brief-curator": "claude-opus-4-7",
 }
 
 EXPECTED_SKILLS: tuple[str, ...] = (
@@ -131,3 +132,44 @@ def test_query_answerer_qmd_first() -> None:
     body = (AGENTS_DIR / "query-answerer.md").read_text(encoding="utf-8").lower()
     assert "qmd-search" in body
     assert body.find("qmd-search") < body.find("websearch") or "qmd-search first" in body
+
+
+def test_daily_brief_curator_cites_glosses_and_rubric() -> None:
+    """The curator MUST mention benchmark_glosses reuse + the rubric prompt
+    + the citation-discipline rule, otherwise the editorial top of the
+    daily report risks ad-hoc benchmark interpretations the user hasn't
+    aligned with."""
+    body = (AGENTS_DIR / "daily-brief-curator.md").read_text(encoding="utf-8")
+    assert "benchmark_glosses" in body
+    assert "cost_glosses" in body
+    assert "daily_brief_curator.md" in body
+    assert "[[source-slug]]" in body
+    # No-bullet-without-citation must be stated explicitly as a hard rule.
+    body_lower = body.lower()
+    assert (
+        "no bullet ships" in body_lower
+        or "don't ship a bullet without a citation" in body_lower
+        or "no bullets without a citation" in body_lower
+    )
+
+
+def test_daily_brief_curator_rubric_exists() -> None:
+    rubric = REPO_ROOT / "prompts" / "daily_brief_curator.md"
+    assert rubric.exists()
+    body = rubric.read_text(encoding="utf-8").lower()
+    # Anchor priorities must reference both lenses.
+    assert "best games" in body
+    assert "agentic" in body
+
+
+def test_topic_researcher_documents_entity_field_updates() -> None:
+    body = (AGENTS_DIR / "topic-researcher.md").read_text(encoding="utf-8")
+    assert "entity_field_updates" in body
+    assert "frontier_models" in body
+    assert "roster" in body
+
+
+def test_wiki_merger_applies_entity_field_updates() -> None:
+    body = (AGENTS_DIR / "wiki-merger.md").read_text(encoding="utf-8")
+    assert "entity_field_updates" in body
+    assert "verified_today" in body

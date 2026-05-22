@@ -1,10 +1,23 @@
 ---
 title: "GLM-5"
 kind: entity
-sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]"]
+sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]"]
 last_updated: "2026-05-22"
 last_verified: "2026-05-22"
 freshness_window_days: 30
+input_cost_per_mtoken: 1.00
+output_cost_per_mtoken: 3.20
+cost_source: "[[z-ai-developer-document-pricing-667e8002]]"
+aa_intelligence_index: 50
+aa_intelligence_index_source: "[[glm-5-everything-you-need-to-know-a53ff5c1]]"
+gdpval_aa_elo: null
+gdpval_aa_elo_source: null
+swe_bench_verified: null
+swe_bench_verified_source: null
+cybergym: null
+cybergym_source: null
+arc_agi_2: null
+arc_agi_2_source: null
 ---
 
 ## Summary
@@ -18,6 +31,10 @@ GLM-5 achieves the highest Artificial Analysis Agentic Index score among open-we
 > GLM-5 is Z.AI's first new architecture since GLM-4.5, scaling to 744B total / 40B active parameters, and integrates DeepSeek Sparse Attention.
 
 > GLM-5 achieves the highest Artificial Analysis Agentic Index score among open weights models with a score of 63, ranking third overall, driven by strong performance in GDPval-AA.
+
+Z.AI's hosted GLM-5 API is priced at $1.00 per million input tokens and $3.20 per million output tokens; cached input drops to $0.20/M, with cached input storage free for a limited time [[z-ai-developer-document-pricing-667e8002]].
+
+> GLM-5 ... Input $1 ... Cached Input $0.2 ... Output $3.2.
 
 ## Disputes
 

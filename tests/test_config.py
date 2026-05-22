@@ -294,3 +294,106 @@ class TestConflictResolverConfig:
             "COLLABORATOR",
         )
         assert config.conflict_resolver.trusted_authors == ()
+
+
+class TestFrontierModelsConfig:
+    """``[frontier_models]`` — roster + benchmarks + cost_fields + glosses.
+
+    The strict gloss validator exists to prevent acronym-soup columns from
+    landing in the daily brief: every benchmark / cost field MUST have a
+    matching one-line gloss in the config, or load fails. The tests below
+    pin that contract.
+    """
+
+    def test_defaults_when_block_omitted(self, tmp_path: Path) -> None:
+        config = load_wikipilot_config(tmp_path / "missing.toml")
+        assert config.frontier_models.roster == ()
+        assert config.frontier_models.benchmarks == ()
+        assert config.frontier_models.cost_fields == ()
+        assert config.frontier_models.benchmark_glosses == {}
+        assert config.frontier_models.cost_glosses == {}
+
+    def test_loads_full_block(self, tmp_path: Path) -> None:
+        path = tmp_path / "wikipilot.toml"
+        path.write_text(
+            "[frontier_models]\n"
+            'roster = ["claude-opus-4.7", "gpt-5.5"]\n'
+            'benchmarks = ["aa_intelligence_index"]\n'
+            'cost_fields = ["input_cost_per_mtoken"]\n\n'
+            "[frontier_models.benchmark_glosses]\n"
+            'aa_intelligence_index = "Aggregate intelligence."\n\n'
+            "[frontier_models.cost_glosses]\n"
+            'input_cost_per_mtoken = "USD/Mtoken input."\n',
+            encoding="utf-8",
+        )
+        config = load_wikipilot_config(path)
+        assert config.frontier_models.roster == ("claude-opus-4.7", "gpt-5.5")
+        assert config.frontier_models.benchmarks == ("aa_intelligence_index",)
+        assert config.frontier_models.cost_fields == ("input_cost_per_mtoken",)
+        assert (
+            config.frontier_models.benchmark_glosses["aa_intelligence_index"]
+            == "Aggregate intelligence."
+        )
+        assert config.frontier_models.cost_glosses["input_cost_per_mtoken"] == "USD/Mtoken input."
+
+    def test_missing_benchmark_gloss_rejected(self, tmp_path: Path) -> None:
+        """A benchmark column without a matching gloss fails config load —
+        the whole point is to force the user to explain the column before
+        it ships to the daily brief."""
+        path = tmp_path / "wikipilot.toml"
+        path.write_text(
+            "[frontier_models]\n"
+            'benchmarks = ["aa_intelligence_index", "cybench"]\n\n'
+            "[frontier_models.benchmark_glosses]\n"
+            'aa_intelligence_index = "Aggregate intelligence."\n',
+            encoding="utf-8",
+        )
+        with pytest.raises(ConfigError, match="cybench"):
+            load_wikipilot_config(path)
+
+    def test_missing_cost_gloss_rejected(self, tmp_path: Path) -> None:
+        path = tmp_path / "wikipilot.toml"
+        path.write_text(
+            "[frontier_models]\n"
+            'cost_fields = ["input_cost_per_mtoken"]\n\n'
+            "[frontier_models.cost_glosses]\n",
+            encoding="utf-8",
+        )
+        with pytest.raises(ConfigError, match="input_cost_per_mtoken"):
+            load_wikipilot_config(path)
+
+    def test_empty_gloss_value_rejected(self, tmp_path: Path) -> None:
+        path = tmp_path / "wikipilot.toml"
+        path.write_text(
+            "[frontier_models]\n"
+            'benchmarks = ["aa_intelligence_index"]\n\n'
+            "[frontier_models.benchmark_glosses]\n"
+            'aa_intelligence_index = ""\n',
+            encoding="utf-8",
+        )
+        with pytest.raises(ConfigError, match="non-empty"):
+            load_wikipilot_config(path)
+
+    def test_unknown_key_rejected(self, tmp_path: Path) -> None:
+        path = tmp_path / "wikipilot.toml"
+        path.write_text(
+            "[frontier_models]\nbogus = true\n",
+            encoding="utf-8",
+        )
+        with pytest.raises(ConfigError, match="unknown keys"):
+            load_wikipilot_config(path)
+
+    def test_repo_config_loads_with_full_roster(self) -> None:
+        """The committed wikipilot.toml ships a full roster + glosses for
+        every benchmark and cost field."""
+        repo_root = Path(__file__).resolve().parents[1]
+        config = load_wikipilot_config(repo_root / "wikipilot.toml")
+        fm = config.frontier_models
+        assert "claude-opus-4.7" in fm.roster
+        assert "aa_intelligence_index" in fm.benchmarks
+        assert "input_cost_per_mtoken" in fm.cost_fields
+        # Every column has a registered gloss (load would have failed otherwise).
+        for col in fm.benchmarks:
+            assert fm.benchmark_glosses[col]
+        for col in fm.cost_fields:
+            assert fm.cost_glosses[col]

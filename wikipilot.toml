@@ -74,3 +74,56 @@ prefix = "claude"  # Claude Code Cloud restricts pushes to `claude/*` branches b
 daily_template = "claude/daily-{date}/{topic_id}"
 query_template = "claude/query-{date}-{slug}"
 health_template = "claude/health-{date}"
+
+[frontier_models]
+# Roster of entities the frontier-models topic-researcher sweeps every day.
+# Each entry must have a `wiki/entities/<slug>.md` page eventually; missing
+# pages render as `_unknown_` rows in the comparison tables until the
+# researcher creates them.
+roster = [
+  "claude-opus-4.7",
+  "claude-sonnet-4.6",
+  "gpt-5.5",
+  "gemini-3.1-pro",
+  "grok-4.3",
+  "deepseek-v4",
+  "glm-5",
+  "kimi-k2.6",
+  "qwen3.7-max",
+]
+
+# Benchmark frontmatter fields the researcher re-confirms daily and the
+# `benchmark-leaders` comparison page aggregates.
+benchmarks = [
+  "aa_intelligence_index",
+  "gdpval_aa_elo",
+  "swe_bench_verified",
+  "cybergym",
+  "arc_agi_2",
+]
+
+# Cost frontmatter fields the researcher re-confirms daily and the
+# `cost-comparison` page aggregates. Lower-is-better; the comparison
+# renderer inverts leader ordering for any column listed here.
+cost_fields = [
+  "input_cost_per_mtoken",
+  "output_cost_per_mtoken",
+]
+
+# One-line "what being good at this means FOR ME" gloss per benchmark,
+# in the game-dev + agentic-workflow lens. Used by compare.py to render
+# a legend above the benchmark-leaders table, and by the
+# daily-brief-curator when explaining a leader change in plain language.
+# Human-owned (the wiki routines never edit wikipilot.toml). Keep each
+# gloss to ~1 line. Adding a benchmark without writing its gloss fails
+# config load on purpose.
+[frontier_models.benchmark_glosses]
+aa_intelligence_index = "Aggregate intelligence (avg across many evals). High = strong generalist; the right default daily-driver for agentic coding."
+gdpval_aa_elo = "Real-world economic-task quality vs. human experts. High = ships agentic work to production with fewer reverts."
+swe_bench_verified = "Resolves real GitHub issues end-to-end (curated subset). High = stronger refactor/bugfix agent inside your game project."
+cybergym = "Agentic cyber-CTF tasks (CyberGym is the active successor to the now-saturated original Cybench). High = robust under adversarial prompts; proxy for hard agentic resilience."
+arc_agi_2 = "Abstract pattern reasoning resistant to training-set memorization. High = bigger upside on novel game mechanics + puzzle design."
+
+[frontier_models.cost_glosses]
+input_cost_per_mtoken = "USD/Mtoken input. Lower = cheaper to feed long codebases + cached prompts to the agent."
+output_cost_per_mtoken = "USD/Mtoken output. Lower = cheaper for long-running parallel-agent sessions."

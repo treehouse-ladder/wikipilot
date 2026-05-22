@@ -92,8 +92,30 @@ freshness_window_days: 30                             # lint flags pages where n
 Source pages additionally carry: `url`, `sha256`, `fetched_at`, `topic`, `image_count`.
 Answer pages additionally carry: `question`, `issue_url` (optional, when triggered by GitHub), `run_id`.
 Report pages additionally carry: `run_id`, `routine` (`daily_research` | `wiki_query` | `weekly_health`).
-Comparison pages additionally carry: `comparison_of` (list of ≥ 2 entity slugs) and `compare_fields` (list of ≥ 1 frontmatter field name to aggregate).
+Comparison pages additionally carry: `comparison_of` (list of ≥ 2 entity slugs) and `compare_fields` (list of ≥ 1 frontmatter field name to aggregate). Optionally `highlight_leaders: true` (bold per-column #1, italic #2; cost-style columns are inverted) and `show_glosses: true` (render a "What each column means for me" legend block above the table, pulled from `wikipilot.toml [frontier_models]`).
 Entity pages MAY carry: `aliases` (list of strings) — Obsidian-native aliases that resolve in `[[wikilinks]]` so `[[GPT-4]]`, `[[GPT 4]]`, `[[gpt4]]` all resolve to the same entity page when the entity declares them.
+
+### Frontier-model entity profile
+
+Entity pages whose slug appears in `wikipilot.toml [frontier_models].roster` carry an additional structured profile so the cost + benchmark comparison pages regenerate cleanly. Every value is paired with a sibling `_source` field carrying the source-page slug as a wikilink (or `null` when unknown — `null` keeps the comparison cell rendering as `_unknown_` and signals the next daily sweep to backfill):
+
+```yaml
+input_cost_per_mtoken: 3.00                                       # USD; null when unknown
+output_cost_per_mtoken: 15.00
+cost_source: "[[introducing-claude-sonnet-46-c4a45eed]]"          # one shared cite covers both cost fields
+aa_intelligence_index: 60                                         # null when unknown
+aa_intelligence_index_source: "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]"
+gdpval_aa_elo: 1753
+gdpval_aa_elo_source: "[[claude-opus-47-everything-you-need-to-know-751c1827]]"
+swe_bench_verified: 0.939                                         # fraction in [0, 1], not percentage
+swe_bench_verified_source: "[[mythos-preview-card]]"
+cybergym: 0.831
+cybergym_source: "[[mythos-preview-card]]"
+arc_agi_2: null
+arc_agi_2_source: null
+```
+
+The `topic-researcher` (for `TOPIC_ID == "frontier-models"` only) sweeps every entity in the roster on every daily run and emits `entity_field_updates` (see "Schemas" below) when any field's value has moved. The `wiki-merger` applies them as in-place frontmatter writes, appends the cited `>` quote to the entity's `## Summary` if it isn't already there, and bumps `last_verified` only on entities whose values the researcher re-confirmed today.
 
 ## Standard page sections
 
@@ -128,9 +150,11 @@ This addresses the recurring "lossy compression" critique — the wiki must be a
 Phase 9 introduces `comparison` as a first-class wiki kind alongside `concept` / `entity`. A comparison page surfaces N-way data (or N-way disagreement) for a set of related entities — e.g. `cost-comparison` reads `cost_per_mtoken` from each frontier-model entity, `agentic-ide-comparison` reads parallel-subagent / prompt-caching / MCP support from each agentic-IDE entity.
 
 - **Location**: `wiki/comparisons/<slug>.md`.
-- **Frontmatter**: standard fields plus `comparison_of: [entity-slug-1, entity-slug-2, ...]` (≥ 2 entries) and `compare_fields: [field-name-1, ...]` (≥ 1 entry).
+- **Frontmatter**: standard fields plus `comparison_of: [entity-slug-1, entity-slug-2, ...]` (≥ 2 entries) and `compare_fields: [field-name-1, ...]` (≥ 1 entry). Optionally `highlight_leaders: true` and `show_glosses: true` (see below).
 - **Body**: a generated markdown table; one row per entity, one column per field. Cells render as `_unknown_` when the entity page omits the field — that's the explicit signal to backfill the value on the entity, not the comparison.
-- **Lifecycle**: create with `wikipilot compare new <slug> --of <e1,e2> --fields <f1,f2> --title "..."`; regenerate with `wikipilot compare regen <slug>`. Regeneration re-reads frontmatter and rewrites the body; idempotent (`last_updated` bumps to today, `last_verified` is left alone).
+- **Lifecycle**: create with `wikipilot compare new <slug> --of <e1,e2> --fields <f1,f2> --title "..."`; regenerate with `wikipilot compare regen <slug>`. Regeneration re-reads frontmatter and rewrites the body; idempotent (`last_updated` bumps to today, `last_verified` is left alone). The Daily Research report PR regenerates both `cost-comparison` and `benchmark-leaders` automatically.
+- **Leader highlighting** (`highlight_leaders: true`): the per-column #1 cell renders `**bold**`, #2 renders `_italic_`. Columns listed in `[frontier_models].cost_fields` are inverted (lower-is-better). Missing values (`_unknown_`) are excluded from the ranking. A `## Leader changes since last regen` paragraph is appended below the table summarizing any #1 swap vs. the previous git revision of the same file.
+- **Column glosses** (`show_glosses: true`): a `## What each column means for me` legend block is rendered immediately above the table. Glosses live in `wikipilot.toml [frontier_models.benchmark_glosses]` and `[frontier_models.cost_glosses]` — one human-curated sentence per column, in the game-dev + agentic-workflow lens. Columns without a registered gloss render `_no gloss configured_`.
 - **Lint exclusions**: comparison pages are NOT subject to `citation-density` (the table is the synthesis; cited claims live on the entity pages) or `orphan-page` (comparisons are referenced from topic indices, but a missing backlink shouldn't block).
 
 ## Entity aliases
@@ -214,6 +238,7 @@ After every routine run, the orchestrator writes `wiki/reports/YYYY-MM-DD.md` (o
 | `query-answerer` | **Opus 4.7** | user-facing synthesis on demand |
 | `wiki-disputes-scanner` | Sonnet | judgment task, but cost-sensitive (many pages × candidate sets); never auto-resolves disputes |
 | `conflict-resolver` | **Opus 4.7** | intelligent text-conflict resolution (append-only Disputes/Open questions, cross-page sweep awareness); dispatched only when GitHub reports `mergeStateStatus in {DIRTY, BEHIND}` |
+| `daily-brief-curator` | **Opus 4.7** | one editorial pass per Daily Research run at the report-PR step; reads every merged proposal + the regenerated cost/benchmark tables + yesterday's report and produces the `## Today's brief` + `## Leader changes` + `## Watchlist` sections of the daily report, ranked through the user's "best games + most-optimized agentic workflow" lens |
 
 Routine-UI model picker only sets the orchestrator model; subagents pin their own model via YAML frontmatter.
 
@@ -291,7 +316,8 @@ Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to 
       "url": "https://...",
       "title": "Source title",
       "excerpt": "Verbatim quote(s) for the > evidence block(s).",
-      "image_urls": ["https://...", "..."]
+      "image_urls": ["https://...", "..."],
+      "also_relevant_to": ["<other-topic-id>", "..."]
     }
   ],
   "page_diffs": [
@@ -303,10 +329,42 @@ Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to 
       "new_open_questions": ["What about under FP8?"]
     }
   ],
+  "entity_field_updates": [
+    {
+      "entity_slug": "claude-opus-4.7",
+      "field": "input_cost_per_mtoken",
+      "old_value": 15.00,
+      "new_value": 15.00,
+      "source_slug": "introducing-claude-opus-47-b8af8104",
+      "excerpt": "> ... verbatim quote from the source ...",
+      "verified_today": true
+    }
+  ],
   "new_disputes": ["..."],
   "new_open_questions": ["..."]
 }
 ```
+
+`entity_field_updates` is only populated by the `frontier-models` topic-researcher's daily roster sweep (see "Daily run workflow" and the agent prompt). Other topics omit the field or pass `[]`. Each entry has:
+
+- `entity_slug`: the target entity (must be in `[frontier_models].roster`).
+- `field`: one of `[frontier_models].benchmarks` or `[frontier_models].cost_fields`.
+- `old_value` / `new_value`: the prior frontmatter value (or `null`) and the value to write.
+- `source_slug`: the source page that substantiates `new_value` (also added to the entity's `sources:` list if not already there).
+- `excerpt`: the verbatim quote that will land under the entity's `## Summary` if not already present.
+- `verified_today`: `true` when the researcher actually re-confirmed the value against the source today; controls whether `wiki-merger` bumps `last_verified` on the entity.
+
+### Curator output (returned by `daily-brief-curator`)
+
+```json
+{
+  "todays_brief": "## Today's brief\n- ...",
+  "leader_changes": "## Leader changes\n- ...",
+  "watchlist": "## Watchlist\n- ..."
+}
+```
+
+Each bullet in any of the three sections MUST carry at least one `[[source-slug]]` wikilink and one one-line "why it matters to you" rationale in the game-dev or agentic-workflow lens. The `## Leader changes` section reuses configured `[frontier_models].benchmark_glosses` / `cost_glosses` verbatim (or near-paraphrase) — the curator does not reinterpret what a benchmark measures.
 
 ### Answer (returned by `query-answerer`)
 
