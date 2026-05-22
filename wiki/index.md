@@ -21,7 +21,9 @@ _(none yet)_
 - [[claude-opus-4.7]]
 - [[deepseek-v4]]
 - [[gemini-3.1-pro]]
+- [[glm-5]]
 - [[gpt-5.5]]
+- [[muse-spark]]
 
 ## Comparisons
 
@@ -136,6 +138,23 @@ _(none yet)_
 - [[continually-improving-our-agent-harness-cursor-blog-173ad132]]
 - [[swe-webdevbench-evaluating-coding-agent-application-platforms-as-virtual-software-agencies-c47cb7a6]]
 - [[enabling-claude-code-to-work-more-autonomously-anthropic-270c90d1]]
+- [[2k-makes-layoffs-at-project-ethos-developer-31st-union-abd3780c]]
+- [[blue-prince-original-soundtrack-music-review-13877127]]
+- [[building-a-c-compiler-with-a-team-of-parallel-claudes-1eba12a4]]
+- [[fixed-persona-slms-with-modular-memory-scalable-npc-dialogue-on-consumer-hardware-4b908fb8]]
+- [[glm-5-everything-you-need-to-know-a53ff5c1]]
+- [[hinterland-confirms-layoffs-after-delaying-the-long-dark-sequel-379834d9]]
+- [[metacore-restructuring-to-the-tune-of-up-to-160-redundancies-7bd8bf0f]]
+- [[mocapanything-v2-end-to-end-motion-capture-for-arbitrary-skeletons-d09ec008]]
+- [[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]
+- [[one-third-of-game-workers-using-genai-but-half-think-it-s-bad-dd26fbdb]]
+- [[report-vr-studio-survios-has-laid-off-the-bulk-of-its-dev-team-7f9b0734]]
+- [[scaling-managed-agents-decoupling-the-brain-from-the-hands-8537165d]]
+- [[skillsbench-benchmarking-how-well-agent-skills-work-across-diverse-tasks-1743f5a5]]
+- [[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]]
+- [[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]
+- [[symbolically-scaffolded-play-designing-role-sensitive-prompts-for-generative-npc-dialogue-ec655f1e]]
+- [[synergizing-code-coverage-and-gameplay-intent-coverage-aware-game-playtesting-with-llm-guided-reinforcement-learning-fa864b56]]
 
 ## Answers
 
@@ -145,3 +164,4 @@ _(none yet)_
 
 - [[health-2026-05-21]]
 - [[2026-05-21]]
+- [[2026-05-22]]

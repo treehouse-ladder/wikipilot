@@ -95,3 +95,27 @@ Sandboxing-as-autonomy: Claude Code OS-level sandbox (84% permission-prompt redu
 ## [2026-05-21] daily | 5 topics, 18 sources, 5 pages (run 2)
 
 Second daily research pass for 2026-05-21: 5 topics, 18 new sources, 5 topic pages updated, 5 PRs created.
+
+## [2026-05-22] daily | agentic-coding — 5 sources, 5 pages
+
+Parallel-Claudes C compiler (2K sessions/$20K/100K-line), Managed Agents brain/hands decoupling, SkillsBench (+4.5pp SE), SWE-Chain (Opus-4.7 60.8%), SWE-Cycle+SWE-Judge (deterministic scoring "severe misjudgments").
+
+## [2026-05-22] daily | frontier-models — 2 sources, 4 pages
+
+Muse Spark (Meta AA Index 52, first closed-weight Meta model, 260k ctx multimodal); GLM-5 (Z.AI open-weights leader AA 50, 744B/40B MoE + DeepSeek Sparse Attention, MIT). New entities: muse-spark, glm-5.
+
+## [2026-05-22] daily | ai-in-game-dev — 4 sources, 1 page
+
+MoCapAnything V2 (end-to-end arbitrary-skeleton, ~20x faster); symbolically-scaffolded NPC dialogue (role-dependent scaffolding effects); fixed-persona SLM on-device; SMART LLM-guided RL playtesting (94% branch coverage).
+
+## [2026-05-22] daily | games-of-note — 5 sources, 1 page
+
+Contraction wave: Metacore/Supercell (160 roles), Survios near-shuttered, 31st Union roguelike pivot, Hinterland/Blackfrost delay. GDC 2026 genAI survey: 36% using, 52% negative, 7% positive (down from 13%).
+
+## [2026-05-22] daily | game-music — 1 source, 1 page
+
+Blue Prince OST (Trigg & Gusset debut): percussion-free ambient-jazz, rubato, ostinato 3/4.
+
+## [2026-05-22] daily | 5 topics, 17 sources, 12 pages
+
+Daily research run complete: 5 topics, 17 new sources, 12 synthesis pages updated (9 topic/entity + 3 cross-page), 5 PRs opened (#27-#31). 7 new disputes filed, 16 new open questions added.
