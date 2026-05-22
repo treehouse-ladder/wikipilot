@@ -1,9 +1,9 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]", "[[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]", "[[the-best-video-game-soundtracks-of-2026-so-far-11501826]]", "[[mick-gordon-in-conversation-sonic-state-jan-2026-53ed29e8]]", "[[pragmata-soundtrack-and-vinyl-release-review-2026-31dc604e]]", "[[elden-ring-nightreign-soundtrack-is-coming-to-vinyl-30e2c324]]", "[[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]", "[[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]]", "[[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]]", "[[aether-iron-soundtrack-music-review-5b0c61bb]]", "[[octopath-traveler-0-original-soundtrack-music-review-81d13f2c]]", "[[prescription-for-sleep-ocarina-of-time-music-review-f69d5aa2]]"]
-last_updated: 2026-05-21
-last_verified: 2026-05-21
+sources: ["[[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]", "[[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]", "[[the-best-video-game-soundtracks-of-2026-so-far-11501826]]", "[[mick-gordon-in-conversation-sonic-state-jan-2026-53ed29e8]]", "[[pragmata-soundtrack-and-vinyl-release-review-2026-31dc604e]]", "[[elden-ring-nightreign-soundtrack-is-coming-to-vinyl-30e2c324]]", "[[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]", "[[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]]", "[[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]]", "[[aether-iron-soundtrack-music-review-5b0c61bb]]", "[[octopath-traveler-0-original-soundtrack-music-review-81d13f2c]]", "[[prescription-for-sleep-ocarina-of-time-music-review-f69d5aa2]]", "[[blue-prince-original-soundtrack-music-review-13877127]]"]
+last_updated: 2026-05-22
+last_verified: 2026-05-22
 freshness_window_days: 60
 ---
 
@@ -60,6 +60,12 @@ The first daily research pass surfaces a 2026 dominated by retrospective vinyl r
 
 > Scarlet Moon Records' prolific jazz duo GENTLE LOVE released their first-ever all-Zelda album, Prescription for Sleep: Ocarina of Time, with saxophonist Norihiko Hibino (composer on the Metal Gear Solid series) and pianist AYAKI celebrating the 40th anniversary of The Legend of Zelda.
 
+**Original scores of note (cont.).** The 2026-05-22 daily pass surfaces RPGFan's review of the *Blue Prince Original Soundtrack* by the Dutch duo Trigg & Gusset — lead composer Bart Knol with Erik van Geer co-composing on bass clarinet, their first game score [[blue-prince-original-soundtrack-music-review-13877127]]. The defining compositional choice is the total absence of drums or percussion, which RPGFan credits with enabling "excellent rubato" and a gentle, swaying ambient-jazz character; the closest the album comes to a pulse is the brisk 3/4 ostinato synth pattern of standout track "Under the Black Bridge" [[blue-prince-original-soundtrack-music-review-13877127]].
+
+> One notable aspect of the Blue Prince OST is that it has no drums and no percussion of any kind. This allows for some excellent rubato and lets the listener get lost in the gentle, swaying tones without feeling that pulsing, bouncing energy.
+
+> A standout track is Under the Black Bridge, a brisk 3/4 piece with an ostinato synth pattern that comes as close to percussion as the OST gets.
+
 ## Comparisons
 
 Pre-declared comparison pages for this topic. Listed in prose backticks
@@ -83,6 +89,7 @@ until the underlying entity pages exist:
 - [ ] Which (if any) of David Wise's NDA projects are game scores, and for what platform/studio?
 - [ ] Is there a physical (vinyl/CD) release planned for the Aether & Iron soundtrack [[aether-iron-soundtrack-music-review-5b0c61bb]], or streaming-only? RPGFan's review covers the music but does not note a physical edition.
 - [ ] Does the Octopath Traveler 0 OST overlap with Champions of the Continent constitute padding, or is the carried-over 40 percent re-recorded/re-arranged [[octopath-traveler-0-original-soundtrack-music-review-81d13f2c]]?
+- [ ] Is there a physical (vinyl/CD) release planned for the Blue Prince Original Soundtrack [[blue-prince-original-soundtrack-music-review-13877127]], or is it Bandcamp/streaming-only? RPGFan notes Trigg & Gusset's Bandcamp catalog but does not mention a Blue Prince physical edition.
 
 ## See also
 
