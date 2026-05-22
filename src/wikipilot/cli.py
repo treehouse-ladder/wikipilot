@@ -51,7 +51,15 @@ from wikipilot.lint import (
 )
 from wikipilot.qmd_index import index_vault, qmd_available
 from wikipilot.sources import ingest_source_with_images
-from wikipilot.wiki import WIKI_DIRS, Vault, WikiError
+from wikipilot.wiki import (
+    INDEX_SKELETON,
+    WIKI_DIRS,
+    ResetSummary,
+    Vault,
+    WikiError,
+    render_log_skeleton,
+    reset_vault,
+)
 
 DEFAULT_WIKI_PATH = Path("wiki")
 DEFAULT_TOPICS_PATH = Path("topics.yaml")
@@ -145,11 +153,213 @@ def init_vault_cmd(vault_path: Path, force: bool) -> None:
             gitkeep.write_text("", encoding="utf-8")
     index_path = vault_path / "index.md"
     if force or not index_path.exists():
-        index_path.write_text(_INDEX_SKELETON, encoding="utf-8")
+        index_path.write_text(INDEX_SKELETON, encoding="utf-8")
     log_path = vault_path / "log.md"
     if force or not log_path.exists():
-        log_path.write_text(_LOG_SKELETON.format(date=date.today().isoformat()), encoding="utf-8")
+        log_path.write_text(render_log_skeleton(), encoding="utf-8")
     click.echo(f"Initialized vault at {vault_path}")
+
+
+@main.command("reset-vault")
+@click.argument(
+    "vault_path",
+    type=click.Path(file_okay=False, dir_okay=True, path_type=Path),
+    default=DEFAULT_WIKI_PATH,
+)
+@click.option(
+    "--yes",
+    "skip_confirm",
+    is_flag=True,
+    default=False,
+    help="Skip the typed-basename confirmation prompt (for scripted/CI use).",
+)
+@click.option(
+    "--keep-topics",
+    is_flag=True,
+    default=False,
+    help="Preserve wiki/topics/<id>/ folders and topics.yaml entries.",
+)
+@click.option(
+    "--topics-file",
+    "topics_path",
+    type=click.Path(path_type=Path),
+    default=None,
+    help=(
+        "Path to topics.yaml (reset to an empty stub unless --keep-topics). "
+        "Defaults to the topics.yaml beside VAULT_PATH (so a tmp-vault smoke "
+        "test never reaches across to the workspace topics.yaml)."
+    ),
+)
+def reset_vault_cmd(
+    vault_path: Path,
+    skip_confirm: bool,
+    keep_topics: bool,
+    topics_path: Path | None,
+) -> None:
+    """Reset a forked vault back to the empty skeleton.
+
+    Wipes the maintainer's seeded sources, concepts, entities, comparisons,
+    answers, reports, decks, asset folders, topic folders, and resets
+    index.md, log.md, and topics.yaml. Preserves .obsidian/ config,
+    every _*.md personal scratch file, and every .gitkeep.
+
+    Always runs a dry-run first and asks the user to confirm by typing the
+    vault directory's basename (e.g. "wiki"). Pass --yes to skip the
+    confirmation for scripted use.
+    """
+    try:
+        plan = reset_vault(vault_path, keep_topics=keep_topics, dry_run=True)
+    except WikiError as exc:
+        click.echo(f"ERROR: {exc}", err=True)
+        sys.exit(2)
+
+    # Derive topics.yaml from the resolved vault's parent unless the user
+    # passed an explicit path. This prevents `wikipilot reset-vault /tmp/foo`
+    # from accidentally rewriting the workspace's topics.yaml when run from
+    # a checkout root (the bug the smoke-test guard caught).
+    if topics_path is None:
+        topics_path = plan.root.parent / "topics.yaml"
+    _print_topics_target(topics_path)
+    topics_action = _plan_topics_yaml_reset(topics_path, keep_topics=keep_topics)
+    _print_reset_summary(plan, topics_action=topics_action)
+
+    if plan.is_empty() and topics_action == "skip":
+        click.echo("Vault is already at the empty-skeleton state. Nothing to do.")
+        return
+
+    if not skip_confirm:
+        expected = plan.root.name
+        click.echo(
+            f"\nType the vault directory NAME ({expected!r}) to confirm (anything else aborts): ",
+            nl=False,
+        )
+        try:
+            answer = input().strip()
+        except EOFError:
+            click.echo("\nNo TTY and --yes not passed. Aborting.", err=True)
+            sys.exit(1)
+        if answer != expected:
+            click.echo("Aborted; nothing was deleted.", err=True)
+            sys.exit(1)
+
+    try:
+        result = reset_vault(vault_path, keep_topics=keep_topics, dry_run=False)
+    except WikiError as exc:
+        click.echo(f"ERROR: {exc}", err=True)
+        sys.exit(2)
+
+    # Rewrite index.md and log.md to canonical skeletons only when the
+    # helper signaled they differ from skeleton (idempotent: a second
+    # reset on an already-clean vault writes nothing).
+    files_to_reset_names = {p.name for p in result.files_to_reset}
+    if "index.md" in files_to_reset_names:
+        (result.root / "index.md").write_text(INDEX_SKELETON, encoding="utf-8")
+    if "log.md" in files_to_reset_names:
+        (result.root / "log.md").write_text(render_log_skeleton(), encoding="utf-8")
+
+    # Apply the topics.yaml reset.
+    if topics_action == "reset":
+        try:
+            _apply_topics_yaml_reset(topics_path)
+            click.echo(f"Reset {topics_path} to an empty stub.")
+        except OSError as exc:  # pragma: no cover - defensive
+            click.echo(f"WARNING: could not rewrite {topics_path}: {exc}", err=True)
+
+    click.echo(
+        f"\nReset complete. Deleted {len(result.files_to_delete)} file(s) "
+        f"and {len(result.dirs_to_delete)} director(ies). "
+        f"Preserved {len(result.files_preserved)} file(s) "
+        f"and {len(result.dirs_preserved)} director(ies)."
+    )
+    click.echo(
+        "\nNext steps:\n"
+        "  1. Edit topics.yaml to add your first topic.\n"
+        "  2. Create wiki/topics/<id>/purpose.md and wiki/topics/<id>/index.md.\n"
+        "  3. Run 'wikipilot validate-topics' and 'wikipilot lint wiki/' to confirm.\n"
+    )
+
+
+def _plan_topics_yaml_reset(topics_path: Path, *, keep_topics: bool) -> str:
+    """Decide whether topics.yaml needs a reset.
+
+    Returns one of: ``"reset"`` (rewrite to empty stub), ``"skip"``
+    (already empty or --keep-topics), ``"missing"`` (file does not exist).
+    """
+    if keep_topics:
+        return "skip"
+    if not topics_path.exists():
+        return "missing"
+    text = topics_path.read_text(encoding="utf-8")
+    # Already empty?
+    if "topics: []" in text and "- id:" not in text:
+        return "skip"
+    return "reset"
+
+
+def _apply_topics_yaml_reset(topics_path: Path) -> None:
+    """Rewrite topics.yaml to ``topics: []``, preserving leading comments.
+
+    Every line up to (but not including) the first non-comment, non-blank
+    line is preserved verbatim. The body becomes ``topics: []`` followed
+    by a single trailing newline.
+    """
+    text = topics_path.read_text(encoding="utf-8")
+    preserved: list[str] = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if stripped.startswith("#") or stripped == "":
+            preserved.append(line)
+            continue
+        break
+    new_text = "\n".join(preserved).rstrip() + "\n\ntopics: []\n"
+    topics_path.write_text(new_text, encoding="utf-8")
+
+
+def _print_topics_target(topics_path: Path) -> None:
+    """Print the resolved absolute path of the topics.yaml that will be touched.
+
+    This is part of the safety scaffolding: every run echoes the absolute
+    path so the user (and any future maintainer reading test output) can
+    verify the right topics.yaml is in the blast radius.
+    """
+    click.echo(f"Topics file target: {topics_path.resolve()}")
+
+
+def _print_reset_summary(plan: ResetSummary, *, topics_action: str) -> None:
+    """Print the dry-run summary block ahead of the confirmation prompt."""
+    click.echo(f"About to reset vault at: {plan.root}")
+    counts: dict[str, int] = {}
+    for path in plan.files_to_delete:
+        try:
+            rel = path.relative_to(plan.root)
+            top = rel.parts[0] if rel.parts else "(root)"
+        except ValueError:
+            top = "(root)"
+        counts[top] = counts.get(top, 0) + 1
+    for top in sorted(counts):
+        click.echo(f"  - delete {counts[top]:4d} file(s) in {top}/")
+    if plan.dirs_to_delete:
+        click.echo(f"  - delete {len(plan.dirs_to_delete)} directory(ies):")
+        for d in plan.dirs_to_delete:
+            try:
+                click.echo(f"      {d.relative_to(plan.root)}")
+            except ValueError:
+                click.echo(f"      {d}")
+    reset_names = sorted({p.name for p in plan.files_to_reset})
+    if reset_names:
+        click.echo(f"  - reset  {', '.join(reset_names)} to skeleton")
+    if topics_action == "reset":
+        click.echo("  - reset  topics.yaml to empty stub")
+    elif topics_action == "missing":
+        click.echo("  - skip   topics.yaml (not found)")
+    elif topics_action == "skip":
+        click.echo("  - skip   topics.yaml (--keep-topics or already empty)")
+    if plan.files_preserved or plan.dirs_preserved:
+        click.echo(
+            f"  - preserve .obsidian/, _*.md scratch files, .gitkeep "
+            f"({len(plan.files_preserved)} file(s), "
+            f"{len(plan.dirs_preserved)} director(ies))"
+        )
 
 
 @main.command("validate-topics")
@@ -723,55 +933,6 @@ def _list_recoverable_prs(*, base_branch: str, include_all: bool) -> list[dict]:
     if not include_all:
         data = [pr for pr in data if str(pr.get("headRefName", "")).startswith("claude/")]
     return data
-
-
-_INDEX_SKELETON = """# Index
-
-The catalog of every page in this wiki.
-
-This file is **LLM-write, human-read**.
-
-## Topics
-
-_(none yet)_
-
-## Concepts
-
-_(none yet)_
-
-## Entities
-
-_(none yet)_
-
-## Comparisons
-
-_(none yet)_
-
-## Sources
-
-_(none yet)_
-
-## Answers
-
-_(none yet)_
-
-## Reports
-
-_(none yet)_
-"""
-
-_LOG_SKELETON = """# Log
-
-Chronological, append-only record of every routine run. Parseable with `grep "^## \\[" wiki/log.md`.
-
-This file is **LLM-write, human-read**.
-
----
-
-## [{date}] manual | bootstrap
-
-Empty wiki initialized.
-"""
 
 
 if __name__ == "__main__":  # pragma: no cover

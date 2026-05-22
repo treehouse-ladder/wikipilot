@@ -20,9 +20,10 @@ Design notes
 from __future__ import annotations
 
 import re
+import shutil
 import unicodedata
 from collections.abc import Iterable
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date, datetime
 from pathlib import Path
 from typing import Any
@@ -306,3 +307,332 @@ def _coerce_date(value: Any) -> date | None:
         except ValueError:
             return None
     return None
+
+
+# ---------------------------------------------------------------------------
+# Vault skeletons (shared between ``init-vault`` and ``reset-vault``)
+# ---------------------------------------------------------------------------
+
+INDEX_SKELETON = """# Index
+
+The catalog of every page in this wiki.
+
+This file is **LLM-write, human-read**.
+
+## Topics
+
+_(none yet)_
+
+## Concepts
+
+_(none yet)_
+
+## Entities
+
+_(none yet)_
+
+## Comparisons
+
+_(none yet)_
+
+## Sources
+
+_(none yet)_
+
+## Answers
+
+_(none yet)_
+
+## Reports
+
+_(none yet)_
+"""
+
+LOG_SKELETON_TEMPLATE = """# Log
+
+Chronological, append-only record of every routine run. Parseable with `grep "^## \\[" wiki/log.md`.
+
+This file is **LLM-write, human-read**.
+
+---
+
+## [{date}] manual | bootstrap
+
+Empty wiki initialized.
+"""
+
+
+def render_log_skeleton(today: date | None = None) -> str:
+    """Return the canonical ``log.md`` skeleton string for today's date."""
+    today = today or date.today()
+    return LOG_SKELETON_TEMPLATE.format(date=today.isoformat())
+
+
+def _file_matches_skeleton(path: Path, skeleton: str) -> bool:
+    """True when ``path`` exists and its content equals ``skeleton``."""
+    if not path.exists():
+        return False
+    try:
+        return path.read_text(encoding="utf-8") == skeleton
+    except OSError:
+        return False
+
+
+_LOG_SKELETON_BOOTSTRAP_RE = re.compile(
+    r"^## \[\d{4}-\d{2}-\d{2}\] manual \| bootstrap\s*$",
+    re.MULTILINE,
+)
+
+
+def _is_log_skeleton(path: Path) -> bool:
+    """True when ``log.md`` looks like the canonical bootstrap-only skeleton.
+
+    The skeleton template parametrizes today's date, so we can't compare
+    byte-for-byte; instead we accept any log file that contains exactly
+    one heading and that heading is a ``manual | bootstrap`` entry with
+    a valid date. Any additional ``## [...] ...`` entries mean real run
+    history exists and the file should be reset.
+    """
+    if not path.exists():
+        return False
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        return False
+    headings = re.findall(r"^## \[", text, re.MULTILINE)
+    if len(headings) != 1:
+        return False
+    return bool(_LOG_SKELETON_BOOTSTRAP_RE.search(text))
+
+
+# ---------------------------------------------------------------------------
+# Vault reset (fork onboarding)
+# ---------------------------------------------------------------------------
+#
+# ``reset_vault`` is the destructive counterpart to ``init-vault``. It wipes
+# the maintainer's content from a forked vault back down to the empty
+# skeleton. The signature deliberately has **no default** for ``root``: every
+# caller must pass an explicit ``Path``, so ``Path("wiki")`` cannot sneak in
+# via a default argument and accidentally target the workspace's live vault.
+#
+# Preservation rules (see ``CLAUDE.md`` "Personal scratch convention" and the
+# plan in ``.cursor/plans/add_reset-vault_command_*.plan.md``):
+#
+# - ``wiki/.obsidian/``      — pre-configured reader setup, kept verbatim.
+# - ``wiki/_dashboard.md``   — content-agnostic Dataview starter, kept verbatim.
+# - any ``_*.md`` anywhere   — personal scratch (lint-exempt, sweep-exempt).
+# - ``.gitkeep``             — kept inside every WIKI_DIRS subdirectory.
+# - ``index.md``, ``log.md`` — rewritten to the canonical skeleton strings.
+# - WIKI_DIRS subdirectories — recreated if missing, contents wiped.
+#
+# When ``keep_topics=True`` the entire ``wiki/topics/`` tree (purpose.md +
+# index.md) is preserved as-is. This is the "I share the maintainer's topic
+# set" power-user path; the default (``keep_topics=False``) deletes every
+# ``topics/<id>/`` subdirectory.
+
+
+def is_personal_scratch(name: str) -> bool:
+    """Return True for files matching the ``_*.md`` personal-scratch convention.
+
+    Per the schema in ``CLAUDE.md``, any markdown file whose basename starts
+    with ``_`` is human-only: lint-exempt, sweep-exempt, gate-blocked on
+    ``claude/*`` branches. ``reset_vault`` preserves these files anywhere in
+    the vault so a forker who has already started taking notes does not lose
+    them.
+    """
+    return name.startswith("_") and name.endswith(".md")
+
+
+@dataclass
+class ResetSummary:
+    """Plan + receipt for a ``reset_vault`` call.
+
+    Returned in both dry-run mode (where ``mutated`` is False and no I/O has
+    happened) and post-mutation mode (where ``mutated`` is True and the lists
+    describe what was actually deleted/preserved).
+    """
+
+    root: Path
+    dry_run: bool
+    mutated: bool
+    files_to_delete: list[Path] = field(default_factory=list)
+    dirs_to_delete: list[Path] = field(default_factory=list)
+    files_to_reset: list[Path] = field(default_factory=list)
+    files_preserved: list[Path] = field(default_factory=list)
+    dirs_preserved: list[Path] = field(default_factory=list)
+
+    @property
+    def total_deletions(self) -> int:
+        return len(self.files_to_delete) + len(self.dirs_to_delete)
+
+    def is_empty(self) -> bool:
+        """True when the vault was already at the empty-skeleton state."""
+        return not (self.files_to_delete or self.dirs_to_delete or self.files_to_reset)
+
+
+def _looks_like_vault(root: Path) -> bool:
+    """Heuristic: does ``root`` resemble a Wikipilot vault?
+
+    Requires ``index.md`` at the root and at least four of the canonical
+    ``WIKI_DIRS`` as subdirectories. This is intentionally permissive (a
+    half-bootstrapped vault still passes) but rejects obviously-unrelated
+    targets like ``~/Documents`` or a pip cache directory.
+    """
+    if not root.is_dir():
+        return False
+    if not (root / "index.md").exists():
+        return False
+    present = sum(1 for sub in WIKI_DIRS if (root / sub).is_dir())
+    return present >= 4
+
+
+def _plan_reset(root: Path, *, keep_topics: bool) -> ResetSummary:
+    """Walk the vault and decide what would be deleted, reset, or preserved."""
+    summary = ResetSummary(root=root, dry_run=True, mutated=False)
+
+    obsidian_dir = root / ".obsidian"
+    if obsidian_dir.is_dir():
+        summary.dirs_preserved.append(obsidian_dir)
+
+    # Root-level files.
+    for child in sorted(root.iterdir()):
+        if child.is_dir():
+            continue
+        name = child.name
+        if name == "index.md":
+            if not _file_matches_skeleton(child, INDEX_SKELETON):
+                summary.files_to_reset.append(child)
+            else:
+                summary.files_preserved.append(child)
+        elif name == "log.md":
+            # The log skeleton is parametrized by date; treat any well-formed
+            # bootstrap entry as already-skeleton.
+            if not _is_log_skeleton(child):
+                summary.files_to_reset.append(child)
+            else:
+                summary.files_preserved.append(child)
+        elif is_personal_scratch(name) or name == ".gitkeep":
+            summary.files_preserved.append(child)
+        else:
+            # Other root-level files (e.g. stray notes a forker created)
+            # are preserved by default — we only touch known schema files.
+            summary.files_preserved.append(child)
+
+    # Each WIKI_DIRS subdirectory.
+    for sub in WIKI_DIRS:
+        sub_dir = root / sub
+        if not sub_dir.is_dir():
+            continue
+        if sub == "topics" and keep_topics:
+            # Power-user path: preserve the entire topics/ tree as-is.
+            summary.dirs_preserved.append(sub_dir)
+            continue
+        if sub == "topics":
+            # Delete every topic folder; recreate the empty topics/ dir
+            # post-mutation so .gitkeep can land back in place.
+            for entry in sorted(sub_dir.iterdir()):
+                if entry.is_dir():
+                    summary.dirs_to_delete.append(entry)
+                elif entry.name == ".gitkeep" or is_personal_scratch(entry.name):
+                    summary.files_preserved.append(entry)
+                else:
+                    summary.files_to_delete.append(entry)
+            continue
+        if sub == "assets":
+            # Delete every per-source asset folder; .gitkeep stays.
+            for entry in sorted(sub_dir.iterdir()):
+                if entry.is_dir():
+                    summary.dirs_to_delete.append(entry)
+                elif entry.name == ".gitkeep" or is_personal_scratch(entry.name):
+                    summary.files_preserved.append(entry)
+                else:
+                    summary.files_to_delete.append(entry)
+            continue
+        # Standard wipe: delete *.md files (except _*.md and .gitkeep).
+        for entry in sorted(sub_dir.iterdir()):
+            if entry.is_dir():
+                # Unexpected nested dir under e.g. concepts/ — leave it alone.
+                summary.dirs_preserved.append(entry)
+            elif entry.name == ".gitkeep" or is_personal_scratch(entry.name):
+                summary.files_preserved.append(entry)
+            else:
+                summary.files_to_delete.append(entry)
+
+    return summary
+
+
+def reset_vault(
+    root: Path,
+    *,
+    keep_topics: bool = False,
+    dry_run: bool = False,
+) -> ResetSummary:
+    """Reset a Wikipilot vault back to the empty skeleton.
+
+    Parameters
+    ----------
+    root:
+        The vault directory. **No default** — callers must pass an explicit
+        ``Path``. ``Path("wiki")`` never sneaks in via a signature default.
+    keep_topics:
+        When True, preserve the entire ``topics/`` tree (purpose.md +
+        index.md). Default False — every ``topics/<id>/`` subdirectory is
+        deleted.
+    dry_run:
+        When True, plan the reset and return the ``ResetSummary`` without
+        mutating any files. Use this from the CLI to populate the
+        confirmation prompt.
+
+    Returns
+    -------
+    ResetSummary
+        Describes what was (or would be) deleted, reset, and preserved. The
+        ``root`` field is the absolute resolved path the helper actually
+        operated on.
+
+    Raises
+    ------
+    WikiError
+        When ``root`` does not exist, is not a directory, or does not look
+        like a Wikipilot vault (missing ``index.md`` or fewer than four
+        canonical subdirectories present).
+    """
+    resolved = Path(root).resolve()
+    if not resolved.exists():
+        raise WikiError(f"Vault path does not exist: {resolved}")
+    if not resolved.is_dir():
+        raise WikiError(f"Vault path is not a directory: {resolved}")
+    if not _looks_like_vault(resolved):
+        raise WikiError(
+            f"Path does not look like a Wikipilot vault (missing index.md or "
+            f"fewer than 4 canonical subdirectories present): {resolved}. "
+            "If this really is your vault, run 'wikipilot init-vault' first."
+        )
+
+    summary = _plan_reset(resolved, keep_topics=keep_topics)
+    summary.root = resolved
+
+    if dry_run:
+        return summary
+
+    # Mutate. Order: delete files, delete dirs, recreate skeleton dirs and
+    # .gitkeeps. Index/log skeletons are written by the CLI (it owns the
+    # skeleton strings); the helper signals which files need rewriting via
+    # ``files_to_reset`` and the CLI executes that step.
+    for path in summary.files_to_delete:
+        path.unlink()
+    for directory in summary.dirs_to_delete:
+        shutil.rmtree(directory)
+
+    # Ensure every WIKI_DIRS subdirectory exists with a .gitkeep, matching
+    # ``init-vault``'s post-condition.
+    for sub in WIKI_DIRS:
+        sub_dir = resolved / sub
+        sub_dir.mkdir(parents=True, exist_ok=True)
+        gitkeep = sub_dir / ".gitkeep"
+        if not gitkeep.exists():
+            gitkeep.write_text("", encoding="utf-8")
+
+    summary.dry_run = False
+    summary.mutated = True
+    return summary

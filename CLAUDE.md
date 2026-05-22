@@ -451,6 +451,7 @@ Errors fail the lint (exit code 1); warnings are reported but don't fail. The au
 |---|---|
 | `lint [vault] [--branch ... --changed-path ...]` | run all lint rules; exits 1 on any error |
 | `init-vault [path]` | create the standard `wiki/{index.md, log.md, ...}` skeleton |
+| `reset-vault [path] [--yes] [--keep-topics] [--topics-file ...]` | wipe a forked vault back to the empty skeleton; preserves `.obsidian/`, every `_*.md` personal scratch file, every `.gitkeep`. Resets `index.md`, `log.md`, and `topics.yaml` to empty stubs. Always dry-runs first and requires the user to type the vault basename to confirm (skip with `--yes`). |
 | `validate-topics [topics.yaml]` | parse + schema-check `topics.yaml` |
 | `freshness-report [vault]` | list pages by ascending freshness (most stale first) |
 | `deck <topic-id> [--out path] [--theme name]` | generate a Marp deck from `wiki/topics/<id>/index.md` |

@@ -2,6 +2,28 @@
 
 Day-to-day operations for Wikipilot. This file grows phase by phase; today (Phase 0) it has only the local-dev setup. Phases 1+ add lint workflows, topic management, query workflows, and troubleshooting.
 
+## First-fork checklist
+
+The starter repo ships with the maintainer's live `wiki/` content (sources, concepts, entities, answers, reports, and the seeded topic folders). Before your first Daily Research run, wipe it back to the empty skeleton so the routine starts on your content, not the maintainer's reading:
+
+```bash
+uv run wikipilot reset-vault
+```
+
+The command prints a dry-run summary first (what would be deleted, what survives) and asks you to confirm by typing the vault directory's basename (`wiki`). It:
+
+- **Deletes** every `*.md` under `wiki/sources/`, `wiki/concepts/`, `wiki/entities/`, `wiki/comparisons/`, `wiki/answers/`, `wiki/reports/`, `wiki/decks/`; every per-source asset folder under `wiki/assets/`; every topic folder under `wiki/topics/`.
+- **Resets** `wiki/index.md`, `wiki/log.md`, and `topics.yaml` to empty stubs (the documented header comments at the top of `topics.yaml` are preserved verbatim).
+- **Preserves** `wiki/.obsidian/` (the pre-configured reader setup), every `_*.md` personal-scratch file (such as `wiki/_dashboard.md`), and every `.gitkeep`.
+
+Flags:
+
+- `--yes` skips the typed-basename confirmation (for scripted setup or CI).
+- `--keep-topics` preserves the entire `wiki/topics/` tree and leaves `topics.yaml` untouched. Use this when you want to inherit the maintainer's topic charters as a starting point.
+- `--topics-file path/to/topics.yaml` overrides the default `topics.yaml` location.
+
+The command is idempotent — running it on an already-empty vault is a no-op.
+
 ## Local development setup
 
 Prerequisites: Python 3.12+, [uv](https://docs.astral.sh/uv/), git.
@@ -386,7 +408,7 @@ Larger K = more candidate sets dispatched in parallel = more scanner cost. The d
 
 This is the manual verification you run **once**, after creating all three routines in claude.ai/code/routines per [`routines-setup.md`](routines-setup.md). It covers the live integrations the dry-run can't exercise (cloud routine fan-out, real Anthropic API calls, GitHub triggers, auto-merge, image downloads from the live web, Obsidian rendering).
 
-The repo ships seeded with five starter topics (`agentic-coding`, `frontier-models`, `ai-in-game-dev`, `games-of-note`, `game-music`); their `purpose.md` files are at `wiki/topics/<id>/purpose.md`. Add or edit topics in `topics.yaml` first if you want to swap them out before smoke-testing.
+The repo ships seeded with five starter topics (`agentic-coding`, `frontier-models`, `ai-in-game-dev`, `games-of-note`, `game-music`); their `purpose.md` files are at `wiki/topics/<id>/purpose.md`. **If you've already run `wikipilot reset-vault`** (the recommended first-fork step — see "First-fork checklist" above) those topics are gone; add your own in `topics.yaml` and create the matching `wiki/topics/<id>/purpose.md` before smoke-testing. **If you haven't reset yet**, edit `topics.yaml` to swap or remove topics before the smoke run.
 
 ### Prep
 

@@ -67,7 +67,7 @@ The local view ships with a pre-configured `.obsidian/` setup: graph color-group
 
 ## Make it yours in 10 minutes
 
-The starter repo ships with five seeded topics so you have a working baseline before you've changed anything. Fork it, swap the topics for whatever you actually care about, and the daily routine takes over.
+The starter repo ships with the maintainer's live `wiki/` so you can see what a populated vault looks like in Obsidian before you commit. On first fork, run `wikipilot reset-vault` to wipe it down to the empty skeleton, then add your own topics and the daily routine takes over.
 
 ### Prerequisites
 
@@ -84,18 +84,26 @@ gh repo fork treehouse-ladder/wikipilot --clone --remote
 cd wikipilot
 uv sync --extra dev
 
-uv run pytest -q          # 442 tests, ~20s
-uv run wikipilot lint wiki/   # a few stale warnings on seed data is expected
+uv run pytest -q          # ~600 tests, ~20s
 ```
+
+### Reset the maintainer's vault
+
+The forked repo ships with the maintainer's live `wiki/` content (sources, concepts, entities, answers, reports, and the seeded topic folders). On first fork, wipe it back to the empty skeleton so the daily routine starts on your own content, not the maintainer's reading list:
+
+```bash
+uv run wikipilot reset-vault
+```
+
+The command prints a dry-run summary first (what would be deleted, what survives) and asks you to confirm by typing the vault directory's basename (`wiki`). It preserves `wiki/.obsidian/` (the pre-configured reader setup), every `_*.md` personal-scratch file (such as `wiki/_dashboard.md`), and every `.gitkeep`, then resets `wiki/index.md`, `wiki/log.md`, and `topics.yaml` to empty stubs. Pass `--keep-topics` if you want to preserve the seeded topic charters as a starting point. Pass `--yes` to skip the confirmation prompt (for scripted setup).
 
 ### Define your topics
 
-The wiki is organized around long-lived **topic charters**. Edit [`topics.yaml`](topics.yaml) to replace the seeded topics with your own. For each new topic, create `wiki/topics/<id>/purpose.md` (the topic charter the researcher reads before every ingest) and `wiki/topics/<id>/index.md` (the synthesis landing page). Template + best practices in [`docs/runbook.md`](docs/runbook.md#writing-a-topic-purposemd).
-
-Delete the seeded topic folders you don't want before the first run, otherwise the agent will keep maintaining them.
+The wiki is organized around long-lived **topic charters**. Edit [`topics.yaml`](topics.yaml) to add your topics. For each new topic, create `wiki/topics/<id>/purpose.md` (the topic charter the researcher reads before every ingest) and `wiki/topics/<id>/index.md` (the synthesis landing page). Template + best practices in [`docs/runbook.md`](docs/runbook.md#writing-a-topic-purposemd).
 
 ```bash
 uv run wikipilot validate-topics
+uv run wikipilot lint wiki/
 ```
 
 ### Create the three routines
