@@ -147,11 +147,8 @@ the topic-researcher (or `wikipilot compare new`) writes them to
 - [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]] claims GPT-5.5 ranks #1 on aggregate AA Intelligence Index at 60, but [[claude-opus-47-everything-you-need-to-know-751c1827]] claims Claude Opus 4.7 leads GDPval-AA (the agentic/economic-value sub-benchmark) by 79 Elo points. Status: unresolved — aggregate-index leadership and agentic-task leadership are coming apart, so 'best model' is task-dependent in mid-2026.
 - [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]] claims GPT-5.5 (xhigh) as the #1 frontier model at AA Intelligence Index 60, but [[claude-mythos-preview-d737ab91]] reports an unreleased Anthropic model (Claude Mythos Preview) at state-of-the-art across SWE-bench Verified (93.9%), GPQA Diamond (94.6%), and Terminal-Bench 2.0 (82.0%), withheld from GA for safety. Status: unresolved — public-leaderboard #1 and true-frontier-capability are decoupled when the most capable model is deliberately not released.
 - [[the-growing-pains-of-frontier-models-when-leaderboards-stop-separating-and-what-to-measure-next-b0488a82]] claims DeepSeek reversed from reasoning-rich to coding-first across recent releases, while the topic page narrative treats DeepSeek V4's strong coding scores (e.g. 80.6% SWE-bench Verified, 3,206 Codeforces per [[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]) as straightforward frontier progress rather than a deliberate capability-emphasis shift away from reasoning. Status: unresolved — the h-field framing reads DeepSeek's coding gains as a trade-off signal, not pure cooperation.
-<<<<<<< HEAD
 - [[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]] claims that even on isolated tasks, traditional deterministic pass/fail script evaluation (the methodology behind SWE-bench Verified) "produces severe misjudgments and false signals" and proposes SWE-Judge (LLM-based, human-validated) as a corrective, which would invalidate the existing Verified leaderboard comparisons this page relies on; [[deepseek-v4-pro-on-hugging-face-a0d5aaf3]] and other frontier-model announcements continue to cite SWE-bench Verified scores as capability indicators. Status: unresolved — if deterministic scripts are unreliable at the granularity SWE-Cycle claims, the cross-model SWE-bench Verified comparisons on this page may not be measuring what they claim to measure.
-=======
 - [[glm-5-everything-you-need-to-know-a53ff5c1]] claims GLM-5 (AA Index 50, released Feb 11 2026) is the leading open-weights model, but the topic page already names two later open-weights leaders: Moonshot's Kimi K2.6 at AA Index 54 (released Apr 20) per [[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]] and Qwen3.7 Max at 57 (released May 19) per [[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]]. Status: resolved-toward-B — GLM-5 was the open-weights leader at its February release but has since been overtaken; the 'new leading open weights model' framing is time-bound to early 2026.
->>>>>>> 48d5545 (feat(wiki/frontier-models): daily research 2026-05-22 — 2 sources, 4 pages)
 
 ## Open questions
 
@@ -167,13 +164,10 @@ the topic-researcher (or `wikipilot compare new`) writes them to
 - [ ] Which of the paper's seven timestamped falsifiable predictions about the next 12 months of frontier releases have come true as of mid-2026 [[the-growing-pains-of-frontier-models-when-leaderboards-stop-separating-and-what-to-measure-next-b0488a82]]?
 - [ ] Is GPT-Rosalind a fine-tune/specialization of an existing GPT-5.x base or a distinct model, and how does its life-sciences reasoning compare to general frontier models [[introducing-gpt-rosalind-for-life-sciences-research-078f0d54]]?
 - [ ] Does Qwen3.6-27B's preserve_thinking interleaved-reasoning mode measurably reduce total tokens vs re-deriving reasoning each turn in long agentic loops [[qwen3-6-27b-on-hugging-face-20e9d0e7]]?
-<<<<<<< HEAD
 - [ ] On SWE-Chain's multi-step package upgrade benchmark, Claude Opus 4.7 scores 60.8% resolving [[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]] — how do other frontier models (GPT-5.5, Gemini 3.1 Pro, DeepSeek V4-Pro) compare on the same chained-task design?
-=======
 - [ ] Does Muse Spark's AA Index 52 hold on contamination-resistant benchmarks (SWE-bench Pro), or does Meta's single-release frontier jump look weaker on harder evals [[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]?
 - [ ] Is Muse Spark a clean-room new architecture or a continuation/scale-up of the Llama line, and what does Meta's pivot away from open weights imply for the open/closed competitive balance [[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]?
 - [ ] How much of GLM-5's agentic-index lead (63) among open-weights models is attributable to DeepSeek Sparse Attention vs. its 28.5T-token pretraining scale-up, and does the sparse-attention integration measurably help long-horizon agentic loops [[glm-5-everything-you-need-to-know-a53ff5c1]]?
->>>>>>> 48d5545 (feat(wiki/frontier-models): daily research 2026-05-22 — 2 sources, 4 pages)
 
 ## See also
 
