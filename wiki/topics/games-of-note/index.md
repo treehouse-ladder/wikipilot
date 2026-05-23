@@ -1,9 +1,9 @@
 ---
 title: Notable games and the games industry
 kind: topic
-sources: ["[[playstation-boss-blames-bluepoint-cuts-on-budgets-and-players-f38a5da9]]", "[[nioh-3-review-rise-of-the-shogun-95af04fb]]", "[[forza-horizon-6-review-the-best-racing-series-is-back-and-better-2679cc0e]]", "[[pokopia-becomes-highest-rated-pokemon-game-on-metacritic-934cabcc]]", "[[titanium-court-honoured-with-grand-prize-at-igf-awards-0547801d]]", "[[subnautica-2-s-early-access-impressions-shhhh-calm-down-5b8d0429]]", "[[highguard-is-permanently-shutting-down-on-march-12-3599cd1e]]", "[[ubisoft-and-tencent-launch-vantage-studios-a43d07e1]]", "[[marathon-review-incredible-highs-painful-lows-4d8a2d55]]", "[[outersloth-has-rejected-every-generative-ai-pitch-it-has-received-b0b92b62]]", "[[007-first-light-could-be-2026-s-game-of-the-year-and-the-best-bond-game-ever-5c7b8ae8]]", "[[greedfall-developer-spiders-has-been-liquidated-c72bc9fe]]", "[[stjv-union-strikes-at-kylotonn-as-nacon-moves-wrc-license-and-layoffs-loom-cc826540]]", "[[zero-parades-for-dead-spies-the-kotaku-review-8ea0dcbb]]", "[[zero-parades-for-dead-spies-wikipedia-72e41979]]", "[[mixtape-review-a-surprisingly-perfect-mix-of-heart-and-humor-7e72e867]]", "[[ea-has-laid-off-an-undisclosed-number-of-battlefield-developers-55eb4720]]", "[[arc-raiders-branded-global-blockbuster-after-hitting-14m-sales-6022f364]]", "[[metroid-dread-developer-mercurysteam-conducts-layoffs-4b9b2a2b]]", "[[metacore-restructuring-to-the-tune-of-up-to-160-redundancies-7bd8bf0f]]", "[[report-vr-studio-survios-has-laid-off-the-bulk-of-its-dev-team-7f9b0734]]", "[[2k-makes-layoffs-at-project-ethos-developer-31st-union-abd3780c]]", "[[hinterland-confirms-layoffs-after-delaying-the-long-dark-sequel-379834d9]]", "[[one-third-of-game-workers-using-genai-but-half-think-it-s-bad-dd26fbdb]]"]
-last_updated: 2026-05-22
-last_verified: 2026-05-22
+sources: ["[[playstation-boss-blames-bluepoint-cuts-on-budgets-and-players-f38a5da9]]", "[[nioh-3-review-rise-of-the-shogun-95af04fb]]", "[[forza-horizon-6-review-the-best-racing-series-is-back-and-better-2679cc0e]]", "[[pokopia-becomes-highest-rated-pokemon-game-on-metacritic-934cabcc]]", "[[titanium-court-honoured-with-grand-prize-at-igf-awards-0547801d]]", "[[subnautica-2-s-early-access-impressions-shhhh-calm-down-5b8d0429]]", "[[highguard-is-permanently-shutting-down-on-march-12-3599cd1e]]", "[[ubisoft-and-tencent-launch-vantage-studios-a43d07e1]]", "[[marathon-review-incredible-highs-painful-lows-4d8a2d55]]", "[[outersloth-has-rejected-every-generative-ai-pitch-it-has-received-b0b92b62]]", "[[007-first-light-could-be-2026-s-game-of-the-year-and-the-best-bond-game-ever-5c7b8ae8]]", "[[greedfall-developer-spiders-has-been-liquidated-c72bc9fe]]", "[[stjv-union-strikes-at-kylotonn-as-nacon-moves-wrc-license-and-layoffs-loom-cc826540]]", "[[zero-parades-for-dead-spies-the-kotaku-review-8ea0dcbb]]", "[[zero-parades-for-dead-spies-wikipedia-72e41979]]", "[[mixtape-review-a-surprisingly-perfect-mix-of-heart-and-humor-7e72e867]]", "[[ea-has-laid-off-an-undisclosed-number-of-battlefield-developers-55eb4720]]", "[[arc-raiders-branded-global-blockbuster-after-hitting-14m-sales-6022f364]]", "[[metroid-dread-developer-mercurysteam-conducts-layoffs-4b9b2a2b]]", "[[metacore-restructuring-to-the-tune-of-up-to-160-redundancies-7bd8bf0f]]", "[[report-vr-studio-survios-has-laid-off-the-bulk-of-its-dev-team-7f9b0734]]", "[[2k-makes-layoffs-at-project-ethos-developer-31st-union-abd3780c]]", "[[hinterland-confirms-layoffs-after-delaying-the-long-dark-sequel-379834d9]]", "[[one-third-of-game-workers-using-genai-but-half-think-it-s-bad-dd26fbdb]]", "[[destiny-2-s-active-development-will-end-in-june-30b55a1f]]", "[[gaming-is-the-new-oil-how-the-ea-buyout-diverges-from-the-traditional-playbook-eb0cc870]]", "[[the-dark-pictures-anthology-has-never-been-more-adrift-directive-8020-review-50a2449d]]"]
+last_updated: 2026-05-23
+last_verified: 2026-05-23
 freshness_window_days: 60
 ---
 
@@ -86,6 +86,25 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 
 > 36 percent of game industry professionals are using generative AI tools as part of their job, though half of them think the technology is having a negative impact on the industry.
 
+## Updates 2026-05-23
+
+**Bungie winds down Destiny 2 — and braces for significant layoffs.** Bungie confirmed in May 2026 that active development on Destiny 2 will end in June, with a final free content update — Monument of Triumph — landing June 9 before the studio shifts focus to new games; the MMO remains online and playable but receives no further new content [[destiny-2-s-active-development-will-end-in-june-30b55a1f]]. Reports indicate parent company Sony is planning a significant number of layoffs as it winds down the project, with no new game lined up for the team and no Destiny 3 greenlit [[destiny-2-s-active-development-will-end-in-june-30b55a1f]]. This is a notable inflection for a once-flagship live-service title and connects directly to the topic's running live-service-attrition thread (Highguard, Marathon) — Bungie's pivot is toward its new extraction shooter Marathon rather than a Destiny successor.
+
+> Bungie has confirmed that active development on Destiny 2 will end in June, with the studio shifting its focus to new games.
+
+> Reports indicate parent company Sony is planning a significant number of layoffs as it winds down development on Destiny 2. There is no new project lined up for the team and no Destiny 3 has been greenlit.
+
+**The EA buyout diverges from the traditional playbook.** Game Developer's analysis frames EA's $55 billion all-cash acquisition by a consortium of Saudi Arabia's Public Investment Fund, Silver Lake, and Affinity Partners as a departure from the traditional leveraged-buyout playbook — where private equity slashes costs to service debt and flip the asset — arguing the sovereign-wealth backing makes it less a quick financial flip than a long-term strategic bet on entertainment [[gaming-is-the-new-oil-how-the-ea-buyout-diverges-from-the-traditional-playbook-eb0cc870]]. PIF will own roughly 93 percent of EA, with Silver Lake and Affinity Partners holding 5.5 percent and 1.1 percent respectively, and the deal is expected to close in the first quarter of EA's fiscal year 2027 [[gaming-is-the-new-oil-how-the-ea-buyout-diverges-from-the-traditional-playbook-eb0cc870]].
+
+> The scale and the sovereign-wealth backing make this less about a quick financial flip and more about long-term strategic positioning in entertainment, distinguishing it from the cost-cutting logic that usually drives a leveraged buyout.
+
+> PIF will own roughly 93 percent of EA, with Silver Lake and Affinity Partners holding 5.5 percent and 1.1 percent respectively. The transaction is expected to close in the first quarter of EA's fiscal year 2027.
+
+**Notable release: Directive 8020 evolves the Dark Pictures formula.** Supermassive Games' Directive 8020 is the studio's first outer-space entry in The Dark Pictures Anthology, and notably shifts from the series' traditional cinematic fixed-camera approach to an over-the-shoulder third-person action style while adding a 'Turning Points' mechanic that lets players return to pivotal moments to make different choices without replaying the whole game [[the-dark-pictures-anthology-has-never-been-more-adrift-directive-8020-review-50a2449d]]. Critical reception was divided — GameSpot's review argued it 'fails to make good use of what should be the scariest place not on Earth, opting for a generic murderous-alien narrative,' even as the mechanical changes mark the anthology's biggest design departure to date [[the-dark-pictures-anthology-has-never-been-more-adrift-directive-8020-review-50a2449d]].
+
+> Directive 8020 now plays like an over-the-shoulder third-person action game, a departure from the studio's traditional cinematic fixed-camera approach, and adds a 'Turning Points' feature that lets you return to pivotal moments to make different choices without replaying the whole game.
+
+
 ## Comparisons
 
 Pre-declared comparison pages for this topic. Listed in prose backticks
@@ -105,6 +124,7 @@ until the underlying entity pages exist:
 - [[2k-makes-layoffs-at-project-ethos-developer-31st-union-abd3780c]] claims the 31st Union cuts accompany a 'renewed direction and vision' positive memo from studio leadership, while the same source documents the layoffs and a major genre pivot of a still-unreleased game; the 'renewed vision' framing sits uneasily against repeated downsizing of a project that has not shipped. Status: unresolved — whether the roguelike pivot stabilizes Project Ethos or precedes cancellation is unknown.
 - [[one-third-of-game-workers-using-genai-but-half-think-it-s-bad-dd26fbdb]] claims majority-negative developer sentiment toward generative AI (only ~7% see positive impact, down from 13%), whereas industry-vendor surveys (e.g. Unity's claim that 79% of developers feel positive about generative AI) report far rosier numbers. Status: unresolved — methodology and respondent pools differ sharply between the GDC survey and vendor-sponsored surveys.
 
+- [[the-dark-pictures-anthology-has-never-been-more-adrift-directive-8020-review-50a2449d]] claims Directive 8020 is adrift and squanders its space-horror setting on a generic alien narrative; other outlets framed the same over-the-shoulder camera and 'Turning Points' changes as Supermassive evolving the Dark Pictures formula in unexpected ways. Status: unresolved — formula-evolution upside vs. execution shortfall are being weighed differently across reviews.
 ## Open questions
 
 - [ ] Does Sony's Bluepoint closure reflect a broader retreat from remake-focused first-party studios, or is it specifically about the cancelled live-service God of War project?
@@ -123,6 +143,9 @@ until the underlying entity pages exist:
 - [ ] Does 31st Union's roguelike pivot plus repeated layoffs end in a shipped Project Ethos, or follow other troubled 2K/live-service projects into cancellation [[2k-makes-layoffs-at-project-ethos-developer-31st-union-abd3780c]]?
 - [ ] Will the GDC 2026 finding that genAI sentiment is worsening (positive impact down to ~7%) hold as adoption rises, or will usage normalize sentiment over time [[one-third-of-game-workers-using-genai-but-half-think-it-s-bad-dd26fbdb]]?
 
+- [ ] Does Bungie's wind-down of Destiny 2 and pivot to Marathon stabilize the studio, or do the reported significant Sony layoffs signal a deeper retreat from Bungie's live-service strategy [[destiny-2-s-active-development-will-end-in-june-30b55a1f]]?
+- [ ] Does the PIF-led EA buyout's long-term strategic framing hold post-close, or does the leveraged structure still force the cost-cutting the analysis claims it avoids [[gaming-is-the-new-oil-how-the-ea-buyout-diverges-from-the-traditional-playbook-eb0cc870]]?
+- [ ] Does Directive 8020's shift to over-the-shoulder action and the Turning Points rewind mechanic become the new template for the Dark Pictures Anthology, or a one-off experiment the mixed reception walks back [[the-dark-pictures-anthology-has-never-been-more-adrift-directive-8020-review-50a2449d]]?
 ## See also
 
 - [purpose](purpose.md)
