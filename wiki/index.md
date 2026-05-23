@@ -14,7 +14,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Concepts
 
-_(none yet)_
+- [[subquadratic-attention]]
 
 ## Entities
 
@@ -155,6 +155,18 @@ _(none yet)_
 - [[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]
 - [[symbolically-scaffolded-play-designing-role-sensitive-prompts-for-generative-npc-dialogue-ec655f1e]]
 - [[synergizing-code-coverage-and-gameplay-intent-coverage-aware-game-playtesting-with-llm-guided-reinforcement-learning-fa864b56]]
+- [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]]
+- [[subquadratic-launches-with-29m-to-bring-12m-token-context-windows-to-ai-78c846ee]]
+- [[unreal-engine-5-8-preview-rolls-in-88b3169d]]
+- [[first-steps-towards-overhearing-llm-agents-a-case-study-with-dungeons-dragons-gameplay-b7262b5d]]
+- [[leveraging-llm-agents-for-automated-video-game-testing-5b5ba4a5]]
+- [[a-database-driven-framework-for-3d-level-generation-with-llms-32dccdfc]]
+- [[destiny-2-s-active-development-will-end-in-june-30b55a1f]]
+- [[gaming-is-the-new-oil-how-the-ea-buyout-diverges-from-the-traditional-playbook-eb0cc870]]
+- [[the-dark-pictures-anthology-has-never-been-more-adrift-directive-8020-review-50a2449d]]
+- [[interview-world-of-warcraft-lead-composer-on-making-of-midnight-s-human-made-music-013afc37]]
+- [[lies-of-p-original-soundtrack-music-review-94ceba96]]
+- [[citizen-sleeper-original-soundtrack-music-review-25f6b6c7]]
 
 ## Answers
 
@@ -165,3 +177,4 @@ _(none yet)_
 - [[health-2026-05-21]]
 - [[2026-05-21]]
 - [[2026-05-22]]
+- [[2026-05-23]]

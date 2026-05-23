@@ -119,3 +119,28 @@ Blue Prince OST (Trigg & Gusset debut): percussion-free ambient-jazz, rubato, os
 ## [2026-05-22] daily | 5 topics, 17 sources, 12 pages
 
 Daily research run complete: 5 topics, 17 new sources, 12 synthesis pages updated (9 topic/entity + 3 cross-page), 5 PRs opened (#27-#31). 7 new disputes filed, 16 new open questions added.
+
+## [2026-05-23] daily | agentic-coding — 6 sources, 1 page
+
+Cursor 3 Agents Window; SWE-EVO (~25% vs ~73% long-horizon capability cliff); SlopCodeBench (77% erosion rate); SWE-CI (CI-loop maintainability); SkillJect (automated SKILL.md injection); MCP tool-description quality study.
+
+## [2026-05-23] daily | frontier-models — 2 sources, 2 pages
+
+SubQ from Subquadratic ($29M seed): first subquadratic-attention (SSA) LLM, 12M-token context, claimed 81.8% SWE-bench Verified (vendor-run, not independently reproduced). New concept page: subquadratic-attention.
+
+## [2026-05-23] daily | ai-in-game-dev — 4 sources, 1 page
+
+UE 5.8 Preview MetaHuman Crowds (tens→thousands); TITAN MMORPG LLM playtesting (8 commercial QA pipelines); overhearing-agent DM-assist paradigm (D&D case study); database-driven 3D level procgen (AAAI AIIDE).
+
+## [2026-05-23] daily | games-of-note — 3 sources, 1 page
+
+Bungie ends Destiny 2 active dev (June 9 final update, Sony layoffs, no D3); EA $55B PIF buyout analysis (sovereign-wealth vs LBO framing); Directive 8020 formula shift (over-the-shoulder + Turning Points, mixed reception).
+
+## [2026-05-23] daily | game-music — 3 sources, 1 page
+
+WoW Midnight composer Leo Kaliski on human-first stance + AI music perceptibility; Lies of P OST (70 tracks, RPGFan); Citizen Sleeper OST (Amos Roddy, 23-track ambient sci-fi, RPGFan).
+
+## [2026-05-23] daily | 5 topics, 18 sources, 7 pages
+
+Daily research run complete: 5 topics, 18 new sources, 7 synthesis pages updated (6 topic pages + 1 new concept page), 5 PRs opened (#38–#42), all queued for auto-merge. 7 new disputes filed, 16 new open questions added.
+
