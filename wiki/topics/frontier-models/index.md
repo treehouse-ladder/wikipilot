@@ -1,9 +1,9 @@
 ---
 title: Frontier LLM landscape
 kind: topic
-sources: ["[[introducing-claude-opus-47-b8af8104]]", "[[claude-opus-47-everything-you-need-to-know-751c1827]]", "[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[gemini-31-pro-model-card-225ab705]]", "[[gemini-3-deep-think-advancing-science-research-and-engineering-e98b788f]]", "[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[introducing-claude-sonnet-46-c4a45eed]]", "[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]", "[[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]]", "[[introducing-mistral-3-3772caab]]", "[[artificial-analysis-intelligence-index-07e9d51e]]", "[[gdpval-measuring-the-performance-of-our-models-on-real-world-tasks-bc53ab6b]]", "[[the-llama-4-herd-a-new-era-of-natively-multimodal-ai-7554c7f6]]", "[[gemini-35-flash-model-card-de99f770]]", "[[gemini-35-flash-the-new-leader-in-intelligence-versus-speed-d886178d]]", "[[claude-mythos-preview-d737ab91]]", "[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]", "[[the-growing-pains-of-frontier-models-when-leaderboards-stop-separating-and-what-to-measure-next-b0488a82]]", "[[introducing-gpt-rosalind-for-life-sciences-research-078f0d54]]", "[[qwen3-6-27b-on-hugging-face-20e9d0e7]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]]", "[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]"]
-last_updated: 2026-05-22
-last_verified: 2026-05-22
+sources: ["[[introducing-claude-opus-47-b8af8104]]", "[[claude-opus-47-everything-you-need-to-know-751c1827]]", "[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[gemini-31-pro-model-card-225ab705]]", "[[gemini-3-deep-think-advancing-science-research-and-engineering-e98b788f]]", "[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[introducing-claude-sonnet-46-c4a45eed]]", "[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]", "[[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]]", "[[introducing-mistral-3-3772caab]]", "[[artificial-analysis-intelligence-index-07e9d51e]]", "[[gdpval-measuring-the-performance-of-our-models-on-real-world-tasks-bc53ab6b]]", "[[the-llama-4-herd-a-new-era-of-natively-multimodal-ai-7554c7f6]]", "[[gemini-35-flash-model-card-de99f770]]", "[[gemini-35-flash-the-new-leader-in-intelligence-versus-speed-d886178d]]", "[[claude-mythos-preview-d737ab91]]", "[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]", "[[the-growing-pains-of-frontier-models-when-leaderboards-stop-separating-and-what-to-measure-next-b0488a82]]", "[[introducing-gpt-rosalind-for-life-sciences-research-078f0d54]]", "[[qwen3-6-27b-on-hugging-face-20e9d0e7]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]]", "[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]]", "[[subquadratic-launches-with-29m-to-bring-12m-token-context-windows-to-ai-78c846ee]]"]
+last_updated: 2026-05-23
+last_verified: 2026-05-23
 freshness_window_days: 30
 ---
 
@@ -128,6 +128,22 @@ On open weights, Z.AI's GLM-5 (released February 11, 2026) is the leading open-w
 
 > GLM-5 ... scaling to 744B total / 40B active parameters, and integrates DeepSeek Sparse Attention.
 
+### Updates 2026-05-23
+
+The most consequential entrant since the last run is architectural rather than incremental-scale. Miami startup Subquadratic launched SubQ on May 5, 2026 — billed as the first LLM on a fully subquadratic (linear-scaling) attention architecture, with a 12M-token context window, a $29M seed round, and a founding team led by CEO Justin Dangel and CTO Alex Whedon (former Head of Generative AI at Meta) [[subquadratic-launches-with-29m-to-bring-12m-token-context-windows-to-ai-78c846ee]]. The core claim is its SSA (selective sparse attention) layer, which scales linearly with context length instead of quadratically, cutting attention compute by ~1,000x at 12M tokens via content-dependent position selection that itself does not go quadratic [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]].
+
+> SubQ is a large language model from Miami startup Subquadratic, launched May 5, 2026, claiming to be the first LLM on a fully subquadratic (linear-scaling) attention architecture with a 12-million-token context window.
+
+> The SSA architecture scales linearly with context length instead of quadratically, cutting attention compute by roughly 1,000x at 12M tokens.
+
+Crucially for frontier-class status, SubQ is not just a long-context novelty: it reports 81.8% on SWE-bench Verified — within the closed-frontier band — alongside 95.0% on RULER 128K and 65.9% on MRCR v2 at 1M tokens, where it beats Gemini 3.1 Pro (26.3%) but trails GPT-5.5 (74.0%) [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]]. The reported prefill speedups (7.2x at 128K up to 52.2x at 1M tokens vs FlashAttention on B200 GPUs) and the shipped agentic surface (SubQ Code coding agent, SubQ Search deep-research tool) make this directly relevant to whole-repository agentic coding loops [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]].
+
+> SubQ scored 95.0% on RULER 128K, 65.9% on MRCR v2 at 1M tokens, and 81.8% on SWE-Bench Verified. At 1M tokens, SubQ outperforms Gemini 3.1 Pro (65.9% vs 26.3%) on MRCR v2, though it trails GPT-5.5 (74.0%).
+
+> Subquadratic is making this model available through an API with a 12-million-token context window, as well as a coding agent (SubQ Code) and a deep research tool (SubQ Search).
+
+The caveat is sourcing: every headline efficiency number is vendor-run, single-shot, and not yet independently reproduced [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]] — there is no artificialanalysis.ai Intelligence Index entry for SubQ yet, so it cannot be slotted into the roster comparison until independent eval lands.
+
 ## Comparisons
 
 Pre-declared comparison pages (Phase 9 Pattern A) for this topic. Listed
@@ -150,6 +166,7 @@ the topic-researcher (or `wikipilot compare new`) writes them to
 - [[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]] claims that even on isolated tasks, traditional deterministic pass/fail script evaluation (the methodology behind SWE-bench Verified) "produces severe misjudgments and false signals" and proposes SWE-Judge (LLM-based, human-validated) as a corrective, which would invalidate the existing Verified leaderboard comparisons this page relies on; [[deepseek-v4-pro-on-hugging-face-a0d5aaf3]] and other frontier-model announcements continue to cite SWE-bench Verified scores as capability indicators. Status: unresolved — if deterministic scripts are unreliable at the granularity SWE-Cycle claims, the cross-model SWE-bench Verified comparisons on this page may not be measuring what they claim to measure.
 - [[glm-5-everything-you-need-to-know-a53ff5c1]] claims GLM-5 (AA Index 50, released Feb 11 2026) is the leading open-weights model, but the topic page already names two later open-weights leaders: Moonshot's Kimi K2.6 at AA Index 54 (released Apr 20) per [[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]] and Qwen3.7 Max at 57 (released May 19) per [[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]]. Status: resolved-toward-B — GLM-5 was the open-weights leader at its February release but has since been overtaken; the 'new leading open weights model' framing is time-bound to early 2026.
 
+- [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]] claims SubQ at 81.8% SWE-bench Verified and ~1,000x cheaper attention at 12M tokens, positioning a subquadratic architecture as frontier-competitive, but the same source flags that every headline number is vendor-run, single-shot, and not independently reproduced; the established roster (GPT-5.5, Opus 4.7, Gemini 3.1 Pro) all carry independent artificialanalysis.ai Intelligence Index placements. Status: unresolved — SubQ's frontier claim rests entirely on self-reported numbers pending third-party eval.
 ## Open questions
 
 - [ ] Has DeepSeek R2 (reasoning model) actually been released as of 2026-05-20, or has only V4 shipped? Search results are inconsistent.
@@ -169,6 +186,9 @@ the topic-researcher (or `wikipilot compare new`) writes them to
 - [ ] Is Muse Spark a clean-room new architecture or a continuation/scale-up of the Llama line, and what does Meta's pivot away from open weights imply for the open/closed competitive balance [[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]?
 - [ ] How much of GLM-5's agentic-index lead (63) among open-weights models is attributable to DeepSeek Sparse Attention vs. its 28.5T-token pretraining scale-up, and does the sparse-attention integration measurably help long-horizon agentic loops [[glm-5-everything-you-need-to-know-a53ff5c1]]?
 
+- [ ] Does SubQ's claimed 81.8% SWE-bench Verified and ~1,000x attention-compute reduction at 12M tokens hold up under independent artificialanalysis.ai / third-party evaluation, and where would it land on the AA Intelligence Index relative to the current roster [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]]?
+- [ ] Does SubQ's MRCR v2 advantage at 1M tokens (65.9% vs Gemini 3.1 Pro's 26.3%) translate into measurably better whole-codebase agentic-coding loops, or does the gap to GPT-5.5 (74.0%) at the same length cap its practical edge for repo-scale context [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]]?
+- [ ] Is SubQ's SSA (selective sparse attention) architecturally distinct from the DeepSeek Sparse Attention that GLM-5 integrates, or are the two converging on the same content-dependent sparse-selection idea from different directions [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]]?
 ## See also
 
 - [purpose](purpose.md)
