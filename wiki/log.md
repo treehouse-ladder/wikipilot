@@ -144,3 +144,6 @@ WoW Midnight composer Leo Kaliski on human-first stance + AI music perceptibilit
 
 Daily research run complete: 5 topics, 18 new sources, 7 synthesis pages updated (6 topic pages + 1 new concept page), 5 PRs opened (#38–#42), all queued for auto-merge. 7 new disputes filed, 16 new open questions added.
 
+## [2026-05-23] manual | conflict-resolver — 1 PR rebased, 0 failed
+
+pr#38 (claude/daily-2026-05-23/agentic-coding) was BEHIND main after PRs #39-#42 merged; rebased cleanly onto b738b33, force-pushed to 89b30b7, auto-merge re-queued.
