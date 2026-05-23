@@ -1,9 +1,9 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]", "[[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]", "[[the-best-video-game-soundtracks-of-2026-so-far-11501826]]", "[[mick-gordon-in-conversation-sonic-state-jan-2026-53ed29e8]]", "[[pragmata-soundtrack-and-vinyl-release-review-2026-31dc604e]]", "[[elden-ring-nightreign-soundtrack-is-coming-to-vinyl-30e2c324]]", "[[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]", "[[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]]", "[[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]]", "[[aether-iron-soundtrack-music-review-5b0c61bb]]", "[[octopath-traveler-0-original-soundtrack-music-review-81d13f2c]]", "[[prescription-for-sleep-ocarina-of-time-music-review-f69d5aa2]]", "[[blue-prince-original-soundtrack-music-review-13877127]]"]
-last_updated: 2026-05-22
-last_verified: 2026-05-22
+sources: ["[[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]", "[[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]", "[[the-best-video-game-soundtracks-of-2026-so-far-11501826]]", "[[mick-gordon-in-conversation-sonic-state-jan-2026-53ed29e8]]", "[[pragmata-soundtrack-and-vinyl-release-review-2026-31dc604e]]", "[[elden-ring-nightreign-soundtrack-is-coming-to-vinyl-30e2c324]]", "[[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]", "[[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]]", "[[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]]", "[[aether-iron-soundtrack-music-review-5b0c61bb]]", "[[octopath-traveler-0-original-soundtrack-music-review-81d13f2c]]", "[[prescription-for-sleep-ocarina-of-time-music-review-f69d5aa2]]", "[[blue-prince-original-soundtrack-music-review-13877127]]", "[[interview-world-of-warcraft-lead-composer-on-making-of-midnight-s-human-made-music-013afc37]]", "[[lies-of-p-original-soundtrack-music-review-94ceba96]]", "[[citizen-sleeper-original-soundtrack-music-review-25f6b6c7]]"]
+last_updated: 2026-05-23
+last_verified: 2026-05-23
 freshness_window_days: 60
 ---
 
@@ -66,6 +66,21 @@ The first daily research pass surfaces a 2026 dominated by retrospective vinyl r
 
 > A standout track is Under the Black Bridge, a brisk 3/4 piece with an ostinato synth pattern that comes as close to percussion as the OST gets.
 
+## Composer interviews (cont.) — 2026-05-23
+
+The 2026-05-23 daily pass surfaces Game Informer's February 2026 interview with World of Warcraft lead composer Leo Kaliski on the score for the *Midnight* expansion. Kaliski frames Blizzard's music team as deliberately human-made amid the generative-AI wave, saying "We here at Blizzard feel very lucky and happy that we're not using generative AI. We're just writing what we think is cool" [[interview-world-of-warcraft-lead-composer-on-making-of-midnight-s-human-made-music-013afc37]]. He argues AI music still lags human work on perceptibility: "Music is not there yet. Usually, you hear it, and you instantly know something is not right about it, or the fidelity isn't there" [[interview-world-of-warcraft-lead-composer-on-making-of-midnight-s-human-made-music-013afc37]]. On craft, Kaliski describes WoW's deliberately broad musical identity as functional rather than foregrounded — the score sits in the background to support gameplay and story "without overstepping boundaries, unless it's a big cinematic moment" [[interview-world-of-warcraft-lead-composer-on-making-of-midnight-s-human-made-music-013afc37]].
+
+> We here at Blizzard feel very lucky and happy that we're not using generative AI. We're just writing what we think is cool, and are happy to do that.
+
+> Music is not there yet. Usually, you hear it, and you instantly know something is not right about it, or the fidelity isn't there.
+
+**Original scores of note (cont.).** RPGFan's catalog adds two atmospheric OST reviews. The *Lies of P Original Soundtrack* spans 70 total tracks, the first 16 being collectible in-game records carrying lyrical ballads plus remixed "Golden" versions; RPGFan tags opener "Feel" as "rain-soaked smooth jazz" that sets the album apart from peer action-RPG scores, and notes the 2025 free addition of 51 Overture-DLC tracks to digital copies [[lies-of-p-original-soundtrack-music-review-94ceba96]]. Amos Roddy's *Citizen Sleeper Original Soundtrack* is a mellow 23-track slice-of-life score for a lived-in sci-fi setting, blending industrial, electro, and ambient textures RPGFan compares to Vangelis' *Blade Runner*, Kenji Kawai's *Ghost in the Shell*, and Kenji Yamamoto's *Metroid Prime* [[citizen-sleeper-original-soundtrack-music-review-25f6b6c7]].
+
+> The soundtrack comprises 70 total tracks, with the first 16 being collectible records featuring lyrical ballads plus remixed Golden versions.
+
+> The soundtrack is a mix of industrial, electro, and ambient sounds reminiscent of quieter moments from film and game soundtracks like Vangelis' Blade Runner (1982), Kenji Kawai's Ghost in the Shell (1995), and Kenji Yamamoto's Metroid Prime (2002).
+
+
 ## Comparisons
 
 Pre-declared comparison pages for this topic. Listed in prose backticks
@@ -78,6 +93,7 @@ until the underlying entity pages exist:
 
 - [[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]] claims MetaSounds is workable for simple adaptive music but lacks dedicated music authoring tools, positioning Wwise as the AAA standard for interactive-music hierarchy; field reports from composers shipping UE5 titles on MetaSounds are more bullish about MetaSounds for non-trivial procedural music. Status: unresolved
 
+- [[interview-world-of-warcraft-lead-composer-on-making-of-midnight-s-human-made-music-013afc37]] claims AI-generated music is still instantly perceptible as artificial ("the fidelity isn't there"); recent generative-audio model releases tracked under frontier-models/ai-in-game-dev claim near-indistinguishable output for short cues. Status: unresolved
 ## Open questions
 
 - [ ] What is the breakdown of AAA vs indie adoption of Wwise, FMOD, and MetaSounds as of mid-2026? The comparison source asserts industry standing but does not provide adoption numbers.
@@ -91,6 +107,9 @@ until the underlying entity pages exist:
 - [ ] Does the Octopath Traveler 0 OST overlap with Champions of the Continent constitute padding, or is the carried-over 40 percent re-recorded/re-arranged [[octopath-traveler-0-original-soundtrack-music-review-81d13f2c]]?
 - [ ] Is there a physical (vinyl/CD) release planned for the Blue Prince Original Soundtrack [[blue-prince-original-soundtrack-music-review-13877127]], or is it Bandcamp/streaming-only? RPGFan notes Trigg & Gusset's Bandcamp catalog but does not mention a Blue Prince physical edition.
 
+- [ ] Is there a physical (vinyl/CD) release planned for the WoW: Midnight soundtrack, or streaming/in-game only? The interview covers process but no physical edition.
+- [ ] Does the WoW: Midnight score use any adaptive-music middleware (Wwise/FMOD/proprietary), or is it linear-cue based? The interview discusses instrumentation and creative process but not the interactive-music implementation.
+- [ ] Is the Lies of P OST's 70-track count inclusive of the 51 free Overture-DLC tracks, or are those additional [[lies-of-p-original-soundtrack-music-review-94ceba96]]? The review is ambiguous on whether the count predates or includes the DLC additions.
 ## See also
 
 - [purpose](purpose.md)
