@@ -179,3 +179,7 @@ Daily research run complete: 5 topics, 21 new sources, 7 synthesis pages updated
 ## [2026-05-24] manual | conflict-resolver — 0 PRs rebased, 1 failed
 
 pr#46 (claude/daily-2026-05-24/frontier-models) was DIRTY; rebased cleanly onto main and resolved 5 add/add source conflicts (frontier-models richer versions kept), but --force-with-lease refused due to concurrent push to origin (591dc9b → a48dee0). Will retry on next push to main.
+
+## [2026-05-24] manual | conflict-resolver — 1 lint-fix dispatched, 1 resolved
+
+pr#47 (claude/daily-2026-05-24/agentic-coding) was BLOCKED by broken-wikilink CI failure (io→i-o slug mismatch in Antigravity/Google-IO source refs, 7 occurrences). wiki-lint-fixer rebased onto main, repaired all 7 wikilinks, lint exits 0, pushed 92662b1; auto-merge re-queued via MCP. pr#53 had already auto-merged before dispatch.
