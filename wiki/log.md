@@ -179,3 +179,7 @@ Daily research run complete: 5 topics, 21 new sources, 7 synthesis pages updated
 ## [2026-05-24] manual | conflict-resolver — 0 PRs rebased, 1 failed
 
 pr#46 (claude/daily-2026-05-24/frontier-models) was DIRTY; rebased cleanly onto main and resolved 5 add/add source conflicts (frontier-models richer versions kept), but --force-with-lease refused due to concurrent push to origin (591dc9b → a48dee0). Will retry on next push to main.
+
+## [2026-05-24] manual | conflict-resolver — 1 re-queued, 0 failed
+
+pr#47 (claude/daily-2026-05-24/agentic-coding) BEHIND main with broken wikilink (at-io-2026 → at-i-o-2026 in topic index); fix + rebase already present from prior run (SHA 92662b1); auto-merge re-queued via MCP (gh unauthenticated in this env).
