@@ -4,8 +4,10 @@ kind: concept
 sources:
   - "[[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]]"
   - "[[subquadratic-launches-with-29m-to-bring-12m-token-context-windows-to-ai-78c846ee]]"
-last_updated: 2026-05-23
-last_verified: 2026-05-23
+  - "[[zaya1-8b-frontier-intelligence-density-trained-on-amd-3012ef57]]"
+  - "[[zaya1-8b-technical-report-614bf738]]"
+last_updated: 2026-05-24
+last_verified: 2026-05-24
 freshness_window_days: 30
 ---
 
@@ -23,14 +25,21 @@ Why it matters for agentic workflows: attention cost at long context has been th
 
 > SubQ scored 95.0% on RULER 128K, 65.9% on MRCR v2 at 1M tokens, and 81.8% on SWE-Bench Verified.
 
+An alternative approach is Compressed Convolutional Attention (CCA), shipped in Zyphra's ZAYA1-8B (May 6, 2026). CCA performs sequence mixing in a compressed latent space rather than full multi-head attention, resulting in an 8x reduction in KV-cache size [[zaya1-8b-technical-report-614bf738]]. ZAYA1-8B is an 8.4B-total / ~760M-active MoE optimized for maximum intelligence density per active parameter, reaching 91.9% on AIME'25 and 89.6% on HMMT'25 despite its sub-1B active footprint [[zaya1-8b-frontier-intelligence-density-trained-on-amd-3012ef57]]. Architecturally, CCA addresses memory bandwidth (via cache compression) more directly than inference throughput (SubQ's SSA), and the technical report does not claim linear scaling with context length — so CCA and SSA are complementary routes to efficient attention rather than competing implementations of the same idea [[zaya1-8b-technical-report-614bf738]].
+
+> CCA performs sequence mixing in a compressed latent space, resulting in an 8x reduction in KV-cache size compared to full multi-head attention.
+
+> ZAYA1-8B is a Mixture-of-Experts language model optimized for maximum reasoning performance per active parameter, with 8.4B total parameters but only 760M active per forward pass.
+
 ## Disputes
 
-_no contradictions or gaps known yet (last reviewed: 2026-05-23)_
+_no contradictions or gaps known yet (last reviewed: 2026-05-24)_
 
 ## Open questions
 
 - [ ] Is subquadratic/SSA attention architecturally convergent with the DeepSeek Sparse Attention that GLM-5 integrates, and which approach better preserves recall at the 1M-token+ regime [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]]?
 - [ ] Do SubQ's vendor-reported B200 prefill speedups (up to 52.2x at 1M) replicate on independent hardware/eval, or are they single-shot best cases [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]]?
+- [ ] Is ZAYA1-8B's Compressed Convolutional Attention (8x KV-cache reduction) architecturally related to DeepSeek Sparse Attention or SubQ's SSA, or is it a third independent route to efficient attention [[zaya1-8b-technical-report-614bf738]]?
 
 ## See also
 

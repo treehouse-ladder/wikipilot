@@ -1,9 +1,9 @@
 ---
 title: "DeepSeek V4"
 kind: entity
-sources: ["[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[deepseek-api-models-and-pricing-8eb12065]]", "[[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]"]
-last_updated: "2026-05-22"
-last_verified: "2026-05-22"
+sources: ["[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[deepseek-api-models-and-pricing-8eb12065]]", "[[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]", "[[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]"]
+last_updated: "2026-05-24"
+last_verified: "2026-05-24"
 freshness_window_days: 30
 input_cost_per_mtoken: 1.74
 output_cost_per_mtoken: 3.48
@@ -34,6 +34,12 @@ DeepSeek V4-Pro (Reasoning, Max Effort) scores 52 on the [[deepseek-v4-pro-intel
 
 > DeepSeek V4 Pro (Reasoning, Max Effort) scores 52 on the Artificial Analysis Intelligence Index ... When evaluating the Intelligence Index, it generated 190M tokens, which is very verbose in comparison to the average of 42M.
 
+DeepSeek's reasoning-model sibling, DeepSeek R2, shipped in April 2026 as a 32B dense transformer under the MIT license — answering the long-standing open question of whether R2 had released [[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]. Unlike V4-Pro's 1.6T MoE, R2 is small enough to fit on a single 24GB consumer GPU (RTX 4090 / A6000), scores 92.7% on AIME 2025, and undercuts Western frontier reasoning APIs by ~70% on token cost [[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]].
+
+> Where R1 (January 2025) was a 671-billion-parameter Mixture-of-Experts behemoth, R2 ships as a 32B dense transformer released under MIT license, small enough to fit on a single RTX 4090 or A6000.
+
+> DeepSeek R2 ... scores 92.7% on AIME 2025 ... and undercuts Western frontier reasoning APIs by roughly 70% on token cost.
+
 ## Disputes
 
 - [[deepseek-v4-pro-on-hugging-face-a0d5aaf3]] claims V4-Pro-Max's 80.6% SWE-bench Verified is a frontier-leading score, but OpenAI has stopped reporting SWE-bench Verified after finding contamination across all frontier models. On SWE-bench Pro (the contamination-controlled successor) DeepSeek V4-Pro's ranking is not yet published. Status: unresolved.
@@ -41,7 +47,7 @@ DeepSeek V4-Pro (Reasoning, Max Effort) scores 52 on the [[deepseek-v4-pro-intel
 
 ## Open questions
 
-- [ ] Has DeepSeek R2 (the reasoning-model sibling to V4) actually been released as of 2026-05-20?
+- [ ] Now that DeepSeek R2 has shipped as a 32B dense model [[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]], does it share V4's architecture lineage or DeepSeek Sparse Attention, and where does it land on the AA Intelligence Index relative to V4-Pro?
 - [ ] What is DeepSeek V4-Pro's SWE-bench Pro score?
 - [ ] Does DeepSeek V4 include DeepSeek Sparse Attention (now documented in GLM-5 [[glm-5-everything-you-need-to-know-a53ff5c1]]), or is that a technique Z.AI integrated independently?
 
