@@ -183,3 +183,7 @@ pr#46 (claude/daily-2026-05-24/frontier-models) was DIRTY; rebased cleanly onto 
 ## [2026-05-24] manual | conflict-resolver — 1 lint-fix dispatched, 1 resolved
 
 pr#47 (claude/daily-2026-05-24/agentic-coding) was BLOCKED by broken-wikilink CI failure (io→i-o slug mismatch in Antigravity/Google-IO source refs, 7 occurrences). wiki-lint-fixer rebased onto main, repaired all 7 wikilinks, lint exits 0, pushed 92662b1; auto-merge re-queued via MCP. pr#53 had already auto-merged before dispatch.
+
+## [2026-05-24] manual | conflict-resolver — 1 re-queued, 0 failed
+
+pr#47 (claude/daily-2026-05-24/agentic-coding) BEHIND main with broken wikilink (at-io-2026 → at-i-o-2026 in topic index); fix + rebase already present from prior run (SHA 92662b1); auto-merge re-queued via MCP (gh unauthenticated in this env).
