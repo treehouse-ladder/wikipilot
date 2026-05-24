@@ -1,8 +1,8 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]", "[[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]", "[[the-best-video-game-soundtracks-of-2026-so-far-11501826]]", "[[mick-gordon-in-conversation-sonic-state-jan-2026-53ed29e8]]", "[[pragmata-soundtrack-and-vinyl-release-review-2026-31dc604e]]", "[[elden-ring-nightreign-soundtrack-is-coming-to-vinyl-30e2c324]]", "[[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]", "[[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]]", "[[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]]", "[[aether-iron-soundtrack-music-review-5b0c61bb]]", "[[octopath-traveler-0-original-soundtrack-music-review-81d13f2c]]", "[[prescription-for-sleep-ocarina-of-time-music-review-f69d5aa2]]", "[[blue-prince-original-soundtrack-music-review-13877127]]", "[[interview-world-of-warcraft-lead-composer-on-making-of-midnight-s-human-made-music-013afc37]]", "[[lies-of-p-original-soundtrack-music-review-94ceba96]]", "[[citizen-sleeper-original-soundtrack-music-review-25f6b6c7]]"]
-last_updated: 2026-05-23
+sources: ["[[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]", "[[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]", "[[the-best-video-game-soundtracks-of-2026-so-far-11501826]]", "[[mick-gordon-in-conversation-sonic-state-jan-2026-53ed29e8]]", "[[pragmata-soundtrack-and-vinyl-release-review-2026-31dc604e]]", "[[elden-ring-nightreign-soundtrack-is-coming-to-vinyl-30e2c324]]", "[[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]", "[[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]]", "[[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]]", "[[aether-iron-soundtrack-music-review-5b0c61bb]]", "[[octopath-traveler-0-original-soundtrack-music-review-81d13f2c]]", "[[prescription-for-sleep-ocarina-of-time-music-review-f69d5aa2]]", "[[blue-prince-original-soundtrack-music-review-13877127]]", "[[interview-world-of-warcraft-lead-composer-on-making-of-midnight-s-human-made-music-013afc37]]", "[[lies-of-p-original-soundtrack-music-review-94ceba96]]", "[[citizen-sleeper-original-soundtrack-music-review-25f6b6c7]]", "[[mouse-p-i-for-hire-soundtrack-hits-streaming-ahead-of-vinyl-release-8ebe2f29]]", "[[ghost-of-yotei-soundtrack-is-getting-a-vinyl-release-fb6a8f99]]", "[[clair-obscur-snubbed-in-grammy-video-game-soundtrack-nominations-be8d1e4b]]"]
+last_updated: 2026-05-24
 last_verified: 2026-05-23
 freshness_window_days: 60
 ---
@@ -80,6 +80,19 @@ The 2026-05-23 daily pass surfaces Game Informer's February 2026 interview with 
 
 > The soundtrack is a mix of industrial, electro, and ambient sounds reminiscent of quieter moments from film and game soundtracks like Vangelis' Blade Runner (1982), Kenji Kawai's Ghost in the Shell (1995), and Kenji Yamamoto's Metroid Prime (2002).
 
+## Releases & awards — 2026-05-24
+
+**Soundtrack releases of note.** Fumi Games' noir detective game *MOUSE: P.I. For Hire* received a stylistically distinctive score by Patryk Scelina, rooted in 1930s big-band swing and approached like an old film-noir detective tale; the soundtrack hit streaming ahead of a Mondo vinyl pressing (Black & White Splatter, shipping June 2026) collecting all 19 of Scelina's original tracks plus an exclusive collaboration with French electro-swing band Caravan Palace, "Good Mouse" [[mouse-p-i-for-hire-soundtrack-hits-streaming-ahead-of-vinyl-release-8ebe2f29]]. The electro-swing/big-band genre choice is a departure from the orchestral and ambient-jazz scores dominating the 2026 review cycle tracked elsewhere on this page.
+
+> The soundtrack was composed by Patryk Scelina and features French electro-swing band Caravan Palace. The score is rooted in big band swing, and as a crime and investigation story, the music was approached like an old film-noir detective tale.
+
+On the AAA side, Sucker Punch's *Ghost of Yotei* score by Toma Otowa is joining the 2026 vinyl-revival trend via Milan Records: a gold-shimmer 2xLP in a deluxe gatefold with an exclusive Yotei Six illustration, liner notes, and full production credits, with Clare Uchima and Justin Johnson as featured co-composers on select tracks and additional music from DJ Mitsu and Takumi Kaneko [[ghost-of-yotei-soundtrack-is-getting-a-vinyl-release-fb6a8f99]]. This extends the same vinyl-collector pattern already documented for Chrono Trigger, Elden Ring: Nightreign, and Pragmata.
+
+> The Ghost of Yotei vinyl soundtrack is scheduled for release as a gold shimmer vinyl 2LP containing the complete music score composed by Toma Otowa. While Toma Otowa is the primary composer, Clare Uchima and Justin Johnson contributed as featured co-composers on select tracks, with additional music from DJ Mitsu, Takumi Kaneko, and other artists.
+
+**Awards.** The 2026 Grammy Award for Best Score Soundtrack for Video Games went to Austin Wintory for *Sword of the Sea*, over fellow nominees Pinar Toprak (Avatar: Frontiers of Pandora – Secrets of the Spires), Wilbert Roget (Helldivers 2), Gordy Haab (Indiana Jones and the Great Circle), and Cody Matthew Johnson & Wilbert Roget II (Star Wars Outlaws expansions) [[clair-obscur-snubbed-in-grammy-video-game-soundtrack-nominations-be8d1e4b]]. The most-discussed story of the category was a snub: Lorien Testard's *Clair Obscur: Expedition 33* score — which topped the Billboard Classical chart for ten consecutive weeks — was left off the ballot entirely, and Wintory used his acceptance to dedicate the award to Testard and Sandfall [[clair-obscur-snubbed-in-grammy-video-game-soundtrack-nominations-be8d1e4b]].
+
+> Clair Obscur's soundtrack composed by Lorien Testard had topped the Billboard Classical charts for 10 entire weeks. Austin Wintory won the 2026 Grammy Award for Best Score Soundtrack for Video Games for his work on Sword of the Sea, dedicating his Grammy to Testard and Sandfall.
 
 ## Comparisons
 
@@ -94,6 +107,8 @@ until the underlying entity pages exist:
 - [[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]] claims MetaSounds is workable for simple adaptive music but lacks dedicated music authoring tools, positioning Wwise as the AAA standard for interactive-music hierarchy; field reports from composers shipping UE5 titles on MetaSounds are more bullish about MetaSounds for non-trivial procedural music. Status: unresolved
 
 - [[interview-world-of-warcraft-lead-composer-on-making-of-midnight-s-human-made-music-013afc37]] claims AI-generated music is still instantly perceptible as artificial ("the fidelity isn't there"); recent generative-audio model releases tracked under frontier-models/ai-in-game-dev claim near-indistinguishable output for short cues. Status: unresolved
+
+- [[clair-obscur-snubbed-in-grammy-video-game-soundtrack-nominations-be8d1e4b]] reports broad critical/commercial consensus (10 weeks atop Billboard Classical, near-universal acclaim) that Lorien Testard's Clair Obscur: Expedition 33 score was among 2026's best, yet the Grammy nominating committee left it off the ballot entirely, with the award going to Austin Wintory's Sword of the Sea. Whether the omission reflects an eligibility-window technicality or a genuine nomination-process gap is contested. Status: unresolved
 ## Open questions
 
 - [ ] What is the breakdown of AAA vs indie adoption of Wwise, FMOD, and MetaSounds as of mid-2026? The comparison source asserts industry standing but does not provide adoption numbers.
@@ -110,6 +125,10 @@ until the underlying entity pages exist:
 - [ ] Is there a physical (vinyl/CD) release planned for the WoW: Midnight soundtrack, or streaming/in-game only? The interview covers process but no physical edition.
 - [ ] Does the WoW: Midnight score use any adaptive-music middleware (Wwise/FMOD/proprietary), or is it linear-cue based? The interview discusses instrumentation and creative process but not the interactive-music implementation.
 - [ ] Is the Lies of P OST's 70-track count inclusive of the 51 free Overture-DLC tracks, or are those additional [[lies-of-p-original-soundtrack-music-review-94ceba96]]? The review is ambiguous on whether the count predates or includes the DLC additions.
+
+- [ ] What eligibility-window or submission rule (if any) explains the Clair Obscur: Expedition 33 Grammy omission — was the score ineligible, unsubmitted, or simply not nominated despite eligibility? [[clair-obscur-snubbed-in-grammy-video-game-soundtrack-nominations-be8d1e4b]]
+- [ ] Does the MOUSE: P.I. For Hire score use any adaptive-music middleware (Wwise/FMOD/MetaSounds) to handle film-noir cue transitions, or is it linear-cue based? [[mouse-p-i-for-hire-soundtrack-hits-streaming-ahead-of-vinyl-release-8ebe2f29]]
+- [ ] Is there a streaming/digital edition of the Ghost of Yotei OST distinct from the Milan Records vinyl, and does it include tracks beyond the 2xLP's selection? [[ghost-of-yotei-soundtrack-is-getting-a-vinyl-release-fb6a8f99]]
 ## See also
 
 - [purpose](purpose.md)
