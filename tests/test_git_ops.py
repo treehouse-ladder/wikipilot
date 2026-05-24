@@ -1263,7 +1263,7 @@ class TestClassifyLintFailure:
         # Pinned so a regression in the allowlist (e.g. someone adding
         # citation-density which is a warning, not an error) shows up
         # immediately in test failures rather than at runtime.
-        assert DEFAULT_AUTO_FIX_LINT_CATEGORIES == frozenset(
+        assert frozenset(
             {"broken-wikilink", "broken-image-ref", "frontmatter", "log-format"}
-        )
+        ) == DEFAULT_AUTO_FIX_LINT_CATEGORIES
         assert "ownership-violation" not in DEFAULT_AUTO_FIX_LINT_CATEGORIES
