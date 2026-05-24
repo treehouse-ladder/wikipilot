@@ -57,6 +57,20 @@ trusted_associations = ["OWNER", "MEMBER", "COLLABORATOR"]
 # `trusted_associations`.
 trusted_authors = []
 
+# Lint rule codes the `wiki-lint-fixer` Opus subagent is allowed to attempt
+# when the Conflict Resolver routine triages a BLOCKED PR (Phase 11). Mirrors
+# `wikipilot.git_ops.DEFAULT_AUTO_FIX_LINT_CATEGORIES` and the allowlist
+# documented in `.claude/agents/wiki-lint-fixer.md`. Override to widen or
+# narrow per deployment. NEVER add `ownership-violation` — it's a security
+# boundary that exists precisely to require human review of any Claude branch
+# edit to CLAUDE.md / topics.yaml / wiki/topics/<id>/purpose.md.
+auto_fix_lint_categories = [
+  "broken-wikilink",
+  "broken-image-ref",
+  "frontmatter",
+  "log-format",
+]
+
 [images]
 enabled = true
 max_image_bytes = 5_242_880  # 5 MB

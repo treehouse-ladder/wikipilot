@@ -52,6 +52,8 @@ def _pr(
     is_cross_repository: bool = False,
     author_login: str = "rauriemo",
     title: str = "wiki(x): daily 2026-05-22",
+    status_check_rollup: list[dict] | None = None,
+    auto_merge_request: dict | None = None,
 ) -> dict:
     return {
         "number": number,
@@ -61,7 +63,36 @@ def _pr(
         "isCrossRepository": is_cross_repository,
         "author": {"login": author_login},
         "title": title,
+        "statusCheckRollup": status_check_rollup or [],
+        "autoMergeRequest": auto_merge_request,
     }
+
+
+def _green_check() -> dict:
+    return {"conclusion": "SUCCESS", "state": "SUCCESS"}
+
+
+def _failing_check(run_id: int = 12345) -> dict:
+    return {
+        "conclusion": "FAILURE",
+        "state": "COMPLETED",
+        "name": "ruff + pytest + wikipilot lint",
+        "detailsUrl": (
+            f"https://github.com/treehouse-ladder/wikipilot/actions/runs/{run_id}/job/9999"
+        ),
+    }
+
+
+_BROKEN_WIKILINK_LOG = """\
+ruff + pytest + wikipilot lint\tlint\t2026-05-24T09:27:21Z ERROR   broken-wikilink                  wiki/topics/agentic-coding/index.md
+ruff + pytest + wikipilot lint\tlint\t2026-05-24T09:27:21Z          [[google-launches-at-io-2026-94069342]] does not resolve
+ruff + pytest + wikipilot lint\tlint\t2026-05-24T09:27:21Z Process completed with exit code 1
+"""
+
+_PYTEST_FAIL_LOG = """\
+============================= test session starts ==============================
+FAILED tests/test_thing.py::test_bad - AssertionError: expected 1, got 2
+"""
 
 
 _OWNER_REPO_PAYLOAD = json.dumps({"nameWithOwner": "treehouse-ladder/wikipilot"})
@@ -72,14 +103,21 @@ def _fake_run(
     *,
     pr_list_payload: str,
     api_payloads: dict[int, str] | None = None,
+    run_logs: dict[int, str] | None = None,
 ):
     """Build a ``subprocess.run`` stand-in for the scan's call sequence.
 
     ``api_payloads`` maps PR number to a ``gh api`` JSON response so a
     single test can mix trusted and untrusted authors across PRs.
+
+    ``run_logs`` maps Actions workflow-run ID to the body that
+    ``gh run view <id> --log-failed`` returns. Used by the BLOCKED →
+    ``lint_fix`` triage path so the test can assert on classifier output
+    without hitting the real GitHub API.
     """
     calls: list[list[str]] = []
     api_payloads = api_payloads or {}
+    run_logs = run_logs or {}
 
     def fake_run(args, capture_output=True, text=True, check=False, **kwargs):
         calls.append(list(args))
@@ -88,11 +126,16 @@ def _fake_run(
         if args[:3] == ["gh", "repo", "view"]:
             return _ok(_OWNER_REPO_PAYLOAD)
         if args[:2] == ["gh", "api"]:
-            # args[2] is the endpoint, e.g. repos/o/r/pulls/28
             for num, payload in api_payloads.items():
                 if f"/pulls/{num}" in args[2]:
                     return _ok(payload)
             return _ok(_TRUSTED_API_PAYLOAD)
+        if args[:3] == ["gh", "run", "view"]:
+            try:
+                run_id = int(args[3])
+            except (IndexError, ValueError):
+                return _ok("")
+            return _ok(run_logs.get(run_id, ""))
         return _ok()
 
     return fake_run, calls
@@ -125,6 +168,7 @@ def test_dirty_claude_pr_is_emitted(empty_config: Path, capsys) -> None:
     assert entry["base_ref"] == "main"
     assert entry["route"] == "daily_research"
     assert entry["merge_state_status"] == "DIRTY"
+    assert entry["dispatch_kind"] == "rebase"
     assert entry["author_association"] == "MEMBER"
 
 
@@ -141,10 +185,14 @@ def test_behind_claude_pr_is_emitted(empty_config: Path, capsys) -> None:
     out = json.loads(capsys.readouterr().out)
     assert len(out) == 1
     assert out[0]["merge_state_status"] == "BEHIND"
+    assert out[0]["dispatch_kind"] == "rebase"
     assert out[0]["route"] == "wiki_query"
 
 
-def test_clean_pr_is_filtered_out(empty_config: Path, capsys) -> None:
+def test_clean_pr_with_pending_ci_is_filtered_out(empty_config: Path, capsys) -> None:
+    """A CLEAN PR whose CI hasn't completed yet doesn't need our help —
+    GitHub will queue it on its own when the rollup turns green. We only
+    intervene when auto-merge was demonstrably skipped."""
     cli_main = _import_main()
     payload = json.dumps([_pr(number=30, head="claude/daily-2026-05-22/foo", state="CLEAN")])
     fake_run, _ = _fake_run(pr_list_payload=payload)
@@ -265,6 +313,202 @@ def test_mixed_list_emits_only_dispatch_worthy_entries(empty_config: Path, capsy
     assert rc == 0
     out = json.loads(capsys.readouterr().out)
     assert [e["number"] for e in out] == [40]
+
+
+# ---------------------------------------------------------------------------
+# dispatch_kind triage (Phase 11 — three handlers, one scan)
+# ---------------------------------------------------------------------------
+
+
+def test_clean_pr_without_automerge_yields_requeue(empty_config: Path, capsys) -> None:
+    """Cause 1 in the original incident: the in-routine ``gh pr merge --auto``
+    call was skipped, so a CLEAN PR with green CI is sitting unmerged.
+    The scan emits ``dispatch_kind: requeue`` so the orchestrator can
+    re-run :func:`apply_static_gate` without an LLM dispatch."""
+    cli_main = _import_main()
+    payload = json.dumps(
+        [
+            _pr(
+                number=46,
+                head="claude/daily-2026-05-24/agentic-coding",
+                state="CLEAN",
+                status_check_rollup=[_green_check(), _green_check()],
+                auto_merge_request=None,
+            )
+        ]
+    )
+    fake_run, _ = _fake_run(pr_list_payload=payload)
+    with patch("subprocess.run", side_effect=fake_run):
+        rc = cli_main(["--base", "main", "--config", str(empty_config)])
+    assert rc == 0
+    out = json.loads(capsys.readouterr().out)
+    assert len(out) == 1
+    assert out[0]["number"] == 46
+    assert out[0]["dispatch_kind"] == "requeue"
+    assert out[0]["merge_state_status"] == "CLEAN"
+
+
+def test_clean_pr_with_automerge_already_set_is_filtered_out(
+    empty_config: Path, capsys
+) -> None:
+    """If GitHub already has ``--auto`` queued, we have nothing to do —
+    the merge will land when CI completes. Emitting a requeue entry
+    would just no-op against an already-queued PR but cost a scan-output
+    line each push."""
+    cli_main = _import_main()
+    payload = json.dumps(
+        [
+            _pr(
+                number=47,
+                head="claude/daily-2026-05-24/x",
+                state="CLEAN",
+                status_check_rollup=[_green_check()],
+                auto_merge_request={"enabledAt": "2026-05-24T10:00:00Z"},
+            )
+        ]
+    )
+    fake_run, _ = _fake_run(pr_list_payload=payload)
+    with patch("subprocess.run", side_effect=fake_run):
+        rc = cli_main(["--base", "main", "--config", str(empty_config)])
+    assert rc == 0
+    assert json.loads(capsys.readouterr().out) == []
+
+
+def test_blocked_pr_with_fixable_lint_yields_lint_fix(empty_config: Path, capsys) -> None:
+    """Cause 2 in the original incident: BLOCKED PR with broken-wikilink
+    errors. The scan fetches the failing log, classifies it as auto-fixable,
+    and emits ``dispatch_kind: lint_fix`` with the categories + excerpt
+    so the Opus subagent has everything it needs without a second fetch."""
+    cli_main = _import_main()
+    payload = json.dumps(
+        [
+            _pr(
+                number=47,
+                head="claude/daily-2026-05-24/ai-in-game-dev",
+                state="BLOCKED",
+                status_check_rollup=[_failing_check(run_id=998877)],
+            )
+        ]
+    )
+    fake_run, _ = _fake_run(
+        pr_list_payload=payload,
+        run_logs={998877: _BROKEN_WIKILINK_LOG},
+    )
+    with patch("subprocess.run", side_effect=fake_run):
+        rc = cli_main(["--base", "main", "--config", str(empty_config)])
+    assert rc == 0
+    out = json.loads(capsys.readouterr().out)
+    assert len(out) == 1
+    entry = out[0]
+    assert entry["dispatch_kind"] == "lint_fix"
+    assert entry["merge_state_status"] == "BLOCKED"
+    assert entry["lint_categories"] == ["broken-wikilink"]
+    assert "[[google-launches-at-io-2026-94069342]]" in entry["lint_excerpt"]
+
+
+def test_blocked_pr_with_pytest_failure_is_filtered_out(empty_config: Path, capsys) -> None:
+    """Pytest failures are a hard blocker — likely a real code bug, not
+    a fixable artifact. The fixer must not touch them; leave for human."""
+    cli_main = _import_main()
+    payload = json.dumps(
+        [
+            _pr(
+                number=48,
+                head="claude/daily-2026-05-24/x",
+                state="BLOCKED",
+                status_check_rollup=[_failing_check(run_id=777)],
+            )
+        ]
+    )
+    fake_run, _ = _fake_run(
+        pr_list_payload=payload,
+        run_logs={777: _PYTEST_FAIL_LOG},
+    )
+    with patch("subprocess.run", side_effect=fake_run):
+        rc = cli_main(["--base", "main", "--config", str(empty_config)])
+    assert rc == 0
+    assert json.loads(capsys.readouterr().out) == []
+
+
+def test_blocked_pr_without_failing_run_is_filtered_out(empty_config: Path, capsys) -> None:
+    """BLOCKED for some non-CI reason (e.g. required review) and no failing
+    workflow run — nothing the lint-fixer can grab."""
+    cli_main = _import_main()
+    payload = json.dumps(
+        [
+            _pr(
+                number=49,
+                head="claude/daily-2026-05-24/x",
+                state="BLOCKED",
+                status_check_rollup=[_green_check()],
+            )
+        ]
+    )
+    fake_run, _ = _fake_run(pr_list_payload=payload)
+    with patch("subprocess.run", side_effect=fake_run):
+        rc = cli_main(["--base", "main", "--config", str(empty_config)])
+    assert rc == 0
+    assert json.loads(capsys.readouterr().out) == []
+
+
+def test_blocked_pr_with_empty_log_is_filtered_out(empty_config: Path, capsys) -> None:
+    """If ``gh run view --log-failed`` returns nothing (deleted run, auth
+    blip), classify cannot decide — skip until the next push."""
+    cli_main = _import_main()
+    payload = json.dumps(
+        [
+            _pr(
+                number=50,
+                head="claude/daily-2026-05-24/x",
+                state="BLOCKED",
+                status_check_rollup=[_failing_check(run_id=555)],
+            )
+        ]
+    )
+    fake_run, _ = _fake_run(pr_list_payload=payload, run_logs={555: ""})
+    with patch("subprocess.run", side_effect=fake_run):
+        rc = cli_main(["--base", "main", "--config", str(empty_config)])
+    assert rc == 0
+    assert json.loads(capsys.readouterr().out) == []
+
+
+def test_three_dispatch_kinds_emit_in_order(empty_config: Path, capsys) -> None:
+    """End-to-end: a realistic mix where one PR needs rebase, one needs
+    requeue, and one needs lint_fix. All three should appear with the
+    correct dispatch_kind."""
+    cli_main = _import_main()
+    payload = json.dumps(
+        [
+            _pr(
+                number=100,
+                head="claude/daily-2026-05-24/a",
+                state="DIRTY",
+            ),
+            _pr(
+                number=101,
+                head="claude/daily-2026-05-24/b",
+                state="CLEAN",
+                status_check_rollup=[_green_check()],
+                auto_merge_request=None,
+            ),
+            _pr(
+                number=102,
+                head="claude/daily-2026-05-24/c",
+                state="BLOCKED",
+                status_check_rollup=[_failing_check(run_id=42)],
+            ),
+        ]
+    )
+    fake_run, _ = _fake_run(
+        pr_list_payload=payload,
+        run_logs={42: _BROKEN_WIKILINK_LOG},
+    )
+    with patch("subprocess.run", side_effect=fake_run):
+        rc = cli_main(["--base", "main", "--config", str(empty_config)])
+    assert rc == 0
+    out = json.loads(capsys.readouterr().out)
+    kinds = {e["number"]: e["dispatch_kind"] for e in out}
+    assert kinds == {100: "rebase", 101: "requeue", 102: "lint_fix"}
 
 
 def test_gh_failure_exits_two(empty_config: Path, capsys) -> None:

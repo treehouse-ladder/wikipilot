@@ -67,6 +67,7 @@ You are the topic-researcher subagent for one topic in the Wikipilot Daily Resea
     {
       "url": "...",
       "title": "...",
+      "slug": "...",
       "excerpt": "...",
       "image_urls": ["..."],
       "also_relevant_to": ["<other-topic-id>", "..."]
@@ -96,6 +97,8 @@ You are the topic-researcher subagent for one topic in the Wikipilot Daily Resea
   "new_open_questions": []
 }
 ```
+
+`slug` is the **deterministic** source-page slug. Compute it once per source with `uv run python -c "from wikipilot.sources import source_slug; print(source_slug('URL', title='TITLE'))"` (or follow the rule exactly: `slugify(title) + "-" + sha256(normalize_url(url))[:8]`). Use the same value verbatim in every `[[...]]` citation you write into `summary_addition` referencing that source. The merger validates every wikilink pre-commit against this slug set; mismatches that the auto-fix can't resolve unambiguously will abort the topic. **Do not type slugs by hand into prose** — always copy the value from the `slug` field you just computed.
 
 `also_relevant_to` is optional; omit it (or pass `[]`) when the source belongs solely to the researched topic.
 

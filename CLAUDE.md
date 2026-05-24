@@ -238,6 +238,7 @@ After every routine run, the orchestrator writes `wiki/reports/YYYY-MM-DD.md` (o
 | `query-answerer` | **Opus 4.7** | user-facing synthesis on demand |
 | `wiki-disputes-scanner` | Sonnet | judgment task, but cost-sensitive (many pages × candidate sets); never auto-resolves disputes |
 | `conflict-resolver` | **Opus 4.7** | intelligent text-conflict resolution (append-only Disputes/Open questions, cross-page sweep awareness); dispatched only when GitHub reports `mergeStateStatus in {DIRTY, BEHIND}` |
+| `wiki-lint-fixer` | **Opus 4.7** | bounded auto-fix for stuck-on-CI `claude/*` PRs (broken-wikilink via `autofix_wikilink`, broken-image-ref, frontmatter, log-format, ruff --fix safe-only). Dispatched only when the conflict-resolver scan classifies a BLOCKED PR's failing CI as `dispatch_kind: lint_fix`. Hard-blocks on `ownership-violation`, pytest failures, and any error code outside the configured allowlist. |
 | `daily-brief-curator` | **Opus 4.7** | one editorial pass per Daily Research run at the report-PR step; reads every merged proposal + the regenerated cost/benchmark tables + yesterday's report and produces the `## Today's brief` + `## Leader changes` + `## Watchlist` sections of the daily report, ranked through the user's "best games + most-optimized agentic workflow" lens |
 
 Routine-UI model picker only sets the orchestrator model; subagents pin their own model via YAML frontmatter.
@@ -283,26 +284,60 @@ The canonical prompt lives at [`prompts/weekly_health.md`](prompts/weekly_health
 
 The canonical prompt lives at [`prompts/conflict_resolver.md`](prompts/conflict_resolver.md). The cloud routine setup is documented in [`docs/routines-setup.md`](docs/routines-setup.md#conflict-resolver-routine).
 
-Unlike the three content-producing routines, the Conflict Resolver **does not write to the wiki**. It exists for the one merge-queue failure mode that GitHub's native auto-merge can't handle on its own: a `claude/*` PR has become `DIRTY` (text conflicts vs `main`) or `BEHIND` (out-of-date with `main`) because a sibling PR landed first. GitHub will refuse to auto-merge such a PR until something rebases it; the Conflict Resolver is that something.
+Unlike the three content-producing routines, the Conflict Resolver **does not write to the wiki**. It exists for three merge-queue failure modes that GitHub's native auto-merge can't handle on its own — all variations on "a `claude/*` PR ended up stuck waiting for a fix that should have been mechanical":
+
+1. **Text conflicts vs `main`** (`mergeStateStatus == DIRTY`) — a sibling PR landed first and edited the same lines.
+2. **Out-of-date with `main`** (`mergeStateStatus == BEHIND`) — base moved; GitHub waits for a rebase before auto-merging.
+3. **Orphan-CLEAN** (`mergeStateStatus == CLEAN`, `autoMergeRequest is null`, all checks green) — the in-routine `gh pr merge --auto` call was skipped or silently failed, so a green PR is sitting unmerged. Cause 1 of the 2026-05-24 incident.
+4. **Auto-fixable lint failure** (`mergeStateStatus == BLOCKED`, classifier verdict `auto_fixable: true`) — CI is red on broken-wikilink / broken-image-ref / frontmatter / log-format / ruff. Cause 2 of the 2026-05-24 incident (PR #47).
 
 The PR Watcher v2 architecture splits responsibilities like this:
 
 - **Happy path (~95% of PRs)** — `scripts/maybe_automerge.py` runs once per PR right after the content routine creates it. It calls `apply_static_gate` (gate without the CI check), which queues `gh pr merge --squash --auto`. GitHub's required-status-checks rule holds the merge until CI is green. Zero LLM tokens are spent.
-- **Conflict path (~5% of PRs)** — when a PR ends up `DIRTY` or `BEHIND`, the Conflict Resolver fires on the next push to `main`, scans, and dispatches the Opus `conflict-resolver` subagent once per stuck PR. The subagent rebases, resolves, force-pushes, then calls `apply_static_gate` again so GitHub re-queues the merge.
+- **End-of-run net (Layer 1)** — every content routine ends with `uv run wikipilot recover-prs --base main` so an in-routine `maybe_automerge.py` failure self-heals within the same session. Zero LLM tokens.
+- **Push-event net (~5% of PRs)** — when something is still stuck after the in-routine + end-of-run paths, the Conflict Resolver fires on the next push to `main`, scans, and dispatches the appropriate handler per `dispatch_kind`.
+
+### Dispatch classes (emitted by `scripts/conflict_resolver_scan.py`)
+
+| `dispatch_kind` | Trigger | Handler | LLM? |
+|---|---|---|---|
+| `rebase` | `mergeStateStatus in {DIRTY, BEHIND}` | Opus `conflict-resolver` subagent rebases + resolves + force-pushes + re-queues | yes (Opus 4.7) |
+| `requeue` | `mergeStateStatus == CLEAN` AND `autoMergeRequest is null` AND every check is green | `python scripts/maybe_automerge.py` — deterministic re-evaluation through `apply_static_gate` | no |
+| `lint_fix` | `mergeStateStatus == BLOCKED` AND `classify_lint_failure(ci_log).auto_fixable` is True | Opus `wiki-lint-fixer` subagent runs the bounded auto-fix workflow + force-pushes + re-queues | yes (Opus 4.7) |
+
+### Auto-fix allowlist (`wiki-lint-fixer`)
+
+The `wiki-lint-fixer` agent (`.claude/agents/wiki-lint-fixer.md`) only attempts fixes for lint codes listed in `[automerge.conflict_resolver].auto_fix_lint_categories` (`wikipilot.toml`). Default allowlist:
+
+- `broken-wikilink` — uses `wikipilot.wikilinks.autofix_wikilink` to rewrite to the canonical slug when an unambiguous match exists; aborts if zero or multiple candidates are found.
+- `broken-image-ref` — globs `wiki/assets/<source-slug>/` for the basename; rewrites if exactly one match exists.
+- `frontmatter` — adds missing required keys with sensible per-kind defaults (`last_updated: <today>`, `freshness_window_days: 30`, `sources: []`, etc.). Never invents a `title`.
+- `log-format` — reformats the offending `## ` heading in `wiki/log.md` to the canonical `## [YYYY-MM-DD] kind | subject` schema.
+- `ruff --fix` (safe-only) — for CI failures whose excerpt contains ruff-style line:col diagnostics.
+
+### Hard-block list (lint-fixer reports `resolved: false` and exits immediately)
+
+- `ownership-violation` — by design, requires human review. **NEVER add this to the allowlist.** It's the security boundary that exists precisely to surface a Claude branch edit to `CLAUDE.md` / `topics.yaml` / `wiki/topics/<id>/purpose.md`.
+- Any pytest failure — likely a real code bug, not a fixable artifact.
+- Any lint error code outside the allowlist — fail closed.
+- A fix that would require a cross-page sweep (e.g. renaming a page slug and updating every backlink) — the merger handles that at commit time; the fixer's job is to repair, not migrate.
+
+### Routine steps
 
 1. Triggered by GitHub webhook on `push` events filtered to `base=main`. Unlike the v1 PR Watcher (one fire per PR event), v2 fires at most once per merge to `main` — typically 5-10 times per day, 90%+ of which are no-ops.
 2. Run `python scripts/preflight.py` (no `wikipilot index-wiki` — the resolver never searches the vault).
-3. Read `CLAUDE.md`, `wikipilot.toml` (`[automerge.conflict_resolver]` trust knobs + per-route gate thresholds), last 30 lines of `wiki/log.md`.
+3. Read `CLAUDE.md`, `wikipilot.toml` (`[automerge.conflict_resolver]` trust knobs + auto-fix allowlist + per-route gate thresholds), last 30 lines of `wiki/log.md`.
 4. Run `python scripts/conflict_resolver_scan.py --base main` which:
- a. Calls `gh pr list --state open --base main --json ...` and filters client-side to `claude/*` heads with `mergeStateStatus in {DIRTY, BEHIND}`.
- b. **Centralized trust check.** For each candidate, calls `wikipilot.git_ops.is_pr_trusted` (which consults `[automerge.conflict_resolver].trusted_associations` / `trusted_authors`) and drops untrusted entries from the output. The trust check fails closed: any `gh` failure during the check (network blip, missing scope, ambiguous owner/repo) is treated as untrusted. This is what stops a fork PR with a synthetic `claude/daily-…` head ref from coercing the resolver into dispatching the Opus subagent.
- c. Emits a JSON list `[{number, head_ref, base_ref, route, merge_state_status, author_login, author_association, title}, ...]` to stdout.
-5. For each entry, dispatch the `conflict-resolver` subagent (Opus 4.7). **Sequentially, not in parallel** — rebasing one PR can change the next PR's mergeability, and a parallel rebase race is the failure mode this routine exists to prevent. The subagent rebases, resolves any text conflicts (respecting append-only `## Disputes` / `## Open questions` and the cross-page sweep), force-pushes with `--force-with-lease`, and then runs `python scripts/maybe_automerge.py --pr <num> --route <route>` to re-queue GitHub's auto-merge.
-6. Append a single `manual | conflict-resolver — N PRs rebased, M failed` log entry **only when at least one subagent was dispatched**. The no-op (empty-scan) case is the steady state; logging it would flood `wiki/log.md`.
+ a. Calls `gh pr list --state open --base main --json ...` (including `statusCheckRollup` and `autoMergeRequest`) and filters client-side to `claude/*` heads.
+ b. **Centralized trust check.** For each candidate, calls `wikipilot.git_ops.is_pr_trusted` and drops untrusted entries. The trust check fails closed: any `gh` failure during the check (network blip, missing scope, ambiguous owner/repo) is treated as untrusted. This is what stops a fork PR with a synthetic `claude/daily-…` head ref from coercing the resolver into dispatching the Opus subagent.
+ c. Triages each surviving candidate to one of the three `dispatch_kind` values above (or drops it). For `lint_fix` candidates, the scan fetches the failing workflow run's log via `gh run view --log-failed` (capped at 200 KB), runs `wikipilot.git_ops.classify_lint_failure`, and includes `lint_categories` + `lint_excerpt` in the emitted entry.
+ d. Emits a JSON list `[{number, head_ref, base_ref, route, merge_state_status, dispatch_kind, author_login, author_association, title, ...}, ...]` to stdout.
+5. For each entry, dispatch the appropriate handler **sequentially, not in parallel** — rebasing or force-pushing one PR can change the next PR's mergeability, and a parallel race is the failure mode this routine exists to prevent. `requeue` is deterministic (no LLM dispatch); `rebase` and `lint_fix` each cost one Opus dispatch per affected PR.
+6. Append a single `manual | conflict-resolver — N rebased, M requeued, K lint-fixed, L failed` log entry **only when at least one entry was dispatched**. The no-op (empty-scan) case is the steady state; logging it would flood `wiki/log.md`.
 
-The same centralized trust check lives in `wikipilot.git_ops.is_pr_trusted` and is consulted by every code path that may queue `gh pr merge --squash --auto`: `apply_static_gate` (called from `maybe_automerge.py`), `apply_gate` (called from `wikipilot recover-prs`), and the conflict-resolver scan. The trust check is structurally impossible to bypass from a calling site because it lives inside the gate.
+The same centralized trust check lives in `wikipilot.git_ops.is_pr_trusted` and is consulted by every code path that may queue `gh pr merge --squash --auto`: `apply_static_gate` (called from `maybe_automerge.py` AND the in-scan `requeue` path AND both Opus subagents' post-fix calls), `apply_gate` (called from `wikipilot recover-prs`), and the conflict-resolver scan itself. The trust check is structurally impossible to bypass from a calling site because it lives inside the gate.
 
-Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to `main` and runs `apply_gate` (full gate, including CI) on each, inferring the route per PR. Use it when the Conflict Resolver routine misfires or when the in-routine `maybe_automerge.py` call was skipped (manual pushes to `claude/*`, content-routine sessions that crashed mid-loop, etc.). The centralized trust check applies here too — the operator does not need to vet PRs out-of-band.
+Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to `main` and runs `apply_gate` (full gate, including CI) on each, inferring the route per PR. Use it when the Conflict Resolver routine misfires or when the in-routine `maybe_automerge.py` call was skipped (manual pushes to `claude/*`, content-routine sessions that crashed mid-loop, etc.). Every content routine ALSO ends with `wikipilot recover-prs --base main` as a self-verification net so a single skipped `maybe_automerge.py` call doesn't need to wait for the next push event to clear. The centralized trust check applies here too — the operator does not need to vet PRs out-of-band.
 
 ## Schemas
 
@@ -310,16 +345,17 @@ Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to 
 
 ```json
 {
-  "topic_id": "<id from topics.yaml>",
-  "sources": [
-    {
-      "url": "https://...",
-      "title": "Source title",
-      "excerpt": "Verbatim quote(s) for the > evidence block(s).",
-      "image_urls": ["https://...", "..."],
-      "also_relevant_to": ["<other-topic-id>", "..."]
-    }
-  ],
+ "topic_id": "<id from topics.yaml>",
+ "sources": [
+ {
+ "url": "https://...",
+ "title": "Source title",
+ "slug": "<title-slugified>-<sha-prefix-8>",
+ "excerpt": "Verbatim quote(s) for the > evidence block(s).",
+ "image_urls": ["https://...", "..."],
+ "also_relevant_to": ["<other-topic-id>", "..."]
+ }
+ ],
   "page_diffs": [
     {
       "path": "topics/<id>/index.md | concepts/<slug>.md | entities/<slug>.md",
@@ -344,6 +380,8 @@ Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to 
   "new_open_questions": ["..."]
 }
 ```
+
+`slug` on each `ProposalSource` is the **deterministic** source-page slug — exactly what `wikipilot.sources.source_slug(url, title=title)` returns (and exactly what the source file is named). Required: the researcher computes it once (cheap one-liner: `uv run python -c "from wikipilot.sources import source_slug; print(source_slug('URL', title='TITLE'))"`) and uses the same value verbatim in every `[[source-slug]]` citation it writes into `summary_addition`. The `wiki-merger` validates every wikilink in every page it touches against the union of `known_slugs(vault)` and the proposal's `slug` values before committing (Layer 6); unresolved links trigger `autofix_wikilink` (single-candidate slug glob), and any link the merger still can't resolve aborts the topic with a structured error in the run report. Back-compat: when `slug` is omitted on a legacy proposal, the merger computes it on the fly via the same `source_slug` call.
 
 `entity_field_updates` is only populated by the `frontier-models` topic-researcher's daily roster sweep (see "Daily run workflow" and the agent prompt). Other topics omit the field or pass `[]`. Each entry has:
 

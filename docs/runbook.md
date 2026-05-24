@@ -265,6 +265,33 @@ If a PR is stranded *and* `recover-prs` won't unblock it (e.g. you want to skip 
 python scripts/maybe_automerge.py --pr <num> --route daily_research
 ```
 
+## Lint-fixer aborted on broken-wikilink (no candidate found)
+
+The Conflict Resolver dispatched the `wiki-lint-fixer` Opus subagent against a BLOCKED PR. The subagent reported `resolved: false, reason: "broken-wikilink to <target>: 0 candidates found, can't auto-fix"`. Expected outcome — `wikipilot.wikilinks.autofix_wikilink` couldn't find any page in the vault whose stem ends with the broken target's SHA suffix, and no synthesis page's stem or title slugifies to the target either.
+
+Two recovery paths:
+
+1. **The researcher hallucinated the citation.** Check the merger's run report and the proposal JSON to see whether the source URL was actually ingested. If the source page exists at a different slug, the merger's pre-commit validation (Layer 6) should have rewritten the citation — that it didn't suggests the proposal omitted the `slug` field AND the slug heuristic didn't match. Manually update the broken `[[link]]` to point at the real source slug and push to the same `claude/*` branch; the next push to `main` will fire the resolver and the PR will re-queue.
+2. **The target really doesn't exist.** Open the PR's diff, locate the orphan link, and either remove it (it was a stray citation to a non-existent page) or create the missing page first (rare — usually the wiki shouldn't gain pages via lint-fixer recovery).
+
+## Lint-fixer aborted on ownership-violation
+
+The fixer detected an `ownership-violation` error — the PR touched a human-only file (`CLAUDE.md`, `topics.yaml`, `wikipilot.toml`, `wiki/topics/<id>/purpose.md`, any `wiki/_*.md`, or any path under `prompts/**` / `.claude/**`). This is **by design**: `ownership-violation` is the security boundary that requires human review, and it is explicitly excluded from the `[automerge.conflict_resolver].auto_fix_lint_categories` allowlist.
+
+Open the PR, decide whether the human-only edit is intentional (rare — most often it's a researcher accidentally proposing a `purpose.md` edit), and either revert the offending change manually or merge by hand with explicit acknowledgment that the ownership matrix was violated. **NEVER add `ownership-violation` to the allowlist** — doing so would let any future `claude/*` PR silently overwrite the schema or topic charters.
+
+## Merger aborted topic on unresolvable wikilink
+
+The `wiki-merger`'s pre-commit validation gate (Layer 6) detected a wikilink in a `page_diff` that doesn't resolve to any known page slug AND `autofix_wikilink` couldn't find an unambiguous match. The merger raised `MergerError`, the orchestrator caught it, and the affected topic appears under `failed_topics` in the daily run report.
+
+This usually means one of:
+
+1. The `topic-researcher` mistyped a source slug in `summary_addition` prose AND didn't pass the deterministic `slug` field in `ProposalSource` (Layer 6.a fix). Re-running the topic with a freshly-rebuilt qmd index often resolves this — the researcher's next attempt should pick up the canonical slug.
+2. The researcher cited a source it never actually ingested (no matching `ProposalSource` entry). The fix is in the topic-researcher's prompt: the `Citation discipline` mandate already forbids this. If the failure repeats across runs on the same topic, the prompt needs tightening.
+3. Two source pages collided on the same 8-char SHA suffix (vanishingly rare). Manually rename one of them to break the collision and re-run.
+
+The merger never silently drops the link; the entire topic is aborted so the operator gets visibility. The other topics in the same daily run are unaffected.
+
 ## Conflict Resolver cost budget
 
 The Conflict Resolver fires one Sonnet orchestrator session per push to `main` matching the trigger filter (`branch=main`). With the current vault:
@@ -277,14 +304,15 @@ The Conflict Resolver fires one Sonnet orchestrator session per push to `main` m
 | Weekly Health PR landing | ~1/7 day | ~0 |
 | Human pushes to `main` | 0–5 | 0–5 |
 | **Total Sonnet sessions per day** | **6–17** | **6–17** |
-| Opus subagent dispatches per day | 0–3 (only when scan returns non-empty) | |
+| Opus subagent dispatches per day | 0–3 (only when scan returns a `rebase` or `lint_fix` entry) | |
 
-Comfortably below Max (15/day) and Team/Enterprise (25/day) caps in normal operation. 90%+ of orchestrator fires scan to empty and exit in <10s, burning minimal Sonnet tokens; Opus only fires on actual conflict work.
+Comfortably below Max (15/day) and Team/Enterprise (25/day) caps in normal operation. 90%+ of orchestrator fires scan to empty and exit in <10s, burning minimal Sonnet tokens. The `dispatch_kind: requeue` path is zero-LLM (deterministic re-evaluation through `apply_static_gate`); Opus only fires on `rebase` (text conflicts) or `lint_fix` (auto-fixable lint failure) entries.
 
 If you're consistently exceeding caps:
 
-1. Check `gh pr list --state open --base main --head 'claude/*' --json title,mergeStateStatus` for PRs stuck in `DIRTY` / `BEHIND` — if the same PR is dispatched on every push because the resolver can't unblock it, look at the `conflict-resolver` subagent's reported `reason` to decide whether to merge by hand or close the PR.
+1. Check `gh pr list --state open --base main --head 'claude/*' --json title,mergeStateStatus,autoMergeRequest` for PRs stuck in `DIRTY` / `BEHIND` / `BLOCKED` — if the same PR is dispatched on every push because the resolver can't unblock it, look at the subagent's reported `reason` (rebase or lint-fix) to decide whether to merge by hand or close the PR.
 2. Add a routine-UI Author filter excluding bots if a third-party bot is pushing unrelated commits to `main`.
+3. If `dispatch_kind: lint_fix` is repeatedly classified as auto-fixable on the same PR and the fix is failing post-CI, narrow `[automerge.conflict_resolver].auto_fix_lint_categories` in `wikipilot.toml` to exclude the offending category. The default allowlist (`broken-wikilink`, `broken-image-ref`, `frontmatter`, `log-format`) is what the lint-fixer can safely handle; widening it is rarely justified.
 
 ## What to do when human-only file changes block auto-merge
 

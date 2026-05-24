@@ -732,6 +732,177 @@ def disable_automerge(pr_number: int, *, runner: PRRunner | None = None) -> None
     )
 
 
+# ---------------------------------------------------------------------------
+# CI log classification (consumed by ``scripts/conflict_resolver_scan.py``)
+# ---------------------------------------------------------------------------
+#
+# When a ``claude/*`` PR's CI is red, the conflict-resolver scan needs to
+# decide whether to route the PR to the Opus ``wiki-lint-fixer`` subagent
+# (mechanically-fixable failure) or leave it alone for a human (anything
+# else). The triage is done in pure Python from the CI log text so it stays
+# unit-testable; no LLM call happens unless this function returns
+# ``auto_fixable=True``.
+
+DEFAULT_AUTO_FIX_LINT_CATEGORIES: frozenset[str] = frozenset(
+    {
+        "broken-wikilink",
+        "broken-image-ref",
+        "frontmatter",
+        "log-format",
+    }
+)
+"""``wikipilot lint`` rule codes the lint-fixer is allowed to attempt.
+
+Mirrors the allowlist in ``.claude/agents/wiki-lint-fixer.md`` and overridable
+via ``wikipilot.toml`` ``[automerge.conflict_resolver].auto_fix_lint_categories``.
+
+``ownership-violation`` is **deliberately excluded** — it's a security boundary
+that exists precisely to require human review. Adding it to the allowlist
+would let the fixer silently revert a researcher's accidental edit to
+``CLAUDE.md`` / ``topics.yaml`` / a ``purpose.md``, which is the exact
+failure mode the human-only ownership matrix is designed to surface.
+"""
+
+# Lint output formatting in :meth:`LintIssue.render` is
+# ``"{severity:7} {code:32} {loc}"`` — so between SEVERITY and CODE we always
+# see 2+ spaces (5-char ``ERROR`` padded to 7 leaves a 2-space gap, plus the
+# explicit space separator). Pytest's ``ERROR tests/foo.py`` line uses exactly
+# one space, so requiring ``\s{2,}`` here cleanly separates the two cases.
+_LINT_LINE_RE = re.compile(r"\b(ERROR|WARNING|INFO)\s{2,}([a-z][a-z0-9_-]*)\b")
+_PYTEST_FAIL_RE = re.compile(r"\bFAILED\s+\S+")
+_PYTEST_ERROR_RE = re.compile(r"\bERROR\s+(?:tests/|src/)\S+")
+_RUFF_FAIL_RE = re.compile(r"\b[\w./-]+\.py:\d+:\d+:\s+[A-Z]\d+")
+
+
+@dataclass(frozen=True)
+class LintFailureClassification:
+    """Verdict of :func:`classify_lint_failure`.
+
+    - ``auto_fixable``: ``True`` only when every failing category lies in
+      the allowlist AND no blockers are present. The scan uses this as the
+      sole routing signal; ``False`` means "leave for human".
+    - ``categories``: distinct ``wikipilot lint`` rule codes the log
+      reports as ``ERROR`` severity, in the order first seen. Empty when
+      no lint errors are detected (e.g. a pure ruff or pytest failure).
+    - ``blockers``: categories that hard-block auto-fix even if the rest
+      of the failure looks tractable. Includes ``ownership-violation``,
+      ``pytest``, and the literal string ``unknown`` for any error pattern
+      we couldn't classify (fail closed).
+    - ``excerpt``: first ``max_excerpt_chars`` chars of the failure region
+      so the agent dispatch has the raw text to work with without
+      re-fetching the full log.
+    """
+
+    auto_fixable: bool
+    categories: list[str]
+    blockers: list[str]
+    excerpt: str
+
+
+def classify_lint_failure(
+    ci_log: str,
+    *,
+    auto_fix_categories: frozenset[str] = DEFAULT_AUTO_FIX_LINT_CATEGORIES,
+    max_excerpt_chars: int = 2000,
+) -> LintFailureClassification:
+    """Classify the failure region of a CI log for the conflict-resolver scan.
+
+    Pure function (no I/O) so the conflict-resolver scan can unit-test the
+    triage path with synthetic log fixtures. The input is the raw text from
+    ``gh run view --log-failed`` (line-by-line, with the per-step prefix).
+
+    Decision rule for ``auto_fixable``:
+
+    1. Detect every ``ERROR <category>`` line emitted by ``wikipilot lint``
+       (categories are the rule codes documented in CLAUDE.md "Lint rules").
+    2. If any pytest failure (``FAILED test...`` / ``ERROR tests/...``) is
+       present, ``unknown`` blocker is added — pytest failures usually mean
+       a real code bug, not a fixable artifact.
+    3. If any lint category falls outside ``auto_fix_categories``, the
+       category is added to ``blockers`` (so e.g. ``ownership-violation``
+       blocks regardless of what else is present).
+    4. ``auto_fixable`` is ``True`` iff ``blockers`` is empty AND the log
+       contains at least one signal worth fixing: either a known lint
+       category OR a ruff-style line:col diagnostic (which ``ruff --fix``
+       can resolve on the lint-fixer side).
+    """
+    if not ci_log:
+        return LintFailureClassification(
+            auto_fixable=False,
+            categories=[],
+            blockers=[],
+            excerpt="",
+        )
+
+    categories: list[str] = []
+    seen: set[str] = set()
+    for match in _LINT_LINE_RE.finditer(ci_log):
+        severity = match.group(1)
+        if severity != "ERROR":
+            continue
+        category = match.group(2)
+        # Skip pytest's own ``ERROR tests/foo.py::test_bar`` lines — those
+        # are handled separately by _PYTEST_ERROR_RE so they hit the
+        # pytest blocker path rather than masquerading as a lint category.
+        if category.startswith("tests/") or category.startswith("src/"):
+            continue
+        if category not in seen:
+            seen.add(category)
+            categories.append(category)
+
+    blockers: list[str] = []
+    blocker_seen: set[str] = set()
+
+    def _add_blocker(name: str) -> None:
+        if name not in blocker_seen:
+            blocker_seen.add(name)
+            blockers.append(name)
+
+    for category in categories:
+        if category not in auto_fix_categories:
+            _add_blocker(category)
+
+    pytest_failed = bool(_PYTEST_FAIL_RE.search(ci_log) or _PYTEST_ERROR_RE.search(ci_log))
+    if pytest_failed:
+        _add_blocker("pytest")
+
+    has_ruff_diagnostic = bool(_RUFF_FAIL_RE.search(ci_log))
+    has_fixable_signal = bool(categories) or has_ruff_diagnostic
+    auto_fixable = has_fixable_signal and not blockers
+
+    excerpt = _extract_failure_excerpt(ci_log, max_chars=max_excerpt_chars)
+
+    return LintFailureClassification(
+        auto_fixable=auto_fixable,
+        categories=categories,
+        blockers=blockers,
+        excerpt=excerpt,
+    )
+
+
+def _extract_failure_excerpt(ci_log: str, *, max_chars: int) -> str:
+    """Return the failure-relevant slice of ``ci_log`` capped at ``max_chars``.
+
+    Prefers a window around the first ``ERROR``/``FAILED`` line; falls back
+    to the tail of the log when no such line exists. The excerpt is what
+    the conflict-resolver scan hands to the Opus fixer dispatch — full log
+    payloads would blow the dispatch input budget.
+    """
+    if len(ci_log) <= max_chars:
+        return ci_log
+    candidates = []
+    for match in re.finditer(r"^(ERROR|FAILED|error:)\b", ci_log, re.MULTILINE):
+        candidates.append(match.start())
+        if len(candidates) >= 3:
+            break
+    if not candidates:
+        # No anchor: return the tail so the post-job ``exit code`` line lands.
+        return ci_log[-max_chars:]
+    start = max(0, candidates[0] - max_chars // 4)
+    end = min(len(ci_log), start + max_chars)
+    return ci_log[start:end]
+
+
 def render_pr_body_daily(
     *,
     topic_id: str,
@@ -802,13 +973,22 @@ def render_pr_body_health(
     return "\n\n".join(parts)
 
 
-def _check_is_green(check: dict[str, Any]) -> bool:
-    """Return True if a single statusCheckRollup entry indicates a passing check."""
+def check_is_green(check: dict[str, Any]) -> bool:
+    """Return True if a single statusCheckRollup entry indicates a passing check.
+
+    Public helper: the conflict-resolver scan calls this when triaging a
+    ``CLEAN`` PR (no ``autoMergeRequest`` and every check green → safe to
+    re-queue without dispatching the Opus subagent).
+    """
     conclusion = (check.get("conclusion") or "").upper()
     state = (check.get("state") or "").upper()
     if conclusion in {"SUCCESS", "NEUTRAL", "SKIPPED"}:
         return True
     return state in {"SUCCESS", "PASSED"}
+
+
+# Back-compat alias for the historical private name; remove after a release.
+_check_is_green = check_is_green
 
 
 def _extract_pr_number(url: str) -> int:

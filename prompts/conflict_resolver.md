@@ -7,9 +7,15 @@ The trigger filter (configured in the routine UI) is:
 - Event: `Push`
 - Filter: `Branch equals main`
 
-Your job: enumerate every open `claude/*` PR that has become stuck because of a merge conflict or out-of-date base (i.e. `mergeStateStatus in {DIRTY, BEHIND}`) and dispatch the Opus-class `conflict-resolver` subagent to rebase + force-push each one. After the rebase, the subagent re-queues GitHub's native auto-merge via `apply_static_gate`; GitHub's required-status-checks rule then holds the merge until CI is green.
+Your job: enumerate every open `claude/*` PR that needs an automated fix and dispatch the appropriate handler per `dispatch_kind`. Three failure modes are handled:
 
-Unlike the three content-producing routines (Daily Research, Wiki Query, Weekly Health), this routine **does not synthesize wiki content** — it only acts on existing PRs. It is the only remaining LLM call on the merge-queue happy path; the in-routine `scripts/maybe_automerge.py` shim (which now calls `apply_static_gate`) handles the 95% case at zero LLM cost.
+- **`rebase`** (`mergeStateStatus in {DIRTY, BEHIND}`) — Opus `conflict-resolver` subagent rebases + force-pushes.
+- **`requeue`** (`mergeStateStatus == CLEAN`, `autoMergeRequest is null`, all checks green) — deterministic: run `scripts/maybe_automerge.py` to re-queue `gh pr merge --squash --auto`. **No LLM dispatch.** This is the recovery path for the cause-1 failure mode (the in-routine `maybe_automerge.py` call was skipped or silently failed, leaving a green PR sitting unmerged).
+- **`lint_fix`** (`mergeStateStatus == BLOCKED`, classifier verdict `auto_fixable: true`) — Opus `wiki-lint-fixer` subagent repairs the allowlisted lint error, force-pushes, re-queues.
+
+After every dispatch (LLM or deterministic), GitHub's required-status-checks rule holds the merge until CI is green on the resulting tip.
+
+Unlike the three content-producing routines (Daily Research, Wiki Query, Weekly Health), this routine **does not synthesize wiki content** — it only acts on existing PRs. The `requeue` path costs zero LLM tokens; the `rebase` and `lint_fix` paths each cost one Opus dispatch per affected PR. The in-routine `scripts/maybe_automerge.py` shim still handles the 95% happy-path case at zero LLM cost — this routine is the safety net for the remaining 5%.
 
 ## Step 0: Bootstrap the cloned repo
 
@@ -46,10 +52,13 @@ python scripts/conflict_resolver_scan.py --base main > /tmp/conflict-scan.json
 cat /tmp/conflict-scan.json
 ```
 
-The script enumerates every open `claude/*` PR to `main` and filters to entries where:
+The script enumerates every open `claude/*` PR to `main` and filters to entries that need automated handling:
 
-- `mergeStateStatus in {DIRTY, BEHIND}` — text conflicts or out-of-date with base.
-- The centralized trust check (`wikipilot.git_ops.is_pr_trusted`) returns True — fork PRs and untrusted authors are filtered out so no Opus tokens are burned on them.
+- `dispatch_kind: "rebase"` — `mergeStateStatus in {DIRTY, BEHIND}`; text conflicts or out-of-date with base.
+- `dispatch_kind: "requeue"` — `mergeStateStatus == CLEAN` AND `autoMergeRequest is null` AND every required check is green; the in-routine auto-merge call was skipped.
+- `dispatch_kind: "lint_fix"` — `mergeStateStatus == BLOCKED` AND the failing CI is classified as auto-fixable by `wikipilot.git_ops.classify_lint_failure` (allowlist mirrors `[automerge.conflict_resolver].auto_fix_lint_categories` in `wikipilot.toml`).
+
+In every case the centralized trust check (`wikipilot.git_ops.is_pr_trusted`) must return True — fork PRs and untrusted authors are filtered out so no Opus tokens are burned on them and no deterministic re-queue runs against a hostile head ref.
 
 Each entry has the shape:
 
@@ -60,17 +69,30 @@ Each entry has the shape:
   "base_ref": "main",
   "route": "daily_research",
   "merge_state_status": "DIRTY",
+  "dispatch_kind": "rebase",
   "author_login": "rauriemo",
   "author_association": "MEMBER",
   "title": "wiki(frontier-models): daily 2026-05-22"
 }
 ```
 
+`lint_fix` entries additionally carry `lint_categories` (list of error codes the classifier saw) and `lint_excerpt` (the failure-region slice of the CI log the subagent uses as its input prompt).
+
 If the JSON is `[]`, exit successfully without logging anything — the steady state on every push is "nothing to do". This is intentional: the routine fires N times per day and 90%+ of those fires are no-ops.
 
-## Step 4: Dispatch the `conflict-resolver` subagent — sequentially
+## Step 4: Dispatch per `dispatch_kind` — sequentially
 
-For each entry in the scan output, dispatch the `conflict-resolver` agent. **Sequential, not parallel** — rebasing one PR onto an updated `main` can change the next PR's `mergeStateStatus` (a follow-up PR may flip from DIRTY to CLEAN once a prerequisite is in). Parallel dispatch would burn tokens on PRs whose state is about to flip on its own.
+For each entry in the scan output, route on `dispatch_kind`. **Sequential, not parallel** — rebasing or force-pushing one PR onto an updated `main` can change the next PR's `mergeStateStatus`, and a parallel race is exactly the bug this routine exists to prevent. The `requeue` path is cheap enough that it could in principle be parallelized, but keeping the loop sequential is simpler and the cost is negligible.
+
+### `dispatch_kind == "requeue"` — deterministic, no LLM
+
+```bash
+python scripts/maybe_automerge.py --pr <entry.number> --route <entry.route>
+```
+
+This shim calls `wikipilot.git_ops.apply_static_gate` which re-evaluates the centralized trust check and queues `gh pr merge --squash --auto`. Zero LLM tokens; one `gh pr view` + one `gh pr merge`. Logs nothing on its own — the orchestrator's per-entry journal captures the outcome.
+
+### `dispatch_kind == "rebase"` — Opus `conflict-resolver`
 
 ```
 Task(agent="conflict-resolver", input={
@@ -83,7 +105,22 @@ Task(agent="conflict-resolver", input={
 })
 ```
 
-The subagent returns:
+### `dispatch_kind == "lint_fix"` — Opus `wiki-lint-fixer`
+
+```
+Task(agent="wiki-lint-fixer", input={
+  pr_number: <entry.number>,
+  head_ref: <entry.head_ref>,
+  base_ref: <entry.base_ref>,
+  route: <entry.route>,
+  merge_state_status: <entry.merge_state_status>,
+  lint_categories: <entry.lint_categories>,
+  lint_excerpt: <entry.lint_excerpt>,
+  title: <entry.title>
+})
+```
+
+Both Opus subagents return:
 
 ```json
 {
@@ -94,33 +131,37 @@ The subagent returns:
 }
 ```
 
-Append one line per subagent return to a session-local journal:
+The `wiki-lint-fixer` additionally returns `"categories_fixed": [...]` listing the lint codes it actually repaired.
+
+Append one line per dispatch outcome to a session-local journal:
 
 ```
-pr#28 resolved=true sha=abc1234 — rebased onto main; resolved 2 conflicts on wiki/entities/claude-opus-4-7.md
-pr#31 resolved=false reason="post-rebase pytest/lint failed: broken-wikilink"
+pr#28 kind=rebase resolved=true sha=abc1234 — rebased onto main
+pr#46 kind=requeue resolved=true — apply_static_gate queued --auto
+pr#47 kind=lint_fix resolved=true sha=def5678 — fixed 1 broken-wikilink
+pr#31 kind=rebase resolved=false reason="post-rebase pytest/lint failed"
 ```
 
-After dispatching a successful rebase, **do NOT re-scan before the next entry** — the entries' merge states were sampled at the start of step 3 and the orchestrator does not re-query GitHub between dispatches. If a PR's state flipped between the scan and the dispatch, the subagent will report `resolved: false, reason: "<state changed>"` and you move on. The next push event re-scans.
+After dispatching, **do NOT re-scan before the next entry** — the entries' merge states were sampled at the start of step 3 and the orchestrator does not re-query GitHub between dispatches. If a PR's state flipped between the scan and the dispatch, the subagent will report `resolved: false, reason: "<state changed>"` (or `maybe_automerge.py` will no-op) and you move on. The next push event re-scans.
 
 ## Step 5: Log only when something happened
 
-Most fires of this routine resolve to "scan returned empty list → exit". Logging every fire would flood `wiki/log.md`. Only append a `manual` entry to `wiki/log.md` when at least one subagent was dispatched (regardless of resolved/failed outcome). Use the `append-log` skill:
+Most fires of this routine resolve to "scan returned empty list → exit". Logging every fire would flood `wiki/log.md`. Only append a `manual` entry to `wiki/log.md` when at least one entry was dispatched (regardless of `dispatch_kind` or resolved/failed outcome). Use the `append-log` skill:
 
 ```
-## [<DATE>] manual | conflict-resolver — N PRs rebased, M failed
+## [<DATE>] manual | conflict-resolver — N rebased, M requeued, K lint-fixed, L failed
 
-(one-line summary per PR if helpful, e.g. "pr#28 resolved on main; pr#31 unresolvable lint regression")
+(one-line summary per PR if helpful, e.g. "pr#28 rebased; pr#46 requeued; pr#47 lint-fix broken-wikilink; pr#31 unresolvable")
 ```
 
 Skip the log entry when the scan returned `[]`. The push event itself is the audit trail; flooding the log with no-op entries makes the real ones harder to find.
 
 ## Hard rules
 
-- **Never modify a human-only file** (per [`CLAUDE.md`](../CLAUDE.md) ownership matrix). The `conflict-resolver` subagent already aborts on conflicts touching `CLAUDE.md`, `topics.yaml`, `wikipilot.toml`, `wiki/topics/<id>/purpose.md`, any `wiki/_*.md`, or any `prompts/**` / `.claude/**` path. Do not introduce new modifications from this orchestrator.
-- **Never bypass the centralized trust check.** The scan script already filters untrusted PRs out; the subagent re-runs the check via `apply_static_gate` after force-push. Both paths consult `wikipilot.git_ops.is_pr_trusted` — the source of truth. Adding a trusted author or association is a deliberate human edit to [`wikipilot.toml`](../wikipilot.toml) `[automerge.conflict_resolver].trusted_authors` / `trusted_associations`, not an orchestrator-side workaround. The same applies to forcing a fork PR through — there is no override path because `isCrossRepository=true` is the strongest signal available that the head ref is outside our control. The trust check fails closed; a missing or ambiguous signal demotes the PR to "not dispatched".
-- **Dispatch sequentially.** Never use the `dispatching-parallel-agents` skill here — the subagents share the merge state of `main` and a parallel rebase race is exactly the kind of bug this routine exists to prevent.
-- **One scan per session.** Do not re-run `conflict_resolver_scan.py` between dispatches; the next push event will re-scan with fresh state. Re-scanning mid-session would burn redundant `gh api` calls without adding signal.
-- **The subagent owns git mutations.** The orchestrator never runs `git push`, `git rebase`, or `gh pr merge`. If the subagent returns `resolved: false`, leave the PR alone — a human looks, or the next push event re-tries.
-- **Cost expectation:** ~5-10 push-to-`main` events per day on a busy day. Each fires this orchestrator (Sonnet). 90%+ of fires scan to empty and exit in <10s of orchestrator time. Opus tokens only burn when there is real conflict work — typically 1-3 dispatches per day.
+- **Never modify a human-only file** (per [`CLAUDE.md`](../CLAUDE.md) ownership matrix). Both Opus subagents (`conflict-resolver`, `wiki-lint-fixer`) already abort on conflicts/fixes touching `CLAUDE.md`, `topics.yaml`, `wikipilot.toml`, `wiki/topics/<id>/purpose.md`, any `wiki/_*.md`, or any `prompts/**` / `.claude/**` path. Do not introduce new modifications from this orchestrator.
+- **Never bypass the centralized trust check.** The scan script already filters untrusted PRs out; every dispatch path (the deterministic `maybe_automerge.py` call AND both Opus subagents' post-fix `apply_static_gate` calls) consults `wikipilot.git_ops.is_pr_trusted` — the source of truth. Adding a trusted author or association is a deliberate human edit to [`wikipilot.toml`](../wikipilot.toml) `[automerge.conflict_resolver].trusted_authors` / `trusted_associations`, not an orchestrator-side workaround. The same applies to forcing a fork PR through — there is no override path because `isCrossRepository=true` is the strongest signal available that the head ref is outside our control. The trust check fails closed; a missing or ambiguous signal demotes the PR to "not dispatched".
+- **Dispatch sequentially.** Never use the `dispatching-parallel-agents` skill here — the handlers share the merge state of `main` and a parallel rebase/force-push race is exactly the kind of bug this routine exists to prevent.
+- **One scan per session.** Do not re-run `conflict_resolver_scan.py` between dispatches; the next push event will re-scan with fresh state. Re-scanning mid-session would burn redundant `gh api` calls (including the `gh run view --log-failed` calls the BLOCKED-PR classifier needs) without adding signal.
+- **The subagent owns git mutations.** The orchestrator never runs `git push`, `git rebase`, or `gh pr merge` directly — the only exception is the deterministic `requeue` path, which runs `python scripts/maybe_automerge.py` (which internally calls `gh pr merge --auto` through `apply_static_gate`). If a subagent returns `resolved: false`, leave the PR alone — a human looks, or the next push event re-tries.
+- **Cost expectation:** ~5-10 push-to-`main` events per day on a busy day. Each fires this orchestrator (Sonnet). 90%+ of fires scan to empty and exit in <10s of orchestrator time. The `requeue` path is zero-LLM; Opus tokens only burn on `rebase` and `lint_fix` dispatches — typically 1-3 of each per day combined.
 - **Divergence discipline** — not directly applicable here (no synthesis pages are written by this routine), but if you append a `wiki/log.md` entry, include enough context that a future researcher can trace `conflict-resolver` back to the PRs and SHAs involved.

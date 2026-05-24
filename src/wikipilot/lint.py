@@ -39,6 +39,7 @@ from wikipilot.wiki import (
     parse_log_headings,
     slugify,
 )
+from wikipilot.wikilinks import resolve_wikilink
 
 DEFAULT_FRESHNESS_WINDOW_DAYS = 30
 
@@ -232,8 +233,7 @@ def check_broken_wikilinks(ctx: LintContext) -> list[LintIssue]:
     issues: list[LintIssue] = []
     for page in ctx.pages:
         for link in page.wikilinks():
-            target = link.strip()
-            if target in known or slugify(target) in known:
+            if resolve_wikilink(link, known):
                 continue
             issues.append(
                 LintIssue(

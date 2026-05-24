@@ -30,6 +30,7 @@ EXPECTED_AGENTS: dict[str, str] = {
     "wiki-disputes-scanner": "claude-sonnet-4-5",
     "conflict-resolver": "claude-opus-4-7",
     "daily-brief-curator": "claude-opus-4-7",
+    "wiki-lint-fixer": "claude-opus-4-7",
 }
 
 EXPECTED_SKILLS: tuple[str, ...] = (

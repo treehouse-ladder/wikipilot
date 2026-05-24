@@ -109,6 +109,16 @@ The `weekly_health` gate is intentionally permissive (60 files / 2000 lines) —
 ## [<DATE>] health | weekly sweep — <N> disputes filed
 ```
 
+## Step 9: End-of-run self-verification
+
+After the health PR is gated and the log entry is appended, re-apply `apply_static_gate` to every open `claude/*` PR (this routine's PR plus any others left open from earlier runs). Catches the cause-1 failure mode (the in-routine `maybe_automerge.py` call was skipped or silently failed):
+
+```bash
+uv run wikipilot recover-prs --base main
+```
+
+Idempotent and cheap: zero LLM tokens, one `gh pr list` + one `gh pr view` per open PR. An already-queued PR is left alone; an open green PR gets `gh pr merge --squash --auto` queued via the centralized trust check. Log a failure here as a warning in the run output but do NOT abort — the next push event will fire the Conflict Resolver routine which will catch any stragglers via its `dispatch_kind: "requeue"` triage.
+
 ## Hard rules
 
 - **Never modify a human-only file.** If the scanner suggests one (it shouldn't), drop the change.

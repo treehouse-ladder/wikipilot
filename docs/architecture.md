@@ -77,6 +77,35 @@ flowchart TD
     Next --> Report["After all topics: write wiki/reports/YYYY-MM-DD.md"]
 ```
 
+## Conflict Resolver routine: unified stuck-PR fixer
+
+The fourth routine runs separately from the three content producers. It exists to catch the small fraction of PRs that, despite the in-routine `maybe_automerge.py` call AND the end-of-run `wikipilot recover-prs` net, still ended up stuck waiting for an automated fix. Three failure modes, one scan, three handlers:
+
+```mermaid
+flowchart TD
+    PushMain["GitHub push to main"] --> Resolver["Conflict Resolver routine"]
+    Resolver --> Scan["scripts/conflict_resolver_scan.py --base main"]
+    Scan --> Trust{"Centralized trust check<br/>is_pr_trusted"}
+    Trust -->|"not trusted (fork, NONE)"| Drop["drop entry"]
+    Trust -->|"trusted"| Triage{"mergeStateStatus?"}
+    Triage -->|"DIRTY / BEHIND"| Rebase["dispatch_kind: rebase"]
+    Triage -->|"CLEAN + autoMerge=null + checks green"| Requeue["dispatch_kind: requeue"]
+    Triage -->|"BLOCKED + auto_fixable lint"| LintFix["dispatch_kind: lint_fix"]
+    Triage -->|"anything else"| Skip["skip"]
+    Rebase --> OpusCR["Opus conflict-resolver subagent<br/>rebase + force-push"]
+    Requeue --> Static["scripts/maybe_automerge.py<br/>NO LLM"]
+    LintFix --> OpusLF["Opus wiki-lint-fixer subagent<br/>autofix + force-push"]
+    OpusCR --> Gate["apply_static_gate"]
+    Static --> Gate
+    OpusLF --> Gate
+    Gate -->|"trust+gate pass"| Queued["gh pr merge --squash --auto"]
+    Gate -->|"fail closed"| Open["leave PR open for human"]
+```
+
+The `lint_fix` triage runs `wikipilot.git_ops.classify_lint_failure` over the failing workflow's log (fetched via `gh run view --log-failed`, capped at 200 KB). The classifier returns `auto_fixable: true` only when every failing category is in `[automerge.conflict_resolver].auto_fix_lint_categories` (default: `broken-wikilink`, `broken-image-ref`, `frontmatter`, `log-format`) AND no hard blocker is present (`ownership-violation`, pytest failure, unknown category). Anything else falls through to "leave for human" — the auto-fix path is deliberately bounded so the worst-case is "we did nothing", never "we silently corrupted the wiki".
+
+Layer 6 catches the cause-2 failure class (broken-wikilink from slug-mismatch) **upstream** so the lint-fixer rarely needs to fire for it: the `topic-researcher` emits a deterministic `slug` field per source in its Proposal, and the `wiki-merger` validates every wikilink against the union of `known_slugs(vault) | proposal_slugs` via `wikipilot.wikilinks.resolve_or_fix_in_files` BEFORE committing. Unresolvable links abort the topic with a structured error in the run report; auto-fixable typos are silently rewritten in place using the same shared library the lint and the lint-fixer use.
+
 ## Repo layout
 
 ```text
