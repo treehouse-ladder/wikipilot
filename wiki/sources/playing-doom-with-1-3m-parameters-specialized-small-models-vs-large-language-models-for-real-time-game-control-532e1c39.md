@@ -15,4 +15,8 @@ url: https://arxiv.org/abs/2604.07385
 
 ## Excerpts
 
-> A 1.3 million parameter model plays the classic first-person shooter DOOM in real time, outperforming large language models up to 92,000x its size, including Nemotron-120B, Qwen3.5-27B, and GPT-4o-mini. The model selects game actions from ASCII frame representations at 31ms per decision. Trained on just 31,000 human gameplay demonstrations, it achieves 178 frags in 10 episodes, more than all tested LLMs combined (13 frags total).
+> A 1.3 million parameter model plays the classic first-person shooter DOOM in real time, outperforming large language models up to 92,000x its size, including Nemotron-120B, Qwen3.5-27B, and GPT-4o-mini.
+
+> The model combines a ModernBERT encoder with hash embeddings, depth-aware token representations, and an attention pooling classification head to select game actions from ASCII frame representations at 31ms per decision.
+
+> Trained on just 31,000 human gameplay demonstrations, it achieves 178 frags in 10 episodes (17.8 per episode) in the defend_the_center scenario, more than all tested LLMs combined (13 frags total).

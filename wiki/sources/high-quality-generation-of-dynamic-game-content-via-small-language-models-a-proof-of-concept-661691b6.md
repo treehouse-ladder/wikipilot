@@ -15,4 +15,8 @@ url: https://arxiv.org/abs/2601.23206
 
 ## Excerpts
 
-> LLMs offer promise for dynamic game content generation, but they face critical barriers, including narrative incoherence and high operational costs. Additionally, due to their large size, they are often accessed in the cloud, limiting their application in offline games. We achieve high-quality SLM generation through aggressive fine-tuning on deliberately scoped tasks with narrow context, constrained structure, or both.
+> LLMs offer promise for dynamic game content generation, but they face critical barriers, including narrative incoherence and high operational costs. Additionally, due to their large size, they are often accessed in the cloud, limiting their application in offline games.
+
+> We achieve high-quality SLM generation through aggressive fine-tuning on deliberately scoped tasks with narrow context, constrained structure, or both. Training data is synthetically generated via a DAG-based approach, grounding models in the specific game world.
+
+> We demonstrate our approach with a minimal RPG loop revolving around rhetorical battles of reputations, powered by this model.

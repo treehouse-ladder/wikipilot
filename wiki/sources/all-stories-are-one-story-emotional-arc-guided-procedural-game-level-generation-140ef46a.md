@@ -14,4 +14,8 @@ url: https://arxiv.org/abs/2508.02132
 
 ## Excerpts
 
-> We present a framework for procedural game narrative generation that incorporates emotional arcs as a structural backbone for both story progression and gameplay dynamics. Focusing on two core emotional patterns, Rise and Fall, to guide the generation of branching story graphs, with each story node automatically populated with characters, items, and gameplay-relevant attributes. Evaluation shows that emotional arc integration significantly enhances engagement, narrative coherence, and emotional impact.
+> We present a framework for procedural game narrative generation that incorporates emotional arcs as a structural backbone for both story progression and gameplay dynamics.
+
+> Focusing on two core emotional patterns, Rise and Fall, to guide the generation of branching story graphs, with each story node automatically populated with characters, items, and gameplay-relevant attributes (e.g., health, attack), with difficulty adjusted according to the emotional trajectory.
+
+> Evaluation through player ratings, interviews, and sentiment analysis shows that emotional arc integration significantly enhances engagement, narrative coherence, and emotional impact.
