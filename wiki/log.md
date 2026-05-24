@@ -147,3 +147,7 @@ Daily research run complete: 5 topics, 18 new sources, 7 synthesis pages updated
 ## [2026-05-23] manual | conflict-resolver — 1 PR rebased, 0 failed
 
 pr#38 (claude/daily-2026-05-23/agentic-coding) was BEHIND main after PRs #39-#42 merged; rebased cleanly onto b738b33, force-pushed to 89b30b7, auto-merge re-queued.
+
+## [2026-05-24] health | weekly sweep — 0 disputes filed
+
+Scanned 22 candidate sets across 5 parallel agents; no new disputes found. 0 errors, 16 lint warnings (5 orphans, 7 citation-density, 4 disputes-format). Full details in wiki/reports/health-2026-05-24.md.
