@@ -18,6 +18,7 @@ from wikipilot.config import (
     WikipilotConfig,
 )
 from wikipilot.git_ops import (
+    DEFAULT_AUTO_FIX_LINT_CATEGORIES,
     DEFAULT_GATE_DEDUPE_KEY,
     ROUTE_DAILY_RESEARCH,
     ROUTE_WEEKLY_HEALTH,
@@ -29,6 +30,7 @@ from wikipilot.git_ops import (
     branch_for_health,
     branch_for_query,
     checkout_new_branch,
+    classify_lint_failure,
     comment_pr,
     create_pr,
     disable_automerge,
@@ -1132,3 +1134,134 @@ class TestApplyStaticGate:
         assert decision.automerge is False
         assert any("not trusted" in r for r in decision.reasons)
         assert not any(c[:3] == ["gh", "pr", "merge"] for c in runner.calls)
+
+
+# ---------------------------------------------------------------------------
+# classify_lint_failure
+# ---------------------------------------------------------------------------
+
+
+_BROKEN_WIKILINK_LOG = """\
+ruff + pytest + wikipilot lint\tlint\t2026-05-24T09:27:21Z ERROR   broken-wikilink                  wiki/topics/agentic-coding/index.md
+ruff + pytest + wikipilot lint\tlint\t2026-05-24T09:27:21Z          [[google-launches-...-at-io-2026-94069342]] does not resolve to a known page slug
+ruff + pytest + wikipilot lint\tlint\t2026-05-24T09:27:21Z ERROR   broken-wikilink                  wiki/sources/another.md
+ruff + pytest + wikipilot lint\tlint\t2026-05-24T09:27:21Z          [[some-other-typo-aabbccdd]] does not resolve to a known page slug
+ruff + pytest + wikipilot lint\tlint\t2026-05-24T09:27:21Z Process completed with exit code 1
+"""
+
+_OWNERSHIP_VIOLATION_LOG = """\
+2026-05-24T10:00:00Z ERROR   ownership-violation              CLAUDE.md
+2026-05-24T10:00:00Z          branch 'claude/daily-...' modified human-only path 'CLAUDE.md'
+"""
+
+_PYTEST_FAILURE_LOG = """\
+============================= test session starts ==============================
+collected 145 items
+
+tests/test_thing.py::test_bad FAILED                                      [  1%]
+
+=========================== short test summary info ============================
+FAILED tests/test_thing.py::test_bad - AssertionError: expected 1, got 2
+============================== 1 failed, 144 passed ===========================
+"""
+
+_RUFF_FAILURE_LOG = """\
+src/wikipilot/foo.py:42:1: F401 [*] `os` imported but unused
+src/wikipilot/foo.py:43:1: F841 [*] Local variable `bar` is assigned to but never used
+Process completed with exit code 1
+"""
+
+_FRONTMATTER_LOG = """\
+2026-05-24T10:00:00Z ERROR   frontmatter                       wiki/concepts/new-thing.md
+2026-05-24T10:00:00Z          missing required frontmatter key: 'last_verified'
+"""
+
+_MIXED_LOG = """\
+2026-05-24T10:00:00Z ERROR   broken-wikilink                   wiki/concepts/foo.md
+2026-05-24T10:00:00Z ERROR   ownership-violation               CLAUDE.md
+"""
+
+
+class TestClassifyLintFailure:
+    def test_pure_broken_wikilink_is_auto_fixable(self) -> None:
+        result = classify_lint_failure(_BROKEN_WIKILINK_LOG)
+        assert result.auto_fixable is True
+        assert result.categories == ["broken-wikilink"]
+        assert result.blockers == []
+        assert "[[google-launches-...-at-io-2026-94069342]]" in result.excerpt
+
+    def test_frontmatter_only_is_auto_fixable(self) -> None:
+        result = classify_lint_failure(_FRONTMATTER_LOG)
+        assert result.auto_fixable is True
+        assert result.categories == ["frontmatter"]
+
+    def test_ownership_violation_blocks(self) -> None:
+        result = classify_lint_failure(_OWNERSHIP_VIOLATION_LOG)
+        assert result.auto_fixable is False
+        assert "ownership-violation" in result.categories
+        assert "ownership-violation" in result.blockers
+
+    def test_pytest_failure_blocks(self) -> None:
+        result = classify_lint_failure(_PYTEST_FAILURE_LOG)
+        assert result.auto_fixable is False
+        assert "pytest" in result.blockers
+
+    def test_ruff_only_is_auto_fixable_with_no_lint_categories(self) -> None:
+        # ``ruff --fix`` on the lint-fixer side can handle safe ruff fixes,
+        # so a log containing only ruff-style diagnostics is auto-fixable
+        # even though it carries no wikipilot lint categories.
+        result = classify_lint_failure(_RUFF_FAILURE_LOG)
+        assert result.auto_fixable is True
+        assert result.categories == []
+        assert result.blockers == []
+
+    def test_mixed_auto_fixable_and_blocker_is_blocked(self) -> None:
+        # If even one error category falls outside the allowlist, the whole
+        # PR is left for human review — partial auto-fix could mask the
+        # blocker by silently rebasing past it.
+        result = classify_lint_failure(_MIXED_LOG)
+        assert result.auto_fixable is False
+        assert set(result.categories) == {"broken-wikilink", "ownership-violation"}
+        assert "ownership-violation" in result.blockers
+
+    def test_empty_log_returns_not_fixable(self) -> None:
+        result = classify_lint_failure("")
+        assert result.auto_fixable is False
+        assert result.categories == []
+        assert result.blockers == []
+        assert result.excerpt == ""
+
+    def test_unrelated_log_is_not_fixable(self) -> None:
+        # No lint errors, no pytest failures, no ruff diagnostics → no
+        # fixable signal → not auto-fixable (and no false-positive blocker).
+        result = classify_lint_failure("Installing dependencies...\nDone.\n")
+        assert result.auto_fixable is False
+        assert result.categories == []
+        assert result.blockers == []
+
+    def test_excerpt_capped_at_max_chars(self) -> None:
+        big_log = ("ERROR   broken-wikilink                  wiki/x.md\n          something\n") + (
+            "filler line that pushes the log past the excerpt cap\n" * 200
+        )
+        result = classify_lint_failure(big_log, max_excerpt_chars=500)
+        assert len(result.excerpt) <= 500
+        assert result.auto_fixable is True
+
+    def test_allowlist_override_extends_fixable_set(self) -> None:
+        # When the deployment overrides the allowlist to include
+        # ``ownership-violation`` (hypothetical — discouraged but possible),
+        # the same log that would block by default becomes auto-fixable.
+        custom = DEFAULT_AUTO_FIX_LINT_CATEGORIES | {"ownership-violation"}
+        result = classify_lint_failure(_OWNERSHIP_VIOLATION_LOG, auto_fix_categories=custom)
+        assert result.auto_fixable is True
+        assert result.blockers == []
+
+    def test_default_allowlist_contents(self) -> None:
+        # Pinned so a regression in the allowlist (e.g. someone adding
+        # citation-density which is a warning, not an error) shows up
+        # immediately in test failures rather than at runtime.
+        assert (
+            frozenset({"broken-wikilink", "broken-image-ref", "frontmatter", "log-format"})
+            == DEFAULT_AUTO_FIX_LINT_CATEGORIES
+        )
+        assert "ownership-violation" not in DEFAULT_AUTO_FIX_LINT_CATEGORIES

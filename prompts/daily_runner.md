@@ -222,6 +222,16 @@ The report PR's diff touches `wiki/log.md`, `wiki/index.md`, and `wiki/reports/$
 
 If the report PR itself fails to merge for any reason, the daily run is recoverable: the topic content is already on `main`; only the aggregate journal is missing. Surface this prominently in the run output and leave the report PR open for human review — do NOT retry mechanically.
 
+## Step 7: End-of-run self-verification
+
+After the report PR has been gated, run one final pass that re-applies `apply_static_gate` to every open `claude/*` PR this routine produced (plus any other open `claude/*` PRs that pre-date this run). This is the self-verification net for the cause-1 failure mode where `maybe_automerge.py` was skipped or silently failed during a per-topic loop — the gate either confirms the PR is already queued (no-op, fast) or queues it now:
+
+```bash
+uv run wikipilot recover-prs --base main
+```
+
+The command is idempotent: an already-queued PR is left alone, an already-merged PR is skipped, and an open green PR gets `gh pr merge --squash --auto` queued via `apply_static_gate` (same centralized trust check as every other path). Cost is zero LLM tokens; one `gh pr list` + one `gh pr view` per open PR. If `recover-prs` itself fails (auth blip, gh down), log the failure in the run output but do NOT abort — the next push event to `main` will fire the Conflict Resolver routine which will also catch the stuck PRs via its `dispatch_kind: "requeue"` triage.
+
 ## Hard rules
 
 - **Never modify a human-only file** (per `CLAUDE.md` ownership matrix). If a `topic-researcher` proposes one, drop the change and surface it in the report.

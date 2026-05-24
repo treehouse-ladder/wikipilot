@@ -122,6 +122,16 @@ EOF
 )"
 ```
 
+## Step 9: End-of-run self-verification
+
+After the answer PR is gated (and the issue comment posted, if any), re-apply `apply_static_gate` to every open `claude/*` PR. This catches the cause-1 failure mode where `maybe_automerge.py` was skipped or silently failed mid-run, leaving a green PR sitting unmerged:
+
+```bash
+uv run wikipilot recover-prs --base main
+```
+
+Idempotent and cheap: zero LLM tokens, one `gh pr list` + one `gh pr view` per open PR. An already-queued PR is left alone; an open green PR gets `gh pr merge --squash --auto` queued via the centralized trust check. A failure here is a warning, not a fatal — the next push to `main` will fire the Conflict Resolver routine which will catch the stuck PR via its `dispatch_kind: "requeue"` triage.
+
 ## Hard rules
 
 - **Never modify a human-only file** (per `CLAUDE.md` ownership matrix).

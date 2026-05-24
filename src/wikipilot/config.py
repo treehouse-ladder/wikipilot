@@ -150,6 +150,22 @@ class ConflictResolverConfig:
 
     trusted_associations: tuple[str, ...] = ("OWNER", "MEMBER", "COLLABORATOR")
     trusted_authors: tuple[str, ...] = ()
+    auto_fix_lint_categories: tuple[str, ...] = (
+        "broken-wikilink",
+        "broken-image-ref",
+        "frontmatter",
+        "log-format",
+    )
+    """Lint rule codes the ``wiki-lint-fixer`` Opus subagent is allowed to attempt.
+
+    Mirrors :data:`wikipilot.git_ops.DEFAULT_AUTO_FIX_LINT_CATEGORIES`. Override
+    in ``wikipilot.toml`` to widen or narrow the allowlist per deployment —
+    e.g. drop ``broken-image-ref`` if you don't trust the heuristic in your
+    asset layout, or add a custom category if you've extended the lint with
+    a rule that the fixer should also handle. ``ownership-violation`` is
+    intentionally NOT in the default and we recommend keeping it out — it's
+    a security boundary that exists precisely to require human review.
+    """
 
 
 @dataclass(frozen=True)
@@ -362,6 +378,7 @@ def _conflict_resolver_from_dict(data: dict[str, Any], *, source: str) -> Confli
     known_keys = {
         "trusted_associations",
         "trusted_authors",
+        "auto_fix_lint_categories",
     }
     associations = _coerce_trusted_associations(
         data.get("trusted_associations", ["OWNER", "MEMBER", "COLLABORATOR"]),
@@ -371,6 +388,11 @@ def _conflict_resolver_from_dict(data: dict[str, Any], *, source: str) -> Confli
         data.get("trusted_authors", []),
         where=f"{source}: [automerge.conflict_resolver].trusted_authors",
     )
+    default_categories = list(ConflictResolverConfig().auto_fix_lint_categories)
+    categories = _coerce_str_list(
+        data.get("auto_fix_lint_categories", default_categories),
+        where=f"{source}: [automerge.conflict_resolver].auto_fix_lint_categories",
+    )
     unknown = set(data.keys()) - known_keys
     if unknown:
         raise ConfigError(
@@ -379,6 +401,7 @@ def _conflict_resolver_from_dict(data: dict[str, Any], *, source: str) -> Confli
     return ConflictResolverConfig(
         trusted_associations=tuple(associations),
         trusted_authors=tuple(authors),
+        auto_fix_lint_categories=tuple(categories),
     )
 
 
