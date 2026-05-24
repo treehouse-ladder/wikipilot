@@ -1240,10 +1240,9 @@ class TestClassifyLintFailure:
         assert result.blockers == []
 
     def test_excerpt_capped_at_max_chars(self) -> None:
-        big_log = (
-            "ERROR   broken-wikilink                  wiki/x.md\n"
-            "          something\n"
-        ) + ("filler line that pushes the log past the excerpt cap\n" * 200)
+        big_log = ("ERROR   broken-wikilink                  wiki/x.md\n          something\n") + (
+            "filler line that pushes the log past the excerpt cap\n" * 200
+        )
         result = classify_lint_failure(big_log, max_excerpt_chars=500)
         assert len(result.excerpt) <= 500
         assert result.auto_fixable is True
@@ -1253,9 +1252,7 @@ class TestClassifyLintFailure:
         # ``ownership-violation`` (hypothetical — discouraged but possible),
         # the same log that would block by default becomes auto-fixable.
         custom = DEFAULT_AUTO_FIX_LINT_CATEGORIES | {"ownership-violation"}
-        result = classify_lint_failure(
-            _OWNERSHIP_VIOLATION_LOG, auto_fix_categories=custom
-        )
+        result = classify_lint_failure(_OWNERSHIP_VIOLATION_LOG, auto_fix_categories=custom)
         assert result.auto_fixable is True
         assert result.blockers == []
 
@@ -1263,7 +1260,8 @@ class TestClassifyLintFailure:
         # Pinned so a regression in the allowlist (e.g. someone adding
         # citation-density which is a warning, not an error) shows up
         # immediately in test failures rather than at runtime.
-        assert frozenset(
-            {"broken-wikilink", "broken-image-ref", "frontmatter", "log-format"}
-        ) == DEFAULT_AUTO_FIX_LINT_CATEGORIES
+        assert (
+            frozenset({"broken-wikilink", "broken-image-ref", "frontmatter", "log-format"})
+            == DEFAULT_AUTO_FIX_LINT_CATEGORIES
+        )
         assert "ownership-violation" not in DEFAULT_AUTO_FIX_LINT_CATEGORIES

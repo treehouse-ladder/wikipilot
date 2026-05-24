@@ -240,9 +240,7 @@ def _rewrite_wikilink(text: str, old: str, new: str) -> str:
     wikilink target doesn't accidentally match.
     """
     pattern = re.compile(
-        r"\[\["
-        + re.escape(old)
-        + r"(?P<suffix>(?:#[^\[\]|\n]+?)?(?:\|[^\[\]\n]+?)?)\]\]"
+        r"\[\[" + re.escape(old) + r"(?P<suffix>(?:#[^\[\]|\n]+?)?(?:\|[^\[\]\n]+?)?)\]\]"
     )
 
     def _sub(match: re.Match[str]) -> str:

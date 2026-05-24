@@ -53,8 +53,7 @@ def _body() -> str:
 class TestPromptInvariants:
     def test_agent_file_exists(self) -> None:
         assert AGENT_PATH.exists(), (
-            "wiki-lint-fixer agent prompt must exist at "
-            ".claude/agents/wiki-lint-fixer.md"
+            "wiki-lint-fixer agent prompt must exist at .claude/agents/wiki-lint-fixer.md"
         )
 
     def test_uses_opus_model(self) -> None:
@@ -84,16 +83,13 @@ class TestPromptInvariants:
             "log-format",
         ):
             assert category in body, (
-                f"wiki-lint-fixer body must document the {category!r} "
-                "auto-fix policy explicitly"
+                f"wiki-lint-fixer body must document the {category!r} auto-fix policy explicitly"
             )
 
     def test_hard_block_documented_in_body(self) -> None:
         body = _body()
         for blocker in ("ownership-violation", "pytest"):
-            assert blocker in body, (
-                f"wiki-lint-fixer body must document the {blocker!r} hard-block"
-            )
+            assert blocker in body, f"wiki-lint-fixer body must document the {blocker!r} hard-block"
 
     def test_uses_shared_wikilinks_library(self) -> None:
         # The whole point of Layer 6's shared library is that all three
@@ -173,8 +169,7 @@ class TestBrokenWikilinkRewrite:
         topic_path = sample_vault.dir_for("topics") / "ai-agents" / "index.md"
         text = topic_path.read_text(encoding="utf-8")
         topic_path.write_text(
-            text
-            + f"\nGoogle's announcement [[{broken_slug}]] is notable.\n",
+            text + f"\nGoogle's announcement [[{broken_slug}]] is notable.\n",
             encoding="utf-8",
         )
 
@@ -201,9 +196,7 @@ class TestBrokenWikilinkRewrite:
         )
         report = resolve_or_fix_in_files([topic_path], sample_vault)
         assert report.autofixed == []
-        assert any(
-            slug == "completely-hallucinated-7f8a9b0c" for _, slug in report.unresolved
-        )
+        assert any(slug == "completely-hallucinated-7f8a9b0c" for _, slug in report.unresolved)
 
     def test_ambiguous_sha_match_leaves_link_alone(self, sample_vault: Vault) -> None:
         """If two source pages share the same SHA suffix (extremely rare

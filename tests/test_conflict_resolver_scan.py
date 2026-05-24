@@ -348,9 +348,7 @@ def test_clean_pr_without_automerge_yields_requeue(empty_config: Path, capsys) -
     assert out[0]["merge_state_status"] == "CLEAN"
 
 
-def test_clean_pr_with_automerge_already_set_is_filtered_out(
-    empty_config: Path, capsys
-) -> None:
+def test_clean_pr_with_automerge_already_set_is_filtered_out(empty_config: Path, capsys) -> None:
     """If GitHub already has ``--auto`` queued, we have nothing to do —
     the merge will land when CI completes. Emitting a requeue entry
     would just no-op against an already-queued PR but cost a scan-output

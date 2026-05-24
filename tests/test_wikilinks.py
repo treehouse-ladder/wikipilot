@@ -24,11 +24,14 @@ class TestResolveWikilink:
         assert resolve_wikilink("Transformer Attention", known) is True
 
     def test_extra_set_unions_with_known(self) -> None:
-        assert resolve_wikilink(
-            "from-proposal-abc12345",
-            known=set(),
-            extra={"from-proposal-abc12345"},
-        ) is True
+        assert (
+            resolve_wikilink(
+                "from-proposal-abc12345",
+                known=set(),
+                extra={"from-proposal-abc12345"},
+            )
+            is True
+        )
 
     def test_unresolved_returns_false(self) -> None:
         assert resolve_wikilink("totally-not-real", {"some-other"}) is False
@@ -46,10 +49,7 @@ class TestAutofixWikilinkShaSuffix:
         assert autofix_wikilink("example-papre-aabbccdd", sample_vault) == "example-paper-aabbccdd"
 
     def test_exact_match_via_sha(self, sample_vault: Vault) -> None:
-        assert (
-            autofix_wikilink("example-paper-aabbccdd", sample_vault)
-            == "example-paper-aabbccdd"
-        )
+        assert autofix_wikilink("example-paper-aabbccdd", sample_vault) == "example-paper-aabbccdd"
 
     def test_no_match_returns_none(self, sample_vault: Vault) -> None:
         # SHA that doesn't exist anywhere in the vault.
@@ -73,10 +73,7 @@ class TestAutofixWikilinkSlugify:
         # The sample vault has ``concepts/transformer-attention.md`` with
         # title "Transformer attention" — both stem and title slugify to the
         # same thing, so a casing/spacing typo should resolve.
-        assert (
-            autofix_wikilink("Transformer Attention", sample_vault)
-            == "transformer-attention"
-        )
+        assert autofix_wikilink("Transformer Attention", sample_vault) == "transformer-attention"
 
     def test_no_slug_match_returns_none(self, sample_vault: Vault) -> None:
         assert autofix_wikilink("something-totally-unrelated", sample_vault) is None
@@ -121,9 +118,7 @@ class TestResolveOrFixInFiles:
         )
         report = resolve_or_fix_in_files([target], sample_vault)
         assert report.autofixed == []
-        assert any(
-            link == "truly-nonexistent-12345678" for _, link in report.unresolved
-        )
+        assert any(link == "truly-nonexistent-12345678" for _, link in report.unresolved)
 
     def test_proposal_slugs_treated_as_known(self, sample_vault: Vault) -> None:
         target = sample_vault.dir_for("concepts") / "transformer-attention.md"
@@ -146,8 +141,7 @@ class TestResolveOrFixInFiles:
         # The typo target has a section anchor and an alias — both should
         # survive the rewrite to the canonical slug.
         target.write_text(
-            text
-            + "\nSee [[example-papre-aabbccdd#section|the paper]] for details.\n",
+            text + "\nSee [[example-papre-aabbccdd#section|the paper]] for details.\n",
             encoding="utf-8",
         )
         report = resolve_or_fix_in_files([target], sample_vault)
