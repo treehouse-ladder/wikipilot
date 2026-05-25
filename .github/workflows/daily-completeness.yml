@@ -17,9 +17,13 @@ name: Daily completeness check
 
 on:
   schedule:
-    # 22:00 UTC = 19:00 in America/Sao_Paulo (UTC-3). Evenings in the user's
-    # waking hours so the issue lands before the next morning's review.
-    - cron: "0 22 * * *"
+    # 14:00 UTC = 11:00 in America/Sao_Paulo (UTC-3). Fires one hour after
+    # the Conflict Resolver's 10 AM Brasília cron (0 13 * * * UTC) so any
+    # late-recovery requeues from the resolver have already happened by
+    # the time the sentinel evaluates. Still well within the operator's
+    # waking hours, so a freshly-filed `daily-incomplete` issue is
+    # actionable the same day rather than the next morning.
+    - cron: "0 14 * * *"
   # Allow manual fires from the Actions UI for ad-hoc post-mortems.
   workflow_dispatch:
     inputs:

@@ -172,7 +172,7 @@ This replaces the previous PR Watcher routine, which fired on every PR event and
 | Permissions tab | "Allow unrestricted git push" → **OFF**. The `conflict-resolver` subagent only force-pushes to `claude/*` branches via `git push --force-with-lease origin "$HEAD_REF"`. |
 | Behavior tab | "Auto-fix pull requests" → **OFF**. The routine already implements its narrow surface explicitly; toggling the Anthropic feature would double-fire. |
 | Env vars | inherited from the cloud env. |
-| Triggers | **GitHub push** AND **Schedule** (both, see below). Push fires within seconds of every merge to `main` (low latency); the schedule fires every 3 hours so days with zero merges don't leave the resolver dormant. No API trigger. |
+| Triggers | **GitHub push** AND **Schedule** (both, see below). Push fires within seconds of every merge to `main` (low latency); the schedule fires once per day at 10 AM Brasília (`0 13 * * *` UTC) so days with zero merges don't leave the resolver dormant. No API trigger. |
 | Model | **Sonnet** (orchestrator); `conflict-resolver` subagent pins **Opus 4.7** via its frontmatter. |
 | Prompt | Copy [`prompts/conflict_resolver.md`](../prompts/conflict_resolver.md) into the routine UI. |
 
@@ -194,13 +194,13 @@ The push trigger alone has a structural blind spot: if the only thing scheduled 
 To close that gap, **also enable a Schedule trigger** on the same routine:
 
 1. In the routine UI, alongside the GitHub trigger you already configured, **add a Schedule trigger**:
-   - **Cadence**: every 3 hours (or `0 */3 * * *` if the UI accepts cron expressions; `9, 12, 15, 18, 21` UTC works fine if it asks for discrete hours).
-   - **Time zone**: UTC is fine — the scan logic is timezone-agnostic.
-2. Save. The orchestrator's prompt has no time-aware branches, so the same Sonnet body runs whether the trigger was push or schedule. The scan exits in ~10s with an empty list on the typical no-op case, so the marginal cost of the cron is a handful of Sonnet invocations per day.
+   - **Cron expression**: `0 13 * * *` (= 10 AM Brasília year-round, UTC-3).
+   - **Time zone**: UTC.
+2. Save. The orchestrator's prompt has no time-aware branches, so the same Sonnet body runs whether the trigger was push or schedule.
 
-Why every 3 hours and not hourly or daily? Hourly is wasteful (most fires would no-op against zero changes since the previous push trigger). Daily is too coarse — a stuck PR sitting unmerged for ~12 hours triggered the 2026-05-25 incident report in the first place. Every 3 hours catches the worst case within ~3 hours of the failure event, which matches the human-attention boundary on this project.
+Why once per day at 10 AM Brasília? The Daily Research routine fires at 6 AM Brasília, so by 10 AM every healthy topic PR has long since merged through GitHub's merge queue. A 10 AM cron is late enough that it never races a still-in-progress healthy run, but early enough that a stuck-from-6-AM PR (the 2026-05-25 incident shape) gets unstuck well before the operator's workday starts. One fire is enough: any other PR landing during the day re-arms the Push trigger anyway, and the only stuck-PR class that has to wait until tomorrow's 10 AM is a mid-day Wiki Query or Weekly Health run — both non-time-critical.
 
-Daily-cap note: with both triggers, expect ~10-15 fires per day (5-10 from pushes, 5-8 from the cron). Each fires the Sonnet orchestrator; 90%+ are no-ops. Opus tokens only burn when there is real work (typically 1-3 dispatches per day). Comfortably within Pro/Max/Team caps (5/15/25 per day).
+Daily-cap note: with both triggers, expect 5–10 fires per day (5–9 from pushes when Daily Research is healthy, 1 from the cron). Each fires the Sonnet orchestrator; 95%+ are no-ops. Opus tokens only burn when there is real work (typically 0–2 dispatches per day). Comfortably within Pro/Max/Team caps (5/15/25 per day).
 
 ### Merge-queue interaction
 
