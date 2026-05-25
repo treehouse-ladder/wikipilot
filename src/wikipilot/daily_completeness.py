@@ -40,6 +40,10 @@ from wikipilot.git_ops import PRRunner
 
 DEFAULT_LABEL = "daily-incomplete"
 DEFAULT_ISSUE_TITLE_PREFIX = "Daily Research incomplete"
+DEFAULT_LABEL_COLOR = "FBCA04"  # GitHub's built-in `yellow`/`warning`.
+DEFAULT_LABEL_DESCRIPTION = (
+    "Daily Research completeness sentinel found gaps for the indicated date."
+)
 
 ReportStatus = Literal["merged", "open", "missing"]
 
@@ -414,6 +418,46 @@ def find_existing_issue(
     return None
 
 
+def ensure_label(
+    label: str = DEFAULT_LABEL,
+    *,
+    color: str = DEFAULT_LABEL_COLOR,
+    description: str = DEFAULT_LABEL_DESCRIPTION,
+    runner: PRRunner | None = None,
+) -> bool:
+    """Idempotently create ``label`` on the current repo via ``gh label create --force``.
+
+    ``--force`` is the GitHub CLI's "create-or-update" flag — succeeds whether
+    the label already exists (with the same or different metadata) or not.
+    Without this, the first sentinel fire against a freshly-cloned (or freshly
+    forked) repo fails on ``gh issue create --label daily-incomplete: label
+    'daily-incomplete' not found`` — exactly what happened on the 2026-05-25
+    smoke-test fire.
+
+    Returns ``True`` on success, ``False`` on any ``gh`` failure (in which
+    case the caller's ``gh issue create`` will fail too, and the existing
+    fail-closed handling in :func:`open_or_update_issue` will return
+    ``None`` so the CLI logs and exits non-zero).
+    """
+    runner = runner or subprocess.run
+    args = [
+        "gh",
+        "label",
+        "create",
+        label,
+        "--color",
+        color,
+        "--description",
+        description,
+        "--force",
+    ]
+    try:
+        result = runner(args, capture_output=True, text=True, check=False)
+    except (OSError, subprocess.SubprocessError):
+        return False
+    return result.returncode == 0
+
+
 def open_or_update_issue(
     report: CompletenessReport,
     *,
@@ -432,6 +476,8 @@ def open_or_update_issue(
     masking the underlying daily-run incident.
     """
     runner = runner or subprocess.run
+    if not ensure_label(label, runner=runner):
+        return None
     title = render_issue_title(report)
     body = render_issue_body(report)
     existing = find_existing_issue(today=report.today, label=label, runner=runner)

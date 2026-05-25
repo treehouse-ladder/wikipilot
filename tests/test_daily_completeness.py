@@ -10,10 +10,12 @@ from typing import Any
 
 from wikipilot.config import BranchesConfig, TopicConfig
 from wikipilot.daily_completeness import (
+    DEFAULT_LABEL,
     CompletenessReport,
     TopicStatus,
     build_completeness_report,
     daily_topics,
+    ensure_label,
     expected_report_branch,
     expected_topic_branches,
     find_existing_issue,
@@ -498,3 +500,88 @@ class TestOpenOrUpdateIssue:
             report_pr_state="missing",
         )
         assert open_or_update_issue(report, runner=runner) is None
+
+    def test_ensures_label_before_filing_issue(self) -> None:
+        """Regression for the 2026-05-25 first-fire failure.
+
+        Before this fix, the workflow run #26416243188 detected the gap
+        correctly (`2 merged, 0 open, 3 missing`) but exited 1 because
+        ``gh issue create --label daily-incomplete`` failed against a
+        repo where the label had never been created. ``open_or_update_issue``
+        now calls ``gh label create --force`` first.
+        """
+        runner = FakeRunner(
+            responses={
+                "gh issue list": _ok("[]"),
+                "gh issue create": _ok(stdout="https://github.com/x/wikipilot/issues/77\n"),
+            }
+        )
+        report = CompletenessReport(
+            today=_TODAY,
+            expected_topic_ids=["a"],
+            topic_results=[
+                TopicStatus(
+                    topic_id="a",
+                    expected_branch="claude/daily-2026-05-25/a",
+                    state="missing",
+                ),
+            ],
+            report_pr_state="missing",
+        )
+        result = open_or_update_issue(report, runner=runner)
+        assert result == 77
+        label_calls = [call for call in runner.calls if call[:3] == ["gh", "label", "create"]]
+        assert len(label_calls) == 1
+        assert label_calls[0][3] == DEFAULT_LABEL
+        assert "--force" in label_calls[0]
+
+    def test_aborts_when_label_creation_fails(self) -> None:
+        """When ``gh label create --force`` itself fails, fail closed.
+
+        Returning ``None`` (instead of pressing on with ``gh issue create``)
+        gives the CLI a clean exit-1 signal that something at the GitHub
+        layer is wrong, rather than silently producing a labelless issue.
+        """
+        runner = FakeRunner(
+            responses={
+                "gh label create": _ok(returncode=1, stdout=""),
+            }
+        )
+        report = CompletenessReport(
+            today=_TODAY,
+            expected_topic_ids=["a"],
+            topic_results=[
+                TopicStatus(
+                    topic_id="a",
+                    expected_branch="claude/daily-2026-05-25/a",
+                    state="missing",
+                ),
+            ],
+            report_pr_state="missing",
+        )
+        assert open_or_update_issue(report, runner=runner) is None
+        assert not any(call[:3] == ["gh", "issue", "create"] for call in runner.calls)
+        assert not any(call[:3] == ["gh", "issue", "edit"] for call in runner.calls)
+
+
+class TestEnsureLabel:
+    def test_calls_gh_label_create_with_force_and_metadata(self) -> None:
+        runner = FakeRunner(responses={"gh label create": _ok(stdout="")})
+        assert ensure_label(runner=runner) is True
+        assert len(runner.calls) == 1
+        call = runner.calls[0]
+        assert call[:3] == ["gh", "label", "create"]
+        assert call[3] == DEFAULT_LABEL
+        assert "--color" in call
+        assert "--description" in call
+        assert "--force" in call
+
+    def test_returns_false_on_gh_failure(self) -> None:
+        runner = FakeRunner(responses={"gh label create": _ok(returncode=1, stdout="")})
+        assert ensure_label(runner=runner) is False
+
+    def test_returns_false_on_oserror(self) -> None:
+        def raising_runner(*args: Any, **kwargs: Any) -> Any:
+            raise OSError("gh missing")
+
+        assert ensure_label(runner=raising_runner) is False
