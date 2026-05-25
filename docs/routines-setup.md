@@ -172,7 +172,7 @@ This replaces the previous PR Watcher routine, which fired on every PR event and
 | Permissions tab | "Allow unrestricted git push" → **OFF**. The `conflict-resolver` subagent only force-pushes to `claude/*` branches via `git push --force-with-lease origin "$HEAD_REF"`. |
 | Behavior tab | "Auto-fix pull requests" → **OFF**. The routine already implements its narrow surface explicitly; toggling the Anthropic feature would double-fire. |
 | Env vars | inherited from the cloud env. |
-| Triggers | **GitHub trigger** (only): see [GitHub push trigger](#github-push-trigger-for-conflict-resolver) below. No schedule, no API trigger. |
+| Triggers | **GitHub push** AND **Schedule** (both, see below). Push fires within seconds of every merge to `main` (low latency); the schedule fires every 3 hours so days with zero merges don't leave the resolver dormant. No API trigger. |
 | Model | **Sonnet** (orchestrator); `conflict-resolver` subagent pins **Opus 4.7** via its frontmatter. |
 | Prompt | Copy [`prompts/conflict_resolver.md`](../prompts/conflict_resolver.md) into the routine UI. |
 
@@ -185,9 +185,26 @@ This replaces the previous PR Watcher routine, which fired on every PR event and
      - `Branch` `equals` `main`
 3. Save.
 
-Now every push to `main` (whether from a merge of a `claude/*` PR or a direct push from a human) spawns one Conflict Resolver session. The orchestrator runs `scripts/conflict_resolver_scan.py`, which returns the JSON list of dispatch-worthy PRs (trusted `claude/*` heads with `mergeStateStatus in {DIRTY, BEHIND}`). The vast majority of fires see an empty list and exit in seconds without any Opus dispatch.
+Now every push to `main` (whether from a merge of a `claude/*` PR or a direct push from a human) spawns one Conflict Resolver session. The orchestrator runs `scripts/conflict_resolver_scan.py`, which returns the JSON list of dispatch-worthy PRs (trusted `claude/*` heads with `mergeStateStatus in {DIRTY, BEHIND, CLEAN-but-orphan, BLOCKED-with-fixable-lint}`). The vast majority of fires see an empty list and exit in seconds without any Opus dispatch.
 
-Daily-cap note: ~5-10 pushes to `main` per day on a busy day. Each fires the Sonnet orchestrator; 90%+ of fires are no-ops. Opus tokens only burn when there is real conflict work (typically 1-3 dispatches per day). Comfortably within Pro/Max/Team caps (5/15/25 per day).
+### Scheduled trigger for Conflict Resolver (added 2026-05-25 post-incident)
+
+The push trigger alone has a structural blind spot: if the only thing scheduled to push to `main` on a given day is the Daily Research routine, and the Daily Research routine itself dies mid-loop leaving stuck PRs, there is no subsequent push to fire the resolver. The stuck PRs sit unmerged until a human runs `wikipilot recover-prs` manually — exactly what happened on 2026-05-25 with PRs #57/#58.
+
+To close that gap, **also enable a Schedule trigger** on the same routine:
+
+1. In the routine UI, alongside the GitHub trigger you already configured, **add a Schedule trigger**:
+   - **Cadence**: every 3 hours (or `0 */3 * * *` if the UI accepts cron expressions; `9, 12, 15, 18, 21` UTC works fine if it asks for discrete hours).
+   - **Time zone**: UTC is fine — the scan logic is timezone-agnostic.
+2. Save. The orchestrator's prompt has no time-aware branches, so the same Sonnet body runs whether the trigger was push or schedule. The scan exits in ~10s with an empty list on the typical no-op case, so the marginal cost of the cron is a handful of Sonnet invocations per day.
+
+Why every 3 hours and not hourly or daily? Hourly is wasteful (most fires would no-op against zero changes since the previous push trigger). Daily is too coarse — a stuck PR sitting unmerged for ~12 hours triggered the 2026-05-25 incident report in the first place. Every 3 hours catches the worst case within ~3 hours of the failure event, which matches the human-attention boundary on this project.
+
+Daily-cap note: with both triggers, expect ~10-15 fires per day (5-10 from pushes, 5-8 from the cron). Each fires the Sonnet orchestrator; 90%+ are no-ops. Opus tokens only burn when there is real work (typically 1-3 dispatches per day). Comfortably within Pro/Max/Team caps (5/15/25 per day).
+
+### Merge-queue interaction
+
+If this repo has GitHub's [Merge Queue ruleset](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue) enabled on `main`, the scan automatically consults the merge queue snapshot (one extra `gh api graphql` call per fire) before classifying a CLEAN+green PR as `requeue`. Queued PRs all have `autoMergeRequest: null` even though they ARE queued, so without this check the resolver would mis-classify every queued PR as orphan and crash the `gh pr merge --auto` dispatch on "already queued to merge". See `wikipilot.git_ops.fetch_merge_queue_pr_numbers` for the GraphQL query and `is_pr_already_queued` for the combined predicate. No configuration is required — the helper detects whether the repo has a merge queue and falls back to the legacy `autoMergeRequest`-only check when it doesn't.
 
 ### Author trust model (centralized, applies to every gate path)
 

@@ -99,11 +99,17 @@ _OWNER_REPO_PAYLOAD = json.dumps({"nameWithOwner": "treehouse-ladder/wikipilot"}
 _TRUSTED_API_PAYLOAD = json.dumps({"author_association": "MEMBER"})
 
 
+_EMPTY_MERGE_QUEUE_PAYLOAD = json.dumps(
+    {"data": {"repository": {"mergeQueue": {"entries": {"nodes": []}}}}}
+)
+
+
 def _fake_run(
     *,
     pr_list_payload: str,
     api_payloads: dict[int, str] | None = None,
     run_logs: dict[int, str] | None = None,
+    merge_queue_payload: str | None = None,
 ):
     """Build a ``subprocess.run`` stand-in for the scan's call sequence.
 
@@ -114,10 +120,17 @@ def _fake_run(
     ``gh run view <id> --log-failed`` returns. Used by the BLOCKED →
     ``lint_fix`` triage path so the test can assert on classifier output
     without hitting the real GitHub API.
+
+    ``merge_queue_payload`` is the JSON body returned for the GraphQL
+    query the scan issues once at start to snapshot the repo's merge
+    queue. Defaults to an empty queue — the steady state on most repos.
+    Pass a payload whose ``mergeQueue.entries.nodes`` lists PR numbers
+    to exercise the "already queued via merge queue" path.
     """
     calls: list[list[str]] = []
     api_payloads = api_payloads or {}
     run_logs = run_logs or {}
+    merge_queue_body = merge_queue_payload or _EMPTY_MERGE_QUEUE_PAYLOAD
 
     def fake_run(args, capture_output=True, text=True, check=False, **kwargs):
         calls.append(list(args))
@@ -125,6 +138,9 @@ def _fake_run(
             return _ok(pr_list_payload)
         if args[:3] == ["gh", "repo", "view"]:
             return _ok(_OWNER_REPO_PAYLOAD)
+        if args[:3] == ["gh", "api", "graphql"]:
+            # Snapshot of the repo's merge queue for the base branch.
+            return _ok(merge_queue_body)
         if args[:2] == ["gh", "api"]:
             for num, payload in api_payloads.items():
                 if f"/pulls/{num}" in args[2]:
@@ -370,6 +386,82 @@ def test_clean_pr_with_automerge_already_set_is_filtered_out(empty_config: Path,
         rc = cli_main(["--base", "main", "--config", str(empty_config)])
     assert rc == 0
     assert json.loads(capsys.readouterr().out) == []
+
+
+def test_clean_pr_present_in_merge_queue_is_filtered_out(empty_config: Path, capsys) -> None:
+    """On repos with the merge_queue ruleset enabled, queued PRs have
+    ``autoMergeRequest: null`` even though they ARE queued (and will
+    merge on their own). The scan reads the queue snapshot via
+    GraphQL and drops PRs whose number it finds there — preventing
+    the requeue dispatch from re-queueing a PR that's already
+    minutes from merging.
+
+    This closes the over-fire that, on 2026-05-25, would have
+    cascaded once the Conflict Resolver routine was changed to fire
+    on a cron schedule rather than only on push events."""
+    cli_main = _import_main()
+    payload = json.dumps(
+        [
+            _pr(
+                number=57,
+                head="claude/daily-2026-05-25/frontier-models",
+                state="CLEAN",
+                status_check_rollup=[_green_check()],
+                auto_merge_request=None,
+            )
+        ]
+    )
+    merge_queue_body = json.dumps(
+        {
+            "data": {
+                "repository": {
+                    "mergeQueue": {"entries": {"nodes": [{"pullRequest": {"number": 57}}]}}
+                }
+            }
+        }
+    )
+    fake_run, _ = _fake_run(pr_list_payload=payload, merge_queue_payload=merge_queue_body)
+    with patch("subprocess.run", side_effect=fake_run):
+        rc = cli_main(["--base", "main", "--config", str(empty_config)])
+    assert rc == 0
+    assert json.loads(capsys.readouterr().out) == []
+
+
+def test_clean_pr_not_in_merge_queue_still_yields_requeue(empty_config: Path, capsys) -> None:
+    """Belt-and-suspenders: a CLEAN+green PR that is NOT in the merge
+    queue snapshot still gets the requeue dispatch — that's exactly
+    the orphan-CLEAN case the routine exists to fix. The merge-queue
+    check filters out queued PRs, it doesn't suppress the dispatch
+    for genuinely orphan PRs."""
+    cli_main = _import_main()
+    payload = json.dumps(
+        [
+            _pr(
+                number=99,
+                head="claude/daily-2026-05-26/x",
+                state="CLEAN",
+                status_check_rollup=[_green_check()],
+                auto_merge_request=None,
+            )
+        ]
+    )
+    merge_queue_body = json.dumps(
+        {
+            "data": {
+                "repository": {
+                    "mergeQueue": {"entries": {"nodes": [{"pullRequest": {"number": 57}}]}}
+                }
+            }
+        }
+    )
+    fake_run, _ = _fake_run(pr_list_payload=payload, merge_queue_payload=merge_queue_body)
+    with patch("subprocess.run", side_effect=fake_run):
+        rc = cli_main(["--base", "main", "--config", str(empty_config)])
+    assert rc == 0
+    out = json.loads(capsys.readouterr().out)
+    assert len(out) == 1
+    assert out[0]["number"] == 99
+    assert out[0]["dispatch_kind"] == "requeue"
 
 
 def test_blocked_pr_with_fixable_lint_yields_lint_fix(empty_config: Path, capsys) -> None:
