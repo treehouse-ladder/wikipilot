@@ -188,6 +188,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[mouse-p-i-for-hire-soundtrack-hits-streaming-ahead-of-vinyl-release-8ebe2f29]]
 - [[ghost-of-yotei-soundtrack-is-getting-a-vinyl-release-fb6a8f99]]
 - [[clair-obscur-snubbed-in-grammy-video-game-soundtrack-nominations-be8d1e4b]]
+- [[cursor-3-5-automations-in-the-agents-window-and-multi-repo-automations-66f4859e]]
+- [[cursor-development-environments-for-cloud-agents-2b4e5c11]]
+- [[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]]
+- [[code-as-agent-harness-toward-executable-verifiable-and-stateful-agent-systems-d6177a3f]]
+- [[effective-harness-engineering-for-algorithm-discovery-with-coding-agents-7181eb30]]
+- [[aorchestra-automating-sub-agent-creation-for-agentic-orchestration-45dd1f75]]
 
 ## Answers
 
