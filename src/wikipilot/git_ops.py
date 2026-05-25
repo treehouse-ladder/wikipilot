@@ -709,10 +709,166 @@ def _resolve_owner_repo(*, runner: PRRunner) -> str | None:
     return value if isinstance(value, str) and value else None
 
 
-def enable_automerge(pr_number: int, *, runner: PRRunner | None = None) -> None:
-    """``gh pr merge --squash --auto``."""
+_MERGE_QUEUE_GRAPHQL = (
+    "query($owner: String!, $repo: String!, $branch: String!) {"
+    "  repository(owner: $owner, name: $repo) {"
+    "    mergeQueue(branch: $branch) {"
+    "      entries(first: 100) { nodes { pullRequest { number } } }"
+    "    }"
+    "  }"
+    "}"
+)
+
+
+def fetch_merge_queue_pr_numbers(
+    base: str = "main",
+    *,
+    runner: PRRunner | None = None,
+) -> set[int] | None:
+    """Return PR numbers currently in the merge queue for ``base``.
+
+    Returns:
+      - A populated ``set[int]`` when the merge queue exists and has entries.
+      - An empty ``set()`` when the merge queue exists and is empty (steady
+        state on most repos with the ruleset enabled).
+      - ``None`` when the query fails OR the repo doesn't have a merge queue
+        configured on ``base``. Callers fall back to the legacy
+        ``autoMergeRequest is null`` heuristic in that case.
+
+    Querying the merge queue is a separate concern from
+    ``pullRequest.autoMergeRequest``: GitHub's *legacy* auto-merge
+    populates ``pullRequest.autoMergeRequest`` (settled before the merge
+    queue feature shipped), while the merge queue puts entries on
+    ``repository.mergeQueue.entries``. A repo with the merge queue
+    ruleset enabled has ``autoMergeRequest is null`` on every queued PR
+    — the exact failure mode that stranded PRs #57/#58 on 2026-05-25
+    and that made the conflict-resolver scan's "needs requeue" signal
+    over-fire on every clean+green PR. This helper closes that gap;
+    :func:`is_pr_already_queued` is the predicate the scan and the gate
+    consume.
+    """
     runner = runner or subprocess.run
-    _run(runner, ["gh", "pr", "merge", str(pr_number), "--squash", "--auto"])
+    owner_repo = _resolve_owner_repo(runner=runner)
+    if owner_repo is None:
+        return None
+    owner, _, repo = owner_repo.partition("/")
+    if not owner or not repo:
+        return None
+    args = [
+        "gh",
+        "api",
+        "graphql",
+        "-f",
+        f"query={_MERGE_QUEUE_GRAPHQL}",
+        "-F",
+        f"owner={owner}",
+        "-F",
+        f"repo={repo}",
+        "-F",
+        f"branch={base}",
+    ]
+    try:
+        result = _run(runner, args, allow_fail=True)
+    except GitOpsError:
+        return None
+    if result is None or result.returncode != 0 or not result.stdout.strip():
+        return None
+    try:
+        data = _json.loads(result.stdout)
+    except (ValueError, TypeError):
+        return None
+    repository = (data or {}).get("data", {}).get("repository")
+    if not isinstance(repository, dict):
+        return None
+    merge_queue = repository.get("mergeQueue")
+    if not isinstance(merge_queue, dict):
+        return None
+    entries = merge_queue.get("entries") or {}
+    nodes = entries.get("nodes") if isinstance(entries, dict) else None
+    if not isinstance(nodes, list):
+        return None
+    numbers: set[int] = set()
+    for node in nodes:
+        if not isinstance(node, dict):
+            continue
+        pr = node.get("pullRequest")
+        if not isinstance(pr, dict):
+            continue
+        num = pr.get("number")
+        if isinstance(num, int):
+            numbers.add(num)
+    return numbers
+
+
+def is_pr_already_queued(
+    pr_entry: dict,
+    *,
+    merge_queue_numbers: set[int] | None,
+) -> bool:
+    """Return True iff a PR is already queued for merge by any mechanism.
+
+    Two independent code paths can queue a PR; both must be checked:
+
+    1. **Legacy auto-merge** — ``gh pr merge --auto`` on a repo without
+       the merge queue ruleset populates ``pullRequest.autoMergeRequest``
+       on the PR itself. This is the original ``autoMergeRequest is not
+       None`` check.
+    2. **Merge queue** — on repos with the ``merge_queue`` ruleset enabled
+       on the target branch, the same ``gh pr merge --auto`` enqueues an
+       entry on ``repository.mergeQueue.entries``. ``autoMergeRequest``
+       stays ``null`` on these PRs even though they ARE queued.
+
+    ``merge_queue_numbers`` is the set returned by
+    :func:`fetch_merge_queue_pr_numbers`. Pass ``None`` when the merge
+    queue check could not be performed (network blip, missing ruleset,
+    older ``gh`` version) — the predicate then falls back exclusively
+    to the legacy check, preserving the pre-merge-queue behavior.
+    """
+    if pr_entry.get("autoMergeRequest") is not None:
+        return True
+    if merge_queue_numbers is None:
+        return False
+    number = pr_entry.get("number")
+    return isinstance(number, int) and number in merge_queue_numbers
+
+
+_ALREADY_QUEUED_MARKERS: tuple[str, ...] = (
+    "already queued to merge",
+    "is already queued",
+)
+
+
+def enable_automerge(pr_number: int, *, runner: PRRunner | None = None) -> None:
+    """``gh pr merge --squash --auto`` — idempotent on already-queued PRs.
+
+    On a repo where GitHub's Merge Queue ruleset is enabled (or whenever
+    something else has already queued ``--auto`` on this PR), ``gh``
+    returns exit 1 with an ``"already queued to merge"`` message. The PR
+    is already in the desired terminal state; surfacing that as a
+    :class:`GitOpsError` was the bug that crashed every requeue
+    dispatch the day after PRs #57/#58 stranded — making the
+    self-healing path itself the next failure mode.
+
+    Treat the "already queued" outcome as a no-op success. Every other
+    non-zero exit raises :class:`GitOpsError` with the original stderr,
+    same as before.
+    """
+    runner = runner or subprocess.run
+    result = runner(
+        ["gh", "pr", "merge", str(pr_number), "--squash", "--auto"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if result.returncode == 0:
+        return
+    combined = (result.stderr or "") + (result.stdout or "")
+    if any(marker in combined for marker in _ALREADY_QUEUED_MARKERS):
+        return
+    raise GitOpsError(
+        f"gh pr merge --auto failed for PR #{pr_number}: "
+        f"{result.stderr.strip() or result.stdout.strip()}"
+    )
 
 
 def disable_automerge(pr_number: int, *, runner: PRRunner | None = None) -> None:

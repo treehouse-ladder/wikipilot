@@ -1,0 +1,73 @@
+name: Daily completeness check
+
+# Sentinel that fires once per evening and verifies every daily-frequency
+# topic in `topics.yaml` produced a merged PR today (plus a merged report
+# PR). When anything is missing, it files (or edits in place) a single
+# `daily-incomplete`-labeled issue listing what's missing and how to
+# remediate.
+#
+# Closes the structural gap exposed on 2026-05-25, when the Daily Research
+# orchestrator crashed mid-loop and the three layers of recovery for
+# "PR sits unmerged" all failed simultaneously: the orchestrator never
+# reached the report step AND never produced 3 of 5 expected topics AND
+# nothing in the system flagged that topics.yaml said 5 daily topics but
+# only 2 PRs landed.
+#
+# Cost: one cron-scheduled workflow run per day; no LLM tokens.
+
+on:
+  schedule:
+    # 22:00 UTC = 19:00 in America/Sao_Paulo (UTC-3). Evenings in the user's
+    # waking hours so the issue lands before the next morning's review.
+    - cron: "0 22 * * *"
+  # Allow manual fires from the Actions UI for ad-hoc post-mortems.
+  workflow_dispatch:
+    inputs:
+      today:
+        description: "Date to evaluate (YYYY-MM-DD). Leave blank for current UTC date."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+concurrency:
+  # If a previous run is still in flight (unlikely — the sentinel exits in
+  # <30s), cancel it so we don't double-file.
+  group: daily-completeness-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Detect incomplete daily runs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          enable-cache: true
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install dependencies
+        run: uv sync --frozen --extra dev
+
+      - name: Run daily-completeness-check
+        env:
+          # `gh issue create` / `gh issue edit` need a token with `issues:
+          # write`. The default GITHUB_TOKEN has the right scopes per the
+          # `permissions:` block above; wikipilot.daily_completeness shells
+          # out to `gh`, which reads GH_TOKEN.
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -n "${{ github.event.inputs.today }}" ]; then
+            uv run wikipilot daily-completeness-check --today "${{ github.event.inputs.today }}"
+          else
+            uv run wikipilot daily-completeness-check
+          fi

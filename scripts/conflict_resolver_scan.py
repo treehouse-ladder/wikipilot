@@ -9,7 +9,8 @@ routine (``prompts/conflict_resolver.md``). Lists every open PR whose:
   - ``mergeStateStatus`` indicates the PR needs an automated fix:
       * ``DIRTY`` / ``BEHIND`` → ``dispatch_kind: "rebase"`` (text-conflict
         or out-of-date; Opus ``conflict-resolver`` subagent handles it).
-      * ``CLEAN`` AND ``autoMergeRequest`` is ``null`` AND every required
+      * ``CLEAN`` AND not already queued (neither legacy
+        ``autoMergeRequest`` nor a merge-queue entry) AND every required
         check is green → ``dispatch_kind: "requeue"`` (auto-merge was
         never queued, possibly because the in-routine ``gh pr merge --auto``
         call was skipped — re-run :func:`apply_static_gate` to fix
@@ -75,7 +76,9 @@ from wikipilot.git_ops import (
     check_is_green,
     classify_lint_failure,
     fetch_author_association,
+    fetch_merge_queue_pr_numbers,
     infer_route_from_branch,
+    is_pr_already_queued,
     is_pr_trusted,
 )
 
@@ -126,6 +129,15 @@ def main(argv: list[str] | None = None) -> int:
     config = load_wikipilot_config(args.config)
     auto_fix_categories = _resolved_auto_fix_categories(config)
     prs = _list_prs(base=args.base, limit=args.limit)
+    # Snapshot the merge queue once per scan. On repos with GitHub's
+    # merge_queue ruleset enabled, every queued PR has
+    # autoMergeRequest=null — so checking only the legacy field would
+    # mis-classify queued-and-pending PRs as "needs requeue" and crash
+    # the dispatch on `gh pr merge --auto` returning "already queued".
+    # ``None`` means the helper couldn't decide (no merge queue
+    # configured, or transient gh failure); ``is_pr_already_queued``
+    # then falls back to the legacy ``autoMergeRequest`` check alone.
+    merge_queue_numbers = fetch_merge_queue_pr_numbers(args.base)
     out: list[dict] = []
     for entry in prs:
         head_ref = entry.get("headRefName") or ""
@@ -150,6 +162,7 @@ def main(argv: list[str] | None = None) -> int:
             entry,
             merge_state=merge_state,
             auto_fix_categories=auto_fix_categories,
+            merge_queue_numbers=merge_queue_numbers,
         )
         if dispatch_kind is None:
             continue
@@ -176,26 +189,32 @@ def _classify_dispatch(
     *,
     merge_state: str,
     auto_fix_categories: frozenset[str],
+    merge_queue_numbers: set[int] | None = None,
 ) -> tuple[str | None, dict]:
     """Decide which handler should pick up the PR and gather extra payload.
 
     Returns ``(dispatch_kind, extras)``:
 
     - ``("rebase", {})`` for DIRTY / BEHIND.
-    - ``("requeue", {})`` for CLEAN with no ``autoMergeRequest`` and all
+    - ``("requeue", {})`` for CLEAN with no auto-merge enqueued and all
       checks green (Cause 1 in the original incident: the in-routine
       ``maybe_automerge.py`` call was skipped).
     - ``("lint_fix", {lint_categories, lint_excerpt})`` for BLOCKED with a
       classifier verdict of ``auto_fixable=True`` (Cause 2: a fixable
       broken-wikilink / frontmatter / log-format / ruff failure).
     - ``(None, {})`` when no handler is appropriate (PR is healthy, fork,
-      already-queued automerge, draft, or the failure isn't tractable).
+      already-queued, draft, or the failure isn't tractable).
+
+    ``merge_queue_numbers`` is the GraphQL snapshot of the repo's merge
+    queue (see :func:`wikipilot.git_ops.fetch_merge_queue_pr_numbers`).
+    Passing ``None`` is the back-compat path: behaves identically to
+    pre-merge-queue scans by relying solely on ``autoMergeRequest``.
     """
     if merge_state in _REBASE_STATES:
         return "rebase", {}
 
     if merge_state == "CLEAN":
-        if entry.get("autoMergeRequest") is not None:
+        if is_pr_already_queued(entry, merge_queue_numbers=merge_queue_numbers):
             return None, {}
         rollup = entry.get("statusCheckRollup") or []
         if rollup and all(check_is_green(c) for c in rollup):

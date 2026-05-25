@@ -30,6 +30,15 @@ from wikipilot.config import (
     load_topics,
     load_wikipilot_config,
 )
+from wikipilot.daily_completeness import (
+    DEFAULT_LABEL as DEFAULT_DAILY_COMPLETENESS_LABEL,
+)
+from wikipilot.daily_completeness import (
+    build_completeness_report,
+    open_or_update_issue,
+    render_issue_body,
+    render_issue_title,
+)
 from wikipilot.deck import DeckError, DeckOptions, generate_deck
 from wikipilot.dryrun import (
     apply_answer,
@@ -1004,6 +1013,125 @@ def _list_recoverable_prs(*, base_branch: str, include_all: bool) -> list[dict]:
     if not include_all:
         data = [pr for pr in data if str(pr.get("headRefName", "")).startswith("claude/")]
     return data
+
+
+@main.command("daily-completeness-check")
+@click.option(
+    "--today",
+    "today_str",
+    type=str,
+    default=None,
+    help="Date to evaluate (YYYY-MM-DD). Defaults to the local current date.",
+)
+@click.option(
+    "--topics",
+    "topics_path",
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+    default=DEFAULT_TOPICS_PATH,
+    show_default=True,
+)
+@click.option(
+    "--config",
+    "config_path",
+    type=click.Path(path_type=Path),
+    default=DEFAULT_CONFIG_PATH,
+    show_default=True,
+    help="Path to wikipilot.toml (for [branches] template overrides).",
+)
+@click.option(
+    "--label",
+    "label",
+    type=str,
+    default=DEFAULT_DAILY_COMPLETENESS_LABEL,
+    show_default=True,
+    help="Issue label applied/searched when filing the completeness alert.",
+)
+@click.option(
+    "--flag-open-topics/--no-flag-open-topics",
+    default=False,
+    help=(
+        "Treat a topic whose PR is open-but-not-merged as a gap. Default off — "
+        "open PRs are the Conflict Resolver routine's domain, not this sentinel's."
+    ),
+)
+@click.option(
+    "--dry-run/--no-dry-run",
+    default=False,
+    help="Print the verdict + rendered issue body without calling gh issue create.",
+)
+def daily_completeness_check_cmd(
+    today_str: str | None,
+    topics_path: Path,
+    config_path: Path,
+    label: str,
+    flag_open_topics: bool,
+    dry_run: bool,
+) -> None:
+    """Detect Daily Research runs that didn't produce every expected PR.
+
+    Compares the set of daily-frequency topics in TOPICS_PATH against the
+    set of PRs actually merged to main on TODAY (UTC). When any topic is
+    missing OR the report PR didn't land, files a single GitHub issue
+    tagged ``LABEL`` so the operator gets a loud, actionable signal in
+    the morning instead of having to count PRs manually.
+
+    The check is idempotent: re-running it within the same day edits the
+    existing issue instead of opening duplicates. Run from the GitHub
+    Actions workflow at ``.github/workflows/daily-completeness.yml`` once
+    per evening; can also be fired manually after suspicious-looking
+    Daily Research runs.
+    """
+    if today_str:
+        try:
+            today = date.fromisoformat(today_str)
+        except ValueError as exc:
+            click.echo(f"ERROR: invalid --today value: {exc}", err=True)
+            sys.exit(2)
+    else:
+        today = date.today()
+
+    try:
+        topics = load_topics(topics_path)
+    except ConfigError as exc:
+        click.echo(f"ERROR: {exc}", err=True)
+        sys.exit(2)
+
+    config = load_wikipilot_config(config_path) if config_path.exists() else None
+    branches = config.branches if config is not None else None
+
+    report = build_completeness_report(topics=topics, today=today, branches=branches)
+    summary = (
+        f"daily-completeness {today.isoformat()}: "
+        f"{len(report.merged_topics)} merged, "
+        f"{len(report.open_topics)} open, "
+        f"{len(report.missing_topics)} missing, "
+        f"report_pr={report.report_pr_state}"
+    )
+    click.echo(summary)
+
+    has_gap = report.has_gap(flag_open_topics=flag_open_topics)
+    if not has_gap:
+        click.echo("No gap detected — no issue filed.")
+        return
+
+    if dry_run:
+        click.echo("--- ISSUE TITLE ---")
+        click.echo(render_issue_title(report))
+        click.echo("--- ISSUE BODY ---")
+        click.echo(render_issue_body(report))
+        click.echo("--- DRY RUN ---")
+        click.echo("Gap detected; would file (or edit) an issue. No gh calls made.")
+        return
+
+    issue_number = open_or_update_issue(report, label=label)
+    if issue_number is None:
+        click.echo(
+            "ERROR: gh issue create/edit failed; alert NOT filed. "
+            "Investigate the Daily Research run manually.",
+            err=True,
+        )
+        sys.exit(1)
+    click.echo(f"Filed daily-completeness alert: issue #{issue_number}")
 
 
 if __name__ == "__main__":  # pragma: no cover

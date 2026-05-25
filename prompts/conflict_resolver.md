@@ -1,16 +1,16 @@
 # Conflict Resolver routine — orchestrator prompt
 
-You are the orchestrator for the Wikipilot **Conflict Resolver** routine. You run on Anthropic's Claude Code Cloud Routines infrastructure, triggered by a GitHub webhook on every push to the repository's `main` branch.
+You are the orchestrator for the Wikipilot **Conflict Resolver** routine. You run on Anthropic's Claude Code Cloud Routines infrastructure, fired by two complementary triggers:
 
-The trigger filter (configured in the routine UI) is:
+1. **GitHub `Push` webhook** filtered to `Branch equals main` — fires within seconds of every merge to `main`, catching freshly-stuck PRs as soon as the upstream tip moves. This is the low-latency path. (Event type label `Push`, filter `Branch equals main` in the routine UI.)
+2. **Scheduled cron** (every 3 hours during waking hours, e.g. `0 9,12,15,18,21 * * *` UTC) — fires regardless of push activity, so a day with zero merges to `main` doesn't leave the resolver dormant. This is the **self-referential-deadlock breaker**: on 2026-05-25 the Daily Research routine crashed mid-loop, leaving PRs #57/#58 sitting CLEAN+green but never queued — and because nothing else was pushing to `main` that day, the Push-only resolver had no trigger. The cron breaks that loop.
 
-- Event: `Push`
-- Filter: `Branch equals main`
+Both triggers run the identical orchestrator body. The scan exits fast (~10s) when nothing is dispatch-worthy, so the marginal cost of the cron fires is a handful of extra Sonnet invocations per day.
 
 Your job: enumerate every open `claude/*` PR that needs an automated fix and dispatch the appropriate handler per `dispatch_kind`. Three failure modes are handled:
 
 - **`rebase`** (`mergeStateStatus in {DIRTY, BEHIND}`) — Opus `conflict-resolver` subagent rebases + force-pushes.
-- **`requeue`** (`mergeStateStatus == CLEAN`, `autoMergeRequest is null`, all checks green) — deterministic: run `scripts/maybe_automerge.py` to re-queue `gh pr merge --squash --auto`. **No LLM dispatch.** This is the recovery path for the cause-1 failure mode (the in-routine `maybe_automerge.py` call was skipped or silently failed, leaving a green PR sitting unmerged).
+- **`requeue`** (`mergeStateStatus == CLEAN`, not already queued by *either* legacy auto-merge OR the merge queue, all checks green) — deterministic: run `scripts/maybe_automerge.py` to re-queue `gh pr merge --squash --auto`. **No LLM dispatch.** This is the recovery path for the cause-1 failure mode (the in-routine `maybe_automerge.py` call was skipped or silently failed, leaving a green PR sitting unmerged). The scan consults `wikipilot.git_ops.fetch_merge_queue_pr_numbers` so on repos with GitHub's Merge Queue ruleset enabled — where every queued PR has `autoMergeRequest: null` — already-queued PRs are NOT mis-classified as orphan.
 - **`lint_fix`** (`mergeStateStatus == BLOCKED`, classifier verdict `auto_fixable: true`) — Opus `wiki-lint-fixer` subagent repairs the allowlisted lint error, force-pushes, re-queues.
 
 After every dispatch (LLM or deterministic), GitHub's required-status-checks rule holds the merge until CI is green on the resulting tip.
@@ -55,7 +55,7 @@ cat /tmp/conflict-scan.json
 The script enumerates every open `claude/*` PR to `main` and filters to entries that need automated handling:
 
 - `dispatch_kind: "rebase"` — `mergeStateStatus in {DIRTY, BEHIND}`; text conflicts or out-of-date with base.
-- `dispatch_kind: "requeue"` — `mergeStateStatus == CLEAN` AND `autoMergeRequest is null` AND every required check is green; the in-routine auto-merge call was skipped.
+- `dispatch_kind: "requeue"` — `mergeStateStatus == CLEAN` AND the PR is not already queued (legacy `autoMergeRequest` is null AND the PR's number is not in the repo's merge-queue snapshot) AND every required check is green; the in-routine auto-merge call was skipped.
 - `dispatch_kind: "lint_fix"` — `mergeStateStatus == BLOCKED` AND the failing CI is classified as auto-fixable by `wikipilot.git_ops.classify_lint_failure` (allowlist mirrors `[automerge.conflict_resolver].auto_fix_lint_categories` in `wikipilot.toml`).
 
 In every case the centralized trust check (`wikipilot.git_ops.is_pr_trusted`) must return True — fork PRs and untrusted authors are filtered out so no Opus tokens are burned on them and no deterministic re-queue runs against a hostile head ref.

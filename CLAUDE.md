@@ -280,6 +280,24 @@ The canonical prompt lives at [`prompts/weekly_health.md`](prompts/weekly_health
 7. Write `wiki/reports/health-YYYY-MM-DD.md`.
 8. `gh pr create`; `python scripts/maybe_automerge.py --pr <num> --route weekly_health` (permissive gate).
 
+## Daily completeness sentinel
+
+The Daily Research routine has three layers of recovery for the "PR sits unmerged" failure mode (in-routine `maybe_automerge.py`, end-of-run `recover-prs`, push-event Conflict Resolver). On 2026-05-25 ALL THREE failed simultaneously: the orchestrator died mid-loop, leaving 3 of 5 expected topics with no PR at all (none of the existing safety nets catch "PR was never created"), and no merge to `main` happened that day so the Conflict Resolver had no trigger.
+
+The **daily completeness sentinel** closes that structural gap. Once per evening (default 22:00 UTC, configurable via `.github/workflows/daily-completeness.yml`), it runs `wikipilot daily-completeness-check`, which:
+
+1. Reads `topics.yaml` and filters to `frequency: daily` topics.
+2. Lists PRs merged to `main` today (via `gh pr list --search "merged:..."`) and PRs still open with `claude/*` heads.
+3. Per-topic resolution: `merged` / `open` / `missing` (no PR for the expected `claude/daily-<DATE>/<topic_id>` branch).
+4. Report-PR resolution: same three states for `claude/daily-<DATE>/_report`.
+5. When ANY topic is `missing` OR the report PR is `open`/`missing`, opens (or edits in place) a single GitHub issue tagged `daily-incomplete` listing exactly what's missing and the remediation commands (`wikipilot research --topic <id>` per missing topic, `wikipilot recover-prs` per stuck PR).
+
+The sentinel does NOT auto-retry; the orchestrator died for a reason and blindly re-firing risks hammering the same failure. Surfacing the gap as a labeled GitHub issue gives the operator a single dashboard signal — far louder than having to count PRs against `topics.yaml` manually.
+
+By default, the sentinel ignores topics whose PR is open-but-not-merged (those are the Conflict Resolver routine's domain). Pass `--flag-open-topics` to the CLI for the strictest signal. Either way, the issue body is idempotent across runs in the same day: re-firing edits the existing issue's body rather than opening duplicates.
+
+Cost: one scheduled GitHub Actions run per day. Zero LLM tokens — the sentinel is pure Python + `gh` shell-outs. The check exits in <10s when nothing's missing.
+
 ## Conflict resolution workflow (for `conflict_resolver.md` orchestrator)
 
 The canonical prompt lives at [`prompts/conflict_resolver.md`](prompts/conflict_resolver.md). The cloud routine setup is documented in [`docs/routines-setup.md`](docs/routines-setup.md#conflict-resolver-routine).
@@ -295,14 +313,15 @@ The PR Watcher v2 architecture splits responsibilities like this:
 
 - **Happy path (~95% of PRs)** — `scripts/maybe_automerge.py` runs once per PR right after the content routine creates it. It calls `apply_static_gate` (gate without the CI check), which queues `gh pr merge --squash --auto`. GitHub's required-status-checks rule holds the merge until CI is green. Zero LLM tokens are spent.
 - **End-of-run net (Layer 1)** — every content routine ends with `uv run wikipilot recover-prs --base main` so an in-routine `maybe_automerge.py` failure self-heals within the same session. Zero LLM tokens.
-- **Push-event net (~5% of PRs)** — when something is still stuck after the in-routine + end-of-run paths, the Conflict Resolver fires on the next push to `main`, scans, and dispatches the appropriate handler per `dispatch_kind`.
+- **Push-event net + scheduled cron net (~5% of PRs)** — when something is still stuck after the in-routine + end-of-run paths, the Conflict Resolver fires on the next push to `main` **AND on a 3-hour cron schedule** (added post-2026-05-25-incident). The cron breaks the self-referential deadlock where a stuck Daily Research is the only thing scheduled to push to `main` that day — the push-only trigger never fired and stranded PRs sat all day. The scan and dispatch logic is identical between triggers; the only thing the cron adds is "fire even when nothing was pushed".
+- **Merge-queue awareness** — when GitHub's Merge Queue ruleset is enabled on `main`, queued PRs have `autoMergeRequest: null` even though they're queued. The scan calls `wikipilot.git_ops.fetch_merge_queue_pr_numbers` once per fire to snapshot the queue, and `is_pr_already_queued` consults both signals so already-queued PRs don't get mis-classified as orphan and trigger redundant requeue dispatches. `enable_automerge` is also idempotent on already-queued PRs (treats `gh pr merge --auto`'s "already queued" warning as a no-op) so a misfire is harmless rather than crash-the-handler.
 
 ### Dispatch classes (emitted by `scripts/conflict_resolver_scan.py`)
 
 | `dispatch_kind` | Trigger | Handler | LLM? |
 |---|---|---|---|
 | `rebase` | `mergeStateStatus in {DIRTY, BEHIND}` | Opus `conflict-resolver` subagent rebases + resolves + force-pushes + re-queues | yes (Opus 4.7) |
-| `requeue` | `mergeStateStatus == CLEAN` AND `autoMergeRequest is null` AND every check is green | `python scripts/maybe_automerge.py` — deterministic re-evaluation through `apply_static_gate` | no |
+| `requeue` | `mergeStateStatus == CLEAN` AND the PR is not already queued (legacy `autoMergeRequest is null` AND not in the repo's merge-queue snapshot) AND every check is green | `python scripts/maybe_automerge.py` — deterministic re-evaluation through `apply_static_gate` | no |
 | `lint_fix` | `mergeStateStatus == BLOCKED` AND `classify_lint_failure(ci_log).auto_fixable` is True | Opus `wiki-lint-fixer` subagent runs the bounded auto-fix workflow + force-pushes + re-queues | yes (Opus 4.7) |
 
 ### Auto-fix allowlist (`wiki-lint-fixer`)
@@ -567,6 +586,7 @@ Errors fail the lint (exit code 1); warnings are reported but don't fail. The au
 | `compare new <slug> --of e1,e2,... --fields f1,f2,... --title "..."` | create a new comparison page reading frontmatter fields from each entity |
 | `compare regen <slug>` | regenerate the body of an existing comparison page from current entity frontmatter |
 | `recover-prs [--dry-run] [--base main]` | enumerate every open `claude/*` PR to `main` and re-run `apply_gate` per PR (escape hatch when a content routine crashes mid-loop and leaves PRs open without a gate decision, or when the Conflict Resolver routine itself is unhealthy) |
+| `daily-completeness-check [--today YYYY-MM-DD] [--flag-open-topics] [--dry-run]` | enumerate today's daily-frequency topics from `topics.yaml`, compare to merged/open `claude/daily-<DATE>/*` PRs, file (or edit in place) a `daily-incomplete`-labeled GitHub issue when anything is missing. Fired daily by `.github/workflows/daily-completeness.yml`. |
 
 ## Editing this file
 

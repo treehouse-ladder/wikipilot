@@ -23,6 +23,7 @@ from wikipilot.git_ops import (
     ROUTE_DAILY_RESEARCH,
     ROUTE_WEEKLY_HEALTH,
     ROUTE_WIKI_QUERY,
+    GitOpsError,
     PRView,
     apply_gate,
     apply_static_gate,
@@ -38,7 +39,9 @@ from wikipilot.git_ops import (
     evaluate_gate,
     evaluate_static_gate,
     fetch_author_association,
+    fetch_merge_queue_pr_numbers,
     infer_route_from_branch,
+    is_pr_already_queued,
     is_pr_trusted,
     push_branch,
     render_pr_body_daily,
@@ -482,10 +485,124 @@ class TestEnableAutomergeAndComment:
         enable_automerge(7, runner=runner)
         assert runner.calls[0] == ["gh", "pr", "merge", "7", "--squash", "--auto"]
 
+    def test_enable_automerge_idempotent_when_already_queued(self, runner: FakeRunner) -> None:
+        """``gh pr merge --auto`` on an already-queued PR exits 1 with a
+        warning. Treating that as a no-op is what keeps the requeue
+        dispatch path from crashing on repos with the merge queue
+        ruleset enabled — every clean+green PR's ``autoMergeRequest``
+        stays ``null`` once queued, so the scan can legitimately
+        rediscover a PR that's already on its way."""
+        runner.responses = {
+            "gh pr merge": _ok(
+                stderr="! Pull request treehouse-ladder/wikipilot#7 is already queued to merge\n",
+                returncode=1,
+            ),
+        }
+        enable_automerge(7, runner=runner)  # must not raise
+
+    def test_enable_automerge_raises_on_genuine_error(self, runner: FakeRunner) -> None:
+        """Non-zero exit codes for any other reason (auth blip, missing
+        permission, network failure) must still raise — we don't want
+        to silently lose a queueing failure that actually leaves a PR
+        stuck."""
+        runner.responses = {
+            "gh pr merge": _ok(stderr="HTTP 403 forbidden\n", returncode=1),
+        }
+        with pytest.raises(GitOpsError, match="gh pr merge"):
+            enable_automerge(7, runner=runner)
+
     def test_comment_args(self, runner: FakeRunner) -> None:
         comment_pr(7, "hello", runner=runner)
         assert runner.calls[0][:3] == ["gh", "pr", "comment"]
         assert "hello" in runner.calls[0]
+
+
+class TestMergeQueueDetection:
+    """Tests for ``fetch_merge_queue_pr_numbers`` + ``is_pr_already_queued``.
+
+    These close the gap between the legacy ``autoMergeRequest`` field and
+    GitHub's newer Merge Queue feature. The conflict-resolver scan
+    consumes both to decide whether a CLEAN+green PR truly needs a
+    requeue dispatch.
+    """
+
+    def test_returns_queued_numbers(self, runner: FakeRunner) -> None:
+        graphql_payload = json.dumps(
+            {
+                "data": {
+                    "repository": {
+                        "mergeQueue": {
+                            "entries": {
+                                "nodes": [
+                                    {"pullRequest": {"number": 57}},
+                                    {"pullRequest": {"number": 58}},
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        )
+        runner.responses = {
+            "gh repo view": _ok(stdout=json.dumps({"nameWithOwner": "owner/repo"})),
+            "gh api": _ok(stdout=graphql_payload),
+        }
+        result = fetch_merge_queue_pr_numbers("main", runner=runner)
+        assert result == {57, 58}
+
+    def test_empty_merge_queue_returns_empty_set(self, runner: FakeRunner) -> None:
+        graphql_payload = json.dumps(
+            {"data": {"repository": {"mergeQueue": {"entries": {"nodes": []}}}}}
+        )
+        runner.responses = {
+            "gh repo view": _ok(stdout=json.dumps({"nameWithOwner": "owner/repo"})),
+            "gh api": _ok(stdout=graphql_payload),
+        }
+        assert fetch_merge_queue_pr_numbers("main", runner=runner) == set()
+
+    def test_no_merge_queue_configured_returns_none(self, runner: FakeRunner) -> None:
+        """Repos without the merge_queue ruleset enabled return
+        ``repository.mergeQueue == null``. We treat that as "can't
+        determine queue state" so callers fall back to the legacy
+        ``autoMergeRequest`` check rather than mis-firing requeues."""
+        graphql_payload = json.dumps({"data": {"repository": {"mergeQueue": None}}})
+        runner.responses = {
+            "gh repo view": _ok(stdout=json.dumps({"nameWithOwner": "owner/repo"})),
+            "gh api": _ok(stdout=graphql_payload),
+        }
+        assert fetch_merge_queue_pr_numbers("main", runner=runner) is None
+
+    def test_owner_repo_resolution_failure_returns_none(self, runner: FakeRunner) -> None:
+        """A failure resolving owner/repo (gh down, no remote) must
+        fail-closed: returning ``None`` makes the scan fall back to
+        the legacy autoMergeRequest check, which preserves the
+        pre-merge-queue behavior."""
+        runner.responses = {
+            "gh repo view": _ok(returncode=1, stderr="HTTP 502"),
+        }
+        assert fetch_merge_queue_pr_numbers("main", runner=runner) is None
+
+    def test_is_pr_already_queued_legacy_field(self) -> None:
+        """``autoMergeRequest`` set is the original "queued" signal."""
+        entry = {"number": 10, "autoMergeRequest": {"enabledAt": "2026-05-25T..."}}
+        assert is_pr_already_queued(entry, merge_queue_numbers=None) is True
+
+    def test_is_pr_already_queued_merge_queue_member(self) -> None:
+        """The new signal: the PR's number is in the merge queue snapshot."""
+        entry = {"number": 57, "autoMergeRequest": None}
+        assert is_pr_already_queued(entry, merge_queue_numbers={57, 58}) is True
+
+    def test_is_pr_already_queued_neither_signal(self) -> None:
+        """The actually-orphan case: not in autoMergeRequest, not in queue."""
+        entry = {"number": 99, "autoMergeRequest": None}
+        assert is_pr_already_queued(entry, merge_queue_numbers={57, 58}) is False
+
+    def test_is_pr_already_queued_unknown_queue_falls_back(self) -> None:
+        """``None`` merge_queue_numbers means we couldn't query; trust
+        the legacy field alone, which on this entry is also null →
+        not queued. Identical behavior to pre-merge-queue scans."""
+        entry = {"number": 99, "autoMergeRequest": None}
+        assert is_pr_already_queued(entry, merge_queue_numbers=None) is False
 
 
 class TestPRBodyTemplates:
