@@ -1,9 +1,9 @@
 ---
 title: "Claude Opus 4.7"
 kind: entity
-sources: ["[[introducing-claude-opus-47-b8af8104]]", "[[claude-opus-47-everything-you-need-to-know-751c1827]]", "[[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]]", "[[building-a-c-compiler-with-a-team-of-parallel-claudes-1eba12a4]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]"]
-last_updated: "2026-05-22"
-last_verified: "2026-05-22"
+sources: ["[[introducing-claude-opus-47-b8af8104]]", "[[claude-opus-47-everything-you-need-to-know-751c1827]]", "[[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]]", "[[building-a-c-compiler-with-a-team-of-parallel-claudes-1eba12a4]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[roadmapbench-evaluating-long-horizon-agentic-software-development-across-version-upgrades-b9814b39]]", "[[featurebench-benchmarking-agentic-coding-for-complex-feature-development-12948611]]"]
+last_updated: "2026-05-26"
+last_verified: "2026-05-26"
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
 output_cost_per_mtoken: 25.00
@@ -39,6 +39,12 @@ On the current `[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]`,
 > Claude Opus 4.7 (Adaptive) ... 73.1%.
 
 On multi-step package upgrades, Claude Opus 4.7 (Claude Code) scores 60.8% resolving, 80.6% precision, and 68.5% F1 on SWE-Chain, which measures chained release-level upgrades where each transition builds on the agent's prior codebase [[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]]. The C compiler parallel-agents case study ran on Opus 4.7 (then referred to as Claude Code) across "nearly 2,000 Claude Code sessions and $20,000 in API costs" producing a 100,000-line compiler consuming "2 billion input tokens and 140 million output tokens across two weeks" [[building-a-c-compiler-with-a-team-of-parallel-claudes-1eba12a4]].
+
+On long-horizon coding benchmarks beyond single-issue resolution, Opus 4.7 shows substantial capability degradation. RoadmapBench reports "resolved rates range from 5.2% to 39.1%, with Claude-Opus-4.7 resolving 39.1% of tasks" on "115 long-horizon coding tasks grounded in real open-source version upgrades ... with a median modification of 3,700 lines across 51 files" [[roadmapbench-evaluating-long-horizon-agentic-software-development-across-version-upgrades-b9814b39]]. FeatureBench, evaluating end-to-end feature-oriented development, reports that "Claude 4.5 Opus, which achieves 74.4% resolved rate on SWE-bench, succeeds on only 11.0% of tasks" across "200 evaluation tasks and 3825 executable environments from 24 open source GitHub repositories" [[featurebench-benchmarking-agentic-coding-for-complex-feature-development-12948611]] — a ~7x gap representing the largest single-issue-vs-real-task delta the wiki has recorded.
+
+> RoadmapBench is a benchmark of 115 long-horizon coding tasks grounded in real open-source version upgrades across 17 repositories and 5 programming languages, with a median modification of 3,700 lines across 51 files. Resolved rates range from 5.2% to 39.1%, with Claude-Opus-4.7 resolving 39.1% of tasks.
+
+> FeatureBench is a benchmark designed to evaluate agentic coding performance in end-to-end, feature-oriented software development. The benchmark comprises 200 evaluation tasks and 3825 executable environments from 24 open source GitHub repositories. Claude 4.5 Opus, which achieves 74.4% resolved rate on SWE-bench, succeeds on only 11.0% of tasks, highlighting the gap between traditional bug-fixing benchmarks and complex feature development.
 
 > SWE-Chain contains 12 upgrade chains across 9 real Python packages, with 155 version transitions and 1,660 grounded upgrade requirements, where each transition builds on the agent's prior codebase. Claude-Opus-4.7 (Claude Code) leads at 60.8% resolving, 80.6% precision, and 68.5% F1.
 
