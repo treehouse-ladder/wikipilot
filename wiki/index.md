@@ -23,6 +23,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gemini-3.1-pro]]
 - [[glm-5]]
 - [[gpt-5.5]]
+- [[mimo-v2.5-pro]]
 - [[muse-spark]]
 
 ## Comparisons
@@ -194,6 +195,21 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[code-as-agent-harness-toward-executable-verifiable-and-stateful-agent-systems-d6177a3f]]
 - [[effective-harness-engineering-for-algorithm-discovery-with-coding-agents-7181eb30]]
 - [[aorchestra-automating-sub-agent-creation-for-agentic-orchestration-45dd1f75]]
+- [[simulate-real-world-places-with-project-genie-and-street-view-a0969d27]]
+- [[dialogs-with-genai-npcs-exploring-player-interactions-with-speech-agents-in-a-vr-game-cf65bec9]]
+- [[beyond-scripts-designing-and-evaluating-genai-based-npcs-in-video-games-817f165d]]
+- [[live-blog-code-w-claude-2026-aa645a96]]
+- [[vibe-coding-and-agentic-engineering-are-getting-closer-than-i-would-like-a811ab37]]
+- [[featurebench-benchmarking-agentic-coding-for-complex-feature-development-12948611]]
+- [[roadmapbench-evaluating-long-horizon-agentic-software-development-across-version-upgrades-b9814b39]]
+- [[building-effective-ai-coding-agents-for-the-terminal-scaffolding-harness-context-engineering-and-lessons-learned-16c075a2]]
+- [[architectural-design-decisions-in-ai-agent-harnesses-523b6fa0]]
+- [[architecture-without-architects-how-ai-coding-agents-shape-software-architecture-f13ae013]]
+- [[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]
+- [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]
+- [[paramount-acknowledged-the-existence-of-warner-bros-games-faa1d7b1]]
+- [[mina-the-hollower-finally-has-a-release-date-at-long-last-4819762c]]
+- [[007-first-light-reviews-raise-concerns-with-codes-sent-days-before-release-date-55518df2]]
 
 ## Answers
 
@@ -206,3 +222,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-05-22]]
 - [[2026-05-23]]
 - [[2026-05-24]]
+- [[2026-05-26]]
