@@ -1,8 +1,8 @@
 ---
 title: "Kimi K2.6"
 kind: entity
-sources: ["[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]", "[[multi-modal-model-kimi-k2-6-pricing-774b549a]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]"]
-last_updated: "2026-05-22"
+sources: ["[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]", "[[multi-modal-model-kimi-k2-6-pricing-774b549a]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]"]
+last_updated: "2026-05-26"
 last_verified: "2026-05-21"
 freshness_window_days: 30
 input_cost_per_mtoken: 0.95
@@ -22,9 +22,11 @@ arc_agi_2_source: null
 
 ## Summary
 
-Kimi K2.6 is Moonshot AI's frontier open-weights model. It scored 54 on the Artificial Analysis Intelligence Index on release (April 2026), placing it within 3 AA-Index points of the closed-frontier leader [[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]. Kimi K2.6 also scores 1,520 Elo on GDPval-AA — the highest open-weights GDPval-AA score recorded at its release.
+Kimi K2.6 is Moonshot AI's frontier open-weights model. It scored 54 on the Artificial Analysis Intelligence Index on release (April 2026), placing it within 3 AA-Index points of the closed-frontier leader [[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]. As of May 2026, Kimi K2.6 is co-tied at 54 with Xiaomi's MiMo-V2.5-Pro as the joint top open-weights model [[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]. Kimi K2.6 also scores 1,520 Elo on GDPval-AA — the highest open-weights GDPval-AA score recorded at its release.
 
 > Moonshot's Kimi K2.6 is the new leading open weights model, landing at #4 on the Artificial Analysis Intelligence Index (54) behind only Anthropic, Google, and OpenAI (all 57). Kimi K2.6 achieves an Elo of 1520 on the GDPval-AA evaluation.
+
+> Kimi K2.6 (54) and MiMo-V2.5-Pro (54) are tied as the top open weights models by Intelligence Index.
 
 Moonshot's hosted Kimi K2.6 API is priced at $0.95 per million input tokens (cache miss) and $4.00 per million output tokens; cache-hit input drops to $0.16/M [[multi-modal-model-kimi-k2-6-pricing-774b549a]]. Context window is 262,144 tokens.
 
@@ -36,7 +38,9 @@ On [[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]] Kimi K2.6 scor
 
 > Kimi K2.6 ... 0.413 [CyberGym].
 
-_no contradictions or gaps known yet (last reviewed: 2026-05-22)_
+## Disputes
+
+- [[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]] calls Kimi K2.6 "the new leading open weights model" (sole #4 at AA Index 54, released April 20, 2026), but [[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]] reports MiMo-V2.5-Pro also at 54 (released April 22, 2026), creating a co-leadership tie. Status: unresolved — both models share the top open-weights position at 54; neither is the sole leader.
 
 ## Open questions
 
