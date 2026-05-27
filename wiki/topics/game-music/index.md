@@ -1,9 +1,9 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]", "[[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]", "[[the-best-video-game-soundtracks-of-2026-so-far-11501826]]", "[[mick-gordon-in-conversation-sonic-state-jan-2026-53ed29e8]]", "[[pragmata-soundtrack-and-vinyl-release-review-2026-31dc604e]]", "[[elden-ring-nightreign-soundtrack-is-coming-to-vinyl-30e2c324]]", "[[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]", "[[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]]", "[[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]]", "[[aether-iron-soundtrack-music-review-5b0c61bb]]", "[[octopath-traveler-0-original-soundtrack-music-review-81d13f2c]]", "[[prescription-for-sleep-ocarina-of-time-music-review-f69d5aa2]]", "[[blue-prince-original-soundtrack-music-review-13877127]]", "[[interview-world-of-warcraft-lead-composer-on-making-of-midnight-s-human-made-music-013afc37]]", "[[lies-of-p-original-soundtrack-music-review-94ceba96]]", "[[citizen-sleeper-original-soundtrack-music-review-25f6b6c7]]", "[[mouse-p-i-for-hire-soundtrack-hits-streaming-ahead-of-vinyl-release-8ebe2f29]]", "[[ghost-of-yotei-soundtrack-is-getting-a-vinyl-release-fb6a8f99]]", "[[clair-obscur-snubbed-in-grammy-video-game-soundtrack-nominations-be8d1e4b]]", "[[best-video-game-soundtrack-grammy-nominations-don-t-include-clair-obscur-expedition-33-e1f338df]]", "[[wanderstop-soundtrack-to-get-vinyl-release-d0810a43]]", "[[infinity-arranged-soundtrack-music-review-2a862cf8]]", "[[first-song-from-silent-hill-townfall-soundtrack-has-been-released-d5fb972f]]", "[[nintendo-music-special-release-adds-tracks-from-star-fox-s-switch-2-game-930581c4]]", "[[we-kept-you-waiting-yuzo-koshiro-confirms-namco-capcom-s-soundtrack-is-making-a-partial-comeback-d3156b39]]", "[[grim-fandango-original-game-soundtrack-music-review-a5a43d07]]"]
-last_updated: 2026-05-26
-last_verified: 2026-05-26
+sources: ["[[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]", "[[wwise-vs-fmod-vs-metasounds-choosing-audio-middleware-for-your-ue5-game-in-2026-9afdff3e]]", "[[the-best-video-game-soundtracks-of-2026-so-far-11501826]]", "[[mick-gordon-in-conversation-sonic-state-jan-2026-53ed29e8]]", "[[pragmata-soundtrack-and-vinyl-release-review-2026-31dc604e]]", "[[elden-ring-nightreign-soundtrack-is-coming-to-vinyl-30e2c324]]", "[[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]", "[[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]]", "[[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]]", "[[aether-iron-soundtrack-music-review-5b0c61bb]]", "[[octopath-traveler-0-original-soundtrack-music-review-81d13f2c]]", "[[prescription-for-sleep-ocarina-of-time-music-review-f69d5aa2]]", "[[blue-prince-original-soundtrack-music-review-13877127]]", "[[interview-world-of-warcraft-lead-composer-on-making-of-midnight-s-human-made-music-013afc37]]", "[[lies-of-p-original-soundtrack-music-review-94ceba96]]", "[[citizen-sleeper-original-soundtrack-music-review-25f6b6c7]]", "[[mouse-p-i-for-hire-soundtrack-hits-streaming-ahead-of-vinyl-release-8ebe2f29]]", "[[ghost-of-yotei-soundtrack-is-getting-a-vinyl-release-fb6a8f99]]", "[[clair-obscur-snubbed-in-grammy-video-game-soundtrack-nominations-be8d1e4b]]", "[[best-video-game-soundtrack-grammy-nominations-don-t-include-clair-obscur-expedition-33-e1f338df]]", "[[wanderstop-soundtrack-to-get-vinyl-release-d0810a43]]", "[[infinity-arranged-soundtrack-music-review-2a862cf8]]", "[[first-song-from-silent-hill-townfall-soundtrack-has-been-released-d5fb972f]]", "[[nintendo-music-special-release-adds-tracks-from-star-fox-s-switch-2-game-930581c4]]", "[[we-kept-you-waiting-yuzo-koshiro-confirms-namco-capcom-s-soundtrack-is-making-a-partial-comeback-d3156b39]]", "[[grim-fandango-original-game-soundtrack-music-review-a5a43d07]]", "[[mina-the-hollower-launches-on-may-29th-for-consoles-and-pc-056454aa]]", "[[clair-obscur-expedition-33-interview-with-composer-lorien-testard-c452744e]]", "[[final-fantasy-viii-original-soundtrack-music-review-d3694949]]"]
+last_updated: 2026-05-27
+last_verified: 2026-05-27
 freshness_window_days: 60
 ---
 
@@ -132,6 +132,28 @@ _no contradictions or gaps known yet for the 2026-05-25 additions beyond the ope
 
 _no contradictions or gaps known yet for the 2026-05-26 additions beyond the open questions filed below (last reviewed: 2026-05-26)_
 
+## Releases & composers — 2026-05-27
+
+**Chiptune commission — Mina the Hollower launches with a Jake Kaufman MSX-style score.** Yacht Club Games' top-down action title *Mina the Hollower* launches digitally on May 29, 2026 across PlayStation 5, Nintendo Switch 1 & 2, Xbox Series X|S, and PC (Steam, Humble Store), with chiptune composer Jake Kaufman — the musician behind the *Shovel Knight* soundtracks — supplying an MSX-style score [[mina-the-hollower-launches-on-may-29th-for-consoles-and-pc-056454aa]].
+
+> Jake Kaufman, the chiptune virtuoso behind the Shovel Knight soundtracks, composed the electrifying MSX-style soundtrack for Mina the Hollower.
+
+> Mina the Hollower launches digitally on May 29th, 2026 for PlayStation 5, Nintendo Switch 1 & 2, Xbox Series X|S, and PC via Steam and the Humble Store.
+
+**Composer interview — Lorien Testard on the Grammy-snubbed Clair Obscur score.** RPGFan's feature interview with *Clair Obscur: Expedition 33* lead composer Lorien Testard adds craft and distribution detail to the Grammy-snub story already tracked on this page. Testard, with vocalist and co-composer Alice Duport-Percier, wrote over eight hours of music for the game, published digitally by Laced Records [[clair-obscur-expedition-33-interview-with-composer-lorien-testard-c452744e]]. He confirms a vinyl edition is in early development with Laced Records but stresses nothing concrete is settled yet, calling it a dream project [[clair-obscur-expedition-33-interview-with-composer-lorien-testard-c452744e]].
+
+> Lead composer Lorien Testard, alongside vocalist and co-composer Alice Duport-Percier, created over eight hours of music for Clair Obscur: Expedition 33, presented in Laced Records' digitally-published Original Soundtrack.
+
+> Testard and team are working on a vinyl edition of the soundtrack with Laced Records, but they are at the beginning of the process, so there is nothing concrete to share yet — he describes it as a dream project.
+
+**Retrospective review — Final Fantasy VIII OST as a divisive Uematsu experiment.** RPGFan's mid-May 2026 review revisits Nobuo Uematsu's *Final Fantasy VIII Original Soundtrack* as a deliberate departure from series convention: orchestral writing, heavier electronic influence than even *Final Fantasy VII*, chanting, and a full pop song [[final-fantasy-viii-original-soundtrack-music-review-d3694949]].
+
+> Nobuo Uematsu's Final Fantasy VIII compositions feature orchestras, more electronic influence than even Final Fantasy VII had, some chanting, and a pop song, representing a departure from the series' traditional sound.
+
+> The four-hour-long score contains a lot of independent compositions not covered by major themes, with some being very good and some being the most mediocre of Uematsu's contributions to the series.
+
+_no contradictions or gaps known yet for the 2026-05-27 additions beyond the open questions filed below (last reviewed: 2026-05-27)_
+
 ## Comparisons
 
 Pre-declared comparison pages for this topic. Listed in prose backticks
@@ -174,6 +196,10 @@ until the underlying entity pages exist:
 - [ ] Will the Star Fox (2026) soundtrack be available outside the Switch Online-gated Nintendo Music app — e.g. as a standalone OST, streaming on third-party services, or vinyl? [[nintendo-music-special-release-adds-tracks-from-star-fox-s-switch-2-game-930581c4]] Who composed the 2026 Star Fox score is also unstated.
 - [ ] Is the Namco × Capcom streaming reissue the complete 2005 soundtrack or a partial selection? [[we-kept-you-waiting-yuzo-koshiro-confirms-namco-capcom-s-soundtrack-is-making-a-partial-comeback-d3156b39]] calls it a 'partial comeback' but does not enumerate omitted tracks.
 - [ ] Does the 2026 Grim Fandango 25th-anniversary repress differ in mastering or track list from the original 20th-anniversary iam8bit edition? [[grim-fandango-original-game-soundtrack-music-review-a5a43d07]] confirms 51 tracks on 2xLP but does not detail differences.
+- [ ] Will the Mina the Hollower soundtrack get a standalone OST release (digital/vinyl) separate from the game, given Jake Kaufman's track record of Materia Collective / Bandcamp soundtrack drops for Shovel Knight? [[mina-the-hollower-launches-on-may-29th-for-consoles-and-pc-056454aa]]
+- [ ] Does the Mina the Hollower score run on real MSX-era sound-chip emulation or a modern chiptune approximation, and does the game use any adaptive-music layering? [[mina-the-hollower-launches-on-may-29th-for-consoles-and-pc-056454aa]]
+- [ ] When and in what formats will the Clair Obscur: Expedition 33 vinyl edition actually ship, and how will the 8+ hour score be abridged for an LP pressing? [[clair-obscur-expedition-33-interview-with-composer-lorien-testard-c452744e]]
+- [ ] Which RPGFan-reviewed Final Fantasy VIII OST edition is the basis for the 2026 review, and does it bear on any current vinyl/streaming reissue? [[final-fantasy-viii-original-soundtrack-music-review-d3694949]]
 ## See also
 
 - [purpose](purpose.md)
