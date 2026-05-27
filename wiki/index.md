@@ -210,6 +210,20 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[paramount-acknowledged-the-existence-of-warner-bros-games-faa1d7b1]]
 - [[mina-the-hollower-finally-has-a-release-date-at-long-last-4819762c]]
 - [[007-first-light-reviews-raise-concerns-with-codes-sent-days-before-release-date-55518df2]]
+- [[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]
+- [[minimax-m2-7-everything-you-need-to-know-199c68d0]]
+- [[apple-xcode-now-supports-the-claude-agent-sdk-5eb89308]]
+- [[swe-bench-mobile-can-large-language-model-agents-develop-industry-level-mobile-applications-58095c68]]
+- [[retrieval-conditioned-topology-selection-with-provable-budget-conservation-for-multi-agent-code-generation-7cb92a6f]]
+- [[dancingbox-a-lightweight-mocap-system-for-character-animation-from-physical-proxies-d116423b]]
+- [[generative-ai-in-game-development-a-qualitative-research-synthesis-dadcce01]]
+- [[vidanimator-user-guided-stylized-3d-character-animation-from-human-videos-12ac6c01]]
+- [[007-first-light-review-youth-in-revolt-f35b7ab2]]
+- [[how-mina-the-hollower-breaks-new-retro-ground-128e1255]]
+- [[wizards-of-the-coast-declines-to-recognize-game-worker-union-dac45b87]]
+- [[mina-the-hollower-launches-on-may-29th-for-consoles-and-pc-056454aa]]
+- [[clair-obscur-expedition-33-interview-with-composer-lorien-testard-c452744e]]
+- [[final-fantasy-viii-original-soundtrack-music-review-d3694949]]
 
 ## Answers
 
@@ -223,3 +237,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-05-23]]
 - [[2026-05-24]]
 - [[2026-05-26]]
+- [[2026-05-27]]
