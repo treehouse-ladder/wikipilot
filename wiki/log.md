@@ -211,3 +211,27 @@ Silent Hill Townfall composer reveal (Pilotpriest/Anthony Scott Burns, 'Home' Ap
 ## [2026-05-26] daily | 5 topics, 19 sources, 29 pages
 
 Daily research run complete: 5 topics, 19 new sources, 29 pages touched (5 topic indices + mimo-v2.5-pro entity + cross-page sweeps on claude-opus-4.7/kimi-k2.6/glm-5/qwen3.7-max), 5 PRs opened (#66–#70). PRs #66–#69 merged; #70 (game-music) queued pending CI. 10 new disputes filed, 19 new open questions added.
+
+## [2026-05-27] daily | frontier-models — 2 sources, 5 pages
+
+Gemini 3.5 Flash (AA Index 55, default Gemini/Search model) confirmed; Gemini 3.5 Pro internal-only ~June ship; MiniMax M2.7 (open-weights 230B/10B-active MoE, AA Index 50, lowest hallucination rate 34%). Cross-page: gemini-3.1-pro entity updated, agentic-coding agentic-benchmark context. PR #72 merged.
+
+## [2026-05-27] daily | agentic-coding — 3 sources, 5 pages
+
+Apple Xcode 26.3 ships native Claude Agent SDK (subagents, background tasks, bidirectional MCP for visual Previews); SWE-Bench Mobile (12% ceiling, 6x cross-agent gap, multimodal PRD+Figma inputs); RGAO topology-aware orchestration (30.1%→8.2% misrouting reduction). Cross-page: ai-in-game-dev sweep (SWE-Bench Mobile Figma). PR #73 merged.
+
+## [2026-05-27] daily | ai-in-game-dev — 3 sources, 4 pages
+
+DancingBox lightweight single-webcam mocap via physical proxies; meta-ethnography of genAI in game dev (persistent 2D→3D production gap, authorship-erosion concern); VidAnimator mixed-initiative 4-stage video→stylized-animation pipeline. PR #74 merged.
+
+## [2026-05-27] daily | games-of-note — 3 sources, 5 pages
+
+007 First Light ships at ~88 Metacritic (IO Interactive's highest-rated game ever); Mina the Hollower pre-launch design profile; WotC MTG Arena union (supermajority cards, NLRB election June 2, genAI governance as core demand — first studio-union effort with explicit genAI demands). Cross-page: ai-in-game-dev WotC question. PR #75 merged.
+
+## [2026-05-27] daily | game-music — 3 sources, 5 pages
+
+Jake Kaufman (Shovel Knight) scores Mina the Hollower in MSX chiptune style (launches May 29); Lorien Testard + Alice Duport-Percier created 8+ hours of music for Clair Obscur: Expedition 33 (Laced vinyl in development); FFVIII OST 2026 RPGFan retrospective (Uematsu orchestral/electronic/chanting experiment, "partial failure that still coheres"). Cross-page: games-of-note Mina Kaufman detail. PR #76 merged.
+
+## [2026-05-27] daily | 5 topics, 14 sources, 24 pages
+
+Daily research run complete: 5 topics, 14 new sources, 24 pages touched (5 topic indices + gemini-3.1-pro entity + cross-page sweeps on agentic-coding/ai-in-game-dev/games-of-note), 5 PRs opened (#72–#76), all merged. 6 disputes filed, 12 open questions added.
