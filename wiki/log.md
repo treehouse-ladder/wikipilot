@@ -211,3 +211,7 @@ Silent Hill Townfall composer reveal (Pilotpriest/Anthony Scott Burns, 'Home' Ap
 ## [2026-05-26] daily | 5 topics, 19 sources, 29 pages
 
 Daily research run complete: 5 topics, 19 new sources, 29 pages touched (5 topic indices + mimo-v2.5-pro entity + cross-page sweeps on claude-opus-4.7/kimi-k2.6/glm-5/qwen3.7-max), 5 PRs opened (#66–#70). PRs #66–#69 merged; #70 (game-music) queued pending CI. 10 new disputes filed, 19 new open questions added.
+
+## [2026-05-27] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#73 (claude/daily-2026-05-27/agentic-coding) DIRTY after ai-in-game-dev PR #74 merged; rebased onto main, resolved conflicts on wiki/topics/ai-in-game-dev/index.md (union of both sides' sources + body sections) and wiki/topics/agentic-coding/index.md (sources frontmatter union); lint 0 errors; pushed 678b73e; auto-merge re-queued via MCP (gh unauthenticated in this env).
