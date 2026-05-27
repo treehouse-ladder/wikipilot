@@ -1,9 +1,9 @@
 ---
 title: "Gemini 3.1 Pro"
 kind: entity
-sources: ["[[gemini-31-pro-model-card-225ab705]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]"]
-last_updated: "2026-05-22"
-last_verified: "2026-05-22"
+sources: ["[[gemini-31-pro-model-card-225ab705]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]"]
+last_updated: "2026-05-27"
+last_verified: "2026-05-27"
 freshness_window_days: 30
 input_cost_per_mtoken: 2.00
 output_cost_per_mtoken: 12.00
@@ -37,6 +37,7 @@ _no contradictions or gaps known yet (last reviewed: 2026-05-22)_
 ## Open questions
 
 - [ ] What is the practical retrieval/long-context quality drop-off between 200k and 1M context for Gemini 3.1 Pro?
+- [ ] When Gemini 3.5 Pro ships (Google announced ~June 2026 per [[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]), will it replace Gemini 3.1 Pro as Google's Pro-tier offering, or will both remain available?
 
 ## See also
 

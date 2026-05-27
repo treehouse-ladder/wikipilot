@@ -59,8 +59,9 @@ sources:
   - "[[building-effective-ai-coding-agents-for-the-terminal-scaffolding-harness-context-engineering-and-lessons-learned-16c075a2]]"
   - "[[architectural-design-decisions-in-ai-agent-harnesses-523b6fa0]]"
   - "[[architecture-without-architects-how-ai-coding-agents-shape-software-architecture-f13ae013]]"
-last_updated: 2026-05-26
-last_verified: 2026-05-26
+  - "[[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]"
+last_updated: 2026-05-27
+last_verified: 2026-05-27
 freshness_window_days: 30
 ---
 
@@ -262,6 +263,12 @@ The agent-first platform shift the wiki has tracked at Anthropic (Routines) and 
 Google also advanced a tool-protocol alternative to MCP at the browser layer: **WebMCP** is "a proposed open web standard developed by Google and Microsoft engineers under the W3C Web Machine Learning community group that allows websites to expose structured tools (JavaScript functions, HTML forms) to browser-based AI agents", converting "every website from a visual interface designed for humans into a structured tool interface designed for agents" [[building-the-agentic-future-developer-highlights-from-google-i-o-2026-e433cac5]]. An early preview shipped in Chrome 146, with an origin trial in Chrome 149. WebMCP is complementary to (not a replacement for) server-side MCP — it addresses the browser-as-tool-surface that the existing MCP threads on this page do not cover.
 
 > WebMCP is a proposed open web standard developed by Google and Microsoft engineers under the W3C Web Machine Learning community group that allows websites to expose structured tools (JavaScript functions, HTML forms) to browser-based AI agents.
+
+At I/O 2026, Google officially launched **Gemini 3.5 Flash** as the default model for the Gemini app and AI Mode in Search globally, framing it as part of the Gemini 3.5 series that "combines frontier intelligence with action" [[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]. Notably for agentic coding, Gemini 3.5 Flash outperforms the prior-generation Gemini 3.1 Pro on Terminal-Bench 2.1 (76.2%), MCP Atlas (83.6%), and GDPval-AA (1656 Elo) — a Flash-over-Pro inversion on agentic benchmarks that reinforces the wiki's recurring finding that agentic and general-intelligence rankings are decoupling. Google also confirmed that Gemini 3.5 Pro is being used internally and is expected to ship next month, meaning the Gemini 3.5 frontier tier is not yet fully released [[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]].
+
+> Gemini 3.5 is our latest family of models, combining frontier intelligence with action.
+
+> We are also working on 3.5 Pro, which is already being used internally, and we plan to make it available next month.
 
 On **evaluation**, three new papers extend the wiki's eval-realism thread off the single-issue-resolution axis. **SWE Atlas** is "a benchmark suite for coding agents spanning three professional software engineering workflows: Codebase Q&A (124 tasks), Test Writing (90 tasks), and Refactoring (70 tasks)" across "284 expert-authored SWE tasks drawn from 18 actively maintained open-source repositories", using "under-specified, agentic task formulations that better reflect real-world usage" [[swe-atlas-benchmarking-coding-agents-beyond-issue-resolution-955fe09e]]. Its scaffold-instrumentation finding is directly load-bearing for the wiki's harness-vs-model debate: "native scaffolds (Claude Code / Codex) perform more tool calls than the minimal mini-SWE-agent scaffold, and capture sub-agent delegation, planning, and TODO-list operations available only on the native scaffolds" [[swe-atlas-benchmarking-coding-agents-beyond-issue-resolution-955fe09e]] — meaning the bash-only mini-SWE-agent harness the wiki documents [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] cannot observe a large slice of what native agents actually do.
 
