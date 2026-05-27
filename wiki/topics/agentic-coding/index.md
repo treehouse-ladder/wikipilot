@@ -60,6 +60,9 @@ sources:
   - "[[architectural-design-decisions-in-ai-agent-harnesses-523b6fa0]]"
   - "[[architecture-without-architects-how-ai-coding-agents-shape-software-architecture-f13ae013]]"
   - "[[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]"
+  - "[[apple-xcode-now-supports-the-claude-agent-sdk-5eb89308]]"
+  - "[[swe-bench-mobile-can-large-language-model-agents-develop-industry-level-mobile-applications-58095c68]]"
+  - "[[retrieval-conditioned-topology-selection-with-provable-budget-conservation-for-multi-agent-code-generation-7cb92a6f]]"
 last_updated: 2026-05-27
 last_verified: 2026-05-27
 freshness_window_days: 30
@@ -336,6 +339,26 @@ Finally, a new governance angle: **vibe architecting**. Architecture Without Arc
 
 > AI coding agents select frameworks, scaffold infrastructure, and wire integrations, often in seconds, yet these are architectural decisions that almost no one reviews as such. The authors term the phenomenon "vibe architecting" - architecture shaped by prompts rather than deliberate design.
 
+## IDE-native agent SDKs, mobile/multimodal evals, and topology-aware orchestration (added 2026-05-27)
+
+The cross-vendor convergence thread the wiki tracks (subagents across seven vendors, Antigravity preserving Skills/Hooks/Subagents) now extends to a platform-vendor IDE: Apple's **Xcode 26.3** ships native Claude Agent SDK support, so "developers can now get the full power of Claude Code directly in Xcode—including subagents, background tasks, and plugins—all without leaving the IDE" and Claude "can now work autonomously on much more sophisticated, long-running coding tasks inside Xcode" [[apple-xcode-now-supports-the-claude-agent-sdk-5eb89308]]. Notably the integration is bidirectional over MCP — Xcode "makes its capabilities available through the Model Context Protocol, allowing developers using Claude Code to integrate with Xcode over MCP and capture visual Previews without leaving the CLI" [[apple-xcode-now-supports-the-claude-agent-sdk-5eb89308]].
+
+> Developers can now get the full power of Claude Code directly in Xcode—including subagents, background tasks, and plugins—all without leaving the IDE. With the Claude Agent SDK, Claude can now work autonomously on much more sophisticated, long-running coding tasks inside Xcode.
+
+> Xcode 26.3 also makes its capabilities available through the Model Context Protocol, allowing developers using Claude Code to integrate with Xcode over MCP and capture visual Previews without leaving the CLI.
+
+The eval-realism wave the wiki tracks (FeatureBench ~7x gap, SWE-EVO ~3x gap, SWE-WebDevBench's production-readiness cliff) now extends to **mobile and multimodal** development. **SWE-Bench Mobile** is built from a production iOS codebase and "captures the full complexity of industrial development: multi-modal inputs (PRDs and Figma designs), a large-scale mixed Swift/Objective-C codebase, and comprehensive test suites" [[swe-bench-mobile-can-large-language-model-agents-develop-industry-level-mobile-applications-58095c68]]. Across "22 agent-model configurations across four coding agents — three commercial (Cursor, Codex, Claude Code) and one open-source (OpenCode)", "even the best configurations achieve only 12% task success rate" and "agent design matters as much as model capability — the same model shows up to 6x performance gap across agents" [[swe-bench-mobile-can-large-language-model-agents-develop-industry-level-mobile-applications-58095c68]].
+
+> SWE-Bench Mobile captures the full complexity of industrial development: multi-modal inputs (PRDs and Figma designs), a large-scale mixed Swift/Objective-C codebase, and comprehensive test suites.
+
+> Even the best configurations achieve only 12% task success rate. Agent design matters as much as model capability — the same model shows up to 6x performance gap across agents.
+
+On the **subagent-orchestration** axis, **RGAO (Retrieval-Guided Adaptive Orchestration)** "extracts a structural complexity vector from a hierarchical code index before selecting the orchestration topology", choosing between "FastPath (monolithic), SubAgent (single specialist), MultiAgent (pipeline or swarm), and DeepResearch (multi-stage retrieval-heavy)" topologies based on code structural complexity, reporting that this "reduces misrouting from 30.1% to 8.2% over regex classification" [[retrieval-conditioned-topology-selection-with-provable-budget-conservation-for-multi-agent-code-generation-7cb92a6f]].
+
+> RGAO extracts a structural complexity vector from a hierarchical code index before selecting the orchestration topology, distinguishing between FastPath (monolithic), SubAgent (single specialist), MultiAgent (pipeline or swarm), and DeepResearch (multi-stage retrieval-heavy) topologies depending on code structural complexity.
+
+> On a 250-instance labelled routing set, this reduces misrouting from 30.1% to 8.2% over regex classification.
+
 ## Comparisons
 
 The comparison pages below are pre-declared by the charter; they are
@@ -375,6 +398,8 @@ lint stays quiet until each page actually exists:
 - [[live-blog-code-w-claude-2026-aa645a96]] reports Anthropic shipping a 'Dreaming' feature where an agent inspects its own previous sessions overnight to author new memory artifacts for self-improvement; [[skillsbench-benchmarking-how-well-agent-skills-work-across-diverse-tasks-1743f5a5]] finds that 'self-generated Skills provide no benefit on average, showing that models cannot reliably author the procedural knowledge they benefit from consuming'. The two are in tension on whether an agent can productively author its own procedural memory. Status: unresolved
 - [[roadmapbench-evaluating-long-horizon-agentic-software-development-across-version-upgrades-b9814b39]] reports a public, methodology-disclosed Claude-Opus-4.7 score of 39.1% on long-horizon version-upgrade tasks; [[introducing-claude-opus-47-b8af8104]] reports a partner-internal Rakuten-SWE-Bench '3x more production tasks than Opus 4.6' with undisclosed composition. The public RoadmapBench number is the kind of disclosed long-horizon baseline the Rakuten claim lacks, though the two benchmarks are not directly comparable. Status: unresolved
 - [[vibe-coding-and-agentic-engineering-are-getting-closer-than-i-would-like-a811ab37]] reports a practitioner ('normalization of deviance') no longer reviewing every line of agent-written production code as agents grow more reliable, and [[architecture-without-architects-how-ai-coding-agents-shape-software-architecture-f13ae013]] reports unreviewed implicit architectural decisions ('vibe architecting'); [[live-blog-code-w-claude-2026-aa645a96]] frames 2026 as the era of orchestrating agents that write production code. The sources disagree on whether reduced human review of agent output is a safe efficiency gain or an accumulating risk. Status: unresolved
+- [[swe-bench-mobile-can-large-language-model-agents-develop-industry-level-mobile-applications-58095c68]] finds that on a production mobile codebase agent design matters as much as model capability, with the same model showing up to a 6x performance gap across agents (Cursor/Codex/Claude Code/OpenCode); [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] finds across 9,374 trajectories that the LLM is the primary driver of outcome. Status: unresolved — mobile/multimodal regime may stress scaffold capabilities more than the text-only SWE-bench regime
+- [[swe-bench-mobile-can-large-language-model-agents-develop-industry-level-mobile-applications-58095c68]] reports a 12% best-case success ceiling on industrial mobile development, the lowest absolute ceiling among the eval-realism papers; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents SWE-bench Verified as the human-filtered gold standard. Status: unresolved — same overestimation direction as FeatureBench/SWE-EVO but from a multimodal, mixed-language production codebase far from SWE-bench Verified's Python-GitHub-issue distribution
 
 ## Open questions
 
@@ -423,6 +448,9 @@ lint stays quiet until each page actually exists:
 - [ ] OPENDEV splits its system prompt into explicit cacheable / non-cacheable segments for API caching [[building-effective-ai-coding-agents-for-the-terminal-scaffolding-harness-context-engineering-and-lessons-learned-16c075a2]] — is there a published measurement of the prompt-cache hit-rate delta this segmentation buys?
 - [ ] Does the 70-project file-persistent/hierarchical-context finding in [[architectural-design-decisions-in-ai-agent-harnesses-523b6fa0]] match the 13-scaffold loop-primitive composition finding in prior scaffold taxonomy work — i.e. is there a stable cross-corpus consensus on the dominant harness architecture?
 - [ ] Do the 'vibe architecting' coupling patterns [[architecture-without-architects-how-ai-coding-agents-shape-software-architecture-f13ae013]] show up as a measurable degradation axis in any long-horizon eval (RoadmapBench [[roadmapbench-evaluating-long-horizon-agentic-software-development-across-version-upgrades-b9814b39]]), or is architectural drift invisible to resolve-rate scoring?
+- [ ] Does Xcode 26.3's bidirectional integration [[apple-xcode-now-supports-the-claude-agent-sdk-5eb89308]] — Claude Agent SDK in Xcode AND Xcode exposed to Claude Code over MCP — make Xcode a managed-agent 'hand' in the brain/hands sense, and is the visual-Preview capture a multimodal feedback loop?
+- [ ] Does RGAO's code-structure-conditioned topology routing [[retrieval-conditioned-topology-selection-with-provable-budget-conservation-for-multi-agent-code-generation-7cb92a6f]] reproduce the wall-clock vs context-preservation distinction Simon Willison draws for subagents — i.e. does choosing MultiAgent over SubAgent actually reduce wall-clock once merge/coordination overhead is accounted for?
+- [ ] SWE-Bench Mobile's 6x same-model cross-agent gap [[swe-bench-mobile-can-large-language-model-agents-develop-industry-level-mobile-applications-58095c68]] is far larger than harness gains reported on Terminal-Bench — is the mobile/multimodal regime simply more harness-sensitive (Figma ingestion, build-tool integration) than the text-only SWE-bench regime?
 
 ## See also
 
