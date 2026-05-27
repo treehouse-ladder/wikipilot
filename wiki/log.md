@@ -211,3 +211,7 @@ Silent Hill Townfall composer reveal (Pilotpriest/Anthony Scott Burns, 'Home' Ap
 ## [2026-05-26] daily | 5 topics, 19 sources, 29 pages
 
 Daily research run complete: 5 topics, 19 new sources, 29 pages touched (5 topic indices + mimo-v2.5-pro entity + cross-page sweeps on claude-opus-4.7/kimi-k2.6/glm-5/qwen3.7-max), 5 PRs opened (#66–#70). PRs #66–#69 merged; #70 (game-music) queued pending CI. 10 new disputes filed, 19 new open questions added.
+
+## [2026-05-27] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#75 (claude/daily-2026-05-27/games-of-note) DIRTY vs main: frontmatter sources conflict after game-music PR #76 merged first; unified sources list (union of both sides), last_verified=2026-05-27; force-pushed f4026c7; auto-merge re-queued. pr#76 (game-music) had already merged before dispatch.
