@@ -1,8 +1,8 @@
 ---
 title: "GLM-5"
 kind: entity
-sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]"]
-last_updated: 2026-05-26
+sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]"]
+last_updated: 2026-05-28
 last_verified: 2026-05-25
 freshness_window_days: 30
 input_cost_per_mtoken: 1.00
@@ -42,9 +42,18 @@ Z.AI released GLM-5.1 as the successor to GLM-5 in April 2026, a 754B-parameter 
 
 > The model is built for long-horizon autonomous execution, capable of working on a single complex task for up to 8 hours — running experiments, revising strategies, and iterating across hundreds of rounds and thousands of tool calls without human intervention.
 
+GLM-5.1's vendor SWE-Bench Pro SOTA claim now has an independent counterpoint: on artificialanalysis.ai, GLM-5.1 (Reasoning) scores 51 on the AA Intelligence Index — the first open-weights model to cross 50 on v4.0 — ranks #2 among open weights on GDPval-AA (1535 Elo, behind DeepSeek V4-Pro), and edges Kimi K2.6 on Code Arena WebDev (1534 vs 1529), priced at $1.40/$4.40 per Mtoken [[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]. The independent aggregate score (51) confirms GLM-5.1 as a leading open-weights agentic model but sits well below the closed-frontier leaders (GPT-5.5 at 60), so the vendor's 'beats GPT-5.4 / Opus 4.6 / Gemini 3.1 Pro' framing is a coding-axis (SWE-Bench Pro) claim, not an aggregate-leaderboard one.
+
+> GLM-5.1 (Reasoning) achieves a score of 51 on the Artificial Analysis Intelligence Index ... This score places it well above average among comparable models (averaging 30).
+
+The GLM-5 line now also has a primary technical report (arXiv 2602.15763), which frames GLM-5 as a transition from 'vibe coding' to 'agentic engineering' on ARC capabilities, confirms DSA (DeepSeek Sparse Attention) as the cost-reduction mechanism, and details a new asynchronous agent-RL infrastructure that decouples generation from training to learn from long-horizon interactions [[glm-5-from-vibe-coding-to-agentic-engineering-43553238]].
+
+> GLM-5 ... adopts DSA to significantly reduce training and inference costs while maintaining long-context fidelity.
+
 ## Disputes
 
 - [[glm-5-everything-you-need-to-know-a53ff5c1]] claims GLM-5 (AA Index 50, released Feb 11 2026) is the leading open-weights model, but [[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]] reports a later open-weights leader: Moonshot's Kimi K2.6 at AA Index 54 (released Apr 20), co-tied with Xiaomi's MiMo-V2.5-Pro at 54 (released Apr 22) [[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]. Qwen3.7 Max scores 57 but is closed-weights API-only [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]. Status: resolved-toward-B — GLM-5 was the open-weights leader at its February release but has since been overtaken by the Kimi K2.6 / MiMo-V2.5-Pro co-leadership at 54; the 'new leading open weights model' framing is time-bound to early 2026.
+- [[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]] claims GLM-5.1 sets SWE-Bench Pro SOTA at 58.4 ahead of GPT-5.4 / Opus 4.6 / Gemini 3.1 Pro; independent [[glm-5-1-intelligence-performance-price-analysis-fb6f086c]] places GLM-5.1 at AA Intelligence Index 51 and GDPval-AA #2 among open weights — strong for open weights but below the closed frontier. Status: resolved-toward-A-narrowly — the coding-axis SOTA is plausible but GLM-5.1 is not an aggregate-leaderboard frontier model.
 
 ## Open questions
 
@@ -53,6 +62,7 @@ Z.AI released GLM-5.1 as the successor to GLM-5 in April 2026, a 754B-parameter 
 - [ ] What is GLM-5's performance on contamination-resistant benchmarks like SWE-bench Pro?
 - [ ] What is GLM-5.1's hosted API pricing, and does it maintain GLM-5's $1.00/$3.20 pricing or shift to reflect the 754B parameter scale-up [[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]?
 - [ ] Does GLM-5.1's 8-hour autonomous-execution claim translate into measurably higher completion rates on long-horizon benchmarks like SWE-Chain or Terminal-Bench compared to GLM-5 [[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]?
+- [ ] Is there an independent artificialanalysis.ai SWE-Bench Pro placement for GLM-5.1 that confirms or refutes the vendor 58.4 SOTA figure, now that its aggregate AA Index (51) is independently established [[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]?
 
 ## See also
 
