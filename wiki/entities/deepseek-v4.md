@@ -1,8 +1,8 @@
 ---
 title: "DeepSeek V4"
 kind: entity
-sources: ["[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[deepseek-api-models-and-pricing-8eb12065]]", "[[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]", "[[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]"]
-last_updated: "2026-05-24"
+sources: ["[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[deepseek-api-models-and-pricing-8eb12065]]", "[[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]", "[[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]"]
+last_updated: "2026-05-28"
 last_verified: "2026-05-24"
 freshness_window_days: 30
 input_cost_per_mtoken: 1.74
@@ -50,6 +50,7 @@ DeepSeek's reasoning-model sibling, DeepSeek R2, shipped in April 2026 as a 32B 
 - [ ] Now that DeepSeek R2 has shipped as a 32B dense model [[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]], does it share V4's architecture lineage or DeepSeek Sparse Attention, and where does it land on the AA Intelligence Index relative to V4-Pro?
 - [ ] What is DeepSeek V4-Pro's SWE-bench Pro score?
 - [ ] Does DeepSeek V4 include DeepSeek Sparse Attention (now documented in GLM-5 [[glm-5-everything-you-need-to-know-a53ff5c1]]), or is that a technique Z.AI integrated independently?
+- [ ] GLM-5.1 now ranks #2 on GDPval-AA among open-weights models (1535 Elo) per [[glm-5-1-intelligence-performance-price-analysis-fb6f086c]], implying DeepSeek V4-Pro leads at #1 — what is V4-Pro's actual GDPval-AA Elo score, and does it hold the open-weights #1 spot consistently across the April-May 2026 time window?
 
 ## See also
 
