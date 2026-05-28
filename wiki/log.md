@@ -235,3 +235,27 @@ Jake Kaufman (Shovel Knight) scores Mina the Hollower in MSX chiptune style (lau
 ## [2026-05-27] daily | 5 topics, 14 sources, 24 pages
 
 Daily research run complete: 5 topics, 14 new sources, 24 pages touched (5 topic indices + gemini-3.1-pro entity + cross-page sweeps on agentic-coding/ai-in-game-dev/games-of-note), 5 PRs opened (#72–#76), all merged. 6 disputes filed, 12 open questions added.
+
+## [2026-05-28] daily | game-music — 3 sources, 4 pages
+
+Jake Kaufman Mina the Hollower craft detail (Furnace Tracker/Game Boy+MSX-SCC, 100+ tracks, 2 Yuzo Koshiro guest tracks, "Cajunvania" Zydeco/folk areas); Doom OST inducted into US National Recording Registry (only 3rd game-music entry after SMB theme and Minecraft: Volume Alpha); Elder Scrolls: Arena full-score remake (Ryan Zachariah Martin, fidelity-to-intent). 1 dispute resolved (Mina track count/Koshiro), 4 open questions. PR #78 queued.
+
+## [2026-05-28] daily | agentic-coding — 6 sources, 7 pages
+
+OpenAI harness trilogy: Symphony (Linear-as-state-machine orchestration spec, devbox-resident), Harness Engineering (3.5 PRs/eng/day, ~1M LOC, ~10x), Unrolling the Codex Agent Loop (first-party internals). GitHub-scale AIDev field-data wave: adoption study (22–29% in 128k projects), failure study (33k PRs; bug-fix tasks worst merge success; larger PRs fail CI), security study (4% of OSS PRs = hardening/testing). 3 new disputes, 7 open questions. PR #79 queued.
+
+## [2026-05-28] daily | frontier-models — 5 sources, 9 pages
+
+Open-weights late-May wave: Gemma 4 31B (AA Index 39, MacBook-runnable), NVIDIA Nemotron 3 Super (120B/12B-active hybrid Mamba-Transformer MoE, AA Index 36, open data+recipes), MiniCPM5-1B (AA Index 17.9, leading ≤1B, 131K context, Apache-2.0 full stack). GLM-5.1 independent AA placement (51) narrows vendor SWE-Bench Pro SOTA claim to coding-axis-only. Cross-page sweep: glm-5 entity, deepseek-v4, kimi-k2.6. 2 disputes, 4 open questions. PR #80 queued.
+
+## [2026-05-28] daily | ai-in-game-dev — 4 sources, 5 pages
+
+Capcom 30,000+ hrs/month autonomous playtesting (4-agent Google Cloud toolset, Monster Hunter Stories 3); PUBG Ally on-device SLM CPC (NVIDIA ACE, H1 2026 Arcade playtest, EN/KO/ZH voice); NVIDIA NVIGI 1.5 code-agent (program-once NPC, no per-frame SLM calls); Aura proprietary UE AI agent (Editor-Use + Coding Agent, invite-only). 2 disputes, 4 open questions. PR #81 queued.
+
+## [2026-05-28] daily | games-of-note — 6 sources, 7 pages
+
+Mina the Hollower ships at ~93 Metacritic (2026's highest-rated game, $20); Witcher 3: Songs of the Past (2027) announced (12-years-later CDPR expansion, Fool's Theory co-dev); Destruction AllStars shutdown after 5 years; Piranha Games 30% layoffs (2nd round in 16 months); Hasbro/WotC Atomic Arcade closure (Snake Eyes game); Behaviour Interactive ~40 layoffs (denied union/AI link). 3 disputes, 5 open questions. PR #82 queued.
+
+## [2026-05-28] daily | 5 topics, 24 sources, 32 pages
+
+Daily research run complete: 5 topics, 24 new sources, 32 pages touched (5 topic indices + glm-5/deepseek-v4/kimi-k2.6 entity cross-page sweeps + 24 source pages). 5 per-topic PRs opened (#78–#82), all queued for auto-merge. 11 disputes filed (1 resolved), 26 open questions added. Report: wiki/reports/2026-05-28.md. Note: gh CLI unauthenticated in cloud env; GitHub ops via MCP tools; index-wiki model download blocked (existing .qmd index used).
