@@ -251,6 +251,21 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[mechwarrior-dev-piranha-games-lays-off-30-of-staff-says-ceo-f914d016]]
 - [[update-hasbro-shutters-internal-video-game-studio-atomic-arcade-844b78aa]]
 - [[dead-by-daylight-studio-behaviour-interactive-confirms-layoffs-cdaae4e1]]
+- [[claude-opus-4-8-a-modest-but-tangible-improvement-8a5bbbe8]]
+- [[synthesizing-multi-agent-harnesses-for-vulnerability-discovery-9befd6a7]]
+- [[terminal-wrench-a-dataset-of-331-reward-hackable-environments-and-3-632-exploit-trajectories-3c03fe63]]
+- [[cutscene-agent-an-llm-agent-framework-for-automated-3d-cutscene-generation-f07e441f]]
+- [[autoue-automated-generation-of-3d-games-in-unreal-engine-via-multi-agent-systems-54855422]]
+- [[take-two-president-says-ai-world-builder-won-t-replace-creativity-c478c18b]]
+- [[gamemaker-incorporates-claude-code-to-enable-ai-assisted-workflows-d2ef47a8]]
+- [[former-mass-effect-and-dragon-age-developers-launch-studio-reset-a1d7f2e0]]
+- [[ubisoft-halifax-union-members-agree-settlement-after-studio-closure-08fc27da]]
+- [[ustwo-ceo-says-lowering-development-costs-is-now-paramount-2425b456]]
+- [[iron-galaxy-lays-off-employees-as-it-reduces-company-size-2609e80b]]
+- [[mina-the-hollower-launches-on-consoles-and-pc-soundtrack-now-available-f50145d8]]
+- [[scott-pilgrim-ex-original-soundtrack-music-review-7d0adae5]]
+- [[music-for-tabletop-rpgs-scoring-your-adventure-with-phandelver-41448781]]
+- [[game-music-is-changing-the-composer-s-new-role-65910821]]
 
 ## Answers
 
@@ -266,3 +281,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-05-26]]
 - [[2026-05-27]]
 - [[2026-05-28]]
+- [[2026-05-29]]
