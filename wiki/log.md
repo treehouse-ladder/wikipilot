@@ -283,3 +283,7 @@ Mina the Hollower ships at ~93 Metacritic (2026's highest-rated game, $20); Witc
 ## [2026-05-28] daily | 5 topics, 24 sources, 32 pages
 
 Daily research run complete: 5 topics, 24 new sources, 32 pages touched (5 topic indices + glm-5/deepseek-v4/kimi-k2.6 entity cross-page sweeps + 24 source pages). 5 per-topic PRs opened (#78–#82), all queued for auto-merge. 11 disputes filed (1 resolved), 26 open questions added. Report: wiki/reports/2026-05-28.md. Note: gh CLI unauthenticated in cloud env; GitHub ops via MCP tools; index-wiki model download blocked (existing .qmd index used).
+
+## [2026-05-29] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#85 (claude/daily-2026-05-29/agentic-coding) was BEHIND main by 3 commits (PRs #86, #88, #89 landed after PR was opened); no text conflicts. Branch updated via GitHub API to current main tip (c74a6ef); auto-merge confirmed active (enabled at PR creation 09:28Z). CI will re-run on updated tip.
