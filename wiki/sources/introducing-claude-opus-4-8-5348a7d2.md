@@ -25,3 +25,7 @@ url: https://www.anthropic.com/news/claude-opus-4-8
 > Claude can plan the work and then run hundreds of parallel subagents in a single session (and with Opus 4.8, the agents can run for even longer). For example, Claude Code with Opus 4.8 can now carry out codebase-scale migrations across hundreds of thousands of lines of code from kickoff to merge, with the existing test suite as its bar.
 
 > Claude Opus 4.8 is 4x less likely than Opus 4.7 to ship code with unflagged flaws.
+
+> Claude Code has a new dynamic workflows feature, available in research preview, that allows Claude to take on even bigger tasks. Claude can plan the work and then run hundreds of parallel subagents in a single session (and with Opus 4.8, the agents can run for even longer). For example, Claude Code with Opus 4.8 can now carry out codebase-scale migrations across hundreds of thousands of lines of code from kickoff to merge, with the existing test suite as its bar.
+
+> Fast mode for Opus 4.8 - where the model can work at 2.5x the speed - is now three times cheaper than it was for previous models.
