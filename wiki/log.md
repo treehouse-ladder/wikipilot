@@ -259,3 +259,7 @@ Mina the Hollower ships at ~93 Metacritic (2026's highest-rated game, $20); Witc
 ## [2026-05-28] daily | 5 topics, 24 sources, 32 pages
 
 Daily research run complete: 5 topics, 24 new sources, 32 pages touched (5 topic indices + glm-5/deepseek-v4/kimi-k2.6 entity cross-page sweeps + 24 source pages). 5 per-topic PRs opened (#78–#82), all queued for auto-merge. 11 disputes filed (1 resolved), 26 open questions added. Report: wiki/reports/2026-05-28.md. Note: gh CLI unauthenticated in cloud env; GitHub ops via MCP tools; index-wiki model download blocked (existing .qmd index used).
+
+## [2026-05-29] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#85 (agentic-coding) rebased onto main (623f771→eab9df2); resolved 1 add/add conflict on wiki/sources/introducing-claude-opus-4-8-5348a7d2.md (same Opus 4.8 URL ingested by both ai-in-game-dev and agentic-coding PRs; kept frontier-models topic, merged excerpt union). Auto-merge re-queued via MCP.
