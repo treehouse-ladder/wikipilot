@@ -240,6 +240,30 @@ Daily research run complete: 5 topics, 14 new sources, 24 pages touched (5 topic
 
 Jake Kaufman Mina the Hollower craft detail (Furnace Tracker/Game Boy+MSX-SCC, 100+ tracks, 2 Yuzo Koshiro guest tracks, "Cajunvania" Zydeco/folk areas); Doom OST inducted into US National Recording Registry (only 3rd game-music entry after SMB theme and Minecraft: Volume Alpha); Elder Scrolls: Arena full-score remake (Ryan Zachariah Martin, fidelity-to-intent). 1 dispute resolved (Mina track count/Koshiro), 4 open questions. PR #78 queued.
 
+## [2026-05-29] daily | frontier-models — 2 sources, 4 pages
+
+Claude Opus 4.8 released (May 28): retakes AA Intelligence Index #1 at 61.4 (was GPT-5.5 at 60), retakes GDPval-AA at 1,890 Elo. SWE-bench Pro 69.2% (up from 4.7's 64.3%). Dynamic workflows research preview in Claude Code. New entity [[claude-opus-4.8]]; claude-opus-4.7 updated. 2 disputes, 4 open questions. PR #84 merged.
+
+## [2026-05-29] daily | agentic-coding — 4 sources, 2 pages
+
+Claude Code dynamic workflows (hundreds of parallel subagents, test-suite-as-oracle for codebase-scale migrations); fast mode 2.5x speed / 3x cheaper. Willison: "modest but tangible", unchanged Jan 2026 cutoff + model-level prompt-cache lever. AgentFlow synthesized harness tops TerminalBench-2 (84.3%) + finds 10 Chrome CVEs (2 Critical sandbox-escape). Terminal Wrench: 331 reward-hackable benchmark environments (output spoofing → rootkit hijacking). 3 disputes, 6 open questions. PR #85 queued.
+
+## [2026-05-29] daily | ai-in-game-dev — 3 sources, 2 pages
+
+Cutscene Agent: MCP-based director/specialist subagent system for Unreal cutscenes (CutsceneBench benchmark); diagnoses LLM spatial-reasoning weakness (degenerate 3D layouts). AutoUE: multi-agent full-game generation in UE with RAG-grounded tool use + automated play-testing. Take-Two's Slatoff: Genie "not a game engine" (first AAA-publisher on-record world-model skepticism). 2 disputes, 3 open questions. PR #86 merged.
+
+## [2026-05-29] daily | games-of-note — 5 sources, 2 pages
+
+GameMaker adds Claude Code to GM-CLI (opt-in agentic workflow surface, mainstream 2D engine). Studio Reset launched by ex-BioWare veterans (Parallax Deduction mechanic, "no moon logic" design). Ubisoft Halifax union settlement (confidential, 61 members). Ustwo CEO: employee job security "too romantic", pivoting to contractor-heavy PC-first model. Iron Galaxy: "adopting a new posture to accept these current market conditions as permanent" (2nd round in 13 months). 3 disputes, 5 open questions. PR #87 merged.
+
+## [2026-05-29] daily | game-music — 4 sources, 2 pages
+
+Mina the Hollower 96-track OST drops day-one as Name Your Price Bandcamp + Steam DLC (Game Boy + SCC+; Koshiro guest tracks 57 & 63 — resolves open questions). Scott Pilgrim EX: Anamanaguchi's biggest game-soundtrack (71 tracks, Polyvinyl 2xLP Aug 7). Phandelver: adaptive stinger vocabulary applied to TTRPG (Josh Barron). AudioNewsRoom: hybrid AI-procedural/human-core is the studio consensus; 50%+ cost savings only in narrow cases; AI-generated content not copyrightable in US; anti-training contract clauses now standard. 1 dispute, 4 open questions. PR #88 queued.
+
+## [2026-05-29] daily | 5 topics, 17 sources, 12 pages
+
+Daily research run complete: 5 topics, 17 new sources, 12 pages touched (5 topic indices + claude-opus-4.8 entity + claude-opus-4.7 update + wiki/index.md). 5 per-topic PRs opened (#84–#88); #84/#86/#87 merged, #85/#88 queued for auto-merge. 11 disputes filed, 22 open questions added. Report: wiki/reports/2026-05-29.md. Note: gh CLI unauthenticated in cloud env; GitHub ops via MCP tools; index-wiki model download blocked (existing .qmd index used).
+
 ## [2026-05-28] daily | agentic-coding — 6 sources, 7 pages
 
 OpenAI harness trilogy: Symphony (Linear-as-state-machine orchestration spec, devbox-resident), Harness Engineering (3.5 PRs/eng/day, ~1M LOC, ~10x), Unrolling the Codex Agent Loop (first-party internals). GitHub-scale AIDev field-data wave: adoption study (22–29% in 128k projects), failure study (33k PRs; bug-fix tasks worst merge success; larger PRs fail CI), security study (4% of OSS PRs = hardening/testing). 3 new disputes, 7 open questions. PR #79 queued.
