@@ -19,6 +19,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 ## Entities
 
 - [[claude-opus-4.7]]
+- [[claude-opus-4.8]]
 - [[deepseek-v4]]
 - [[gemini-3.1-pro]]
 - [[glm-5]]
@@ -238,6 +239,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[nvidia-nemotron-3-super-the-new-leader-in-open-efficient-intelligence-f183144e]]
 - [[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]
 - [[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]
+- [[introducing-claude-opus-4-8-5348a7d2]]
+- [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]
 - [[how-to-minimize-game-runtime-inference-costs-with-coding-agents-2c281b82]]
 - [[capcom-s-google-cloud-ai-toolset-includes-automated-agents-performing-30-000-hours-of-playtesting-a-month-aedd60a1]]
 - [[aura-ai-assistant-for-unreal-engine-launches-vr-studio-ships-game-in-half-the-time-with-new-agent-capabilities-e5b65ea6]]
