@@ -1,9 +1,9 @@
 ---
 title: "Claude Opus 4.7"
 kind: entity
-sources: ["[[introducing-claude-opus-47-b8af8104]]", "[[claude-opus-47-everything-you-need-to-know-751c1827]]", "[[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]]", "[[building-a-c-compiler-with-a-team-of-parallel-claudes-1eba12a4]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[roadmapbench-evaluating-long-horizon-agentic-software-development-across-version-upgrades-b9814b39]]", "[[featurebench-benchmarking-agentic-coding-for-complex-feature-development-12948611]]"]
-last_updated: "2026-05-26"
-last_verified: "2026-05-26"
+sources: ["[[introducing-claude-opus-47-b8af8104]]", "[[claude-opus-47-everything-you-need-to-know-751c1827]]", "[[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]]", "[[building-a-c-compiler-with-a-team-of-parallel-claudes-1eba12a4]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[roadmapbench-evaluating-long-horizon-agentic-software-development-across-version-upgrades-b9814b39]]", "[[featurebench-benchmarking-agentic-coding-for-complex-feature-development-12948611]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]"]
+last_updated: 2026-05-29
+last_verified: 2026-05-29
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
 output_cost_per_mtoken: 25.00
@@ -49,6 +49,10 @@ On long-horizon coding benchmarks beyond single-issue resolution, Opus 4.7 shows
 > SWE-Chain contains 12 upgrade chains across 9 real Python packages, with 155 version transitions and 1,660 grounded upgrade requirements, where each transition builds on the agent's prior codebase. Claude-Opus-4.7 (Claude Code) leads at 60.8% resolving, 80.6% precision, and 68.5% F1.
 
 > Over nearly 2,000 Claude Code sessions and $20,000 in API costs, the agent team produced a 100,000-line compiler that can build Linux 6.9 on x86, ARM, and RISC-V. The project consumed 2 billion input tokens and 140 million output tokens across two weeks.
+
+> Claude Opus 4.8 is the new leader on the Artificial Analysis Intelligence Index with a score of 61.4, up 4.1 points from Opus 4.7 and 1.2 points ahead of GPT-5.5 (xhigh), the previous Index leader.
+
+As of May 28, 2026, Opus 4.7 is superseded by [[claude-opus-4.8]] as Anthropic's flagship model. The AA Intelligence Index re-confirms Opus 4.7's score at 57 [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]].
 
 ## Disputes
 
