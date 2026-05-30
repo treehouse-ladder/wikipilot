@@ -287,3 +287,27 @@ Daily research run complete: 5 topics, 24 new sources, 32 pages touched (5 topic
 ## [2026-05-29] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#85 (claude/daily-2026-05-29/agentic-coding) was BEHIND main by 3 commits (PRs #86, #88, #89 landed after PR was opened); no text conflicts. Branch updated via GitHub API to current main tip (c74a6ef); auto-merge confirmed active (enabled at PR creation 09:28Z). CI will re-run on updated tip.
+
+## [2026-05-30] daily | agentic-coding — 4 sources, 2 pages
+
+Cursor 3.6 Auto-review Run Mode (auto-lint/format before agent submits); Willison PMF thesis (Claude Code + Codex = agentic-coding PMF achieved); BenchJack (331 gameable SWE-bench-style environments — most pointed eval-rigour critique yet); Dataset of 44 agentic coding-tool configs (1.3K configs, zero standardization). 3 sources dropped as already-ingested (AHE, SWE-Cycle, SWE-WebDevBench). 1 new dispute (BenchJack gameable-eval vs. PMF evidence), 3 open questions. PR #91 merged.
+
+## [2026-05-30] daily | frontier-models — 1 source, 2 pages
+
+Cursor Composer 2.5 reaches 62 on AA Coding Agent Index (3rd place, behind Claude Code 66 + Codex 65) at $0.07–0.44/task vs $4.10–4.82 for leaders — 10-60× cost advantage at modest capability discount. 0 disputes, 1 open question (cache-miss qualification). PR #92 merged.
+
+## [2026-05-30] daily | ai-in-game-dev — 3 sources, 2 pages
+
+PCSP: shared RL policy for infinite persona-consistent NPCs (ArXiv 2605.23652). ReactiveGWM: conditional world-model steered by NPC personality text at inference time (ArXiv 2605.15256). Momentum: autonomous agent validates PCG at runtime in endless-runner (ArXiv 2605.01783). 2 new disputes (PCSP vs per-NPC SLMs; ReactiveGWM vs Take-Two world-model pushback), 3 open questions. PR #93 merged.
+
+## [2026-05-30] daily | games-of-note — 4 sources, 2 pages
+
+007 First Light: 1.5M+ units in opening weeks (IO Interactive's biggest launch). MW4 on Switch 2: native build, CoD returns to Nintendo hardware after ~10 years. Slay the Spire 2 Chinese review-bomb: top players explain save-scumming removal + doormaker mechanic as grievances. 1 source dropped (vgchartz.com not in allowlist). 0 new disputes, 3 open questions. PR #94 merged.
+
+## [2026-05-30] daily | game-music — 1 source, 2 pages
+
+Square Enix Jazz –Chrono Trigger– closes the 2017–2022 SE Jazz series (5 albums + 1 live); 11 traditional jazz combo tracks arranged by Eijiro Nakagawa and Ryu Kawamura; reviewer frames jazz quality by emotional latitude over precision. 0 disputes, 2 open questions (series continuation; 'Secret of the Forest' omission). PR #95 open / auto-merge queued.
+
+## [2026-05-30] daily | 5 topics, 13 sources, 10 pages
+
+Daily research run complete: 5 topics, 13 new sources, 10 pages touched (5 topic indices + 1 source file deduped into _report + wiki/index.md + wiki/log.md + report). 5 per-topic PRs opened (#91–#95); #91–#94 merged, #95 queued for auto-merge. 4 disputes filed, 11 open questions added. Report: wiki/reports/2026-05-30.md. Note: gh CLI unauthenticated in cloud env; GitHub ops via MCP tools; index-wiki model download blocked (HuggingFace 403); qmd index has 0 docs/chunks.
