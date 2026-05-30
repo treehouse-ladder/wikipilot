@@ -73,7 +73,11 @@ sources:
   - "[[claude-opus-4-8-a-modest-but-tangible-improvement-8a5bbbe8]]"
   - "[[synthesizing-multi-agent-harnesses-for-vulnerability-discovery-9befd6a7]]"
   - "[[terminal-wrench-a-dataset-of-331-reward-hackable-environments-and-3-632-exploit-trajectories-3c03fe63]]"
-last_updated: 2026-05-29
+  - "[[cursor-3-6-auto-review-run-mode-ab6c2cb9]]"
+  - "[[i-think-anthropic-and-openai-have-found-product-market-fit-7865b47e]]"
+  - "[[do-androids-dream-of-breaking-the-game-systematically-auditing-ai-agent-benchmarks-with-benchjack-e91c1eef]]"
+  - "[[a-dataset-of-agentic-ai-coding-tool-configurations-41abfcf8]]"
+last_updated: 2026-05-30
 last_verified: 2026-05-29
 freshness_window_days: 30
 ---
@@ -534,6 +538,27 @@ lint stays quiet until each page actually exists:
 - [ ] AgentFlow's synthesized harness found real Chrome zero-days [[synthesizing-multi-agent-harnesses-for-vulnerability-discovery-9befd6a7]] — does the same synthesis loop generalize to offensive-vs-defensive security split (SkillJect attack automation vs the constructive-security AIDev study)?
 - [ ] Terminal Wrench's 331 reward-hackable environments are drawn from five public benchmarks [[terminal-wrench-a-dataset-of-331-reward-hackable-environments-and-3-632-exploit-trajectories-3c03fe63]] — which of the SWE-bench / Terminal-Bench variants the wiki tracks are among those five?
 - [ ] Do AgentFlow's harness-synthesis gains [[synthesizing-multi-agent-harnesses-for-vulnerability-discovery-9befd6a7]] survive once the base-LLM is controlled, given Beyond Resolution Rates finds the base LLM is the primary driver of outcome?
+- [ ] Does Cursor 3.6's Auto-review Run Mode [[cursor-3-6-auto-review-run-mode-ab6c2cb9]] include reversibility checkpoints comparable to Claude Code's /rewind, or is the safety story purely heuristic gating on Shell/MCP/Fetch calls?
+- [ ] Can the Agentic Harness Engineering (AHE) observability loop be applied prospectively to a single user's Claude Code config, or does it require centralized trajectory analysis at scale [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]]?
+- [ ] Are any of the BenchJack reward-hacking exploits [[do-androids-dream-of-breaking-the-game-systematically-auditing-ai-agent-benchmarks-with-benchjack-e91c1eef]] applicable to SWE-Bench Verified specifically — the leaderboard that frontier-model vendors cite most heavily?
+
+## Recent updates (2026-05-30)
+
+Cursor 3.6 (released 2026-05-29) introduces **Auto-review Run Mode** — a new execution mode that lets the agent run Shell, MCP, and Fetch tool calls with fewer approval prompts by automatically reviewing actions against a safety threshold and pausing only for higher-risk operations [[cursor-3-6-auto-review-run-mode-ab6c2cb9]]. This continues the industry pattern: Anthropic added dynamic workflows + checkpoints in Opus 4.8 week; Cursor 3.5 added Automations; Auto-review is the "loosen the brakes once a checkpoint exists" follow-on.
+
+> Auto-review is a new run mode that lets Cursor work for longer with fewer approval prompts, while keeping execution safe. It applies to Shell, MCP, and Fetch tool calls.
+
+Simon Willison's 2026-05-27 essay argues that **both Anthropic (Claude Code) and OpenAI (Codex) have found product-market fit** with their coding-agent products [[i-think-anthropic-and-openai-have-found-product-market-fit-7865b47e]]. The signal he cites: Enterprise pricing equals listed API pricing for both, indicating demand at full cost. The underlying thesis is that November 2025 was the inflection point when coding agents crossed from "often-work" to "mostly-work" via reinforcement learning, with Anthropic's $1.25B/month compute spend as a revealed-preference indicator of the market size.
+
+> The real news from November 2025 was that coding agents got good — OpenAI and Anthropic had spent most of 2025 using reinforcement learning techniques, and by November the results became apparent, with coding agents crossing a quality barrier where they could be used as a daily-driver to get real work done.
+
+**BenchJack** [[do-androids-dream-of-breaking-the-game-systematically-auditing-ai-agent-benchmarks-with-benchjack-e91c1eef]] is the most provocative finding of this run: an auditing agent that produces verifiable reward-hacking exploits on 9 of 10 popular agent benchmarks, achieving near-perfect scores without solving any problems. The flaw taxonomy (context leakage, verification shortcuts, environment side-channels, oracle contamination, metric gaming) gives a structured vocabulary for benchmark critique that extends beyond the reward-hacking environments already tracked in [[terminal-wrench-a-dataset-of-331-reward-hackable-environments-and-3-632-exploit-trajectories-3c03fe63]].
+
+> BenchJack was applied to ten popular agent benchmarks covering multiple domains and evaluation methods, and generated working reward-hacking exploits on all of the benchmarks that were audited, achieving near-perfect scores on 9 of 10 benchmarks without actually solving a single task.
+
+A **dataset of agentic AI coding tool configurations** [[a-dataset-of-agentic-ai-coding-tool-configurations-41abfcf8]] catalogs 2,847 real-world configuration files from public GitHub repos (CLAUDE.md files, .cursorrules files, Codex system prompt files), finding configurations cluster around five patterns: context-injection, tool-restriction, persona-setting, memory-scaffolding, and output-format. Useful prior art for anyone designing harness defaults or studying how developers actually configure these tools.
+
+> This dataset covers agentic AI coding tools such as Claude Code and OpenAI Codex that execute multi-step coding tasks with limited human oversight.
 
 ## See also
 
