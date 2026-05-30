@@ -266,6 +266,19 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[scott-pilgrim-ex-original-soundtrack-music-review-7d0adae5]]
 - [[music-for-tabletop-rpgs-scoring-your-adventure-with-phandelver-41448781]]
 - [[game-music-is-changing-the-composer-s-new-role-65910821]]
+- [[cursor-3-6-auto-review-run-mode-ab6c2cb9]]
+- [[i-think-anthropic-and-openai-have-found-product-market-fit-7865b47e]]
+- [[do-androids-dream-of-breaking-the-game-systematically-auditing-ai-agent-benchmarks-with-benchjack-e91c1eef]]
+- [[a-dataset-of-agentic-ai-coding-tool-configurations-41abfcf8]]
+- [[cursor-s-composer-2-5-third-on-the-coding-agent-index-b9ec8ce6]]
+- [[one-policy-infinite-npcs-persona-traceable-shared-rl-policies-for-scalable-game-agents-3547f85e]]
+- [[reactivegwm-steering-npc-in-reactive-game-world-models-524d069f]]
+- [[runtime-evaluation-of-procedural-content-generation-in-an-endless-runner-game-using-autonomous-agents-e612b090]]
+- [[007-first-light-has-topped-1-5-million-sales-2978ba61]]
+- [[007-first-light-put-up-massive-launch-day-sales-numbers-65e3523a]]
+- [[call-of-duty-is-finally-returning-to-one-hugely-popular-platform-be402ce2]]
+- [[china-s-top-slay-the-spire-2-players-explain-their-review-bombs-90511849]]
+- [[square-enix-jazz-chrono-trigger-music-review-e41b23fa]]
 
 ## Answers
 
@@ -282,3 +295,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-05-27]]
 - [[2026-05-28]]
 - [[2026-05-29]]
+- [[2026-05-30]]
