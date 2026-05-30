@@ -287,3 +287,7 @@ Daily research run complete: 5 topics, 24 new sources, 32 pages touched (5 topic
 ## [2026-05-29] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#85 (claude/daily-2026-05-29/agentic-coding) was BEHIND main by 3 commits (PRs #86, #88, #89 landed after PR was opened); no text conflicts. Branch updated via GitHub API to current main tip (c74a6ef); auto-merge confirmed active (enabled at PR creation 09:28Z). CI will re-run on updated tip.
+
+## [2026-05-30] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#93 (ai-in-game-dev) self-merged before dispatch; pr#94 (games-of-note) CI green, auto-merge enabled (requeue).
