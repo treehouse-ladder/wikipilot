@@ -2,7 +2,7 @@
 title: "Claude Sonnet 4.6"
 kind: entity
 sources: ["[[introducing-claude-sonnet-46-c4a45eed]]", "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]"]
-last_updated: "2026-05-22"
+last_updated: "2026-05-31"
 last_verified: "2026-05-22"
 freshness_window_days: 30
 input_cost_per_mtoken: 3.00
@@ -34,7 +34,9 @@ Sonnet 4.6 currently sits at 1683 Elo on the live [[gdpval-aa-leaderboard-artifi
 
 > Claude Sonnet 4.6 (Adaptive Reasoning, Max Effort) is #4 at 1683.
 
-_no contradictions or gaps known yet (last reviewed: 2026-05-22)_
+## Disputes
+
+- [[introducing-claude-sonnet-46-c4a45eed]] claims Sonnet 4.6 is "ahead of every other Anthropic model on this evaluation" on GDPval-AA at 1683 Elo; [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]] shows Opus 4.8 now leads at 1890 Elo and [[claude-opus-47-everything-you-need-to-know-751c1827]] shows Opus 4.7 at 1753 Elo — both Anthropic models now rank higher. Status: unresolved (confidence: high; sweep: 2026-05-31)
 
 ## Open questions
 
