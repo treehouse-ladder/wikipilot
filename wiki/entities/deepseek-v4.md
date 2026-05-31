@@ -1,8 +1,8 @@
 ---
 title: "DeepSeek V4"
 kind: entity
-sources: ["[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[deepseek-api-models-and-pricing-8eb12065]]", "[[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]", "[[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]"]
-last_updated: "2026-05-28"
+sources: ["[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[deepseek-api-models-and-pricing-8eb12065]]", "[[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]", "[[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[deepseek-is-back-among-the-leading-open-weights-models-with-v4-pro-and-v4-flash-d16dda28]]", "[[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]]"]
+last_updated: 2026-05-31
 last_verified: "2026-05-24"
 freshness_window_days: 30
 input_cost_per_mtoken: 1.74
@@ -40,6 +40,12 @@ DeepSeek's reasoning-model sibling, DeepSeek R2, shipped in April 2026 as a 32B 
 
 > DeepSeek R2 ... scores 92.7% on AIME 2025 ... and undercuts Western frontier reasoning APIs by roughly 70% on token cost.
 
+Artificial Analysis published a dedicated launch analysis confirming the V4 family positioning [[deepseek-is-back-among-the-leading-open-weights-models-with-v4-pro-and-v4-flash-d16dda28]]: DeepSeek V4 Pro (Reasoning, Max Effort) sits at #2 among open-weights reasoning models at AA Intelligence Index 52, behind Kimi K2.6 (54); DeepSeek V4 Flash (Reasoning, Max Effort) lands at 47 on the same axis. Both models are hybrid thinking/non-thinking. The three-way open-weights top of the leaderboard now reads Kimi K2.6 (54), MiMo-V2.5-Pro (54), DeepSeek V4 Pro (52). On ITBench-AA SRE — the new agentic enterprise IT benchmark — DeepSeek V4 Pro (Reasoning, Max Effort) scores 38%, the #2 open-weights position behind GLM-5.1 (40%) [[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]].
+
+> The top open weights models on Artificial Analysis are: 1. Kimi K2.6 (54), 2. MiMo-V2.5-Pro (54), 3. DeepSeek V4 Pro (Reasoning, Max Effort) (52).
+
+> GLM-5.1 (Reasoning) leads open weights models at 40%, with DeepSeek V4 Pro (Reasoning, Max Effort) at 38%, and Gemma 4 31B (Reasoning) at 37%.
+
 ## Disputes
 
 - [[deepseek-v4-pro-on-hugging-face-a0d5aaf3]] claims V4-Pro-Max's 80.6% SWE-bench Verified is a frontier-leading score, but OpenAI has stopped reporting SWE-bench Verified after finding contamination across all frontier models. On SWE-bench Pro (the contamination-controlled successor) DeepSeek V4-Pro's ranking is not yet published. Status: unresolved.
@@ -51,6 +57,7 @@ DeepSeek's reasoning-model sibling, DeepSeek R2, shipped in April 2026 as a 32B 
 - [ ] What is DeepSeek V4-Pro's SWE-bench Pro score?
 - [ ] Does DeepSeek V4 include DeepSeek Sparse Attention (now documented in GLM-5 [[glm-5-everything-you-need-to-know-a53ff5c1]]), or is that a technique Z.AI integrated independently?
 - [ ] GLM-5.1 now ranks #2 on GDPval-AA among open-weights models (1535 Elo) per [[glm-5-1-intelligence-performance-price-analysis-fb6f086c]], implying DeepSeek V4-Pro leads at #1 — what is V4-Pro's actual GDPval-AA Elo score, and does it hold the open-weights #1 spot consistently across the April-May 2026 time window?
+- [ ] On ITBench-AA SRE, DeepSeek V4 Pro at 38% is behind GLM-5.1 at 40% [[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]] — is this a methodology-driven inversion (K8s-incident-RCA-specific) or does GLM-5.1 genuinely outpace V4 Pro on long-horizon agentic infrastructure tasks?
 
 ## See also
 
