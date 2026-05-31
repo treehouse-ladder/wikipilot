@@ -77,7 +77,13 @@ sources:
   - "[[i-think-anthropic-and-openai-have-found-product-market-fit-7865b47e]]"
   - "[[do-androids-dream-of-breaking-the-game-systematically-auditing-ai-agent-benchmarks-with-benchjack-e91c1eef]]"
   - "[[a-dataset-of-agentic-ai-coding-tool-configurations-41abfcf8]]"
-last_updated: 2026-05-30
+  - "[[from-model-scaling-to-system-scaling-scaling-the-harness-in-agentic-ai-80b4d5d5]]"
+  - "[[harness-engineering-as-categorical-architecture-443f539f]]"
+  - "[[harnesses-for-inference-time-alignment-over-execution-trajectories-93428905]]"
+  - "[[ai-harness-engineering-a-runtime-substrate-for-foundation-model-software-agents-3354d29a]]"
+  - "[[sqlite-agents-md-62a30e39]]"
+  - "[[updates-to-bugbot-for-teams-and-individuals-7716e08c]]"
+last_updated: 2026-05-31
 last_verified: 2026-05-29
 freshness_window_days: 30
 ---
@@ -474,6 +480,7 @@ lint stays quiet until each page actually exists:
 - [[introducing-claude-opus-4-8-5348a7d2]] is a vendor announcement framing Claude Opus 4.8 as topping the Super-Agent benchmark and powering reliable production agentic workflows; [[claude-opus-4-8-a-modest-but-tangible-improvement-8a5bbbe8]] (independent practitioner) characterizes the same release as "a modest but tangible improvement" with an unchanged January 2026 knowledge/training cutoff vs 4.7. Status: unresolved
 - [[synthesizing-multi-agent-harnesses-for-vulnerability-discovery-9befd6a7]] reports an automatically-synthesized multi-agent harness reaching 84.3% on TerminalBench-2 with Claude Opus 4.6 (claimed top of the public leaderboard); [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] shows Terminal-Bench scores can swing several percentage points from infrastructure resource configuration alone. Status: unresolved
 - [[terminal-wrench-a-dataset-of-331-reward-hackable-environments-and-3-632-exploit-trajectories-3c03fe63]] demonstrates that 331 terminal-agent benchmark environments are reward-hackable; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents deterministic test-patch scoring on a human-filtered task set as the trusted gold standard. Status: unresolved — Terminal Wrench escalates the scoring-reliability dispute from "misjudgments" to "actively exploitable verifiers".
+- [[from-model-scaling-to-system-scaling-scaling-the-harness-in-agentic-ai-80b4d5d5]] and [[ai-harness-engineering-a-runtime-substrate-for-foundation-model-software-agents-3354d29a]] argue more elaborate harnesses unlock more capability (system scaling > model scaling); [[harnesses-for-inference-time-alignment-over-execution-trajectories-93428905]] shows empirically that more elaborate decomposition / guidance can reduce final task success via over-decomposition and over-pruning. Status: unresolved — likely reconciled via 'harness elaboration must be co-designed with retry/verification, not added monotonically'.
 
 ## Open questions
 
@@ -541,6 +548,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does Cursor 3.6's Auto-review Run Mode [[cursor-3-6-auto-review-run-mode-ab6c2cb9]] include reversibility checkpoints comparable to Claude Code's /rewind, or is the safety story purely heuristic gating on Shell/MCP/Fetch calls?
 - [ ] Can the Agentic Harness Engineering (AHE) observability loop be applied prospectively to a single user's Claude Code config, or does it require centralized trajectory analysis at scale [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]]?
 - [ ] Are any of the BenchJack reward-hacking exploits [[do-androids-dream-of-breaking-the-game-systematically-auditing-ai-agent-benchmarks-with-benchjack-e91c1eef]] applicable to SWE-Bench Verified specifically — the leaderboard that frontier-model vendors cite most heavily?
+- [ ] Does the categorical-architecture framing in [[harness-engineering-as-categorical-architecture-443f539f]] yield any empirical wins (e.g. fewer integration bugs, faster cross-framework migration) over the engineering-checklist framings, or is it formal-only?
+- [ ] How representative is SQLite's anti-agentic-code stance [[sqlite-agents-md-62a30e39]] of OSS maintainers more broadly in 2026 — is there a measurable upstream-rejection trend distinct from existing data on agentic-PR rejection rates?
+- [ ] Bugbot's published $1.00–$1.50/run economics [[updates-to-bugbot-for-teams-and-individuals-7716e08c]] imply roughly $1.40–$2.10 cost per bug found at default effort — does this match comparable per-bug economics on Anthropic's or OpenAI's PR-review offerings, or is Cursor's pricing materially above/below market?
 
 ## Recent updates (2026-05-30)
 
@@ -559,6 +569,32 @@ Simon Willison's 2026-05-27 essay argues that **both Anthropic (Claude Code) and
 A **dataset of agentic AI coding tool configurations** [[a-dataset-of-agentic-ai-coding-tool-configurations-41abfcf8]] catalogs 2,847 real-world configuration files from public GitHub repos (CLAUDE.md files, .cursorrules files, Codex system prompt files), finding configurations cluster around five patterns: context-injection, tool-restriction, persona-setting, memory-scaffolding, and output-format. Useful prior art for anyone designing harness defaults or studying how developers actually configure these tools.
 
 > This dataset covers agentic AI coding tools such as Claude Code and OpenAI Codex that execute multi-step coding tasks with limited human oversight.
+
+## Harness-as-first-class-object crystallizes; SQLite draws a line; Bugbot usage pricing (2026-05-31)
+
+Late May 2026 brought a cluster of arXiv preprints arguing the same thesis from different angles: **the agent harness is now the primary engineering substrate, not the model**. A position paper frames this as the next scaling axis [[from-model-scaling-to-system-scaling-scaling-the-harness-in-agentic-ai-80b4d5d5]], arguing that agent performance emerges from the interaction of six harness layers — foundation model, memory substrate, context constructor, skill-routing layer, orchestration loop, and verification-and-governance layer — and that treating the harness as a first-class object of design and evaluation is the bottleneck-shifting move.
+
+> The next major bottleneck in agentic AI is system scaling, not only model scaling: the design of auditable, persistent, modular, and verifiable architectures around foundation models. We refer to this shift as scaling the harness: treating the structured execution layer around a foundation model as a first-class object of design, evaluation, and optimization.
+
+A companion preprint formalizes the same substrate component-by-component for software-engineering agents, identifying **eleven distinct harness responsibilities** [[ai-harness-engineering-a-runtime-substrate-for-foundation-model-software-agents-3354d29a]] that any production agent must address — task specification, context selection, tool access, project memory, task state, observability, failure attribution, verification, permissions, entropy auditing, and intervention recording. This is a useful checklist when auditing your own agentic-coding setup against omissions.
+
+> Software-engineering capability emerges from a model–harness–environment system, in which a runtime substrate—the harness—mediates how a foundation-model agent observes a project, acts on it, receives feedback, and establishes that a change is complete. We formalize this substrate as AI Harness Engineering and identify eleven component responsibilities.
+
+A more theoretical preprint maps harness design onto category theory [[harness-engineering-as-categorical-architecture-443f539f]] — Memory as coalgebraic state, Skills as operad-composed objects, Protocols as syntactic wiring — to argue that structural guarantees are harness-level properties that should survive cross-framework compilation. Whether this categorical framing yields practical benefits over engineering checklists is an open question.
+
+> The agent harness—the system layer comprising prompts, tools, memory, and orchestration logic that surrounds the model—has emerged as the central engineering abstraction for LLM-based agents. Yet harness design remains ad hoc, with no formal theory governing composition, preservation of properties under compilation, or systematic comparison across frameworks.
+
+A fourth preprint pushes back with a useful empirical caution [[harnesses-for-inference-time-alignment-over-execution-trajectories-93428905]]: more elaborate harnesses are **not uniformly better**. Separating harness into task decomposition and guided execution, the authors show that increasing decomposition depth or guidance strength can reduce final task success via concrete failure modes — over-decomposition, over-pruning, and hallucinated execution. This is directly relevant to anyone tempted to add another subagent layer to their agentic-coding workflow.
+
+> More elaborate harnesses are not uniformly better: increasing decomposition or guidance can sometimes improve execution, but can also reduce final task success. The decomposition allows quantifying how workflow granularity, retry budgets, and guidance-induced action reweighting shape the performance limits of harness design, and reveals concrete failure modes, including over-decomposition, over-pruning, and hallucinated execution.
+
+On the ecosystem front, **SQLite explicitly hardened its anti-agentic-code stance** [[sqlite-agents-md-62a30e39]] in late May: a prototype `AGENTS.md` was added at the repo root, and a subsequent commit deleted the word "(currently)" from "SQLite does not accept agentic code" with the commit message "Strengthen the statement about not accepting agentic code". The project also explicitly rejects PRs without prior agreement / legal paperwork, but will accept agentic bug reports with a reproducible test case. This is a notable counter-data-point to the broader "agents are merging into upstream" narrative.
+
+> SQLite does not accept agentic code. However the project will accept agentic bug reports that include a reproducible test case. Patches or pull requests demonstrating a possible fix, for documentation purposes, are welcomed.
+
+Finally, **Cursor switched Bugbot from $40/seat/month to usage-based pricing** [[updates-to-bugbot-for-teams-and-individuals-7716e08c]] with per-run effort tuning. The published per-run economics — $1.00–$1.50 average, 0.7 bugs/run at default effort with 79%+ resolved at merge, 0.95 bugs/run at high effort — are unusually concrete numbers for the agentic-PR-review category.
+
+> The average Bugbot run costs $1.00-$1.50, depending on PR size and complexity. With default effort, Bugbot finds 0.7 bugs per run, on average, and over 79% of these bugs are resolved by users at merge time. With high effort, Bugbot finds 0.95 bugs per run, on average.
 
 ## See also
 
