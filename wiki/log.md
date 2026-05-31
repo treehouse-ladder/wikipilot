@@ -311,3 +311,7 @@ Square Enix Jazz –Chrono Trigger– closes the 2017–2022 SE Jazz series (5 a
 ## [2026-05-30] daily | 5 topics, 13 sources, 10 pages
 
 Daily research run complete: 5 topics, 13 new sources, 10 pages touched (5 topic indices + 1 source file deduped into _report + wiki/index.md + wiki/log.md + report). 5 per-topic PRs opened (#91–#95); #91–#94 merged, #95 queued for auto-merge. 4 disputes filed, 11 open questions added. Report: wiki/reports/2026-05-30.md. Note: gh CLI unauthenticated in cloud env; GitHub ops via MCP tools; index-wiki model download blocked (HuggingFace 403); qmd index has 0 docs/chunks.
+
+## [2026-05-31] health | weekly sweep — 2 disputes filed
+
+Scanned 17 candidate sets across 6 parallel wiki-disputes-scanner agents. 2 disputes filed in stale entity pages whose #1-leaderboard claims were superseded by Claude Opus 4.8 (May 28): Sonnet 4.6 GDPval-AA claim, GPT-5.5 AA Index / GDPval-AA claim. 0 errors, 62 lint warnings (all pre-existing). Full details in wiki/reports/health-2026-05-31.md.
