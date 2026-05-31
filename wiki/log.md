@@ -315,3 +315,27 @@ Daily research run complete: 5 topics, 13 new sources, 10 pages touched (5 topic
 ## [2026-05-31] health | weekly sweep — 2 disputes filed
 
 Scanned 17 candidate sets across 6 parallel wiki-disputes-scanner agents. 2 disputes filed in stale entity pages whose #1-leaderboard claims were superseded by Claude Opus 4.8 (May 28): Sonnet 4.6 GDPval-AA claim, GPT-5.5 AA Index / GDPval-AA claim. 0 errors, 62 lint warnings (all pre-existing). Full details in wiki/reports/health-2026-05-31.md.
+
+## [2026-05-31] daily | agentic-coding — 6 sources, 7 pages
+
+Harness-as-first-class-object cluster (4 arXiv preprints): system-scaling position paper, 11-component software-agent harness taxonomy, categorical architecture formalization, inference-time alignment showing more-elaborate harnesses not uniformly better. SQLite hardened anti-agentic-code stance (removed "(currently)"). Cursor Bugbot switches to usage-based pricing ($1.00–$1.50/run, 0.7–0.95 bugs/run). 1 new dispute, 3 open questions. PR #98 queued.
+
+## [2026-05-31] daily | frontier-models — 4 sources, 7 pages
+
+ITBench-AA: new K8s-incident-RCA agentic benchmark; all frontier models <50%; Opus 4.7 leads at 47% ($5.38/task). AA-LCR (100k-token multi-doc reasoning) added to Intelligence Index v4.0; GPT-5.2 Codex leads at 75.7%. Mistral Medium 3.5 (128B, 256k ctx, 77.6% SWE-Bench Verified, parallel cloud agents). DeepSeek V4 Pro confirmed at AA Index 52 (#2 open-weights). Cross-page sweep: deepseek-v4 entity, claude-opus-4.7 entity (re-verified). 0 disputes, 4 open questions. PR #99 queued.
+
+## [2026-05-31] daily | ai-in-game-dev — 5 sources, 6 pages
+
+AssetGen (Meta): image-to-mesh in 30s (Flash: 14s), mobile-ready polygon budget. World-Gen-to-Quest-Line dependency pipeline: coherent RPG PCG without degradation. NVIDIA DLSS 4.5 UE plugin + ACE Chatterbox Multilingual 500M (24 languages). Audio2Face open-sourced under MIT. Unity AI open beta (Editor 6.3+, MCP Server included). 1 dispute (AssetGen vs HunyuanStudio deployment-vs-fidelity tradeoff), 3 open questions. PR #100 queued.
+
+## [2026-05-31] daily | games-of-note — 8 sources, 9 pages
+
+Subnautica 2: 4M units in 17 days, ~$250M Krafton earnout on the line. CCP Games → Fenris Creations: $120M management buyout from Pearl Abyss, Google DeepMind minority stake + research partnership. Bungie: significant layoffs imminent post-final Destiny 2 update, no Destiny 3. Build a Rocket Boy (MindsEye): 170/250 staff cut, IWGB surveillance-software lawsuit. MercurySteam, Hinterland (Blackfrost delayed), Visual Concepts layoffs. EA: $8B record sales + $55B Saudi-led LBO (largest LBO in history). 1 dispute (MindsEye failure attribution), 3 open questions. PR #101 queued.
+
+## [2026-05-31] daily | game-music — 0 sources, 1 page
+
+No new qualifying sources from allowlist domains in the 2026-05-24–2026-05-31 window (low-flow topic, expected). last_updated bumped; divergence sentinel already satisfied from 2026-05-30. PR #102 queued.
+
+## [2026-05-31] daily | 5 topics, 23 sources, 30 pages
+
+Daily research run complete: 5 topics, 23 new sources, 30 pages touched (5 topic indices + 2 entity pages [deepseek-v4, claude-opus-4.7] + 23 source pages). 5 per-topic PRs opened (#98–#102), all queued for auto-merge. 3 disputes filed, 13 open questions added. Report: wiki/reports/2026-05-31.md. Note: gh CLI unauthenticated in cloud env; GitHub ops via MCP tools; index-wiki model download blocked (HuggingFace 403); existing .qmd index used.
