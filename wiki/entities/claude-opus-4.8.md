@@ -2,9 +2,9 @@
 title: "Claude Opus 4.8"
 kind: entity
 aliases: ["Opus 4.8", "claude-opus-4-8", "Claude Opus 4.8"]
-sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]"]
-last_updated: 2026-05-29
-last_verified: 2026-05-29
+sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]"]
+last_updated: 2026-06-01
+last_verified: 2026-06-01
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
 output_cost_per_mtoken: 25.00
@@ -14,9 +14,9 @@ aa_intelligence_index_source: "[[claude-opus-4-8-takes-the-lead-on-the-artificia
 gdpval_aa_elo: 1890
 gdpval_aa_elo_source: "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]"
 swe_bench_verified: 0.886
-swe_bench_verified_source: "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]"
-cybergym: null
-cybergym_source: null
+swe_bench_verified_source: "[[claude-opus-4-8-benchmarks-explained-60247f20]]"
+cybergym: 0.788
+cybergym_source: "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]"
 arc_agi_2: null
 arc_agi_2_source: null
 ---
@@ -37,13 +37,20 @@ On coding, Opus 4.8 scores 88.6% on SWE-bench Verified and 69.2% on the contamin
 
 > Opus 4.8 scores 88.6% on SWE-bench Verified and 69.2% on SWE-bench Pro, up from 64.3% on Opus 4.7.
 
+Independent placement detail (post-launch): Opus 4.8 scores 78.8% on CyberGym vulnerability reproduction, third behind Mythos Preview (83.1%) and GPT-5.5 (81.8%) [[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]] — up from Opus 4.7's 73.1%. On SWE-Bench Pro, Opus 4.8's 69.2% is over 10 points ahead of GPT-5.5 (58.6%) and Gemini 3.1 Pro (54.2%) [[claude-opus-4-8-benchmarks-explained-60247f20]]. Mythos still leads by 8.6 points on SWE-bench Pro (77.8 vs 69.2), and by a large margin on the Firefox-exploit subset of CyberGym (70.8% full-exploit rate vs 8.8%), while the two tie on GPQA Diamond at ~94 [[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]].
+
+> Claude Opus 4.8 scored 78.8% on the CyberGym leaderboard, placing it third behind Claude Mythos Preview at 83.1% and GPT-5.5 at 81.8%.
+
+> SWE-Bench Pro (Coding): Opus 4.8 lands at 69.2%, almost 5 points clear of Opus 4.7 (64.3%) and over 10 points ahead of GPT-5.5 (58.6%) and Gemini 3.1 Pro (54.2%).
+
 ## Disputes
 
 - [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]] claims Opus 4.8 is the public AA Intelligence Index #1 at 61.4; [[claude-mythos-preview-d737ab91]] claims an unreleased Anthropic model (Claude Mythos Preview) is state-of-the-art on SWE-bench Verified (93.9%) and withheld from GA. Status: unresolved — the public leaderboard #1 (Opus 4.8) is not Anthropic's true capability ceiling while Mythos remains invitation-only.
 
 ## Open questions
 
-- [ ] What is Claude Opus 4.8's ARC-AGI-2 and CyberGym placement? Neither was published in the launch post [[introducing-claude-opus-4-8-5348a7d2]] or the AA analysis [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]], so both profile fields stay null pending an independent leaderboard.
+- [ ] What is Claude Opus 4.8's ARC-AGI-2 placement? It was not published in the launch post [[introducing-claude-opus-4-8-5348a7d2]] or the AA analysis [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]], so the profile field stays null pending an independent leaderboard.
+- [ ] Why is the public-vs-Mythos gap an order of magnitude larger on CyberGym Firefox-exploit production (8.8% vs 70.8%) than on aggregate CyberGym (78.8 vs 83.1) or GPQA Diamond (tied at ~94)?
 
 ## See also
 
