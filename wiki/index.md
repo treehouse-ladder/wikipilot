@@ -316,6 +316,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[introducing-command-a-94d80d08]]
 - [[claude-opus-4-8-benchmarks-explained-60247f20]]
 - [[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]
+- [[stop-killing-games-bill-passes-california-assembly-1103ca83]]
+- [[balatro-publisher-playstack-is-being-sold-to-gamespot-owner-imc-e464c86e]]
+- [[embracer-to-spin-off-major-video-game-franchises-and-studios-aa29c338]]
+- [[ci-games-and-epic-games-terminate-lords-of-the-fallen-ii-publishing-deal-57b99b0c]]
 
 ## Answers
 
