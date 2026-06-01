@@ -83,8 +83,15 @@ sources:
   - "[[ai-harness-engineering-a-runtime-substrate-for-foundation-model-software-agents-3354d29a]]"
   - "[[sqlite-agents-md-62a30e39]]"
   - "[[updates-to-bugbot-for-teams-and-individuals-7716e08c]]"
-last_updated: 2026-05-31
-last_verified: 2026-05-29
+  - "[[how-we-contain-claude-across-products-64af1d1a]]"
+  - "[[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]]"
+  - "[[towards-direct-evaluation-of-harness-optimizers-via-priority-ranking-b643bf3f]]"
+  - "[[towards-evaluation-engineering-an-empirical-study-of-ml-evaluation-harnesses-in-the-wild-9be30311]]"
+  - "[[adapting-the-interface-not-the-model-runtime-harness-adaptation-for-deterministic-llm-agents-0cefc3d8]]"
+  - "[[continual-harness-online-adaptation-for-self-improving-foundation-agents-f68f2119]]"
+  - "[[building-self-improving-tax-agents-with-codex-c7affab7]]"
+last_updated: 2026-06-01
+last_verified: 2026-06-01
 freshness_window_days: 30
 ---
 
@@ -433,6 +440,38 @@ On the **security floor** the wiki tracks, a third AIDev study supplies the miss
 
 > Security-related Agentic-PRs constitute a meaningful share of agent activity (approximately 4%), and rather than focusing solely on narrow vulnerability fixes, agents most frequently perform supportive security hardening activities, including testing, documentation, configuration, and improved error handling.
 
+## 2026-06-01 update — harness engineering crystallizes as a research field
+
+Late May 2026 produced a tight cluster of arxiv papers that converge on the same thesis: for frontier models, the harness is now a stronger predictor of coding-agent performance than the model itself. [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]] formalizes this as the **Binding Constraint Thesis**, arguing that head-to-head model comparisons without disclosed harness configurations are scientifically meaningless.
+
+> For long-horizon tasks evaluated across models with comparable frontier capability, the agent execution harness — namely the infrastructure layer that governs context construction, tool interaction, orchestration, and verification around a language model — is often a stronger determinant of agent performance than the model it wraps.
+
+Two papers attack the harness-optimization measurement problem itself. [[towards-direct-evaluation-of-harness-optimizers-via-priority-ranking-b643bf3f]] notes that the field has been evaluating harness optimizers only by downstream agent gains, which hides erroneous intermediate edits; they propose a **priority ranking** protocol where the optimizer ranks tools by their expected contribution and is scored against an oracle ranking.
+
+> Current studies evaluate optimizers solely by observing target agents' performance gains, and this indirect evaluation neglects optimizers' actions at intermediate steps, which are often erroneous and hinder agent performance.
+
+[[towards-evaluation-engineering-an-empirical-study-of-ml-evaluation-harnesses-in-the-wild-9be30311]] is the empirical companion: 57 evaluation harnesses, 16,560 issues classified, and a finding that 41.4% of operational pain concentrates in the **Specification** stage (integrating models, datasets, judges).
+
+> Most harness operational challenges concentrate in the Specification stage (41.4% of issues), where harnesses integrate external models, datasets, and scoring judges.
+
+On the adaptation side, [[adapting-the-interface-not-the-model-runtime-harness-adaptation-for-deterministic-llm-agents-0cefc3d8]] proposes **Life-Harness**, a lifecycle-aware runtime layer that converts recurring failure trajectories into reusable interventions without touching model weights — improving 116 of 126 model–environment combos across 18 backbones on τ-bench / τ²-bench / AgentBench.
+
+> Life-Harness evolves from training trajectories by converting recurring interaction failures into reusable interventions across environment contracts, procedural skills, action realization, and trajectory regulation, and remains fixed for evaluation on unseen tasks.
+
+[[continual-harness-online-adaptation-for-self-improving-foundation-agents-f68f2119]] extends the same idea to embodied agents and reports a remarkable game-dev-adjacent milestone: a Gemini-based harness completed Pokemon Blue, Yellow Legacy on hard mode, and Crystal without a lost battle, with the agent self-iterating on its own strategy through long-context memory.
+
+> Continual Harness is a reset-free self-improving harness for embodied agents that removes the human from the refinement loop, where the agent alternates between acting and refining its own prompt, sub-agents, skills, and memory.
+
+On the production side, Anthropic published [[how-we-contain-claude-across-products-64af1d1a]] — a deep technical look at how containment is now the structural answer to approval fatigue. The post discloses internal telemetry showing **users approve 93% of Claude Code permission prompts**, motivating the auto-mode classifier stack (input-layer prompt-injection probe + Sonnet 4.6 transcript classifier) that ships today.
+
+> Telemetry showed users approved roughly 93% of permission prompts, and the more approvals a user sees, the less attention they pay to each, becoming over time much less diligent in their supervision.
+
+The post also discloses three Claude Code vulnerabilities reported via Anthropic's disclosure program between mid-2025 and January 2026 that executed code before user consent, plus a February 2026 internal red-team exercise that successfully phished an Anthropic employee into launching Claude Code with a malicious prompt.
+
+Finally, [[building-self-improving-tax-agents-with-codex-c7affab7]] is OpenAI's first detailed customer write-up of a self-improving agent loop in production (Thrive Holdings / Crete accountants), positioning evals + practitioner feedback + Codex-driven iteration as the assembly line for vertical agents.
+
+> Real-world systems behave differently in production than in labs, and teams often discover failures after launch and spend weeks adjusting prompts — the feedback loop is manual and slow, and only improves when an engineer advances it.
+
 ## Comparisons
 
 The comparison pages below are pre-declared by the charter; they are
@@ -481,6 +520,7 @@ lint stays quiet until each page actually exists:
 - [[synthesizing-multi-agent-harnesses-for-vulnerability-discovery-9befd6a7]] reports an automatically-synthesized multi-agent harness reaching 84.3% on TerminalBench-2 with Claude Opus 4.6 (claimed top of the public leaderboard); [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] shows Terminal-Bench scores can swing several percentage points from infrastructure resource configuration alone. Status: unresolved
 - [[terminal-wrench-a-dataset-of-331-reward-hackable-environments-and-3-632-exploit-trajectories-3c03fe63]] demonstrates that 331 terminal-agent benchmark environments are reward-hackable; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents deterministic test-patch scoring on a human-filtered task set as the trusted gold standard. Status: unresolved — Terminal Wrench escalates the scoring-reliability dispute from "misjudgments" to "actively exploitable verifiers".
 - [[from-model-scaling-to-system-scaling-scaling-the-harness-in-agentic-ai-80b4d5d5]] and [[ai-harness-engineering-a-runtime-substrate-for-foundation-model-software-agents-3354d29a]] argue more elaborate harnesses unlock more capability (system scaling > model scaling); [[harnesses-for-inference-time-alignment-over-execution-trajectories-93428905]] shows empirically that more elaborate decomposition / guidance can reduce final task success via over-decomposition and over-pruning. Status: unresolved — likely reconciled via 'harness elaboration must be co-designed with retry/verification, not added monotonically'.
+- [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]] claims the harness is now a stronger determinant of agent performance than the model; [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] (already on this page) found 'the LLM is the primary driver of both outcome and behavior' across 9,374 trajectories. Status: unresolved — the two studies use different task distributions and measurement methodologies.
 
 ## Open questions
 
@@ -551,6 +591,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does the categorical-architecture framing in [[harness-engineering-as-categorical-architecture-443f539f]] yield any empirical wins (e.g. fewer integration bugs, faster cross-framework migration) over the engineering-checklist framings, or is it formal-only?
 - [ ] How representative is SQLite's anti-agentic-code stance [[sqlite-agents-md-62a30e39]] of OSS maintainers more broadly in 2026 — is there a measurable upstream-rejection trend distinct from existing data on agentic-PR rejection rates?
 - [ ] Bugbot's published $1.00–$1.50/run economics [[updates-to-bugbot-for-teams-and-individuals-7716e08c]] imply roughly $1.40–$2.10 cost per bug found at default effort — does this match comparable per-bug economics on Anthropic's or OpenAI's PR-review offerings, or is Cursor's pricing materially above/below market?
+- [ ] Does the Binding Constraint Thesis hold once we control for context-window size and prompt caching, or are those harness features the actual binding constraint?
+- [ ] How do the harness-optimizer benchmarks in [[towards-direct-evaluation-of-harness-optimizers-via-priority-ranking-b643bf3f]] correlate with end-to-end SWE-bench-Verified gains?
+- [ ] Anthropic's [[how-we-contain-claude-across-products-64af1d1a]] reports 93% prompt-approval rates — what is the equivalent figure for Codex, Cursor, and Antigravity? (No public number disclosed.)
 
 ## Recent updates (2026-05-30)
 

@@ -14,6 +14,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Concepts
 
+- [[harness-engineering]]
+- [[sandboxing]]
 - [[subquadratic-attention]]
 
 ## Entities
@@ -33,6 +35,13 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[how-we-contain-claude-across-products-64af1d1a]]
+- [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]]
+- [[towards-direct-evaluation-of-harness-optimizers-via-priority-ranking-b643bf3f]]
+- [[towards-evaluation-engineering-an-empirical-study-of-ml-evaluation-harnesses-in-the-wild-9be30311]]
+- [[adapting-the-interface-not-the-model-runtime-harness-adaptation-for-deterministic-llm-agents-0cefc3d8]]
+- [[continual-harness-online-adaptation-for-self-improving-foundation-agents-f68f2119]]
+- [[building-self-improving-tax-agents-with-codex-c7affab7]]
 - [[seamless-haptics-for-sound-designers-meta-haptics-studio-meets-fmod-and-wwise-891ab31d]]
 - [[david-wise-on-creating-gaming-soundtracks-40-years-later-dc37403c]]
 - [[final-fantasy-distant-worlds-concerts-set-to-sail-through-the-u-s-in-2026-bd12486f]]
