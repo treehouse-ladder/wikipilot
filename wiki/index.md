@@ -320,6 +320,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[balatro-publisher-playstack-is-being-sold-to-gamespot-owner-imc-e464c86e]]
 - [[embracer-to-spin-off-major-video-game-franchises-and-studios-aa29c338]]
 - [[ci-games-and-epic-games-terminate-lords-of-the-fallen-ii-publishing-deal-57b99b0c]]
+- [[akira-yamaoka-legendary-silent-hill-composer-to-score-remothered-red-nuns-legacy-5fec3c10]]
+- [[ai-vinyl-and-indie-supremacy-whats-shaping-video-game-music-in-2026-fadb3642]]
+- [[london-mozart-players-the-colours-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d3196284]]
+- [[bafta-games-in-concert-set-to-premiere-at-londons-royal-festival-hall-2f16568a]]
+- [[review-persona-live-2026-awakenings-brought-the-vibes-in-first-batch-of-u-s-concerts-63f4bb81]]
+- [[deltarune-piano-collections-volume-1-music-review-c3915b68]]
 
 ## Answers
 
