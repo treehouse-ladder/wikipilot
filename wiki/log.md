@@ -339,3 +339,7 @@ No new qualifying sources from allowlist domains in the 2026-05-24–2026-05-31 
 ## [2026-05-31] daily | 5 topics, 23 sources, 30 pages
 
 Daily research run complete: 5 topics, 23 new sources, 30 pages touched (5 topic indices + 2 entity pages [deepseek-v4, claude-opus-4.7] + 23 source pages). 5 per-topic PRs opened (#98–#102), all queued for auto-merge. 3 disputes filed, 13 open questions added. Report: wiki/reports/2026-05-31.md. Note: gh CLI unauthenticated in cloud env; GitHub ops via MCP tools; index-wiki model download blocked (HuggingFace 403); existing .qmd index used.
+
+## [2026-06-01] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#108 (claude/daily-2026-06-01/game-music): stale DIRTY state self-resolved — GitHub re-evaluated, found CLEAN, squash-merged (51d3134). Lint: 0 errors, 72 pre-existing warnings.
