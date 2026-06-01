@@ -22,6 +22,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 - [[claude-opus-4.7]]
 - [[claude-opus-4.8]]
+- [[cohere-command-a-plus]]
 - [[deepseek-v4]]
 - [[gemini-3.1-pro]]
 - [[glm-5]]
@@ -311,6 +312,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[mindseye-developer-build-a-rocket-boy-confirms-layoffs-7ac7894f]]
 - [[ea-sets-a-new-8-billion-sales-record-just-months-after-laying-off-battlefield-6-developers-9ddae332]]
 - [[report-wwe-2k26-dev-visual-concepts-is-laying-off-staff-8081fa5d]]
+- [[cohere-launches-open-weights-model-command-a-more-than-a-year-since-the-command-a-release-7a929ac1]]
+- [[introducing-command-a-94d80d08]]
+- [[claude-opus-4-8-benchmarks-explained-60247f20]]
+- [[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]
 
 ## Answers
 
