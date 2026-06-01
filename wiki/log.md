@@ -339,3 +339,27 @@ No new qualifying sources from allowlist domains in the 2026-05-24–2026-05-31 
 ## [2026-05-31] daily | 5 topics, 23 sources, 30 pages
 
 Daily research run complete: 5 topics, 23 new sources, 30 pages touched (5 topic indices + 2 entity pages [deepseek-v4, claude-opus-4.7] + 23 source pages). 5 per-topic PRs opened (#98–#102), all queued for auto-merge. 3 disputes filed, 13 open questions added. Report: wiki/reports/2026-05-31.md. Note: gh CLI unauthenticated in cloud env; GitHub ops via MCP tools; index-wiki model download blocked (HuggingFace 403); existing .qmd index used.
+
+## [2026-06-01] daily | agentic-coding — 7 sources, 11 pages
+
+Harness engineering crystallizes as the binding-constraint thesis: harness governs more performance variance than model. 7 new sources (arxiv: BCT, Priority-Ranking, Eval-Engineering, Life-Harness, Continual-Harness; Anthropic containment; Thrive Holdings Codex loop). New concepts: harness-engineering, sandboxing. 1 dispute (BCT vs. Beyond Resolution Rates). 3 open questions. PR #104 merged.
+
+## [2026-06-01] daily | frontier-models — 4 sources, 8 pages
+
+Cohere Command A+ (218B/25B MoE, Apache 2.0, AA Index 37) joins roster as first fully-open-weights 200B-class model. Claude Opus 4.8 CyberGym backfilled (0.788). New entity: cohere-command-a-plus. 2 disputes, 3 open questions. PR #105 merged.
+
+## [2026-06-01] daily | ai-in-game-dev — 6 sources, 8 pages
+
+PBRFusion (NVIDIA/Painkiller RTX): 80% repetitive texture elimination. Roblox Cube 4D generation: mesh + interactivity from text prompt. PhysForge: VLM+diffusion, 150k-asset PhysDB. CA2: call-stack-fed RL game tester. GamED.AI: LangGraph game-dev agent ($0.46/game). Unreal Engine as multi-agent training substrate at CES 2026. 1 dispute, 4 open questions. PR #106 merged.
+
+## [2026-06-01] daily | games-of-note — 4 sources, 6 pages
+
+Stop Killing Games EU petition success. Embracer Fellowship of the Ring IP sale. Playstack (Balatro publisher) acquisition by IMC. CI Games / Epic Games Lords of the Fallen II deal termination. 3 disputes, 4 open questions. PR #107 merged.
+
+## [2026-06-01] daily | game-music — 6 sources, 2 pages
+
+Akira Yamaoka returns (Remothered: Red Nun's Legacy). NME AI/vinyl/indie feature (Wintory + Raine). BAFTA Games in Concert (BBC Concert Orchestra, Jan 31 Royal Festival Hall + UK tour). Sakimoto 40th anniversary at Game Music Festival 2026 (June 13 Fairfield Halls). Persona Live 2026: Awakenings (Hollywood, 30th anniversary). Deltarune Piano Collections Vol. 1 (Materia Collective, Trevor Alan Gomes). 1 dispute, 3 open questions. PR #108 queued.
+
+## [2026-06-01] daily | 5 topics, 27 sources, 35 pages
+
+Daily research run complete: 5 topics, 27 new sources, 35 pages touched (5 topic indices + 2 new concepts [harness-engineering, sandboxing] + 1 new entity [cohere-command-a-plus] + 1 updated entity [claude-opus-4.8] + 27 source pages). PRs #104–#108 opened; #104–#107 merged; #108 in merge queue. 8 disputes filed, 17 open questions added. Report: wiki/reports/2026-06-01.md. Note: gh CLI unauthenticated; GitHub ops via MCP tools; index-wiki model download blocked (HuggingFace 403); existing .qmd index used.
