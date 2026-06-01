@@ -338,3 +338,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-05-29]]
 - [[2026-05-30]]
 - [[2026-05-31]]
+- [[2026-06-01]]
