@@ -29,6 +29,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gpt-5.5]]
 - [[mimo-v2.5-pro]]
 - [[muse-spark]]
+- [[nemotron-3-ultra]]
 
 ## Comparisons
 
@@ -326,6 +327,25 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[bafta-games-in-concert-set-to-premiere-at-londons-royal-festival-hall-2f16568a]]
 - [[review-persona-live-2026-awakenings-brought-the-vibes-in-first-batch-of-u-s-concerts-63f4bb81]]
 - [[deltarune-piano-collections-volume-1-music-review-c3915b68]]
+- [[specbench-measuring-reward-hacking-in-long-horizon-coding-agents-16a403b2]]
+- [[higher-usage-limits-for-claude-and-a-compute-deal-with-spacex-f53c308c]]
+- [[inside-anthropic-2026-developer-conference-6fa21d8d]]
+- [[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]
+- [[gamedevbench-evaluating-agentic-capabilities-through-game-development-44f3ad50]]
+- [[gdc-report-2026-co-development-ai-studio-burnout-0dd7ec11]]
+- [[hy-world-2-0-a-multi-modal-world-model-for-reconstructing-generating-and-simulating-3d-worlds-35523f43]]
+- [[mimic-py-an-extensible-tool-for-personality-driven-automated-game-testing-with-large-language-models-d07afa1c]]
+- [[tripo-ai-debuts-production-grade-native-3d-diffusion-at-gdc-2026-46b8acea]]
+- [[unreal-engine-5-7-pcg-framework-at-gdc-2026-build-massive-procedural-worlds-2x-faster-with-zero-code-5e80af93]]
+- [[working-with-nvidia-ace-to-power-an-interactive-advisor-1c7c676f]]
+- [[split-fiction-dev-hazelight-studios-accrues-50m-total-sales-8eca73f6]]
+- [[gearbox-studio-quebec-founders-start-new-studio-4638a090]]
+- [[wolverine-and-more-what-to-expect-from-playstation-s-june-showcase-c004da72]]
+- [[uk-social-media-ban-could-impact-video-game-platforms-9a72f651]]
+- [[summer-game-fest-co-host-joins-substack-for-players-as-player-gg-looks-to-streamline-game-discovery-7a5d3248]]
+- [[all-games-shown-at-the-xbox-showcase-in-june-are-safe-report-49fcd324]]
+- [[the-new-ivors-composers-awards-will-honor-video-game-composers-b633147b]]
+- [[game-music-festival-announces-composer-panel-for-sxsw-london-2026-a98597ee]]
 
 ## Answers
 
@@ -345,3 +365,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-05-30]]
 - [[2026-05-31]]
 - [[2026-06-01]]
+- [[2026-06-02]]
