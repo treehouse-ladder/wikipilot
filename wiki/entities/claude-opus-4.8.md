@@ -2,15 +2,15 @@
 title: "Claude Opus 4.8"
 kind: entity
 aliases: ["Opus 4.8", "claude-opus-4-8", "Claude Opus 4.8"]
-sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]"]
-last_updated: 2026-06-01
-last_verified: 2026-06-01
+sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]"]
+last_updated: 2026-06-02
+last_verified: 2026-06-02
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
 output_cost_per_mtoken: 25.00
 cost_source: "[[introducing-claude-opus-4-8-5348a7d2]]"
-aa_intelligence_index: 61.4
-aa_intelligence_index_source: "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]"
+aa_intelligence_index: 61
+aa_intelligence_index_source: "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]"
 gdpval_aa_elo: 1890
 gdpval_aa_elo_source: "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]"
 swe_bench_verified: 0.886
@@ -42,6 +42,8 @@ Independent placement detail (post-launch): Opus 4.8 scores 78.8% on CyberGym vu
 > Claude Opus 4.8 scored 78.8% on the CyberGym leaderboard, placing it third behind Claude Mythos Preview at 83.1% and GPT-5.5 at 81.8%.
 
 > SWE-Bench Pro (Coding): Opus 4.8 lands at 69.2%, almost 5 points clear of Opus 4.7 (64.3%) and over 10 points ahead of GPT-5.5 (58.6%) and Gemini 3.1 Pro (54.2%).
+
+> Claude Opus 4.8 (Adaptive Reasoning, Max Effort) currently has the highest Artificial Analysis Intelligence Index score, with a score of 61 among models with published results.
 
 ## Disputes
 
