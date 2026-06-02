@@ -363,3 +363,7 @@ Akira Yamaoka returns (Remothered: Red Nun's Legacy). NME AI/vinyl/indie feature
 ## [2026-06-01] daily | 5 topics, 27 sources, 35 pages
 
 Daily research run complete: 5 topics, 27 new sources, 35 pages touched (5 topic indices + 2 new concepts [harness-engineering, sandboxing] + 1 new entity [cohere-command-a-plus] + 1 updated entity [claude-opus-4.8] + 27 source pages). PRs #104–#108 opened; #104–#107 merged; #108 in merge queue. 8 disputes filed, 17 open questions added. Report: wiki/reports/2026-06-01.md. Note: gh CLI unauthenticated; GitHub ops via MCP tools; index-wiki model download blocked (HuggingFace 403); existing .qmd index used.
+
+## [2026-06-02] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#114 (claude/daily-2026-06-02/game-music) kind=requeue resolved=true — apply_static_gate queued --auto (CI green, mergeable_state=clean)
