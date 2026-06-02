@@ -363,3 +363,27 @@ Akira Yamaoka returns (Remothered: Red Nun's Legacy). NME AI/vinyl/indie feature
 ## [2026-06-01] daily | 5 topics, 27 sources, 35 pages
 
 Daily research run complete: 5 topics, 27 new sources, 35 pages touched (5 topic indices + 2 new concepts [harness-engineering, sandboxing] + 1 new entity [cohere-command-a-plus] + 1 updated entity [claude-opus-4.8] + 27 source pages). PRs #104–#108 opened; #104–#107 merged; #108 in merge queue. 8 disputes filed, 17 open questions added. Report: wiki/reports/2026-06-01.md. Note: gh CLI unauthenticated; GitHub ops via MCP tools; index-wiki model download blocked (HuggingFace 403); existing .qmd index used.
+
+## [2026-06-02] daily | agentic-coding — 3 sources, 4 pages
+
+Claude Opus 4.8 dynamic workflows (hundreds of parallel subagents via Outcomes API), SpaceX compute deal + doubled rate limits, Anthropic 2026 Dev Conference (Outcomes, Multi-agent orchestration, Dreaming), SpecBench reward-hacking benchmark (28pp gap growth per 10× code size). 1 dispute, 2 open questions. PR #110 merged.
+
+## [2026-06-02] daily | frontier-models — 1 source, 4 pages
+
+NVIDIA Nemotron 3 Ultra (550B/55B MoE): AA Index 48, US open-weights leader, 300+ tok/s. New entity: nemotron-3-ultra. claude-opus-4.8 AA Index re-verified at 61. 1 dispute, 2 open questions. PR #111 merged.
+
+## [2026-06-02] daily | ai-in-game-dev — 7 sources, 8 pages
+
+HY-World 2.0 (Tencent open-source 3D world model). Tripo P1.0 (native-3D-diffusion, ~2s, GDC 2026). UE5.7 PCG Biome Core (2× perf, production-ready). Total War:Pharaoh NVIDIA ACE on-device SLM advisor. GameDevBench (132 tasks, best agent 54.5%). MIMIC-Py personality-driven game tester. GDC 2026 AI workforce backlash (52% say AI harms industry). 2 disputes, 4 open questions. PR #112 merged.
+
+## [2026-06-02] daily | games-of-note — 6 sources, 7 pages
+
+Hazelight (Split Fiction) 50M lifetime sales. Studio Ricochet launched (ex-Gearbox Quebec). Marvel's Wolverine PS5 Sept 15 2026. UK social-media ban risk for game platforms. Lucy James → Player.gg. Xbox showcase June 7 safe (no Project Helix). 0 disputes, 3 open questions. PR #113 merged.
+
+## [2026-06-02] daily | game-music — 2 sources, 1 page
+
+Ivors Composers Awards 2026 Video Games category (entries open June 1, ceremony Nov 17 London). Game Music Festival + Infernal Symphony (Diablo 30th anniversary, June 6 Royal Festival Hall). SXSW London panel June 5 (Derek Duke + Ted Reedy). 0 disputes, 2 open questions. PR #114 merged.
+
+## [2026-06-02] daily | 5 topics, 19 sources, 24 pages
+
+Daily research run complete: 5 topics, 19 new sources, 24 pages touched (5 topic indices + 1 new entity [nemotron-3-ultra] + 1 updated entity [claude-opus-4.8] + 19 source pages). PRs #110–#114 opened and merged. 4 disputes filed, 13 open questions added. Report: wiki/reports/2026-06-02.md. Note: gh CLI unauthenticated; GitHub ops via MCP tools; index-wiki model download blocked (HuggingFace 403); existing .qmd index used.
