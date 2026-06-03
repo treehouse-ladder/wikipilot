@@ -387,3 +387,27 @@ Ivors Composers Awards 2026 Video Games category (entries open June 1, ceremony 
 ## [2026-06-02] daily | 5 topics, 19 sources, 24 pages
 
 Daily research run complete: 5 topics, 19 new sources, 24 pages touched (5 topic indices + 1 new entity [nemotron-3-ultra] + 1 updated entity [claude-opus-4.8] + 19 source pages). PRs #110–#114 opened and merged. 4 disputes filed, 13 open questions added. Report: wiki/reports/2026-06-02.md. Note: gh CLI unauthenticated; GitHub ops via MCP tools; index-wiki model download blocked (HuggingFace 403); existing .qmd index used.
+
+## [2026-06-03] daily | agentic-coding — 5 sources, 6 pages
+
+Cursor research preview: hundreds of concurrent agents, planner/worker/judge architecture, browser built in ~1 week. OpenHands May 2026: sub-agent delegation, Critic Result Display UI, Tavily MCP proxy. arXiv: proactivity vs. autonomy framing (Cursor Automations / Claude Code Routines / Jules Scheduled Tasks). Sandboxed coding agents outperform native omnimodal models on audio-video benchmarks (arXiv May 30). The New Stack: Claude Code / Cursor / Codex / Antigravity category convergence on distinct human-in-the-loop operating points. 0 disputes, 3 open questions. PR #116 merged.
+
+## [2026-06-03] daily | frontier-models — 3 sources, 5 pages
+
+Microsoft Build 2026: MAI-Code-1-Flash (51.2% SWE-Bench Pro, ships to all GitHub Copilot plans). MAI-Thinking-1: 35B-active sparse MoE, 256k context, commercially licensed, claims Opus 4.6 SWE Bench Pro parity (vendor-only). Mythos expanded from ~50 to 150 orgs across 15+ countries, $25/$125 per Mtoken, GA "coming weeks". New entity: claude-mythos. 1 dispute (MAI-Thinking-1 benchmark), 2 open questions. PR #117 merged.
+
+## [2026-06-03] daily | ai-in-game-dev — 5 sources, 6 pages
+
+NVIDIA ACE production launch across PUBG, inZOI, MIR5, NARAKA (Mistral-Nemo-Minitron-8B for PUBG Ally). Dual-agent Actor+Critic PCG for zero-shot 3D map generation. RuleSmith: multi-agent LLM game balancing + Bayesian optimization. RPGAgent: story-to-play via Elemental Tetrad. Meshy-6: Low Poly Mode for game developers. 1 dispute, 3 open questions. PR #118 merged.
+
+## [2026-06-03] daily | games-of-note — 5 sources, 6 pages
+
+PlayStation State of Play June 2026: God of War: Laufey (Faye protagonist, sentient cube voiced by Jack Quaid), Marvel's Wolverine, Until Dawn 2. Atari acquires Hipster Whale ($29.3M–$39.3M, Crossy Road 340M downloads). Ivy Road (Stanley Parable/Wanderstop devs) closes after Engine Angel funding failure (Metacritic 80). 0 disputes, 2 open questions. PR #119 merged.
+
+## [2026-06-03] daily | game-music — 3 sources, 4 pages
+
+Cyberpunk 2077: Future Sound of Night City (WRWTFWW Records, June 5, 22 tracks, 3 LP yellow vinyl, Polish beats curated by Grobel & Sokil). Merregnon: Heart of Ice — Uematsu's first original concert work (Decca Classics, Abbey Road + LSO, Alicia Vikander narration, June 19 + Paris Philharmonie June 25). Breath of the Wild 8-LP vinyl (Nintendo × Laced Records, 130 remastered tracks, June 19). 1 dispute, 3 open questions. PR #120 merged (flaky qmd integration test fixed en route).
+
+## [2026-06-03] daily | 5 topics, 21 sources, 28 pages
+
+Daily research run complete: 5 topics, 21 new sources, 28 pages touched (5 topic indices + 1 new entity [claude-mythos] + 21 source pages + 1 test fix). PRs #116–#120 opened and merged. 3 disputes filed, 13 open questions added. Report: wiki/reports/2026-06-03.md. Note: gh CLI unauthenticated; GitHub ops via MCP tools; index-wiki model download blocked (HuggingFace 403); existing .qmd index used; qmd integration test fixed to skip on HuggingFace rate-limit.
