@@ -93,7 +93,12 @@ sources:
   - "[[specbench-measuring-reward-hacking-in-long-horizon-coding-agents-16a403b2]]"
   - "[[higher-usage-limits-for-claude-and-a-compute-deal-with-spacex-f53c308c]]"
   - "[[inside-anthropic-2026-developer-conference-6fa21d8d]]"
-last_updated: 2026-06-02
+  - "[[scaling-long-running-autonomous-coding-8b8b74bd]]"
+  - "[[openhands-product-update-may-2026-d5c547b5]]"
+  - "[[agentic-coding-needs-proactivity-not-just-autonomy-26d5c2fb]]"
+  - "[[sandboxed-coding-agents-are-competitive-omni-modal-task-solvers-6d32a133]]"
+  - "[[claude-code-vs-cursor-vs-codex-vs-antigravity-six-months-in-cf839835]]"
+last_updated: 2026-06-03
 last_verified: 2026-06-02
 freshness_window_days: 30
 ---
@@ -475,6 +480,28 @@ Finally, [[building-self-improving-tax-agents-with-codex-c7affab7]] is OpenAI's 
 
 > Real-world systems behave differently in production than in labs, and teams often discover failures after launch and spend weeks adjusting prompts — the feedback loop is manual and slow, and only improves when an engineer advances it.
 
+## June 2026 update — orchestration scales beyond a single human-in-the-loop, but eval frameworks lag
+
+The agentic-coding category has now visibly converged on a shared orchestration blueprint in 2026, while simultaneously stretching that blueprint into new operating points. Cursor's research preview ran hundreds of concurrent agents on a single project for nearly a week, writing over a million lines of code to build a web browser from scratch [[scaling-long-running-autonomous-coding-8b8b74bd]]. Their architecture uses planners that continuously explore the codebase and spawn sub-planners, workers that pick up tasks without coordinating with peers, and a per-cycle judge agent that determines whether to continue [[scaling-long-running-autonomous-coding-8b8b74bd]].
+
+> Planners that continuously explore the codebase and create tasks (and can spawn sub-planners for specific areas), while workers pick up tasks and focus entirely on completing them without coordinating with other workers or worrying about the big picture.
+
+OpenHands shipped sub-agent delegation in its May 2026 release, framed as "a main agent can spawn multiple sub-agents and delegate tasks to them for parallel processing, with each sub-agent running independently with its own conversation context and returning results that the main agent can consolidate" [[openhands-product-update-may-2026-d5c547b5]]. The same release introduces an inline Critic Result Display UI for verification feedback and proxies Tavily MCP through the app server for enterprise deployments [[openhands-product-update-may-2026-d5c547b5]].
+
+> A new Critic Result Display UI component renders verification results inline within conversations, allowing users to see quality assessments and validation feedback.
+
+The New Stack's six-months-in review observes that Claude Code, Cursor, Codex, and Antigravity have settled into distinct operating points along the human-in-the-loop axis: Claude Code "runs in your terminal, asks for approval on edits, exposes hooks and subagents for extension, and treats the developer as the principal driver," while Cursor Agent's Background Agents in v3 "run on a cloud VM with its own desktop, browser, and the ability to verify UI changes visually" [[claude-code-vs-cursor-vs-codex-vs-antigravity-six-months-in-cf839835]]. Codex CLI now demos 1,000+ sequential tool calls without intervention [[claude-code-vs-cursor-vs-codex-vs-antigravity-six-months-in-cf839835]].
+
+> By the start of June 2026, the argument is mostly over. The four products that have come to define the category this year have spent the past several months quietly agreeing on what one of these things should be.
+
+A new arXiv preprint argues that this shift is not just about autonomy but about *proactivity* — "what proactivity means for software development, how it differs from autonomy, and which metrics determine whether unsolicited agent behavior is useful" [[agentic-coding-needs-proactivity-not-just-autonomy-26d5c2fb]]. The paper situates Cursor Automations, Claude Code Routines, and Jules Scheduled Tasks as the production-grade hooks that turn coding agents into trigger-driven proactive systems [[agentic-coding-needs-proactivity-not-just-autonomy-26d5c2fb]].
+
+> Coding agents can edit files, run commands, and produce patches, and recent products like Cursor Automations, Claude Code Routines, and Jules Scheduled Tasks enable agents to run from various triggers including schedules and GitHub events.
+
+A second arXiv preprint (May 30, 2026) reframes the sandbox itself as a competitive substrate: a coding agent with text+image input and code-execution tool-use can outperform native omnimodal models on audio-video benchmarks by writing code to process those modalities itself [[sandboxed-coding-agents-are-competitive-omni-modal-task-solvers-6d32a133]]. This generalizes the harness-as-substrate thesis beyond pure software-engineering tasks.
+
+> We show that sandboxed coding agents—LLMs equipped with code execution—can serve as competitive omni-modal task solvers when given text and image inputs, by writing code to process audio and video modalities themselves.
+
 ## Comparisons
 
 The comparison pages below are pre-declared by the charter; they are
@@ -600,6 +627,9 @@ lint stays quiet until each page actually exists:
 - [ ] Anthropic's [[how-we-contain-claude-across-products-64af1d1a]] reports 93% prompt-approval rates — what is the equivalent figure for Codex, Cursor, and Antigravity? (No public number disclosed.)
 - [ ] Does Claude Code's dynamic workflows (hundreds of parallel subagents) amplify SpecBench-style reward hacking, or do parallel subagents catch each other's hacks during merge?
 - [ ] How does Anthropic's Outcomes loop compare to Codex's /goals command in practice for long-horizon agentic-coding tasks — both vendors converged on the same primitive but neither has published head-to-head evals.
+- [ ] How does the Cursor planner/worker/judge architecture compare in cost-per-merged-PR against OpenHands' main-agent + sub-agent delegation pattern, when both are run on the same SWE-bench-style task set? [[scaling-long-running-autonomous-coding-8b8b74bd]] [[openhands-product-update-may-2026-d5c547b5]]
+- [ ] Does "proactivity" (trigger-driven unsolicited agent behavior) as defined in [[agentic-coding-needs-proactivity-not-just-autonomy-26d5c2fb]] survive a real production deployment without introducing a new class of false-positive PRs that human reviewers must triage?
+- [ ] How much of the sandboxed-coding-agent omni-modal performance in [[sandboxed-coding-agents-are-competitive-omni-modal-task-solvers-6d32a133]] is attributable to the model's coding ability vs. the sandbox's tool surface (FFmpeg, librosa, etc.)? Replication on a stripped-down sandbox would isolate the harness contribution.
 
 ## Recent updates (2026-05-30)
 
