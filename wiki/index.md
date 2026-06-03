@@ -30,6 +30,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[mimo-v2.5-pro]]
 - [[muse-spark]]
 - [[nemotron-3-ultra]]
+- [[claude-mythos]]
 
 ## Comparisons
 
@@ -346,6 +347,27 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[all-games-shown-at-the-xbox-showcase-in-june-are-safe-report-49fcd324]]
 - [[the-new-ivors-composers-awards-will-honor-video-game-composers-b633147b]]
 - [[game-music-festival-announces-composer-panel-for-sxsw-london-2026-a98597ee]]
+- [[scaling-long-running-autonomous-coding-8b8b74bd]]
+- [[openhands-product-update-may-2026-d5c547b5]]
+- [[agentic-coding-needs-proactivity-not-just-autonomy-26d5c2fb]]
+- [[sandboxed-coding-agents-are-competitive-omni-modal-task-solvers-6d32a133]]
+- [[claude-code-vs-cursor-vs-codex-vs-antigravity-six-months-in-cf839835]]
+- [[introducing-mai-code-1-flash-70f37d2e]]
+- [[microsoft-unveils-new-ai-models-to-lessen-reliance-on-openai-and-lower-costs-for-developers-ef1d54b6]]
+- [[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]
+- [[nvidia-redefines-game-ai-with-ace-autonomous-game-characters-d365270b]]
+- [[zero-shot-3d-map-generation-with-llm-agents-a-dual-agent-architecture-for-procedural-content-generation-422c4f87]]
+- [[rulesmith-multi-agent-llms-for-automated-game-balancing-006e5f17]]
+- [[rpgagent-driving-coherent-story-to-play-generation-with-an-llm-based-multi-agent-system-120afda8]]
+- [[meshy-6-smarter-geometry-faster-workflows-limitless-3d-creativity-3d2a1b1b]]
+- [[state-of-play-june-2026-all-announcements-trailers-7bdb79c1]]
+- [[god-of-war-laufey-for-ps5-revealed-and-its-co-star-is-a-cube-played-by-jack-quaid-825effa8]]
+- [[everything-announced-at-the-playstation-state-of-play-june-2026-9c59e57d]]
+- [[atari-to-acquire-crossy-road-developer-hipster-whale-3389cbce]]
+- [[wanderstop-team-is-the-latest-victim-of-the-industry-crash-out-f998d964]]
+- [[cyberpunk-2077-future-sound-of-night-city-officially-revealed-coming-june-2026-9d8dd817]]
+- [[decca-classics-announces-first-original-concert-work-by-nobuo-uematsu-merregnon-heart-of-ice-ecc81ed5]]
+- [[nintendo-is-releasing-a-massive-breath-of-the-wild-vinyl-soundtrack-collection-on-eight-lps-2b1e4aa6]]
 
 ## Answers
 
@@ -366,3 +388,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-05-31]]
 - [[2026-06-01]]
 - [[2026-06-02]]
+- [[2026-06-03]]
