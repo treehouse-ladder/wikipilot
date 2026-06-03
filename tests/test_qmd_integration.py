@@ -61,7 +61,12 @@ def test_real_index_then_search(
 ) -> None:
     vault, db = tiny_vault
 
-    result = index_vault(vault, db_path=db)
+    try:
+        result = index_vault(vault, db_path=db)
+    except OSError as exc:
+        if "huggingface.co" in str(exc):
+            pytest.skip(f"HuggingFace not reachable (network/rate-limit): {exc}")
+        raise
     assert result.ok is True
     assert result.added == 2
     assert result.updated == 0
@@ -91,7 +96,12 @@ def test_real_incremental_skip_on_unchanged(
     tiny_vault: tuple[Path, Path],
 ) -> None:
     vault, db = tiny_vault
-    first = index_vault(vault, db_path=db)
+    try:
+        first = index_vault(vault, db_path=db)
+    except OSError as exc:
+        if "huggingface.co" in str(exc):
+            pytest.skip(f"HuggingFace not reachable (network/rate-limit): {exc}")
+        raise
     assert first.added == 2
     assert first.skipped == 0
 
