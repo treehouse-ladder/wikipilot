@@ -463,3 +463,11 @@ pr#130 (youthful-mayer-Ox0kT): DIRTY — wiki/log.md append-only conflict; rebas
 ## [2026-06-04] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#130 (youthful-mayer-Ox0kT): CLOSED as superseded — single commit (2293f51, "1 rebased, 1 requeued") already squash-merged into main via PR #132; rebase produced 0 commits ahead of main. pr#133 (youthful-mayer-Qibm2): DIRTY — first two commits already incorporated via PR #132 squash; skipped 2293f51, auto-dropped a5855a977c (already upstream); force-pushed sha=14b28eb onto main (f47605d); auto-merge enabled. Triggered by merge of PR #132 (youthful-mayer-ZHcLr → main).
+
+## [2026-06-04] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#134 (youthful-mayer-RhH3E): DIRTY — wiki/log.md append-only conflict; rebased onto main (e03099c), kept both entries, force-pushed sha=3582d19, auto-merge enabled. Triggered by merge of PR #133 (youthful-mayer-Qibm2 → main).
+
+## [2026-06-04] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#135 (youthful-mayer-8QMaM): DIRTY — wiki/log.md append-only conflict; rebased onto main (0649c1d), kept both entries (PR #134's entry + PR #135's entry), force-pushed, auto-merge enabled. Triggered by merge of PR #134 (youthful-mayer-RhH3E → main).
