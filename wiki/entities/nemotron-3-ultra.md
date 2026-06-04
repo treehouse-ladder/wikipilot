@@ -2,9 +2,9 @@
 title: "NVIDIA Nemotron 3 Ultra"
 kind: entity
 aliases: ["Nemotron 3 Ultra", "nemotron-3-ultra", "NVIDIA Nemotron Ultra 550B"]
-sources: ["[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]"]
-last_updated: 2026-06-02
-last_verified: 2026-06-02
+sources: ["[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[nemotron-3-ultra-launches-june-4-the-first-open-frontier-model-built-for-agents-302459f4]]"]
+last_updated: 2026-06-04
+last_verified: 2026-06-04
 freshness_window_days: 30
 aa_intelligence_index: 48
 aa_intelligence_index_source: "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]"
@@ -20,11 +20,15 @@ The model's headline differentiator is throughput: 300+ tokens/second on a pre-r
 
 > On a pre-release DeepInfra endpoint, Nemotron 3 Ultra served over 300 tokens per second.
 
+The GA launch is now confirmed on schedule [[nemotron-3-ultra-launches-june-4-the-first-open-frontier-model-built-for-agents-302459f4]]. The model is positioned as the first open frontier model purpose-built for agents, with up to 5x faster inference and up to 30% lower cost than open frontier models in its class.
+
+> Nemotron 3 Ultra became available on June 4, 2026 on Hugging Face, ModelScope, OpenRouter, and build.nvidia.com.
+
 ## Open questions
 
 - [ ] Does the 3-6x throughput advantage translate to lower wall-clock cost on long-horizon agentic benchmarks, or does the intelligence gap to Kimi K2.6 wash it out?
 - [ ] What is the NVFP4-quantized AA Intelligence Index score vs the BF16 baseline of 48?
-- [ ] What pricing will DeepInfra, OpenRouter, and NVIDIA NIM settle on at GA on June 4?
+- [ ] What pricing have DeepInfra, OpenRouter, and NVIDIA NIM settled on at GA on June 4? (GA confirmed, specific pricing not yet published in available sources — pending follow-up.)
 
 ## See also
 
