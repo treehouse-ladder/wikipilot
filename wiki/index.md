@@ -17,6 +17,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[harness-engineering]]
 - [[sandboxing]]
 - [[subquadratic-attention]]
+- [[playstation-pc-port-strategy]]
 
 ## Entities
 
@@ -31,6 +32,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[muse-spark]]
 - [[nemotron-3-ultra]]
 - [[claude-mythos]]
+- [[bungie]]
+- [[santa-monica-studio]]
 
 ## Comparisons
 
@@ -368,6 +371,39 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[cyberpunk-2077-future-sound-of-night-city-officially-revealed-coming-june-2026-9d8dd817]]
 - [[decca-classics-announces-first-original-concert-work-by-nobuo-uematsu-merregnon-heart-of-ice-ecc81ed5]]
 - [[nintendo-is-releasing-a-massive-breath-of-the-wild-vinyl-soundtrack-collection-on-eight-lps-2b1e4aa6]]
+- [[promoting-advanced-artificial-intelligence-innovation-and-security-f342dd5f]]
+- [[trump-signs-ai-executive-order-asking-companies-to-give-government-early-access-to-models-32296a4f]]
+- [[openai-frontier-models-and-codex-are-now-available-on-aws-4df8e51c]]
+- [[anthropic-raises-65b-series-h-at-965b-post-money-valuation-b5e22ae0]]
+- [[github-copilot-replaces-gpt-4-with-project-polaris-ships-multi-agent-vs-code-at-build-ddcc6341]]
+- [[nemotron-3-ultra-launches-june-4-the-first-open-frontier-model-built-for-agents-302459f4]]
+- [[alibabas-qwen-team-launches-qwen3-7-plus-adding-vision-deep-reasoning-tool-invocation-and-autonomous-iteration-on-the-bailian-platform-205e908f]]
+- [[alibabas-qwen3-7-plus-supports-text-video-and-imagery-inputs-at-low-cost-but-its-proprietary-ceed7e8a]]
+- [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]]
+- [[the-2026-07-28-mcp-specification-release-candidate-1a1752b8]]
+- [[github-copilot-app-the-agent-native-desktop-experience-2c0fce60]]
+- [[build-2026-furthering-windows-as-the-trusted-platform-for-development-0e85a5a9]]
+- [[windows-platform-security-for-ai-agents-83834df9]]
+- [[cursor-3-4-full-screen-tabs-and-compact-chats-392dabaa]]
+- [[salt-security-launches-salt-code-the-first-agentic-security-solution-to-enforce-security-policies-inside-ai-coding-assistants-9b77880d]]
+- [[god-of-war-laufey-brings-back-gow-feature-not-seen-in-13-years-06e41341]]
+- [[final-fantasy-vii-rebirth-available-now-on-switch-2-and-xbox-series-70f3590d]]
+- [[star-fox-is-finally-getting-another-game-out-june-2026-exclusively-on-switch-2-a9c17ab4]]
+- [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]]
+- [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]
+- [[until-dawn-2-developer-change-supermassive-to-firesprite-720b9386]]
+- [[onimusha-way-of-the-sword-set-to-release-on-september-25-2026-e3a62aa5]]
+- [[silent-hill-townfall-arrives-in-september-2026-a9559de7]]
+- [[fable-delayed-to-february-2027-8f225af0]]
+- [[the-rayman-legends-remake-has-brought-on-banjo-kazooie-and-dk64-composer-grant-kirkhope-who-can-apparently-spin-up-gold-in-a-day-921a10e6]]
+- [[round-up-the-reviews-are-in-for-final-fantasy-vii-rebirth-on-switch-2-647b3fa5]]
+- [[koei-tecmo-europe-and-black-screen-records-announce-the-atelier-ryza-official-soundtrack-trilogy-vinyl-box-set-316fa31f]]
+- [[sledding-game-vinyl-soundtrack-now-available-to-preorder-dc49aa91]]
+- [[meshy-brings-ai-agents-to-3d-creation-meshy-3d-agent-beta-launches-f384359e]]
+- [[getting-started-with-meshy-agent-beta-ba4d92df]]
+- [[how-hyper3d-rodin-gen-2-5-is-bringing-production-level-control-to-ai-3d-generation-41af1fa2]]
+- [[godot-ai-production-grade-mcp-server-and-ai-tools-for-the-godot-engine-02e08d34]]
+- [[nvidia-and-microsoft-reinvent-windows-pcs-for-the-age-of-personal-ai-1cc51471]]
 
 ## Answers
 
@@ -389,3 +425,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-01]]
 - [[2026-06-02]]
 - [[2026-06-03]]
+- [[2026-06-04]]
