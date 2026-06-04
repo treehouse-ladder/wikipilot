@@ -447,3 +447,7 @@ Daily research run complete: 5 topics, 33 new sources, 43 pages touched (11 synt
 ## [2026-06-04] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#128 (claude/daily-2026-06-04/_report) BEHIND main by 1 commit (pr#129 conflict-resolver log entry landed after report branch was cut); wiki/log.md append-only conflict resolved (kept both the resolver entry from main and 6 daily report entries from PR); force-pushed sha=23d5d1e; auto-merge already enabled, will land when CI passes.
+
+## [2026-06-04] manual | conflict-resolver — 1 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#128 (daily-2026-06-04/_report): DIRTY — wiki/log.md append-only conflict (both main and _report appended 2026-06-04 entries); rebased onto main, force-pushed SHA 2dd738a, auto-merge enabled. pr#129 (youthful-mayer-twoqH): orphan-CLEAN — CI passed after requeue scan; auto-merge enabled.
