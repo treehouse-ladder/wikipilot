@@ -419,3 +419,27 @@ pr#124 (games-of-note) lint_fix dispatch: lint already green at dispatch time (b
 ## [2026-06-04] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#127 kind=requeue resolved=true — orphan-CLEAN (CI green, auto-merge not queued); enabled auto-merge via MCP `enable_pr_auto_merge`; PR entered merge queue and self-merged. Triggered by merge of PR #124 (games-of-note → main).
+
+## [2026-06-04] daily | frontier-models — 8 sources, 10 pages
+
+Nemotron 3 Ultra GA confirmed June 4 (HuggingFace/ModelScope/OpenRouter, 300+ tok/s on DeepInfra). Project Polaris replaces GPT-4 in GitHub Copilot from August 2026 (runs on Maia 200). Trump AI EO: voluntary 30-day pre-release cybersecurity review for frontier models. OpenAI GPT-5.5 + Codex on Amazon Bedrock. Anthropic Series H: $65B raised, $965B post-money, $47B ARR. Qwen3.7-Plus: multimodal MoE, ScreenSpot Pro 79.0, Terminal Bench 70.3, $0.40/$1.60/Mtoken. 3 disputes, 6 open questions. PR #122 merged.
+
+## [2026-06-04] daily | agentic-coding — 7 sources, 8 pages
+
+Claude Code dynamic workflows: Bun Zig→Rust 750k LOC in 11 days via Outcomes API. MCP 2026-07-28 RC: stateless core, Tasks extension, MCP Apps. GitHub Copilot app: Canvases, worktree isolation, cloud sessions. Build 2026: MXC declarative agent sandbox, agent-as-OS-principal identity via Entra ID. Cursor 3.4: full-screen tabs, floating prompt bar. Salt Code: first MCP-policy layer, day-one support for 8 coding assistants. 4 disputes, 8 open questions. PR #123 merged.
+
+## [2026-06-04] daily | games-of-note — 9 sources, 14 pages
+
+GoW Laufey: platforming returns (first since Ascension 2013), Faye double-jumps, DMC-style combat. FF7R Switch 2: Metacritic 86 vs PS5 92. Star Fox Switch 2: June 25 exclusive, GameChat. PlayStation permanently ends single-player PC ports (Hulst town hall May 18). Bungie third layoff wave: Destiny 2 ends June 9, no Destiny 3. Until Dawn 2: Firesprite replaces Supermassive. Onimusha Sep 25; Silent Hill Townfall Sep 24; Fable Feb 2027. New entities: bungie, santa-monica-studio. New concept: playstation-pc-port-strategy. 2 disputes, 4 open questions. PR #124 merged.
+
+## [2026-06-04] daily | game-music — 4 sources, 5 pages
+
+Rayman Legends Remake: Grant Kirkhope joins Christophe Héral, 55 min new music. FF7R Switch 2 reviews: music called "genuinely in the running for my favorite video game soundtrack of all-time." Atelier Ryza Official Soundtrack Trilogy vinyl box set: 3 LPs, 45 songs, 69 EUR, June 2026. Sledding Game vinyl: 180g blue marble, $35, late June/early July. 0 disputes, 2 open questions. PR #125 merged.
+
+## [2026-06-04] daily | ai-in-game-dev — 5 sources, 6 pages
+
+Meshy 3D Agent Beta: agentic iterative 3D creation, launched exactly June 4. Rodin Gen-2.5: production-level control, Smart Low-Poly topology for animation. Godot AI MCP server: production-grade, ~39 tools / 120 ops, one-click install. RTX Spark: 120B parameter LLMs + AAA gaming cohabitation on one chip. 0 disputes, 4 open questions. PR #126 merged.
+
+## [2026-06-04] daily | 5 topics, 33 sources, 43 pages
+
+Daily research run complete: 5 topics, 33 new sources, 43 pages touched (11 synthesis pages + 33 source pages; includes 2 new entity pages [bungie, santa-monica-studio] and 1 new concept page [playstation-pc-port-strategy]). PRs #122–#126 opened and merged. CI failure on #124 (broken-wikilink to game-music source) fixed via rebase onto main after #125 merged. 9 disputes, 24 open questions. Report: wiki/reports/2026-06-04.md. Note: gh CLI unauthenticated; GitHub ops via MCP tools; index-wiki blocked (HuggingFace network policy); existing .qmd index used.
