@@ -98,8 +98,15 @@ sources:
   - "[[agentic-coding-needs-proactivity-not-just-autonomy-26d5c2fb]]"
   - "[[sandboxed-coding-agents-are-competitive-omni-modal-task-solvers-6d32a133]]"
   - "[[claude-code-vs-cursor-vs-codex-vs-antigravity-six-months-in-cf839835]]"
-last_updated: 2026-06-03
-last_verified: 2026-06-02
+  - "[[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]]"
+  - "[[the-2026-07-28-mcp-specification-release-candidate-1a1752b8]]"
+  - "[[github-copilot-app-the-agent-native-desktop-experience-2c0fce60]]"
+  - "[[build-2026-furthering-windows-as-the-trusted-platform-for-development-0e85a5a9]]"
+  - "[[windows-platform-security-for-ai-agents-83834df9]]"
+  - "[[cursor-3-4-full-screen-tabs-and-compact-chats-392dabaa]]"
+  - "[[salt-security-launches-salt-code-the-first-agentic-security-solution-to-enforce-security-policies-inside-ai-coding-assistants-9b77880d]]"
+last_updated: 2026-06-04
+last_verified: 2026-06-04
 freshness_window_days: 30
 ---
 
@@ -502,6 +509,42 @@ A second arXiv preprint (May 30, 2026) reframes the sandbox itself as a competit
 
 > We show that sandboxed coding agents—LLMs equipped with code execution—can serve as competitive omni-modal task solvers when given text and image inputs, by writing code to process audio and video modalities themselves.
 
+### Updates 2026-06-04 — Build 2026, Anthropic dynamic workflows first-party, MCP RC, Salt Code
+
+The orchestration-as-platform thread the wiki has tracked across Anthropic (Routines), Cursor (Automations), and OpenAI (Symphony) reached its widest-vendor convergence point on 2026-06-02 with three independent announcements landing the same week. Anthropic's first-party writeup of **dynamic workflows in Claude Code** [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]] is the canonical source for the primitive the wiki previously cited only through the Opus 4.8 announcement: "Claude dynamically writes orchestration scripts that run tens to hundreds of parallel subagents in a single session, checking its work before anything reaches you" with a debate-style verification loop where "agents address the problem from independent angles, other agents try to refute what they found, and the run keeps iterating until the answers converge" [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]]. The headline real-world data point is Jarred Sumner porting Bun from Zig to Rust: "99.8% of the existing test suite passing, roughly 750,000 lines of Rust, and eleven days from first commit to merge" [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]] — a third independent parallel-agents-at-scale case study alongside the C-compiler team and Antigravity 2.0's OS-in-12-hours demo. No cost figure was disclosed for the Bun port, making cross-case comparison impossible (filed under Disputes).
+
+> We're introducing dynamic workflows in Claude Code, helping Claude take on the most challenging tasks end-to-end. Claude dynamically writes orchestration scripts that run tens to hundreds of parallel subagents in a single session, checking its work before anything reaches you.
+
+> Jarred Sumner used dynamic workflows to port Bun from Zig to Rust with 99.8% of the existing test suite passing, roughly 750,000 lines of Rust, and eleven days from first commit to merge.
+
+GitHub's product-layer counterpart shipped the same week: the **GitHub Copilot app** moved to expanded technical preview for all Pro/Pro+/Business/Enterprise subscribers on 2026-06-02, positioned as "a standalone desktop application — separate from GitHub.com, separate from VS Code, and separate from any IDE extension" [[github-copilot-app-the-agent-native-desktop-experience-2c0fce60]]. The key isolation primitive: "Every session runs in its own git worktree, a real, isolated copy of your branch. This helps parallel agent sessions work without stepping on each other. The app handles every worktree for you: no manual setup, no cleanup, no branch juggling" [[github-copilot-app-the-agent-native-desktop-experience-2c0fce60]]. The differentiated primitive is **Canvases**: "bidirectional work surfaces for humans and agents [...] a plan, pull request, browser session, terminal, deployment, dashboard, or workflow state" with agents updating the canvas as they work. Cloud-resident execution: "Cloud sessions allow running an agent session in the cloud directly from the app, and cloud automations can schedule automation to run in the cloud, so recurring work doesn't depend on your machine being awake" [[github-copilot-app-the-agent-native-desktop-experience-2c0fce60]].
+
+> The GitHub Copilot app is a standalone desktop application — separate from GitHub.com, separate from VS Code, and separate from any IDE extension. It runs natively on macOS, Windows, and Linux.
+
+> Canvases are bidirectional work surfaces for humans and agents. A canvas might show a plan, pull request, browser session, terminal, deployment, dashboard, or workflow state. Agents update the canvas as they work, and developers can edit, reorder, approve, or redirect that work on the same surface.
+
+The MCP protocol layer published its largest spec change since launch as the **2026-07-28 release candidate**: "a stateless protocol core, the Extensions framework, Tasks, MCP Apps, authorization hardening, and a formal deprecation policy" [[the-2026-07-28-mcp-specification-release-candidate-1a1752b8]]. The stateless core is most operationally consequential: "no handshake, no session id, any request can hit any server instance [...] every request is now self-contained — protocol version, client info, and capabilities travel in _meta on every request" [[the-2026-07-28-mcp-specification-release-candidate-1a1752b8]], collapsing deployment to a plain round-robin load balancer. The **Tasks** extension defers tool calls into server-issued task handles the client drives with `tasks/get`/`update`/`cancel` — directly relevant to long-horizon agentic-coding regimes.
+
+> The release candidate for the next Model Context Protocol (MCP) specification includes a stateless protocol core, the Extensions framework, Tasks, MCP Apps, authorization hardening, and a formal deprecation policy.
+
+> The Tasks extension reshapes the lifecycle around the stateless model: a server can answer tools/call with a task handle, and the client drives it with tasks/get, tasks/update, and tasks/cancel.
+
+**Build 2026's Windows agent runtime** stakes out a kernel-level layer below existing sandboxing. Microsoft Execution Containers (MXC) are "a policy-driven execution layer that lets developers declare what an agent can access (e.g., files, network) with containment boundaries enforced at runtime" with isolation semantics "dynamically composable based on intent and risk" [[build-2026-furthering-windows-as-the-trusted-platform-for-development-0e85a5a9]]. The Windows team further: "Windows now treats AI agents as first-class principals with their own identity, distinct from the human user, so that the OS can enforce capability boundaries and audit who—or what—performed an action" [[windows-platform-security-for-ai-agents-83834df9]] — a principle-level OS change that addresses trust-level confusion at the OS layer rather than the application layer. Whether it defeats the Contextual-Integrity impossibility result is filed under open questions.
+
+> Microsoft Execution Containers (MXC) is a policy-driven execution layer that lets developers declare what an agent can access (e.g., files, network) with containment boundaries enforced at runtime.
+
+> Windows now treats AI agents as first-class principals with their own identity, distinct from the human user, so that the OS can enforce capability boundaries and audit who—or what—performed an action. Agent identities are issued and revoked through Microsoft Entra ID and are scoped per-agent, per-session.
+
+The security-policy layer above the OS got its first agent-aware product: **Salt Code** ships as "the first agentic security solution to enforce security policies inside AI coding assistants", with day-one support for Claude Code, Cursor, GitHub Copilot, Windsurf, Kiro, Codex, Gemini CLI, and Antigravity via any IDE supporting MCP server configuration [[salt-security-launches-salt-code-the-first-agentic-security-solution-to-enforce-security-policies-inside-ai-coding-assistants-9b77880d]]. Policy bundle includes "OWASP API Top 10, MCP Security Top 10, LLM Security Top 10, OpenAPI/Swagger compliance, and common regulatory frameworks".
+
+> Salt Code shifts enforcement left, to the moment of code creation, making compliance a property of the code itself rather than a gate applied after the fact.
+
+> Salt Code supports leading AI coding assistants at general availability, including Claude Code, Cursor, GitHub Copilot, Windsurf, Kiro, Codex, Gemini CLI, and Antigravity.
+
+Finally, **Cursor 3.4** shipped quality-of-life improvements: full-screen tabs, floating prompt bar, compact chats, tunable tool-call density [[cursor-3-4-full-screen-tabs-and-compact-chats-392dabaa]] — the agents-window IDE is now actively tuning the human-supervision UX, consistent with normalization-of-deviance observations already on this page.
+
+> Cursor adds quality-of-life improvements to the Agents Window with full-screen tabs, a floating prompt bar, and compact chat responses.
+
 ## Comparisons
 
 The comparison pages below are pre-declared by the charter; they are
@@ -552,6 +595,10 @@ lint stays quiet until each page actually exists:
 - [[from-model-scaling-to-system-scaling-scaling-the-harness-in-agentic-ai-80b4d5d5]] and [[ai-harness-engineering-a-runtime-substrate-for-foundation-model-software-agents-3354d29a]] argue more elaborate harnesses unlock more capability (system scaling > model scaling); [[harnesses-for-inference-time-alignment-over-execution-trajectories-93428905]] shows empirically that more elaborate decomposition / guidance can reduce final task success via over-decomposition and over-pruning. Status: unresolved — likely reconciled via 'harness elaboration must be co-designed with retry/verification, not added monotonically'.
 - [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]] claims the harness is now a stronger determinant of agent performance than the model; [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] (already on this page) found 'the LLM is the primary driver of both outcome and behavior' across 9,374 trajectories. Status: unresolved — the two studies use different task distributions and measurement methodologies.
 - [[introducing-claude-opus-4-8-5348a7d2]] claims Opus 4.8 beats GPT-5.5 at parity on the Super-Agent benchmark; [[specbench-measuring-reward-hacking-in-long-horizon-coding-agents-16a403b2]] cautions that frontier-model saturation on visible test suites systematically hides reward hacking — reported super-agent wins may not transfer to held-out tests. Status: unresolved
+- [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]] reports the Bun Zig-to-Rust port (~750k LOC Rust, 99.8% test pass, 11 days) but does not disclose total token/dollar cost — cross-case comparison with the parallel-Claudes C-compiler ($20k / 2 weeks) and Antigravity 2.0 (<$1k / 12 hours) is impossible. Status: unresolved
+- [[build-2026-furthering-windows-as-the-trusted-platform-for-development-0e85a5a9]] and [[windows-platform-security-for-ai-agents-83834df9]] frame MXC as an OS-kernel-enforced declarative sandbox structurally superior to application-layer permission gates; sources already on this page argue prompt-injection defense is subject to a Contextual-Integrity impossibility result — blast-radius containment is achievable but distinguishing injected vs legitimate flows is not. Microsoft's marketing implies a stronger guarantee than the impossibility result permits. Status: unresolved
+- [[salt-security-launches-salt-code-the-first-agentic-security-solution-to-enforce-security-policies-inside-ai-coding-assistants-9b77880d]] positions enforcement 'shifted left' to the moment of code creation as a structural solution to AI-generated code risk; prior prompt-injection SoK sources on this page identify trust-level confusion in tool outputs as the root cause of >85% adaptive-attack success rates. A policy layer that scans generated code can catch produced vulnerabilities but does not address an agent being induced to exfiltrate via a tool call. Status: unresolved
+- [[the-2026-07-28-mcp-specification-release-candidate-1a1752b8]] makes MCP stateless and adds a Tasks extension; sources on this page presume the existing session-bound MCP protocol when arguing for tool-description quality and load-on-demand cost-engineering. Whether per-request _meta overhead negates prompt-cache wins from session-stable tool descriptions is unresolved. Status: unresolved
 
 ## Open questions
 
@@ -630,6 +677,14 @@ lint stays quiet until each page actually exists:
 - [ ] How does the Cursor planner/worker/judge architecture compare in cost-per-merged-PR against OpenHands' main-agent + sub-agent delegation pattern, when both are run on the same SWE-bench-style task set? [[scaling-long-running-autonomous-coding-8b8b74bd]] [[openhands-product-update-may-2026-d5c547b5]]
 - [ ] Does "proactivity" (trigger-driven unsolicited agent behavior) as defined in [[agentic-coding-needs-proactivity-not-just-autonomy-26d5c2fb]] survive a real production deployment without introducing a new class of false-positive PRs that human reviewers must triage?
 - [ ] How much of the sandboxed-coding-agent omni-modal performance in [[sandboxed-coding-agents-are-competitive-omni-modal-task-solvers-6d32a133]] is attributable to the model's coding ability vs. the sandbox's tool surface (FFmpeg, librosa, etc.)? Replication on a stripped-down sandbox would isolate the harness contribution.
+- [ ] Does Claude Code's dynamic-workflow research preview [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]] reuse the worktree-per-agent isolation model the GitHub Copilot app explicitly documents [[github-copilot-app-the-agent-native-desktop-experience-2c0fce60]], or a different in-session sandboxing scheme?
+- [ ] Is the GitHub Copilot app's Canvas primitive [[github-copilot-app-the-agent-native-desktop-experience-2c0fce60]] interoperable with Anthropic's Outcomes and Cursor's Agents Window tabs — i.e. is the agent-orchestrator-UI surface converging on a shared mental model, or is each vendor's canvas a closed substrate?
+- [ ] Does MCP 2026-07-28's stateless _meta-per-request protocol [[the-2026-07-28-mcp-specification-release-candidate-1a1752b8]] degrade prompt-cache hit rates vs the previous session-bound protocol, given the per-request capability/version overhead?
+- [ ] Does the MCP Tasks extension [[the-2026-07-28-mcp-specification-release-candidate-1a1752b8]] become the standard substrate for long-horizon work (SWE-EVO, RoadmapBench, FeatureBench), or remain an opt-in extension that most coding agents bypass via in-process subagent dispatch?
+- [ ] Does Microsoft MXC's declarative containment policy [[build-2026-furthering-windows-as-the-trusted-platform-for-development-0e85a5a9]] compose with Claude Code's bubblewrap/seatbelt sandbox when Claude Code runs on Windows — superset or parallel layer the user must configure twice?
+- [ ] Does Windows' agent-as-OS-principal identity model [[windows-platform-security-for-ai-agents-83834df9]] propagate into the agent's audit trail well enough to make agent-attributable security regressions traceable post-hoc?
+- [ ] Does Salt Code's MCP Security Top 10 policy bundle [[salt-security-launches-salt-code-the-first-agentic-security-solution-to-enforce-security-policies-inside-ai-coding-assistants-9b77880d]] catch SkillJect-style automated injection in practice, or only the static OWASP-class vulnerabilities the policy library targets?
+- [ ] Salt Code claims compatibility with eight named coding assistants — is enforcement actually uniform across them, or does the per-assistant integration depth vary (e.g. inline blocking on some, post-commit scanning on others)?
 
 ## Recent updates (2026-05-30)
 
