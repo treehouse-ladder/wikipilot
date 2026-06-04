@@ -411,3 +411,7 @@ Cyberpunk 2077: Future Sound of Night City (WRWTFWW Records, June 5, 22 tracks, 
 ## [2026-06-03] daily | 5 topics, 21 sources, 28 pages
 
 Daily research run complete: 5 topics, 21 new sources, 28 pages touched (5 topic indices + 1 new entity [claude-mythos] + 21 source pages + 1 test fix). PRs #116–#120 opened and merged. 3 disputes filed, 13 open questions added. Report: wiki/reports/2026-06-03.md. Note: gh CLI unauthenticated; GitHub ops via MCP tools; index-wiki model download blocked (HuggingFace 403); existing .qmd index used; qmd integration test fixed to skip on HuggingFace rate-limit.
+
+## [2026-06-04] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#124 (games-of-note) lint_fix dispatch: lint already green at dispatch time (broken-wikilink [[round-up-...-647b3fa5]] resolved after PR #125 merged); auto-merge re-enabled via MCP. pr#126 (ai-in-game-dev): already merged when CI completed.
