@@ -415,3 +415,7 @@ Daily research run complete: 5 topics, 21 new sources, 28 pages touched (5 topic
 ## [2026-06-04] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#124 (games-of-note) lint_fix dispatch: lint already green at dispatch time (broken-wikilink [[round-up-...-647b3fa5]] resolved after PR #125 merged); auto-merge re-enabled via MCP. pr#126 (ai-in-game-dev): already merged when CI completed.
+
+## [2026-06-04] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#127 kind=requeue resolved=true — orphan-CLEAN (CI green, auto-merge not queued); enabled auto-merge via MCP `enable_pr_auto_merge`; PR entered merge queue and self-merged. Triggered by merge of PR #124 (games-of-note → main).
