@@ -455,3 +455,7 @@ pr#128 (daily-2026-06-04/_report): DIRTY — wiki/log.md append-only conflict (b
 ## [2026-06-04] manual | conflict-resolver — 2 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#131 (youthful-mayer-CRjOK): DIRTY — wiki/log.md append-only conflict; rebased onto main (6fc21ee), force-pushed sha=55a775f, auto-merge enabled. pr#130 (youthful-mayer-Ox0kT): stacked rebase onto rebased pr#131 tip to prevent re-conflict on merge, force-pushed sha=af40a32, auto-merge enabled. Triggered by merge of PR #128 (daily-2026-06-04/_report → main).
+
+## [2026-06-04] manual | conflict-resolver — 2 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#130 (youthful-mayer-Ox0kT): DIRTY — wiki/log.md append-only conflict; rebased onto main (288ccc8), dropped already-squash-merged first commit, force-pushed sha=2293f51, auto-merge enabled. pr#132 (youthful-mayer-ZHcLr): DIRTY — stacked rebase onto rebased pr#130 tip (2293f51), append-only conflict resolved, force-pushed sha=a5855a9, auto-merge enabled. Triggered by merge of PR #131 (youthful-mayer-CRjOK → main).
