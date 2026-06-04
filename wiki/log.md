@@ -443,3 +443,7 @@ Meshy 3D Agent Beta: agentic iterative 3D creation, launched exactly June 4. Rod
 ## [2026-06-04] daily | 5 topics, 33 sources, 43 pages
 
 Daily research run complete: 5 topics, 33 new sources, 43 pages touched (11 synthesis pages + 33 source pages; includes 2 new entity pages [bungie, santa-monica-studio] and 1 new concept page [playstation-pc-port-strategy]). PRs #122–#126 opened and merged. CI failure on #124 (broken-wikilink to game-music source) fixed via rebase onto main after #125 merged. 9 disputes, 24 open questions. Report: wiki/reports/2026-06-04.md. Note: gh CLI unauthenticated; GitHub ops via MCP tools; index-wiki blocked (HuggingFace network policy); existing .qmd index used.
+
+## [2026-06-04] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#128 (claude/daily-2026-06-04/_report) BEHIND main by 1 commit (pr#129 conflict-resolver log entry landed after report branch was cut); wiki/log.md append-only conflict resolved (kept both the resolver entry from main and 6 daily report entries from PR); force-pushed sha=23d5d1e; auto-merge already enabled, will land when CI passes.
