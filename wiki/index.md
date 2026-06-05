@@ -34,6 +34,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[claude-mythos]]
 - [[bungie]]
 - [[santa-monica-studio]]
+- [[mai-thinking-1]]
 
 ## Comparisons
 
@@ -404,6 +405,35 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[how-hyper3d-rodin-gen-2-5-is-bringing-production-level-control-to-ai-3d-generation-41af1fa2]]
 - [[godot-ai-production-grade-mcp-server-and-ai-tools-for-the-godot-engine-02e08d34]]
 - [[nvidia-and-microsoft-reinvent-windows-pcs-for-the-age-of-personal-ai-1cc51471]]
+- [[introducing-gpt-5-3-codex-9aba7995]]
+- [[introducing-gpt-5-3-codex-spark-4a841ea7]]
+- [[uber-caps-usage-of-ai-tools-like-claude-code-to-manage-costs-d17eb873]]
+- [[openai-named-a-leader-in-enterprise-coding-agents-by-gartner-bc79b84a]]
+- [[reward-hacking-benchmark-measuring-exploits-in-llm-agents-with-tool-use-af3601e8]]
+- [[agent-psychometrics-task-level-performance-prediction-in-agentic-coding-benchmarks-5034af4f]]
+- [[cursor-3-7-canvases-design-mode-and-context-explorer-b28194f5]]
+- [[introducing-mai-thinking-1-0e3e1662]]
+- [[microsoft-build-2026-mai-keynote-transcript-77c10a37]]
+- [[introducing-the-services-track-and-partner-hub-of-the-claude-partner-network-c265f4d0]]
+- [[trellis-2-native-and-compact-structured-latents-for-3d-generation-711104a6]]
+- [[microsoft-trellis-2-4b-hugging-face-model-card-40579db9]]
+- [[empowering-npc-dialogue-with-environmental-context-using-llms-and-panoramic-images-30f4c266]]
+- [[sympatheia-emotionally-adaptive-voice-assistant-with-continuous-affect-conditioning-1de5b9c0]]
+- [[deflanderization-for-game-dialogue-balancing-character-authenticity-with-task-execution-in-llm-based-npcs-76a8b716]]
+- [[marvel-s-wolverine-new-gameplay-story-details-from-state-of-play-a9880d99]]
+- [[bungie-officially-ends-active-development-for-destiny-2-with-the-release-of-a-final-content-update-on-june-9-2026-5982e288]]
+- [[another-sign-that-the-metaverse-winter-is-here-social-vr-platform-rec-room-is-shutting-down-june-1st-2026-583ad629]]
+- [[star-wars-zero-company-release-date-leaks-one-day-before-summer-game-fest-29a077f3]]
+- [[stop-killing-games-says-ubisoft-attended-invitation-only-meeting-with-eu-commission-a12dce05]]
+- [[why-gothic-1-remake-could-be-the-rpg-that-surprises-you-in-2026-59de6b3d]]
+- [[new-games-in-june-2026-it-s-a-big-month-for-bungie-and-showcase-reveals-7d463b9a]]
+- [[alan-wake-and-control-underperformed-says-new-remedy-ceo-studio-will-apply-learnings-from-fbc-firebreak-to-resonant-5ee9859c]]
+- [[solarpunk-themed-survivalbox-solarpunk-launches-in-a-brilliant-bit-of-solarpunk-glory-on-june-8-fb9d0e4a]]
+- [[mewgenics-soundtrack-is-coming-to-vinyl-2e9ffcd5]]
+- [[littlebigplanet-and-sackboy-a-big-adventure-vinyl-soundtracks-up-for-preorder-via-iam8bit-890918f1]]
+- [[the-infernal-symphony-diablo-30th-anniversary-concert-game-music-festival-2026-8d094ebf]]
+- [[ballads-of-the-underworld-concert-featuring-music-from-hades-hades-ii-3da356ea]]
+- [[dk-rap-composer-on-tracks-inclusion-in-donkey-kong-bananza-surprised-people-like-it-now-fda1fd79]]
 
 ## Answers
 
@@ -426,3 +456,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-02]]
 - [[2026-06-03]]
 - [[2026-06-04]]
+- [[2026-06-05]]

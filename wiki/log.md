@@ -471,3 +471,27 @@ pr#134 (youthful-mayer-RhH3E): DIRTY — wiki/log.md append-only conflict; rebas
 ## [2026-06-04] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#135 (youthful-mayer-8QMaM): DIRTY — wiki/log.md append-only conflict; rebased onto main (0649c1d), kept both entries (PR #134's entry + PR #135's entry), force-pushed, auto-merge enabled. Triggered by merge of PR #134 (youthful-mayer-RhH3E → main).
+
+## [2026-06-05] daily | agentic-coding — 7 sources, 9 pages
+
+GPT-5.3-Codex (SWE-bench Pro 56.8%, Terminal-Bench 77.3%, OSWorld 64.7%), Codex-Spark (1000+ tok/s, 15x), Uber $1,500/tool/month cap, Gartner MQ Leader, RHB reward-hacking benchmark, Agent Psychometrics, Cursor 3.7 context explorer. PR #136.
+
+## [2026-06-05] daily | frontier-models — 3 sources, 5 pages
+
+MAI-Thinking-1 new entity (35B-active MoE, AIME 2025 97%, SWE-bench Pro 52.8%, private preview), Build 2026 MAIA 200 chip (30% perf/dollar vs GB200), Claude Partner Network Services Track ($100M, 40K+ firms). PR #137.
+
+## [2026-06-05] daily | ai-in-game-dev — 5 sources, 6 pages
+
+TRELLIS.2 (MIT 4B-param, 3s 512³, full PBR), panoramic NPC grounding (structured JSON from segmentation), deflanderization failure mode, Sympatheia continuous-affect voice synthesis. PR #138.
+
+## [2026-06-05] daily | games-of-note — 9 sources, 11 pages
+
+Summer Game Fest week (SGF June 5, Xbox Showcase June 7, Gears E-Day), Star Wars Zero Company Aug 27, Marvel's Wolverine Sept 15, Control Resonant Sept 24, Gothic 1 Remake launched, Solarpunk Game Pass June 8, Destiny 2 end-of-active-dev, Rec Room shutdown, Stop Killing Games EU deadline July 27. PR #139.
+
+## [2026-06-05] daily | game-music — 5 sources, 6 pages
+
+Mewgenics 3LP vinyl (Ridiculon, 7 colorways), LBP+Sackboy iam8bit vinyl Q4 2026, Infernal Symphony Diablo 30th concert June 6 Royal Festival Hall, Ballads of the Underworld (Hades/Hades II, Korb/Barrett/Wintory) June 27, DK Bananza composer team (Naoto Kubo, live-orchestra-first, not David Wise). PR #140.
+
+## [2026-06-05] daily | 5 topics, 29 sources, ~42 pages
+
+agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music. PRs #136–140 all squash-merged to main. 1 new entity (mai-thinking-1). Report: wiki/reports/2026-06-05.md.
