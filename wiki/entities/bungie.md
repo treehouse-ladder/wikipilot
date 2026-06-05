@@ -2,9 +2,9 @@
 title: "Bungie"
 kind: entity
 aliases: []
-sources: ["[[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]", "[[marathon-review-incredible-highs-painful-lows-4d8a2d55]]", "[[sony-records-766-million-impairment-loss-against-bungie-in-2025-e8b6b853]]", "[[bungie-reportedly-plans-significant-layoffs-as-no-destiny-3-greenlit-3c028ea3]]", "[[destiny-2-s-active-development-will-end-in-june-30b55a1f]]"]
-last_updated: 2026-06-04
-last_verified: 2026-06-04
+sources: ["[[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]", "[[marathon-review-incredible-highs-painful-lows-4d8a2d55]]", "[[sony-records-766-million-impairment-loss-against-bungie-in-2025-e8b6b853]]", "[[bungie-reportedly-plans-significant-layoffs-as-no-destiny-3-greenlit-3c028ea3]]", "[[destiny-2-s-active-development-will-end-in-june-30b55a1f]]", "[[bungie-officially-ends-active-development-for-destiny-2-with-the-release-of-a-final-content-update-on-june-9-2026-5982e288]]"]
+last_updated: 2026-06-05
+last_verified: 2026-06-05
 freshness_window_days: 60
 ---
 
@@ -18,7 +18,9 @@ The studio has undergone three layoff waves since its Sony acquisition: October 
 
 > Bungie cut about 100 jobs in October 2023 and another 220 in July 2024, and this is being framed as the studio's third major layoff wave since Sony acquired it for 3.6 billion dollars.
 
-Destiny 2's active development ended June 9, 2026, with no Destiny 3 in production. Remaining staff are transitioning to Marathon, the underperforming PvPvE extraction shooter launched March 5, 2026. "The company doesn't have a new project lined up for Destiny 2's development team after the game comes to an end next month, and Bungie doesn't plan to immediately enter production on a Destiny 3. Surviving staff will be funneled toward the underperforming extraction shooter Marathon" [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]].
+Destiny 2's active development ended June 9, 2026 with a final content update titled **Monument of Triumph**, replacing the originally-planned Shadow and Order expansion. The game transitions to maintenance mode with no new story content, no seasonal activities, and no cosmetic crossovers; servers remain online but the live-service model is discontinued [[bungie-officially-ends-active-development-for-destiny-2-with-the-release-of-a-final-content-update-on-june-9-2026-5982e288]]. No Destiny 3 is in production. Remaining staff are transitioning to Marathon, the underperforming PvPvE extraction shooter launched March 5, 2026. "The company doesn't have a new project lined up for Destiny 2's development team after the game comes to an end next month, and Bungie doesn't plan to immediately enter production on a Destiny 3. Surviving staff will be funneled toward the underperforming extraction shooter Marathon" [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]].
+
+> Marathon will be the sole focus of Bungie for the time being; Destiny 3 is not in production and has not been greenlit, and once the Monument of Triumph update is out, Bungie will reportedly lay off a significant number of its staff.
 
 > The company doesn't have a new project lined up for Destiny 2's development team after the game comes to an end next month, and Bungie doesn't plan to immediately enter production on a Destiny 3. Surviving staff will be funneled toward the underperforming extraction shooter Marathon.
 
