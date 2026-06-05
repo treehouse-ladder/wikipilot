@@ -11,8 +11,9 @@ sources:
   - "[[effective-harnesses-for-long-running-agents-anthropic-engineering-7f7a70a6]]"
   - "[[harness-design-for-long-running-application-development-anthropic-engineering-9fa759b7]]"
   - "[[building-agents-with-the-claude-agent-sdk-anthropic-engineering-cf56e261]]"
-last_updated: 2026-06-01
-last_verified: 2026-06-01
+  - "[[cursor-3-7-canvases-design-mode-and-context-explorer-b28194f5]]"
+last_updated: 2026-06-05
+last_verified: 2026-06-05
 freshness_window_days: 30
 ---
 
@@ -52,11 +53,18 @@ Two distinct approaches emerged for improving agent performance by adapting the 
 
 > Continual Harness is a reset-free self-improving harness for embodied agents that removes the human from the refinement loop, where the agent alternates between acting and refining its own prompt, sub-agents, skills, and memory.
 
+## Context-budget instrumentation (added 2026-06-05)
+
+Cursor 3.7 (June 4, 2026) shipped the first product-grade **context-budget instrumentation** in an agentic IDE: "Cursor can now show your agent's context usage as an interactive report in a canvas. The context explorer breaks down where tokens go across the system prompt, tool definitions, rules, skills, and more" [[cursor-3-7-canvases-design-mode-and-context-explorer-b28194f5]]. This is the instrumentation counterpart to the context-engineering framing the wiki tracks via [[effective-context-engineering-for-ai-agents-anthropic-engineering-126e07cf]] — making the harness's context allocation decisions visible and debuggable at product scale.
+
+> Cursor can now show your agent's context usage as an interactive report in a canvas. The context explorer breaks down where tokens go across the system prompt, tool definitions, rules, skills, and more.
+
 ## Open questions
 
 - [ ] Does priority-ranking evaluation generalize beyond tool-edit decisions to skill / memory / subagent edits?
 - [ ] How do the harness-optimizer benchmarks correlate with end-to-end SWE-bench-Verified gains when controlling for infrastructure noise?
 - [ ] Can Life-Harness's four-dimensional intervention taxonomy (environment contracts, procedural skills, action realization, trajectory regulation) be automatically extracted from production agent trajectories?
+- [ ] Does Cursor 3.7's context explorer instrumentation enable users to operationalize the harness-design framework from [[architectural-design-decisions-in-ai-agent-harnesses-523b6fa0]], or is it purely diagnostic?
 
 ## See also
 
