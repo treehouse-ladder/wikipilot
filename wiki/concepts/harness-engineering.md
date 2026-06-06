@@ -12,7 +12,8 @@ sources:
   - "[[harness-design-for-long-running-application-development-anthropic-engineering-9fa759b7]]"
   - "[[building-agents-with-the-claude-agent-sdk-anthropic-engineering-cf56e261]]"
   - "[[cursor-3-7-canvases-design-mode-and-context-explorer-b28194f5]]"
-last_updated: 2026-06-05
+  - "[[adk-arena-evaluating-agent-development-kits-via-llm-as-a-developer-cf33d068]]"
+last_updated: 2026-06-06
 last_verified: 2026-06-05
 freshness_window_days: 30
 ---
@@ -69,5 +70,6 @@ Cursor 3.7 (June 4, 2026) shipped the first product-grade **context-budget instr
 ## See also
 
 - [[agentic-coding]]
+- [[agent-harnesses]]
 - [[effective-context-engineering-for-ai-agents-anthropic-engineering-126e07cf]]
 - [[code-execution-with-mcp-building-more-efficient-ai-agents-9b88bfec]]

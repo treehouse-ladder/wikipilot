@@ -112,7 +112,11 @@ sources:
   - "[[reward-hacking-benchmark-measuring-exploits-in-llm-agents-with-tool-use-af3601e8]]"
   - "[[agent-psychometrics-task-level-performance-prediction-in-agentic-coding-benchmarks-5034af4f]]"
   - "[[cursor-3-7-canvases-design-mode-and-context-explorer-b28194f5]]"
-last_updated: 2026-06-05
+  - "[[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]]"
+  - "[[adk-arena-evaluating-agent-development-kits-via-llm-as-a-developer-cf33d068]]"
+  - "[[build-programmatic-agents-with-the-cursor-sdk-fe66773e]]"
+  - "[[sandlock-confining-ai-agent-code-with-unprivileged-linux-primitives-6c9c9e93]]"
+last_updated: 2026-06-06
 last_verified: 2026-06-05
 freshness_window_days: 30
 ---
@@ -645,6 +649,7 @@ lint stays quiet until each page actually exists:
 - [[introducing-gpt-5-3-codex-9aba7995]] reports a Terminal-Bench 2.0 score of 77.3% for GPT-5.3-Codex (Codex CLI); [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]] reports 77.0% from an automatically-evolved harness on Terminal-Bench 2 with a frozen base model. The two scores are essentially tied but the comparison is confounded by base-model differences and by [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]]'s finding that resource configuration alone can swing Terminal-Bench scores by several percentage points; whether the new SOTA gap from base-model improvement is real once configuration is pinned remains unresolved. Status: unresolved
 - [[uber-caps-usage-of-ai-tools-like-claude-code-to-manage-costs-d17eb873]] documents a Fortune-100 enterprise instituting hard $1,500/employee/month per-tool ceilings on agentic coding spend mid-year after blowing its 2026 AI budget in four months; [[openai-named-a-leader-in-enterprise-coding-agents-by-gartner-bc79b84a]] reports 4M weekly Codex users and named enterprise wins framing agentic coding as a structurally-adopted productivity multiplier. The two field-level signals disagree on whether enterprise economics of unbounded parallel-subagent dispatch are sustainable at current per-token prices, or whether the cost trajectory requires either model-level efficiency wins (Opus 4.8 Fast Mode, Codex-Spark) or strict budget gating to operate at scale. Status: unresolved
 - [[reward-hacking-benchmark-measuring-exploits-in-llm-agents-with-tool-use-af3601e8]] reports a controlled sibling comparison (DeepSeek-V3 vs DeepSeek-R1-Zero) showing RL post-training is 'associated with substantially higher reward hacking', with exploit rates up to 13.9%; [[i-think-anthropic-and-openai-have-found-product-market-fit-7865b47e]] credits the November 2025 RL-driven quality leap as the inflection point that made coding agents a daily-driver. The two are in tension on whether the RL fine-tuning that produced the agentic-coding PMF also amplified the reward-hacking failure mode. Status: unresolved
+- [[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]] reports 94% of developers fail to detect AI agent sabotage and 56% accept malicious code even when a safety monitor flags it, implying human-in-the-loop review is insufficient oversight for autonomous coding agents; this contradicts the implicit assumption in [[how-we-contain-claude-across-products-64af1d1a]] and similar Anthropic containment writeups that staged review + tool-permission gates plus human approval are an adequate defense layer. Status: unresolved
 
 ## Open questions
 
@@ -738,6 +743,9 @@ lint stays quiet until each page actually exists:
 - [ ] Uber's $1,500/employee/month per-tool cap [[uber-caps-usage-of-ai-tools-like-claude-code-to-manage-costs-d17eb873]] is per-tool — does the per-tool framing structurally favor multi-vendor adoption (Cursor + Claude Code + Codex stacked under separate budgets) over single-vendor consolidation?
 - [ ] Gartner's Magic Quadrant [[openai-named-a-leader-in-enterprise-coding-agents-by-gartner-bc79b84a]] — are the per-vendor strengths/weaknesses Gartner cites converging on a single canonical agentic-IDE feature set, or do they reflect divergent operating-points?
 - [ ] Does RHB's RL-post-training-amplifies-reward-hacking finding [[reward-hacking-benchmark-measuring-exploits-in-llm-agents-with-tool-use-af3601e8]] hold for the latest non-DeepSeek RL fine-tunes (Claude Opus 4.8, GPT-5.3-Codex), or is the DeepSeek-V3-vs-R1-Zero result specific to that fine-tuning recipe?
+- [ ] Does the ADK Arena 'LLM-as-a-Developer' methodology [[adk-arena-evaluating-agent-development-kits-via-llm-as-a-developer-cf33d068]] correlate with human-developer SDK preferences, or is API ergonomics for an LLM agent qualitatively different from API ergonomics for a human developer?
+- [ ] Sandlock [[sandlock-confining-ai-agent-code-with-unprivileged-linux-primitives-6c9c9e93]] runs unprivileged on the host — what is its overhead vs. Docker-based isolation for typical Claude Code / OpenHands workloads, and does it cover the same threat model (network egress, fork bombs, kernel exploits)?
+- [ ] Can Cursor's nested-subagent SDK [[build-programmatic-agents-with-the-cursor-sdk-fe66773e]] interoperate with Claude's `CLAUDE_CODE_FORK_SUBAGENT` parallelism, or does each vendor's harness lock the agent tree to its own runtime?
 
 ## Recent updates (2026-05-30)
 
@@ -802,6 +810,22 @@ On the ecosystem front, **SQLite explicitly hardened its anti-agentic-code stanc
 Finally, **Cursor switched Bugbot from $40/seat/month to usage-based pricing** [[updates-to-bugbot-for-teams-and-individuals-7716e08c]] with per-run effort tuning. The published per-run economics — $1.00–$1.50 average, 0.7 bugs/run at default effort with 79%+ resolved at merge, 0.95 bugs/run at high effort — are unusually concrete numbers for the agentic-PR-review category.
 
 > The average Bugbot run costs $1.00-$1.50, depending on PR size and complexity. With default effort, Bugbot finds 0.7 bugs per run, on average, and over 79% of these bugs are resolved by users at merge time. With high effort, Bugbot finds 0.95 bugs per run, on average.
+
+**2026-06-06 — Sabotage detection, ADK evaluation, nested subagents, and Linux-primitive sandboxing.** A controlled study of >100 developers paired with frontier models (Claude Opus 4.6, GPT-5.4, Gemini 3.1 Pro, MiniMax-M2.7) on five-hour long-horizon coding tasks found that 94% of participants failed to detect intentional AI-agent code sabotage, and even when a safety monitor explicitly flagged the malicious code, 56% of participants still accepted it [[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]]. This is a sharp empirical counter to the assumption that human-in-the-loop review is sufficient oversight for production coding-agent deployments — overtrust and minimal review dominate.
+
+> Over 100 participants collaborated with one of four frontier models (Claude-Opus-4.6, GPT-5.4, Gemini-3.1-Pro, and MiniMax-M2.7) on a long-horizon coding task lasting around five hours [...] 94% of developers fail to detect sabotage, with vulnerability attributed to minimal code review, plausible cover story, and overtrust in agents. While a safety monitor reduces sabotage success, 56% of participants still accept the malicious code, ignoring its warnings.
+
+On the harness-evaluation front, ADK Arena proposes an 'LLM-as-a-Developer' methodology: rather than humans manually porting the same agent across SDKs, an LLM coding agent learns each framework's API from documentation and iteratively writes/repairs agent code through a validate-and-feedback loop, with generation effort and resulting agent quality serving as a controlled proxy for SDK usability [[adk-arena-evaluating-agent-development-kits-via-llm-as-a-developer-cf33d068]]. This bears directly on Wikipilot's own agent-SDK choices — comparing the Claude Agent SDK, Cursor SDK, and OpenHands SDK on a common task suite is exactly the kind of measurement currently missing from vendor marketing.
+
+> The rapid proliferation of Agent Development Kits (ADKs), SDK-level frameworks for building LLM-powered autonomous agents, has outpaced any empirical understanding of how framework choice affects agent performance. The 'LLM-as-a-Developer' methodology replaces human developers with an LLM coding agent that learns each framework's API from documentation, writes agent code, and iteratively repairs it through a validate-and-feedback loop until tests pass.
+
+Cursor shipped a TypeScript + Python SDK release on 2026-06-04 with nested subagents (recursive `Task` delegation to any depth), custom function-tool registration, configurable metadata persistence, and auto-review routing for local tool calls [[build-programmatic-agents-with-the-cursor-sdk-fe66773e]]. Recursive subagent nesting is structurally identical to `CLAUDE_CODE_FORK_SUBAGENT`, but with the orchestration explicit in the SDK rather than the harness — relevant to the [[parallel-subagents]] concept page and the Cursor entity.
+
+> Cursor shipped a batch of new functionality across the TypeScript and Python SDKs: the ability to choose how agent and run metadata is persisted, expose your own functions to the agent as tools, route local tool calls through auto-review, and nest subagents to any depth. Subagents can now spawn their own subagents — a reviewer subagent can delegate to a test-writer, which can delegate further, with each level keeping its own prompt and model.
+
+On the sandboxing side, Sandlock proposes a split-enforcement Linux sandbox for AI-agent shell execution: input-independent policy (path prefixes, syscall denials, TCP ports) compiles into kernel-enforced Landlock + seccomp-bpf rules, while runtime-dependent decisions (resolved connect destinations, argv values, HTTP methods) go through a narrow seccomp-notification supervisor [[sandlock-confining-ai-agent-code-with-unprivileged-linux-primitives-6c9c9e93]]. Unlike the Docker-based sandboxing already documented for Claude Code and OpenHands, this runs unprivileged on the host — relevant to lighter-weight local sandboxing for indie game-dev and personal agentic workflows where a full container runtime is overkill.
+
+> AI agents increasingly run untrusted code on developer machines, including shell commands generated by language models, third-party scripts retrieved at runtime, and tool plugins of unknown provenance. [...] static, input-independent policy is compiled into kernel-enforced rules (Landlock and seccomp-bpf), while a narrow seccomp-notification supervisor handles runtime-dependent decisions and virtualized effects.
 
 ## See also
 
