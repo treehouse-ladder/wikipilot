@@ -12,10 +12,11 @@ comparison_of:
 - glm-5
 - kimi-k2.6
 - qwen3.7-max
+- mai-code-1-flash
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-05-22
+last_updated: 2026-06-06
 last_verified: '2026-05-22'
 show_glosses: true
 sources:
@@ -29,7 +30,7 @@ title: Frontier model cost comparison
 
 ## Summary
 
-This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` across 9 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-cost-comparison` to refresh.
+This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` across 10 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-cost-comparison` to refresh.
 
 ## What each column means for me
 
@@ -44,11 +45,11 @@ This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` acros
 | [[gemini-3.1-pro]] | 2.0 | 12.0 |
 | [[grok-4.3]] | 1.25 | **2.5** |
 | [[deepseek-v4]] | 1.74 | 3.48 |
-| [[glm-5]] | _1.0_ | _3.2_ |
-| [[kimi-k2.6]] | **0.95** | 4.0 |
-| [[qwen3.7-max]] | _unknown_ | _unknown_ |
+| [[glm-5]] | 1.0 | _3.2_ |
+| [[kimi-k2.6]] | _0.95_ | 4.0 |
+| [[qwen3.7-max]] | 2.5 | 7.5 |
+| [[mai-code-1-flash]] | **0.75** | 4.5 |
 
 ## Leader changes since last regen
 
-- **`input_cost_per_mtoken`**: first leader recorded — [[kimi-k2.6]].
-- **`output_cost_per_mtoken`**: first leader recorded — [[grok-4.3]].
+- **`input_cost_per_mtoken`**: [[mai-code-1-flash]] took #1 from [[kimi-k2.6]].
