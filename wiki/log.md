@@ -495,3 +495,27 @@ Mewgenics 3LP vinyl (Ridiculon, 7 colorways), LBP+Sackboy iam8bit vinyl Q4 2026,
 ## [2026-06-05] daily | 5 topics, 29 sources, ~42 pages
 
 agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music. PRs #136–140 all squash-merged to main. 1 new entity (mai-thinking-1). Report: wiki/reports/2026-06-05.md.
+
+## [2026-06-06] daily | game-music — 1 sources, 2 pages
+
+Hitoshi Sakimoto confirms FFT is rock at London Game Music Festival 2026 debut — tuba/trombone as bass drum, other instruments as snare/hi-hat. PR #142.
+
+## [2026-06-06] daily | agentic-coding — 4 sources, 9 pages
+
+Agent sabotage detection study (human devs detect only 7% of subtle inserts), ADK Arena multi-framework eval (LangGraph leads), Cursor SDK programmatic agent access, Sandlock unprivileged sandbox (user-ns + seccomp + overlay + cgroups). 3 new concept pages: agent-sandboxing, parallel-subagents, agent-harnesses. PR #143.
+
+## [2026-06-06] daily | frontier-models — 3 sources, 7 pages
+
+ChatGPT Dreaming memory architecture (factual recall 41.5% → 82.8%), MAI-Code-1-Flash launch ($0.75/$4.50 per Mtoken, SWE-bench Verified 73.1%), MAI family context. 1 new entity: mai-code-1-flash. PR #144.
+
+## [2026-06-06] daily | ai-in-game-dev — 4 sources, 5 pages
+
+Bounded autonomy for LLM NPCs in live multiplayer (control loop, rollback, filter layers), Skin Tokens compact rigging representation (unified autoregressive), Reallusion AI Studio 3D-to-AI workflow, hybrid AI 2026 vision (Neri Neto). PR #145.
+
+## [2026-06-06] daily | games-of-note — 11 sources, 12 pages
+
+Summer Game Fest 2026 full slate: FF7 Revelation (Spring 2027, open-world Highwind), RE Code Veronica remake (likely first-person), Gen Atlas (Fumito Ueda, sci-fi kaiju mech), Cuphead sequel + Mighty Cuphead Adventure (8-bit physical), TMNT Last Ronin → PlatinumGames, Guild Wars 3 (NCSoft, fall 2027 beta), Alien Isolation 2, Palworld 1.0 July 10, Stellar Blade: Blood Rain (Sony publishing dropped). PR #146.
+
+## [2026-06-06] daily | 5 topics, 23 sources, ~35 pages
+
+game-music, agentic-coding, frontier-models, ai-in-game-dev, games-of-note. PRs #142–146 all squash-merged to main. 1 new entity (mai-code-1-flash), 3 new concept pages (agent-sandboxing, parallel-subagents, agent-harnesses). Report: wiki/reports/2026-06-06.md.
