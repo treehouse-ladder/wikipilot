@@ -2,8 +2,8 @@
 title: "MAI-Thinking-1"
 kind: entity
 aliases: ["MAI Thinking 1", "Microsoft MAI-Thinking-1", "mai-thinking-1"]
-sources: ["[[introducing-mai-thinking-1-0e3e1662]]", "[[microsoft-build-2026-mai-keynote-transcript-77c10a37]]"]
-last_updated: 2026-06-05
+sources: ["[[introducing-mai-thinking-1-0e3e1662]]", "[[microsoft-build-2026-mai-keynote-transcript-77c10a37]]", "[[building-a-hill-climbing-machine-launching-seven-new-mai-models-adf5b785]]"]
+last_updated: 2026-06-06
 last_verified: 2026-06-05
 freshness_window_days: 30
 ---
@@ -33,6 +33,7 @@ Headline benchmarks: 97.0% on AIME 2025, 94.5% on AIME 2026, 84.2% on GPQA Diamo
 ## See also
 
 - [[frontier-models]]
+- [[mai-code-1-flash]]
 - [[claude-opus-4.7]]
 - [[claude-opus-4.8]]
 - [[gpt-5.5]]
