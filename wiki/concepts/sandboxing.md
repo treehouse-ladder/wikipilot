@@ -9,7 +9,8 @@ sources:
   - "[[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]]"
   - "[[build-2026-furthering-windows-as-the-trusted-platform-for-development-0e85a5a9]]"
   - "[[windows-platform-security-for-ai-agents-83834df9]]"
-last_updated: 2026-06-04
+  - "[[sandlock-confining-ai-agent-code-with-unprivileged-linux-primitives-6c9c9e93]]"
+last_updated: 2026-06-06
 last_verified: 2026-06-04
 freshness_window_days: 30
 ---
@@ -74,5 +75,6 @@ This is a principle-level OS change that addresses trust-level confusion at the 
 ## See also
 
 - [[agentic-coding]]
+- [[agent-sandboxing]]
 - [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]]
 - [[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]]
