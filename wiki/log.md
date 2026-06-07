@@ -519,3 +519,7 @@ Summer Game Fest 2026 full slate: FF7 Revelation (Spring 2027, open-world Highwi
 ## [2026-06-06] daily | 5 topics, 23 sources, ~35 pages
 
 game-music, agentic-coding, frontier-models, ai-in-game-dev, games-of-note. PRs #142–146 all squash-merged to main. 1 new entity (mai-code-1-flash), 3 new concept pages (agent-sandboxing, parallel-subagents, agent-harnesses). Report: wiki/reports/2026-06-06.md.
+
+## [2026-06-07] health | weekly sweep — 1 dispute filed
+
+Weekly health sweep 2026-06-07. 32 candidate sets scanned (31 source-triggered + 1 stale_sweep), 9 parallel scanner runs, 1 genuine dispute filed (Mythos availability supersession on frontier-models/index.md). No stale synthesis pages. PR #148 opened and queued for auto-merge.
