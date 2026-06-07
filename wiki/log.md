@@ -551,3 +551,7 @@ pr#151 ai-in-game-dev rebased sha=815b7551, merged; pr#152 games-of-note rebased
 ## [2026-06-07] daily | 5 topics, 29 sources, 38 pages
 
 agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music. PRs #149–153 all squash-merged to main. 1 new entity (minimax-m3). Conflict resolver handled 3 PRs with merge conflicts (PRs #151, #152, #153) — all resolved via synthesis union. Report: wiki/reports/2026-06-07.md.
+
+## [2026-06-07] manual | conflict-resolver — 1 rebased
+
+pr#155 rebased onto main (wiki/log.md chronological conflict resolved); auto-merge re-queued via MCP.
