@@ -523,3 +523,7 @@ game-music, agentic-coding, frontier-models, ai-in-game-dev, games-of-note. PRs 
 ## [2026-06-07] health | weekly sweep — 1 dispute filed
 
 Weekly health sweep 2026-06-07. 32 candidate sets scanned (31 source-triggered + 1 stale_sweep), 9 parallel scanner runs, 1 genuine dispute filed (Mythos availability supersession on frontier-models/index.md). No stale synthesis pages. PR #148 opened and queued for auto-merge.
+
+## [2026-06-07] manual | conflict-resolver — 3 rebased
+
+pr#151 ai-in-game-dev rebased sha=815b7551, merged; pr#152 games-of-note rebased sha=823e364, merged; pr#153 game-music rebased sha=4186508, auto-merge queued
