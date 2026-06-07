@@ -10,8 +10,9 @@ sources:
   - "[[build-2026-furthering-windows-as-the-trusted-platform-for-development-0e85a5a9]]"
   - "[[windows-platform-security-for-ai-agents-83834df9]]"
   - "[[sandlock-confining-ai-agent-code-with-unprivileged-linux-primitives-6c9c9e93]]"
-last_updated: 2026-06-06
-last_verified: 2026-06-04
+  - "[[auditing-agent-harness-safety-e2a88ca4]]"
+last_updated: 2026-06-07
+last_verified: 2026-06-07
 freshness_window_days: 30
 ---
 
@@ -63,6 +64,14 @@ The deeper architectural change is **agent-as-OS-principal**: "Windows now treat
 
 This is a principle-level OS change that addresses trust-level confusion at the OS layer rather than the application layer. Microsoft's marketing implies a stronger guarantee than the Contextual Integrity impossibility result permits — MXC can bound blast radius and attribute actions to agent identities, but whether it can reliably distinguish injected from legitimate flows in the presence of an adversary who can always construct a context where a blocked flow appears legitimate remains an open question (filed on [[agentic-coding]]).
 
+## Mid-trajectory safety failures (2026-06-07)
+
+[[auditing-agent-harness-safety-e2a88ca4]] identifies a critical blind spot: "A harness can return a correct, benign answer over a trajectory that accesses unauthorized resources or leaks context to the wrong agent" — output-level evaluation cannot see these failures. HarnessAudit instruments boundary compliance, execution fidelity, and perturbation stability via hidden audit channels that independently record tool use, resource access, and inter-component interactions.
+
+> A harness can return a correct, benign answer over a trajectory that accesses unauthorized resources or leaks context to the wrong agent. Output-level evaluation cannot see these failures, yet most safety benchmarks score only final outputs or terminal states, even though many violations occur mid-trajectory rather than at termination.
+
+The findings show "a persistent gap between task capability and safe execution, with resource access and inter-component information flow emerging as the most critical surfaces to harden" [[auditing-agent-harness-safety-e2a88ca4]]. This extends the trust-level confusion problem into the harness's internal message bus — sandboxing the final execution environment is insufficient when multi-agent harnesses route messages between specialized components.
+
 ## Open questions
 
 - [ ] What's the false-negative rate of the Sonnet 4.6 transcript classifier on adversarial inputs designed by red teams? (Not disclosed.)
@@ -71,6 +80,8 @@ This is a principle-level OS change that addresses trust-level confusion at the 
 - [ ] Does Microsoft MXC's declarative containment policy compose with Claude Code's bubblewrap/seatbelt sandbox when Claude Code runs on Windows — superset or parallel layer requiring dual configuration?
 - [ ] Does Windows' agent-as-OS-principal identity model propagate into the agent's audit trail well enough to make agent-attributable security regressions traceable post-hoc?
 - [ ] Does MXC defeat the Contextual Integrity impossibility result, or is it purely blast-radius containment with better attribution?
+- [ ] Do [[auditing-agent-harness-safety-e2a88ca4]]'s hidden audit channels compose with unprivileged Linux sandbox approaches and Anthropic's security model, or does the inter-subagent message bus sit above all three?
+- [ ] Given [[auditing-agent-harness-safety-e2a88ca4]]'s finding that many violations occur mid-trajectory, do any existing reward-hacking benchmarks actually score mid-trajectory access patterns?
 
 ## See also
 
