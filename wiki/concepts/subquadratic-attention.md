@@ -6,8 +6,9 @@ sources:
   - "[[subquadratic-launches-with-29m-to-bring-12m-token-context-windows-to-ai-78c846ee]]"
   - "[[zaya1-8b-frontier-intelligence-density-trained-on-amd-3012ef57]]"
   - "[[zaya1-8b-technical-report-614bf738]]"
-last_updated: 2026-05-24
-last_verified: 2026-05-24
+  - "[[minimax-m3-frontier-coding-1m-context-native-multimodality-all-in-one-model-d466ccc6]]"
+last_updated: 2026-06-07
+last_verified: 2026-06-07
 freshness_window_days: 30
 ---
 
@@ -31,6 +32,10 @@ An alternative approach is Compressed Convolutional Attention (CCA), shipped in 
 
 > ZAYA1-8B is a Mixture-of-Experts language model optimized for maximum reasoning performance per active parameter, with 8.4B total parameters but only 760M active per forward pass.
 
+Another implementation is MiniMax Sparse Attention (MSA), shipped in MiniMax M3 (June 1, 2026), the first open-weight model to combine frontier-tier coding, 1M-token context, and native multimodality [[minimax-m3-frontier-coding-1m-context-native-multimodality-all-in-one-model-d466ccc6]]. MSA delivers per-token compute at 1M context that is 1/20 that of the previous-generation MiniMax M2, making M3's long-context inference feasible at frontier capability levels [[minimax-m3-frontier-coding-1m-context-native-multimodality-all-in-one-model-d466ccc6]]. See [[minimax-m3]].
+
+> M3 uses MSA (MiniMax Sparse Attention)... at a context length of 1 million, M3's per-token compute is just 1/20 that of the previous-generation model.
+
 ## Disputes
 
 _no contradictions or gaps known yet (last reviewed: 2026-05-24)_
@@ -44,3 +49,4 @@ _no contradictions or gaps known yet (last reviewed: 2026-05-24)_
 ## See also
 
 - [[frontier-models]]
+- [[minimax-m3]]
