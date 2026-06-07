@@ -13,8 +13,12 @@ sources:
   - "[[building-agents-with-the-claude-agent-sdk-anthropic-engineering-cf56e261]]"
   - "[[cursor-3-7-canvases-design-mode-and-context-explorer-b28194f5]]"
   - "[[adk-arena-evaluating-agent-development-kits-via-llm-as-a-developer-cf33d068]]"
-last_updated: 2026-06-06
-last_verified: 2026-06-05
+  - "[[retrospective-harness-optimization-improving-llm-agents-via-self-preference-over-trajectory-rollouts-5f71be82]]"
+  - "[[harnessforge-joint-harness-and-policy-evolution-for-adaptive-agent-systems-0a4762a0]]"
+  - "[[harness-bench-measuring-harness-effects-across-models-in-realistic-agent-workflows-5abc49c8]]"
+  - "[[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]]"
+last_updated: 2026-06-07
+last_verified: 2026-06-07
 freshness_window_days: 30
 ---
 
@@ -60,12 +64,22 @@ Cursor 3.7 (June 4, 2026) shipped the first product-grade **context-budget instr
 
 > Cursor can now show your agent's context usage as an interactive report in a canvas. The context explorer breaks down where tokens go across the system prompt, tool definitions, rules, skills, and more.
 
+## Self-supervised harness evolution and diagnostic decomposition (2026-06-07)
+
+Late May / early June 2026 brought a third generation of harness evolution techniques that remove the ground-truth validation requirement. **Retrospective Harness Optimization (RHO)** [[retrospective-harness-optimization-improving-llm-agents-via-self-preference-over-trajectory-rollouts-5f71be82]] selects challenging tasks from past trajectories, re-solves them in parallel, and uses self-validation + self-preference to choose harness updates without any labeled validation set. **HarnessForge** [[harnessforge-joint-harness-and-policy-evolution-for-adaptive-agent-systems-0a4762a0]] performs joint harness-policy co-evolution, reporting up to 12.0% gains on Qwen3-4B/8B across five benchmarks.
+
+However, [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]] provides critical pushback: harness-updating capability is flat across model tiers (Qwen3.5-9B evolver matches Claude Opus 4.6), and harness-benefit is non-monotonic (strong models hit a ceiling). The practical implication: invest capability budget in the task-solving agent, not the evolver.
+
+**Harness-Bench** [[harness-bench-measuring-harness-effects-across-models-in-realistic-agent-workflows-5abc49c8]] is the diagnostic instrument for controlled harness-vs-model decomposition, varying harness configuration while holding the model fixed. The authors recommend future benchmarks report both model and harness conditions for any score.
+
 ## Open questions
 
 - [ ] Does priority-ranking evaluation generalize beyond tool-edit decisions to skill / memory / subagent edits?
 - [ ] How do the harness-optimizer benchmarks correlate with end-to-end SWE-bench-Verified gains when controlling for infrastructure noise?
 - [ ] Can Life-Harness's four-dimensional intervention taxonomy (environment contracts, procedural skills, action realization, trajectory regulation) be automatically extracted from production agent trajectories?
 - [ ] Does Cursor 3.7's context explorer instrumentation enable users to operationalize the harness-design framework from [[architectural-design-decisions-in-ai-agent-harnesses-523b6fa0]], or is it purely diagnostic?
+- [ ] Can [[retrospective-harness-optimization-improving-llm-agents-via-self-preference-over-trajectory-rollouts-5f71be82]]'s self-supervised RHO loop run prospectively on a single user's Claude Code session log without centralized trajectory analysis?
+- [ ] Does [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]]'s flatness finding change the optimal model tier for harness-evolution subagents in production systems?
 
 ## See also
 
