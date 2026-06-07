@@ -524,6 +524,30 @@ game-music, agentic-coding, frontier-models, ai-in-game-dev, games-of-note. PRs 
 
 Weekly health sweep 2026-06-07. 32 candidate sets scanned (31 source-triggered + 1 stale_sweep), 9 parallel scanner runs, 1 genuine dispute filed (Mythos availability supersession on frontier-models/index.md). No stale synthesis pages. PR #148 opened and queued for auto-merge.
 
+## [2026-06-07] daily | agentic-coding — 5 sources, 8 pages
+
+Harness-engineering wave: RHO (retrospective trajectory self-preference), HarnessForge (joint policy + harness co-evolution), Harness-Bench (multi-model harness-effect measurement), harness-updating vs AHE disentanglement, HarnessAudit (mid-trajectory safety audit channels). 2 concept pages updated (harness-engineering, sandboxing). PR #149.
+
+## [2026-06-07] daily | frontier-models — 5 sources, 8 pages
+
+MiniMax M3 launch: open-weight frontier model (1M context, native multimodality, SWE-Bench Pro 59.0% vendor-reported, $0.60/$2.40 per Mtoken). Gemini 3.5 Pro imminent (2M context, Deep Think). 1 new entity: minimax-m3. PR #150.
+
+## [2026-06-07] daily | ai-in-game-dev — 6 sources, 7 pages
+
+World-model wave: Matrix-Game 3.0 (real-time streaming + long-horizon memory), Hunyuan-GameCraft-2 (NL-steerable world model), WorldPlay (long-term geometric consistency), WorldCam (camera-pose-unified world generation). NVIDIA-Korea gaming partnership. Panic Playdate generative-AI ban. PR #151.
+
+## [2026-06-07] daily | games-of-note — 11 sources, 12 pages
+
+PlayerUnknown Productions halts Go Wayback, Paramount Game Studios launches, Wolf Among Us 2 confirmed 2027 + remaster, Tifa joins Street Fighter 6, Day of the Devs/SGF showcase, 33 Immortals full release soon, Gothic 1 Remake ships requiring day-1 patch. PR #152.
+
+## [2026-06-07] daily | game-music — 2 sources, 3 pages
+
+Mr. Records (Glee-Cheese / Wired Productions): 45 original songs by Bardin & Ducloux (funk/prog rock/hip-hop/electro), music-as-level-geometry mechanic, Q1 2027. Announced Day of the Devs. PR #153.
+
 ## [2026-06-07] manual | conflict-resolver — 3 rebased
 
 pr#151 ai-in-game-dev rebased sha=815b7551, merged; pr#152 games-of-note rebased sha=823e364, merged; pr#153 game-music rebased sha=4186508, auto-merge queued
+
+## [2026-06-07] daily | 5 topics, 29 sources, 38 pages
+
+agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music. PRs #149–153 all squash-merged to main. 1 new entity (minimax-m3). Conflict resolver handled 3 PRs with merge conflicts (PRs #151, #152, #153) — all resolved via synthesis union. Report: wiki/reports/2026-06-07.md.

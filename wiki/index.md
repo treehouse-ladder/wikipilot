@@ -39,6 +39,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[santa-monica-studio]]
 - [[mai-thinking-1]]
 - [[mai-code-1-flash]]
+- [[minimax-m3]]
 
 ## Comparisons
 
@@ -461,6 +462,35 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[new-alien-isolation-2-trailer-gives-fans-first-look-at-horror-sequel-124eb7ef]]
 - [[palworld-1-0-is-launching-sooner-than-you-expect-842ff8cf]]
 - [[stellar-blade-follow-up-blood-rain-announced-trailer-has-some-eye-opening-moments-20a46370]]
+- [[retrospective-harness-optimization-improving-llm-agents-via-self-preference-over-trajectory-rollouts-5f71be82]]
+- [[harnessforge-joint-harness-and-policy-evolution-for-adaptive-agent-systems-0a4762a0]]
+- [[harness-bench-measuring-harness-effects-across-models-in-realistic-agent-workflows-5abc49c8]]
+- [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]]
+- [[auditing-agent-harness-safety-e2a88ca4]]
+- [[minimax-m3-frontier-coding-1m-context-native-multimodality-all-in-one-model-d466ccc6]]
+- [[minimax-m3-debuts-eclipsing-gpt-5-5-and-gemini-3-1-pro-on-key-benchmark-performance-for-just-5-10-of-the-cost-11226d25]]
+- [[minimax-m3-open-weight-coding-model-frontier-claims-unverified-benchmarks-96b02e45]]
+- [[minimax-m3-api-pricing-benchmarks-openrouter-fbc88cb0]]
+- [[google-gemini-3-5-pro-nears-june-launch-with-2-million-token-context-and-deep-think-reasoning-3a0c8ff3]]
+- [[matrix-game-3-0-real-time-and-streaming-interactive-world-model-with-long-horizon-memory-e6f2a8e3]]
+- [[hunyuan-gamecraft-2-instruction-following-interactive-game-world-model-9a04de3b]]
+- [[worldplay-towards-long-term-geometric-consistency-for-real-time-interactive-world-modeling-19011366]]
+- [[worldcam-interactive-autoregressive-3d-gaming-worlds-with-camera-pose-as-a-unifying-geometric-representation-eb960431]]
+- [[nvidia-extends-partnership-with-korean-gaming-giants-cd81a92b]]
+- [[panic-isn-t-keen-on-playdate-titles-using-generative-ai-209c7393]]
+- [[playerunknown-productions-is-laying-off-staff-and-halting-development-on-go-wayback-5f4ffba7]]
+- [[pubg-creators-new-survival-game-has-stopped-development-less-than-a-year-after-launch-1aafbf57]]
+- [[wolf-among-us-2-finally-actually-coming-out-in-2027-ade26bf5]]
+- [[the-wolf-among-us-2-finally-reappears-alongside-remastered-original-0c2473de]]
+- [[final-fantasy-7-tifa-coming-to-street-fighter-6-instead-of-tekken-5a40a712]]
+- [[tifa-is-coming-to-street-fighter-6s-season-4-roster-fda6268c]]
+- [[day-of-the-devs-summer-game-fest-edition-2026-everything-revealed-a8f040e8]]
+- [[paramount-unveils-new-unified-paramount-games-studio-3b154906]]
+- [[the-guy-ruining-cbs-news-just-launched-paramount-game-studios-ac700490]]
+- [[33-player-co-op-raider-33-immortals-will-finally-release-in-full-soon-de674359]]
+- [[physical-copies-of-gothic-remake-unplayable-without-a-day-1-update-b191e627]]
+- [[after-mixtape-cheerful-music-game-mr-records-is-a-day-of-the-devs-standout-7995adb8]]
+- [[mr-records-your-questions-answered-36564162]]
 
 ## Answers
 
@@ -485,3 +515,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-04]]
 - [[2026-06-05]]
 - [[2026-06-06]]
+- [[2026-06-07]]
