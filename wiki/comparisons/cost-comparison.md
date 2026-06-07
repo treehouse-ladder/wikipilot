@@ -13,16 +13,18 @@ comparison_of:
 - kimi-k2.6
 - qwen3.7-max
 - mai-code-1-flash
+- minimax-m3
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-06-06
+last_updated: 2026-06-07
 last_verified: '2026-05-22'
 show_glosses: true
 sources:
 - '[[introducing-claude-sonnet-46-c4a45eed]]'
 - '[[gemini-31-pro-model-card-225ab705]]'
 - '[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]'
+- '[[minimax-m3-api-pricing-benchmarks-openrouter-fbc88cb0]]'
 title: Frontier model cost comparison
 ---
 
@@ -30,7 +32,7 @@ title: Frontier model cost comparison
 
 ## Summary
 
-This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` across 10 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-cost-comparison` to refresh.
+This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` across 11 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-cost-comparison` to refresh.
 
 ## What each column means for me
 
@@ -43,13 +45,15 @@ This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` acros
 | [[claude-sonnet-4.6]] | 3.0 | 15.0 |
 | [[gpt-5.5]] | 5.0 | 30.0 |
 | [[gemini-3.1-pro]] | 2.0 | 12.0 |
-| [[grok-4.3]] | 1.25 | **2.5** |
+| [[grok-4.3]] | 1.25 | _2.5_ |
 | [[deepseek-v4]] | 1.74 | 3.48 |
-| [[glm-5]] | 1.0 | _3.2_ |
-| [[kimi-k2.6]] | _0.95_ | 4.0 |
+| [[glm-5]] | 1.0 | 3.2 |
+| [[kimi-k2.6]] | 0.95 | 4.0 |
 | [[qwen3.7-max]] | 2.5 | 7.5 |
-| [[mai-code-1-flash]] | **0.75** | 4.5 |
+| [[mai-code-1-flash]] | _0.75_ | 4.5 |
+| [[minimax-m3]] | **0.60** | **2.40** |
 
 ## Leader changes since last regen
 
-- **`input_cost_per_mtoken`**: [[mai-code-1-flash]] took #1 from [[kimi-k2.6]].
+- **`input_cost_per_mtoken`**: [[minimax-m3]] took #1 from [[mai-code-1-flash]] ($0.60 vs $0.75/Mtoken).
+- **`output_cost_per_mtoken`**: [[minimax-m3]] took #1 from [[grok-4.3]] ($2.40 vs $2.50/Mtoken).
