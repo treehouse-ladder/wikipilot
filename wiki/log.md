@@ -530,7 +530,7 @@ Harness-engineering wave: RHO (retrospective trajectory self-preference), Harnes
 
 ## [2026-06-07] daily | frontier-models — 5 sources, 8 pages
 
-MiniMax M3 launch: open-weight frontier model (1M context, native multimodality, SWE-Bench Pro 59.0% vendor-reported, $2/$8 per Mtoken). Gemini 3.5 Pro imminent (2M context, Deep Think). 1 new entity: minimax-m3. PR #150.
+MiniMax M3 launch: open-weight frontier model (1M context, native multimodality, SWE-Bench Pro 59.0% vendor-reported, $0.60/$2.40 per Mtoken). Gemini 3.5 Pro imminent (2M context, Deep Think). 1 new entity: minimax-m3. PR #150.
 
 ## [2026-06-07] daily | ai-in-game-dev — 6 sources, 7 pages
 
