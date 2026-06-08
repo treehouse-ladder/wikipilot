@@ -121,8 +121,12 @@ sources:
   - "[[harness-bench-measuring-harness-effects-across-models-in-realistic-agent-workflows-5abc49c8]]"
   - "[[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]]"
   - "[[auditing-agent-harness-safety-e2a88ca4]]"
-last_updated: 2026-06-07
-last_verified: 2026-06-07
+  - "[[lessons-from-building-claude-code-how-we-use-skills-0270e620]]"
+  - "[[codex-for-every-role-tool-and-workflow-b040c6a9]]"
+  - "[[human-oversight-of-agentic-systems-in-practice-ab5cc8f1]]"
+  - "[[an-agentic-approach-towards-replication-package-quality-evaluation-694ee439]]"
+last_updated: 2026-06-08
+last_verified: 2026-06-08
 freshness_window_days: 30
 ---
 
@@ -690,6 +694,8 @@ lint stays quiet until each page actually exists:
 - [ ] How does SWE-CI's CI-loop maintainability score [[swe-ci-evaluating-agent-capabilities-in-maintaining-codebases-via-continuous-integration-4b85b8c5]] correlate with SWE-EVO's evolution score [[swe-evo-benchmarking-coding-agents-in-long-horizon-software-evolution-scenarios-21a62ebd]] and SlopCodeBench's degradation metrics [[slopcodebench-benchmarking-how-coding-agents-degrade-over-long-horizon-iterative-tasks-dafbe4d6]] — are these three measuring one latent long-horizon discipline factor or distinct failure modes?
 - [ ] Does SkillJect's trace-driven closed-loop attack [[skillject-automating-stealthy-skill-based-prompt-injection-for-coding-agents-with-trace-driven-closed-loop-refinement-099f24bb]] succeed against focused 2-3 module skills [[skillsbench-benchmarking-how-well-agent-skills-work-across-diverse-tasks-1743f5a5]], or does the smaller skill surface reduce the available hiding space for an injected payload?
 - [ ] Does augmenting MCP tool descriptions [[model-context-protocol-mcp-tool-descriptions-are-smelly-towards-improving-ai-agent-efficiency-with-augmented-mcp-tool-descriptions-47b0c29e]] improve agent efficiency more or less than the load-on-demand code-execution-with-MCP approach [[code-execution-with-mcp-building-more-efficient-ai-agents-9b88bfec]], and do the two compose?
+- [ ] Does the 'verification skills are highest-leverage' finding from Anthropic's internal practice generalize to teams that haven't already invested in a strong test/CI baseline, or is verification's measured impact partly a function of Anthropic's existing tooling maturity?
+- [ ] How well do the four oversight modalities (pre-flight / in-flight / post-flight / trajectory replay) hold up under Claude Code dynamic workflows fan-out (tens-to-hundreds of parallel subagents)? The 23-developer study predates the dynamic-workflows research preview.
 - [ ] Cursor 3's Agents Window runs agents across local, worktree, cloud, and remote-SSH environments [[meet-the-new-cursor-cursor-3-the-agents-window-e13bb5f7]] — is the prompt-cache behavior consistent across these substrates, or does cloud/remote dispatch reset the cache the way the prior worktree open question on this page suspected?
 - [ ] Does WebMCP [[building-the-agentic-future-developer-highlights-from-google-i-o-2026-e433cac5]] compose with server-side MCP and Agent Skills, or is the browser-tool surface a parallel ecosystem that coding agents must integrate separately from the .claude/skills + MCP stack the wiki already tracks?
 - [ ] Inside the Scaffold finds 11 of 13 scaffolds compose multiple loop primitives [[inside-the-scaffold-a-source-code-taxonomy-of-coding-agent-architectures-7e37a967]] — is there any measured correlation between which primitive combination a scaffold uses and its SWE-bench/Terminal-Bench score, independent of the base model (which Beyond Resolution Rates [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] argues dominates)?
@@ -868,6 +874,24 @@ The harness-as-first-class-object thread the wiki has tracked through AHE [[agen
 > A harness can return a correct, benign answer over a trajectory that accesses unauthorized resources or leaks context to the wrong agent. Output-level evaluation cannot see these failures, yet most safety benchmarks score only final outputs or terminal states, even though many violations occur mid-trajectory rather than at termination.
 
 > HarnessAudit and HarnessAudit-Bench systematically evaluate agent harnesses along boundary compliance, execution fidelity, and perturbation stability, with hidden audit channels that independently record tool use, resource access, and inter-component interactions. Results show a persistent gap between task capability and safe execution, with resource access and inter-component information flow emerging as the most critical surfaces to harden.
+
+## Anthropic's nine-category Skills taxonomy and verification primacy (added 2026-06-08)
+
+**2026-06-08 — Anthropic's nine-category Skills taxonomy + verification primacy.** A June 3 internal-practice writeup from Anthropic spells out how its own engineers use Skills in Claude Code: hundreds of Skills in active use clustering into nine categories (Library & API Reference, Verification, Data & Analysis, Business Process, Scaffolding & Templates, Code Quality & Review, CI/CD & Deployment, Incident Runbooks, Infrastructure Operations), with **verification** singled out as the highest-leverage category [[lessons-from-building-claude-code-how-we-use-skills-0270e620]]. The post corrects the persistent 'skills are just markdown files' framing — Skills are folders that bundle scripts, assets, and data the agent discovers and manipulates — and identifies the **Gotchas section** as the highest-signal content because Claude already knows defaults; restating defaults adds context without adding value.
+
+> Verification skills have had the most measurable impact on Claude's output quality internally. A model can give the impression that a task is finished, and the last step — confirming the result — is exactly where work breaks down.
+
+This converges with new empirical data from the **agentic-oversight literature**: a mixed-methods study of 23 developers actively using Claude Code, Cursor, Copilot agent mode, and Aider found that developers spend **60–70% of oversight effort on post-flight verification** because in-flight monitoring scales poorly as agents grow more capable and parallel [[human-oversight-of-agentic-systems-in-practice-ab5cc8f1]]. The same study surfaces three working heuristics — 'shrink the diff', 'trust the test not the chat', 'reversibility first' — that look like the field's emerging operational playbook for keeping high-autonomy agents safe.
+
+> Verification is the bottleneck: developers report that 60–70% of their oversight effort lands in post-flight verification because in-flight monitoring scales poorly as agents grow more capable and parallel. Participants reported that they trust trace summaries less than direct file diffs and re-read the diff even when the agent self-reports success.
+
+**2026-06-02 — Codex Sites + Annotations + role-specific plugins.** OpenAI's June 2 Codex update reorients the product toward non-developer users (now ~20% of 5M weekly users, growing 3x faster than developers) [[codex-for-every-role-tool-and-workflow-b040c6a9]]. The technically interesting pieces for an agentic-coding workflow are **Annotations** (in-place pointer-editing that scopes the agent's diff to a selected region rather than re-running the whole task) and the six **role plugins** that bundle 62 business apps and 110 pre-built skills — a vertical-skills strategy that mirrors Anthropic's Skills standard but ships pre-packaged rather than letting users author and share their own.
+
+> With Annotations, you point to the exact part you want to refine and tell Codex what needs to change. Codex focuses the update on the part you selected, so you can refine your work without starting over or reworking the parts you already like.
+
+**2026-06-01 — Agentic replication-package evaluation.** A multi-agent system that automatically evaluates research replication packages against 51 reproducibility criteria achieves 91.4% inter-run consistency and 75.4% correctness on a 5-package pilot, by **decoupling deterministic structural checks (planner-dispatched scripts) from qualitative checks (LLM judge with artifact-slice context)** [[an-agentic-approach-towards-replication-package-quality-evaluation-694ee439]]. The 'split the planner from the LLM judge per criterion type' pattern cuts cost by ~40% vs. a single-prompt baseline — directly applicable to any agentic-coding eval harness that wants to mix cheap deterministic gates with expensive LLM judging.
+
+> Our pipeline decomposes the task by criterion type: structural checks run as deterministic scripts dispatched by a planner agent, while qualitative checks invoke an LLM judge with the relevant artifact slice as context. Decoupling the deterministic from the qualitative cuts cost by ~40% versus a single-prompt baseline while preserving recall.
 
 ## See also
 
