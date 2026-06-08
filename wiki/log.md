@@ -555,3 +555,27 @@ agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music. PRs 
 ## [2026-06-07] manual | conflict-resolver — 1 rebased
 
 pr#155 rebased onto main (wiki/log.md chronological conflict resolved); auto-merge re-queued via MCP.
+
+## [2026-06-08] daily | agentic-coding — 4 sources, 6 pages
+
+Human oversight study (4 modalities: pre-flight/in-flight/post-flight/trajectory-replay; verification = 60-70% of effort), dynamic workflows (Bun Zig→Rust 750k lines, 11 days), skills taxonomy (9 categories), agentic replication eval. PR #157.
+
+## [2026-06-08] daily | frontier-models — 3 sources, 5 pages
+
+MiniMax-M3 AA Intelligence Index confirmed 55 (well above avg 23); Apple WWDC Gemini-powered Siri (custom 1.2T-param model, Private Cloud Compute); Codex expansion to non-code workflows. PR #158.
+
+## [2026-06-08] daily | ai-in-game-dev — 5 sources, 6 pages
+
+NVIDIA Cosmos 3 open omnimodel for physical AI (vision+text+action); SGF 2026 AI disclosure wave — Tomb Raider: Legacy of Atlantis declared AI use, community backlash; Unity AI Gateway early access beta. PR #159.
+
+## [2026-06-08] daily | games-of-note — 11 sources, 12 pages
+
+Xbox Showcase 2026 wave: Gears of War E-Day, Halo Campaign Evolved (July 28), Persona 4 Revival, Spyro A Realm Beyond (Tom Kenny), Stronghold (Beart+Starr), Valheim 1.0, Fields of Mistria 1.0; Future Games Show, PC Gaming Show, Wholesome Direct (53 games) recaps. PR #160.
+
+## [2026-06-08] daily | game-music — 1 source, 2 pages
+
+Square Enix Jazz series provenance confirmed: Nakagawa (trombone) + Kawamura (bass) arranged every track across entire series. PR #161.
+
+## [2026-06-08] daily | 5 topics, 24 sources, 31 pages
+
+agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music. PRs #157–#161 all squash-merged to main. MiniMax-M3 AA Index updated (null→55). Report: wiki/reports/2026-06-08.md.
