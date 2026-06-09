@@ -2,9 +2,9 @@
 title: "Claude Mythos"
 kind: entity
 aliases: ["Mythos", "Claude Mythos Preview", "Anthropic Mythos"]
-sources: ["[[claude-mythos-preview-d737ab91]]", "[[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]"]
-last_updated: 2026-06-03
-last_verified: 2026-06-03
+sources: ["[[claude-mythos-preview-d737ab91]]", "[[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[expanding-project-glasswing-fd9b87df]]", "[[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]"]
+last_updated: 2026-06-09
+last_verified: 2026-06-09
 freshness_window_days: 30
 input_cost_per_mtoken: 25.00
 output_cost_per_mtoken: 125.00
@@ -43,6 +43,12 @@ Compared to Claude Opus 4.8 (the public-leaderboard #1), Mythos leads on SWE-ben
 
 > Mythos leads on the hardest software work, posting 77.8 to Opus 4.8's 69.2 on SWE-bench Pro. On GPQA Diamond, a set of graduate-level science questions, the two models tie at roughly 94. Anthropic's system cards point to a general-intelligence gap over Opus 4.8 that is modest and uneven, while the cyber gap is vast.
 
+As of June 2, 2026, Anthropic expanded Project Glasswing access from its initial vetted cohort to roughly 150 new organizations across more than 15 countries, with a focus on critical-infrastructure operators across power, water, healthcare, communications, and hardware [[expanding-project-glasswing-fd9b87df]]. Since the program launched in early April 2026, Claude Mythos Preview has surfaced more than 10,000 high- or critical-severity software vulnerabilities for participating partners [[expanding-project-glasswing-fd9b87df]]. Named partners include Okta, Samsung, SK Hynix, SK Telecom, NATO, and the EU cybersecurity agency ENISA [[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]. Mythos remains invitation-only — not generally available on the API — but the expansion is the largest scaling step since the original Project Glasswing announcement.
+
+> Since launch in early April, the restricted Claude Mythos Preview has surfaced more than 10,000 high- or critical-severity software vulnerabilities for participating partners.
+
+> Named partners include Okta, Samsung, SK Hynix, SK Telecom, NATO, and the EU cybersecurity agency ENISA.
+
 ## Disputes
 
 - [[claude-mythos-preview-d737ab91]] reports Mythos as state-of-the-art at SWE-bench Verified (93.9%), but this was a vendor-reported single-shot benchmark on an invitation-only model — no independent third-party replication exists. Status: unresolved — independently unverifiable while access remains invitation-only.
@@ -53,6 +59,7 @@ Compared to Claude Opus 4.8 (the public-leaderboard #1), Mythos leads on SWE-ben
 - [ ] When Mythos reaches general availability, will it receive an independent AA Intelligence Index placement, and where will it rank relative to Opus 4.8 (61.4) on the aggregate index?
 - [ ] Is Mythos a fine-tune of an existing Claude Opus base or a distinct architecture trained separately for cybersecurity capability?
 - [ ] Does Mythos' Cybench 100% pass@1 saturation indicate the benchmark has been exhausted as a frontier-security signal, or is it evidence of genuine out-of-distribution generalization?
+- [ ] Anthropic reports 10,000+ high/critical vulnerabilities found by Mythos in ~2 months of Glasswing operation [[expanding-project-glasswing-fd9b87df]]; what is the false-positive / non-reproducible rate, and is Anthropic publishing per-partner deduplication numbers?
 
 ## See also
 
