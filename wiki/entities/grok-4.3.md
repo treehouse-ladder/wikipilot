@@ -1,9 +1,9 @@
 ---
 title: "Grok 4.3"
 kind: entity
-sources: ["[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]"]
-last_updated: "2026-05-22"
-last_verified: "2026-05-22"
+sources: ["[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]", "[[grok-build-0-1-on-api-c60c4a6b]]", "[[grok-imagine-1-5-preview-7668cc26]]", "[[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]]"]
+last_updated: 2026-06-09
+last_verified: 2026-06-09
 freshness_window_days: 30
 input_cost_per_mtoken: 1.25
 output_cost_per_mtoken: 2.50
@@ -26,11 +26,20 @@ Grok 4.3 is xAI's frontier reasoning model, released April 30, 2026 [[xai-launch
 
 > Grok 4.3 (high) was released on April 30, 2026. Grok 4.3 (high) scores 53 on the Artificial Analysis Intelligence Index. The largest single benchmark improvement is on GDPval-AA, where Grok 4.3 scores an ELO of 1500, up 321 points from Grok 4.20 0309 v2's score of 1179. Grok 4.3 (high) costs $1.25 per 1M input tokens and $2.50 per 1M output tokens.
 
-_no contradictions or gaps known yet (last reviewed: 2026-05-22)_
+xAI's Grok 4.3 generation includes the dedicated coding model Grok Build 0.1 (public beta, xAI API, June 2026): 256k-token context, native MCP support, multimodal text+image, served at 100+ tokens/sec, priced at $1/$2 per Mtoken [[grok-build-0-1-on-api-c60c4a6b]]. Separately, Grok V9-Medium — a 1.5T-parameter (3x V8-small) base model trained on licensed Cursor session data — completed training on May 25, 2026, with public release projected for mid-June 2026 [[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]]. In the multimodal generation lane, Grok Imagine 1.5 Preview debuted at #1 on the Artificial Analysis Video Arena Image-to-Video leaderboard at 1404 Elo with native synchronized audio and 15-second clips [[grok-imagine-1-5-preview-7668cc26]].
+
+> Grok Build 0.1, xAI's fastest coding model, is now available via the xAI API in public beta. It is priced at $1 per million input tokens and $2 per million output tokens.
+
+> Grok V9-Medium has completed training at 1.5 trillion parameters — three times the current production 0.5T V8-small model. It was trained on Cursor data.
+
+> Grok Imagine 1.5 Preview debuted at number one on the Artificial Analysis Video Arena Image-to-Video leaderboard with an Elo rating of 1404.
+
+_no contradictions or gaps known yet (last reviewed: 2026-06-09)_
 
 ## Open questions
 
 - [ ] SWE-bench Verified, Cybench, and ARC-AGI-2 scores for Grok 4.3 — pending researcher sweep.
+- [ ] Grok Build 0.1 published 100+ tok/sec and $1/$2 Mtoken pricing but xAI has not yet published a SWE-bench Verified or AA Intelligence Index score for the model itself [[grok-build-0-1-on-api-c60c4a6b]] — independent benchmarks pending.
 
 ## See also
 
