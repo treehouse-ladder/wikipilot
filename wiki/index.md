@@ -40,6 +40,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[mai-thinking-1]]
 - [[mai-code-1-flash]]
 - [[minimax-m3]]
+- [[grok-4.3]]
 
 ## Comparisons
 
@@ -515,6 +516,28 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[after-half-a-decade-valheim-1-0-finally-has-a-release-date-d526d125]]
 - [[samantha-beart-and-ben-starr-headline-a-new-stronghold-game-coming-to-steam-later-this-year-2b2954d8]]
 - [[square-enix-jazz-final-fantasy-music-review-bf40ac7a]]
+- [[copilot-sdk-is-now-generally-available-f3907ed0]]
+- [[shape-copilot-code-review-around-your-team-1a940a72]]
+- [[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]
+- [[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]
+- [[claude-credit-overhaul-2026-what-changes-on-june-15-bdf7c477]]
+- [[expanding-project-glasswing-fd9b87df]]
+- [[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]
+- [[grok-build-0-1-on-api-c60c4a6b]]
+- [[grok-imagine-1-5-preview-7668cc26]]
+- [[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]]
+- [[crazy-taxi-world-tour-producer-clarifies-ai-use-59cbf5c2]]
+- [[shadow-of-the-colossus-director-promises-no-ai-in-gen-atlas-af530323]]
+- [[ue-5-7-built-in-ai-assistant-vs-mcp-which-ai-workflow-actually-ships-games-c5e037f4]]
+- [[fumito-ueda-on-why-gen-atlas-has-shooting-but-isnt-a-shooter-cool-robots-and-generative-ai-e6494484]]
+- [[crazy-taxi-world-tour-lead-says-generative-ai-will-continue-to-be-a-hot-topic-but-theyre-using-it-anyway-30cbd2d5]]
+- [[nintendo-direct-confirmed-for-june-9-and-it-is-a-big-one-5ddd6035]]
+- [[all-confirmed-and-rumored-games-for-june-9-nintendo-direct-d43cb2b9]]
+- [[mina-the-hollower-has-now-sold-half-a-million-copies-76965456]]
+- [[where-winds-meet-out-now-on-xbox-series-x-s-hidden-mountain-expansion-launches-in-july-45073f44]]
+- [[summer-game-fest-2026-draws-record-breaking-3-8m-peak-viewers-62de2213]]
+- [[mario-kart-world-races-onto-nintendo-music-today-app-web-browser-support-added-b914135e]]
+- [[infinity-arranged-soundtrack-music-review-2a862cf8]]
 
 ## Answers
 
@@ -541,3 +564,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-06]]
 - [[2026-06-07]]
 - [[2026-06-08]]
+- [[2026-06-09]]

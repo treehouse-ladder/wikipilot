@@ -579,3 +579,27 @@ Square Enix Jazz series provenance confirmed: Nakagawa (trombone) + Kawamura (ba
 ## [2026-06-08] daily | 5 topics, 24 sources, 31 pages
 
 agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music. PRs #157–#161 all squash-merged to main. MiniMax-M3 AA Index updated (null→55). Report: wiki/reports/2026-06-08.md.
+
+## [2026-06-09] daily | agentic-coding — 5 sources, 10 pages
+
+Copilot SDK GA (cross-vendor agent standard); GitHub Shape AI code-review customization; SciVisAgent skills benchmark (scientific data analysis + visualization); MicroPython WASM sandboxing pattern for agentic code execution; Claude credit overhaul June 15. PR #163.
+
+## [2026-06-09] daily | frontier-models — 5 sources, 8 pages
+
+Project Glasswing expands Claude Mythos from ~50 to 150 orgs across 15 countries. Grok 4.3 new entity: Build 0.1 (API agentic), V9-Medium inference, Imagine 1.5 Preview (image gen). Grok coding lead mid-June release expected. PR #164.
+
+## [2026-06-09] daily | ai-in-game-dev — 5 sources, 6 pages
+
+AI disclosure debate intensifies: Crazy Taxi World Tour producer clarifies limited AI use; Fumito Ueda confirms zero AI in Gen Atlas; Shadow of the Colossus team same pledge. UE5.7 built-in AI assistant vs MCP practical comparison. PR #165.
+
+## [2026-06-09] daily | games-of-note — 5 sources, 7 pages
+
+Nintendo Direct June 9 — confirmed major reveals. Mina the Hollower hits 500K copies (Yacht Club's first original IP commercial milestone). Where Winds Meet Xbox expansion July. Summer Game Fest 2026 record 3.8M peak viewers. PR #166.
+
+## [2026-06-09] daily | game-music — 2 sources, 3 pages
+
+Mario Kart World's 323-song catalog lands on Nintendo Music (CarPlay/web expansion; open question on Spotify competition intent). Infinity Arranged soundtrack review added. PR #167.
+
+## [2026-06-09] daily | 5 topics, 22 sources, 34 pages
+
+agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music. PRs #163–#167 all squash-merged to main. 1 new entity (grok-4.3). Report: wiki/reports/2026-06-09.md.
