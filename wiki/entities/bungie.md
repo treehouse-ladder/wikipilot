@@ -3,7 +3,7 @@ title: "Bungie"
 kind: entity
 aliases: []
 sources: ["[[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]", "[[marathon-review-incredible-highs-painful-lows-4d8a2d55]]", "[[sony-records-766-million-impairment-loss-against-bungie-in-2025-e8b6b853]]", "[[bungie-reportedly-plans-significant-layoffs-as-no-destiny-3-greenlit-3c028ea3]]", "[[destiny-2-s-active-development-will-end-in-june-30b55a1f]]", "[[bungie-officially-ends-active-development-for-destiny-2-with-the-release-of-a-final-content-update-on-june-9-2026-5982e288]]"]
-last_updated: 2026-06-05
+last_updated: 2026-06-09
 last_verified: 2026-06-05
 freshness_window_days: 60
 ---
