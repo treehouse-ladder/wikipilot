@@ -17,8 +17,10 @@ sources:
   - "[[harnessforge-joint-harness-and-policy-evolution-for-adaptive-agent-systems-0a4762a0]]"
   - "[[harness-bench-measuring-harness-effects-across-models-in-realistic-agent-workflows-5abc49c8]]"
   - "[[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]]"
-last_updated: 2026-06-07
-last_verified: 2026-06-07
+  - "[[copilot-sdk-is-now-generally-available-f3907ed0]]"
+  - "[[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]"
+last_updated: 2026-06-09
+last_verified: 2026-06-09
 freshness_window_days: 30
 ---
 
@@ -71,6 +73,16 @@ Late May / early June 2026 brought a third generation of harness evolution techn
 However, [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]] provides critical pushback: harness-updating capability is flat across model tiers (Qwen3.5-9B evolver matches Claude Opus 4.6), and harness-benefit is non-monotonic (strong models hit a ceiling). The practical implication: invest capability budget in the task-solving agent, not the evolver.
 
 **Harness-Bench** [[harness-bench-measuring-harness-effects-across-models-in-realistic-agent-workflows-5abc49c8]] is the diagnostic instrument for controlled harness-vs-model decomposition, varying harness configuration while holding the model fixed. The authors recommend future benchmarks report both model and harness conditions for any score.
+
+## Cross-vendor convergence on embeddable harness SDKs (2026-06-09)
+
+GitHub's Copilot SDK reached general availability on 2026-06-02, exposing the underlying Copilot agent runtime as an embeddable library across Node.js/TypeScript, Python, Go, .NET, Rust, and Java, with first-class MCP support and OpenTelemetry tracing [[copilot-sdk-is-now-generally-available-f3907ed0]]. This follows Anthropic's Claude Agent SDK [[building-agents-with-the-claude-agent-sdk-anthropic-engineering-cf56e261]] and marks the second major vendor to package the harness layer as a stable, portable SDK rather than keeping it as a product-internal implementation detail.
+
+> The Copilot SDK gives you direct, programmatic access to the same agent runtime behind GitHub Copilot — planning, tool invocation, file edits, streaming, and multi-turn sessions, so you don't have to build your own orchestration layer.
+
+The SDK convergence is significant for harness engineering because it makes the control plane (planning, tool invocation, subagent dispatch) a stable API surface that third-party tooling can target. However, a June 2026 skills evaluation on Codex and Claude Code shows that skills effectiveness is harness-mediated: the same SKILL.md preamble can improve task scores on one harness while delivering different token-efficiency on another [[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]. This suggests the cross-vendor SDK surface has converged on *interface* but not yet on *semantics*.
+
+> The skills are evaluated on Codex and Claude Code using SciVisAgentBench, a benchmark of 108 expert-designed multi-step tasks. Results show that agent skills improve mean task scores across the evaluated suites, with token-efficiency benefits that depend on the agent harness and tool setting.
 
 ## Open questions
 
