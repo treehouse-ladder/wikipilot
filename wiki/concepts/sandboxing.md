@@ -11,8 +11,9 @@ sources:
   - "[[windows-platform-security-for-ai-agents-83834df9]]"
   - "[[sandlock-confining-ai-agent-code-with-unprivileged-linux-primitives-6c9c9e93]]"
   - "[[auditing-agent-harness-safety-e2a88ca4]]"
-last_updated: 2026-06-07
-last_verified: 2026-06-07
+  - "[[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]"
+last_updated: 2026-06-09
+last_verified: 2026-06-09
 freshness_window_days: 30
 ---
 
@@ -71,6 +72,14 @@ This is a principle-level OS change that addresses trust-level confusion at the 
 > A harness can return a correct, benign answer over a trajectory that accesses unauthorized resources or leaks context to the wrong agent. Output-level evaluation cannot see these failures, yet most safety benchmarks score only final outputs or terminal states, even though many violations occur mid-trajectory rather than at termination.
 
 The findings show "a persistent gap between task capability and safe execution, with resource access and inter-component information flow emerging as the most critical surfaces to harden" [[auditing-agent-harness-safety-e2a88ca4]]. This extends the trust-level confusion problem into the harness's internal message bus — sandboxing the final execution environment is insufficient when multi-agent harnesses route messages between specialized components.
+
+## Lightweight WASM-based Python sandboxing (2026-06-09)
+
+Simon Willison's `micropython-wasm` (alpha, 2026-06-06) demonstrates a lightweight alternative to container-based sandboxing: a MicroPython interpreter compiled to a WASI WebAssembly module executed from host Python via wasmtime, with no filesystem (unless an explicit read-only dir is preopened), no network, and configurable memory/fuel/wall-clock budgets [[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]. The notable engineering wrinkle was preserving interpreter state across calls so variables survive between exec invocations. This is relevant when a full container runtime is impractical (developer laptops, CI runners without privileged Docker).
+
+> The alpha bundles a lightly customized WASM build of MicroPython with a wrapper to execute code in it via wasmtime. The sandbox provides no host filesystem access unless an explicit read-only directory is preopened, no network capability, and configurable WebAssembly memory, fuel, and wall-clock controls.
+
+The pattern complements OS-level sandboxes (Claude Code's bubblewrap/seatbelt, Sandlock's Landlock+seccomp) by providing an even lighter-weight boundary at the cost of language restriction (MicroPython rather than full CPython). See [[agent-sandboxing]] for the full technical comparison.
 
 ## Open questions
 

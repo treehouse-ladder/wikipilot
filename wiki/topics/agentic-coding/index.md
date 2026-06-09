@@ -125,8 +125,13 @@ sources:
   - "[[codex-for-every-role-tool-and-workflow-b040c6a9]]"
   - "[[human-oversight-of-agentic-systems-in-practice-ab5cc8f1]]"
   - "[[an-agentic-approach-towards-replication-package-quality-evaluation-694ee439]]"
-last_updated: 2026-06-08
-last_verified: 2026-06-08
+  - "[[copilot-sdk-is-now-generally-available-f3907ed0]]"
+  - "[[shape-copilot-code-review-around-your-team-1a940a72]]"
+  - "[[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]"
+  - "[[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]"
+  - "[[claude-credit-overhaul-2026-what-changes-on-june-15-bdf7c477]]"
+last_updated: 2026-06-09
+last_verified: 2026-06-09
 freshness_window_days: 30
 ---
 
@@ -766,6 +771,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]]'s 'invest capability in the task-solving agent, not the evolver' recommendation flip the optimal model-routing decision for Claude Code Routines — should the cheap subagent that authors skills be Haiku-class rather than Opus-class?
 - [ ] Do [[auditing-agent-harness-safety-e2a88ca4]]'s 'hidden audit channels' for boundary compliance compose with unprivileged Linux sandbox approaches and Anthropic's security model, or does the inter-subagent message bus sit above all three?
 - [ ] Given [[auditing-agent-harness-safety-e2a88ca4]]'s finding that 'many violations occur mid-trajectory rather than at termination', do any existing reward-hacking benchmarks actually score mid-trajectory access patterns?
+- [ ] Does the new Copilot Medium analysis tier use the same Claude/Codex model selection surface as the assignable-agent flow, or a separate higher-reasoning model selection?
+- [ ] SciVisAgentSkills shows token-efficiency from skills 'depends on the agent harness and tool setting' — under what conditions does the harness-mediated skill gain become net-negative?
+- [ ] Does the June 15 credit overhaul apply to credits consumed by scheduled Routines on the Cloud Routines platform, or only to direct Claude Code CLI sessions?
 
 ## Recent updates (2026-05-30)
 
@@ -892,6 +900,26 @@ This converges with new empirical data from the **agentic-oversight literature**
 **2026-06-01 — Agentic replication-package evaluation.** A multi-agent system that automatically evaluates research replication packages against 51 reproducibility criteria achieves 91.4% inter-run consistency and 75.4% correctness on a 5-package pilot, by **decoupling deterministic structural checks (planner-dispatched scripts) from qualitative checks (LLM judge with artifact-slice context)** [[an-agentic-approach-towards-replication-package-quality-evaluation-694ee439]]. The 'split the planner from the LLM judge per criterion type' pattern cuts cost by ~40% vs. a single-prompt baseline — directly applicable to any agentic-coding eval harness that wants to mix cheap deterministic gates with expensive LLM judging.
 
 > Our pipeline decomposes the task by criterion type: structural checks run as deterministic scripts dispatched by a planner agent, while qualitative checks invoke an LLM judge with the relevant artifact slice as context. Decoupling the deterministic from the qualitative cuts cost by ~40% versus a single-prompt baseline while preserving recall.
+
+## Platform GA milestones and sandbox primitives mature (added 2026-06-09)
+
+**Platform GA milestones (June 2026).** GitHub's Copilot SDK reached general availability on 2026-06-02, exposing the same agent runtime behind Copilot — planning, tool invocation, file edits, streaming, multi-turn sessions — as a stable embeddable library across Node.js/TypeScript, Python, Go, .NET, Rust, and Java, with first-class MCP support, OpenTelemetry tracing, and a hook system for intercepting agent behavior [[copilot-sdk-is-now-generally-available-f3907ed0]]. On the same day, GitHub previewed agent-skills and MCP integration for Copilot code review: a `.github/skills/<name>/SKILL.md` convention now lets teams inject internal tools and standards into reviews, and a new Medium analysis tier routes complex PRs to a higher-reasoning model [[shape-copilot-code-review-around-your-team-1a940a72]]. The two ship together as a coherent story — embed the engine via the SDK, then steer it via the same SKILL.md/MCP surface that Claude Code popularized — and confirm that the SKILL.md + MCP combo is hardening into a cross-vendor agentic-coding standard.
+
+> The GitHub Copilot SDK is now generally available. You can embed GitHub Copilot's agentic engine into your own applications, services, and developer tools with a stable API and production-ready support.
+
+> Today we're shipping two public previews of Copilot code review: Agent skills and MCP support that bring your organization's context into every review, plus a new medium analysis tier that routes complex pull requests to a higher-reasoning model.
+
+**Skills evidence accumulates.** A June 2026 paper, SciVisAgentSkills, evaluates reusable skill files on Codex and Claude Code across 108 expert-designed scientific-visualization tasks (ParaView, napari, VMD, TTK) and reports that skills improve mean task scores, with token-efficiency benefits that depend on the harness and tool setting [[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]. Notably, the per-tool dependency on harness — token savings vary depending on which agent runs the skill — adds nuance to the existing [[lessons-from-building-claude-code-how-we-use-skills]] claim that skills are universally efficient: the gain is real but harness-mediated.
+
+> SciVisAgentSkills presents a collection of reusable agent skills that augment coding agents for scientific data analysis and visualization by encoding environment assumptions, tool usage patterns, and domain heuristics across scientific tools such as ParaView, napari, VMD, and TTK.
+
+**Sandboxing primitives mature.** Simon Willison released `micropython-wasm` (alpha) on 2026-06-06: a Python library that runs untrusted snippets inside a MicroPython WebAssembly module executed by wasmtime, with no filesystem access (unless an explicit read-only dir is preopened), no network, configurable memory/fuel/wall-clock caps, and — the hardest engineering bit — persistent interpreter state across calls so variables survive between exec invocations [[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]. Willison reports GPT-5.5 has so far failed to break out. Pairs naturally with [[sandboxed-coding-agents-are-competitive-omni-modal-task-solvers]] as a concrete, drop-in primitive for the code-execution-tool half of agentic harnesses.
+
+> The alpha bundles a lightly customized WASM build of MicroPython with a wrapper to execute code in it via wasmtime. The sandbox provides no host filesystem access unless an explicit read-only directory is preopened, no network capability, and configurable WebAssembly memory, fuel, and wall-clock controls.
+
+**Pricing realigns to match agentic reality.** Anthropic announced a Claude Code credit overhaul effective 2026-06-15: programmatic/agentic usage moves out of the shared subscription compute pool into a dedicated credit bucket billed at full API rates — Pro $20, Max 5x $100, Max 20x $200 [[claude-credit-overhaul-2026-what-changes-on-june-15-bdf7c477]]. This is the operationally significant follow-on to the Code-with-Claude rate-limit lift: dynamic workflows and routines now draw against a dedicated pool rather than competing with interactive chat.
+
+> On June 15, 2026, Claude Code's programmatic and agentic usage moves from your general subscription compute pool into a dedicated credit system billed at full API rates.
 
 ## See also
 

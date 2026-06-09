@@ -5,8 +5,11 @@ sources:
   - "[[adk-arena-evaluating-agent-development-kits-via-llm-as-a-developer-cf33d068]]"
   - "[[lessons-from-building-claude-code-how-we-use-skills-0270e620]]"
   - "[[human-oversight-of-agentic-systems-in-practice-ab5cc8f1]]"
-last_updated: 2026-06-08
-last_verified: 2026-06-08
+  - "[[copilot-sdk-is-now-generally-available-f3907ed0]]"
+  - "[[shape-copilot-code-review-around-your-team-1a940a72]]"
+  - "[[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]"
+last_updated: 2026-06-09
+last_verified: 2026-06-09
 freshness_window_days: 30
 ---
 
@@ -24,9 +27,19 @@ ADK Arena introduces 'LLM-as-a-Developer' as a measurement methodology for harne
 
 > Verification is the bottleneck: developers report that 60–70% of their oversight effort lands in post-flight verification because in-flight monitoring scales poorly as agents grow more capable and parallel.
 
-_no contradictions or gaps known yet (last reviewed: 2026-06-08)_
+**Cross-vendor convergence on the SDK + skills + MCP triad (June 2026).** GitHub's Copilot SDK GA (2026-06-02) exposes the underlying Copilot agent runtime as an embeddable library across six languages with first-class MCP support and OpenTelemetry tracing baked in [[copilot-sdk-is-now-generally-available-f3907ed0]]. Same-day, Copilot code review previewed `.github/skills/<name>/SKILL.md` agent-skills plus per-PR MCP server attachments [[shape-copilot-code-review-around-your-team-1a940a72]]. The pattern mirrors what Claude Code established: harness-as-product + SKILL.md as a portable extension format + MCP as the tool plane.
+
+> The Copilot SDK gives you direct, programmatic access to the same agent runtime behind GitHub Copilot — planning, tool invocation, file edits, streaming, and multi-turn sessions, so you don't have to build your own orchestration layer.
+
+**Skill effectiveness is harness-mediated.** A June 2026 SciVisAgentSkills evaluation on Codex and Claude Code shows that the same SKILL.md preamble can improve task scores on one harness while delivering different token-efficiency on another [[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]].
+
+> The skills are evaluated on Codex and Claude Code using SciVisAgentBench, a benchmark of 108 expert-designed multi-step tasks. Results show that agent skills improve mean task scores across the evaluated suites, with token-efficiency benefits that depend on the agent harness and tool setting.
+
+_no contradictions or gaps known yet (last reviewed: 2026-06-09)_
 
 ## Disputes
+
+[[lessons-from-building-claude-code-how-we-use-skills]] presents SKILL.md token-efficiency benefits as a uniform property of the skills format; [[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]] finds token-efficiency 'depends on the agent harness and tool setting' — suggesting the benefit is harness-mediated rather than format-intrinsic. Status: unresolved
 
 ## Open questions
 

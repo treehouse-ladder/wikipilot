@@ -4,8 +4,9 @@ kind: concept
 sources:
   - "[[sandlock-confining-ai-agent-code-with-unprivileged-linux-primitives-6c9c9e93]]"
   - "[[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]]"
-last_updated: 2026-06-06
-last_verified: 2026-06-06
+  - "[[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]"
+last_updated: 2026-06-09
+last_verified: 2026-06-09
 freshness_window_days: 30
 ---
 
@@ -19,11 +20,16 @@ Sandlock proposes a Linux-native, unprivileged-process sandbox specifically targ
 
 The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]] cuts the other way: even strong sandboxing only confines damage at execution time; it cannot prevent malicious code from being committed if a developer fails to notice the diff. The two layers (sandbox + human review) compose, but Coding with Enemy's 94%/56% detection-failure rates suggest the human-review layer is materially weaker than commonly assumed.
 
+**MicroPython + WASM as a drop-in code-execution sandbox.** Simon Willison's `micropython-wasm` (alpha, 2026-06-06) demonstrates a lightweight pattern for the code-execution-tool half of an agentic harness: a MicroPython interpreter compiled to a WASI WebAssembly module, executed from host Python via wasmtime, with no filesystem (unless an explicit read-only dir is preopened), no network, and configurable memory/fuel/wall-clock budgets [[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]. The notable engineering wrinkle was preserving interpreter state across calls — vanilla MicroPython runs once and exits, but agentic loops require variables and imports to persist across exec invocations. GPT-5.5 has failed to break out of the sandbox in initial testing.
+
+> The alpha bundles a lightly customized WASM build of MicroPython with a wrapper to execute code in it via wasmtime. The sandbox provides no host filesystem access unless an explicit read-only directory is preopened, no network capability, and configurable WebAssembly memory, fuel, and wall-clock controls.
+
 ## Disputes
 
 ## Open questions
 
 - [ ] What's the overhead of Sandlock's seccomp-notification supervisor for high-throughput agent workloads (compilation, test suites) vs. Docker-runtime sandboxing?
+- [ ] How does `micropython-wasm`'s startup/teardown overhead compare to Pyodide and to native subprocess sandboxes at the per-exec call latency level relevant to agentic loops?
 
 ## See also
 
