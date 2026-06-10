@@ -8,7 +8,7 @@ description: |
   Disputes, and unsupported findings filed under Open questions. Used by
   the Daily Research routine, dispatched in parallel (one per topic) with
   CLAUDE_CODE_FORK_SUBAGENT=1 sharing the orchestrator's cached prefix.
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools:
   - WebSearch
   - mcp__wikipilot-qmd__qmd_search
@@ -73,11 +73,13 @@ You are the topic-researcher subagent for one topic in the Wikipilot Daily Resea
       "also_relevant_to": ["<other-topic-id>", "..."]
     }
   ],
+  "summary_affecting": true,
+  "summary_guidance": "What shifted that the topic-summarizer must reflect (new leader / superseded claim / changed best practice). Empty string when summary_affecting is false.",
   "page_diffs": [
     {
       "path": "topics/<id>/index.md",
       "kind": "topic",
-      "summary_addition": "Prose with [[source-slug]] citations.",
+      "update_entry": "The dated `### Updates YYYY-MM-DD` log block: prose with [[source-slug]] citations + a > quote block.",
       "new_disputes": ["[[A]] claims X; [[B]] claims not-X. Status: unresolved"],
       "new_open_questions": ["What about under FP8?"]
     }
@@ -98,7 +100,15 @@ You are the topic-researcher subagent for one topic in the Wikipilot Daily Resea
 }
 ```
 
-`slug` is the **deterministic** source-page slug. Compute it once per source with `uv run python -c "from wikipilot.sources import source_slug; print(source_slug('URL', title='TITLE'))"` (or follow the rule exactly: `slugify(title) + "-" + sha256(normalize_url(url))[:8]`). Use the same value verbatim in every `[[...]]` citation you write into `summary_addition` referencing that source. The merger validates every wikilink pre-commit against this slug set; mismatches that the auto-fix can't resolve unambiguously will abort the topic. **Do not type slugs by hand into prose** — always copy the value from the `slug` field you just computed.
+### Topic pages are event-sourced — you write the log, not the Summary
+
+A topic landing page is an immutable `## Recent updates` event log plus a regenerated `## Summary` view (see CLAUDE.md "Topic-page summaries are a regenerated view"). Your job on a topic page is to **append to the log, never to rewrite the Summary**:
+
+- For the topic `index.md` page_diff, put the day's findings in `update_entry` — this becomes a dated `### Updates YYYY-MM-DD` block the `wiki-merger` inserts at the **top** of `## Recent updates`. Never edit existing log entries.
+- **Do not write `## Summary`.** A separate `topic-summarizer` agent regenerates it from the log. Instead, set `summary_affecting: true` whenever the run changes the topic's current-state picture (a new leader, a superseded claim, a changed best practice) and put a one-line `summary_guidance` describing what shifted. Set `summary_affecting: false` (and `summary_guidance: ""`) when the day's findings are incremental and don't move the current-state view — the log still records them, but the Summary is left untouched.
+- On concept/entity page_diffs, `update_entry` is ordinary additive synthesis appended to that page's `## Summary` (those pages are not event-sourced).
+
+`slug` is the **deterministic** source-page slug. Compute it once per source with `uv run python -c "from wikipilot.sources import source_slug; print(source_slug('URL', title='TITLE'))"` (or follow the rule exactly: `slugify(title) + "-" + sha256(normalize_url(url))[:8]`). Use the same value verbatim in every `[[...]]` citation you write into `update_entry` referencing that source. The merger validates every wikilink pre-commit against this slug set; mismatches that the auto-fix can't resolve unambiguously will abort the topic. **Do not type slugs by hand into prose** — always copy the value from the `slug` field you just computed.
 
 `also_relevant_to` is optional; omit it (or pass `[]`) when the source belongs solely to the researched topic.
 

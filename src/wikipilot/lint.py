@@ -21,6 +21,10 @@ Rules implemented in Phase 1:
 - ``check_broken_local_image_links`` (Phase 5) — image refs that point at
   local paths must resolve to a file under ``wiki/assets/`` (otherwise the
   ``download-source-images`` skill probably didn't run)
+- ``check_updates_order`` — topic ``## Recent updates`` logs must be
+  newest-first (the event log is append-at-top)
+- ``check_summary_shrinkage`` — warn when a regenerated topic ``## Summary``
+  drops a large fraction of its citations vs the previous git revision
 """
 
 from __future__ import annotations
@@ -101,6 +105,18 @@ class LintContext:
     changed_paths: tuple[str, ...] = ()
     min_citations_per_paragraph: int = 1
     default_freshness_window_days: int = DEFAULT_FRESHNESS_WINDOW_DAYS
+    previous_summary_citations: dict[str, int] = field(default_factory=dict)
+    """Prior ``## Summary`` citation counts keyed by vault-relative path string.
+
+    Populated best-effort from the previous committed git revision by the
+    ``wikipilot lint`` CLI (empty in unit tests and outside a git repo). The
+    ``check_summary_shrinkage`` rule consults it to warn when a regenerated
+    topic Summary drops a large fraction of its citations vs the prior commit
+    — a "did the projection over-prune?" review signal, not data-loss
+    detection (the immutable ``## Recent updates`` log is the real backstop).
+    """
+    summary_shrinkage_threshold: float = 0.4
+    """Fractional drop in ``## Summary`` citation count that trips the warning."""
 
     @classmethod
     def collect(
@@ -534,6 +550,94 @@ def _extract_section(content: str, heading: str) -> str | None:
     return match.group(1)
 
 
+_UPDATES_HEADING_RE = re.compile(r"^### Updates (\d{4}-\d{2}-\d{2})\b", re.MULTILINE)
+
+
+def check_updates_order(ctx: LintContext) -> list[LintIssue]:
+    """Topic ``## Recent updates`` logs must be newest-first (descending dates).
+
+    The log is an immutable, append-at-top event stream (see CLAUDE.md
+    "Topic-page summaries are a regenerated view"). The ``wiki-merger`` inserts
+    every new ``### Updates YYYY-MM-DD`` block at the top, so a date that is
+    older-than the one above it signals the insert went to the wrong place
+    (or a hand edit reordered the log). Warning severity: it surfaces the bug
+    without hard-blocking auto-merge.
+    """
+    issues: list[LintIssue] = []
+    for page in ctx.pages:
+        if page.kind != "topic":
+            continue
+        section = _extract_section(page.content, "## Recent updates")
+        if section is None:
+            continue
+        dates: list[str] = _UPDATES_HEADING_RE.findall(section)
+        for newer, older in zip(dates, dates[1:]):
+            if older > newer:
+                issues.append(
+                    LintIssue(
+                        severity=SEVERITY_WARNING,
+                        code="updates-order",
+                        path=page.path,
+                        message=(
+                            f"## Recent updates is not newest-first: "
+                            f"'### Updates {older}' appears below '### Updates {newer}' "
+                            "(the log is append-at-top; newest entries go on top)"
+                        ),
+                    )
+                )
+                break
+    return issues
+
+
+def _count_section_wikilinks(content: str, heading: str) -> int:
+    section = _extract_section(content, heading)
+    if section is None:
+        return 0
+    return len(_ALL_WIKILINK_RE.findall(section))
+
+
+def check_summary_shrinkage(ctx: LintContext) -> list[LintIssue]:
+    """Warn when a topic ``## Summary`` drops a large fraction of its citations.
+
+    Topic Summaries are a regenerated view; a full rewrite that prunes too
+    aggressively is the one residual risk of the event-sourcing model. The
+    immutable log is the lossless backstop, so this is a review signal rather
+    than an error: it asks "did the projection over-prune?" Only fires when the
+    caller populated ``previous_summary_citations`` (the CLI does this from the
+    previous git revision; unit tests inject it directly).
+    """
+    if not ctx.previous_summary_citations:
+        return []
+    issues: list[LintIssue] = []
+    for page in ctx.pages:
+        if page.kind != "topic":
+            continue
+        rel = str(page.path.relative_to(ctx.vault.root)).replace("\\", "/")
+        prior = ctx.previous_summary_citations.get(rel)
+        if not prior:  # missing or zero — no baseline to compare against
+            continue
+        current = _count_section_wikilinks(page.content, "## Summary")
+        if current >= prior:
+            continue
+        drop_fraction = (prior - current) / prior
+        if drop_fraction < ctx.summary_shrinkage_threshold:
+            continue
+        issues.append(
+            LintIssue(
+                severity=SEVERITY_WARNING,
+                code="summary-shrinkage",
+                path=page.path,
+                message=(
+                    f"## Summary citations dropped {prior}->{current} "
+                    f"({drop_fraction:.0%} >= {ctx.summary_shrinkage_threshold:.0%}) "
+                    "vs the previous revision — confirm the regenerated view didn't "
+                    "over-prune still-frontier claims (the ## Recent updates log is the backstop)"
+                ),
+            )
+        )
+    return issues
+
+
 @dataclass
 class Linter:
     """Compose all lint rules and run them against a ``LintContext``."""
@@ -548,6 +652,8 @@ class Linter:
         check_citation_density,
         check_disputes_open_questions_structure,
         check_divergence_discipline,
+        check_updates_order,
+        check_summary_shrinkage,
         check_ownership_violations,
     )
 

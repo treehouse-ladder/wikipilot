@@ -3,7 +3,7 @@ compare_fields:
 - input_cost_per_mtoken
 - output_cost_per_mtoken
 comparison_of:
-- claude-opus-4.7
+- claude-opus-4.8
 - claude-sonnet-4.6
 - gpt-5.5
 - gemini-3.1-pro
@@ -17,7 +17,7 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-06-08
+last_updated: 2026-06-10
 last_verified: '2026-05-22'
 show_glosses: true
 sources:
@@ -41,7 +41,7 @@ This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` acros
 
 | Entity | input_cost_per_mtoken | output_cost_per_mtoken |
 | --- | --- | --- |
-| [[claude-opus-4.7]] | 5.0 | 25.0 |
+| [[claude-opus-4.8]] | 5.0 | 25.0 |
 | [[claude-sonnet-4.6]] | 3.0 | 15.0 |
 | [[gpt-5.5]] | 5.0 | 30.0 |
 | [[gemini-3.1-pro]] | 2.0 | 12.0 |

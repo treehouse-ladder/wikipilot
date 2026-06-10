@@ -2,8 +2,8 @@
 title: Notable games and the games industry
 kind: topic
 sources: ["[[playstation-boss-blames-bluepoint-cuts-on-budgets-and-players-f38a5da9]]", "[[nioh-3-review-rise-of-the-shogun-95af04fb]]", "[[forza-horizon-6-review-the-best-racing-series-is-back-and-better-2679cc0e]]", "[[pokopia-becomes-highest-rated-pokemon-game-on-metacritic-934cabcc]]", "[[titanium-court-honoured-with-grand-prize-at-igf-awards-0547801d]]", "[[subnautica-2-s-early-access-impressions-shhhh-calm-down-5b8d0429]]", "[[highguard-is-permanently-shutting-down-on-march-12-3599cd1e]]", "[[ubisoft-and-tencent-launch-vantage-studios-a43d07e1]]", "[[marathon-review-incredible-highs-painful-lows-4d8a2d55]]", "[[outersloth-has-rejected-every-generative-ai-pitch-it-has-received-b0b92b62]]", "[[007-first-light-could-be-2026-s-game-of-the-year-and-the-best-bond-game-ever-5c7b8ae8]]", "[[greedfall-developer-spiders-has-been-liquidated-c72bc9fe]]", "[[stjv-union-strikes-at-kylotonn-as-nacon-moves-wrc-license-and-layoffs-loom-cc826540]]", "[[zero-parades-for-dead-spies-the-kotaku-review-8ea0dcbb]]", "[[zero-parades-for-dead-spies-wikipedia-72e41979]]", "[[mixtape-review-a-surprisingly-perfect-mix-of-heart-and-humor-7e72e867]]", "[[ea-has-laid-off-an-undisclosed-number-of-battlefield-developers-55eb4720]]", "[[arc-raiders-branded-global-blockbuster-after-hitting-14m-sales-6022f364]]", "[[metroid-dread-developer-mercurysteam-conducts-layoffs-4b9b2a2b]]", "[[metacore-restructuring-to-the-tune-of-up-to-160-redundancies-7bd8bf0f]]", "[[report-vr-studio-survios-has-laid-off-the-bulk-of-its-dev-team-7f9b0734]]", "[[2k-makes-layoffs-at-project-ethos-developer-31st-union-abd3780c]]", "[[hinterland-confirms-layoffs-after-delaying-the-long-dark-sequel-379834d9]]", "[[one-third-of-game-workers-using-genai-but-half-think-it-s-bad-dd26fbdb]]", "[[destiny-2-s-active-development-will-end-in-june-30b55a1f]]", "[[gaming-is-the-new-oil-how-the-ea-buyout-diverges-from-the-traditional-playbook-eb0cc870]]", "[[the-dark-pictures-anthology-has-never-been-more-adrift-directive-8020-review-50a2449d]]", "[[bungie-reportedly-plans-significant-layoffs-as-no-destiny-3-greenlit-3c028ea3]]", "[[mindseye-developer-build-a-rocket-boy-lays-off-even-more-people-bc971e32]]", "[[games-media-set-for-more-layoffs-as-ign-owned-eurogamer-cuts-editorial-staff-8869a7f9]]", "[[electronic-arts-stock-trades-below-its-10-buyout-price-deal-spread-and-record-fy26-results-78436694]]", "[[sony-records-766-million-impairment-loss-against-bungie-in-2025-e8b6b853]]", "[[playstation-shuts-down-call-of-duty-leads-second-studio-4b2ca078]]", "[[last-flag-dev-night-street-games-lays-off-about-a-dozen-staff-fa98bc05]]", "[[paramount-acknowledged-the-existence-of-warner-bros-games-faa1d7b1]]", "[[mina-the-hollower-finally-has-a-release-date-at-long-last-4819762c]]", "[[007-first-light-reviews-raise-concerns-with-codes-sent-days-before-release-date-55518df2]]", "[[mina-the-hollower-launches-on-may-29th-for-consoles-and-pc-056454aa]]", "[[007-first-light-review-youth-in-revolt-f35b7ab2]]", "[[how-mina-the-hollower-breaks-new-retro-ground-128e1255]]", "[[wizards-of-the-coast-declines-to-recognize-game-worker-union-dac45b87]]", "[[round-up-mina-the-hollower-earns-critical-acclaim-best-rated-game-of-2026-in-first-reviews-9e68e0dd]]", "[[the-witcher-3-wild-hunt-is-getting-a-new-expansion-12-years-after-launch-c3870b48]]", "[[ps5-exclusive-destruction-allstars-shut-down-after-five-years-4c041cfe]]", "[[mechwarrior-dev-piranha-games-lays-off-30-of-staff-says-ceo-f914d016]]", "[[update-hasbro-shutters-internal-video-game-studio-atomic-arcade-844b78aa]]", "[[dead-by-daylight-studio-behaviour-interactive-confirms-layoffs-cdaae4e1]]", "[[gamemaker-incorporates-claude-code-to-enable-ai-assisted-workflows-d2ef47a8]]", "[[former-mass-effect-and-dragon-age-developers-launch-studio-reset-a1d7f2e0]]", "[[ubisoft-halifax-union-members-agree-settlement-after-studio-closure-08fc27da]]", "[[ustwo-ceo-says-lowering-development-costs-is-now-paramount-2425b456]]", "[[iron-galaxy-lays-off-employees-as-it-reduces-company-size-2609e80b]]", "[[007-first-light-has-topped-1-5-million-sales-2978ba61]]", "[[007-first-light-put-up-massive-launch-day-sales-numbers-65e3523a]]", "[[call-of-duty-is-finally-returning-to-one-hugely-popular-platform-be402ce2]]", "[[china-s-top-slay-the-spire-2-players-explain-their-review-bombs-90511849]]", "[[subnautica-2-hits-four-million-sales-166c6d1e]]", "[[eve-online-dev-turns-independent-and-rebrands-as-fenris-creations-e4828cac]]", "[[eve-online-studio-renamed-to-avoid-chinese-communist-party-confusion-0c879024]]", "[[layoffs-imminent-at-bungie-and-gta-vi-still-on-track-for-november-f74fd097]]", "[[mindseye-dev-reportedly-laid-off-170-of-250-employees-ee4e250a]]", "[[mindseye-developer-build-a-rocket-boy-confirms-layoffs-7ac7894f]]", "[[ea-sets-a-new-8-billion-sales-record-just-months-after-laying-off-battlefield-6-developers-9ddae332]]", "[[report-wwe-2k26-dev-visual-concepts-is-laying-off-staff-8081fa5d]]", "[[stop-killing-games-bill-passes-california-assembly-1103ca83]]", "[[balatro-publisher-playstack-is-being-sold-to-gamespot-owner-imc-e464c86e]]", "[[embracer-to-spin-off-major-video-game-franchises-and-studios-aa29c338]]", "[[ci-games-and-epic-games-terminate-lords-of-the-fallen-ii-publishing-deal-57b99b0c]]", "[[split-fiction-dev-hazelight-studios-accrues-50m-total-sales-8eca73f6]]", "[[gearbox-studio-quebec-founders-start-new-studio-4638a090]]", "[[wolverine-and-more-what-to-expect-from-playstation-s-june-showcase-c004da72]]", "[[uk-social-media-ban-could-impact-video-game-platforms-9a72f651]]", "[[summer-game-fest-co-host-joins-substack-for-players-as-player-gg-looks-to-streamline-game-discovery-7a5d3248]]", "[[all-games-shown-at-the-xbox-showcase-in-june-are-safe-report-49fcd324]]", "[[state-of-play-june-2026-all-announcements-trailers-7bdb79c1]]", "[[god-of-war-laufey-for-ps5-revealed-and-its-co-star-is-a-cube-played-by-jack-quaid-825effa8]]", "[[everything-announced-at-the-playstation-state-of-play-june-2026-9c59e57d]]", "[[atari-to-acquire-crossy-road-developer-hipster-whale-3389cbce]]", "[[wanderstop-team-is-the-latest-victim-of-the-industry-crash-out-f998d964]]", "[[god-of-war-laufey-brings-back-gow-feature-not-seen-in-13-years-06e41341]]", "[[final-fantasy-vii-rebirth-available-now-on-switch-2-and-xbox-series-70f3590d]]", "[[star-fox-is-finally-getting-another-game-out-june-2026-exclusively-on-switch-2-a9c17ab4]]", "[[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]]", "[[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]", "[[until-dawn-2-developer-change-supermassive-to-firesprite-720b9386]]", "[[onimusha-way-of-the-sword-set-to-release-on-september-25-2026-e3a62aa5]]", "[[silent-hill-townfall-arrives-in-september-2026-a9559de7]]", "[[fable-delayed-to-february-2027-8f225af0]]", "[[marvel-s-wolverine-new-gameplay-story-details-from-state-of-play-a9880d99]]", "[[bungie-officially-ends-active-development-for-destiny-2-with-the-release-of-a-final-content-update-on-june-9-2026-5982e288]]", "[[another-sign-that-the-metaverse-winter-is-here-social-vr-platform-rec-room-is-shutting-down-june-1st-2026-583ad629]]", "[[star-wars-zero-company-release-date-leaks-one-day-before-summer-game-fest-29a077f3]]", "[[stop-killing-games-says-ubisoft-attended-invitation-only-meeting-with-eu-commission-a12dce05]]", "[[why-gothic-1-remake-could-be-the-rpg-that-surprises-you-in-2026-59de6b3d]]", "[[new-games-in-june-2026-it-s-a-big-month-for-bungie-and-showcase-reveals-7d463b9a]]", "[[alan-wake-and-control-underperformed-says-new-remedy-ceo-studio-will-apply-learnings-from-fbc-firebreak-to-resonant-5ee9859c]]", "[[solarpunk-themed-survivalbox-solarpunk-launches-in-a-brilliant-bit-of-solarpunk-glory-on-june-8-fb9d0e4a]]", "[[everything-we-saw-at-summer-game-fest-2026-6696e83a]]", "[[summer-game-fest-live-2026-all-the-biggest-announcements-and-games-7d3909e1]]", "[[final-fantasy-7-revelation-gets-its-first-trailer-at-summer-game-fest-6a66b90a]]", "[[the-next-big-resident-evil-remake-is-code-veronica-671f43c1]]", "[[gen-atlas-is-the-next-game-from-ico-creator-fumito-ueda-ea5d8b5d]]", "[[two-new-cuphead-games-are-on-the-way-and-ones-an-8-bit-platform-shooter-a143dd5a]]", "[[tmnt-the-last-ronin-is-developed-by-action-game-royalty-143e286f]]", "[[its-finally-time-for-guild-wars-3-82c00ad4]]", "[[new-alien-isolation-2-trailer-gives-fans-first-look-at-horror-sequel-124eb7ef]]", "[[palworld-1-0-is-launching-sooner-than-you-expect-842ff8cf]]", "[[stellar-blade-follow-up-blood-rain-announced-trailer-has-some-eye-opening-moments-20a46370]]", "[[playerunknown-productions-is-laying-off-staff-and-halting-development-on-go-wayback-5f4ffba7]]", "[[pubg-creators-new-survival-game-has-stopped-development-less-than-a-year-after-launch-1aafbf57]]", "[[wolf-among-us-2-finally-actually-coming-out-in-2027-ade26bf5]]", "[[the-wolf-among-us-2-finally-reappears-alongside-remastered-original-0c2473de]]", "[[final-fantasy-7-tifa-coming-to-street-fighter-6-instead-of-tekken-5a40a712]]", "[[tifa-is-coming-to-street-fighter-6s-season-4-roster-fda6268c]]", "[[day-of-the-devs-summer-game-fest-edition-2026-everything-revealed-a8f040e8]]", "[[paramount-unveils-new-unified-paramount-games-studio-3b154906]]", "[[the-guy-ruining-cbs-news-just-launched-paramount-game-studios-ac700490]]", "[[33-player-co-op-raider-33-immortals-will-finally-release-in-full-soon-de674359]]", "[[physical-copies-of-gothic-remake-unplayable-without-a-day-1-update-b191e627]]", "[[xbox-games-showcase-2026-recap-the-return-of-exclusives-world-premieres-and-anniversary-hardware-9d1a38cb]]", "[[persona-4-revival-release-date-revealed-at-xbox-showcase-e4baeed9]]", "[[halo-campaign-evolved-launches-july-28-pre-orders-available-now-2775bcb6]]", "[[spyro-a-realm-beyond-interview-a-new-design-full-flight-tom-kenny-returns-and-more-97508af6]]", "[[after-half-a-decade-valheim-1-0-finally-has-a-release-date-d526d125]]", "[[everything-announced-at-pc-gaming-show-2026-1ee340ec]]", "[[samantha-beart-and-ben-starr-headline-a-new-stronghold-game-coming-to-steam-later-this-year-2b2954d8]]", "[[wholesome-direct-here-are-all-53-games-featured-in-today-cozy-showcase-24b5e1f2]]", "[[fields-of-mistria-1-0-release-date-announcement-aa797b32]]", "[[everything-announced-at-the-future-games-show-summer-showcase-2026-09147c7a]]", "[[gears-of-war-e-day-wikipedia-3e51e36a]]", "[[nintendo-direct-confirmed-for-june-9-and-it-is-a-big-one-5ddd6035]]", "[[all-confirmed-and-rumored-games-for-june-9-nintendo-direct-d43cb2b9]]", "[[mina-the-hollower-has-now-sold-half-a-million-copies-76965456]]", "[[where-winds-meet-out-now-on-xbox-series-x-s-hidden-mountain-expansion-launches-in-july-45073f44]]", "[[summer-game-fest-2026-draws-record-breaking-3-8m-peak-viewers-62de2213]]"]
-last_updated: 2026-06-09
-last_verified: 2026-06-09
+last_updated: 2026-06-10
+last_verified: 2026-06-10
 freshness_window_days: 60
 ---
 
@@ -13,6 +13,619 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 `CLAUDE.md` "Cross-cutting relevance criteria" for the meta-bar.
 
 ## Summary
+
+Games-of-note in 2026 is defined by **industry contraction and consolidation** running alongside an unusually strong release slate, a bifurcating live-service market, and sharpening labor/genAI/regulation fault lines. The full dated chronology lives in `## Recent updates` below; this is the current-state synthesis.
+
+**Consolidation & contraction.** The major-publisher map is being redrawn: EA agreed to a record **$55B Saudi-PIF-led take-private**, the largest leveraged buyout ever [[ea-sets-a-new-8-billion-sales-record-just-months-after-laying-off-battlefield-6-developers-9ddae332]]; Ubisoft split its franchises into Tencent-backed Vantage Studios [[ubisoft-and-tencent-launch-vantage-studios-a43d07e1]]; Paramount Skydance is acquiring Warner Bros. Discovery [[paramount-acknowledged-the-existence-of-warner-bros-games-faa1d7b1]] and stood up a unified **Paramount Game Studios** even before the WB close [[paramount-unveils-new-unified-paramount-games-studio-3b154906]]; and Embracer is spinning off **Fellowship Entertainment** (Tomb Raider, Lord of the Rings, 11 studios) [[embracer-to-spin-off-major-video-game-franchises-and-studios-aa29c338]]. Closures and layoffs span every tier — Sony shut Bluepoint and Dark Outlaw Games [[playstation-boss-blames-bluepoint-cuts-on-budgets-and-players-f38a5da9]] [[playstation-shuts-down-call-of-duty-leads-second-studio-4b2ca078]], EA cut Battlefield staff months after a record launch [[ea-has-laid-off-an-undisclosed-number-of-battlefield-developers-55eb4720]], and Nacon's insolvency liquidated Spiders [[greedfall-developer-spiders-has-been-liquidated-c72bc9fe]].
+
+> Electronic Arts announced that it's sold itself in a $55 billion deal to an investor consortium made up of Saudi Arabia's Public Investment Fund, Jared Kushner's Affinity Partners, and the private equity firm Silver Lake. The $55 billion take-private deal is the largest leveraged buyout (LBO) of all time.
+
+> EA has laid off an undisclosed number of Battlefield developers just months after the record-breaking launch of Battlefield 6. There have been layoffs across all four studios within the division, which comprises internal studios Criterion, DICE, Ripple Effect, and Motive.
+
+**Live-service bifurcation.** The category is splitting into durable hits and fast failures rather than uniformly declining: Embark/Nexon's **Arc Raiders** passed 16M sales as a self-declared "blockbuster" [[arc-raiders-branded-global-blockbuster-after-hitting-14m-sales-6022f364]], while Highguard died in 45 days [[highguard-is-permanently-shutting-down-on-march-12-3599cd1e]], Last Flag shed half its team a month post-launch [[last-flag-dev-night-street-games-lays-off-about-a-dozen-staff-fa98bc05]], and **Bungie ended active Destiny 2 development** (final update June 9) with a third layoff wave and no Destiny 3 greenlit [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]. Rec Room's shutdown is being read as a metaverse-bubble signal [[another-sign-that-the-metaverse-winter-is-here-social-vr-platform-rec-room-is-shutting-down-june-1st-2026-583ad629]].
+
+> After just 15 weeks on shelves, Nexon said Arc Raiders defied the standard quick-up-quick-down trajectory of a hit game to establish itself as a blockbuster franchise.
+
+**Standout releases.** **Mina the Hollower** (Yacht Club Games) shipped as 2026's highest-rated game (~93 Metacritic) [[round-up-mina-the-hollower-earns-critical-acclaim-best-rated-game-of-2026-in-first-reviews-9e68e0dd]]; **007 First Light** became IO Interactive's best-reviewed and fastest-selling game (1.5M units in 24h) [[007-first-light-review-youth-in-revolt-f35b7ab2]] [[007-first-light-has-topped-1-5-million-sales-2978ba61]]; Forza Horizon 6 [[forza-horizon-6-review-the-best-racing-series-is-back-and-better-2679cc0e]], Pokemon Pokopia (the highest-rated Pokemon game) [[pokopia-becomes-highest-rated-pokemon-game-on-metacritic-934cabcc]], and Subnautica 2 (4M+ units in 17 days) [[subnautica-2-hits-four-million-sales-166c6d1e]] round out the slate, alongside ZA/UM's post-Disco-Elysium Zero Parades [[zero-parades-for-dead-spies-the-kotaku-review-8ea0dcbb]].
+
+> Mina the Hollower has earned an overall Metacritic score of 93, and this makes it the highest-rated game of 2026 so far on the website, beating the 91 score for Forza Horizon 6, and the 89 ratings handed to Pokemon Pokopia and Resident Evil Requiem.
+
+> 007 First Light managed to sell 1.5 million units in its first 24 hours, as shared by IO Interactive who both developed and published the game.
+
+**Labor, genAI & regulation.** Developer sentiment toward generative AI is majority-negative — the GDC 2026 State of the Industry survey found ~52% view it as harmful and only ~7% positive [[one-third-of-game-workers-using-genai-but-half-think-it-s-bad-dd26fbdb]]; Wizards of the Coast declined to recognize the MTG Arena union (NLRB election June 2, with genAI governance a core demand) [[wizards-of-the-coast-declines-to-recognize-game-worker-union-dac45b87]]; and the **Stop Killing Games** movement scored its biggest North-American win with California's AB 1921 [[stop-killing-games-bill-passes-california-assembly-1103ca83]], with the EU Commission's official response due July 27 [[stop-killing-games-says-ubisoft-attended-invitation-only-meeting-with-eu-commission-a12dce05]].
+
+> 36 percent of game industry professionals are using generative AI tools as part of their job, though half of them think the technology is having a negative impact on the industry.
+
+**Platform momentum.** Switch 2 is now a first-class AAA target — Call of Duty: Modern Warfare 4 returns to Nintendo natively [[call-of-duty-is-finally-returning-to-one-hugely-popular-platform-be402ce2]] and FF7 Rebirth arrived (MC 86) [[final-fantasy-vii-rebirth-available-now-on-switch-2-and-xbox-series-70f3590d]] — while Sony **reversed its six-year PC-port strategy**, making first-party single-player titles permanent PlayStation exclusives [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]].
+
+> PlayStation Studios CEO Hermen Hulst confirmed in an internal town hall on May 18 that the company's narrative single-player games will remain PlayStation exclusives permanently, with Wolverine explicitly included and no PC version planned.
+
+Unresolved disagreements and open threads are tracked in `## Disputes` and `## Open questions` below.
+
+## Recent updates
+
+### Updates 2026-06-09 — Nintendo Direct day, Mina the Hollower clears 500K, Where Winds Meet hits Xbox
+
+Nintendo confirmed a 50-minute June Direct for today, June 9, 2026 at 7 AM PT / 10 AM ET, followed by a 95-minute Treehouse: Live session focused on Switch 2 and Switch games for the second half of 2026 [[nintendo-direct-confirmed-for-june-9-and-it-is-a-big-one-5ddd6035]]. Pre-show expectations heading in include a long-rumored Legend of Zelda: Ocarina of Time remake, a Star Fox trailer ahead of its June 25 launch, and updates on Splatoon Raiders, Fire Emblem Shadows, and FromSoftware's still-undated Switch 2 exclusive The Duskbloods [[all-confirmed-and-rumored-games-for-june-9-nintendo-direct-d43cb2b9]].
+
+> A new Nintendo Direct livestream has been announced for June 9, and you can tune in at 7 AM PT / 10 AM ET to watch it. Nintendo says the livestream will run for roughly 50 minutes, and it'll highlight upcoming Nintendo Switch 2 and Nintendo Switch games.
+
+> The heavily-rumored Legend of Zelda: Ocarina of Time remake is another likely game to appear, with an official announcement certainly on the cards.
+
+Yacht Club Games confirmed Mina the Hollower has sold 500,000 copies worldwide across all platforms in roughly ten days from its May 29 launch — clearing the threshold studio director Sean Velasco previously called 'golden' for keeping the studio funded without cuts or outside investment, while Mina remains tied for the highest-rated game of 2026 on Metacritic [[mina-the-hollower-has-now-sold-half-a-million-copies-76965456]]. The trajectory (300K in three days → 500K in ~10 days) makes this the clearest indie commercial-and-critical alignment of the year so far.
+
+> Yacht Club Games has announced that Mina the Hollower has sold 500k copies worldwide. ... Thanks to the strong sales, the team apparently won't have to make any cuts or take outside investment.
+
+NetEase shadow-dropped Where Winds Meet on Xbox Series X|S, Xbox on PC, and Xbox Cloud on June 8, 2026 — free-to-play with cross-progression with PC and PS5 — and announced the 'Hidden Mountain' expansion for July, adding the Mohist Sect faction and a Hand Guard Discipline combat style. The Xbox arrival brings a title that already claims 80M+ players from PC/PS5 into Game Pass territory [[where-winds-meet-out-now-on-xbox-series-x-s-hidden-mountain-expansion-launches-in-july-45073f44]].
+
+> Where Winds Meet officially arrives on Xbox Series X|S, Xbox on PC, and Xbox Cloud on June 8, 2026, fully free-to-play via the Microsoft Store and supporting cross-progression with PC and PS5 through NetEase account linking.
+
+Summer Game Fest 2026 set a new viewership record at 3.8M concurrent peak viewers — a 25% jump over 2025's ~3M peak — and saw stream coverage explode from ~1,300 channels in 2025 to 6,200+ in 2026, with the official Game Awards channel alone hitting 1M peak viewers [[summer-game-fest-2026-draws-record-breaking-3-8m-peak-viewers-62de2213]]. The growth signals SGF has fully consolidated the post-E3 vacuum.
+
+> Summer Game Fest 2026 set a new record with 3.8M Peak Viewers. ... After surpassing 3M Peak Viewers in 2025, Summer Game Fest grew by another 25% in 2026, setting a new series record.
+
+### Updates 2026-06-08 — Xbox Games Showcase 2026 — return of exclusives, world premieres, anniversary hardware
+
+**Xbox Games Showcase 2026 lands as the platform's biggest console-exclusive push in years.** Microsoft's June 7 showcase celebrated Xbox's 25th anniversary with the XBOX Series X25 limited-edition hardware and a return-to-exclusivity posture [[xbox-games-showcase-2026-recap-the-return-of-exclusives-world-premieres-and-anniversary-hardware-9d1a38cb]]. The headliner — **Gears of War: E-Day (October 6, 2026)** — is confirmed Xbox console exclusive, with no PS5 launch [[gears-of-war-e-day-wikipedia-3e51e36a]]. Set 14 years before the original, it will be Day One on Game Pass. The Xbox-exclusive framing is a notable inflection after years of multi-platform softening (Hi-Fi Rush, Sea of Thieves, Indiana Jones).
+
+> 2026 marks the 25th anniversary of XBOX, and Microsoft announced the XBOX Series X25 Limited Edition and XBOX Wireless Controller X25 Special Edition.
+
+> Microsoft confirmed that Gears of War: E-Day will launch as an Xbox console exclusive, meaning the anticipated prequel will not be released on PS5 at launch.
+
+**Halo: Campaign Evolved goes the other direction — day-and-date on PS5.** Launches **July 28, 2026** (five days early access from July 23) with cross-play across Xbox Series X|S, Windows PC, Steam, **and PlayStation 5**, plus a new three-mission story arc featuring Master Chief and Sgt. Johnson [[halo-campaign-evolved-launches-july-28-pre-orders-available-now-2775bcb6]]. The split — Halo on PS5, Gears not — looks less like a coherent platform strategy than a per-franchise calculation.
+
+> Halo: Campaign Evolved launches July 28, 2026, with up to five days of early access beginning July 23 for Premium Edition and Collector's Edition owners.
+
+> The game supports cross-play and cross-progression across XBOX Series X|S, Windows PC, Steam, and PlayStation 5, and will be available day one with Game Pass Ultimate and PC Game Pass.
+
+**Persona 4 Revival dated February 18, 2027; Persona 6 officially confirmed.** Atlus dated Persona 4 Revival for **February 18, 2027** across Xbox, PS5, and PC simultaneously, with fully 3D world, animated cutscenes, baton-pass system from P5 Royal, and new 'Series Finale' attacks [[persona-4-revival-release-date-revealed-at-xbox-showcase-e4baeed9]]. The same showcase confirmed Persona 6 exists (no date). First time P4 remake + P6 confirmation pipeline is visible simultaneously.
+
+> Persona 4 Revival has been given an official release date of February 18, 2027, during the XBOX Games Showcase 2026. The release will be on Xbox Series X/S, PS5, and PC, with the new P4 Remake launching on all platforms simultaneously.
+
+> The showcase also featured the highly anticipated Persona 6 being officially confirmed by ATLUS, though no information was announced regarding a release date for Persona 6.
+
+**Spyro: A Realm Beyond (Spring 2027) — Toys for Bob returns the dragon.** Toys for Bob revealed Spyro: A Realm Beyond at the Xbox showcase for Spring 2027 on Xbox, PS5, Switch 2, PC, and Game Pass [[spyro-a-realm-beyond-interview-a-new-design-full-flight-tom-kenny-returns-and-more-97508af6]]. Full flight as a core mechanic; Tom Kenny returns as Spyro's voice. This is the studio's first major reveal since gaining independence from Activision/Microsoft.
+
+> Spyro has subtle visual changes to suggest he's grown, most notably an enhanced wingspan so he can be much more capable in flight, and Tom Kenny is returning to voice the character.
+
+**Valheim 1.0 ships September 9, 2026 — five years of early access ends.** Iron Gate's Viking survival game finally graduates from Steam Early Access on **September 9, 2026**, simultaneously launching on PS5 and Switch 2 for the first time, with full cross-play across all platforms [[after-half-a-decade-valheim-1-0-finally-has-a-release-date-d526d125]]. The 1.0 update adds the final Deep North biome. Five years of early access sustained at ~15M+ lifetime sales — a benchmark for indie survival-game live-development.
+
+> Valheim is officially launching into 1.0 on September 9, 2026, marking the end of the game's five-year-long early access period.
+
+> Valheim's 1.0 update will launch simultaneously on PlayStation 5 and Nintendo Switch 2 for the first time, while also launching on existing platforms including PC, Linux, Mac, Xbox One, and Xbox Series X|S. The game will have full cross-play on these platforms.
+
+**Stronghold 4 (UE5 prequel, late 2026) — RTS revival with prestige voice cast.** Firefly Studios revealed **Stronghold 4** at the June 7 PC Gaming Show — the 10th entry in the castle-builder RTS franchise, built on Unreal Engine 5, with Ben Starr (Final Fantasy XVI) and Samantha Béart (Karlach in Baldur's Gate 3) voicing [[samantha-beart-and-ben-starr-headline-a-new-stronghold-game-coming-to-steam-later-this-year-2b2954d8]] [[everything-announced-at-pc-gaming-show-2026-1ee340ec]]. Steam demo June 23; full Early Access late 2026.
+
+> Firefly Studios revealed Stronghold 4 at the PC Gaming Show on June 7, 2026. Stronghold 4 is the 10th entry in the Stronghold series.
+
+> Built on Unreal Engine 5, it's a prequel set in medieval England, and puts you in the boots of Penryn of Wethel, a shepherd who rises through the ranks to become a lord.
+
+**Wholesome Direct 2026 stages 53 games; Fields of Mistria locks August 5.** Wholesome Games' showcase ran 53 titles on June 6 [[wholesome-direct-here-are-all-53-games-featured-in-today-cozy-showcase-24b5e1f2]]. **Fields of Mistria** — the Stardew-Valley-like that launched on Steam Early Access in August 2025 — locked **August 5, 2026** for 1.0, exactly one year of early access, with marriage, children, and a finished main storyline [[fields-of-mistria-1-0-release-date-announcement-aa797b32]].
+
+> 53 games were showcased from many motivated developers and publishers.
+
+> Fields of Mistria will officially launch into 1.0 on August 5, 2026. It spent exactly a year in early access, as it first launched in August 2025.
+
+**Future Games Show Summer Showcase: EXODUS, Tomb Raider Legacy of Atlantis, Patrice Désilets.** The June 6 FGS Summer Showcase put 40+ games and 11 world premieres on the slate [[everything-announced-at-the-future-games-show-summer-showcase-2026-09147c7a]]. Headline notes: **EXODUS** (Archetype Entertainment, the BioWare-veteran studio) got extended gameplay reveal for early-2027; **Tomb Raider: Legacy of Atlantis** dated **February 12, 2027** across PC/PS5/Xbox/Switch 2 (first new mainline Tomb Raider since Shadow of the Tomb Raider 2018).
+
+> The show featured over 40 games from AAA and indie studios, including 11 world premieres.
+
+> Tomb Raider: Legacy of Atlantis - Game Director Raul Siqueira shed light on the world, puzzles and 3D exploration mechanics, with the game coming to PC, PlayStation 5, Xbox Series X & S and Nintendo Switch 2 on February 12, 2027.
+
+### Updates 2026-06-07
+
+**PlayerUnknown halts Prologue: Go Wayback development, layoffs hit PlayerUnknown Productions.** Brendan 'PlayerUnknown' Greene's studio is restructuring and halting development on Prologue: Go Wayback less than a year after its November 2025 early-access launch [[playerunknown-productions-is-laying-off-staff-and-halting-development-on-go-wayback-5f4ffba7]] [[pubg-creators-new-survival-game-has-stopped-development-less-than-a-year-after-launch-1aafbf57]]. An update will push Go Wayback out of early access and make it free-to-play; the surviving team pivots to keep developing the Melba procedural-world tech that powered it — the substrate for his Artemis 'open-source, high-fidelity Roblox' metaverse vision [[pubg-creators-new-survival-game-has-stopped-development-less-than-a-year-after-launch-1aafbf57]].
+
+> PlayerUnknown Productions has announced the end of development on the early access game Prologue: Go Wayback, as well as a round of layoffs for the studio.
+
+> Greene and the remaining studio employees will continue to develop the Melba technology, which was used to power Prologue: Go Wayback.
+
+**Paramount Game Studios launches as a unified umbrella — pre-positioning for a Warner Bros. close.** On June 5, 2026, Paramount Skydance unveiled Paramount Game Studios, absorbing all existing Paramount and Skydance gaming studios [[paramount-unveils-new-unified-paramount-games-studio-3b154906]]. Tony Driscoll is president (ex-Epic Games, ex-WB Games). Paramount framed the move as 'a meaningful evolution in how we think about games — not as an extension of our business, but as a core pillar of our content strategy' [[the-guy-ruining-cbs-news-just-launched-paramount-game-studios-ac700490]]. The launch lands in the middle of Paramount Skydance's pending acquisition of Warner Bros. Discovery — i.e. the org chart is being assembled before WB Games actually arrives.
+
+> Paramount Game Studios was unveiled on June 5, 2026. The new outfit is described as a 'unified game studio' that includes all existing Paramount and Skydance gaming studios, including Skydance Interactive and Skydance New Media.
+
+> Paramount announced the launch of Paramount Games division on June 5, 2026, marking 'a meaningful evolution in how we think about games — not as an extension of our business, but as a core pillar of our content strategy.'
+
+**The Wolf Among Us 2 finally surfaces with a 2027 date.** After eight years of silence, Telltale and Warner Bros. announced at Summer Game Fest 2026 that The Wolf Among Us 2 will ship in 2027, with a remastered original Wolf Among Us arriving first (holiday 2026) [[wolf-among-us-2-finally-actually-coming-out-in-2027-ade26bf5]] [[the-wolf-among-us-2-finally-reappears-alongside-remastered-original-0c2473de]]. The project jumped from Unreal Engine 4 to Unreal Engine 5.
+
+> The Wolf Among Us 2 is set to arrive in 2027. Before that, we'll be getting a remastered version of the original Wolf Among Us... The project is jumping over to Unreal Engine 5, with the game previously developed with Unreal Engine 4.
+
+**Tifa headlines Street Fighter 6 Season 4 in a Capcom × Square Enix crossover.** SF6's Season 4 roster, headlined by Final Fantasy VII's Tifa Lockhart as the latest guest fighter (early 2027), alongside three brand-new characters — Bosch, Yasmine, and Arjun [[tifa-is-coming-to-street-fighter-6s-season-4-roster-fda6268c]] [[final-fantasy-7-tifa-coming-to-street-fighter-6-instead-of-tekken-5a40a712]]. Season 4 is the first SF6 season with no returning characters.
+
+> Street Fighter 6 has unveiled its new roster of fighters for its fourth year during Summer Game Fest 2026, and Final Fantasy 7's Tifa is joining the fight.
+
+> Final Fantasy VII's Tifa Lockhart will be Street Fighter 6's latest guest character. The Avalanche member will be arriving with her Materia powers reimagined as a new gameplay system.
+
+**Day of the Devs SGF Edition 2026 — 20 indies from 1,700 submissions.** Key reveals: Messhof announced Blood Dungeon; Frozenbyte announced Trine 6: Together in Time (Sept 25, 2026); Saibot Studios announced Tenebris Somnia [[day-of-the-devs-summer-game-fest-edition-2026-everything-revealed-a8f040e8]].
+
+> Day of the Devs hosts a showcase around Summer Game Fest to highlight some of the wildly creative indie games in development around the world. The non-profit received over 1,700 submissions for this year's Summer Game Fest showcase, which was narrowed down to 20 titles.
+
+**33 Immortals exits early access June 10.** Thunder Lotus Games' 33-player co-op raid action title 33 Immortals leaves early access on June 10, 2026 across Steam, EGS, and Xbox Series X|S, day-one on Game Pass [[33-player-co-op-raider-33-immortals-will-finally-release-in-full-soon-de674359]].
+
+> 33 Immortals' 1.0 release arrives on June 10. That date applies to both the PC versions—across both Steam and Epic Games Store—as well as the Xbox Series X|S version.
+
+**Gothic 1 Remake ships rough — ~73 Metacritic, day-one update required for physical copies.** The Gothic 1 Remake launched June 5 and lands around 73 on Metacritic. Reviewers consistently flag system crashes, audio failures, performance mishaps, and AI bugs [[physical-copies-of-gothic-remake-unplayable-without-a-day-1-update-b191e627]].
+
+> Technical issues and messy AI ruined gameplay and resulted in players getting irretrievably stuck. More broadly, the remake is smudged with technical bugs, crashes, audio failures and performance mishaps.
+
+### Updates 2026-06-06
+
+**Summer Game Fest Live 2026 lands a sprawling reveal slate.** Geoff Keighley's June 5 Summer Game Fest Live at the Dolby Theater opened with Capcom's Resident Evil Veronica — a remake of Resident Evil: Code Veronica that appears to commit to the first-person perspective Capcom adopted with Resident Evil 7, launching on Steam, PS5, PC, and Switch 2 in 2027 [[the-next-big-resident-evil-remake-is-code-veronica-671f43c1]] [[everything-we-saw-at-summer-game-fest-2026-6696e83a]]. The show closed with Final Fantasy VII Revelation, officially titled and dated for a simultaneous Spring 2027 release across all platforms, with the final chapter of the FFVII Remake trilogy taking an open-world approach built around the Highwind airship and parachute-drop traversal [[final-fantasy-7-revelation-gets-its-first-trailer-at-summer-game-fest-6a66b90a]] [[summer-game-fest-live-2026-all-the-biggest-announcements-and-games-7d3909e1]].
+
+> Resident Evil Veronica, a remake of Resident Evil: Code Veronica, debuted at the start of the show. Unlike previous Resident Evil remakes, it appears this one might use the first-person perspective that has become common in the series since Resident Evil 7, and it's coming to Steam, PS5, PC, and Switch 2 in 2027.
+
+> Square Enix officially unveiled Final Fantasy Revelation at Summer Game Fest 2026 as the final chapter in the Final Fantasy 7 Remake trilogy, taking an open-world approach with the Highwind airship and set to release simultaneously on all platforms in Spring 2027.
+
+**Fumito Ueda's Gen Atlas pivots Project Robot into a kaiju mech action shooter.** Previously teased as 'Project Robot' at The Game Awards 2024, Fumito Ueda's (Ico, Shadow of the Colossus, The Last Guardian) next title has been renamed Gen Atlas and shown in a sci-fi trailer featuring kaiju-scale mech battles — a notable tonal departure from Ueda's prior contemplative catalog, headed to the Epic Games Store, PS5, and Xbox Series X/S [[gen-atlas-is-the-next-game-from-ico-creator-fumito-ueda-ea5d8b5d]].
+
+> The next game from Shadow of the Colossus creator Fumito Ueda got a new name and a new trailer at Summer Game Fest. Previously teased as Project Robot, the game is now titled Gen Atlas. The project is a sci-fi shooter with kaiju battles.
+
+**StudioMDHR commits to a multi-Cuphead future, including an 8-bit Sega Master System spin-off.** StudioMDHR announced two new Cuphead games: an unnamed 'new, hand-animated Cuphead' (no release window) and Mighty Cuphead Adventure, an 8-bit platform shooter written in Assembly Language and built to the Sega Master System's hardware spec, with a physical Master System cartridge planned alongside modern releases [[two-new-cuphead-games-are-on-the-way-and-ones-an-8-bit-platform-shooter-a143dd5a]].
+
+> StudioMDHR has announced that it's developing not one but two new Cuphead games during Summer Game Fest 2026. Mighty Cuphead Adventure was actually developed with '80s technology as a tribute to the games of the era, programmed in classic Assembly Language and designed within the specifications of the Sega Master System.
+
+**TMNT: The Last Ronin moves from Black Forest Games to PlatinumGames under the new Paramount Games Studio.** Previously announced in 2023 at THQ Nordic-owned Black Forest Games, the long-troubled Teenage Mutant Ninja Turtles: The Last Ronin project has been moved to PlatinumGames (Bayonetta, NieR: Automata) and is being published by the newly-launched Paramount Games Studio [[tmnt-the-last-ronin-is-developed-by-action-game-royalty-143e286f]].
+
+> At Summer Games Fest, the newly announced Paramount Games Studio revealed that Teenage Mutant Ninja Turtles: The Last Ronin–previously in the works at THQ Nordic's Black Forest Games–is now in development at Platinum Games.
+
+**NCSoft confirms Guild Wars 3 with a fall 2027 beta and a movement-focused MMO design pitch.** ArenaNet/NCSoft formally revealed Guild Wars 3 for Steam and PS5 [[its-finally-time-for-guild-wars-3-82c00ad4]].
+
+> Guild Wars is getting its third incarnation, as announced at Summer Game Fest today. ArenaNet studio head Colin Johanson said that the new Guild Wars would focus on the 'joy of movement' and that its combat would 'usher in an entirely-new type of MMO experience.'
+
+**Creative Assembly opens Alien: Isolation 2 with a colony-world Xenomorph pivot.** Sega and Creative Assembly's first substantive trailer for Alien: Isolation 2 leaves the original's claustrophobic space-station setting behind, putting the Xenomorph onto a rainy colony world; targeting PC, PS5, Switch 2, and Xbox Series X|S [[new-alien-isolation-2-trailer-gives-fans-first-look-at-horror-sequel-124eb7ef]].
+
+> During Summer Game Fest on June 5, 2026, developers Creative Assembly and publisher Sega gave the first good look at Alien: Isolation 2. The game leaves the space-station confines of its predecessor behind and sets the Xenomorph free on a colony world.
+
+**Palworld locks in a July 10 1.0 release after two-plus years in Early Access.** Pocketpair confirmed July 10, 2026 for Palworld 1.0, exiting Early Access roughly 30 months after the January 2024 launch [[palworld-1-0-is-launching-sooner-than-you-expect-842ff8cf]].
+
+> Palworld 1.0 will launch on July 10, developer Pocketpair announced during Summer Game Fest. After multiple years in early access, the legally distinct Pokemon-like game Palworld is getting its 1.0 version very soon.
+
+**Stellar Blade Blood Rain breaks the PS5-exclusive pattern.** Shift Up's follow-up Stellar Blade: Blood Rain features a new protagonist, a melee-focused combat shift, and a notable publishing change: unlike the original's Sony exclusivity, Blood Rain will not be published by Sony [[stellar-blade-follow-up-blood-rain-announced-trailer-has-some-eye-opening-moments-20a46370]].
+
+> Stellar Blade: Blood Rain is the next game from Stellar Blade developer Shift Up. While the first game was PS5 exclusive, Blood Rain will not be published by Sony.
+
+### Updates 2026-06-05 — Summer Game Fest week & the GTA VI release-window void
+
+Summer Game Fest 2026 kicks off the showcase weekend on **June 5** at 2 p.m. PT from the Dolby Theatre in Los Angeles, with Day of the Devs immediately after, then Southeast Asian Games Showcase, Wholesome Direct, Story Rich Showcase, and others leading into Xbox Games Showcase 2026 on June 7 — with a Gears of War: E-Day reveal confirmed immediately after at 10 a.m. PT [[new-games-in-june-2026-it-s-a-big-month-for-bungie-and-showcase-reveals-7d463b9a]]. The structural story of the season is the **GTA VI release-window void**: a Star Wars Zero Company release-date leak (August 27, 2026, $49.99 PC / $59.99 console — Bit Reactor + Respawn, founded by Firaxis veterans) crystallized the pattern of heavy-hitters packing into late August / September rather than risking November against Rockstar [[star-wars-zero-company-release-date-leaks-one-day-before-summer-game-fest-29a077f3]].
+
+> Star Wars Zero Company is reportedly launching on August 27, 2026 ... Multiple heavy hitters are landing in late August / September as games try to avoid the November 19 release of GTA VI.
+
+> Summer Game Fest 2026 airs live on June 5 at 2 p.m. PT from the Dolby Theatre in Los Angeles ... Day of the Devs follows at 4 p.m. PT.
+
+### Updates 2026-06-05 — State of Play — Marvel's Wolverine & Control Resonant dated
+
+The Sony State of Play (preceding SGF) led with a seven-minute Marvel's Wolverine gameplay trailer dating the game to **September 15, 2026** as a PS5 exclusive — no PS4, no PC — at $69.99 standard, with the trailer featuring Jean Grey and Sabretooth and the story centered on mutants taken by The Reavers [[marvel-s-wolverine-new-gameplay-story-details-from-state-of-play-a9880d99]]. Remedy's Control Resonant (formerly Control 2 codename) was dated to **September 24, 2026**; new CEO has publicly characterized Alan Wake 2 and the original Control as commercial underperformers and framed Resonant as a self-publishing course-correction informed by the (also underperforming) FBC: Firebreak co-op spin-off, whose 'Open House' final update shipped March 18 [[alan-wake-and-control-underperformed-says-new-remedy-ceo-studio-will-apply-learnings-from-fbc-firebreak-to-resonant-5ee9859c]].
+
+> Marvel's Wolverine is set to release on September 15, 2026. It is a PS5 exclusive and will not be coming to PS4. Insomniac Games opened PlayStation's State of Play on June 2, 2026 with a seven-minute extended gameplay trailer.
+
+> On March 18, 2026, Remedy released the final major update for FBC: Firebreak titled 'Open House' and announced the cessation of new content development to refocus on narrative-driven titles like Control 2 (codenamed Resonant). Control Resonant releases September 24 on PC, PS5, and Xbox Series X|S.
+
+### Updates 2026-06-05 — Gothic 1 Remake ships — early Universal Acclaim buzz
+
+Alongside SGF, **Gothic 1 Remake** launched on June 5 across PC, PS5, and Xbox Series X|S, modernizing the 2001 Piranha Bytes RPG while preserving its core identity. Pre-release Metacritic buzz tracked in 'Universal Acclaim' territory; PC Gamer called it potentially 'more valuable than Oblivion Remastered.' Critic-review embargo lifted at 12:00pm PST on June 6 — initial scores were not yet in at proposal time, which is itself the open question [[why-gothic-1-remake-could-be-the-rpg-that-surprises-you-in-2026-59de6b3d]].
+
+> Pre-release Metacritic buzz tracking in 'Universal Acclaim' territory; PC Gamer calling it potentially 'more valuable than Oblivion Remastered.'
+
+### Updates 2026-06-05 — Solarpunk — day-one Game Pass cozy survival
+
+**Solarpunk** launches **June 8, 2026** across PC (Steam/EGS/GOG), PS5, Xbox Series X|S and Nintendo Switch 2, day-one into Xbox Game Pass Ultimate and PC Game Pass — a notable wishlist-momentum indie (>1M Steam wishlists, >500K demo downloads during Steam Next Fest) in the floating-islands / airship / 4-player co-op sandbox space [[solarpunk-themed-survivalbox-solarpunk-launches-in-a-brilliant-bit-of-solarpunk-glory-on-june-8-fb9d0e4a]].
+
+> Solarpunk surpassed 1 million Steam wishlists and saw over 500,000 demo downloads during Steam Next Fest ... supports cooperative multiplayer for up to four players, each with their own inventory and airship.
+
+### Updates 2026-06-05 — Live-service postmortems — Destiny 2 ends, Rec Room shutters
+
+The live-service trough deepened. **Destiny 2** receives its final content update — **Monument of Triumph** on **June 9** — replacing the originally-planned Shadow and Order expansion. After 12 years of continuous Destiny development, Bungie goes into maintenance mode on the game (servers up, no new story or seasonal content), redirects all surviving headcount to Marathon, and reportedly lays off a 'significant number' of staff post-update; Destiny 3 has not been greenlit [[bungie-officially-ends-active-development-for-destiny-2-with-the-release-of-a-final-content-update-on-june-9-2026-5982e288]].
+
+> Marathon will be the sole focus of Bungie for the time being; Destiny 3 is not in production and has not been greenlit ... once the Monument of Triumph update is out, Bungie will reportedly lay off a significant number of its staff.
+
+Meanwhile **Rec Room** — the social-VR platform once valued at $3.5B with 150M lifetime players — went dark **June 1, 2026** after never reaching profitability. Snap acquired some of the assets; the closure is being read as the loudest signal yet of metaverse-investment-bubble collapse [[another-sign-that-the-metaverse-winter-is-here-social-vr-platform-rec-room-is-shutting-down-june-1st-2026-583ad629]].
+
+> Rec Room announced that the platform will go offline on June 1, 2026 ... 'we never quite figured out how to make Rec Room a sustainably profitable business.' Snap is acquiring some of the Rec Room assets.
+
+### Updates 2026-06-05 — Stop Killing Games — EU Commission deadline July 27
+
+The Stop Killing Games initiative's European Citizens' Initiative response from the European Commission is due **July 27, 2026**. Two weeks ahead of that deadline, Ubisoft CEO Yves Guillemot attended what SKG describes as an 'invitation-only' meeting with the Commission that SKG was not invited to — they consider the timing impossible to ignore. The initiative has >1M verified supporters [[stop-killing-games-says-ubisoft-attended-invitation-only-meeting-with-eu-commission-a12dce05]].
+
+> The European Commission has until July 27, 2026 to discuss the initiative in detail, initiate a public hearing and present an official reply ... Ubisoft CEO Yves Guillemot attended an 'invitation-only' meeting with the European Commission two weeks before the EC's planned answer.
+
+### Updates 2026-06-04
+
+**God of War: Laufey — platforming returns after 13 years.** Following the June 2 State of Play reveal, deeper detail on God of War: Laufey confirms this is "the first time the series has fully shifted its focus away from Kratos in a mainline-style adventure" and that it "brings back the platforming-focused level design not seen since God of War: Ascension in 2013" [[god-of-war-laufey-brings-back-gow-feature-not-seen-in-13-years-06e41341]]. Faye is notably more agile than Kratos — capable of double jumps and rapid aerial movement — with combat styled after character action games like Devil May Cry rather than the methodical Norse-era design [[god-of-war-laufey-brings-back-gow-feature-not-seen-in-13-years-06e41341]]. The Everywhen setting is "the birthplace and endpoint to which all magic returns, a transcendent realm where gods and creatures from different mythologies come together" [[god-of-war-laufey-brings-back-gow-feature-not-seen-in-13-years-06e41341]].
+
+> Faye is far more agile than Kratos, capable of double jumps and rapid aerial movement, with faster and more stylish combat that resembles character action games such as Devil May Cry. The Everywhen is the birthplace and endpoint to which all magic returns, a transcendent realm where gods and creatures from different mythologies come together.
+
+> This marks the first time the series has fully shifted its focus away from Kratos in a mainline-style adventure. The game brings back the platforming-focused level design not seen since God of War: Ascension in 2013.
+
+**Final Fantasy VII Rebirth launches on Switch 2 and Xbox — Metacritic 86 vs. PS5's 92.** Final Fantasy VII Rebirth launched simultaneously on Nintendo Switch 2 and Xbox Series X|S on June 3, 2026, ending a two-year PlayStation-exclusivity window [[final-fantasy-vii-rebirth-available-now-on-switch-2-and-xbox-series-70f3590d]]. The Switch 2 version earned an 86 on Metacritic across 42 reviews — a solid port but noticeably below the PS5's 92, with frame rate dips noted in open areas, though Digital Foundry's technical analysis confirmed the build improved over the pre-launch demo [[final-fantasy-vii-rebirth-available-now-on-switch-2-and-xbox-series-70f3590d]]. Both new versions include the optional Streamlined Progression mode (unlimited MP, HP, Limit Break, ATB, fixed 9,999 damage output) [[final-fantasy-vii-rebirth-available-now-on-switch-2-and-xbox-series-70f3590d]].
+
+> Final Fantasy VII Rebirth launched on Nintendo Switch 2 and Xbox Series X|S on June 3, 2026, ending a two-year wait for players on those platforms. The simultaneous release also included Xbox on PC, Xbox Play Anywhere, and Xbox Cloud Gaming.
+
+> The Switch 2 version earned an 86 on Metacritic across 42 reviews, with frame rate dips noted in open areas, compared with a 92 on PlayStation 5. Digital Foundry's technical analysis confirmed that the Switch 2 build improved over the pre-launch demo.
+
+**Star Fox returns to Nintendo — June 25, 2026 launch exclusively on Switch 2.** Nintendo announced a Star Fox remake for Switch 2, launching June 25, 2026 — the franchise's first mainline entry in years [[star-fox-is-finally-getting-another-game-out-june-2026-exclusively-on-switch-2-a9c17ab4]]. The 2026 version features full voice acting, orchestral music, enhanced visuals, and online multiplayer modes including online dogfights powered by GameChat (the Switch 2's voice and video chat features) [[star-fox-is-finally-getting-another-game-out-june-2026-exclusively-on-switch-2-a9c17ab4]]. It includes a prologue mission starring Fox's father and hardware-specific capabilities like mouse controls [[star-fox-is-finally-getting-another-game-out-june-2026-exclusively-on-switch-2-a9c17ab4]]. The release is timed to coincide with the character's appearance in the Super Mario Galaxy Movie; digital copies are priced at $49.99, physical at $59.99 [[star-fox-is-finally-getting-another-game-out-june-2026-exclusively-on-switch-2-a9c17ab4]].
+
+> Nintendo has announced Star Fox for Switch 2, launching on 25 June 2026. The Star Fox remake features enhanced gameplay, upgraded visuals, online multiplayer modes. The 2026 version includes full voice acting, orchestral music, online multiplayer, and hardware-specific capabilities like mouse controls.
+
+> The Switch 2 Star Fox remake includes a prologue mission starring Fox's father and online dogfights — using GameChat as a meaningful application of the Switch 2's voice and video chat features.
+
+**PlayStation permanently ends PC ports of single-player games.** PlayStation Studios CEO Hermen Hulst confirmed in an internal town hall on May 18 that the company's narrative single-player games will remain PlayStation exclusives permanently, with Wolverine explicitly included and no PC version planned [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]]. This ends the six-year strategy Sony began in August 2020 when it brought Horizon Zero Dawn to PC, later extending to God of War (2022), Marvel's Spider-Man, and Ghost of Tsushima [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]]. Multiplayer titles like Marathon and Marvel Tokon are not affected by this exclusivity policy [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]]. The announcement was significant because it reversed expectations for several titles whose PC ports were reportedly in development before being cancelled [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]].
+
+> PlayStation Studios CEO Hermen Hulst confirmed in an internal town hall on May 18 that the company's narrative single-player games will remain PlayStation exclusives permanently, with Wolverine explicitly included and no PC version planned.
+
+> This is part of a broader policy reversal at Sony that ends the six-year practice of eventually porting its first-party narrative single-player games to PC. The decision ends a strategy Sony began in August 2020 when it brought Horizon Zero Dawn to PC, later extending to God of War, Marvel's Spider-Man, and Ghost of Tsushima.
+
+**Bungie's third layoff wave confirmed — Destiny 2 development ends June 9.** Bungie plans a third layoff wave as Destiny 2 development ends June 9, 2026, part of the 45,000 games jobs cut since 2022 [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]. The company doesn't have a new project lined up for Destiny 2's development team after the game comes to an end next month, and Bungie doesn't plan to immediately enter production on a Destiny 3 [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]. Surviving staff will be funneled toward the underperforming extraction shooter Marathon [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]. Bungie cut about 100 jobs in October 2023 and another 220 in July 2024, making this the third major layoff wave since Sony acquired the studio for $3.6 billion [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]. This confirms what was previously "reportedly planned" — Destiny 2's end is now official, with the layoffs no longer speculative.
+
+> Bungie plans a third layoff wave as Destiny 2 development ends June 9, 2026, part of 45,000 games jobs cut since 2022.
+
+> The company doesn't have a new project lined up for Destiny 2's development team after the game comes to an end next month, and Bungie doesn't plan to immediately enter production on a Destiny 3. Surviving staff will be funneled toward the underperforming extraction shooter Marathon.
+
+> Bungie cut about 100 jobs in October 2023 and another 220 in July 2024, and this is being framed as the studio's third major layoff wave since Sony acquired it for 3.6 billion dollars.
+
+**Until Dawn 2 — developer change from Supermassive to Firesprite.** Sony revealed Until Dawn 2 for 2027 with a major shake-up: Firesprite replaces Supermassive Games as developer [[until-dawn-2-developer-change-supermassive-to-firesprite-720b9386]]. Firesprite is a Liverpool-based studio that Sony acquired in 2021 and that has been gradually assigned increasing responsibilities since the acquisition [[until-dawn-2-developer-change-supermassive-to-firesprite-720b9386]]. Peter Stormare returns as the enigmatic Dr. Hill, providing continuity with the original game's most memorable character [[until-dawn-2-developer-change-supermassive-to-firesprite-720b9386]]. Firesprite promises to honour the original's core elements: character drama, tough choices, and horror [[until-dawn-2-developer-change-supermassive-to-firesprite-720b9386]].
+
+> Sony revealed Until Dawn 2 for 2027 with a major shake-up: Firesprite replaces Supermassive Games as developer. Firesprite is a Liverpool-based studio that Sony acquired in 2021 and that has been gradually assigned increasing responsibilities since the acquisition.
+
+> Peter Stormare returns as the enigmatic Dr. Hill, providing continuity with the original game's most memorable character. Firesprite promises to honour the original's core elements: character drama, tough choices, and horror.
+
+**Onimusha: Way of the Sword — September 25, 2026 release date confirmed; demo available now.** Capcom announced that Onimusha: Way of the Sword will release on September 25, 2026 on PlayStation 5, Windows, and Xbox Series X/S [[onimusha-way-of-the-sword-set-to-release-on-september-25-2026-e3a62aa5]]. A playable demo, titled Onimusha: Way of the Sword DEMO, was released on June 3, 2026 — a 30-minute PS5 demo available on the PS Store in all regions without requiring a PS Plus subscription [[onimusha-way-of-the-sword-set-to-release-on-september-25-2026-e3a62aa5]]. This marks the first new title in the series in over 20 years, featuring Miyamoto Musashi as the protagonist set in an Edo-era Kyoto [[onimusha-way-of-the-sword-set-to-release-on-september-25-2026-e3a62aa5]].
+
+> Capcom announced that Onimusha: Way of the Sword will release on September 25, 2026 on PlayStation 5, Windows, and Xbox Series X/S.
+
+> A playable demo, titled Onimusha: Way of the Sword DEMO, was released on June 3, 2026. The 30-minute PS5 demo is available on the PS Store in all regions without requiring a PS Plus subscription.
+
+> Onimusha: Way of the Sword marks the first new title in the series in over 20 years, featuring Miyamoto Musashi as the protagonist set in an Edo-era Kyoto.
+
+**Silent Hill: Townfall — September 24, 2026 release date confirmed.** Konami Digital Entertainment has announced that Silent Hill: Townfall will launch on September 24, 2026, for PlayStation 5, Steam, and Epic Games [[silent-hill-townfall-arrives-in-september-2026-a9559de7]]. Silent Hill: Townfall is being developed by Scottish studio Screen Burn Interactive; set in 1996 in the fictional Scottish town of St. Amelia, it follows Simon Ordell after he wakes up in a place he seemingly has no connection to [[silent-hill-townfall-arrives-in-september-2026-a9559de7]]. In a break from tradition, Silent Hill: Townfall features a first-person perspective [[silent-hill-townfall-arrives-in-september-2026-a9559de7]]. Konami seems to be making good on its promise of a new Silent Hill each year [[silent-hill-townfall-arrives-in-september-2026-a9559de7]].
+
+> Konami Digital Entertainment has announced that Silent Hill: Townfall will launch on September 24, 2026, for PlayStation 5, Steam, and Epic Games.
+
+> Silent Hill: Townfall is being developed by Scottish studio Screen Burn Interactive. Set in 1996 in the fictional Scottish town of St. Amelia, it follows Simon Ordell after he wakes up in a place he seemingly has no connection to.
+
+> In a break from tradition, Silent Hill: Townfall features a first-person perspective. Konami seems to be making good on its promise of a new Silent Hill each year.
+
+**Fable delayed to February 2027 — holiday crowding cited.** Microsoft confirmed on May 29 that Fable's release date has been shifted to February 2027, moving the game back from its previously announced Fall 2026 release window [[fable-delayed-to-february-2027-8f225af0]]. Xbox stated that the large number of notable games releasing in the holiday season was the main reason behind the decision, specifically mentioning Halo: Campaign Evolved, Gears of War: E-Day, and Grand Theft Auto 6, among others [[fable-delayed-to-february-2027-8f225af0]]. Xbox explained that they are moving Fable to February 2027 so it can have the dedicated moment it deserves [[fable-delayed-to-february-2027-8f225af0]]. The delay was emphasized as not being due to development issues [[fable-delayed-to-february-2027-8f225af0]].
+
+> Microsoft confirmed on May 29 that Fable's release date has been shifted to February 2027, moving the game back from its previously announced Fall 2026 release window.
+
+> Xbox stated that the large number of notable games releasing in the holiday season was the main reason behind the decision, specifically mentioning Halo: Campaign Evolved, Gears of War: E-Day, and Grand Theft Auto 6, among others.
+
+> Xbox explained that they are moving Fable to February 2027 so it can have the dedicated moment it deserves. The delay was emphasized as not being due to development issues.
+
+**New disputes:**
+
+- [[final-fantasy-vii-rebirth-available-now-on-switch-2-and-xbox-series-70f3590d]] reports the Switch 2 version earned an 86 on Metacritic across 42 reviews; [[round-up-the-reviews-are-in-for-final-fantasy-vii-rebirth-on-switch-2-647b3fa5]] (topic: game-music) reports 35 reviews. Timing difference (review embargo lift vs. later aggregation). Status: unresolved
+- [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]] confirms permanent PC exclusion for single-player titles per internal town hall May 18; earlier sources indicated PC ports of Wolverine and other titles were in development before being cancelled — the cancellations align with this policy but pre-date the official announcement. Status: unresolved
+
+**New open questions:**
+
+- [ ] Does the PlayStation single-player PC exclusion policy apply to remasters and remakes (e.g., Demon's Souls remake, Bloodborne potential remaster), or only to new original first-party titles? [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]]
+- [ ] Does Fable's February 2027 slot compete directly with any major Xbox exclusives in that window, or is it isolated by the holiday-avoidance rationale? [[fable-delayed-to-february-2027-8f225af0]]
+- [ ] Will Bungie's remaining Marathon team structure survive if the game continues to underperform, given that Destiny 2 staff are now transitioning to it rather than a new IP? [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]
+- [ ] How does GoW Laufey's platforming-focused level design compare mechanically to GoW: Ascension's approach — same verticality model or rebuilt from scratch for Faye's double-jump mobility? [[god-of-war-laufey-brings-back-gow-feature-not-seen-in-13-years-06e41341]]
+- [ ] Gothic 1 Remake critic embargo lifted June 6 — does the launch-day Metacritic actually land in Universal Acclaim or do legacy-fan reviews drag it? Pull aggregator scores in next-day routine. [[why-gothic-1-remake-could-be-the-rpg-that-surprises-you-in-2026-59de6b3d]]
+- [ ] Stop Killing Games — what does the European Commission's July 27 official response actually contain, and does the Ubisoft invitation-only meeting visibly shape it? [[stop-killing-games-says-ubisoft-attended-invitation-only-meeting-with-eu-commission-a12dce05]]
+- [ ] Bungie post-Destiny-2 layoff count — Bungie said 'significant number' but no concrete figure; what is the actual June 9 reduction? [[bungie-officially-ends-active-development-for-destiny-2-with-the-release-of-a-final-content-update-on-june-9-2026-5982e288]]
+- [ ] Is Remedy's new CEO publicly characterizing Alan Wake 2 as an underperformer a course-correction signal or a setup-for-failure framing for Control Resonant? Track sales trajectory post-Sept 24. [[alan-wake-and-control-underperformed-says-new-remedy-ceo-studio-will-apply-learnings-from-fbc-firebreak-to-resonant-5ee9859c]]
+- [ ] Does PlayerUnknown's halt of Go Wayback effectively end the Artemis metaverse roadmap, or does the Melba tech survive as an open-source spinout? [[playerunknown-productions-is-laying-off-staff-and-halting-development-on-go-wayback-5f4ffba7]]
+- [ ] Does Paramount Game Studios announce its first internally-developed (non-Skydance-legacy) title before the WB acquisition closes? [[paramount-unveils-new-unified-paramount-games-studio-3b154906]]
+- [ ] Does Wolf Among Us 2 actually ship within calendar year 2027? [[wolf-among-us-2-finally-actually-coming-out-in-2027-ade26bf5]]
+- [ ] Does Tifa's SF6 Season 4 appearance signal a broader Square Enix willingness to license FF characters to fighting games beyond the historical Smash/Tekken pattern? [[tifa-is-coming-to-street-fighter-6s-season-4-roster-fda6268c]]
+- [ ] Does 33 Immortals' day-one Game Pass launch produce a healthy concurrent floor, or does the unusual 33-player squad size struggle to maintain matchmaking populations? [[33-player-co-op-raider-33-immortals-will-finally-release-in-full-soon-de674359]]
+- [ ] Does Gothic 1 Remake's post-launch patch cadence pull aggregate reception above 80 within 60 days? [[physical-copies-of-gothic-remake-unplayable-without-a-day-1-update-b191e627]]
+- [ ] Does Trine 6's September 25 date hold against the crowded fall release window? [[day-of-the-devs-summer-game-fest-edition-2026-everything-revealed-a8f040e8]]
+
+_no contradictions or gaps known yet for 2026-06-04 additions (last reviewed: 2026-06-04)_
+
+### Updates 2026-06-03
+
+**State of Play June 2026 — actual showcase coverage.** Sony's June 2, 2026 State of Play ran ~60 minutes and delivered a markedly more eventful slate than pre-show previews had implied [[state-of-play-june-2026-all-announcements-trailers-7bdb79c1]]. The headline reveal was **God of War: Laufey**, a Santa Monica Studio project starring Faye (Kratos's wife from the Norse duology) as protagonist; the showcase closed with 20 minutes of uninterrupted gameplay in which Faye fights through 'the Everywhen' — an afterlife realm where gods from across mythologies vie for power — wielding a sword and giant magic, with a sentient cube voiced by Jack Quaid as her co-star [[god-of-war-laufey-for-ps5-revealed-and-its-co-star-is-a-cube-played-by-jack-quaid-825effa8]]. The cube companion is a structural departure from the Atreus pattern — worth tracking as a companion-design choice in a franchise where the partner relationship is load-bearing narrative.
+
+> The showcase concluded with 20 straight minutes of gameplay showing Faye, who is almost as strong as Kratos, wielding a sword and giant magic. Faye awakens unexpectedly in a strange land after her funeral and must fight through the afterlife of the gods — the Everywhen — where ruthless gods from across mythology vie for power.
+
+Marvel's Wolverine (Insomniac, Sep 15, 2026) received its first substantive gameplay trailer; coverage emphasized combat evolved to be "faster and less punchy" and more violent — a deliberate contrast with Spider-Man's combat style [[everything-announced-at-the-playstation-state-of-play-june-2026-9c59e57d]]. Until Dawn 2 was newly revealed; Control Resonant, Onimusha: Way of the Sword, Silent Hill: Downfall, and Rayman Legends Retold (October 1) got release dates.
+
+> Notable announcements at the June 2026 State of Play included: God of War Laufey was newly revealed; Marvel's Wolverine from Insomniac Games was shown with more details about the upcoming third-person action-adventure game; The Lost Wild, coming 2027; Phantom Blade Zero from S-Game was shown. The new gameplay trailer showed how Insomniac has evolved the combat to be faster and less 'punchy,' making for a more violent experience.
+
+> Today's State of Play packed in over 60 minutes of updates, announcements, and reveals. The broadcast included reveals of God of War Laufey and Until Dawn 2, updates on MARVEL's Wolverine, MARVEL Tōkon: Fighting Souls and Marathon Season 2, plus many more fresh looks and surprises.
+
+**Atari acquires Crossy Road developer Hipster Whale — $29.3M up front, up to $39.3M.** Atari announced June 1, 2026 the acquisition of Melbourne-based Hipster Whale, the studio behind the 340M-lifetime-download Crossy Road franchise [[atari-to-acquire-crossy-road-developer-hipster-whale-3389cbce]]. Structure: $26M cash + $3.3M newly-issued Atari shares up front ($29.3M total), plus up to $10M earn-out over three years. For the twelve months ended January 31, 2026, Hipster Whale generated $8.28M revenue / $4.63M EBITDA — Atari paid roughly 6.3× trailing EBITDA on the floor. This is Atari's third acquisition of 2026, continuing the pattern of the retro-IP holding company assembling an Apple Arcade-adjacent mobile portfolio.
+
+> Atari announced on June 1, 2026 that it has agreed to acquire Melbourne-based mobile studio Hipster Whale — the team behind the 340-million-download Crossy Road franchise — in a deal worth up to $39.3 million. Atari will pay an initial $29.3 million, consisting of $26 million in cash and $3.3 million in newly issued Atari shares. A further earn-out of up to $10 million in cash is tied to Hipster Whale's financial performance over the next three years. For the twelve months ended January 31, 2026, Hipster Whale generated $8.28 million in revenue and $4.63 million in EBITDA. The acquisition is Atari's third in 2026.
+
+**Ivy Road closes — Wanderstop devs shut down despite Metacritic-80 launch.** Ivy Road, founded by veterans of The Stanley Parable, Gone Home, and Minecraft, closed on March 31, 2026 after failing to secure funding for its next project Engine Angel [[wanderstop-team-is-the-latest-victim-of-the-industry-crash-out-f998d964]]. Wanderstop (Annapurna Interactive) earned 80 on Metacritic and is being maintained by Annapurna, which flagged "one last surprise" for the game. The closure continues the 2025–2026 pattern: critical-reception parity with healthy genre demand (cozy games) is no longer sufficient to clear the funding bar for a follow-up, even with a pedigreed founding team.
+
+> Ivy Road is closing its doors as of March 31st, 2026. The developer behind the cozy tea shop adventure Wanderstop announced its closure after failing to secure funding for its next project, Engine Angel. The studio was founded by developers with experience on beloved titles like The Stanley Parable, Gone Home, and Minecraft, and Wanderstop earned an 80 on Metacritic.
+
+**New open questions:**
+
+- [ ] Does the Atari / Hipster Whale $29.3M floor (~6.3× trailing EBITDA) signal a re-rating of mobile-studio multiples, or is it Atari-specific given Crossy Road's evergreen download profile [[atari-to-acquire-crossy-road-developer-hipster-whale-3389cbce]]?
+- [ ] What specifically blocked Ivy Road's Engine Angel pitch — publisher conservatism, cozy-genre saturation, or the broader VC retreat from games — and is there a postmortem from the founders [[wanderstop-team-is-the-latest-victim-of-the-industry-crash-out-f998d964]]?
+
+### Updates 2026-06-02 — Hazelight 50M, Studio Ricochet, Wolverine Sept 15, UK platform-ban risk, Player.gg, Xbox preview
+
+Hazelight Studios crossed 50 million lifetime sales across its three co-op titles: A Way Out (13M over 8 years), It Takes Two (30M over 5 years), and Split Fiction (7M in ~1 year) [[split-fiction-dev-hazelight-studios-accrues-50m-total-sales-8eca73f6]]. Split Fiction is Hazelight's fastest-seller despite the smallest absolute total — instructive for co-op long-tail vs. day-one momentum.
+
+> Hazelight Studios has accrued over 50 million total sales across its three games. The breakdown is: A Way Out sold 13 million, It Takes Two sold 30 million, and Split Fiction sold 7 million.
+
+Former Gearbox Quebec leadership launched **Studio Ricochet**, an independent studio focused on original IP for PC and console; founding team includes former Borderlands creative director Maxime Babin [[gearbox-studio-quebec-founders-start-new-studio-4638a090]]. Debut project is a co-op action-adventure, fitting the 2025-2026 pattern of senior AAA talent going independent to move faster and take creative risks (cf. [[former-mass-effect-and-dragon-age-developers-launch-studio-reset-a1d7f2e0]]).
+
+> The former studio heads at Gearbox Studio Quebec have launched Studio Ricochet, a new independent studio aiming to build games 'on their own terms.'
+
+Sony's June 2 State of Play (60 minutes) is headlined by Insomniac's **Marvel's Wolverine**, now confirmed for a **September 15 PS5 launch** [[wolverine-and-more-what-to-expect-from-playstation-s-june-showcase-c004da72]]. This locks one of the year's biggest first-party releases into a crowded fall window.
+
+> This all-new take on the comic book legend launches on PS5 September 15.
+
+The UK's online safety minister raised the possibility of extending a proposed teenage social-media ban to game platforms — a regulatory risk for MMOs, online shooters, and UGC platforms if enacted UK-wide [[uk-social-media-ban-could-impact-video-game-platforms-9a72f651]].
+
+> UK online safety minister Kanishka Narayan has suggested a social media ban for children might be extended to video game platforms... a blanket ban of allowing children to engage with strangers in online games could be a part of a teenage social media ban that is currently under consideration.
+
+The games-media talent drain continued: Summer Game Fest co-host Lucy James left GameSpot after a decade-plus to go independent on **Player.gg**, a game-discovery platform launching alongside SGF [[summer-game-fest-co-host-joins-substack-for-players-as-player-gg-looks-to-streamline-game-discovery-7a5d3248]]. Pairs with the Eurogamer editorial cuts story [[games-media-set-for-more-layoffs-as-ign-owned-eurogamer-cuts-editorial-staff-8869a7f9]] — legacy outlets contracting while creator platforms recruit their on-camera talent.
+
+> Lucy James spent over a decade as a video producer and on-air personality at GameSpot, and is now leaving to join the growing ranks of games media talent who are going independent.
+
+The June 7 **Xbox Games Showcase** is reportedly lineup-conservative — no Project Helix (next-gen console) reveal, first-party first-looks plus a dedicated Gears of War: E-Day Direct; Fable delayed to February 2027 gets an update segment [[all-games-shown-at-the-xbox-showcase-in-june-are-safe-report-49fcd324]].
+
+> The upcoming Xbox Games Showcase on June 7 will not feature announcements about the Project Helix console. Instead, the Xbox Games Showcase will be all about games.
+
+### Updates 2026-06-01
+
+**'Stop Killing Games' lands its biggest US win: California AB 1921 passes the Assembly.** California's Assembly passed AB 1921 (the 'Protect Our Games Act') in late May 2026, the largest North-American legislative win for Scott Ross's (Accursed Farms) Stop Killing Games movement to date [[stop-killing-games-bill-passes-california-assembly-1103ca83]]. The bill requires publishers to give a 60-day shutdown warning and to leave a path to indefinite access — a single-player offline mode, a patch, or a refund — for any **purchased** game; free-to-play titles are exempt. This directly intersects the page's running live-service-attrition thread ([[highguard-is-permanently-shutting-down-on-march-12-3599cd1e]], [[ps5-exclusive-destruction-allstars-shut-down-after-five-years-4c041cfe]], [[destiny-2-s-active-development-will-end-in-june-30b55a1f]]): a regulatory regime that would have forced offline fallbacks on these shutdowns.
+
+> The California State Assembly passed the 'Protect Our Games Act' this week, moving the bill towards the legislature. It is one of the biggest wins for the 'Stop Killing Games' movement in North America so far.
+
+> Publishers must give players a 60 day warning before ending a game's service, wiping out the potential for future Concord disasters. It would also require these games still allow access to them at some level indefinitely, whether it be a single-player mode or enough of a pulse for fan servers to latch on. However, this bill would only apply to purchased games, letting free-to-play games off the hook.
+
+**Embracer spins off Fellowship Entertainment — Tomb Raider, Lord of the Rings, and 11 studios under one new IP-led umbrella.** Embracer Group announced it will separate into two publicly listed companies by spinning off Fellowship Entertainment on Nasdaq Stockholm in 2027, an 'IP-led entertainment company' that will own The Lord of the Rings, Tomb Raider, Darksiders, Dead Island, Kingdom Come Deliverance, Metro, Remnant, and The Hobbit [[embracer-to-spin-off-major-video-game-franchises-and-studios-aa29c338]]. Fellowship will house 11 studios — 4A Games, Crystal Dynamics, Dambuster Studios, Eidos-Montréal, Fishlabs, Flying Wild Hog, Gunfire Games, Middle-earth Enterprises, Redoctane Games, Warhorse Studios, and Dark Horse Media — with a multi-year pipeline targeting at least two major game releases from FY2027/28. This extends the page's major-publisher-restructuring thread alongside the EA/PIF take-private, the Ubisoft/Tencent Vantage Studios split ([[ubisoft-and-tencent-launch-vantage-studios-a43d07e1]]), and the Paramount/WBD acquisition.
+
+> Embracer Group will separate into two publicly listed companies by spinning off Fellowship Entertainment on Nasdaq Stockholm in 2027. Fellowship Entertainment is described as an 'IP-led entertainment company' focused on The Lord of the Rings, as well as Tomb Raider and 'many other' owned IPs.
+
+> The spin off will house studios including 4A Games, Crystal Dynamics, Dambuster Studios, Dark Horse Media, Eidos-Montréal, Fishlabs, Flying Wild Hog Studios, Gunfire Games, Middle-earth Enterprises, Redoctane Games and Warhorse Studios.
+
+**Balatro publisher Playstack is being sold for ~$151M to the parent of GameSpot, Fandom, and Curse.** Playstack majority owner TruFin agreed on May 21, 2026 to sell its 84.5% stake to VantageCo (Integrated Media Company subsidiary) for around £112.4M ($151M), valuing the publisher at roughly $169M [[balatro-publisher-playstack-is-being-sold-to-gamespot-owner-imc-e464c86e]]. Playstack's catalog (Balatro, The Case of the Golden Idol, The Rise of the Golden Idol, Ak-xolotl, Unbeatable, About Fishing) makes it one of the highest-hit-ratio premium indie publishers. CEO Harvey Elliott stated 'Our team, our strategy, and our commitment to publishing premium indie games remain exactly the same.' Notable vertical-integration angle: IMC also owns GameSpot, Fandom, and Curse — outlets that review the publisher's games.
+
+> Playstack owner TruFin announced on May 21, 2026, that it agreed to sell its 84.5 percent stake in the UK publisher to VantageCo for around £112.4 million ($151 million). VantageCo is a wholly owned subsidiary of Integrated Media Company, the parent company of GameSpot, Fandom, Curse, and other brands.
+
+**Storefront-exclusivity reversal: CI Games and Epic terminate the Lords of the Fallen II publishing deal.** CI Games signed a separation agreement with Epic Games Publishing on April 14, 2026, terminating the originally-announced PC-exclusive deal for Lords of the Fallen II — meaning the sequel can now ship on Steam alongside EGS [[ci-games-and-epic-games-terminate-lords-of-the-fallen-ii-publishing-deal-57b99b0c]]. The agreement does NOT undo CI Games' use of Epic-owned assets (Unreal Engine 5, Epic Online Services). Lords of the Fallen II is slated to launch sometime in 2026. This is a notable counter-current to Epic's mid-2020s third-party-exclusives push.
+
+> CI Games signed a separation agreement with Epic Games Publishing, effectively terminating their exclusive publishing arrangement. The separation agreement went into effect on April 14, 2026, though its publication was delayed 'on the grounds that its immediate disclosure could have prejudiced the Company's legitimate interests.'
+
+### Updates 2026-05-31 — Late-May 2026 industry pulse: Subnautica 2's breakout, EA's LBO, and a wave of layoffs
+
+**Subnautica 2 crosses 4 million units in 17 days.** Subnautica 2 has sold 4 million copies since its May 14 launch, putting Krafton on track to owe up to $250 million in earnout payments to ousted Unknown Worlds founders Charlie Cleveland, Max McGuire, and Ted Gill [[subnautica-2-hits-four-million-sales-166c6d1e]].
+
+> Subnautica 2 has already sold 4 million copies since it came to Steam on May 14. At $30 a copy, subtracting Valve's 30 percent platform fee, that's around $85 million in potential revenue for this month alone. Krafton agreed to pay $3.12 to Unknown Worlds cofounders for every $1 of revenue every time the studio's revenue topped $70 million in a single month.
+
+**CCP Games becomes Fenris Creations after $120M management buyout from Pearl Abyss.** EVE Online developer CCP Games is now an independent studio, sold back to management by Pearl Abyss for $120M — roughly a quarter of the $425M Pearl Abyss paid in 2018 [[eve-online-dev-turns-independent-and-rebrands-as-fenris-creations-e4828cac]]. The buyout came with a Google DeepMind minority stake and a research partnership on "intelligence in complex, dynamic systems" — EVE's persistent player-economy data is being explicitly framed as an AI research substrate. The name change to Fenris also resolves brand confusion with the Chinese Communist Party [[eve-online-studio-renamed-to-avoid-chinese-communist-party-confusion-0c879024]].
+
+> EVE Online developer CCP Games became an independent studio and rebranded as Fenris Creations after being sold back to its management team by former owner Pearl Abyss in a deal worth $120 million. Fenris has entered into a research partnership with Google DeepMind that will see Google acquire a minority stake in the company, with the focus being on advancing understanding of intelligence in complex, dynamic systems.
+
+> The company changed its name because there has been growing confusion between CCP (Crowd Control Protections) and the Chinese Communist Party.
+
+**Bungie — "significant" layoffs imminent as Destiny 2's final content update ships in June.** Bloomberg reports Sony plans significant layoffs at Bungie following the June 2026 final Destiny 2 update; there's no Destiny 3 in production and the surviving team will refocus on Marathon [[layoffs-imminent-at-bungie-and-gta-vi-still-on-track-for-november-f74fd097]].
+
+> Following the news that Bungie would deliver its final content update for Destiny 2 this June, a Bloomberg report suggests the studio is planning significant layoffs. Sources told Bloomberg the studio intends to focus on Marathon as opposed to commencing production on Destiny 3.
+
+**Build a Rocket Boy (MindsEye) — 170 of 250 staff laid off, surveillance-software lawsuit, espionage claims.** The MindsEye developer cut roughly 170 of its 250 staff [[mindseye-dev-reportedly-laid-off-170-of-250-employees-ee4e250a]]. Co-CEO Mark Gerhard publicly blamed "organized espionage and corporate sabotage." Separately, IWGB initiated legal action over alleged installation of Teramind surveillance software on employee devices [[mindseye-developer-build-a-rocket-boy-confirms-layoffs-7ac7894f]] — a worker-surveillance precedent worth tracking.
+
+> Roughly 170 members at the studio affected by the layoffs, bringing the total number of staff at the studio down to somewhere around 80 employees.
+
+> The Independent Workers' Union of Great Britain (IWGB) announced that several employees of MindsEye developer Build a Rocket Boy initiated legal action against the company for allegedly installing the invasive surveillance software Teramind on their work devices.
+
+**Other layoff churn this week.** MercurySteam (Metroid Dread, Blades of Fire) confirmed layoffs of unspecified size, on the heels of last fall's harassment-and-crunch allegations [[metroid-dread-developer-mercurysteam-conducts-layoffs-4b9b2a2b]]. Hinterland delayed Blackfrost (The Long Dark sequel) out of 2026 and cut 10 full-time staff plus 4 contractors [[hinterland-confirms-layoffs-after-delaying-the-long-dark-sequel-379834d9]]. WWE 2K26 developer Visual Concepts is laying off staff, with at least seven confirming on LinkedIn [[report-wwe-2k26-dev-visual-concepts-is-laying-off-staff-8081fa5d]].
+
+> Metroid Dread and Blades of Fire studio MercurySteam announced it is laying off workers. The layoffs come after studio management was accused of harassment and forced crunch last fall.
+
+> Hinterland's sequel to The Long Dark won't be released in 2026, and as a consequence 10 full-time developers and 4 contractors from the studio are being let go.
+
+**EA — $8B record sales heading into $55B Saudi-led take-private.** EA posted a record $8B in net bookings as its $55B sale to a Saudi PIF / Affinity Partners / Silver Lake consortium moves toward closing — the largest leveraged buyout in history [[ea-sets-a-new-8-billion-sales-record-just-months-after-laying-off-battlefield-6-developers-9ddae332]]. CEO Andrew Wilson stays on post-close.
+
+> Electronic Arts announced that it's sold itself in a $55 billion deal to an investor consortium made up of Saudi Arabia's Public Investment Fund, Jared Kushner's Affinity Partners, and the private equity firm Silver Lake. The $55 billion take-private deal is the largest leveraged buyout (LBO) of all time.
+
+### Updates 2026-05-30
+
+**007 First Light is IO Interactive's fastest-selling game: 1.5M units in 24 hours.** IO Interactive confirmed that 007 First Light sold 1.5 million copies worldwide within the first 24 hours of its May 26-27 launch [[007-first-light-has-topped-1-5-million-sales-2978ba61]] [[007-first-light-put-up-massive-launch-day-sales-numbers-65e3523a]]. This is the studio's fastest launch in its history, surpassing the Hitman trilogy trajectory. The result closes the page's open question about whether the late review-code controversy (May 22 delivery for a May 26 launch) would correlate with weak shipped performance: the commercial answer is clearly no. 007 First Light is a rare 2026 commercial-and-critical success — a full-price ($60) single-player, story-driven action-stealth game launching day-and-date across PS5/Xbox/PC/Switch 2.
+
+> IO Interactive's reborn 007 brand has hit the ground running. The Hitman developer has revealed that James Bond outing 007 First Light has sold 1.5 million copies worldwide within three days of hitting shelves. It's the fastest selling game in IO Interactive's history.
+
+> 007 First Light managed to sell 1.5 million units in its first 24 hours, as shared by IO Interactive who both developed and published the game.
+
+**Call of Duty returns to Nintendo for the first time in 13 years — Modern Warfare 4 natively on Switch 2.** Activision announced Modern Warfare 4 for an October 23, 2026 release across PS5, Xbox Series X|S, PC, and Switch 2, with the Switch 2 version a native build co-developed by Infinity Ward and Digital Legends [[call-of-duty-is-finally-returning-to-one-hugely-popular-platform-be402ce2]]. The franchise has been absent from Nintendo hardware since 2013's Wii U release of Call of Duty: Ghosts, and MW4 drops last-gen PS4/Xbox One support entirely. This confirms Switch 2 as a viable AAA third-party launch target, not a scaled-down port platform — reinforcing the platform's install-base momentum.
+
+> Modern Warfare 4 is coming to all the major modern platforms, including PlayStation 5, Xbox Series X|S, PC, and Switch 2. The Switch 2 version of Modern Warfare 4 is developed by Infinity Ward in partnership with Digital Legends and is a native version for Switch 2.
+
+> This is particularly significant because Call of Duty has been absent from Nintendo's platforms since 2013's Wii U version of Call of Duty: Ghosts.
+
+**Steam reviews as the sole Chinese-player feedback channel — the Slay the Spire 2 review-bomb roundtable.** A May 26, 2026 English-subtitled roundtable hosted by content creator Iris Raphael with eight top Chinese Slay the Spire 2 players explained the wave of negative Steam reviews around Mega Crit's Doormaker boss rework: the core complaint was impact on "Save Loading" (SL) runs — a playstyle prevalent in the Chinese community [[china-s-top-slay-the-spire-2-players-explain-their-review-bombs-90511849]]. The article surfaces a structural point: with X, Discord, and Reddit blocked by the Great Firewall, Steam reviews function as the de-facto only persistent public dev-feedback channel for Chinese players, which inflates their use as protest. Mega Crit subsequently replaced Doormaker with a new boss (Aeonglass). This is the third Chinese review-bombing wave on the title.
+
+> Review-bombing on Steam in China is prevalent because social platforms such as X and Discord are blocked by the People's Republic of China's 'Great Firewall,' so Steam users in China opt to complain on Steam via review-bombing, as they believe it's their only way to be heard.
+
+**New open questions:**
+- [ ] Does 007 First Light's 1.5M-units-in-24h pace [[007-first-light-has-topped-1-5-million-sales-2978ba61]] hold beyond the launch weekend, or does the single-player story-finite design produce a steeper drop-off than live-service comparables?
+- [ ] Does Modern Warfare 4's native Switch 2 launch [[call-of-duty-is-finally-returning-to-one-hugely-popular-platform-be402ce2]] re-establish Call of Duty as a recurring Nintendo-platform release, or is it a one-off enabled by Switch 2's larger install base?
+- [ ] Do Steam reviews remain the dominant Chinese-player dev-feedback channel through 2026 [[china-s-top-slay-the-spire-2-players-explain-their-review-bombs-90511849]], or do studios build alternative China-accessible feedback surfaces?
+- [ ] Does PlatinumGames + Paramount Games Studio's TMNT: The Last Ronin recover from the project's previous Black Forest Games stewardship? [[tmnt-the-last-ronin-is-developed-by-action-game-royalty-143e286f]]
+- [ ] Does Guild Wars 3's 'joy of movement' design pitch materialize into a distinctive MMO combat loop? [[its-finally-time-for-guild-wars-3-82c00ad4]]
+- [ ] Does Palworld's July 10 1.0 launch materially affect the ongoing Nintendo patent lawsuit? [[palworld-1-0-is-launching-sooner-than-you-expect-842ff8cf]]
+- [ ] Does Stellar Blade: Blood Rain dropping Sony publishing represent a broader retreat from PS5-exclusive third-party action games? [[stellar-blade-follow-up-blood-rain-announced-trailer-has-some-eye-opening-moments-20a46370]]
+- [ ] Does Fumito Ueda's tonal shift to a kaiju-mech action shooter (Gen Atlas) preserve the studio's signature design sensibility? [[gen-atlas-is-the-next-game-from-ico-creator-fumito-ueda-ea5d8b5d]]
+- [ ] Does Alien: Isolation 2's colony-world pivot preserve the original's claustrophobic terror loop? [[new-alien-isolation-2-trailer-gives-fans-first-look-at-horror-sequel-124eb7ef]]
+
+_no contradictions or gaps known yet for 2026-05-30 additions (last reviewed: 2026-05-30)_
+
+### Updates 2026-05-29
+
+**A game-engine vendor wires a frontier coding agent directly into its toolchain.** GameMaker incorporated Anthropic's Claude Code into its new GM-CLI command-line toolchain, letting developers handle routine tasks via natural-language terminal prompts where the agent can "navigate codebases, run tests, modify files, and iterate until issues are resolved" [[gamemaker-incorporates-claude-code-to-enable-ai-assisted-workflows-d2ef47a8]]. GameMaker head Russell Kay framed it as opt-in rather than mandated: "Because GameMaker offers tools to support everyone from first-time creators through to professional studios, we wanted to reflect that reality and give users who might benefit from AI the option to do so" [[gamemaker-incorporates-claude-code-to-enable-ai-assisted-workflows-d2ef47a8]]. This is a concrete instance of the agentic-coding/game-dev intersection — a mainstream 2D engine treating an agentic CLI as a first-class workflow surface, even as the GDC 2026 survey documents majority-negative developer sentiment toward generative AI.
+
+> Claude Code is being included in GameMaker's new GM-CLI so developers can handle routine tasks via natural language prompts in the terminal, where the system can navigate codebases, run tests, modify files, and iterate until issues are resolved.
+
+> Because GameMaker offers tools to support everyone from first-time creators through to professional studios, we wanted to reflect that reality and give users who might benefit from AI the option to do so.
+
+**A contraction counter-current: BioWare veterans found a small original-IP studio.** Three former BioWare Edmonton developers — Kaelin Lavallee, Kris Schoneberg, and Francis Lacuna, with credits spanning the Mass Effect trilogy, Dragon Age, Anthem, and Hinterland's The Long Dark — launched Edmonton indie Studio Reset, debuting a neon-noir supernatural mystery set in a stylized Canadian city [[former-mass-effect-and-dragon-age-developers-launch-studio-reset-a1d7f2e0]]. The studio's pitch is "a smaller, more intentional model: original IP, sustainable ambition." Its signature "Parallax Deduction" mechanic makes each investigator a distinct lens on a case ("perspective is part of the evidence") under a "no moon logic" design where solutions come from observation and reasoning rather than obscure trial-and-error [[former-mass-effect-and-dragon-age-developers-launch-studio-reset-a1d7f2e0]]. This is the veteran-talent-decentralizes-into-indie pattern that recurs alongside the topic's studio-closure thread.
+
+> After years spent contributing to large-scale narrative worlds, the founders are choosing a smaller, more intentional model: original IP, sustainable ambition, and experiences shaped around the players they are made for.
+
+> One of the game's central mechanics is what the studio calls 'Parallax Deduction,' a system in which multiple investigators each provide different perspectives on a case... perspective is part of the evidence.
+
+**Labor: the Ubisoft Halifax dispute closes with a settlement.** Laid-off Ubisoft Halifax workers voted overwhelmingly to approve a confidential settlement negotiated by the Game and Media Workers Guild of Canada (CWA Canada Local 30111), covering members among the 71 employees (61 union members) who lost their jobs when Ubisoft closed the studio in January 2026 — just weeks after they voted to unionize [[ubisoft-halifax-union-members-agree-settlement-after-studio-closure-08fc27da]]. Ubisoft maintained the closure was cost-cutting unrelated to unionization. This resolves one of the clearer recently-unionized-studio-closure cases.
+
+> The Game and Media Workers Guild of Canada negotiated the deal for its members who lost their jobs when Ubisoft closed its Halifax studio in January, affecting 71 employees including 61 union members. The closure came just weeks after those employees voted to unionize.
+
+**Studio economics: Monument Valley's maker reframes job security as a luxury.** Ustwo Games CEO Maria Sayans said lowering development costs and recruiting more contractors is now "paramount" for the studio to thrive as a PC-first developer, with its £7–10 million, 3–4-year-cycle projects no longer sustainable [[ustwo-ceo-says-lowering-development-costs-is-now-paramount-2425b456]]. Sayans put Ustwo at just under 30 people (down from its Monument Valley 3 peak) and said "We've been a little bit too romantic about the idea that we should have employees and give people long-term job security" — while admitting she "hates" the contractor-shift trend [[ustwo-ceo-says-lowering-development-costs-is-now-paramount-2425b456]].
+
+> We've been a little bit too romantic about the idea that we should have employees and give people long-term job security.
+
+**Contraction continues: Iron Galaxy treats the downturn as permanent.** Work-for-hire studio Iron Galaxy — co-developer of the PC ports of The Last of Us Part I and Part II Remastered — laid off an undisclosed number of staff (reportedly up to 90), saying it is "adopting a new posture to accept these current market conditions as permanent" and that sustaining its prior team size was "impossible... even after our downsizing from last year" [[iron-galaxy-lays-off-employees-as-it-reduces-company-size-2609e80b]]. The cuts come little over a year after Iron Galaxy cut 66 developers in 2025 as "a last resort" [[iron-galaxy-lays-off-employees-as-it-reduces-company-size-2609e80b]].
+
+> [We are] adopting a new posture to accept these current market conditions as permanent. [It would be] impossible for us to sustain the team size that we've carried this past year, even after our downsizing from last year.
+
+### Updates 2026-05-28
+
+**Mina the Hollower ships as 2026's highest-rated game.** Yacht Club Games' long-awaited action-adventure arrived to a ~93 Metacritic average, making it the highest-rated game of 2026 so far on the site and vaulting it past Forza Horizon 6 (91), Pokemon Pokopia (89), and Resident Evil Requiem (89) [[round-up-mina-the-hollower-earns-critical-acclaim-best-rated-game-of-2026-in-first-reviews-9e68e0dd]]. IGN's 10/10 framed the achievement in resource-efficiency terms — 'Mina achieves the same heights in both action and style that its impressive inspirations - Zelda, Castlevania, and FromSoft RPGs - reach on a regular basis, and with far fewer resources' [[round-up-mina-the-hollower-earns-critical-acclaim-best-rated-game-of-2026-in-first-reviews-9e68e0dd]]. The game launches May 29 at $20 across Switch/Switch 2, PS5, Windows, and Xbox Series X|S.
+
+> Mina the Hollower has earned an overall Metacritic score of 93, and this makes it the highest-rated game of 2026 so far on the website, beating the 91 score for Forza Horizon 6, and the 89 ratings handed to Pokemon Pokopia and Resident Evil Requiem.
+
+**A legacy-revival counterpoint to the contraction narrative: Witcher 3 gets a new expansion 12 years on.** CD Projekt Red announced The Witcher 3: Wild Hunt - Songs of the Past for 2027, a brand-new expansion arriving 12 years after the base game, with story content co-developed by Fool's Theory (the studio also handling the Witcher 1 remake) and reportedly bridging the gap between The Wild Hunt and The Witcher 4 [[the-witcher-3-wild-hunt-is-getting-a-new-expansion-12-years-after-launch-c3870b48]]. As a Phantom-Liberty-tier content investment into a decade-old title, it cuts against the page's running studio-contraction thread.
+
+> CD Projekt Red announced The Witcher 3: Wild Hunt - Songs of the Past is coming in 2027. This new Witcher 3 expansion is coming 12 years after the game's release.
+
+**Live-service attrition reaches a long-tail Sony exclusive: Destruction AllStars.** Sony delisted and shut down Destruction AllStars — one of the PS5's earliest exclusives, live since February 2021 — winding down multiplayer 'due to ongoing technical issues' with single-player modes playable only until November 25, 2026 [[ps5-exclusive-destruction-allstars-shut-down-after-five-years-4c041cfe]]. Unlike the page's fast-failure cases, this is a five-year wind-down, extending the live-service-attrition thread onto an aged platform-holder title.
+
+> Destruction AllStars, a PS5 exclusive that was intended as a launch title before being delayed into 2021, has been completely delisted and shut down. The live service launched in February 2021, and remained live for over five years.
+
+**The contraction wave continues across studios.** MechWarrior developer Piranha Games (Enad Global 7) cut roughly 30% of staff (17 employees) in an 'economic restructuring' — its second round in just over a year — even as MechWarrior 5 DLC stayed slated for May and a further product targets fall [[mechwarrior-dev-piranha-games-lays-off-30-of-staff-says-ceo-f914d016]]. Hasbro and Wizards of the Coast shuttered internal studio Atomic Arcade, established 2021 to build a G.I. Joe Snake Eyes title, while insisting 'The Snake Eyes game is not cancelled' — a closure that lands against Hasbro/WotC's 2024 $1 billion games-investment pledge and connects to the WotC labor thread the page already tracks [[update-hasbro-shutters-internal-video-game-studio-atomic-arcade-844b78aa]]. And Dead by Daylight maker Behaviour Interactive confirmed April 2026 layoffs of ~3% of its 1,300+ workforce (nearly 40 people, mostly mobile/casual external-development roles), explicitly denying any link to unionization or AI [[dead-by-daylight-studio-behaviour-interactive-confirms-layoffs-cdaae4e1]].
+
+> CEO Russ Bullock of MechWarrior developer Piranha Games confirmed that the studio has laid off roughly 30% of its employees... This is the second round of layoffs at Piranha in just over a year.
+
+> Atomic Arcade, the Hasbro and Wizards of the Coast-owned studio that was making a game based on the iconic G.I. Joe character Snake Eyes, has been shut down.
+
+> Behaviour Interactive laid off an at-the-time undisclosed number of its employees in April 2026... roughly 3 percent of its workforce was impacted in total... nearly 40 individuals.
+
+### Updates 2026-05-27
+
+**007 First Light ships strong — IO Interactive's highest-rated game.** 007 First Light launched May 27, 2026 to roughly 88 Metacritic, making it the best-reviewed Bond game since GoldenEye 007 (96) and IO Interactive's highest-rated title ever. GameSpot's 8/10 review found IO's Bond "was more like Hitman than expected, but 007 First Light wisely repurposes what works in both universes but isn't afraid to reimagine or ditch those parts that don't," framing the studio's debut Bond effort as "supremely confident" [[007-first-light-review-youth-in-revolt-f35b7ab2]]. The young-Bond origin story (Bond at 26, pre-MI6) is positioned as "a natural on-ramp for people who may not be familiar with Bond" [[007-first-light-review-youth-in-revolt-f35b7ab2]]. The shipped reception largely vindicates the topic's earlier GOTY-contender preview thread.
+
+> IO's take on James Bond was more like Hitman than expected, but 007 First Light wisely repurposes what works in both universes but isn't afraid to reimagine or ditch those parts that don't.
+
+> The story takes Bond back to the age of 26, when he's still serving in the military sans any ties to MI6, it's a natural on-ramp for people who may not be familiar with Bond.
+
+**Mina the Hollower arrives as Yacht Club's most ambitious game.** Ahead of its May 29, 2026 launch, Game Developer profiled Mina the Hollower as a Game Boy Color-styled action-adventure that is "an ambitious step up for the studio—far surpassing the scope of Shovel Knight" [[how-mina-the-hollower-breaks-new-retro-ground-128e1255]]. The game accumulated almost 10,000 'Overwhelmingly Positive' Steam reviews pre-launch, and other developers reportedly shifted their own release dates around it [[how-mina-the-hollower-breaks-new-retro-ground-128e1255]].
+
+> Mina the Hollower retains that modest, expressive visual style of a Game Boy Color game, while also being an ambitious step up for the studio—far surpassing the scope of Shovel Knight.
+
+> With almost 10,000 'Overwhelmingly Positive' reviews on Steam, it's not hard to see why game developers are pushing their release dates either side of YCG's upcoming action platformer.
+
+**Labor: Wizards of the Coast declines to voluntarily recognize the MTG Arena union — genAI is a core demand.** After a supermajority of MTG Arena developers signed union cards under the CWA, WotC declined — "rather than recognize the union, Wizards of the Coast responded by sending letters to employees urging them to think twice about unionizing" [[wizards-of-the-coast-declines-to-recognize-game-worker-union-dac45b87]]. The matter now goes to an NLRB election June 2, 2026, with the union explicitly seeking "clear guidelines around generative AI usage, among other demands including layoff protections and remote work protections" [[wizards-of-the-coast-declines-to-recognize-game-worker-union-dac45b87]].
+
+> Rather than recognize the union, Wizards of the Coast responded by sending letters to employees urging them to think twice about unionizing.
+
+> Employees will now decide whether to unionize by participating in a National Labour Relations Board election on June 2, 2026. The union wishes to establish clear guidelines around generative AI usage, among other demands including layoff protections and remote work protections.
+
+### Updates 2026-05-26
+
+**Major-publisher consolidation reaches Warner Bros. — and WB Games sits in limbo.** Paramount Skydance is acquiring Warner Bros. Discovery (superseding Netflix's earlier bid; WBD's board deemed Paramount's $31/share offer superior, shareholders approved April 23, 2026, Q3 2026 close expected pending regulatory clearance), bringing WB Games — Rocksteady, NetherRealm (Mortal Kombat), Avalanche (Hogwarts Legacy), TT Games, and WB Games Montreal — under a third would-be owner inside a year [[paramount-acknowledged-the-existence-of-warner-bros-games-faa1d7b1]]. Game Developer notes the games division was acknowledged only once, on a single slide, during a 30-plus-minute investor event, though CEO David Ellison said no divestitures are currently planned [[paramount-acknowledged-the-existence-of-warner-bros-games-faa1d7b1]]. This extends the topic's major-publisher-consolidation thread (EA/PIF, Ubisoft/Tencent) onto a third axis.
+
+> During a 30-plus minute investor event, Warner Bros. Games was mentioned only once on a presentation slide that described Warner Bros. Discovery as the owner of 'cutting-edge gaming and interactive content capabilities.'
+
+> When asked whether Paramount intends to divest any assets that are 'noncore' to the company, chairman and CEO David Ellison said that is currently not part of the plan, stating 'No, very simply, we have no divestitures planned at this time.'
+
+**Notable indie release: Mina the Hollower (May 29, 2026).** Yacht Club Games (Shovel Knight) ships its long-awaited nonlinear action-adventure — a Game Boy Color-styled top-down game drawing on Zelda and Castlevania, built around a whip ('Nightstar') and a 'Hollowing' burrow-dodge that grants brief invincibility [[mina-the-hollower-finally-has-a-release-date-at-long-last-4819762c]]. It lands across Switch/Switch 2, PS5, Windows, Xbox Series X/S, and Linux/macOS as a Metroidvania/action-adventure entry from a studio with a strong indie track record. The game features an MSX-style chiptune soundtrack composed by Jake Kaufman, the musician behind the Shovel Knight soundtracks [[mina-the-hollower-launches-on-may-29th-for-consoles-and-pc-056454aa]].
+
+> The game draws inspiration from top-down Zelda, Castlevania, and sports an 8-bit presentation evoking Game Boy Color titles. Mina wields a whip called the Nightstar and can use a technique called 'Hollowing' that allows her to burrow underground to traverse quickly and cross gaps while being completely invincible.
+
+**007 First Light: tight review-code window before launch.** Ahead of the May 26 early access launch the topic already tracks as a GOTY contender, IO Interactive distributed review codes only on May 22, leaving critics to rush a roughly 20-hour campaign — a publisher-confidence signal wrinkle [[007-first-light-reviews-raise-concerns-with-codes-sent-days-before-release-date-55518df2]].
+
+> IO Interactive didn't distribute 007 First Light review codes until May 22nd, forcing journalists to scramble to complete the roughly 20-hour-long adventure before its May 26th early access release date.
+
+### Updates 2026-05-25
+
+**Sony puts a number on the Bungie writedown.** Sony's FY2025 earnings disclosure quantified the Bungie distress the topic has been tracking: CFO Lin Tao said Bungie's earnings "did not reach expectations," Sony revised its business plan and impaired the full value of Bungie's fixed assets (excluding goodwill), recording a $766 million (120.1 billion yen) impairment loss — $201 million in Q2 and $565 million in Q4 [[sony-records-766-million-impairment-loss-against-bungie-in-2025-e8b6b853]]. Notably, the same disclosure frames Marathon positively, with Tao citing a high Metacritic score (82) and strong player reviews — a more upbeat read than the studio's reported layoffs and lack of a greenlit Destiny 3 would suggest [[sony-records-766-million-impairment-loss-against-bungie-in-2025-e8b6b853]].
+
+> During the earnings call, Lin Tao, CFO and corporate executive officer at Sony, stated that Bungie's earnings did not reach expectations. Sony revised the business plan and impaired the full amount of the fixed assets related to Bungie, except for goodwill.
+
+> Sony recorded a 766 million USD (120.1 billion yen) impairment loss against Bungie's assets, with 201 million in Q2 and 565 million in Q4.
+
+**Sony closes its second studio of 2026: Dark Outlaw Games.** PlayStation shut down Dark Outlaw Games — the incubation studio it formed in 2025 under former Call of Duty Zombies director Jason Blundell — before the team shipped anything [[playstation-shuts-down-call-of-duty-leads-second-studio-4b2ca078]]. This is Sony's second major studio closure of 2026 after Bluepoint Games, and leaked reports point to further cuts across PlayStation's US and UK divisions tied to a retreat from mobile games — extending the platform-holder contraction pattern the topic already tracks via Bluepoint [[playstation-shuts-down-call-of-duty-leads-second-studio-4b2ca078]].
+
+> Sony has closed Dark Outlaw Games, a new PlayStation studio led by a Call of Duty Zombies director. Dark Outlaw Games was only formed in 2025 under Jason Blundell, who was the former Director of CoD Zombies.
+
+> This now marks the second major studio closure for PlayStation in 2026, following the earlier closure of Bluepoint Games. According to a new leak, this may only be the beginning, with more layoffs expected across PlayStation's US and UK divisions.
+
+**Live-service postmortem: Last Flag and Night Street Games.** Night Street Games — the studio founded by Imagine Dragons frontman Dan Reynolds and brother Mac Reynolds — laid off about a dozen staff (leaving 13) roughly a month after launching its 1970s game-show-themed multiplayer shooter Last Flag (April 14, 2026), shedding close to half the team [[last-flag-dev-night-street-games-lays-off-about-a-dozen-staff-fa98bc05]]. CEO Mac Reynolds framed the cuts as a direct response to commercial performance, not creative direction: despite a Mostly Positive Steam rating, the game drew only 475 user reviews — a thin concurrent population for a multiplayer-dependent shooter [[last-flag-dev-night-street-games-lays-off-about-a-dozen-staff-fa98bc05]]. This is another fast live-service casualty alongside Highguard's 45-day shutdown, reinforcing the page's running live-service bifurcation thread (Arc Raiders thriving while smaller multiplayer launches stall).
+
+> Night Street Games CEO Mac Reynolds confirmed that 'about a dozen employees' were let go in the layoffs, and that 13 remain to pursue new game ideas. With a dozen roles gone and 13 developers left, Night Street has shed close to half of the team that built and launched Last Flag.
+
+> Last Flag launched on April 14, 2026 as a multiplayer shooter and currently holds a Mostly Positive rating on Steam, drawn from 475 user reviews.
+
+### Updates 2026-05-24
+
+**Bungie pivots to Marathon as no Destiny 3 is greenlit.** Following confirmation that Destiny 2's live-service content updates end in June, reporting indicates Bungie has no immediate plans to enter production on a Destiny 3 and has no project lined up for Destiny 2's team, with some developers already moved onto the extraction shooter Marathon [[bungie-reportedly-plans-significant-layoffs-as-no-destiny-3-greenlit-3c028ea3]]. The studio reportedly plans a 'significant' round of layoffs — the latest since its 2022 sale to Sony for $3.6 billion.
+
+> Bungie is reportedly facing layoffs, following confirmation that it will end updates for Destiny 2, and a third game in the franchise has not yet been greenlit. The studio will focus on the extraction shooter Marathon in the near term, with some Destiny 2 developers already transferred to the game.
+
+**Build A Rocket Boy lays off ~170 days after MindsEye DLC (third round in 12 months).** The MindsEye developer cut roughly 170 staff — its third round in 12 months — leaving around 80 employees, just days after launching the game's first DLC [[mindseye-developer-build-a-rocket-boy-lays-off-even-more-people-bc971e32]]. The studio has also faced legal action over device-monitoring software and union claims of crunch and mishandling, marking it as one of 2026's clearest troubled-launch postmortems.
+
+> Build A Rocket Boy experienced mass layoffs of approximately 170 employees just days after the launch of MindsEye's first DLC, bringing the total staff down to around 80. This was the third round of layoffs, following mass layoffs in June 2025 and March 2026.
+
+**Games-media contraction continues: Eurogamer cuts editorial staff.** IGN-owned Eurogamer is undergoing at least its second round of editorial layoffs since joining IGN, cutting experienced editors and its entire four-person video team, with behind-the-camera cuts to Outside Xbox [[games-media-set-for-more-layoffs-as-ign-owned-eurogamer-cuts-editorial-staff-8869a7f9]].
+
+> The layoffs include the brand's most experienced editors and its entire four-person video team, though at least one position will be transferred to IGN. The editorial cuts ... further highlight the challenging climate for games journalism.
+
+**EA's $55B take-private nears close; CFIUS the last hurdle.** The PIF/Silver Lake/Affinity Partners $55B leveraged buyout ($210/share) remains on track, with shareholder approval (Dec 2025) and HSR antitrust clearance already secured and CFIUS national-security review the remaining gate ahead of a Sep 28, 2026 outside date; EA simultaneously posted record FY2026 net bookings of $8.026B, up 9% YoY [[electronic-arts-stock-trades-below-its-10-buyout-price-deal-spread-and-record-fy26-results-78436694]].
+
+> The pending $55 billion take-private acquisition ... remains on track, with CFIUS as the last major regulatory hurdle ... On May 5, 2026, EA reported record fiscal year 2026 net bookings of $8,026 million, up 9% year over year.
+
+### Updates 2026-05-23
+
+**Bungie winds down Destiny 2 — and braces for significant layoffs.** Bungie confirmed in May 2026 that active development on Destiny 2 will end in June, with a final free content update — Monument of Triumph — landing June 9 before the studio shifts focus to new games; the MMO remains online and playable but receives no further new content [[destiny-2-s-active-development-will-end-in-june-30b55a1f]]. Reports indicate parent company Sony is planning a significant number of layoffs as it winds down the project, with no new game lined up for the team and no Destiny 3 greenlit [[destiny-2-s-active-development-will-end-in-june-30b55a1f]]. This is a notable inflection for a once-flagship live-service title and connects directly to the topic's running live-service-attrition thread (Highguard, Marathon) — Bungie's pivot is toward its new extraction shooter Marathon rather than a Destiny successor.
+
+> Bungie has confirmed that active development on Destiny 2 will end in June, with the studio shifting its focus to new games.
+
+> Reports indicate parent company Sony is planning a significant number of layoffs as it winds down development on Destiny 2. There is no new project lined up for the team and no Destiny 3 has been greenlit.
+
+**The EA buyout diverges from the traditional playbook.** Game Developer's analysis frames EA's $55 billion all-cash acquisition by a consortium of Saudi Arabia's Public Investment Fund, Silver Lake, and Affinity Partners as a departure from the traditional leveraged-buyout playbook — where private equity slashes costs to service debt and flip the asset — arguing the sovereign-wealth backing makes it less a quick financial flip than a long-term strategic bet on entertainment [[gaming-is-the-new-oil-how-the-ea-buyout-diverges-from-the-traditional-playbook-eb0cc870]]. PIF will own roughly 93 percent of EA, with Silver Lake and Affinity Partners holding 5.5 percent and 1.1 percent respectively, and the deal is expected to close in the first quarter of EA's fiscal year 2027 [[gaming-is-the-new-oil-how-the-ea-buyout-diverges-from-the-traditional-playbook-eb0cc870]].
+
+> The scale and the sovereign-wealth backing make this less about a quick financial flip and more about long-term strategic positioning in entertainment, distinguishing it from the cost-cutting logic that usually drives a leveraged buyout.
+
+> PIF will own roughly 93 percent of EA, with Silver Lake and Affinity Partners holding 5.5 percent and 1.1 percent respectively. The transaction is expected to close in the first quarter of EA's fiscal year 2027.
+
+**Notable release: Directive 8020 evolves the Dark Pictures formula.** Supermassive Games' Directive 8020 is the studio's first outer-space entry in The Dark Pictures Anthology, and notably shifts from the series' traditional cinematic fixed-camera approach to an over-the-shoulder third-person action style while adding a 'Turning Points' mechanic that lets players return to pivotal moments to make different choices without replaying the whole game [[the-dark-pictures-anthology-has-never-been-more-adrift-directive-8020-review-50a2449d]]. Critical reception was divided — GameSpot's review argued it 'fails to make good use of what should be the scariest place not on Earth, opting for a generic murderous-alien narrative,' even as the mechanical changes mark the anthology's biggest design departure to date [[the-dark-pictures-anthology-has-never-been-more-adrift-directive-8020-review-50a2449d]].
+
+> Directive 8020 now plays like an over-the-shoulder third-person action game, a departure from the studio's traditional cinematic fixed-camera approach, and adds a 'Turning Points' feature that lets you return to pivotal moments to make different choices without replaying the whole game.
+
+### Updates 2026-05-22 — Mid-May contraction wave + genAI sentiment at GDC
+
+**The contraction wave broadens beyond AAA into mobile, VR, and indie (mid-May 2026).** Finnish Merge Mansion maker Metacore is restructuring with up to 160 roles considered for reduction in Finland (plus possible changes in Germany and Sweden), and as part of its 'next phase' Supercell — already a major shareholder — will acquire the rest of Metacore; the move is explicitly tied to Merge Mansion's growth having 'plateaued' since 2020 and new game investments having 'not succeeded' globally [[metacore-restructuring-to-the-tune-of-up-to-160-redundancies-7bd8bf0f]]. In VR, Survios — the Alien: Rogue Incursion and Creed: Rise to Glory studio founded in 2013 — reportedly laid off the bulk of its development team, with one impacted designer saying the studio 'will be essentially shuttered,' a setback following its attempted expansion into console/PC with an 'Evolved Edition' of Alien: Rogue Incursion [[report-vr-studio-survios-has-laid-off-the-bulk-of-its-dev-team-7f9b0734]]. The pattern also reached pre-launch live-service: 2K cut staff at 31st Union (the Project Ethos studio) on May 8, 2026, as the unreleased game pivoted from an extraction shooter to a 'skill-based PvP roguelike' — a 'renewed direction' framing that nonetheless came with downsizing [[2k-makes-layoffs-at-project-ethos-developer-31st-union-abd3780c]]. And in indie, Hinterland laid off 10 full-time employees (plus four non-renewed fixed-term contracts) after delaying The Long Dark sequel Blackfrost beyond the end of 2026, with CEO Raphael van Lierop framing the cuts as preserving the financial runway to reach launch [[hinterland-confirms-layoffs-after-delaying-the-long-dark-sequel-379834d9]].
+
+> As part of what Metacore calls 'its next phase,' Supercell will acquire 'the rest of Metacore.'
+
+> Survios as it currently stands will be essentially shuttered, with all of the team members responsible for development being let go.
+
+> Project Ethos is becoming a 'skill-based PvP roguelike' as part of the 'renewed direction' that was announced in 2025. This represents a significant pivot from the game's original concept as an extraction shooter.
+
+> Hinterland is laying off 10 full-time employees after delaying The Long Dark sequel Blackfrost.
+
+**The genAI debate gets quantified at GDC 2026.** The 2026 State of the Game Industry report (2,300+ respondents) found 36% of professionals use generative AI tools in their job, but ~52% think the technology is having a negative impact — with the most unfavorable views among visual/technical art (64%), design/narrative (63%), and programming (59%). Studio-side workers use genAI far less (30%) than publishing/support/marketing peers (58%), and the share calling its impact positive fell to ~7% from 13% in 2025 [[one-third-of-game-workers-using-genai-but-half-think-it-s-bad-dd26fbdb]]. This puts hard numbers behind the AI-adoption tension the topic already tracks via Outersloth's blanket rejection of gen-AI pitches.
+
+> 36 percent of game industry professionals are using generative AI tools as part of their job, though half of them think the technology is having a negative impact on the industry.
+
+### Updates 2026-05-21 — EA Battlefield layoffs, Arc Raiders blockbuster, Mixtape
+
+**Commercial-vs-employment disconnects sharpen.** EA laid off an undisclosed number of Battlefield developers across all four division studios (Criterion, DICE, Ripple Effect, Motive) only months after Battlefield 6's record launch — the shooter sold 7 million copies within three days of its October 10, 2025 release, making this a stark commercial-success-then-layoffs pattern [[ea-has-laid-off-an-undisclosed-number-of-battlefield-developers-55eb4720]]. The contraction also reached Metroid Dread and Blades of Fire developer MercurySteam, which announced layoffs on May 12, 2026 (count undisclosed), following last-fall accusations of harassment and forced crunch at the studio [[metroid-dread-developer-mercurysteam-conducts-layoffs-4b9b2a2b]].
+
+> EA has laid off an undisclosed number of Battlefield developers just months after the record-breaking launch of Battlefield 6. There have been layoffs across all four studios within the division, which comprises internal studios Criterion, DICE, Ripple Effect, and Motive.
+
+> MercurySteam, the developer of Metroid Dread and Blades of Fire, announced layoffs on May 12, 2026. However, the number of affected workers was not stated.
+
+**A live-service counter-narrative: Arc Raiders.** Against the topic's running thread of live-service attrition (Highguard, Marathon), Embark Studios' extraction shooter Arc Raiders was branded a 'blockbuster' franchise by publisher Nexon after passing 14 million copies (since grown past 16 million, +4.6 million in Q1 2026), peaking near 960,000 concurrent players in January with ~6 million weekly active users, explicitly defying the 'quick-up-quick-down' trajectory of a typical hit [[arc-raiders-branded-global-blockbuster-after-hitting-14m-sales-6022f364]].
+
+> After just 15 weeks on shelves, Nexon said Arc Raiders defied the standard quick-up-quick-down trajectory of a hit game to establish itself as a blockbuster franchise.
+
+**Notable indie release: Mixtape.** Mixtape (May 7, 2026, Annapurna Interactive), from Beethoven & Dinosaur — developers of BAFTA-winning The Artful Escape — is a music-driven coming-of-age narrative game following three high-school friends (Stacy, Slater, Cassandra) on one last night together, well-received critically (GameSpot 9/10) [[mixtape-review-a-surprisingly-perfect-mix-of-heart-and-humor-7e72e867]].
+
+> Mixtape is from Beethoven & Dinosaur, developers of BAFTA award-winning game The Artful Escape.
+
+### Updates 2026-05-20 — Early-run synthesis — industry contraction, May 2026 slate, indie awards, Nacon/Spiders, Zero Parades
 
 **Industry contraction continues into 2026.** Sony shuttered Bluepoint Games in February 2026 — five years after acquiring the studio behind the Demon's Souls and Shadow of the Colossus remakes — with PlayStation boss Hermen Hulst blaming an 'increasingly challenging industry environment' and 70 employees facing layoffs [[playstation-boss-blames-bluepoint-cuts-on-budgets-and-players-f38a5da9]]. Ubisoft restructured into a 'Creative Houses' model with Tencent taking a 26.32% stake in new subsidiary Vantage Studios (the new home for Assassin's Creed, Rainbow Six, and Far Cry) via a 1.16 billion euro investment, alongside multiple cancellations, more studio closures, a five-day return-to-office mandate, and another 200 million euros in planned cuts over two years [[ubisoft-and-tencent-launch-vantage-studios-a43d07e1]].
 
@@ -55,151 +668,6 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 > Zero Parades: For Dead Spies is an excellent Disco Elysium successor that still establishes its own identity.
 
 > Zero Parades: For Dead Spies is a role-playing video game developed and published by ZA/UM, the studio's second game following Disco Elysium... neither a sequel nor spiritual successor.
-
-## Recent updates
-
-**Commercial-vs-employment disconnects sharpen.** EA laid off an undisclosed number of Battlefield developers across all four division studios (Criterion, DICE, Ripple Effect, Motive) only months after Battlefield 6's record launch — the shooter sold 7 million copies within three days of its October 10, 2025 release, making this a stark commercial-success-then-layoffs pattern [[ea-has-laid-off-an-undisclosed-number-of-battlefield-developers-55eb4720]]. The contraction also reached Metroid Dread and Blades of Fire developer MercurySteam, which announced layoffs on May 12, 2026 (count undisclosed), following last-fall accusations of harassment and forced crunch at the studio [[metroid-dread-developer-mercurysteam-conducts-layoffs-4b9b2a2b]].
-
-> EA has laid off an undisclosed number of Battlefield developers just months after the record-breaking launch of Battlefield 6. There have been layoffs across all four studios within the division, which comprises internal studios Criterion, DICE, Ripple Effect, and Motive.
-
-> MercurySteam, the developer of Metroid Dread and Blades of Fire, announced layoffs on May 12, 2026. However, the number of affected workers was not stated.
-
-**A live-service counter-narrative: Arc Raiders.** Against the topic's running thread of live-service attrition (Highguard, Marathon), Embark Studios' extraction shooter Arc Raiders was branded a 'blockbuster' franchise by publisher Nexon after passing 14 million copies (since grown past 16 million, +4.6 million in Q1 2026), peaking near 960,000 concurrent players in January with ~6 million weekly active users, explicitly defying the 'quick-up-quick-down' trajectory of a typical hit [[arc-raiders-branded-global-blockbuster-after-hitting-14m-sales-6022f364]].
-
-> After just 15 weeks on shelves, Nexon said Arc Raiders defied the standard quick-up-quick-down trajectory of a hit game to establish itself as a blockbuster franchise.
-
-**Notable indie release: Mixtape.** Mixtape (May 7, 2026, Annapurna Interactive), from Beethoven & Dinosaur — developers of BAFTA-winning The Artful Escape — is a music-driven coming-of-age narrative game following three high-school friends (Stacy, Slater, Cassandra) on one last night together, well-received critically (GameSpot 9/10) [[mixtape-review-a-surprisingly-perfect-mix-of-heart-and-humor-7e72e867]].
-
-> Mixtape is from Beethoven & Dinosaur, developers of BAFTA award-winning game The Artful Escape.
-
-**The contraction wave broadens beyond AAA into mobile, VR, and indie (mid-May 2026).** Finnish Merge Mansion maker Metacore is restructuring with up to 160 roles considered for reduction in Finland (plus possible changes in Germany and Sweden), and as part of its 'next phase' Supercell — already a major shareholder — will acquire the rest of Metacore; the move is explicitly tied to Merge Mansion's growth having 'plateaued' since 2020 and new game investments having 'not succeeded' globally [[metacore-restructuring-to-the-tune-of-up-to-160-redundancies-7bd8bf0f]]. In VR, Survios — the Alien: Rogue Incursion and Creed: Rise to Glory studio founded in 2013 — reportedly laid off the bulk of its development team, with one impacted designer saying the studio 'will be essentially shuttered,' a setback following its attempted expansion into console/PC with an 'Evolved Edition' of Alien: Rogue Incursion [[report-vr-studio-survios-has-laid-off-the-bulk-of-its-dev-team-7f9b0734]]. The pattern also reached pre-launch live-service: 2K cut staff at 31st Union (the Project Ethos studio) on May 8, 2026, as the unreleased game pivoted from an extraction shooter to a 'skill-based PvP roguelike' — a 'renewed direction' framing that nonetheless came with downsizing [[2k-makes-layoffs-at-project-ethos-developer-31st-union-abd3780c]]. And in indie, Hinterland laid off 10 full-time employees (plus four non-renewed fixed-term contracts) after delaying The Long Dark sequel Blackfrost beyond the end of 2026, with CEO Raphael van Lierop framing the cuts as preserving the financial runway to reach launch [[hinterland-confirms-layoffs-after-delaying-the-long-dark-sequel-379834d9]].
-
-> As part of what Metacore calls 'its next phase,' Supercell will acquire 'the rest of Metacore.'
-
-> Survios as it currently stands will be essentially shuttered, with all of the team members responsible for development being let go.
-
-> Project Ethos is becoming a 'skill-based PvP roguelike' as part of the 'renewed direction' that was announced in 2025. This represents a significant pivot from the game's original concept as an extraction shooter.
-
-> Hinterland is laying off 10 full-time employees after delaying The Long Dark sequel Blackfrost.
-
-**The genAI debate gets quantified at GDC 2026.** The 2026 State of the Game Industry report (2,300+ respondents) found 36% of professionals use generative AI tools in their job, but ~52% think the technology is having a negative impact — with the most unfavorable views among visual/technical art (64%), design/narrative (63%), and programming (59%). Studio-side workers use genAI far less (30%) than publishing/support/marketing peers (58%), and the share calling its impact positive fell to ~7% from 13% in 2025 [[one-third-of-game-workers-using-genai-but-half-think-it-s-bad-dd26fbdb]]. This puts hard numbers behind the AI-adoption tension the topic already tracks via Outersloth's blanket rejection of gen-AI pitches.
-
-> 36 percent of game industry professionals are using generative AI tools as part of their job, though half of them think the technology is having a negative impact on the industry.
-
-## Updates 2026-05-23
-
-**Bungie winds down Destiny 2 — and braces for significant layoffs.** Bungie confirmed in May 2026 that active development on Destiny 2 will end in June, with a final free content update — Monument of Triumph — landing June 9 before the studio shifts focus to new games; the MMO remains online and playable but receives no further new content [[destiny-2-s-active-development-will-end-in-june-30b55a1f]]. Reports indicate parent company Sony is planning a significant number of layoffs as it winds down the project, with no new game lined up for the team and no Destiny 3 greenlit [[destiny-2-s-active-development-will-end-in-june-30b55a1f]]. This is a notable inflection for a once-flagship live-service title and connects directly to the topic's running live-service-attrition thread (Highguard, Marathon) — Bungie's pivot is toward its new extraction shooter Marathon rather than a Destiny successor.
-
-> Bungie has confirmed that active development on Destiny 2 will end in June, with the studio shifting its focus to new games.
-
-> Reports indicate parent company Sony is planning a significant number of layoffs as it winds down development on Destiny 2. There is no new project lined up for the team and no Destiny 3 has been greenlit.
-
-**The EA buyout diverges from the traditional playbook.** Game Developer's analysis frames EA's $55 billion all-cash acquisition by a consortium of Saudi Arabia's Public Investment Fund, Silver Lake, and Affinity Partners as a departure from the traditional leveraged-buyout playbook — where private equity slashes costs to service debt and flip the asset — arguing the sovereign-wealth backing makes it less a quick financial flip than a long-term strategic bet on entertainment [[gaming-is-the-new-oil-how-the-ea-buyout-diverges-from-the-traditional-playbook-eb0cc870]]. PIF will own roughly 93 percent of EA, with Silver Lake and Affinity Partners holding 5.5 percent and 1.1 percent respectively, and the deal is expected to close in the first quarter of EA's fiscal year 2027 [[gaming-is-the-new-oil-how-the-ea-buyout-diverges-from-the-traditional-playbook-eb0cc870]].
-
-> The scale and the sovereign-wealth backing make this less about a quick financial flip and more about long-term strategic positioning in entertainment, distinguishing it from the cost-cutting logic that usually drives a leveraged buyout.
-
-> PIF will own roughly 93 percent of EA, with Silver Lake and Affinity Partners holding 5.5 percent and 1.1 percent respectively. The transaction is expected to close in the first quarter of EA's fiscal year 2027.
-
-**Notable release: Directive 8020 evolves the Dark Pictures formula.** Supermassive Games' Directive 8020 is the studio's first outer-space entry in The Dark Pictures Anthology, and notably shifts from the series' traditional cinematic fixed-camera approach to an over-the-shoulder third-person action style while adding a 'Turning Points' mechanic that lets players return to pivotal moments to make different choices without replaying the whole game [[the-dark-pictures-anthology-has-never-been-more-adrift-directive-8020-review-50a2449d]]. Critical reception was divided — GameSpot's review argued it 'fails to make good use of what should be the scariest place not on Earth, opting for a generic murderous-alien narrative,' even as the mechanical changes mark the anthology's biggest design departure to date [[the-dark-pictures-anthology-has-never-been-more-adrift-directive-8020-review-50a2449d]].
-
-> Directive 8020 now plays like an over-the-shoulder third-person action game, a departure from the studio's traditional cinematic fixed-camera approach, and adds a 'Turning Points' feature that lets you return to pivotal moments to make different choices without replaying the whole game.
-
-## Updates 2026-05-24
-
-**Bungie pivots to Marathon as no Destiny 3 is greenlit.** Following confirmation that Destiny 2's live-service content updates end in June, reporting indicates Bungie has no immediate plans to enter production on a Destiny 3 and has no project lined up for Destiny 2's team, with some developers already moved onto the extraction shooter Marathon [[bungie-reportedly-plans-significant-layoffs-as-no-destiny-3-greenlit-3c028ea3]]. The studio reportedly plans a 'significant' round of layoffs — the latest since its 2022 sale to Sony for $3.6 billion.
-
-> Bungie is reportedly facing layoffs, following confirmation that it will end updates for Destiny 2, and a third game in the franchise has not yet been greenlit. The studio will focus on the extraction shooter Marathon in the near term, with some Destiny 2 developers already transferred to the game.
-
-**Build A Rocket Boy lays off ~170 days after MindsEye DLC (third round in 12 months).** The MindsEye developer cut roughly 170 staff — its third round in 12 months — leaving around 80 employees, just days after launching the game's first DLC [[mindseye-developer-build-a-rocket-boy-lays-off-even-more-people-bc971e32]]. The studio has also faced legal action over device-monitoring software and union claims of crunch and mishandling, marking it as one of 2026's clearest troubled-launch postmortems.
-
-> Build A Rocket Boy experienced mass layoffs of approximately 170 employees just days after the launch of MindsEye's first DLC, bringing the total staff down to around 80. This was the third round of layoffs, following mass layoffs in June 2025 and March 2026.
-
-**Games-media contraction continues: Eurogamer cuts editorial staff.** IGN-owned Eurogamer is undergoing at least its second round of editorial layoffs since joining IGN, cutting experienced editors and its entire four-person video team, with behind-the-camera cuts to Outside Xbox [[games-media-set-for-more-layoffs-as-ign-owned-eurogamer-cuts-editorial-staff-8869a7f9]].
-
-> The layoffs include the brand's most experienced editors and its entire four-person video team, though at least one position will be transferred to IGN. The editorial cuts ... further highlight the challenging climate for games journalism.
-
-**EA's $55B take-private nears close; CFIUS the last hurdle.** The PIF/Silver Lake/Affinity Partners $55B leveraged buyout ($210/share) remains on track, with shareholder approval (Dec 2025) and HSR antitrust clearance already secured and CFIUS national-security review the remaining gate ahead of a Sep 28, 2026 outside date; EA simultaneously posted record FY2026 net bookings of $8.026B, up 9% YoY [[electronic-arts-stock-trades-below-its-10-buyout-price-deal-spread-and-record-fy26-results-78436694]].
-
-> The pending $55 billion take-private acquisition ... remains on track, with CFIUS as the last major regulatory hurdle ... On May 5, 2026, EA reported record fiscal year 2026 net bookings of $8,026 million, up 9% year over year.
-
-
-## Updates 2026-05-25
-
-**Sony puts a number on the Bungie writedown.** Sony's FY2025 earnings disclosure quantified the Bungie distress the topic has been tracking: CFO Lin Tao said Bungie's earnings "did not reach expectations," Sony revised its business plan and impaired the full value of Bungie's fixed assets (excluding goodwill), recording a $766 million (120.1 billion yen) impairment loss — $201 million in Q2 and $565 million in Q4 [[sony-records-766-million-impairment-loss-against-bungie-in-2025-e8b6b853]]. Notably, the same disclosure frames Marathon positively, with Tao citing a high Metacritic score (82) and strong player reviews — a more upbeat read than the studio's reported layoffs and lack of a greenlit Destiny 3 would suggest [[sony-records-766-million-impairment-loss-against-bungie-in-2025-e8b6b853]].
-
-> During the earnings call, Lin Tao, CFO and corporate executive officer at Sony, stated that Bungie's earnings did not reach expectations. Sony revised the business plan and impaired the full amount of the fixed assets related to Bungie, except for goodwill.
-
-> Sony recorded a 766 million USD (120.1 billion yen) impairment loss against Bungie's assets, with 201 million in Q2 and 565 million in Q4.
-
-**Sony closes its second studio of 2026: Dark Outlaw Games.** PlayStation shut down Dark Outlaw Games — the incubation studio it formed in 2025 under former Call of Duty Zombies director Jason Blundell — before the team shipped anything [[playstation-shuts-down-call-of-duty-leads-second-studio-4b2ca078]]. This is Sony's second major studio closure of 2026 after Bluepoint Games, and leaked reports point to further cuts across PlayStation's US and UK divisions tied to a retreat from mobile games — extending the platform-holder contraction pattern the topic already tracks via Bluepoint [[playstation-shuts-down-call-of-duty-leads-second-studio-4b2ca078]].
-
-> Sony has closed Dark Outlaw Games, a new PlayStation studio led by a Call of Duty Zombies director. Dark Outlaw Games was only formed in 2025 under Jason Blundell, who was the former Director of CoD Zombies.
-
-> This now marks the second major studio closure for PlayStation in 2026, following the earlier closure of Bluepoint Games. According to a new leak, this may only be the beginning, with more layoffs expected across PlayStation's US and UK divisions.
-
-**Live-service postmortem: Last Flag and Night Street Games.** Night Street Games — the studio founded by Imagine Dragons frontman Dan Reynolds and brother Mac Reynolds — laid off about a dozen staff (leaving 13) roughly a month after launching its 1970s game-show-themed multiplayer shooter Last Flag (April 14, 2026), shedding close to half the team [[last-flag-dev-night-street-games-lays-off-about-a-dozen-staff-fa98bc05]]. CEO Mac Reynolds framed the cuts as a direct response to commercial performance, not creative direction: despite a Mostly Positive Steam rating, the game drew only 475 user reviews — a thin concurrent population for a multiplayer-dependent shooter [[last-flag-dev-night-street-games-lays-off-about-a-dozen-staff-fa98bc05]]. This is another fast live-service casualty alongside Highguard's 45-day shutdown, reinforcing the page's running live-service bifurcation thread (Arc Raiders thriving while smaller multiplayer launches stall).
-
-> Night Street Games CEO Mac Reynolds confirmed that 'about a dozen employees' were let go in the layoffs, and that 13 remain to pursue new game ideas. With a dozen roles gone and 13 developers left, Night Street has shed close to half of the team that built and launched Last Flag.
-
-> Last Flag launched on April 14, 2026 as a multiplayer shooter and currently holds a Mostly Positive rating on Steam, drawn from 475 user reviews.
-
-## Updates 2026-05-26
-
-**Major-publisher consolidation reaches Warner Bros. — and WB Games sits in limbo.** Paramount Skydance is acquiring Warner Bros. Discovery (superseding Netflix's earlier bid; WBD's board deemed Paramount's $31/share offer superior, shareholders approved April 23, 2026, Q3 2026 close expected pending regulatory clearance), bringing WB Games — Rocksteady, NetherRealm (Mortal Kombat), Avalanche (Hogwarts Legacy), TT Games, and WB Games Montreal — under a third would-be owner inside a year [[paramount-acknowledged-the-existence-of-warner-bros-games-faa1d7b1]]. Game Developer notes the games division was acknowledged only once, on a single slide, during a 30-plus-minute investor event, though CEO David Ellison said no divestitures are currently planned [[paramount-acknowledged-the-existence-of-warner-bros-games-faa1d7b1]]. This extends the topic's major-publisher-consolidation thread (EA/PIF, Ubisoft/Tencent) onto a third axis.
-
-> During a 30-plus minute investor event, Warner Bros. Games was mentioned only once on a presentation slide that described Warner Bros. Discovery as the owner of 'cutting-edge gaming and interactive content capabilities.'
-
-> When asked whether Paramount intends to divest any assets that are 'noncore' to the company, chairman and CEO David Ellison said that is currently not part of the plan, stating 'No, very simply, we have no divestitures planned at this time.'
-
-**Notable indie release: Mina the Hollower (May 29, 2026).** Yacht Club Games (Shovel Knight) ships its long-awaited nonlinear action-adventure — a Game Boy Color-styled top-down game drawing on Zelda and Castlevania, built around a whip ('Nightstar') and a 'Hollowing' burrow-dodge that grants brief invincibility [[mina-the-hollower-finally-has-a-release-date-at-long-last-4819762c]]. It lands across Switch/Switch 2, PS5, Windows, Xbox Series X/S, and Linux/macOS as a Metroidvania/action-adventure entry from a studio with a strong indie track record. The game features an MSX-style chiptune soundtrack composed by Jake Kaufman, the musician behind the Shovel Knight soundtracks [[mina-the-hollower-launches-on-may-29th-for-consoles-and-pc-056454aa]].
-
-> The game draws inspiration from top-down Zelda, Castlevania, and sports an 8-bit presentation evoking Game Boy Color titles. Mina wields a whip called the Nightstar and can use a technique called 'Hollowing' that allows her to burrow underground to traverse quickly and cross gaps while being completely invincible.
-
-**007 First Light: tight review-code window before launch.** Ahead of the May 26 early access launch the topic already tracks as a GOTY contender, IO Interactive distributed review codes only on May 22, leaving critics to rush a roughly 20-hour campaign — a publisher-confidence signal wrinkle [[007-first-light-reviews-raise-concerns-with-codes-sent-days-before-release-date-55518df2]].
-
-> IO Interactive didn't distribute 007 First Light review codes until May 22nd, forcing journalists to scramble to complete the roughly 20-hour-long adventure before its May 26th early access release date.
-
-## Updates 2026-05-27
-
-**007 First Light ships strong — IO Interactive's highest-rated game.** 007 First Light launched May 27, 2026 to roughly 88 Metacritic, making it the best-reviewed Bond game since GoldenEye 007 (96) and IO Interactive's highest-rated title ever. GameSpot's 8/10 review found IO's Bond "was more like Hitman than expected, but 007 First Light wisely repurposes what works in both universes but isn't afraid to reimagine or ditch those parts that don't," framing the studio's debut Bond effort as "supremely confident" [[007-first-light-review-youth-in-revolt-f35b7ab2]]. The young-Bond origin story (Bond at 26, pre-MI6) is positioned as "a natural on-ramp for people who may not be familiar with Bond" [[007-first-light-review-youth-in-revolt-f35b7ab2]]. The shipped reception largely vindicates the topic's earlier GOTY-contender preview thread.
-
-> IO's take on James Bond was more like Hitman than expected, but 007 First Light wisely repurposes what works in both universes but isn't afraid to reimagine or ditch those parts that don't.
-
-> The story takes Bond back to the age of 26, when he's still serving in the military sans any ties to MI6, it's a natural on-ramp for people who may not be familiar with Bond.
-
-**Mina the Hollower arrives as Yacht Club's most ambitious game.** Ahead of its May 29, 2026 launch, Game Developer profiled Mina the Hollower as a Game Boy Color-styled action-adventure that is "an ambitious step up for the studio—far surpassing the scope of Shovel Knight" [[how-mina-the-hollower-breaks-new-retro-ground-128e1255]]. The game accumulated almost 10,000 'Overwhelmingly Positive' Steam reviews pre-launch, and other developers reportedly shifted their own release dates around it [[how-mina-the-hollower-breaks-new-retro-ground-128e1255]].
-
-> Mina the Hollower retains that modest, expressive visual style of a Game Boy Color game, while also being an ambitious step up for the studio—far surpassing the scope of Shovel Knight.
-
-> With almost 10,000 'Overwhelmingly Positive' reviews on Steam, it's not hard to see why game developers are pushing their release dates either side of YCG's upcoming action platformer.
-
-**Labor: Wizards of the Coast declines to voluntarily recognize the MTG Arena union — genAI is a core demand.** After a supermajority of MTG Arena developers signed union cards under the CWA, WotC declined — "rather than recognize the union, Wizards of the Coast responded by sending letters to employees urging them to think twice about unionizing" [[wizards-of-the-coast-declines-to-recognize-game-worker-union-dac45b87]]. The matter now goes to an NLRB election June 2, 2026, with the union explicitly seeking "clear guidelines around generative AI usage, among other demands including layoff protections and remote work protections" [[wizards-of-the-coast-declines-to-recognize-game-worker-union-dac45b87]].
-
-> Rather than recognize the union, Wizards of the Coast responded by sending letters to employees urging them to think twice about unionizing.
-
-> Employees will now decide whether to unionize by participating in a National Labour Relations Board election on June 2, 2026. The union wishes to establish clear guidelines around generative AI usage, among other demands including layoff protections and remote work protections.
-
-## Updates 2026-06-01
-
-**'Stop Killing Games' lands its biggest US win: California AB 1921 passes the Assembly.** California's Assembly passed AB 1921 (the 'Protect Our Games Act') in late May 2026, the largest North-American legislative win for Scott Ross's (Accursed Farms) Stop Killing Games movement to date [[stop-killing-games-bill-passes-california-assembly-1103ca83]]. The bill requires publishers to give a 60-day shutdown warning and to leave a path to indefinite access — a single-player offline mode, a patch, or a refund — for any **purchased** game; free-to-play titles are exempt. This directly intersects the page's running live-service-attrition thread ([[highguard-is-permanently-shutting-down-on-march-12-3599cd1e]], [[ps5-exclusive-destruction-allstars-shut-down-after-five-years-4c041cfe]], [[destiny-2-s-active-development-will-end-in-june-30b55a1f]]): a regulatory regime that would have forced offline fallbacks on these shutdowns.
-
-> The California State Assembly passed the 'Protect Our Games Act' this week, moving the bill towards the legislature. It is one of the biggest wins for the 'Stop Killing Games' movement in North America so far.
-
-> Publishers must give players a 60 day warning before ending a game's service, wiping out the potential for future Concord disasters. It would also require these games still allow access to them at some level indefinitely, whether it be a single-player mode or enough of a pulse for fan servers to latch on. However, this bill would only apply to purchased games, letting free-to-play games off the hook.
-
-**Embracer spins off Fellowship Entertainment — Tomb Raider, Lord of the Rings, and 11 studios under one new IP-led umbrella.** Embracer Group announced it will separate into two publicly listed companies by spinning off Fellowship Entertainment on Nasdaq Stockholm in 2027, an 'IP-led entertainment company' that will own The Lord of the Rings, Tomb Raider, Darksiders, Dead Island, Kingdom Come Deliverance, Metro, Remnant, and The Hobbit [[embracer-to-spin-off-major-video-game-franchises-and-studios-aa29c338]]. Fellowship will house 11 studios — 4A Games, Crystal Dynamics, Dambuster Studios, Eidos-Montréal, Fishlabs, Flying Wild Hog, Gunfire Games, Middle-earth Enterprises, Redoctane Games, Warhorse Studios, and Dark Horse Media — with a multi-year pipeline targeting at least two major game releases from FY2027/28. This extends the page's major-publisher-restructuring thread alongside the EA/PIF take-private, the Ubisoft/Tencent Vantage Studios split ([[ubisoft-and-tencent-launch-vantage-studios-a43d07e1]]), and the Paramount/WBD acquisition.
-
-> Embracer Group will separate into two publicly listed companies by spinning off Fellowship Entertainment on Nasdaq Stockholm in 2027. Fellowship Entertainment is described as an 'IP-led entertainment company' focused on The Lord of the Rings, as well as Tomb Raider and 'many other' owned IPs.
-
-> The spin off will house studios including 4A Games, Crystal Dynamics, Dambuster Studios, Dark Horse Media, Eidos-Montréal, Fishlabs, Flying Wild Hog Studios, Gunfire Games, Middle-earth Enterprises, Redoctane Games and Warhorse Studios.
-
-**Balatro publisher Playstack is being sold for ~$151M to the parent of GameSpot, Fandom, and Curse.** Playstack majority owner TruFin agreed on May 21, 2026 to sell its 84.5% stake to VantageCo (Integrated Media Company subsidiary) for around £112.4M ($151M), valuing the publisher at roughly $169M [[balatro-publisher-playstack-is-being-sold-to-gamespot-owner-imc-e464c86e]]. Playstack's catalog (Balatro, The Case of the Golden Idol, The Rise of the Golden Idol, Ak-xolotl, Unbeatable, About Fishing) makes it one of the highest-hit-ratio premium indie publishers. CEO Harvey Elliott stated 'Our team, our strategy, and our commitment to publishing premium indie games remain exactly the same.' Notable vertical-integration angle: IMC also owns GameSpot, Fandom, and Curse — outlets that review the publisher's games.
-
-> Playstack owner TruFin announced on May 21, 2026, that it agreed to sell its 84.5 percent stake in the UK publisher to VantageCo for around £112.4 million ($151 million). VantageCo is a wholly owned subsidiary of Integrated Media Company, the parent company of GameSpot, Fandom, Curse, and other brands.
-
-**Storefront-exclusivity reversal: CI Games and Epic terminate the Lords of the Fallen II publishing deal.** CI Games signed a separation agreement with Epic Games Publishing on April 14, 2026, terminating the originally-announced PC-exclusive deal for Lords of the Fallen II — meaning the sequel can now ship on Steam alongside EGS [[ci-games-and-epic-games-terminate-lords-of-the-fallen-ii-publishing-deal-57b99b0c]]. The agreement does NOT undo CI Games' use of Epic-owned assets (Unreal Engine 5, Epic Online Services). Lords of the Fallen II is slated to launch sometime in 2026. This is a notable counter-current to Epic's mid-2020s third-party-exclusives push.
-
-> CI Games signed a separation agreement with Epic Games Publishing, effectively terminating their exclusive publishing arrangement. The separation agreement went into effect on April 14, 2026, though its publication was delayed 'on the grounds that its immediate disclosure could have prejudiced the Company's legitimate interests.'
 
 ## Comparisons
 
@@ -298,446 +766,6 @@ until the underlying entity pages exist:
 - [ ] Does the June 9 Nintendo Direct actually confirm Ocarina of Time remake, or does Nintendo break the leaker streak? [[all-confirmed-and-rumored-games-for-june-9-nintendo-direct-d43cb2b9]]
 - [ ] Can Mina the Hollower's sales curve reach Velasco's stated 1M target, and does that change Yacht Club's pipeline for the next title? [[mina-the-hollower-has-now-sold-half-a-million-copies-76965456]]
 - [ ] Does Where Winds Meet's Xbox shadow-drop materially shift Game Pass MAU or just port an existing audience? [[where-winds-meet-out-now-on-xbox-series-x-s-hidden-mountain-expansion-launches-in-july-45073f44]]
-
-## Updates 2026-05-28
-
-**Mina the Hollower ships as 2026's highest-rated game.** Yacht Club Games' long-awaited action-adventure arrived to a ~93 Metacritic average, making it the highest-rated game of 2026 so far on the site and vaulting it past Forza Horizon 6 (91), Pokemon Pokopia (89), and Resident Evil Requiem (89) [[round-up-mina-the-hollower-earns-critical-acclaim-best-rated-game-of-2026-in-first-reviews-9e68e0dd]]. IGN's 10/10 framed the achievement in resource-efficiency terms — 'Mina achieves the same heights in both action and style that its impressive inspirations - Zelda, Castlevania, and FromSoft RPGs - reach on a regular basis, and with far fewer resources' [[round-up-mina-the-hollower-earns-critical-acclaim-best-rated-game-of-2026-in-first-reviews-9e68e0dd]]. The game launches May 29 at $20 across Switch/Switch 2, PS5, Windows, and Xbox Series X|S.
-
-> Mina the Hollower has earned an overall Metacritic score of 93, and this makes it the highest-rated game of 2026 so far on the website, beating the 91 score for Forza Horizon 6, and the 89 ratings handed to Pokemon Pokopia and Resident Evil Requiem.
-
-**A legacy-revival counterpoint to the contraction narrative: Witcher 3 gets a new expansion 12 years on.** CD Projekt Red announced The Witcher 3: Wild Hunt - Songs of the Past for 2027, a brand-new expansion arriving 12 years after the base game, with story content co-developed by Fool's Theory (the studio also handling the Witcher 1 remake) and reportedly bridging the gap between The Wild Hunt and The Witcher 4 [[the-witcher-3-wild-hunt-is-getting-a-new-expansion-12-years-after-launch-c3870b48]]. As a Phantom-Liberty-tier content investment into a decade-old title, it cuts against the page's running studio-contraction thread.
-
-> CD Projekt Red announced The Witcher 3: Wild Hunt - Songs of the Past is coming in 2027. This new Witcher 3 expansion is coming 12 years after the game's release.
-
-**Live-service attrition reaches a long-tail Sony exclusive: Destruction AllStars.** Sony delisted and shut down Destruction AllStars — one of the PS5's earliest exclusives, live since February 2021 — winding down multiplayer 'due to ongoing technical issues' with single-player modes playable only until November 25, 2026 [[ps5-exclusive-destruction-allstars-shut-down-after-five-years-4c041cfe]]. Unlike the page's fast-failure cases, this is a five-year wind-down, extending the live-service-attrition thread onto an aged platform-holder title.
-
-> Destruction AllStars, a PS5 exclusive that was intended as a launch title before being delayed into 2021, has been completely delisted and shut down. The live service launched in February 2021, and remained live for over five years.
-
-**The contraction wave continues across studios.** MechWarrior developer Piranha Games (Enad Global 7) cut roughly 30% of staff (17 employees) in an 'economic restructuring' — its second round in just over a year — even as MechWarrior 5 DLC stayed slated for May and a further product targets fall [[mechwarrior-dev-piranha-games-lays-off-30-of-staff-says-ceo-f914d016]]. Hasbro and Wizards of the Coast shuttered internal studio Atomic Arcade, established 2021 to build a G.I. Joe Snake Eyes title, while insisting 'The Snake Eyes game is not cancelled' — a closure that lands against Hasbro/WotC's 2024 $1 billion games-investment pledge and connects to the WotC labor thread the page already tracks [[update-hasbro-shutters-internal-video-game-studio-atomic-arcade-844b78aa]]. And Dead by Daylight maker Behaviour Interactive confirmed April 2026 layoffs of ~3% of its 1,300+ workforce (nearly 40 people, mostly mobile/casual external-development roles), explicitly denying any link to unionization or AI [[dead-by-daylight-studio-behaviour-interactive-confirms-layoffs-cdaae4e1]].
-
-> CEO Russ Bullock of MechWarrior developer Piranha Games confirmed that the studio has laid off roughly 30% of its employees... This is the second round of layoffs at Piranha in just over a year.
-
-> Atomic Arcade, the Hasbro and Wizards of the Coast-owned studio that was making a game based on the iconic G.I. Joe character Snake Eyes, has been shut down.
-
-> Behaviour Interactive laid off an at-the-time undisclosed number of its employees in April 2026... roughly 3 percent of its workforce was impacted in total... nearly 40 individuals.
-
-## Updates 2026-05-29
-
-**A game-engine vendor wires a frontier coding agent directly into its toolchain.** GameMaker incorporated Anthropic's Claude Code into its new GM-CLI command-line toolchain, letting developers handle routine tasks via natural-language terminal prompts where the agent can "navigate codebases, run tests, modify files, and iterate until issues are resolved" [[gamemaker-incorporates-claude-code-to-enable-ai-assisted-workflows-d2ef47a8]]. GameMaker head Russell Kay framed it as opt-in rather than mandated: "Because GameMaker offers tools to support everyone from first-time creators through to professional studios, we wanted to reflect that reality and give users who might benefit from AI the option to do so" [[gamemaker-incorporates-claude-code-to-enable-ai-assisted-workflows-d2ef47a8]]. This is a concrete instance of the agentic-coding/game-dev intersection — a mainstream 2D engine treating an agentic CLI as a first-class workflow surface, even as the GDC 2026 survey documents majority-negative developer sentiment toward generative AI.
-
-> Claude Code is being included in GameMaker's new GM-CLI so developers can handle routine tasks via natural language prompts in the terminal, where the system can navigate codebases, run tests, modify files, and iterate until issues are resolved.
-
-> Because GameMaker offers tools to support everyone from first-time creators through to professional studios, we wanted to reflect that reality and give users who might benefit from AI the option to do so.
-
-**A contraction counter-current: BioWare veterans found a small original-IP studio.** Three former BioWare Edmonton developers — Kaelin Lavallee, Kris Schoneberg, and Francis Lacuna, with credits spanning the Mass Effect trilogy, Dragon Age, Anthem, and Hinterland's The Long Dark — launched Edmonton indie Studio Reset, debuting a neon-noir supernatural mystery set in a stylized Canadian city [[former-mass-effect-and-dragon-age-developers-launch-studio-reset-a1d7f2e0]]. The studio's pitch is "a smaller, more intentional model: original IP, sustainable ambition." Its signature "Parallax Deduction" mechanic makes each investigator a distinct lens on a case ("perspective is part of the evidence") under a "no moon logic" design where solutions come from observation and reasoning rather than obscure trial-and-error [[former-mass-effect-and-dragon-age-developers-launch-studio-reset-a1d7f2e0]]. This is the veteran-talent-decentralizes-into-indie pattern that recurs alongside the topic's studio-closure thread.
-
-> After years spent contributing to large-scale narrative worlds, the founders are choosing a smaller, more intentional model: original IP, sustainable ambition, and experiences shaped around the players they are made for.
-
-> One of the game's central mechanics is what the studio calls 'Parallax Deduction,' a system in which multiple investigators each provide different perspectives on a case... perspective is part of the evidence.
-
-**Labor: the Ubisoft Halifax dispute closes with a settlement.** Laid-off Ubisoft Halifax workers voted overwhelmingly to approve a confidential settlement negotiated by the Game and Media Workers Guild of Canada (CWA Canada Local 30111), covering members among the 71 employees (61 union members) who lost their jobs when Ubisoft closed the studio in January 2026 — just weeks after they voted to unionize [[ubisoft-halifax-union-members-agree-settlement-after-studio-closure-08fc27da]]. Ubisoft maintained the closure was cost-cutting unrelated to unionization. This resolves one of the clearer recently-unionized-studio-closure cases.
-
-> The Game and Media Workers Guild of Canada negotiated the deal for its members who lost their jobs when Ubisoft closed its Halifax studio in January, affecting 71 employees including 61 union members. The closure came just weeks after those employees voted to unionize.
-
-**Studio economics: Monument Valley's maker reframes job security as a luxury.** Ustwo Games CEO Maria Sayans said lowering development costs and recruiting more contractors is now "paramount" for the studio to thrive as a PC-first developer, with its £7–10 million, 3–4-year-cycle projects no longer sustainable [[ustwo-ceo-says-lowering-development-costs-is-now-paramount-2425b456]]. Sayans put Ustwo at just under 30 people (down from its Monument Valley 3 peak) and said "We've been a little bit too romantic about the idea that we should have employees and give people long-term job security" — while admitting she "hates" the contractor-shift trend [[ustwo-ceo-says-lowering-development-costs-is-now-paramount-2425b456]].
-
-> We've been a little bit too romantic about the idea that we should have employees and give people long-term job security.
-
-**Contraction continues: Iron Galaxy treats the downturn as permanent.** Work-for-hire studio Iron Galaxy — co-developer of the PC ports of The Last of Us Part I and Part II Remastered — laid off an undisclosed number of staff (reportedly up to 90), saying it is "adopting a new posture to accept these current market conditions as permanent" and that sustaining its prior team size was "impossible... even after our downsizing from last year" [[iron-galaxy-lays-off-employees-as-it-reduces-company-size-2609e80b]]. The cuts come little over a year after Iron Galaxy cut 66 developers in 2025 as "a last resort" [[iron-galaxy-lays-off-employees-as-it-reduces-company-size-2609e80b]].
-
-> [We are] adopting a new posture to accept these current market conditions as permanent. [It would be] impossible for us to sustain the team size that we've carried this past year, even after our downsizing from last year.
-
-## Updates 2026-05-30
-
-**007 First Light is IO Interactive's fastest-selling game: 1.5M units in 24 hours.** IO Interactive confirmed that 007 First Light sold 1.5 million copies worldwide within the first 24 hours of its May 26-27 launch [[007-first-light-has-topped-1-5-million-sales-2978ba61]] [[007-first-light-put-up-massive-launch-day-sales-numbers-65e3523a]]. This is the studio's fastest launch in its history, surpassing the Hitman trilogy trajectory. The result closes the page's open question about whether the late review-code controversy (May 22 delivery for a May 26 launch) would correlate with weak shipped performance: the commercial answer is clearly no. 007 First Light is a rare 2026 commercial-and-critical success — a full-price ($60) single-player, story-driven action-stealth game launching day-and-date across PS5/Xbox/PC/Switch 2.
-
-> IO Interactive's reborn 007 brand has hit the ground running. The Hitman developer has revealed that James Bond outing 007 First Light has sold 1.5 million copies worldwide within three days of hitting shelves. It's the fastest selling game in IO Interactive's history.
-
-> 007 First Light managed to sell 1.5 million units in its first 24 hours, as shared by IO Interactive who both developed and published the game.
-
-**Call of Duty returns to Nintendo for the first time in 13 years — Modern Warfare 4 natively on Switch 2.** Activision announced Modern Warfare 4 for an October 23, 2026 release across PS5, Xbox Series X|S, PC, and Switch 2, with the Switch 2 version a native build co-developed by Infinity Ward and Digital Legends [[call-of-duty-is-finally-returning-to-one-hugely-popular-platform-be402ce2]]. The franchise has been absent from Nintendo hardware since 2013's Wii U release of Call of Duty: Ghosts, and MW4 drops last-gen PS4/Xbox One support entirely. This confirms Switch 2 as a viable AAA third-party launch target, not a scaled-down port platform — reinforcing the platform's install-base momentum.
-
-> Modern Warfare 4 is coming to all the major modern platforms, including PlayStation 5, Xbox Series X|S, PC, and Switch 2. The Switch 2 version of Modern Warfare 4 is developed by Infinity Ward in partnership with Digital Legends and is a native version for Switch 2.
-
-> This is particularly significant because Call of Duty has been absent from Nintendo's platforms since 2013's Wii U version of Call of Duty: Ghosts.
-
-**Steam reviews as the sole Chinese-player feedback channel — the Slay the Spire 2 review-bomb roundtable.** A May 26, 2026 English-subtitled roundtable hosted by content creator Iris Raphael with eight top Chinese Slay the Spire 2 players explained the wave of negative Steam reviews around Mega Crit's Doormaker boss rework: the core complaint was impact on "Save Loading" (SL) runs — a playstyle prevalent in the Chinese community [[china-s-top-slay-the-spire-2-players-explain-their-review-bombs-90511849]]. The article surfaces a structural point: with X, Discord, and Reddit blocked by the Great Firewall, Steam reviews function as the de-facto only persistent public dev-feedback channel for Chinese players, which inflates their use as protest. Mega Crit subsequently replaced Doormaker with a new boss (Aeonglass). This is the third Chinese review-bombing wave on the title.
-
-> Review-bombing on Steam in China is prevalent because social platforms such as X and Discord are blocked by the People's Republic of China's 'Great Firewall,' so Steam users in China opt to complain on Steam via review-bombing, as they believe it's their only way to be heard.
-
-**New open questions:**
-- [ ] Does 007 First Light's 1.5M-units-in-24h pace [[007-first-light-has-topped-1-5-million-sales-2978ba61]] hold beyond the launch weekend, or does the single-player story-finite design produce a steeper drop-off than live-service comparables?
-- [ ] Does Modern Warfare 4's native Switch 2 launch [[call-of-duty-is-finally-returning-to-one-hugely-popular-platform-be402ce2]] re-establish Call of Duty as a recurring Nintendo-platform release, or is it a one-off enabled by Switch 2's larger install base?
-- [ ] Do Steam reviews remain the dominant Chinese-player dev-feedback channel through 2026 [[china-s-top-slay-the-spire-2-players-explain-their-review-bombs-90511849]], or do studios build alternative China-accessible feedback surfaces?
-- [ ] Does PlatinumGames + Paramount Games Studio's TMNT: The Last Ronin recover from the project's previous Black Forest Games stewardship? [[tmnt-the-last-ronin-is-developed-by-action-game-royalty-143e286f]]
-- [ ] Does Guild Wars 3's 'joy of movement' design pitch materialize into a distinctive MMO combat loop? [[its-finally-time-for-guild-wars-3-82c00ad4]]
-- [ ] Does Palworld's July 10 1.0 launch materially affect the ongoing Nintendo patent lawsuit? [[palworld-1-0-is-launching-sooner-than-you-expect-842ff8cf]]
-- [ ] Does Stellar Blade: Blood Rain dropping Sony publishing represent a broader retreat from PS5-exclusive third-party action games? [[stellar-blade-follow-up-blood-rain-announced-trailer-has-some-eye-opening-moments-20a46370]]
-- [ ] Does Fumito Ueda's tonal shift to a kaiju-mech action shooter (Gen Atlas) preserve the studio's signature design sensibility? [[gen-atlas-is-the-next-game-from-ico-creator-fumito-ueda-ea5d8b5d]]
-- [ ] Does Alien: Isolation 2's colony-world pivot preserve the original's claustrophobic terror loop? [[new-alien-isolation-2-trailer-gives-fans-first-look-at-horror-sequel-124eb7ef]]
-
-_no contradictions or gaps known yet for 2026-05-30 additions (last reviewed: 2026-05-30)_
-
-## Late-May 2026 industry pulse: Subnautica 2's breakout, EA's LBO, and a wave of layoffs (2026-05-31)
-
-**Subnautica 2 crosses 4 million units in 17 days.** Subnautica 2 has sold 4 million copies since its May 14 launch, putting Krafton on track to owe up to $250 million in earnout payments to ousted Unknown Worlds founders Charlie Cleveland, Max McGuire, and Ted Gill [[subnautica-2-hits-four-million-sales-166c6d1e]].
-
-> Subnautica 2 has already sold 4 million copies since it came to Steam on May 14. At $30 a copy, subtracting Valve's 30 percent platform fee, that's around $85 million in potential revenue for this month alone. Krafton agreed to pay $3.12 to Unknown Worlds cofounders for every $1 of revenue every time the studio's revenue topped $70 million in a single month.
-
-**CCP Games becomes Fenris Creations after $120M management buyout from Pearl Abyss.** EVE Online developer CCP Games is now an independent studio, sold back to management by Pearl Abyss for $120M — roughly a quarter of the $425M Pearl Abyss paid in 2018 [[eve-online-dev-turns-independent-and-rebrands-as-fenris-creations-e4828cac]]. The buyout came with a Google DeepMind minority stake and a research partnership on "intelligence in complex, dynamic systems" — EVE's persistent player-economy data is being explicitly framed as an AI research substrate. The name change to Fenris also resolves brand confusion with the Chinese Communist Party [[eve-online-studio-renamed-to-avoid-chinese-communist-party-confusion-0c879024]].
-
-> EVE Online developer CCP Games became an independent studio and rebranded as Fenris Creations after being sold back to its management team by former owner Pearl Abyss in a deal worth $120 million. Fenris has entered into a research partnership with Google DeepMind that will see Google acquire a minority stake in the company, with the focus being on advancing understanding of intelligence in complex, dynamic systems.
-
-> The company changed its name because there has been growing confusion between CCP (Crowd Control Protections) and the Chinese Communist Party.
-
-**Bungie — "significant" layoffs imminent as Destiny 2's final content update ships in June.** Bloomberg reports Sony plans significant layoffs at Bungie following the June 2026 final Destiny 2 update; there's no Destiny 3 in production and the surviving team will refocus on Marathon [[layoffs-imminent-at-bungie-and-gta-vi-still-on-track-for-november-f74fd097]].
-
-> Following the news that Bungie would deliver its final content update for Destiny 2 this June, a Bloomberg report suggests the studio is planning significant layoffs. Sources told Bloomberg the studio intends to focus on Marathon as opposed to commencing production on Destiny 3.
-
-**Build a Rocket Boy (MindsEye) — 170 of 250 staff laid off, surveillance-software lawsuit, espionage claims.** The MindsEye developer cut roughly 170 of its 250 staff [[mindseye-dev-reportedly-laid-off-170-of-250-employees-ee4e250a]]. Co-CEO Mark Gerhard publicly blamed "organized espionage and corporate sabotage." Separately, IWGB initiated legal action over alleged installation of Teramind surveillance software on employee devices [[mindseye-developer-build-a-rocket-boy-confirms-layoffs-7ac7894f]] — a worker-surveillance precedent worth tracking.
-
-> Roughly 170 members at the studio affected by the layoffs, bringing the total number of staff at the studio down to somewhere around 80 employees.
-
-> The Independent Workers' Union of Great Britain (IWGB) announced that several employees of MindsEye developer Build a Rocket Boy initiated legal action against the company for allegedly installing the invasive surveillance software Teramind on their work devices.
-
-**Other layoff churn this week.** MercurySteam (Metroid Dread, Blades of Fire) confirmed layoffs of unspecified size, on the heels of last fall's harassment-and-crunch allegations [[metroid-dread-developer-mercurysteam-conducts-layoffs-4b9b2a2b]]. Hinterland delayed Blackfrost (The Long Dark sequel) out of 2026 and cut 10 full-time staff plus 4 contractors [[hinterland-confirms-layoffs-after-delaying-the-long-dark-sequel-379834d9]]. WWE 2K26 developer Visual Concepts is laying off staff, with at least seven confirming on LinkedIn [[report-wwe-2k26-dev-visual-concepts-is-laying-off-staff-8081fa5d]].
-
-> Metroid Dread and Blades of Fire studio MercurySteam announced it is laying off workers. The layoffs come after studio management was accused of harassment and forced crunch last fall.
-
-> Hinterland's sequel to The Long Dark won't be released in 2026, and as a consequence 10 full-time developers and 4 contractors from the studio are being let go.
-
-**EA — $8B record sales heading into $55B Saudi-led take-private.** EA posted a record $8B in net bookings as its $55B sale to a Saudi PIF / Affinity Partners / Silver Lake consortium moves toward closing — the largest leveraged buyout in history [[ea-sets-a-new-8-billion-sales-record-just-months-after-laying-off-battlefield-6-developers-9ddae332]]. CEO Andrew Wilson stays on post-close.
-
-> Electronic Arts announced that it's sold itself in a $55 billion deal to an investor consortium made up of Saudi Arabia's Public Investment Fund, Jared Kushner's Affinity Partners, and the private equity firm Silver Lake. The $55 billion take-private deal is the largest leveraged buyout (LBO) of all time.
-
-## Late-May / early-June 2026 update
-
-Hazelight Studios crossed 50 million lifetime sales across its three co-op titles: A Way Out (13M over 8 years), It Takes Two (30M over 5 years), and Split Fiction (7M in ~1 year) [[split-fiction-dev-hazelight-studios-accrues-50m-total-sales-8eca73f6]]. Split Fiction is Hazelight's fastest-seller despite the smallest absolute total — instructive for co-op long-tail vs. day-one momentum.
-
-> Hazelight Studios has accrued over 50 million total sales across its three games. The breakdown is: A Way Out sold 13 million, It Takes Two sold 30 million, and Split Fiction sold 7 million.
-
-Former Gearbox Quebec leadership launched **Studio Ricochet**, an independent studio focused on original IP for PC and console; founding team includes former Borderlands creative director Maxime Babin [[gearbox-studio-quebec-founders-start-new-studio-4638a090]]. Debut project is a co-op action-adventure, fitting the 2025-2026 pattern of senior AAA talent going independent to move faster and take creative risks (cf. [[former-mass-effect-and-dragon-age-developers-launch-studio-reset-a1d7f2e0]]).
-
-> The former studio heads at Gearbox Studio Quebec have launched Studio Ricochet, a new independent studio aiming to build games 'on their own terms.'
-
-Sony's June 2 State of Play (60 minutes) is headlined by Insomniac's **Marvel's Wolverine**, now confirmed for a **September 15 PS5 launch** [[wolverine-and-more-what-to-expect-from-playstation-s-june-showcase-c004da72]]. This locks one of the year's biggest first-party releases into a crowded fall window.
-
-> This all-new take on the comic book legend launches on PS5 September 15.
-
-The UK's online safety minister raised the possibility of extending a proposed teenage social-media ban to game platforms — a regulatory risk for MMOs, online shooters, and UGC platforms if enacted UK-wide [[uk-social-media-ban-could-impact-video-game-platforms-9a72f651]].
-
-> UK online safety minister Kanishka Narayan has suggested a social media ban for children might be extended to video game platforms... a blanket ban of allowing children to engage with strangers in online games could be a part of a teenage social media ban that is currently under consideration.
-
-The games-media talent drain continued: Summer Game Fest co-host Lucy James left GameSpot after a decade-plus to go independent on **Player.gg**, a game-discovery platform launching alongside SGF [[summer-game-fest-co-host-joins-substack-for-players-as-player-gg-looks-to-streamline-game-discovery-7a5d3248]]. Pairs with the Eurogamer editorial cuts story [[games-media-set-for-more-layoffs-as-ign-owned-eurogamer-cuts-editorial-staff-8869a7f9]] — legacy outlets contracting while creator platforms recruit their on-camera talent.
-
-> Lucy James spent over a decade as a video producer and on-air personality at GameSpot, and is now leaving to join the growing ranks of games media talent who are going independent.
-
-The June 7 **Xbox Games Showcase** is reportedly lineup-conservative — no Project Helix (next-gen console) reveal, first-party first-looks plus a dedicated Gears of War: E-Day Direct; Fable delayed to February 2027 gets an update segment [[all-games-shown-at-the-xbox-showcase-in-june-are-safe-report-49fcd324]].
-
-> The upcoming Xbox Games Showcase on June 7 will not feature announcements about the Project Helix console. Instead, the Xbox Games Showcase will be all about games.
-
-## Updates 2026-06-03
-
-**State of Play June 2026 — actual showcase coverage.** Sony's June 2, 2026 State of Play ran ~60 minutes and delivered a markedly more eventful slate than pre-show previews had implied [[state-of-play-june-2026-all-announcements-trailers-7bdb79c1]]. The headline reveal was **God of War: Laufey**, a Santa Monica Studio project starring Faye (Kratos's wife from the Norse duology) as protagonist; the showcase closed with 20 minutes of uninterrupted gameplay in which Faye fights through 'the Everywhen' — an afterlife realm where gods from across mythologies vie for power — wielding a sword and giant magic, with a sentient cube voiced by Jack Quaid as her co-star [[god-of-war-laufey-for-ps5-revealed-and-its-co-star-is-a-cube-played-by-jack-quaid-825effa8]]. The cube companion is a structural departure from the Atreus pattern — worth tracking as a companion-design choice in a franchise where the partner relationship is load-bearing narrative.
-
-> The showcase concluded with 20 straight minutes of gameplay showing Faye, who is almost as strong as Kratos, wielding a sword and giant magic. Faye awakens unexpectedly in a strange land after her funeral and must fight through the afterlife of the gods — the Everywhen — where ruthless gods from across mythology vie for power.
-
-Marvel's Wolverine (Insomniac, Sep 15, 2026) received its first substantive gameplay trailer; coverage emphasized combat evolved to be "faster and less punchy" and more violent — a deliberate contrast with Spider-Man's combat style [[everything-announced-at-the-playstation-state-of-play-june-2026-9c59e57d]]. Until Dawn 2 was newly revealed; Control Resonant, Onimusha: Way of the Sword, Silent Hill: Downfall, and Rayman Legends Retold (October 1) got release dates.
-
-> Notable announcements at the June 2026 State of Play included: God of War Laufey was newly revealed; Marvel's Wolverine from Insomniac Games was shown with more details about the upcoming third-person action-adventure game; The Lost Wild, coming 2027; Phantom Blade Zero from S-Game was shown. The new gameplay trailer showed how Insomniac has evolved the combat to be faster and less 'punchy,' making for a more violent experience.
-
-> Today's State of Play packed in over 60 minutes of updates, announcements, and reveals. The broadcast included reveals of God of War Laufey and Until Dawn 2, updates on MARVEL's Wolverine, MARVEL Tōkon: Fighting Souls and Marathon Season 2, plus many more fresh looks and surprises.
-
-**Atari acquires Crossy Road developer Hipster Whale — $29.3M up front, up to $39.3M.** Atari announced June 1, 2026 the acquisition of Melbourne-based Hipster Whale, the studio behind the 340M-lifetime-download Crossy Road franchise [[atari-to-acquire-crossy-road-developer-hipster-whale-3389cbce]]. Structure: $26M cash + $3.3M newly-issued Atari shares up front ($29.3M total), plus up to $10M earn-out over three years. For the twelve months ended January 31, 2026, Hipster Whale generated $8.28M revenue / $4.63M EBITDA — Atari paid roughly 6.3× trailing EBITDA on the floor. This is Atari's third acquisition of 2026, continuing the pattern of the retro-IP holding company assembling an Apple Arcade-adjacent mobile portfolio.
-
-> Atari announced on June 1, 2026 that it has agreed to acquire Melbourne-based mobile studio Hipster Whale — the team behind the 340-million-download Crossy Road franchise — in a deal worth up to $39.3 million. Atari will pay an initial $29.3 million, consisting of $26 million in cash and $3.3 million in newly issued Atari shares. A further earn-out of up to $10 million in cash is tied to Hipster Whale's financial performance over the next three years. For the twelve months ended January 31, 2026, Hipster Whale generated $8.28 million in revenue and $4.63 million in EBITDA. The acquisition is Atari's third in 2026.
-
-**Ivy Road closes — Wanderstop devs shut down despite Metacritic-80 launch.** Ivy Road, founded by veterans of The Stanley Parable, Gone Home, and Minecraft, closed on March 31, 2026 after failing to secure funding for its next project Engine Angel [[wanderstop-team-is-the-latest-victim-of-the-industry-crash-out-f998d964]]. Wanderstop (Annapurna Interactive) earned 80 on Metacritic and is being maintained by Annapurna, which flagged "one last surprise" for the game. The closure continues the 2025–2026 pattern: critical-reception parity with healthy genre demand (cozy games) is no longer sufficient to clear the funding bar for a follow-up, even with a pedigreed founding team.
-
-> Ivy Road is closing its doors as of March 31st, 2026. The developer behind the cozy tea shop adventure Wanderstop announced its closure after failing to secure funding for its next project, Engine Angel. The studio was founded by developers with experience on beloved titles like The Stanley Parable, Gone Home, and Minecraft, and Wanderstop earned an 80 on Metacritic.
-
-**New open questions:**
-
-- [ ] Does the Atari / Hipster Whale $29.3M floor (~6.3× trailing EBITDA) signal a re-rating of mobile-studio multiples, or is it Atari-specific given Crossy Road's evergreen download profile [[atari-to-acquire-crossy-road-developer-hipster-whale-3389cbce]]?
-- [ ] What specifically blocked Ivy Road's Engine Angel pitch — publisher conservatism, cozy-genre saturation, or the broader VC retreat from games — and is there a postmortem from the founders [[wanderstop-team-is-the-latest-victim-of-the-industry-crash-out-f998d964]]?
-
-## Updates 2026-06-04
-
-**God of War: Laufey — platforming returns after 13 years.** Following the June 2 State of Play reveal, deeper detail on God of War: Laufey confirms this is "the first time the series has fully shifted its focus away from Kratos in a mainline-style adventure" and that it "brings back the platforming-focused level design not seen since God of War: Ascension in 2013" [[god-of-war-laufey-brings-back-gow-feature-not-seen-in-13-years-06e41341]]. Faye is notably more agile than Kratos — capable of double jumps and rapid aerial movement — with combat styled after character action games like Devil May Cry rather than the methodical Norse-era design [[god-of-war-laufey-brings-back-gow-feature-not-seen-in-13-years-06e41341]]. The Everywhen setting is "the birthplace and endpoint to which all magic returns, a transcendent realm where gods and creatures from different mythologies come together" [[god-of-war-laufey-brings-back-gow-feature-not-seen-in-13-years-06e41341]].
-
-> Faye is far more agile than Kratos, capable of double jumps and rapid aerial movement, with faster and more stylish combat that resembles character action games such as Devil May Cry. The Everywhen is the birthplace and endpoint to which all magic returns, a transcendent realm where gods and creatures from different mythologies come together.
-
-> This marks the first time the series has fully shifted its focus away from Kratos in a mainline-style adventure. The game brings back the platforming-focused level design not seen since God of War: Ascension in 2013.
-
-**Final Fantasy VII Rebirth launches on Switch 2 and Xbox — Metacritic 86 vs. PS5's 92.** Final Fantasy VII Rebirth launched simultaneously on Nintendo Switch 2 and Xbox Series X|S on June 3, 2026, ending a two-year PlayStation-exclusivity window [[final-fantasy-vii-rebirth-available-now-on-switch-2-and-xbox-series-70f3590d]]. The Switch 2 version earned an 86 on Metacritic across 42 reviews — a solid port but noticeably below the PS5's 92, with frame rate dips noted in open areas, though Digital Foundry's technical analysis confirmed the build improved over the pre-launch demo [[final-fantasy-vii-rebirth-available-now-on-switch-2-and-xbox-series-70f3590d]]. Both new versions include the optional Streamlined Progression mode (unlimited MP, HP, Limit Break, ATB, fixed 9,999 damage output) [[final-fantasy-vii-rebirth-available-now-on-switch-2-and-xbox-series-70f3590d]].
-
-> Final Fantasy VII Rebirth launched on Nintendo Switch 2 and Xbox Series X|S on June 3, 2026, ending a two-year wait for players on those platforms. The simultaneous release also included Xbox on PC, Xbox Play Anywhere, and Xbox Cloud Gaming.
-
-> The Switch 2 version earned an 86 on Metacritic across 42 reviews, with frame rate dips noted in open areas, compared with a 92 on PlayStation 5. Digital Foundry's technical analysis confirmed that the Switch 2 build improved over the pre-launch demo.
-
-**Star Fox returns to Nintendo — June 25, 2026 launch exclusively on Switch 2.** Nintendo announced a Star Fox remake for Switch 2, launching June 25, 2026 — the franchise's first mainline entry in years [[star-fox-is-finally-getting-another-game-out-june-2026-exclusively-on-switch-2-a9c17ab4]]. The 2026 version features full voice acting, orchestral music, enhanced visuals, and online multiplayer modes including online dogfights powered by GameChat (the Switch 2's voice and video chat features) [[star-fox-is-finally-getting-another-game-out-june-2026-exclusively-on-switch-2-a9c17ab4]]. It includes a prologue mission starring Fox's father and hardware-specific capabilities like mouse controls [[star-fox-is-finally-getting-another-game-out-june-2026-exclusively-on-switch-2-a9c17ab4]]. The release is timed to coincide with the character's appearance in the Super Mario Galaxy Movie; digital copies are priced at $49.99, physical at $59.99 [[star-fox-is-finally-getting-another-game-out-june-2026-exclusively-on-switch-2-a9c17ab4]].
-
-> Nintendo has announced Star Fox for Switch 2, launching on 25 June 2026. The Star Fox remake features enhanced gameplay, upgraded visuals, online multiplayer modes. The 2026 version includes full voice acting, orchestral music, online multiplayer, and hardware-specific capabilities like mouse controls.
-
-> The Switch 2 Star Fox remake includes a prologue mission starring Fox's father and online dogfights — using GameChat as a meaningful application of the Switch 2's voice and video chat features.
-
-**PlayStation permanently ends PC ports of single-player games.** PlayStation Studios CEO Hermen Hulst confirmed in an internal town hall on May 18 that the company's narrative single-player games will remain PlayStation exclusives permanently, with Wolverine explicitly included and no PC version planned [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]]. This ends the six-year strategy Sony began in August 2020 when it brought Horizon Zero Dawn to PC, later extending to God of War (2022), Marvel's Spider-Man, and Ghost of Tsushima [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]]. Multiplayer titles like Marathon and Marvel Tokon are not affected by this exclusivity policy [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]]. The announcement was significant because it reversed expectations for several titles whose PC ports were reportedly in development before being cancelled [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]].
-
-> PlayStation Studios CEO Hermen Hulst confirmed in an internal town hall on May 18 that the company's narrative single-player games will remain PlayStation exclusives permanently, with Wolverine explicitly included and no PC version planned.
-
-> This is part of a broader policy reversal at Sony that ends the six-year practice of eventually porting its first-party narrative single-player games to PC. The decision ends a strategy Sony began in August 2020 when it brought Horizon Zero Dawn to PC, later extending to God of War, Marvel's Spider-Man, and Ghost of Tsushima.
-
-**Bungie's third layoff wave confirmed — Destiny 2 development ends June 9.** Bungie plans a third layoff wave as Destiny 2 development ends June 9, 2026, part of the 45,000 games jobs cut since 2022 [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]. The company doesn't have a new project lined up for Destiny 2's development team after the game comes to an end next month, and Bungie doesn't plan to immediately enter production on a Destiny 3 [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]. Surviving staff will be funneled toward the underperforming extraction shooter Marathon [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]. Bungie cut about 100 jobs in October 2023 and another 220 in July 2024, making this the third major layoff wave since Sony acquired the studio for $3.6 billion [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]. This confirms what was previously "reportedly planned" — Destiny 2's end is now official, with the layoffs no longer speculative.
-
-> Bungie plans a third layoff wave as Destiny 2 development ends June 9, 2026, part of 45,000 games jobs cut since 2022.
-
-> The company doesn't have a new project lined up for Destiny 2's development team after the game comes to an end next month, and Bungie doesn't plan to immediately enter production on a Destiny 3. Surviving staff will be funneled toward the underperforming extraction shooter Marathon.
-
-> Bungie cut about 100 jobs in October 2023 and another 220 in July 2024, and this is being framed as the studio's third major layoff wave since Sony acquired it for 3.6 billion dollars.
-
-**Until Dawn 2 — developer change from Supermassive to Firesprite.** Sony revealed Until Dawn 2 for 2027 with a major shake-up: Firesprite replaces Supermassive Games as developer [[until-dawn-2-developer-change-supermassive-to-firesprite-720b9386]]. Firesprite is a Liverpool-based studio that Sony acquired in 2021 and that has been gradually assigned increasing responsibilities since the acquisition [[until-dawn-2-developer-change-supermassive-to-firesprite-720b9386]]. Peter Stormare returns as the enigmatic Dr. Hill, providing continuity with the original game's most memorable character [[until-dawn-2-developer-change-supermassive-to-firesprite-720b9386]]. Firesprite promises to honour the original's core elements: character drama, tough choices, and horror [[until-dawn-2-developer-change-supermassive-to-firesprite-720b9386]].
-
-> Sony revealed Until Dawn 2 for 2027 with a major shake-up: Firesprite replaces Supermassive Games as developer. Firesprite is a Liverpool-based studio that Sony acquired in 2021 and that has been gradually assigned increasing responsibilities since the acquisition.
-
-> Peter Stormare returns as the enigmatic Dr. Hill, providing continuity with the original game's most memorable character. Firesprite promises to honour the original's core elements: character drama, tough choices, and horror.
-
-**Onimusha: Way of the Sword — September 25, 2026 release date confirmed; demo available now.** Capcom announced that Onimusha: Way of the Sword will release on September 25, 2026 on PlayStation 5, Windows, and Xbox Series X/S [[onimusha-way-of-the-sword-set-to-release-on-september-25-2026-e3a62aa5]]. A playable demo, titled Onimusha: Way of the Sword DEMO, was released on June 3, 2026 — a 30-minute PS5 demo available on the PS Store in all regions without requiring a PS Plus subscription [[onimusha-way-of-the-sword-set-to-release-on-september-25-2026-e3a62aa5]]. This marks the first new title in the series in over 20 years, featuring Miyamoto Musashi as the protagonist set in an Edo-era Kyoto [[onimusha-way-of-the-sword-set-to-release-on-september-25-2026-e3a62aa5]].
-
-> Capcom announced that Onimusha: Way of the Sword will release on September 25, 2026 on PlayStation 5, Windows, and Xbox Series X/S.
-
-> A playable demo, titled Onimusha: Way of the Sword DEMO, was released on June 3, 2026. The 30-minute PS5 demo is available on the PS Store in all regions without requiring a PS Plus subscription.
-
-> Onimusha: Way of the Sword marks the first new title in the series in over 20 years, featuring Miyamoto Musashi as the protagonist set in an Edo-era Kyoto.
-
-**Silent Hill: Townfall — September 24, 2026 release date confirmed.** Konami Digital Entertainment has announced that Silent Hill: Townfall will launch on September 24, 2026, for PlayStation 5, Steam, and Epic Games [[silent-hill-townfall-arrives-in-september-2026-a9559de7]]. Silent Hill: Townfall is being developed by Scottish studio Screen Burn Interactive; set in 1996 in the fictional Scottish town of St. Amelia, it follows Simon Ordell after he wakes up in a place he seemingly has no connection to [[silent-hill-townfall-arrives-in-september-2026-a9559de7]]. In a break from tradition, Silent Hill: Townfall features a first-person perspective [[silent-hill-townfall-arrives-in-september-2026-a9559de7]]. Konami seems to be making good on its promise of a new Silent Hill each year [[silent-hill-townfall-arrives-in-september-2026-a9559de7]].
-
-> Konami Digital Entertainment has announced that Silent Hill: Townfall will launch on September 24, 2026, for PlayStation 5, Steam, and Epic Games.
-
-> Silent Hill: Townfall is being developed by Scottish studio Screen Burn Interactive. Set in 1996 in the fictional Scottish town of St. Amelia, it follows Simon Ordell after he wakes up in a place he seemingly has no connection to.
-
-> In a break from tradition, Silent Hill: Townfall features a first-person perspective. Konami seems to be making good on its promise of a new Silent Hill each year.
-
-**Fable delayed to February 2027 — holiday crowding cited.** Microsoft confirmed on May 29 that Fable's release date has been shifted to February 2027, moving the game back from its previously announced Fall 2026 release window [[fable-delayed-to-february-2027-8f225af0]]. Xbox stated that the large number of notable games releasing in the holiday season was the main reason behind the decision, specifically mentioning Halo: Campaign Evolved, Gears of War: E-Day, and Grand Theft Auto 6, among others [[fable-delayed-to-february-2027-8f225af0]]. Xbox explained that they are moving Fable to February 2027 so it can have the dedicated moment it deserves [[fable-delayed-to-february-2027-8f225af0]]. The delay was emphasized as not being due to development issues [[fable-delayed-to-february-2027-8f225af0]].
-
-> Microsoft confirmed on May 29 that Fable's release date has been shifted to February 2027, moving the game back from its previously announced Fall 2026 release window.
-
-> Xbox stated that the large number of notable games releasing in the holiday season was the main reason behind the decision, specifically mentioning Halo: Campaign Evolved, Gears of War: E-Day, and Grand Theft Auto 6, among others.
-
-> Xbox explained that they are moving Fable to February 2027 so it can have the dedicated moment it deserves. The delay was emphasized as not being due to development issues.
-
-**New disputes:**
-
-- [[final-fantasy-vii-rebirth-available-now-on-switch-2-and-xbox-series-70f3590d]] reports the Switch 2 version earned an 86 on Metacritic across 42 reviews; [[round-up-the-reviews-are-in-for-final-fantasy-vii-rebirth-on-switch-2-647b3fa5]] (topic: game-music) reports 35 reviews. Timing difference (review embargo lift vs. later aggregation). Status: unresolved
-- [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]] confirms permanent PC exclusion for single-player titles per internal town hall May 18; earlier sources indicated PC ports of Wolverine and other titles were in development before being cancelled — the cancellations align with this policy but pre-date the official announcement. Status: unresolved
-
-**New open questions:**
-
-- [ ] Does the PlayStation single-player PC exclusion policy apply to remasters and remakes (e.g., Demon's Souls remake, Bloodborne potential remaster), or only to new original first-party titles? [[playstation-boss-says-single-player-games-will-not-come-to-pc-going-forward-52fb26b0]]
-- [ ] Does Fable's February 2027 slot compete directly with any major Xbox exclusives in that window, or is it isolated by the holiday-avoidance rationale? [[fable-delayed-to-february-2027-8f225af0]]
-- [ ] Will Bungie's remaining Marathon team structure survive if the game continues to underperform, given that Destiny 2 staff are now transitioning to it rather than a new IP? [[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]
-- [ ] How does GoW Laufey's platforming-focused level design compare mechanically to GoW: Ascension's approach — same verticality model or rebuilt from scratch for Faye's double-jump mobility? [[god-of-war-laufey-brings-back-gow-feature-not-seen-in-13-years-06e41341]]
-- [ ] Gothic 1 Remake critic embargo lifted June 6 — does the launch-day Metacritic actually land in Universal Acclaim or do legacy-fan reviews drag it? Pull aggregator scores in next-day routine. [[why-gothic-1-remake-could-be-the-rpg-that-surprises-you-in-2026-59de6b3d]]
-- [ ] Stop Killing Games — what does the European Commission's July 27 official response actually contain, and does the Ubisoft invitation-only meeting visibly shape it? [[stop-killing-games-says-ubisoft-attended-invitation-only-meeting-with-eu-commission-a12dce05]]
-- [ ] Bungie post-Destiny-2 layoff count — Bungie said 'significant number' but no concrete figure; what is the actual June 9 reduction? [[bungie-officially-ends-active-development-for-destiny-2-with-the-release-of-a-final-content-update-on-june-9-2026-5982e288]]
-- [ ] Is Remedy's new CEO publicly characterizing Alan Wake 2 as an underperformer a course-correction signal or a setup-for-failure framing for Control Resonant? Track sales trajectory post-Sept 24. [[alan-wake-and-control-underperformed-says-new-remedy-ceo-studio-will-apply-learnings-from-fbc-firebreak-to-resonant-5ee9859c]]
-- [ ] Does PlayerUnknown's halt of Go Wayback effectively end the Artemis metaverse roadmap, or does the Melba tech survive as an open-source spinout? [[playerunknown-productions-is-laying-off-staff-and-halting-development-on-go-wayback-5f4ffba7]]
-- [ ] Does Paramount Game Studios announce its first internally-developed (non-Skydance-legacy) title before the WB acquisition closes? [[paramount-unveils-new-unified-paramount-games-studio-3b154906]]
-- [ ] Does Wolf Among Us 2 actually ship within calendar year 2027? [[wolf-among-us-2-finally-actually-coming-out-in-2027-ade26bf5]]
-- [ ] Does Tifa's SF6 Season 4 appearance signal a broader Square Enix willingness to license FF characters to fighting games beyond the historical Smash/Tekken pattern? [[tifa-is-coming-to-street-fighter-6s-season-4-roster-fda6268c]]
-- [ ] Does 33 Immortals' day-one Game Pass launch produce a healthy concurrent floor, or does the unusual 33-player squad size struggle to maintain matchmaking populations? [[33-player-co-op-raider-33-immortals-will-finally-release-in-full-soon-de674359]]
-- [ ] Does Gothic 1 Remake's post-launch patch cadence pull aggregate reception above 80 within 60 days? [[physical-copies-of-gothic-remake-unplayable-without-a-day-1-update-b191e627]]
-- [ ] Does Trine 6's September 25 date hold against the crowded fall release window? [[day-of-the-devs-summer-game-fest-edition-2026-everything-revealed-a8f040e8]]
-- [ ] Does the Gears of War: E-Day Xbox-console-exclusivity decision signal a durable retrenchment from Microsoft's multi-platform softening (2024-2026), or is it a one-off carve-out for a flagship anniversary release while Halo simultaneously goes day-and-date on PS5 [[gears-of-war-e-day-wikipedia-3e51e36a]] [[halo-campaign-evolved-launches-july-28-pre-orders-available-now-2775bcb6]]?
-- [ ] Does Persona 4 Revival's day-one PS5/Xbox/PC parity confirm that Atlus' multi-platform shift is now permanent, given the franchise's PS-first heritage [[persona-4-revival-release-date-revealed-at-xbox-showcase-e4baeed9]]?
-- [ ] Does Valheim 1.0's simultaneous PS5 + Switch 2 launch with cross-play expand the player base materially, or do existing Steam players dominate the post-1.0 concurrency curve [[after-half-a-decade-valheim-1-0-finally-has-a-release-date-d526d125]]?
-- [ ] Does Stronghold 4's prestige voice casting (Ben Starr, Samantha Béart) translate to materially wider RTS audience reach, or is it a marketing flourish on a niche-genre release [[samantha-beart-and-ben-starr-headline-a-new-stronghold-game-coming-to-steam-later-this-year-2b2954d8]]?
-- [ ] Does Fields of Mistria's exactly-one-year early-access-to-1.0 cadence become a template for cozy-genre indie pipelines [[fields-of-mistria-1-0-release-date-announcement-aa797b32]]?
-
-_no contradictions or gaps known yet for 2026-06-04 additions (last reviewed: 2026-06-04)_
-
-## June 5 2026 — Summer Game Fest week & the GTA VI release-window void
-
-Summer Game Fest 2026 kicks off the showcase weekend on **June 5** at 2 p.m. PT from the Dolby Theatre in Los Angeles, with Day of the Devs immediately after, then Southeast Asian Games Showcase, Wholesome Direct, Story Rich Showcase, and others leading into Xbox Games Showcase 2026 on June 7 — with a Gears of War: E-Day reveal confirmed immediately after at 10 a.m. PT [[new-games-in-june-2026-it-s-a-big-month-for-bungie-and-showcase-reveals-7d463b9a]]. The structural story of the season is the **GTA VI release-window void**: a Star Wars Zero Company release-date leak (August 27, 2026, $49.99 PC / $59.99 console — Bit Reactor + Respawn, founded by Firaxis veterans) crystallized the pattern of heavy-hitters packing into late August / September rather than risking November against Rockstar [[star-wars-zero-company-release-date-leaks-one-day-before-summer-game-fest-29a077f3]].
-
-> Star Wars Zero Company is reportedly launching on August 27, 2026 ... Multiple heavy hitters are landing in late August / September as games try to avoid the November 19 release of GTA VI.
-
-> Summer Game Fest 2026 airs live on June 5 at 2 p.m. PT from the Dolby Theatre in Los Angeles ... Day of the Devs follows at 4 p.m. PT.
-
-## State of Play June 2 — Marvel's Wolverine dated, Control Resonant dated
-
-The Sony State of Play (preceding SGF) led with a seven-minute Marvel's Wolverine gameplay trailer dating the game to **September 15, 2026** as a PS5 exclusive — no PS4, no PC — at $69.99 standard, with the trailer featuring Jean Grey and Sabretooth and the story centered on mutants taken by The Reavers [[marvel-s-wolverine-new-gameplay-story-details-from-state-of-play-a9880d99]]. Remedy's Control Resonant (formerly Control 2 codename) was dated to **September 24, 2026**; new CEO has publicly characterized Alan Wake 2 and the original Control as commercial underperformers and framed Resonant as a self-publishing course-correction informed by the (also underperforming) FBC: Firebreak co-op spin-off, whose 'Open House' final update shipped March 18 [[alan-wake-and-control-underperformed-says-new-remedy-ceo-studio-will-apply-learnings-from-fbc-firebreak-to-resonant-5ee9859c]].
-
-> Marvel's Wolverine is set to release on September 15, 2026. It is a PS5 exclusive and will not be coming to PS4. Insomniac Games opened PlayStation's State of Play on June 2, 2026 with a seven-minute extended gameplay trailer.
-
-> On March 18, 2026, Remedy released the final major update for FBC: Firebreak titled 'Open House' and announced the cessation of new content development to refocus on narrative-driven titles like Control 2 (codenamed Resonant). Control Resonant releases September 24 on PC, PS5, and Xbox Series X|S.
-
-## Gothic 1 Remake ships June 5 — early Universal Acclaim buzz
-
-Alongside SGF, **Gothic 1 Remake** launched on June 5 across PC, PS5, and Xbox Series X|S, modernizing the 2001 Piranha Bytes RPG while preserving its core identity. Pre-release Metacritic buzz tracked in 'Universal Acclaim' territory; PC Gamer called it potentially 'more valuable than Oblivion Remastered.' Critic-review embargo lifted at 12:00pm PST on June 6 — initial scores were not yet in at proposal time, which is itself the open question [[why-gothic-1-remake-could-be-the-rpg-that-surprises-you-in-2026-59de6b3d]].
-
-> Pre-release Metacritic buzz tracking in 'Universal Acclaim' territory; PC Gamer calling it potentially 'more valuable than Oblivion Remastered.'
-
-## Solarpunk — day-one Game Pass cozy survival
-
-**Solarpunk** launches **June 8, 2026** across PC (Steam/EGS/GOG), PS5, Xbox Series X|S and Nintendo Switch 2, day-one into Xbox Game Pass Ultimate and PC Game Pass — a notable wishlist-momentum indie (>1M Steam wishlists, >500K demo downloads during Steam Next Fest) in the floating-islands / airship / 4-player co-op sandbox space [[solarpunk-themed-survivalbox-solarpunk-launches-in-a-brilliant-bit-of-solarpunk-glory-on-june-8-fb9d0e4a]].
-
-> Solarpunk surpassed 1 million Steam wishlists and saw over 500,000 demo downloads during Steam Next Fest ... supports cooperative multiplayer for up to four players, each with their own inventory and airship.
-
-## Live-service postmortems — Destiny 2 ends, Rec Room shutters
-
-The live-service trough deepened. **Destiny 2** receives its final content update — **Monument of Triumph** on **June 9** — replacing the originally-planned Shadow and Order expansion. After 12 years of continuous Destiny development, Bungie goes into maintenance mode on the game (servers up, no new story or seasonal content), redirects all surviving headcount to Marathon, and reportedly lays off a 'significant number' of staff post-update; Destiny 3 has not been greenlit [[bungie-officially-ends-active-development-for-destiny-2-with-the-release-of-a-final-content-update-on-june-9-2026-5982e288]].
-
-> Marathon will be the sole focus of Bungie for the time being; Destiny 3 is not in production and has not been greenlit ... once the Monument of Triumph update is out, Bungie will reportedly lay off a significant number of its staff.
-
-Meanwhile **Rec Room** — the social-VR platform once valued at $3.5B with 150M lifetime players — went dark **June 1, 2026** after never reaching profitability. Snap acquired some of the assets; the closure is being read as the loudest signal yet of metaverse-investment-bubble collapse [[another-sign-that-the-metaverse-winter-is-here-social-vr-platform-rec-room-is-shutting-down-june-1st-2026-583ad629]].
-
-> Rec Room announced that the platform will go offline on June 1, 2026 ... 'we never quite figured out how to make Rec Room a sustainably profitable business.' Snap is acquiring some of the Rec Room assets.
-
-## Stop Killing Games — EU Commission deadline July 27
-
-The Stop Killing Games initiative's European Citizens' Initiative response from the European Commission is due **July 27, 2026**. Two weeks ahead of that deadline, Ubisoft CEO Yves Guillemot attended what SKG describes as an 'invitation-only' meeting with the Commission that SKG was not invited to — they consider the timing impossible to ignore. The initiative has >1M verified supporters [[stop-killing-games-says-ubisoft-attended-invitation-only-meeting-with-eu-commission-a12dce05]].
-
-> The European Commission has until July 27, 2026 to discuss the initiative in detail, initiate a public hearing and present an official reply ... Ubisoft CEO Yves Guillemot attended an 'invitation-only' meeting with the European Commission two weeks before the EC's planned answer.
-
-## Updates 2026-06-06
-
-**Summer Game Fest Live 2026 lands a sprawling reveal slate.** Geoff Keighley's June 5 Summer Game Fest Live at the Dolby Theater opened with Capcom's Resident Evil Veronica — a remake of Resident Evil: Code Veronica that appears to commit to the first-person perspective Capcom adopted with Resident Evil 7, launching on Steam, PS5, PC, and Switch 2 in 2027 [[the-next-big-resident-evil-remake-is-code-veronica-671f43c1]] [[everything-we-saw-at-summer-game-fest-2026-6696e83a]]. The show closed with Final Fantasy VII Revelation, officially titled and dated for a simultaneous Spring 2027 release across all platforms, with the final chapter of the FFVII Remake trilogy taking an open-world approach built around the Highwind airship and parachute-drop traversal [[final-fantasy-7-revelation-gets-its-first-trailer-at-summer-game-fest-6a66b90a]] [[summer-game-fest-live-2026-all-the-biggest-announcements-and-games-7d3909e1]].
-
-> Resident Evil Veronica, a remake of Resident Evil: Code Veronica, debuted at the start of the show. Unlike previous Resident Evil remakes, it appears this one might use the first-person perspective that has become common in the series since Resident Evil 7, and it's coming to Steam, PS5, PC, and Switch 2 in 2027.
-
-> Square Enix officially unveiled Final Fantasy Revelation at Summer Game Fest 2026 as the final chapter in the Final Fantasy 7 Remake trilogy, taking an open-world approach with the Highwind airship and set to release simultaneously on all platforms in Spring 2027.
-
-**Fumito Ueda's Gen Atlas pivots Project Robot into a kaiju mech action shooter.** Previously teased as 'Project Robot' at The Game Awards 2024, Fumito Ueda's (Ico, Shadow of the Colossus, The Last Guardian) next title has been renamed Gen Atlas and shown in a sci-fi trailer featuring kaiju-scale mech battles — a notable tonal departure from Ueda's prior contemplative catalog, headed to the Epic Games Store, PS5, and Xbox Series X/S [[gen-atlas-is-the-next-game-from-ico-creator-fumito-ueda-ea5d8b5d]].
-
-> The next game from Shadow of the Colossus creator Fumito Ueda got a new name and a new trailer at Summer Game Fest. Previously teased as Project Robot, the game is now titled Gen Atlas. The project is a sci-fi shooter with kaiju battles.
-
-**StudioMDHR commits to a multi-Cuphead future, including an 8-bit Sega Master System spin-off.** StudioMDHR announced two new Cuphead games: an unnamed 'new, hand-animated Cuphead' (no release window) and Mighty Cuphead Adventure, an 8-bit platform shooter written in Assembly Language and built to the Sega Master System's hardware spec, with a physical Master System cartridge planned alongside modern releases [[two-new-cuphead-games-are-on-the-way-and-ones-an-8-bit-platform-shooter-a143dd5a]].
-
-> StudioMDHR has announced that it's developing not one but two new Cuphead games during Summer Game Fest 2026. Mighty Cuphead Adventure was actually developed with '80s technology as a tribute to the games of the era, programmed in classic Assembly Language and designed within the specifications of the Sega Master System.
-
-**TMNT: The Last Ronin moves from Black Forest Games to PlatinumGames under the new Paramount Games Studio.** Previously announced in 2023 at THQ Nordic-owned Black Forest Games, the long-troubled Teenage Mutant Ninja Turtles: The Last Ronin project has been moved to PlatinumGames (Bayonetta, NieR: Automata) and is being published by the newly-launched Paramount Games Studio [[tmnt-the-last-ronin-is-developed-by-action-game-royalty-143e286f]].
-
-> At Summer Games Fest, the newly announced Paramount Games Studio revealed that Teenage Mutant Ninja Turtles: The Last Ronin–previously in the works at THQ Nordic's Black Forest Games–is now in development at Platinum Games.
-
-**NCSoft confirms Guild Wars 3 with a fall 2027 beta and a movement-focused MMO design pitch.** ArenaNet/NCSoft formally revealed Guild Wars 3 for Steam and PS5 [[its-finally-time-for-guild-wars-3-82c00ad4]].
-
-> Guild Wars is getting its third incarnation, as announced at Summer Game Fest today. ArenaNet studio head Colin Johanson said that the new Guild Wars would focus on the 'joy of movement' and that its combat would 'usher in an entirely-new type of MMO experience.'
-
-**Creative Assembly opens Alien: Isolation 2 with a colony-world Xenomorph pivot.** Sega and Creative Assembly's first substantive trailer for Alien: Isolation 2 leaves the original's claustrophobic space-station setting behind, putting the Xenomorph onto a rainy colony world; targeting PC, PS5, Switch 2, and Xbox Series X|S [[new-alien-isolation-2-trailer-gives-fans-first-look-at-horror-sequel-124eb7ef]].
-
-> During Summer Game Fest on June 5, 2026, developers Creative Assembly and publisher Sega gave the first good look at Alien: Isolation 2. The game leaves the space-station confines of its predecessor behind and sets the Xenomorph free on a colony world.
-
-**Palworld locks in a July 10 1.0 release after two-plus years in Early Access.** Pocketpair confirmed July 10, 2026 for Palworld 1.0, exiting Early Access roughly 30 months after the January 2024 launch [[palworld-1-0-is-launching-sooner-than-you-expect-842ff8cf]].
-
-> Palworld 1.0 will launch on July 10, developer Pocketpair announced during Summer Game Fest. After multiple years in early access, the legally distinct Pokemon-like game Palworld is getting its 1.0 version very soon.
-
-**Stellar Blade Blood Rain breaks the PS5-exclusive pattern.** Shift Up's follow-up Stellar Blade: Blood Rain features a new protagonist, a melee-focused combat shift, and a notable publishing change: unlike the original's Sony exclusivity, Blood Rain will not be published by Sony [[stellar-blade-follow-up-blood-rain-announced-trailer-has-some-eye-opening-moments-20a46370]].
-
-> Stellar Blade: Blood Rain is the next game from Stellar Blade developer Shift Up. While the first game was PS5 exclusive, Blood Rain will not be published by Sony.
-
-## Updates 2026-06-07
-
-**PlayerUnknown halts Prologue: Go Wayback development, layoffs hit PlayerUnknown Productions.** Brendan 'PlayerUnknown' Greene's studio is restructuring and halting development on Prologue: Go Wayback less than a year after its November 2025 early-access launch [[playerunknown-productions-is-laying-off-staff-and-halting-development-on-go-wayback-5f4ffba7]] [[pubg-creators-new-survival-game-has-stopped-development-less-than-a-year-after-launch-1aafbf57]]. An update will push Go Wayback out of early access and make it free-to-play; the surviving team pivots to keep developing the Melba procedural-world tech that powered it — the substrate for his Artemis 'open-source, high-fidelity Roblox' metaverse vision [[pubg-creators-new-survival-game-has-stopped-development-less-than-a-year-after-launch-1aafbf57]].
-
-> PlayerUnknown Productions has announced the end of development on the early access game Prologue: Go Wayback, as well as a round of layoffs for the studio.
-
-> Greene and the remaining studio employees will continue to develop the Melba technology, which was used to power Prologue: Go Wayback.
-
-**Paramount Game Studios launches as a unified umbrella — pre-positioning for a Warner Bros. close.** On June 5, 2026, Paramount Skydance unveiled Paramount Game Studios, absorbing all existing Paramount and Skydance gaming studios [[paramount-unveils-new-unified-paramount-games-studio-3b154906]]. Tony Driscoll is president (ex-Epic Games, ex-WB Games). Paramount framed the move as 'a meaningful evolution in how we think about games — not as an extension of our business, but as a core pillar of our content strategy' [[the-guy-ruining-cbs-news-just-launched-paramount-game-studios-ac700490]]. The launch lands in the middle of Paramount Skydance's pending acquisition of Warner Bros. Discovery — i.e. the org chart is being assembled before WB Games actually arrives.
-
-> Paramount Game Studios was unveiled on June 5, 2026. The new outfit is described as a 'unified game studio' that includes all existing Paramount and Skydance gaming studios, including Skydance Interactive and Skydance New Media.
-
-> Paramount announced the launch of Paramount Games division on June 5, 2026, marking 'a meaningful evolution in how we think about games — not as an extension of our business, but as a core pillar of our content strategy.'
-
-**The Wolf Among Us 2 finally surfaces with a 2027 date.** After eight years of silence, Telltale and Warner Bros. announced at Summer Game Fest 2026 that The Wolf Among Us 2 will ship in 2027, with a remastered original Wolf Among Us arriving first (holiday 2026) [[wolf-among-us-2-finally-actually-coming-out-in-2027-ade26bf5]] [[the-wolf-among-us-2-finally-reappears-alongside-remastered-original-0c2473de]]. The project jumped from Unreal Engine 4 to Unreal Engine 5.
-
-> The Wolf Among Us 2 is set to arrive in 2027. Before that, we'll be getting a remastered version of the original Wolf Among Us... The project is jumping over to Unreal Engine 5, with the game previously developed with Unreal Engine 4.
-
-**Tifa headlines Street Fighter 6 Season 4 in a Capcom × Square Enix crossover.** SF6's Season 4 roster, headlined by Final Fantasy VII's Tifa Lockhart as the latest guest fighter (early 2027), alongside three brand-new characters — Bosch, Yasmine, and Arjun [[tifa-is-coming-to-street-fighter-6s-season-4-roster-fda6268c]] [[final-fantasy-7-tifa-coming-to-street-fighter-6-instead-of-tekken-5a40a712]]. Season 4 is the first SF6 season with no returning characters.
-
-> Street Fighter 6 has unveiled its new roster of fighters for its fourth year during Summer Game Fest 2026, and Final Fantasy 7's Tifa is joining the fight.
-
-> Final Fantasy VII's Tifa Lockhart will be Street Fighter 6's latest guest character. The Avalanche member will be arriving with her Materia powers reimagined as a new gameplay system.
-
-**Day of the Devs SGF Edition 2026 — 20 indies from 1,700 submissions.** Key reveals: Messhof announced Blood Dungeon; Frozenbyte announced Trine 6: Together in Time (Sept 25, 2026); Saibot Studios announced Tenebris Somnia [[day-of-the-devs-summer-game-fest-edition-2026-everything-revealed-a8f040e8]].
-
-> Day of the Devs hosts a showcase around Summer Game Fest to highlight some of the wildly creative indie games in development around the world. The non-profit received over 1,700 submissions for this year's Summer Game Fest showcase, which was narrowed down to 20 titles.
-
-**33 Immortals exits early access June 10.** Thunder Lotus Games' 33-player co-op raid action title 33 Immortals leaves early access on June 10, 2026 across Steam, EGS, and Xbox Series X|S, day-one on Game Pass [[33-player-co-op-raider-33-immortals-will-finally-release-in-full-soon-de674359]].
-
-> 33 Immortals' 1.0 release arrives on June 10. That date applies to both the PC versions—across both Steam and Epic Games Store—as well as the Xbox Series X|S version.
-
-**Gothic 1 Remake ships rough — ~73 Metacritic, day-one update required for physical copies.** The Gothic 1 Remake launched June 5 and lands around 73 on Metacritic. Reviewers consistently flag system crashes, audio failures, performance mishaps, and AI bugs [[physical-copies-of-gothic-remake-unplayable-without-a-day-1-update-b191e627]].
-
-> Technical issues and messy AI ruined gameplay and resulted in players getting irretrievably stuck. More broadly, the remake is smudged with technical bugs, crashes, audio failures and performance mishaps.
-
-## Xbox Showcase 2026 wave (June 7-8, 2026)
-
-**Xbox Games Showcase 2026 lands as the platform's biggest console-exclusive push in years.** Microsoft's June 7 showcase celebrated Xbox's 25th anniversary with the XBOX Series X25 limited-edition hardware and a return-to-exclusivity posture [[xbox-games-showcase-2026-recap-the-return-of-exclusives-world-premieres-and-anniversary-hardware-9d1a38cb]]. The headliner — **Gears of War: E-Day (October 6, 2026)** — is confirmed Xbox console exclusive, with no PS5 launch [[gears-of-war-e-day-wikipedia-3e51e36a]]. Set 14 years before the original, it will be Day One on Game Pass. The Xbox-exclusive framing is a notable inflection after years of multi-platform softening (Hi-Fi Rush, Sea of Thieves, Indiana Jones).
-
-> 2026 marks the 25th anniversary of XBOX, and Microsoft announced the XBOX Series X25 Limited Edition and XBOX Wireless Controller X25 Special Edition.
-
-> Microsoft confirmed that Gears of War: E-Day will launch as an Xbox console exclusive, meaning the anticipated prequel will not be released on PS5 at launch.
-
-**Halo: Campaign Evolved goes the other direction — day-and-date on PS5.** Launches **July 28, 2026** (five days early access from July 23) with cross-play across Xbox Series X|S, Windows PC, Steam, **and PlayStation 5**, plus a new three-mission story arc featuring Master Chief and Sgt. Johnson [[halo-campaign-evolved-launches-july-28-pre-orders-available-now-2775bcb6]]. The split — Halo on PS5, Gears not — looks less like a coherent platform strategy than a per-franchise calculation.
-
-> Halo: Campaign Evolved launches July 28, 2026, with up to five days of early access beginning July 23 for Premium Edition and Collector's Edition owners.
-
-> The game supports cross-play and cross-progression across XBOX Series X|S, Windows PC, Steam, and PlayStation 5, and will be available day one with Game Pass Ultimate and PC Game Pass.
-
-**Persona 4 Revival dated February 18, 2027; Persona 6 officially confirmed.** Atlus dated Persona 4 Revival for **February 18, 2027** across Xbox, PS5, and PC simultaneously, with fully 3D world, animated cutscenes, baton-pass system from P5 Royal, and new 'Series Finale' attacks [[persona-4-revival-release-date-revealed-at-xbox-showcase-e4baeed9]]. The same showcase confirmed Persona 6 exists (no date). First time P4 remake + P6 confirmation pipeline is visible simultaneously.
-
-> Persona 4 Revival has been given an official release date of February 18, 2027, during the XBOX Games Showcase 2026. The release will be on Xbox Series X/S, PS5, and PC, with the new P4 Remake launching on all platforms simultaneously.
-
-> The showcase also featured the highly anticipated Persona 6 being officially confirmed by ATLUS, though no information was announced regarding a release date for Persona 6.
-
-**Spyro: A Realm Beyond (Spring 2027) — Toys for Bob returns the dragon.** Toys for Bob revealed Spyro: A Realm Beyond at the Xbox showcase for Spring 2027 on Xbox, PS5, Switch 2, PC, and Game Pass [[spyro-a-realm-beyond-interview-a-new-design-full-flight-tom-kenny-returns-and-more-97508af6]]. Full flight as a core mechanic; Tom Kenny returns as Spyro's voice. This is the studio's first major reveal since gaining independence from Activision/Microsoft.
-
-> Spyro has subtle visual changes to suggest he's grown, most notably an enhanced wingspan so he can be much more capable in flight, and Tom Kenny is returning to voice the character.
-
-**Valheim 1.0 ships September 9, 2026 — five years of early access ends.** Iron Gate's Viking survival game finally graduates from Steam Early Access on **September 9, 2026**, simultaneously launching on PS5 and Switch 2 for the first time, with full cross-play across all platforms [[after-half-a-decade-valheim-1-0-finally-has-a-release-date-d526d125]]. The 1.0 update adds the final Deep North biome. Five years of early access sustained at ~15M+ lifetime sales — a benchmark for indie survival-game live-development.
-
-> Valheim is officially launching into 1.0 on September 9, 2026, marking the end of the game's five-year-long early access period.
-
-> Valheim's 1.0 update will launch simultaneously on PlayStation 5 and Nintendo Switch 2 for the first time, while also launching on existing platforms including PC, Linux, Mac, Xbox One, and Xbox Series X|S. The game will have full cross-play on these platforms.
-
-**Stronghold 4 (UE5 prequel, late 2026) — RTS revival with prestige voice cast.** Firefly Studios revealed **Stronghold 4** at the June 7 PC Gaming Show — the 10th entry in the castle-builder RTS franchise, built on Unreal Engine 5, with Ben Starr (Final Fantasy XVI) and Samantha Béart (Karlach in Baldur's Gate 3) voicing [[samantha-beart-and-ben-starr-headline-a-new-stronghold-game-coming-to-steam-later-this-year-2b2954d8]] [[everything-announced-at-pc-gaming-show-2026-1ee340ec]]. Steam demo June 23; full Early Access late 2026.
-
-> Firefly Studios revealed Stronghold 4 at the PC Gaming Show on June 7, 2026. Stronghold 4 is the 10th entry in the Stronghold series.
-
-> Built on Unreal Engine 5, it's a prequel set in medieval England, and puts you in the boots of Penryn of Wethel, a shepherd who rises through the ranks to become a lord.
-
-**Wholesome Direct 2026 stages 53 games; Fields of Mistria locks August 5.** Wholesome Games' showcase ran 53 titles on June 6 [[wholesome-direct-here-are-all-53-games-featured-in-today-cozy-showcase-24b5e1f2]]. **Fields of Mistria** — the Stardew-Valley-like that launched on Steam Early Access in August 2025 — locked **August 5, 2026** for 1.0, exactly one year of early access, with marriage, children, and a finished main storyline [[fields-of-mistria-1-0-release-date-announcement-aa797b32]].
-
-> 53 games were showcased from many motivated developers and publishers.
-
-> Fields of Mistria will officially launch into 1.0 on August 5, 2026. It spent exactly a year in early access, as it first launched in August 2025.
-
-**Future Games Show Summer Showcase: EXODUS, Tomb Raider Legacy of Atlantis, Patrice Désilets.** The June 6 FGS Summer Showcase put 40+ games and 11 world premieres on the slate [[everything-announced-at-the-future-games-show-summer-showcase-2026-09147c7a]]. Headline notes: **EXODUS** (Archetype Entertainment, the BioWare-veteran studio) got extended gameplay reveal for early-2027; **Tomb Raider: Legacy of Atlantis** dated **February 12, 2027** across PC/PS5/Xbox/Switch 2 (first new mainline Tomb Raider since Shadow of the Tomb Raider 2018).
-
-> The show featured over 40 games from AAA and indie studios, including 11 world premieres.
-
-> Tomb Raider: Legacy of Atlantis - Game Director Raul Siqueira shed light on the world, puzzles and 3D exploration mechanics, with the game coming to PC, PlayStation 5, Xbox Series X & S and Nintendo Switch 2 on February 12, 2027.
-
-## June 9, 2026 update — Nintendo Direct day, Mina the Hollower clears 500K, Where Winds Meet hits Xbox
-
-Nintendo confirmed a 50-minute June Direct for today, June 9, 2026 at 7 AM PT / 10 AM ET, followed by a 95-minute Treehouse: Live session focused on Switch 2 and Switch games for the second half of 2026 [[nintendo-direct-confirmed-for-june-9-and-it-is-a-big-one-5ddd6035]]. Pre-show expectations heading in include a long-rumored Legend of Zelda: Ocarina of Time remake, a Star Fox trailer ahead of its June 25 launch, and updates on Splatoon Raiders, Fire Emblem Shadows, and FromSoftware's still-undated Switch 2 exclusive The Duskbloods [[all-confirmed-and-rumored-games-for-june-9-nintendo-direct-d43cb2b9]].
-
-> A new Nintendo Direct livestream has been announced for June 9, and you can tune in at 7 AM PT / 10 AM ET to watch it. Nintendo says the livestream will run for roughly 50 minutes, and it'll highlight upcoming Nintendo Switch 2 and Nintendo Switch games.
-
-> The heavily-rumored Legend of Zelda: Ocarina of Time remake is another likely game to appear, with an official announcement certainly on the cards.
-
-Yacht Club Games confirmed Mina the Hollower has sold 500,000 copies worldwide across all platforms in roughly ten days from its May 29 launch — clearing the threshold studio director Sean Velasco previously called 'golden' for keeping the studio funded without cuts or outside investment, while Mina remains tied for the highest-rated game of 2026 on Metacritic [[mina-the-hollower-has-now-sold-half-a-million-copies-76965456]]. The trajectory (300K in three days → 500K in ~10 days) makes this the clearest indie commercial-and-critical alignment of the year so far.
-
-> Yacht Club Games has announced that Mina the Hollower has sold 500k copies worldwide. ... Thanks to the strong sales, the team apparently won't have to make any cuts or take outside investment.
-
-NetEase shadow-dropped Where Winds Meet on Xbox Series X|S, Xbox on PC, and Xbox Cloud on June 8, 2026 — free-to-play with cross-progression with PC and PS5 — and announced the 'Hidden Mountain' expansion for July, adding the Mohist Sect faction and a Hand Guard Discipline combat style. The Xbox arrival brings a title that already claims 80M+ players from PC/PS5 into Game Pass territory [[where-winds-meet-out-now-on-xbox-series-x-s-hidden-mountain-expansion-launches-in-july-45073f44]].
-
-> Where Winds Meet officially arrives on Xbox Series X|S, Xbox on PC, and Xbox Cloud on June 8, 2026, fully free-to-play via the Microsoft Store and supporting cross-progression with PC and PS5 through NetEase account linking.
-
-Summer Game Fest 2026 set a new viewership record at 3.8M concurrent peak viewers — a 25% jump over 2025's ~3M peak — and saw stream coverage explode from ~1,300 channels in 2025 to 6,200+ in 2026, with the official Game Awards channel alone hitting 1M peak viewers [[summer-game-fest-2026-draws-record-breaking-3-8m-peak-viewers-62de2213]]. The growth signals SGF has fully consolidated the post-E3 vacuum.
-
-> Summer Game Fest 2026 set a new record with 3.8M Peak Viewers. ... After surpassing 3M Peak Viewers in 2025, Summer Game Fest grew by another 25% in 2026, setting a new series record.
 
 ## See also
 

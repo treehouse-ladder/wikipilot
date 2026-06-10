@@ -5,10 +5,10 @@ These tests are entirely structural — they don't run any LLM. They verify:
 - Every skill manifest parses as YAML and carries the required keys.
 - Every agent manifest parses as YAML, declares a model, and references
   only skills that actually exist on disk.
-- Per the Phase 2 plan, all 5 agents and all 8 skills are present with the
-  documented model assignments (Opus 4.7 for topic-researcher and
-  query-answerer, Sonnet for orchestrators and merger/scanner, Haiku for
-  linter).
+- All agents and all 8 skills are present with the documented model
+  assignments (Opus 4.8 for topic-researcher, topic-summarizer,
+  query-answerer, conflict-resolver, wiki-lint-fixer, daily-brief-curator;
+  Sonnet for merger/scanner; Haiku for linter).
 """
 
 from __future__ import annotations
@@ -23,14 +23,15 @@ AGENTS_DIR = REPO_ROOT / ".claude" / "agents"
 SKILLS_DIR = REPO_ROOT / ".claude" / "skills"
 
 EXPECTED_AGENTS: dict[str, str] = {
-    "topic-researcher": "claude-opus-4-7",
+    "topic-researcher": "claude-opus-4-8",
+    "topic-summarizer": "claude-opus-4-8",
     "wiki-merger": "claude-sonnet-4-5",
     "wiki-linter": "claude-haiku-4-5",
-    "query-answerer": "claude-opus-4-7",
+    "query-answerer": "claude-opus-4-8",
     "wiki-disputes-scanner": "claude-sonnet-4-5",
-    "conflict-resolver": "claude-opus-4-7",
-    "daily-brief-curator": "claude-opus-4-7",
-    "wiki-lint-fixer": "claude-opus-4-7",
+    "conflict-resolver": "claude-opus-4-8",
+    "daily-brief-curator": "claude-opus-4-8",
+    "wiki-lint-fixer": "claude-opus-4-8",
 }
 
 EXPECTED_SKILLS: tuple[str, ...] = (

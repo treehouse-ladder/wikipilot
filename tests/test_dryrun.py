@@ -145,7 +145,7 @@ class TestApplyProposalTopicOnly:
             PageDiff(
                 path="concepts/transformer-attention.md",
                 kind="concept",
-                summary_addition=(
+                update_entry=(
                     "Topic-only sweep finding [[example-paper-aabbccdd]] confirms "
                     "the cross-page sweep still runs without the index update."
                 ),
@@ -301,7 +301,7 @@ class TestCrossPageSweep:
             PageDiff(
                 path="concepts/transformer-attention.md",
                 kind="concept",
-                summary_addition=(
+                update_entry=(
                     "A new dry-run finding [[example-paper-aabbccdd]] confirms attention "
                     "behavior under FP8 precision."
                 ),
@@ -515,7 +515,7 @@ class TestProposalSourceAlsoRelevantTo:
                 PageDiff(
                     path="topics/ai-agents/index.md",
                     kind="topic",
-                    summary_addition=(
+                    update_entry=(
                         "A cross-topic finding [[cross-topic-source-"
                         + _expected_short_sha(src)
                         + "]]."

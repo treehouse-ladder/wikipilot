@@ -49,7 +49,7 @@ If the question is empty after trimming, comment "no question provided" on the i
 Task(agent="query-answerer", input={question: "<QUESTION>", issue_url: "<ISSUE_URL or null>"})
 ```
 
-The `query-answerer` (Opus 4.7) searches qmd-search first, falls back to WebSearch only if needed, drafts an `Answer` (schema in `CLAUDE.md`).
+The `query-answerer` (Opus 4.8) searches qmd-search first, falls back to WebSearch only if needed, drafts an `Answer` (schema in `CLAUDE.md`).
 
 ## Step 5: Apply the answer to a fresh branch
 

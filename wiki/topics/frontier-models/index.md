@@ -2,8 +2,8 @@
 title: Frontier LLM landscape
 kind: topic
 sources: ["[[introducing-claude-opus-47-b8af8104]]", "[[claude-opus-47-everything-you-need-to-know-751c1827]]", "[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[gemini-31-pro-model-card-225ab705]]", "[[gemini-3-deep-think-advancing-science-research-and-engineering-e98b788f]]", "[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[introducing-claude-sonnet-46-c4a45eed]]", "[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]", "[[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]]", "[[introducing-mistral-3-3772caab]]", "[[artificial-analysis-intelligence-index-07e9d51e]]", "[[gdpval-measuring-the-performance-of-our-models-on-real-world-tasks-bc53ab6b]]", "[[the-llama-4-herd-a-new-era-of-natively-multimodal-ai-7554c7f6]]", "[[gemini-35-flash-model-card-de99f770]]", "[[gemini-35-flash-the-new-leader-in-intelligence-versus-speed-d886178d]]", "[[claude-mythos-preview-d737ab91]]", "[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]", "[[the-growing-pains-of-frontier-models-when-leaderboards-stop-separating-and-what-to-measure-next-b0488a82]]", "[[introducing-gpt-rosalind-for-life-sciences-research-078f0d54]]", "[[qwen3-6-27b-on-hugging-face-20e9d0e7]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]]", "[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]]", "[[subquadratic-launches-with-29m-to-bring-12m-token-context-windows-to-ai-78c846ee]]", "[[zaya1-8b-frontier-intelligence-density-trained-on-amd-3012ef57]]", "[[zaya1-8b-technical-report-614bf738]]", "[[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]", "[[google-accidentally-leaked-gemini-3-2-flash-and-it-already-outperforms-3-1-pro-on-coding-4c205fb8]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]", "[[minimax-m2-7-everything-you-need-to-know-199c68d0]]", "[[minicpm5-1b-the-leading-1b-open-weights-model-3d3c6b40]]", "[[gemma-4-google-on-the-american-open-weights-frontier-bfff2296]]", "[[nvidia-nemotron-3-super-the-new-leader-in-open-efficient-intelligence-f183144e]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]", "[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[cursor-s-composer-2-5-third-on-the-coding-agent-index-b9ec8ce6]]", "[[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]]", "[[announcing-artificial-analysis-long-context-reasoning-aa-lcr-7ec45d8d]]", "[[remote-agents-in-vibe-powered-by-mistral-medium-3-5-7dce1573]]", "[[deepseek-is-back-among-the-leading-open-weights-models-with-v4-pro-and-v4-flash-d16dda28]]", "[[cohere-launches-open-weights-model-command-a-more-than-a-year-since-the-command-a-release-7a929ac1]]", "[[introducing-command-a-94d80d08]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[introducing-mai-code-1-flash-70f37d2e]]", "[[microsoft-unveils-new-ai-models-to-lessen-reliance-on-openai-and-lower-costs-for-developers-ef1d54b6]]", "[[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]", "[[promoting-advanced-artificial-intelligence-innovation-and-security-f342dd5f]]", "[[trump-signs-ai-executive-order-asking-companies-to-give-government-early-access-to-models-32296a4f]]", "[[openai-frontier-models-and-codex-are-now-available-on-aws-4df8e51c]]", "[[anthropic-raises-65b-series-h-at-965b-post-money-valuation-b5e22ae0]]", "[[github-copilot-replaces-gpt-4-with-project-polaris-ships-multi-agent-vs-code-at-build-ddcc6341]]", "[[nemotron-3-ultra-launches-june-4-the-first-open-frontier-model-built-for-agents-302459f4]]", "[[alibabas-qwen-team-launches-qwen3-7-plus-adding-vision-deep-reasoning-tool-invocation-and-autonomous-iteration-on-the-bailian-platform-205e908f]]", "[[alibabas-qwen3-7-plus-supports-text-video-and-imagery-inputs-at-low-cost-but-its-proprietary-ceed7e8a]]", "[[introducing-mai-thinking-1-0e3e1662]]", "[[microsoft-build-2026-mai-keynote-transcript-77c10a37]]", "[[introducing-the-services-track-and-partner-hub-of-the-claude-partner-network-c265f4d0]]", "[[dreaming-better-memory-for-a-more-helpful-chatgpt-c3ab33c6]]", "[[building-a-hill-climbing-machine-launching-seven-new-mai-models-adf5b785]]", "[[mai-code-1-flash-61ec7468]]", "[[minimax-m3-frontier-coding-1m-context-native-multimodality-all-in-one-model-d466ccc6]]", "[[minimax-m3-debuts-eclipsing-gpt-5-5-and-gemini-3-1-pro-on-key-benchmark-performance-for-just-5-10-of-the-cost-11226d25]]", "[[minimax-m3-open-weight-coding-model-frontier-claims-unverified-benchmarks-96b02e45]]", "[[minimax-m3-api-pricing-benchmarks-openrouter-fbc88cb0]]", "[[google-gemini-3-5-pro-nears-june-launch-with-2-million-token-context-and-deep-think-reasoning-3a0c8ff3]]", "[[minimax-m3-intelligence-performance-price-analysis-418bc9a9]]", "[[what-to-expect-from-wwdc-2026-gemini-powered-siri-ios-27-macos-27-and-more-273ea775]]", "[[a-harness-for-every-task-dynamic-workflows-in-claude-code-bbb7a8da]]", "[[expanding-project-glasswing-fd9b87df]]", "[[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]", "[[grok-build-0-1-on-api-c60c4a6b]]", "[[grok-imagine-1-5-preview-7668cc26]]", "[[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]]"]
-last_updated: 2026-06-09
-last_verified: 2026-06-09
+last_updated: 2026-06-10
+last_verified: 2026-06-10
 freshness_window_days: 30
 ---
 
@@ -12,195 +12,271 @@ freshness_window_days: 30
 See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 `CLAUDE.md` "Cross-cutting relevance criteria" for the meta-bar.
 
-## Summary (2026-05-20 update)
+## Summary
 
-The frontier-LLM landscape in mid-May 2026 is a four-way contest between Anthropic, OpenAI, Google DeepMind, and DeepSeek, with xAI, Alibaba (Qwen), Meta (Llama), and Mistral providing competitive flank pressure — especially on open weights.
+The frontier as of 2026-06-09 has a single public leader again. Anthropic's **Claude Opus 4.8** (released May 28, 2026) tops the Artificial Analysis Intelligence Index v4.0 at **61.4**, ending GPT-5.5's run at the top, and Opus 4.7 is superseded as Anthropic's flagship [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]. GPT-5.5 (xhigh) is now second at 60 and Gemini 3.1 Pro third at 57 [[gpt-5.5]]. Opus 4.8 holds list price at $5/$25 per Mtoken [[introducing-claude-opus-4-8-5348a7d2]]; see [[claude-opus-4.8]].
 
-### Current intelligence leaders (Artificial Analysis Intelligence Index v4.0)
+> Claude Opus 4.8 is the new leader on the Artificial Analysis Intelligence Index with a score of 61.4, up 4.1 points from Opus 4.7 and 1.2 points ahead of GPT-5.5 (xhigh), the previous Index leader.
 
-As of May 2026, GPT-5.5 (xhigh) leads at 60, followed by GPT-5.5 (high) at 59, then a three-way tie at 57 between Claude Opus 4.7 (Adaptive, Max), Gemini 3.1 Pro Preview, and GPT-5.4 (xhigh) [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]. Qwen3.7 Max (released May 19) also scores 57, making it the most intelligent open-ecosystem reasoning model on this index [[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]]. The Intelligence Index is a 10-evaluation aggregate (GDPval-AA, Terminal-Bench Hard, SciCode, AA-LCR, AA-Omniscience, IFBench, Humanity's Last Exam, GPQA Diamond, CritPt, Tau-squared-Bench Telecom) [[artificial-analysis-intelligence-index-07e9d51e]].
+### Agentic and coding leadership
 
-> GPT-5.5 (xhigh) currently ranks #1 on the Artificial Analysis LLM Leaderboard with an Intelligence Index score of 60.
+For the first time since GPT-5.5 shipped, aggregate-index and agentic leadership sit with the same model: Opus 4.8 retook **GDPval-AA at 1,890 Elo** (~121 Elo and an implied ~67% win rate over GPT-5.5) and is the strongest computer-use/browser-agent model tested at 84% on Online-Mind2Web [[introducing-claude-opus-4-8-5348a7d2]]. On the contamination-resistant **SWE-bench Pro** axis this page treats as the credible frontier-coding signal, Opus 4.8 is the public #1 at **69.2%**, over 10 points ahead of GPT-5.5 (58.6%) and Gemini 3.1 Pro (54.2%) [[claude-opus-4-8-benchmarks-explained-60247f20]].
 
-> The Artificial Analysis Intelligence Index v4.0 incorporates 10 evaluations.
+> Claude Opus 4.8 is the strongest computer-use and browser-agent model we have tested, scoring 84% on Online-Mind2Web, a meaningful jump over both Opus 4.7 and GPT-5.5.
 
-### Anthropic
+> SWE-Bench Pro (Coding): Opus 4.8 lands at 69.2%, almost 5 points clear of Opus 4.7 (64.3%) and over 10 points ahead of GPT-5.5 (58.6%) and Gemini 3.1 Pro (54.2%).
 
-Claude Opus 4.7 (released April 16, 2026) is the leader on GDPval-AA at 1,753 Elo — ~79 Elo points clear of the next models [[claude-opus-47-everything-you-need-to-know-751c1827]]. It also takes #2 on AA-Omniscience behind Gemini 3.1 Pro, driven primarily by reduced hallucination. Cost per Intelligence Index run is ~$4,406, ~11% less than Opus 4.6 despite scoring 4 points higher [[claude-opus-47-everything-you-need-to-know-751c1827]].
+### Per-lab flagships
 
-> Opus 4.7 is the new leader on GDPval-AA, scoring 1,753 Elo, around 79 Elo points ahead of the next closest models.
-
-> Claude Opus 4.7 is our most intelligent model, with state-of-the-art performance on coding, agentic tasks, and reasoning.
-
-Claude Sonnet 4.6 (released Feb 17, 2026) added a 1M-token context window in beta at unchanged $3/$15 per Mtoken pricing, jumped 8 points on the AA Intelligence Index (to 51) over Sonnet 4.5, and scored 60.4% on ARC-AGI-2 with 120k thinking tokens at high effort [[introducing-claude-sonnet-46-c4a45eed]].
-
-> Sonnet 4.6 features a 1M token context window in beta. Pricing remains the same as Sonnet 4.5, starting at $3/$15 per million tokens.
-
-### OpenAI
-
-GPT-5.5 (released April 23, 2026) is positioned as more token-efficient than GPT-5.4 despite higher per-token pricing, with major gains in agentic coding, computer use, and knowledge work [[introducing-gpt-55-dfe7e0c6]].
-
-> GPT-5.5 is priced higher than GPT-5.4, but it is both more intelligent and much more token efficient, delivering better results with fewer tokens.
-
-OpenAI's GDPval benchmark (open-sourced 220-task gold subset, 44 occupations across the top 9 US-GDP sectors covering $3T of annual labor) has become a de-facto frontier evaluation, now incorporated into the AA Intelligence Index v4.0 as GDPval-AA [[gdpval-measuring-the-performance-of-our-models-on-real-world-tasks-bc53ab6b]].
-
-> The primary evaluation metric is head-to-head human expert comparison. OpenAI has open-sourced a gold subset of 220 tasks.
-
-### Google DeepMind
-
-Gemini 3.1 Pro Preview supports 1M-token input and up to 64k-token output, priced at $2/$12 per Mtoken below 200k input, jumping to $4/$18 above 200k — the first major frontier model to officially tier prices by context length [[gemini-31-pro-model-card-225ab705]].
-
-> Input price: $2.00 for prompts <= 200k tokens, $4.00 for prompts > 200k tokens.
-
-Gemini 3 Deep Think reached 3455 Elo on Codeforces and gold-medal level on IMO 2025 [[gemini-3-deep-think-advancing-science-research-and-engineering-e98b788f]].
-
-> Gemini 3 Deep Think attained a staggering Elo of 3455 on Codeforces ... and reached gold-medal level performance on the International Math Olympiad 2025.
-
-### Open weights and Chinese labs
-
-DeepSeek V4 (released April 24, 2026) is a 1.6T MoE (49B active, V4-Pro) and 284B MoE (13B active, V4-Flash), both with 1M context, both released under the MIT license. V4-Pro-Max scores 80.6% SWE-bench Verified and 3,206 Codeforces — surpassing GPT-5.4's 3,168 [[deepseek-v4-pro-on-hugging-face-a0d5aaf3]].
-
-> The model weights are licensed under the MIT License. V4-Pro's Codeforces rating of 3,206 surpasses GPT-5.4's 3,168.
-
-Mistral Large 3 (released December 2025) is a sparse MoE with 41B active and 675B total parameters under Apache 2.0 [[introducing-mistral-3-3772caab]]. Llama 4 Scout (17B active, 16 experts) ships with a 10M-token context window — currently the longest in any frontier-class open model [[the-llama-4-herd-a-new-era-of-natively-multimodal-ai-7554c7f6]].
-
-> Llama 4 Scout offers an industry-leading context window of 10M.
-
-Qwen3.7 Max (released May 19, 2026) reaches AA Intelligence Index 57 with a 1M-token context, putting Alibaba's frontier offering at parity with closed-source leaders [[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]].
-
-### xAI
-
-Grok 4.3 (released April 30, 2026) hit AA Intelligence Index 53, with the largest single-benchmark improvement on GDPval-AA (+321 Elo over Grok 4.20). API pricing of $1.25/$2.50 per Mtoken is well below the frontier median [[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]].
-
-> Grok 4.3 (high) costs $1.25 per 1M input tokens and $2.50 per 1M output tokens.
-
-### Updates 2026-05-21
-
-Google DeepMind released Gemini 3.5 Flash on May 19, 2026, the first model in the Gemini 3.5 series. Despite being a Flash-tier model, it outperforms Gemini 3.1 Pro on agentic and coding benchmarks: Terminal-Bench 2.1 76.2%, MCP Atlas 83.6%, GDPval-AA 1656 Elo, and CharXiv Reasoning 84.2% for multimodal understanding [[gemini-35-flash-model-card-de99f770]]. On independent evaluation it scores 55 on the AA Intelligence Index (a 9-point jump over Gemini 3 Flash, driven by agentic gains and hallucination reduction), runs at over 280 output tokens/sec, and is priced at $1.50/$9 per Mtoken — placing it on the speed-intelligence Pareto frontier [[gemini-35-flash-the-new-leader-in-intelligence-versus-speed-d886178d]].
-
-> Gemini 3.5 Flash outperforms Gemini 3.1 Pro on challenging coding and agentic benchmarks like Terminal-Bench 2.1 with a score of 76.2%.
-
-> Gemini 3.5 Flash (high) scores 55 on the Artificial Analysis Intelligence Index ... a 9-point improvement from Gemini 3 Flash, driven primarily by agentic performance gains and hallucination reduction.
-
-Anthropic's most capable model is Claude Mythos Preview (announced April 7, 2026), which is state-of-the-art on SWE-bench Verified (93.9%), GPQA Diamond (94.6%), USAMO (97.6%), Terminal-Bench 2.0 (82.0%), CyberGym (83.1%), and a saturated Cybench (100% pass@1). Unusually, Anthropic deliberately withheld it from general availability because its autonomous cybersecurity capabilities are judged too dangerous to ship broadly; access is invitation-only through Project Glasswing for critical-infrastructure and open-source defenders [[claude-mythos-preview-d737ab91]]. This means the publicly-rankable frontier (GPT-5.5, Opus 4.7, Gemini 3.1 Pro) sits below an unreleased Anthropic ceiling.
+Anthropic leads publicly with Opus 4.8, but its true capability ceiling remains the invitation-only **Claude Mythos Preview**, still state-of-the-art on SWE-bench Verified (93.9%) and Terminal-Bench 2.0 (82.0%) [[claude-mythos-preview-d737ab91]] and now rolling out toward general availability "in the coming weeks" [[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]; see [[claude-mythos]]. OpenAI's flagship is **GPT-5.5** (AA Index 60), strong on agentic coding and long-context reasoning [[gpt-5.5]]. Google's public frontier is **Gemini 3.1 Pro** (57) plus the Flash-tier Gemini 3.5; the **3.5 Pro** frontier tier remains pre-GA [[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]], targeting a 2M-token context and Deep Think reasoning at ~$15/$60 per Mtoken [[google-gemini-3-5-pro-nears-june-launch-with-2-million-token-context-and-deep-think-reasoning-3a0c8ff3]]; see [[gemini-3.1-pro]]. **xAI**'s Grok 4.3 (AA Index 53) undercuts the field at $1.25/$2.50 per Mtoken [[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]], and its new API-available **Grok Build 0.1** coding model (256k context, native MCP, 100+ tok/s) lands at $1/$2 per Mtoken — the cheapest dedicated agentic-coding frontier model in production [[grok-build-0-1-on-api-c60c4a6b]], with the 1.5T-param **Grok V9-Medium** trained on Cursor workflow data targeting a mid-June release [[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]]. **DeepSeek** V4-Pro anchors the open-weights top tier (see [[deepseek-v4]]). **Microsoft** entered the frontier tier with its first in-house reasoning model, **MAI-Thinking-1** (35B-active sparse MoE, 256K context), claiming Opus-4.6-class coding [[introducing-mai-thinking-1-0e3e1662]].
 
 > Claude Mythos Preview is state-of-the-art on SWE-bench Verified (93.9%), GPQA Diamond (94.6%), USAMO (97.6%), Terminal-Bench 2.0 (82.0%), CyberGym (83.1%), and Cybench (100% pass@1, saturated).
 
-> Anthropic does not plan to make Claude Mythos Preview generally available; access is invitation-only as part of Project Glasswing because its autonomous cybersecurity capabilities are judged too powerful to ship without additional safeguards.
-
-On open weights, Moonshot's Kimi K2.6 (released April 20, 2026) is the new leading open-weights model, landing #4 on the AA Intelligence Index at 54 — behind only Anthropic, Google, and OpenAI (all 57). It is a 1T-total / 32B-active MoE with a 256k context, and cut its hallucination rate to 39% from Kimi K2.5's 65%, reaching 1520 Elo on GDPval-AA [[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]. This puts the leading open-weights model within 3 AA-Index points of the closed-source frontier.
-
-> Moonshot's Kimi K2.6 is the new leading open weights model, landing at #4 on the Artificial Analysis Intelligence Index (54) behind only Anthropic, Google, and OpenAI (all 57).
-
-## Recent updates
-
-### Updates 2026-05-21 (second run)
-
-A new benchmark-methodology paper argues the frontier leaderboards have stopped separating models on independent axes, and that the more informative signal is whether capabilities reinforce or trade off across releases [[the-growing-pains-of-frontier-models-when-leaderboards-stop-separating-and-what-to-measure-next-b0488a82]]. The authors decompose paired SWE-bench and GPQA Diamond scores into a population coupling trend plus a per-release residual ("h-field") that diagnoses each release's capability emphasis. Across 34 models from 10 labs (2024–2026) capabilities mostly cooperate, but cooperation varies by lab and over time: DeepSeek reversed from reasoning-rich to coding-first, Google maintains consistent reasoning emphasis, and Anthropic oscillates between coding excursions and recovery — with five April 2026 releases confirming the diagnostic out of sample.
-
-> We decompose paired SWE-bench and GPQA Diamond scores into a population coupling trend and per-release residual (h-field) that diagnoses capability emphasis and identifies which measurement or stress test is most informative next.
-
-> DeepSeek reversed from reasoning-rich to coding-first; Google maintains consistent reasoning emphasis; Anthropic oscillates between coding excursions and recovery.
-
-On the model-release side, OpenAI introduced GPT-Rosalind, a frontier reasoning model specialized for life-sciences R&D (target discovery/validation, genomics interpretation, pathway analysis, hypothesis generation), optimized for scientific tool use across chemistry, protein engineering, and genomics [[introducing-gpt-rosalind-for-life-sciences-research-078f0d54]]. Like Claude Mythos Preview, it is deliberately gated: research preview, enterprise/eligible-institution access only via a trusted-access deployment structure, with no public pricing — a continuation of the pattern where the most specialized frontier capabilities ship behind restricted access rather than open API.
-
-> GPT-Rosalind is a frontier reasoning model built to support research across biology, drug discovery, and translational medicine, with optimization for scientific workflows that combines improved tool use with deeper understanding across chemistry, protein engineering, and genomics.
-
-> GPT-Rosalind is currently in research preview, deployed to eligible institutions, available to eligible U.S. customers with Enterprise agreements, launching through a trusted-access deployment structure.
-
-On open weights, Alibaba shipped Qwen3.6-27B with a 262,144-token native context extensible to ~1.01M tokens, and a notable agentic feature: a `preserve_thinking` option that retains full reasoning context across turns (interleaved thinking), which the model card claims improves decision consistency and can reduce overall token consumption by minimizing redundant reasoning — explicitly framed as beneficial for agent scenarios [[qwen3-6-27b-on-hugging-face-20e9d0e7]].
-
-> The model supports a preserve_thinking option that can be enabled when making API calls to maintain full reasoning context across multiple turns.
-
-> Maintaining full reasoning context can enhance decision consistency and, in many cases, reduce overall token consumption by minimizing redundant reasoning, which is particularly beneficial for agent scenarios.
-
-### Updates 2026-05-22
-
-Meta has re-entered the frontier race with Muse Spark, its first frontier-class model since Llama 4 Maverick (April 2025) and — notably — its first model not released as open weights [[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]. Muse Spark scores 52 on the AA Intelligence Index (top-5 overall), sitting ahead of Claude Sonnet 4.6, GLM-5.1, MiniMax-M2.7 and Grok 4.20, and behind Gemini 3.1 Pro Preview, GPT-5.4 and Claude Opus 4.6. The jump is dramatic relative to Meta's open-weight history: Llama 4 Maverick and Scout scored 18 and 13 respectively as non-reasoning models, so Muse Spark closes most of the frontier gap in a single release. It is a multimodal reasoning model (text/image/speech input, text output) with a 260k context window, currently gated to Meta's first-party products (Meta AI, Facebook, Instagram, Threads) with API access promised soon.
-
-> Muse Spark scores 52 on the Artificial Analysis Intelligence Index, placing it within the top 5 models benchmarked.
-
-> It is the first frontier-class model from Meta since Llama 4 Maverick was released in April 2025, and notably the first Meta model that is not being released as open weights.
-
-On open weights, Z.AI's GLM-5 (released February 11, 2026) is the leading open-weights model on the AA Intelligence Index at 50, up 8 points from GLM-4.7's 42 [[glm-5-everything-you-need-to-know-a53ff5c1]]. It is a 744B-total / 40B-active MoE — Z.AI's first new architecture since GLM-4.5 — and is the first model on this list documented to integrate DeepSeek Sparse Attention. GLM-5 takes the highest AA Agentic Index score among open-weights models (63, third overall), driven by GDPval-AA, under an MIT license with a 200k context window (text-only I/O).
-
-> GLM-5 is the new leading open weights model ... GLM-5 achieves the highest Artificial Analysis Agentic Index score among open weights models with a score of 63, ranking third overall.
-
-> GLM-5 ... scaling to 744B total / 40B active parameters, and integrates DeepSeek Sparse Attention.
-
-### Updates 2026-05-23
-
-The most consequential entrant since the last run is architectural rather than incremental-scale. Miami startup Subquadratic launched SubQ on May 5, 2026 — billed as the first LLM on a fully subquadratic (linear-scaling) attention architecture, with a 12M-token context window, a $29M seed round, and a founding team led by CEO Justin Dangel and CTO Alex Whedon (former Head of Generative AI at Meta) [[subquadratic-launches-with-29m-to-bring-12m-token-context-windows-to-ai-78c846ee]]. The core claim is its SSA (selective sparse attention) layer, which scales linearly with context length instead of quadratically, cutting attention compute by ~1,000x at 12M tokens via content-dependent position selection that itself does not go quadratic [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]].
-
-> SubQ is a large language model from Miami startup Subquadratic, launched May 5, 2026, claiming to be the first LLM on a fully subquadratic (linear-scaling) attention architecture with a 12-million-token context window.
-
-> The SSA architecture scales linearly with context length instead of quadratically, cutting attention compute by roughly 1,000x at 12M tokens.
-
-Crucially for frontier-class status, SubQ is not just a long-context novelty: it reports 81.8% on SWE-bench Verified — within the closed-frontier band — alongside 95.0% on RULER 128K and 65.9% on MRCR v2 at 1M tokens, where it beats Gemini 3.1 Pro (26.3%) but trails GPT-5.5 (74.0%) [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]]. The reported prefill speedups (7.2x at 128K up to 52.2x at 1M tokens vs FlashAttention on B200 GPUs) and the shipped agentic surface (SubQ Code coding agent, SubQ Search deep-research tool) make this directly relevant to whole-repository agentic coding loops [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]].
-
-> SubQ scored 95.0% on RULER 128K, 65.9% on MRCR v2 at 1M tokens, and 81.8% on SWE-Bench Verified. At 1M tokens, SubQ outperforms Gemini 3.1 Pro (65.9% vs 26.3%) on MRCR v2, though it trails GPT-5.5 (74.0%).
-
-> Subquadratic is making this model available through an API with a 12-million-token context window, as well as a coding agent (SubQ Code) and a deep research tool (SubQ Search).
-
-The caveat is sourcing: every headline efficiency number is vendor-run, single-shot, and not yet independently reproduced [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]] — there is no artificialanalysis.ai Intelligence Index entry for SubQ yet, so it cannot be slotted into the roster comparison until independent eval lands.
-
-### Updates 2026-05-24
-
-The most consequential open-weight move in May was efficiency-first, not scale-first. Zyphra released ZAYA1-8B (May 6, 2026), an Apache-2.0 reasoning MoE with 8.4B total but only ~760M active parameters per forward pass, optimized for maximum intelligence density per active parameter [[zaya1-8b-frontier-intelligence-density-trained-on-amd-3012ef57]]. Despite sub-1B active params it reaches 91.9% on AIME'25 and 89.6% on HMMT'25 — competitive with models many times its size [[zaya1-8b-frontier-intelligence-density-trained-on-amd-3012ef57]]. The technical report attributes this to three architectural choices: Compressed Convolutional Attention (CCA), which mixes sequences in a compressed latent space for an 8x KV-cache reduction vs full multi-head attention; a novel MLP-based expert router that improves routing stability over standard linear routers; and learned residual scaling [[zaya1-8b-technical-report-614bf738]]. Notably, ZAYA1-8B was trained end-to-end on AMD Instinct MI300X clusters with AMD Pensando Pollara networking — a rare frontier-relevant result outside the NVIDIA training stack [[zaya1-8b-frontier-intelligence-density-trained-on-amd-3012ef57]].
-
-> ZAYA1-8B is a Mixture-of-Experts language model optimized for maximum reasoning performance per active parameter, with 8.4B total parameters but only 760M active per forward pass.
-
-> With 0.7B active parameters and the 40K/4K Markovian RSA configuration, ZAYA1-8B reaches 91.9% on AIME'25 and 89.6% on HMMT'25.
-
-> Compressed Convolutional Attention (CCA) performs sequence mixing in a compressed latent space, resulting in an 8x reduction in KV-cache size compared to full multi-head attention.
-
-The long-standing open question of whether DeepSeek's reasoning model had shipped now has an answer: DeepSeek R2 is a 32B dense transformer released April 2026 under MIT license, scoring 92.7% on AIME 2025, fitting on a single 24GB consumer GPU, and undercutting Western frontier reasoning APIs by ~70% on token cost [[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]. This is a sharp departure from R1's 671B-parameter MoE — R2 trades raw scale for local-deployability, reframing the frontier question from 'which model is smartest' to 'which is smart enough at a sustainable price' [[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]].
-
-> Where R1 (January 2025) was a 671-billion-parameter Mixture-of-Experts behemoth, R2 ships as a 32B dense transformer released under MIT license, small enough to fit on a single RTX 4090 or A6000.
-
-Looking forward, Google's next Flash tier leaked ahead of I/O 2026: Gemini 3.2 Flash surfaced in the iOS Gemini app and AI Studio on May 5, with early Arena human-preference results showing it beating Gemini 3.1 Pro on creative coding (SVG generation, interactive 3D, animation), and leaked AI Studio pricing of $0.25/$2.00 per Mtoken [[google-accidentally-leaked-gemini-3-2-flash-and-it-already-outperforms-3-1-pro-on-coding-4c205fb8]]. These are preliminary human-preference signals only — Google has not published MMLU-Pro, GPQA Diamond, or SWE-bench Verified scores, expected at I/O — so the leak sits below the topic's methodology bar and is tracked as a forward indicator rather than a confirmed capability claim [[google-accidentally-leaked-gemini-3-2-flash-and-it-already-outperforms-3-1-pro-on-coding-4c205fb8]].
-
-> Gemini 3.2 Flash outperforms Gemini 3.1 Pro on certain creative coding tasks, including the well-circulated ASCII animation benchmark where 3.1 Pro produced broken code while 3.2 Flash succeeded in under two minutes.
-
-### Updates 2026-05-25
-
-Z.AI shipped GLM-5.1, the open-weight successor to GLM-5, built explicitly for agentic engineering rather than incremental intelligence-index gains [[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]. It is a 754B-parameter MoE + DSA (DeepSeek Sparse Attention) model trained with asynchronous reinforcement learning, released under the MIT license with a 200K context window and 128K max output tokens [[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]. The headline claim is a new state-of-the-art on SWE-Bench Pro (58.4), reported ahead of GPT-5.4, Claude Opus 4.6, and Gemini 3.1 Pro — making it, if confirmed, the leading open-weights model on the contamination-resistant SWE-Bench Pro axis that this page already treats as the more credible frontier coding signal [[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]. Most directly relevant to the agentic-coding workflow: GLM-5.1 is engineered for long-horizon autonomous execution, sustaining a single complex task for up to 8 hours across hundreds of rounds and thousands of tool calls without human intervention — the kind of unattended plan/execute/test/fix loop that an agentic-coding harness depends on, now available in an open-weight model under MIT.
-
-> GLM-5.1 sets a new state-of-the-art on SWE-Bench Pro with a score of 58.4, outperforming GPT-5.4, Claude Opus 4.6, and Gemini 3.1 Pro, making it one of the strongest publicly benchmarked models for software engineering tasks.
-
-> The model is built for long-horizon autonomous execution, capable of working on a single complex task for up to 8 hours — running experiments, revising strategies, and iterating across hundreds of rounds and thousands of tool calls without human intervention.
-
-> GLM-5.1 uses a MoE + DSA architecture trained with asynchronous reinforcement learning and is open-weight under the MIT license with 754B parameters, a 200K context window, and 128K max output tokens.
-
-### Updates 2026-05-26
-
-The open-weights frontier now has two co-leaders. Xiaomi shipped MiMo-V2.5-Pro, which lands at 54 on the Artificial Analysis Intelligence Index — tied with Moonshot's Kimi K2.6 as the top open-weights model, ahead of DeepSeek V4-Pro (52) [[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]. It is a 1T-total / 42B-active MoE released under the MIT license with a 1M-token context window, priced at $1/$3 per Mtoken [[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]. On the contamination-resistant coding axis this page treats as more credible, MiMo-V2.5-Pro reports 57.2% on SWE-bench Pro — within the closed-frontier band and notable for an open-weight MIT model.
-
-> Kimi K2.6 (54) and MiMo-V2.5-Pro (54) are tied as the top open weights models by Intelligence Index, followed by DeepSeek V4 Pro (Reasoning, Max Effort) (52).
-
-> MiMo-V2.5-Pro is a Mixture of Experts (MoE) model with 1.0 trillion total parameters, but only 42 billion active parameters are used during inference.
-
-> MiMo-V2.5-Pro is open weights, with model weights publicly available and downloadable for self-hosting. The model is released under the MIT license.
-
-Backfilling the roster, Alibaba's Qwen3.7 Max is now documented with benchmark detail: GPQA Diamond 92.4 (ahead of Claude Opus 4.6 Max at 91.3, behind GPT-5.5 at 93.6), SWE-Pro 60.6, and Terminal-Bench 2.0 69.7, putting it ahead of DeepSeek V4-Pro and Claude Opus 4.6 on agentic coding [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]. Critically, Qwen3.7 Max and Qwen3.7 Plus are both **closed-weights, API-only** at $2.50/$7.50 per Mtoken — correcting the earlier characterization of Qwen3.7 Max as an open-weights model [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]].
-
-> Qwen 3.7 Max and Qwen 3.7 Plus are both closed-weights, API-only. On Alibaba Cloud DashScope pricing is $2.50 per million input tokens and $7.50 per million output tokens.
-
-> Qwen3.7-Max scores 92.4 on GPQA Diamond, 60.6% on SWE-Pro, 69.7 on Terminal-Bench 2.0, and 57 on the AA Intelligence Index.
-
-### Updates 2026-05-27
-
-Google officially launched the Gemini 3.5 series at I/O 2026 (May 19), framing it as a family that "combines frontier intelligence with action" — the launch confirms the previously-tracked Gemini 3.5 Flash as the lead model and, notably, makes it the default for the Gemini app and AI Mode in Search globally [[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]. The launch post reiterates the Flash-over-Pro inversion on agentic/coding benchmarks (Terminal-Bench 2.1 76.2%, GDPval-AA 1656 Elo, MCP Atlas 83.6%, CharXiv Reasoning 84.2%) that the wiki already tracks from the model card, and crucially confirms that Gemini 3.5 Pro is being used internally and is expected to ship next month — meaning the Gemini 3.5 frontier tier is not yet fully released, and the publicly-rankable Gemini frontier remains Gemini 3.1 Pro plus the Flash-tier 3.5 entry until 3.5 Pro lands [[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]].
-
-> Gemini 3.5 is our latest family of models, combining frontier intelligence with action.
+> Anthropic said it expects to bring its Mythos-class models to all customers in the coming weeks.
 
 > We are also working on 3.5 Pro, which is already being used internally, and we plan to make it available next month.
 
-On open weights, MiniMax M2.7 (released March 18, 2026) rounds out the mid-tier open-weights field at AA Intelligence Index 50, below the Kimi K2.6 / MiMo-V2.5-Pro co-leaders (54) and DeepSeek V4-Pro (52) but notable for radical efficiency: it is a 230B-total / 10B-active MoE — far sparser than the 1T-class open-weight leaders — with a 205k context window, priced at just $0.30/$1.20 per Mtoken [[minimax-m2-7-everything-you-need-to-know-199c68d0]]. Its standout improvement over M2.5 is hallucination reduction, cutting its rate to 34% (one of the lowest recorded) and moving its AA-Omniscience score from -40 to +1 [[minimax-m2-7-everything-you-need-to-know-199c68d0]]. The aggressive price/active-parameter profile makes it relevant for cost-sensitive agentic loops where a 10B-active model can be self-hosted cheaply, even if it trails the open-weights frontier on aggregate intelligence.
+> Pro targets a 2-million-token context window, a 'Deep Think' reasoning mode, and frontier multimodal understanding.
 
-> MiniMax-M2.7 is a Mixture of Experts (MoE) model with 230 billion total parameters, but only 10 billion active parameters are used during inference.
+> Grok 4.3 (high) costs $1.25 per 1M input tokens and $2.50 per 1M output tokens.
 
-> MiniMax-M2.7 scores +1 on the AA-Omniscience Index, up from MiniMax-M2.5 (-40), with a reduction in hallucination rate to 34%, one of the lowest hallucination rates recorded.
+> MAI-Thinking-1 reaches 97.0% on AIME 2025, and 94.5% on AIME 2026. It's at 53% on SWE Bench Pro, placing it right alongside Opus 4.6 on one of the toughest coding benchmarks. Independent human raters on Surge prefer MAI-Thinking-1 for overall quality in blind side-by-sides to Sonnet 4.6 across single and multi-turn tasks.
+
+### Open-weights leaders
+
+The open-weights frontier now tops out at **55**: MiniMax M3 (Reasoning) took an independent AA Intelligence Index placement at 55 on 2026-06-08, edging past the prior Kimi K2.6 / MiMo-V2.5-Pro tie at 54 to become the public-leaderboard open-weights #1 — pending its still-promised Hugging Face weights drop, and with caveats on verbosity (~3x token usage) and 41 tok/s speed [[minimax-m3-intelligence-performance-price-analysis-418bc9a9]]; DeepSeek V4-Pro sits at 52 [[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]; see [[kimi-k2.6]]. **GLM-5.1** became the first open-weights model to cross 50 on v4.0 (51), built for long-horizon agentic engineering [[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]. Among US/non-Chinese open weights, NVIDIA's **Nemotron 3 Ultra** is the leader at AA Index 48, distinguished by 300+ tokens/sec throughput [[nemotron-3-ultra-launches-june-4-the-first-open-frontier-model-built-for-agents-302459f4]]. The newest entrant, **MiniMax M3**, is the first open-weight model to combine frontier-tier coding, a 1M-token context, and native multimodality, at ~5-10% of closed-frontier prices [[minimax-m3-frontier-coding-1m-context-native-multimodality-all-in-one-model-d466ccc6]]; see [[minimax-m3]].
+
+> Kimi K2.6 (54) and MiMo-V2.5-Pro (54) are tied as the top open weights models by Intelligence Index, followed by DeepSeek V4 Pro (Reasoning, Max Effort) (52).
+
+> GLM-5.1 (Reasoning) achieves a score of 51 on the Artificial Analysis Intelligence Index ... This score places it well above average among comparable models (averaging 30).
+
+> Nemotron 3 Ultra ranks as the #1 US open-weights model with an Intelligence Index of 48, delivering 300+ tokens/second. The model offers up to 5x faster inference and up to 30% lower cost than open frontier models in its class.
+
+> M3 is currently the first and only open-weight model to bring all three together (frontier coding capabilities, 1M context, and native multimodality).
+
+### Architecture and efficiency stories
+
+The most consequential architectural entrant is **SubQ** (Subquadratic), the first LLM on a fully subquadratic (linear-scaling) attention architecture with a **12M-token context window**, reporting ~1,000x less attention compute at 12M tokens — though every headline number is vendor-run and not yet independently reproduced [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]]. On cost-efficiency, Cursor's **Composer 2.5** ranks third on the AA Coding Agent Index while costing ~10-60x less per task than the Claude Code / Codex leaders — reshaping the economics of multi-agent fan-out [[cursor-s-composer-2-5-third-on-the-coding-agent-index-b9ec8ce6]].
+
+> The SSA architecture scales linearly with context length instead of quadratically, cutting attention compute by roughly 1,000x at 12M tokens.
+
+> These competitors cost $4.10 and $4.82 per task respectively, ~10x the cost of Composer 2.5 Fast ($0.44) and ~60x the cost of Composer 2.5 standard ($0.07).
+
+### Takeaways for an agentic-coding + game-dev workflow
+
+For a quality-first agentic-coding loop, Opus 4.8 is now both the smartest and the best public SWE-bench Pro model, making it the default driver for plan/execute/test/fix harnesses [[claude-opus-4-8-benchmarks-explained-60247f20]]. For cost-sensitive parallel-subagent fan-out (and high-iteration game-dev content/tooling pipelines), a cheap-but-capable tier like Composer 2.5 [[cursor-s-composer-2-5-third-on-the-coding-agent-index-b9ec8ce6]] or an open-weight 1M-context multimodal model like MiniMax M3 [[minimax-m3-frontier-coding-1m-context-native-multimodality-all-in-one-model-d466ccc6]] changes the per-task economics dramatically.
+
+### Key open caveats
+
+The public leaderboard is not the true ceiling: Anthropic's Mythos-class capability remains gated [[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]], and benchmark integrity is contested — SWE-bench Verified scores are widely quoted but suspected of contamination, so SWE-bench Pro is the more credible cross-model signal [[claude-opus-4-8-benchmarks-explained-60247f20]]. Several frontier and open-weight claims (SubQ, MiniMax M3, MAI-Thinking-1) remain vendor-reported pending independent placement (see `## Disputes` and `## Open questions`).
+
+## Recent updates
+
+### Updates 2026-06-09 — Project Glasswing to critical infrastructure; Grok Build 0.1 + V9-Medium; Grok Imagine 1.5
+
+Anthropic expanded Project Glasswing on June 2, 2026 — its restricted-access Claude Mythos Preview program — to roughly 150 new organizations across more than 15 countries, with a deliberate focus on critical-infrastructure operators in power, water, healthcare, communications, and hardware [[expanding-project-glasswing-fd9b87df]]. Since the program launched in early April, Mythos has surfaced more than 10,000 high- or critical-severity software vulnerabilities for participating partners — a quantitative datapoint reinforcing the earlier Mythos positioning as Anthropic's true capability ceiling held back from general availability [[expanding-project-glasswing-fd9b87df]]. Named partners include Okta, Samsung, SK Hynix, SK Telecom, NATO, and the EU cybersecurity agency ENISA [[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]. The expansion sits one day after Anthropic confidentially filed for an IPO following its $65B round at near-$1T valuation, indicating Mythos remains the cybersecurity-restricted flagship the firm is willing to scale only in vetted channels [[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]].
+
+> Today, we are sharing that Project Glasswing is expanding to roughly 150 new organizations in more than 15 countries, with a focus on critical infrastructure operators across power, water, healthcare, communications, and hardware. Since launch in early April, the restricted Claude Mythos Preview has surfaced more than 10,000 high- or critical-severity software vulnerabilities for participating partners.
+
+> Anthropic is expanding Project Glasswing, its joint industry initiative to find and fix critical software vulnerabilities using AI, to about 150 new organizations across more than 15 countries.
+
+xAI is moving on two fronts simultaneously. First, Grok Build 0.1 is now publicly available via the xAI API in public beta — a coding-specialized model with a 256k-token context, native MCP support, multimodal text+image inputs, served at 100+ tokens/sec and priced at $1/$2 per Mtoken — the cheapest dedicated agentic-coding frontier model in production today [[grok-build-0-1-on-api-c60c4a6b]]. Second, Grok V9-Medium completed training on May 25, 2026 at 1.5T parameters (3x the current 0.5T V8-small) with supplemental training on licensed Cursor developer-workflow data, targeting public release in mid-June 2026 [[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]].
+
+> Grok Build 0.1 is xAI's fastest coding model. It is a coding model specifically trained for agentic coding tasks, including web development, debugging, and MCP support. It carries a 256,000-token context window and is priced at $1 per million input tokens and $2 per million output tokens.
+
+> Grok V9-Medium has completed training at 1.5 trillion parameters — three times the current production 0.5T V8-small model. It was trained on Cursor data, meaning real developer workflows from one of the most widely used AI code editors.
+
+In the multimodal generation lane, Grok Imagine 1.5 Preview debuted at #1 on the Artificial Analysis Video Arena Image-to-Video leaderboard at 1404 Elo, with native synchronized audio, up to 15-second clips, and 480p/720p at 24 fps [[grok-imagine-1-5-preview-7668cc26]].
+
+> Grok Imagine 1.5 Preview debuted at number one on the Artificial Analysis Video Arena Image-to-Video leaderboard with an Elo rating of 1404. The model turns a single still image into fluid, cinematic video with native synchronized audio.
+
+### Updates 2026-06-08 — MiniMax M3 AA-Index open-weights #1; Apple–Gemini Siri; Anthropic dynamic-workflow harness + Bun Zig→Rust port
+
+MiniMax M3 now has an independent Artificial Analysis Intelligence Index placement at 55 (Reasoning configuration), with AA noting M3 is 'well above average among comparable models (averaging 23)' [[minimax-m3-intelligence-performance-price-analysis-418bc9a9]]. This edges past Kimi K2.6 and MiMo-V2.5-Pro (both at 54), making M3 the new public-leaderboard open-weights #1 on AA Intelligence Index v4.0 — pending the still-promised weights drop on Hugging Face. AA flags two practical caveats: M3 is extremely verbose, generating 91M tokens to complete the Intelligence Index battery vs the 29M average across models (~3x cost multiplier on output-dominated agentic loops), and at 41 tok/s it is 'notably slow' on the AA speed comparator [[minimax-m3-intelligence-performance-price-analysis-418bc9a9]].
+
+> MiniMax-M3 (Reasoning) achieves a score of 55 on the Artificial Analysis Intelligence Index, placing it well above average among comparable models (averaging 23).
+
+> When evaluating the Intelligence Index, it generated 91M tokens, which is very verbose in comparison to the average of 29M. At 41 tokens per second, MiniMax-M3 is notably slow.
+
+AA's published M3 list price on the same listing is $0.30/$1.20 per Mtoken — half the $0.60/$2.40 the OpenRouter listing and launch materials reported. The discrepancy is unresolved (see Disputes); likely a post-launch price cut or tier mismatch.
+
+Apple opened WWDC 2026 on June 8 by formalizing a multi-year Gemini partnership at the OS layer: a custom 1.2-trillion-parameter Gemini model — 8x larger than Apple's prior 150B on-device foundation model — will power a rebuilt Siri across iOS 27 / iPadOS 27 / macOS 27, under a deal worth roughly $1B/year [[what-to-expect-from-wwdc-2026-gemini-powered-siri-ios-27-macos-27-and-more-273ea775]]. Critically for the frontier-models lens, the Gemini model weights run inside Apple Private Cloud Compute (not on Google's servers), making this the first frontier-tier model deployed at this scale under a third-party-infra arrangement distinct from Apple's separate ChatGPT hand-off path. Apple also opened Siri to third-party AI 'Extensions' (Claude, Gemini), changing the OS-level distribution dynamic for every frontier-model vendor.
+
+> A custom 1.2-trillion-parameter Gemini model, eight times larger than Apple's current 150-billion-parameter foundation model, will power the new Siri.
+
+> Apple processes Gemini model queries through its Private Cloud Compute framework; Gemini model weights run within Apple's infrastructure, not on Google's servers.
+
+Anthropic's 'A harness for every task' technical post deepens the parallel-subagents architecture documented around Opus 4.8: dynamic workflows are Claude-authored JavaScript scripts that orchestrate 'tens to hundreds of parallel subagents in a single session, checking its work before anything reaches you' [[a-harness-for-every-task-dynamic-workflows-in-claude-code-bbb7a8da]]. The Bun Zig-to-Rust port case study lands a concrete capability data point: 750,000 lines of Rust, 99.8% existing-test-suite pass rate, 11 days from first commit to merge — one of the largest end-to-end agentic-coding deliverables on public record and a direct stress test of Opus 4.8's long-horizon capability in production.
+
+> Jarred Sumner used dynamic workflows to port Bun from Zig to Rust with 99.8% of the existing test suite passing, roughly 750,000 lines of Rust, and eleven days from first commit to merge.
+
+### Updates 2026-06-07
+
+**MiniMax M3 (June 1, 2026)** — first open-weight model to combine frontier-tier coding (59.0% SWE-Bench Pro vendor-reported), 1M-token context, and native multimodality (image + video + computer use) in one architecture [[minimax-m3-frontier-coding-1m-context-native-multimodality-all-in-one-model-d466ccc6]]. Vendor-reported SWE-Bench Pro 59.0% edges GPT-5.5 (58.6%) and Gemini 3.1 Pro (54.2%), at $0.60/$2.40 per Mtoken — roughly 5-10% of closed-frontier prices [[minimax-m3-debuts-eclipsing-gpt-5-5-and-gemini-3-1-pro-on-key-benchmark-performance-for-just-5-10-of-the-cost-11226d25]]. Weights ship on Hugging Face within ~10 days of launch [[minimax-m3-open-weight-coding-model-frontier-claims-unverified-benchmarks-96b02e45]]. See [[minimax-m3]].
+
+> M3 is currently the first and only open-weight model to bring all three together (frontier coding capabilities, 1M context, and native multimodality).
+
+> MiniMax discloses that several results were run on its own infrastructure, often using agent scaffolding such as Claude Code, Mini-SWE-Agent, or Terminus.
+
+**Gemini 3.5 Pro pre-launch (June 2026 target)** — announced at Google I/O May 19, 2026; still in limited Vertex preview as of June 6 [[google-gemini-3-5-pro-nears-june-launch-with-2-million-token-context-and-deep-think-reasoning-3a0c8ff3]]. Targets 2M-token context, Deep Think reasoning mode, and ~$15/$60 per Mtoken pricing [[google-gemini-3-5-pro-nears-june-launch-with-2-million-token-context-and-deep-think-reasoning-3a0c8ff3]].
+
+> Pro targets a 2-million-token context window, a 'Deep Think' reasoning mode, and frontier multimodal understanding.
+
+> Pricing is expected to be about ten times Gemini 3.5 Flash — roughly $15 per million input and $60 per million output tokens.
+
+### Updates 2026-06-06
+
+OpenAI shipped a new memory architecture called "Dreaming" for ChatGPT on June 4, 2026 [[dreaming-better-memory-for-a-more-helpful-chatgpt-c3ab33c6]]. Dreaming runs a single asynchronous background process that synthesizes memory from many conversations simultaneously, captures context that arises naturally without user prompting, and revises existing memories as circumstances change (e.g. "You're going to Singapore in July" becomes "You went to Singapore in July 2026" after the trip). OpenAI reports factual recall rising from 41.5% (2024) to 82.8% (2026) on its own internal eval, with rollout starting with Plus and Pro subscribers in the United States [[dreaming-better-memory-for-a-more-helpful-chatgpt-c3ab33c6]]. This is the first frontier-lab production memory upgrade since Anthropic's Skills feature, and it shifts the personalization-vs-staleness tradeoff: memories now update with elapsed time rather than freezing at write-time.
+
+> OpenAI reports factual recall rising from 41.5% (2024) to 82.8% (2026) on its own internal eval, with preference and time-sensitive scores in the low-to-mid 70s.
+
+Microsoft AI framed its Build 2026 release as part of a longer-term "hill-climbing machine" — a co-designed pipeline meant to absorb better data, stronger rewards, more capable environments, and more compute cycle after cycle [[building-a-hill-climbing-machine-launching-seven-new-mai-models-adf5b785]]. The full family announced spans seven models: MAI-Thinking-1 (reasoning), MAI-Code-1-Flash (coding), MAI-Image-2.5 (image + edit), MAI Transcribe-1.5 (SOTA transcription, 5x faster, 43 languages), MAI-Voice-2 (15-language TTS), plus two additional models. The framing signals Microsoft is positioning MAI as a long-running roadmap rather than a one-off model release, with explicit independence from OpenAI training data [[building-a-hill-climbing-machine-launching-seven-new-mai-models-adf5b785]].
+
+> The goal is to build what Microsoft thinks of as a hill-climbing machine: an organization that can continuously improve, cycle after cycle, as it applies more compute, better data, and sharper evaluation.
+
+MAI-Code-1-Flash entered general availability inside GitHub Copilot on June 2, 2026 with adaptive thinking, a 5B-active-parameter MoE footprint, and a +16-point lead over Claude Haiku 4.5 on SWE-Bench Pro (51.2% vs 35.2%) [[mai-code-1-flash-61ec7468]]. GitHub's pricing page lists it at $0.75 input / $4.50 output per Mtoken with cached input at $0.075/Mtoken — undercutting Haiku 4.5 on price while leading on coding benchmarks at the Flash tier [[mai-code-1-flash-61ec7468]]. The 60%-fewer-tokens-on-SWE-Bench-Verified claim is the headline efficiency win.
+
+> MAI-Code-1-Flash outperforms Claude Haiku 4.5 across all four core coding benchmarks tested, including a +16-point lead on SWE-Bench Pro (51.2% vs. 35.2%), and solves harder problems with up to 60% fewer tokens on SWE-Bench Verified.
+
+### Updates 2026-06-05
+
+Microsoft formally entered the frontier-tier model race at Build 2026 (June 2-3, 2026) with its first in-house reasoning model, MAI-Thinking-1 — a 35B-active / ~1T-total sparse MoE with a 256K context window, trained from scratch on commercially licensed data without distillation from any third-party model [[introducing-mai-thinking-1-0e3e1662]]. Headline benchmarks include 97.0% on AIME 2025, 94.5% on AIME 2026, 73.5% on SWE-bench Verified, and 52.8% on SWE-Bench Pro — Microsoft positions it as matching Claude Opus 4.6 on coding tasks, with independent human raters on Surge preferring it over Claude Sonnet 4.6 in blind side-by-sides across single and multi-turn tasks [[introducing-mai-thinking-1-0e3e1662]]. MAI-Thinking-1 is available in private preview through Microsoft Foundry; public pricing has not been finalized, and it will be served via the Chat Completions API plus third-party providers (Fireworks AI, Baseten, OpenRouter) [[introducing-mai-thinking-1-0e3e1662]].
+
+> MAI-Thinking-1 reaches 97.0% on AIME 2025, and 94.5% on AIME 2026. It's at 53% on SWE Bench Pro, placing it right alongside Opus 4.6 on one of the toughest coding benchmarks. Independent human raters on Surge prefer MAI-Thinking-1 for overall quality in blind side-by-sides to Sonnet 4.6 across single and multi-turn tasks.
+
+The Build 2026 MAI keynote also confirmed Microsoft is shipping seven MAI models total (MAI-Thinking-1, MAI-Code-1-Flash, MAI-Image-2.5, MAI-Voice-2, MAI-Transcribe-1.5, plus two unnamed) on its in-house MAIA 200 silicon, which Microsoft reports as 30% better performance-per-dollar and 1.4x performance-per-watt versus NVIDIA GB200 — the most aggressive vertical-integration play yet from any frontier lab [[microsoft-build-2026-mai-keynote-transcript-77c10a37]]. Combined with Project Polaris [[github-copilot-replaces-gpt-4-with-project-polaris-ships-multi-agent-vs-code-at-build-ddcc6341]] replacing GPT-4 Turbo as the default Copilot engine in August 2026, Microsoft is now a tier-1 frontier model provider in its own right, decoupling its developer-tooling stack from OpenAI in a single quarter.
+
+> Microsoft announced a family of seven new models across image, voice, transcription, thinking, and coding... When running MAI models on the MAIA 200 chip end-to-end, Microsoft sees 30% better performance per dollar as well as a 1.4x performance-per-watt gain versus GB200.
+
+Anthropic separately formalized its services partner ecosystem on June 3, 2026, launching a three-tier Services Track (Select / Preferred / Global Premier) and a Partner Hub portal — backed by a $100M investment, with 40,000+ firms applied and 10,000+ certified consultants since March 2026 [[introducing-the-services-track-and-partner-hub-of-the-claude-partner-network-c265f4d0]]. The signal here for the frontier landscape: Anthropic is operationalizing a delivery channel matched in scope to its model-capability lead (Opus 4.8 publicly, Mythos Preview gated), turning model dominance into enterprise lock-in via consultancies rather than competing on lowest API price.
+
+> The Services Track has three tiers, each reflecting how deep a firm's Claude practice runs. Select: at least 10 active certified individuals, at least 2 joint customers deployed in production in the trailing 12 months, and at least 1 public customer story. Preferred: at least 100 active certified individuals, at least 15 deployed joint customers, and at least 3 public stories. Global Premier: at least 1,000 active certified individuals, at least 100 deployed joint customers across three or more regions, at least 15 public customer stories, and a joint business plan with named executive sponsors.
+
+### Updates 2026-06-04
+
+**Nemotron 3 Ultra GA**: NVIDIA Nemotron 3 Ultra became generally available on June 4, 2026 on Hugging Face, ModelScope, OpenRouter, and build.nvidia.com [[nemotron-3-ultra-launches-june-4-the-first-open-frontier-model-built-for-agents-302459f4]]. The model delivers 300+ tokens/second, up to 5x faster inference, and up to 30% lower cost versus open frontier models in its class — confirming the June 1 announcement's AA Intelligence Index 48 rating. The GA launch removes the provisionally-tracked "targeted June 4" qualifier.
+
+> Nemotron 3 Ultra became available on June 4, 2026 on Hugging Face, ModelScope, OpenRouter, and build.nvidia.com.
+
+> Nemotron 3 Ultra ranks as the #1 US open-weights model with an Intelligence Index of 48, delivering 300+ tokens/second. The model offers up to 5x faster inference and up to 30% lower cost than open frontier models in its class.
+
+**Project Polaris — Microsoft's Copilot default shift**: At Microsoft Build 2026 (June 2), Microsoft announced Project Polaris, its in-house MoE coding model, will replace GPT-4 Turbo as the default engine for all GitHub Copilot subscribers starting August 2026 [[github-copilot-replaces-gpt-4-with-project-polaris-ships-multi-agent-vs-code-at-build-ddcc6341]]. Built on Microsoft's custom Maia 200 accelerators inside Azure, Polaris outperforms GPT-4 Turbo on HumanEval and MBPP, particularly in low-resource languages (Rust, Haskell). This makes Microsoft the first major cloud vendor to replace an OpenAI model at the product level with an in-house alternative, following MAI-Code-1-Flash and MAI-Thinking-1 announced at the same event.
+
+> Project Polaris, Microsoft's own in-house AI coding model, will replace GPT-4 Turbo as the default engine for all Copilot subscribers starting in August, as announced at Microsoft Build 2026 on June 2, 2026.
+
+> It outperformed GPT-4 Turbo on HumanEval and MBPP benchmarks — particularly in low-resource languages like Rust and Haskell where training data is scarcer and model quality matters most.
+
+**Trump AI Executive Order** (June 2, 2026): President Trump signed "Promoting Advanced Artificial Intelligence Innovation and Security," requesting AI companies voluntarily provide the federal government access to frontier models for cybersecurity review up to 30 days before planned release [[trump-signs-ai-executive-order-asking-companies-to-give-government-early-access-to-models-32296a4f]]. A classified benchmarking process will assess advanced cyber capabilities. The EO does not force participation; it establishes a voluntary framework [[promoting-advanced-artificial-intelligence-innovation-and-security-f342dd5f]].
+
+> On June 2, 2026, President Trump signed an executive order ... which asks companies building the most capable AI systems to give the federal government a look at those systems up to 30 days before they release them to anyone else.
+
+> The order does not force a single company to participate.
+
+**OpenAI on AWS** (June 1, 2026): GPT-5.5, GPT-5.4, and Codex are now available on Amazon Bedrock through an expanded OpenAI–AWS partnership [[openai-frontier-models-and-codex-are-now-available-on-aws-4df8e51c]]. Pricing matches OpenAI first-party rates; usage counts toward AWS commitments. Codex on Bedrock serves 5+ million users per week.
+
+> On June 1, 2026, customers can now access GPT-5.5 — the most advanced frontier model from OpenAI — along with GPT-5.4 and Codex on Amazon Bedrock.
+
+**Anthropic Series H** ($65B, $965B post-money): Anthropic closed its Series H at a $965B post-money valuation, led by Altimeter Capital, Dragoneer, Greenoaks, and Sequoia [[anthropic-raises-65b-series-h-at-965b-post-money-valuation-b5e22ae0]]. Run-rate revenue crossed $47B — up from Series G in February. At $965B, Anthropic is within 3.6% of a $1T valuation.
+
+> Anthropic has raised 65 billion in Series H funding led by Altimeter Capital, Dragoneer, Greenoaks, and Sequoia Capital, valuing the company at 965 billion post-money.
+
+> Since their Series G in February, adoption has continued to grow across global enterprise customers, and their run-rate revenue crossed 47 billion earlier this month.
+
+**Qwen3.7-Plus**: Alibaba launched Qwen3.7-Plus in June 2026, a multimodal (text, image, video) model on the Bailian platform featuring deep reasoning, tool invocation, self-programming, and autonomous iteration [[alibabas-qwen-team-launches-qwen3-7-plus-adding-vision-deep-reasoning-tool-invocation-and-autonomous-iteration-on-the-bailian-platform-205e908f]]. It scores 79.0 on ScreenSpot Pro (vs GPT-5.4 xhigh 67.4, Opus 4.6 49.5) and 70.3 on Terminal Bench 2.0-Terminus (vs DeepSeek V4-Pro Max 67.9, Gemini 3.1 Pro 63.5). Pricing is approximately $0.40/$1.60 per Mtoken via Bailian API; proprietary, no public weights [[alibabas-qwen3-7-plus-supports-text-video-and-imagery-inputs-at-low-cost-but-its-proprietary-ceed7e8a]].
+
+> Qwen3.7-Plus is a multimodal large language model that understands images and video, alongside written prompts. The model includes capabilities for deep reasoning, self-programming, tool invocation, output verification, and autonomous iteration.
+
+> On ScreenSpot Pro, the model scored 79.0, significantly outpacing legacy industry standouts like GPT-5.4 (xhigh) at 67.4 and Claude-Opus-4.6 at 49.5. On Terminal Bench 2.0-Terminus, Qwen3.7-Plus scored 70.3, outperforming DeepSeek-V4-Pro Max (67.9) and Gemini-3.1 Pro (63.5).
+
+### Updates 2026-06-03
+
+Microsoft made its first significant in-house frontier push at Build 2026 (June 2), releasing two models built end-to-end without OpenAI dependency [[microsoft-unveils-new-ai-models-to-lessen-reliance-on-openai-and-lower-costs-for-developers-ef1d54b6]]. **MAI-Code-1-Flash** claims 51.2% SWE-Bench Pro (16 pts over Claude Haiku 4.5), ships to all GitHub Copilot plans today [[introducing-mai-code-1-flash-70f37d2e]]. **MAI-Thinking-1** is a 35B-active-param sparse MoE, 256k context, trained from scratch on commercially licensed data with no distillation from third-party models, in private preview; Microsoft claims it matches Claude Opus 4.6 on coding on SWE Bench Pro [[microsoft-unveils-new-ai-models-to-lessen-reliance-on-openai-and-lower-costs-for-developers-ef1d54b6]].
+
+> MAI-Code-1-Flash outperforms Claude Haiku 4.5 across all four core coding benchmarks tested, including a 16-point lead on SWE-Bench Pro (51.2% vs. 35.2%), and can solve harder coding tasks with up to 60% fewer tokens on SWE-Bench Verified.
+
+> MAI-Thinking-1 is a 35-billion active parameter reasoning model trained on commercially licensed data... a mid-sized sparse Mixture of Experts model with 35 billion active parameters and a 256,000-token context window, trained from scratch on enterprise-grade, commercially licensed data, without distillation from any third-party model.
+
+Anthropic expanded Mythos access on June 2 from ~50 to 150 organizations across 15+ countries through Project Glasswing at $25/$125 per million input/output tokens, with broader GA "coming weeks" [[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]].
+
+> On June 2, Anthropic expanded access to its Claude Mythos cyber-security model, making it available to 150 organisations in more than 15 countries.
+
+> Anthropic said it expects to bring its Mythos-class models to all customers in the coming weeks.
+
+### Updates 2026-06-02
+
+NVIDIA announced Nemotron 3 Ultra during Jensen Huang's Computex keynote on June 1, 2026 — a 550B-parameter mixture-of-experts model (55B active) that is the new leader among US open-weights models on the Artificial Analysis Intelligence Index [[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]. It scores 48 on AA Intelligence Index v4.0, well ahead of Gemma 4 31B (39), Nemotron 3 Super (36), and gpt-oss-120b (33), but six points behind Moonshot's Kimi K2.6 (54), which retains the overall open-weights frontier lead.
+
+> NVIDIA just announced the release of Nemotron 3 Ultra in Jensen Huang's Computex keynote: at 550B parameters (55B active), this is the largest Nemotron 3 model to date, and it is the most intelligent US open weights model.
+
+> Nemotron 3 Ultra scores 48 on the Artificial Analysis Intelligence Index. This is well ahead of the next strongest US open weights models, Gemma 4 31B (39), Nemotron 3 Super (36) and gpt-oss-120b (33), but behind the Chinese-led open weights frontier (Kimi K2.6 at 54).
+
+The more notable differentiator is throughput: over 300 tokens per second on a pre-release DeepInfra endpoint, versus 50–100 tok/s for similarly-sized Chinese open-weights models — a 3–6× speed advantage at the same intelligence tier that materially changes the economics of long-horizon agentic loops [[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]. Ships in both BF16 and NVFP4 quantization, GA targeted June 4, 2026.
+
+> On a pre-release DeepInfra endpoint, Nemotron 3 Ultra served over 300 tokens per second. Peer models in its size class from China-based labs such as DeepSeek and Moonshot (Kimi) are generally served at speeds of 50-100 tokens per second.
+
+### Updates 2026-06-01
+
+Cohere shipped **Command A+** on May 20, 2026 — its first fully Apache-2.0-licensed open-weights model, ending the CC-BY-NC commercial restriction that constrained Command R+ adoption [[introducing-command-a-94d80d08]]. Command A+ is a 218B-total / 25B-active sparse MoE that runs on as few as two NVIDIA H100s (or a single Blackwell B200) at W4A4 quantization, supports 48 languages and a 128K context window, and ships with native citation grounding for agentic enterprise workflows [[introducing-command-a-94d80d08]]. Independent placement: 37 on the Artificial Analysis Intelligence Index — above the median (30) for open-weights models in its size class, but well below the Chinese open-weights frontier (Kimi K2.6 / MiMo-V2.5-Pro at 54, GLM-5.1 at 51) [[cohere-launches-open-weights-model-command-a-more-than-a-year-since-the-command-a-release-7a929ac1]]. The interesting wrinkle is the *licensing-axis* frontier: Command A+ is the first 200B-class open-weights model under unrestricted Apache 2.0, a stricter open-source bar than the MIT-licensed Chinese leaders, and a meaningful win for sovereign / on-prem enterprise agentic deployment.
+
+> Command A+ is a 218B-parameter sparse Mixture-of-Experts model (25B active) released May 20, 2026 under Apache 2.0. It runs on as few as 2 H100 GPUs at W4A4 quantization, supports 48 languages and a 128K context window, ships with native citation grounding, and is positioned for sovereign, on-prem enterprise agentic workflows.
+
+> Command A+ scores 37 on the Artificial Analysis Intelligence Index, placing it above average among other open weight models of similar size (median: 30).
+
+Backfilling the [[claude-opus-4.8]] entity profile: CyberGym vulnerability-reproduction benchmark now confirmed at 78.8%, third behind the invitation-only Claude Mythos Preview (83.1%) and GPT-5.5 (81.8%) [[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]. This is a meaningful jump over Opus 4.7's 73.1% on the same axis [[claude-opus-4-8-benchmarks-explained-60247f20]], confirming the narrowing — but not closing — of the Anthropic public-vs-Mythos cybersecurity capability gap. On SWE-Bench Pro, Opus 4.8's 69.2% is over 10 points ahead of GPT-5.5 (58.6%) and Gemini 3.1 Pro (54.2%), making Opus 4.8 the public-leaderboard #1 on the contamination-resistant coding signal [[claude-opus-4-8-benchmarks-explained-60247f20]].
+
+> Claude Opus 4.8 scored 78.8% on the CyberGym leaderboard, placing it third behind Claude Mythos Preview at 83.1% and GPT-5.5 at 81.8%.
+
+> SWE-Bench Pro (Coding): Opus 4.8 lands at 69.2%, almost 5 points clear of Opus 4.7 (64.3%) and over 10 points ahead of GPT-5.5 (58.6%) and Gemini 3.1 Pro (54.2%).
+
+The public-vs-Mythos Anthropic gap remains lopsided: Mythos still leads on SWE-bench Pro (77.8 vs 69.2) and on the Firefox-exploit subset of CyberGym (70.8% vs 8.8%), but on GPQA Diamond the two models tie at ~94 [[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]].
+
+> Mythos leads on the hardest software work, posting 77.8 to Opus 4.8's 69.2 on SWE-bench Pro. On GPQA Diamond, a set of graduate-level science questions, the two models tie at roughly 94. Anthropic's system cards point to a general-intelligence gap over Opus 4.8 that is modest and uneven, while the cyber gap is vast.
+
+### Updates 2026-05-31
+
+A new agentic-enterprise-IT benchmark, **ITBench-AA**, debuted as a joint Artificial Analysis × IBM Software Innovation Lab effort, testing models on Kubernetes incident root-cause analysis from offline incident snapshots — agents inspect alerts, events, traces and topology to identify contributing-factor entities (deployments, pods, namespaces, network policies) responsible for failures [[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]]. All frontier models score below 50%, making it one of the least saturated agentic benchmarks in the AA suite. Claude Opus 4.7 (Adaptive Reasoning, Max Effort) leads at 47% (at $5.38/task — the most expensive on the board); GPT-5.5 (xhigh) follows at 46% with higher turn-efficiency (31 turns/task vs Gemini 3.1 Pro Preview's 83 at 30%). On open weights: GLM-5.1 leads at 40%, DeepSeek V4 Pro at 38%, Gemma 4 31B at 37%.
+
+> All frontier models score below 50%, making ITBench-AA SRE one of the least saturated agentic benchmarks. Claude Opus 4.7 (Adaptive Reasoning, Max Effort) leads the leaderboard at 47% but is the most expensive at $5.38 per task.
+
+Artificial Analysis also formally announced **AA-LCR** (Long Context Reasoning), now folded into the Intelligence Index v4.0 aggregate [[announcing-artificial-analysis-long-context-reasoning-aa-lcr-7ec45d8d]]. AA-LCR requires models to read 100k tokens of input (cl100k_base tokenizer), integrate information from multiple places, and reason toward answers — 100 questions spanning academic papers, financials, government consultations, legal documents and industry reports, deliberately designed to replicate real knowledge-work reasoning rather than Needle-in-a-Haystack-style retrieval. GPT-5.2 Codex (xhigh) currently leads at 75.7%, followed by GPT-5 (high) at 75.6% and GPT-5.1 (high) at 75.0%.
+
+> AA-LCR is a new benchmark designed to evaluate how well language models can reason across multiple long documents. The benchmark requires models to read 100k tokens of input (measured using the cl100k_base tokenizer), integrate inputs from multiple places in the input documents and reason toward answers.
+
+Mistral shipped **Mistral Medium 3.5** in public preview on May 22, 2026, the company's first flagship merged model — a dense 128B with a 256k context window handling instruction-following, reasoning and coding in a single weight set [[remote-agents-in-vibe-powered-by-mistral-medium-3-5-7dce1573]]. It scores 77.6% on SWE-Bench Verified (ahead of Devstral 2 and Qwen3.5 397B A17B) and becomes the new default model in Mistral Vibe and Le Chat. Mistral also moved coding agents to the cloud as 'remote agents' that run in parallel and notify users when done — directly relevant to parallel-subagent agentic workflows.
+
+> Mistral Medium 3.5 scores 77.6% on SWE-Bench Verified, ahead of Devstral 2 and models like Qwen3.5 397B A17B.
+
+> Mistral moved coding agents to the cloud, where they run on their own, in parallel, and notify you when they're done.
+
+Artificial Analysis' dedicated DeepSeek V4 analysis confirms: V4 Pro lands at #2 among open-weights reasoning models at AA Intelligence Index 52 (behind Kimi K2.6's 54), with V4 Flash at 47 [[deepseek-is-back-among-the-leading-open-weights-models-with-v4-pro-and-v4-flash-d16dda28]]. The three-way open-weights top of the leaderboard now reads: Kimi K2.6 (54), MiMo-V2.5-Pro (54), DeepSeek V4 Pro (52).
+
+> The top open weights models on Artificial Analysis are: 1. Kimi K2.6 (54), 2. MiMo-V2.5-Pro (54), 3. DeepSeek V4 Pro (Reasoning, Max Effort) (52).
+
+### Updates 2026-05-30 — Composer 2.5 coding-agent cost-efficiency
+
+Artificial Analysis ranked **Cursor's Composer 2.5 third on its Coding Agent Index at 62** — a 14-point gain over Composer 2 (48), trailing only Claude Opus 4.7 (max) in Claude Code (66) and GPT-5.5 (xhigh reasoning) in Codex (65) [[cursor-s-composer-2-5-third-on-the-coding-agent-index-b9ec8ce6]]. The cost-per-task gap is the headline number: the two leaders cost $4.10 and $4.82 per task, while Composer 2.5 Fast lands at $0.44 (~10×) and Composer 2.5 standard at $0.07 (~60×) cheaper [[cursor-s-composer-2-5-third-on-the-coding-agent-index-b9ec8ce6]]. The biggest benchmark gain was +35 points on SWE-Bench-Pro-Hard-AA (now 47%, comparable to Opus 4.7 max), with smaller gains on Terminal-Bench v2 (+2) and SWE-Atlas-QnA (+3).
+
+> Composer 2.5 scored 62 on the Coding Agent Index, a 14 point gain over Composer 2 (48), putting it in third place behind only Claude Opus 4.7 (max) in Claude Code (66) and GPT-5.5 (xhigh reasoning) in Codex (65).
+
+> These competitors cost $4.10 and $4.82 per task respectively, ~10x the cost of Composer 2.5 Fast ($0.44) and ~60x the cost of Composer 2.5 standard ($0.07).
+
+The practical implication for agentic workflows: a model competitive on SWE-Bench-Pro-Hard-AA but 10–60× cheaper per task changes the economics of long-horizon multi-agent pipelines where token spend compounds across subagent fan-out. Read alongside Opus 4.8's retaking the AA Intelligence Index at 61.4 [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]], the curve is bifurcating: capability ceiling still climbing at the top, cost-floor falling faster underneath.
+
+### Updates 2026-05-29
+
+The big move since the last run is a new public-leaderboard #1: Anthropic released Claude Opus 4.8 on May 28, 2026, ending GPT-5.5's run at the top of the Artificial Analysis Intelligence Index. Opus 4.8 scores 61.4 on the AA Intelligence Index (v4.0) — up 4.1 points from Opus 4.7 (57) and 1.2 points ahead of GPT-5.5 (xhigh, 60), the previous index leader [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]. Critically for the agentic-task-vs-aggregate split this page has tracked since the GPT-5.5 launch, Anthropic also retook GDPval-AA: Opus 4.8 scores 1,890 Elo, roughly 121 Elo and an implied ~67% win rate ahead of GPT-5.5, reversing the brief GPT-5.5 GDPval lead recorded in late April [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]. So for the first time since GPT-5.5 shipped, aggregate-index leadership and agentic/economic-value leadership are held by the same model.
+
+> Claude Opus 4.8 is the new leader on the Artificial Analysis Intelligence Index with a score of 61.4, up 4.1 points from Opus 4.7 and 1.2 points ahead of GPT-5.5 (xhigh), the previous Index leader.
+
+> Anthropic retakes the lead on GDPval-AA, their primary evaluation for agentic performance on knowledge work tasks, with Opus 4.8 scoring an 1,890 Elo, reflecting an implied win rate of approximately 67% against GPT-5.5.
+
+Directly relevant to the agentic-coding workflow: Opus 4.8 holds list price at $5/$25 per Mtoken (unchanged from Opus 4.7) and reports 88.6% on SWE-bench Verified plus 69.2% on the contamination-resistant SWE-bench Pro — up from 64.3% on Opus 4.7, the axis this page treats as the more credible frontier coding signal [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]. Anthropic's own launch positions it as the strongest computer-use/browser-agent model tested at 84% on Online-Mind2Web, claims it is 4x less likely than Opus 4.7 to ship code with unflagged flaws, and ships a research-preview Fast mode in Claude Code at 2.5x speed for $30/$150 per Mtoken — roughly 3x cheaper than the prior fast tier [[introducing-claude-opus-4-8-5348a7d2]].
+
+> Claude Opus 4.8 is the strongest computer-use and browser-agent model we have tested, scoring 84% on Online-Mind2Web, a meaningful jump over both Opus 4.7 and GPT-5.5.
+
+> Fast mode for Opus 4.8, where the model works at 2.5x the speed, is available in research preview on Claude Code, priced at $30/$150 per million tokens, about three times cheaper than the equivalent fast mode on previous models.
+
+Note that Opus 4.8 supersedes Opus 4.7 as Anthropic's flagship. Entity page: [[claude-opus-4.8]].
 
 ### Updates 2026-05-28
 
@@ -234,39 +310,129 @@ The GLM-5 line also now has a primary technical report (arXiv 2602.15763, 'GLM-5
 
 > GLM-5 implements a new asynchronous reinforcement learning infrastructure that improves post-training efficiency by decoupling generation from training, along with novel asynchronous agent RL algorithms that improve RL quality for learning from complex, long-horizon interactions.
 
-### Updates 2026-05-29
+### Updates 2026-05-27
 
-The big move since the last run is a new public-leaderboard #1: Anthropic released Claude Opus 4.8 on May 28, 2026, ending GPT-5.5's run at the top of the Artificial Analysis Intelligence Index. Opus 4.8 scores 61.4 on the AA Intelligence Index (v4.0) — up 4.1 points from Opus 4.7 (57) and 1.2 points ahead of GPT-5.5 (xhigh, 60), the previous index leader [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]. Critically for the agentic-task-vs-aggregate split this page has tracked since the GPT-5.5 launch, Anthropic also retook GDPval-AA: Opus 4.8 scores 1,890 Elo, roughly 121 Elo and an implied ~67% win rate ahead of GPT-5.5, reversing the brief GPT-5.5 GDPval lead recorded in late April [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]. So for the first time since GPT-5.5 shipped, aggregate-index leadership and agentic/economic-value leadership are held by the same model.
+Google officially launched the Gemini 3.5 series at I/O 2026 (May 19), framing it as a family that "combines frontier intelligence with action" — the launch confirms the previously-tracked Gemini 3.5 Flash as the lead model and, notably, makes it the default for the Gemini app and AI Mode in Search globally [[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]. The launch post reiterates the Flash-over-Pro inversion on agentic/coding benchmarks (Terminal-Bench 2.1 76.2%, GDPval-AA 1656 Elo, MCP Atlas 83.6%, CharXiv Reasoning 84.2%) that the wiki already tracks from the model card, and crucially confirms that Gemini 3.5 Pro is being used internally and is expected to ship next month — meaning the Gemini 3.5 frontier tier is not yet fully released, and the publicly-rankable Gemini frontier remains Gemini 3.1 Pro plus the Flash-tier 3.5 entry until 3.5 Pro lands [[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]].
 
-> Claude Opus 4.8 is the new leader on the Artificial Analysis Intelligence Index with a score of 61.4, up 4.1 points from Opus 4.7 and 1.2 points ahead of GPT-5.5 (xhigh), the previous Index leader.
+> Gemini 3.5 is our latest family of models, combining frontier intelligence with action.
 
-> Anthropic retakes the lead on GDPval-AA, their primary evaluation for agentic performance on knowledge work tasks, with Opus 4.8 scoring an 1,890 Elo, reflecting an implied win rate of approximately 67% against GPT-5.5.
+> We are also working on 3.5 Pro, which is already being used internally, and we plan to make it available next month.
 
-Directly relevant to the agentic-coding workflow: Opus 4.8 holds list price at $5/$25 per Mtoken (unchanged from Opus 4.7) and reports 88.6% on SWE-bench Verified plus 69.2% on the contamination-resistant SWE-bench Pro — up from 64.3% on Opus 4.7, the axis this page treats as the more credible frontier coding signal [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]. Anthropic's own launch positions it as the strongest computer-use/browser-agent model tested at 84% on Online-Mind2Web, claims it is 4x less likely than Opus 4.7 to ship code with unflagged flaws, and ships a research-preview Fast mode in Claude Code at 2.5x speed for $30/$150 per Mtoken — roughly 3x cheaper than the prior fast tier [[introducing-claude-opus-4-8-5348a7d2]].
+On open weights, MiniMax M2.7 (released March 18, 2026) rounds out the mid-tier open-weights field at AA Intelligence Index 50, below the Kimi K2.6 / MiMo-V2.5-Pro co-leaders (54) and DeepSeek V4-Pro (52) but notable for radical efficiency: it is a 230B-total / 10B-active MoE — far sparser than the 1T-class open-weight leaders — with a 205k context window, priced at just $0.30/$1.20 per Mtoken [[minimax-m2-7-everything-you-need-to-know-199c68d0]]. Its standout improvement over M2.5 is hallucination reduction, cutting its rate to 34% (one of the lowest recorded) and moving its AA-Omniscience score from -40 to +1 [[minimax-m2-7-everything-you-need-to-know-199c68d0]]. The aggressive price/active-parameter profile makes it relevant for cost-sensitive agentic loops where a 10B-active model can be self-hosted cheaply, even if it trails the open-weights frontier on aggregate intelligence.
 
-> Claude Opus 4.8 is the strongest computer-use and browser-agent model we have tested, scoring 84% on Online-Mind2Web, a meaningful jump over both Opus 4.7 and GPT-5.5.
+> MiniMax-M2.7 is a Mixture of Experts (MoE) model with 230 billion total parameters, but only 10 billion active parameters are used during inference.
 
-> Fast mode for Opus 4.8, where the model works at 2.5x the speed, is available in research preview on Claude Code, priced at $30/$150 per million tokens, about three times cheaper than the equivalent fast mode on previous models.
+> MiniMax-M2.7 scores +1 on the AA-Omniscience Index, up from MiniMax-M2.5 (-40), with a reduction in hallucination rate to 34%, one of the lowest hallucination rates recorded.
 
-Note that Opus 4.8 supersedes Opus 4.7 as Anthropic's flagship. Entity page: [[claude-opus-4.8]].
+### Updates 2026-05-26
 
-### Updates 2026-06-09
+The open-weights frontier now has two co-leaders. Xiaomi shipped MiMo-V2.5-Pro, which lands at 54 on the Artificial Analysis Intelligence Index — tied with Moonshot's Kimi K2.6 as the top open-weights model, ahead of DeepSeek V4-Pro (52) [[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]. It is a 1T-total / 42B-active MoE released under the MIT license with a 1M-token context window, priced at $1/$3 per Mtoken [[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]. On the contamination-resistant coding axis this page treats as more credible, MiMo-V2.5-Pro reports 57.2% on SWE-bench Pro — within the closed-frontier band and notable for an open-weight MIT model.
 
-Anthropic expanded Project Glasswing on June 2, 2026 — its restricted-access Claude Mythos Preview program — to roughly 150 new organizations across more than 15 countries, with a deliberate focus on critical-infrastructure operators in power, water, healthcare, communications, and hardware [[expanding-project-glasswing-fd9b87df]]. Since the program launched in early April, Mythos has surfaced more than 10,000 high- or critical-severity software vulnerabilities for participating partners — a quantitative datapoint reinforcing the earlier Mythos positioning as Anthropic's true capability ceiling held back from general availability [[expanding-project-glasswing-fd9b87df]]. Named partners include Okta, Samsung, SK Hynix, SK Telecom, NATO, and the EU cybersecurity agency ENISA [[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]. The expansion sits one day after Anthropic confidentially filed for an IPO following its $65B round at near-$1T valuation, indicating Mythos remains the cybersecurity-restricted flagship the firm is willing to scale only in vetted channels [[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]].
+> Kimi K2.6 (54) and MiMo-V2.5-Pro (54) are tied as the top open weights models by Intelligence Index, followed by DeepSeek V4 Pro (Reasoning, Max Effort) (52).
 
-> Today, we are sharing that Project Glasswing is expanding to roughly 150 new organizations in more than 15 countries, with a focus on critical infrastructure operators across power, water, healthcare, communications, and hardware. Since launch in early April, the restricted Claude Mythos Preview has surfaced more than 10,000 high- or critical-severity software vulnerabilities for participating partners.
+> MiMo-V2.5-Pro is a Mixture of Experts (MoE) model with 1.0 trillion total parameters, but only 42 billion active parameters are used during inference.
 
-> Anthropic is expanding Project Glasswing, its joint industry initiative to find and fix critical software vulnerabilities using AI, to about 150 new organizations across more than 15 countries.
+> MiMo-V2.5-Pro is open weights, with model weights publicly available and downloadable for self-hosting. The model is released under the MIT license.
 
-xAI is moving on two fronts simultaneously. First, Grok Build 0.1 is now publicly available via the xAI API in public beta — a coding-specialized model with a 256k-token context, native MCP support, multimodal text+image inputs, served at 100+ tokens/sec and priced at $1/$2 per Mtoken — the cheapest dedicated agentic-coding frontier model in production today [[grok-build-0-1-on-api-c60c4a6b]]. Second, Grok V9-Medium completed training on May 25, 2026 at 1.5T parameters (3x the current 0.5T V8-small) with supplemental training on licensed Cursor developer-workflow data, targeting public release in mid-June 2026 [[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]].
+Backfilling the roster, Alibaba's Qwen3.7 Max is now documented with benchmark detail: GPQA Diamond 92.4 (ahead of Claude Opus 4.6 Max at 91.3, behind GPT-5.5 at 93.6), SWE-Pro 60.6, and Terminal-Bench 2.0 69.7, putting it ahead of DeepSeek V4-Pro and Claude Opus 4.6 on agentic coding [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]. Critically, Qwen3.7 Max and Qwen3.7 Plus are both **closed-weights, API-only** at $2.50/$7.50 per Mtoken — correcting the earlier characterization of Qwen3.7 Max as an open-weights model [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]].
 
-> Grok Build 0.1 is xAI's fastest coding model. It is a coding model specifically trained for agentic coding tasks, including web development, debugging, and MCP support. It carries a 256,000-token context window and is priced at $1 per million input tokens and $2 per million output tokens.
+> Qwen 3.7 Max and Qwen 3.7 Plus are both closed-weights, API-only. On Alibaba Cloud DashScope pricing is $2.50 per million input tokens and $7.50 per million output tokens.
 
-> Grok V9-Medium has completed training at 1.5 trillion parameters — three times the current production 0.5T V8-small model. It was trained on Cursor data, meaning real developer workflows from one of the most widely used AI code editors.
+> Qwen3.7-Max scores 92.4 on GPQA Diamond, 60.6% on SWE-Pro, 69.7 on Terminal-Bench 2.0, and 57 on the AA Intelligence Index.
 
-In the multimodal generation lane, Grok Imagine 1.5 Preview debuted at #1 on the Artificial Analysis Video Arena Image-to-Video leaderboard at 1404 Elo, with native synchronized audio, up to 15-second clips, and 480p/720p at 24 fps [[grok-imagine-1-5-preview-7668cc26]].
+### Updates 2026-05-25
 
-> Grok Imagine 1.5 Preview debuted at number one on the Artificial Analysis Video Arena Image-to-Video leaderboard with an Elo rating of 1404. The model turns a single still image into fluid, cinematic video with native synchronized audio.
+Z.AI shipped GLM-5.1, the open-weight successor to GLM-5, built explicitly for agentic engineering rather than incremental intelligence-index gains [[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]. It is a 754B-parameter MoE + DSA (DeepSeek Sparse Attention) model trained with asynchronous reinforcement learning, released under the MIT license with a 200K context window and 128K max output tokens [[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]. The headline claim is a new state-of-the-art on SWE-Bench Pro (58.4), reported ahead of GPT-5.4, Claude Opus 4.6, and Gemini 3.1 Pro — making it, if confirmed, the leading open-weights model on the contamination-resistant SWE-Bench Pro axis that this page already treats as the more credible frontier coding signal [[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]. Most directly relevant to the agentic-coding workflow: GLM-5.1 is engineered for long-horizon autonomous execution, sustaining a single complex task for up to 8 hours across hundreds of rounds and thousands of tool calls without human intervention — the kind of unattended plan/execute/test/fix loop that an agentic-coding harness depends on, now available in an open-weight model under MIT.
+
+> GLM-5.1 sets a new state-of-the-art on SWE-Bench Pro with a score of 58.4, outperforming GPT-5.4, Claude Opus 4.6, and Gemini 3.1 Pro, making it one of the strongest publicly benchmarked models for software engineering tasks.
+
+> The model is built for long-horizon autonomous execution, capable of working on a single complex task for up to 8 hours — running experiments, revising strategies, and iterating across hundreds of rounds and thousands of tool calls without human intervention.
+
+> GLM-5.1 uses a MoE + DSA architecture trained with asynchronous reinforcement learning and is open-weight under the MIT license with 754B parameters, a 200K context window, and 128K max output tokens.
+
+### Updates 2026-05-24
+
+The most consequential open-weight move in May was efficiency-first, not scale-first. Zyphra released ZAYA1-8B (May 6, 2026), an Apache-2.0 reasoning MoE with 8.4B total but only ~760M active parameters per forward pass, optimized for maximum intelligence density per active parameter [[zaya1-8b-frontier-intelligence-density-trained-on-amd-3012ef57]]. Despite sub-1B active params it reaches 91.9% on AIME'25 and 89.6% on HMMT'25 — competitive with models many times its size [[zaya1-8b-frontier-intelligence-density-trained-on-amd-3012ef57]]. The technical report attributes this to three architectural choices: Compressed Convolutional Attention (CCA), which mixes sequences in a compressed latent space for an 8x KV-cache reduction vs full multi-head attention; a novel MLP-based expert router that improves routing stability over standard linear routers; and learned residual scaling [[zaya1-8b-technical-report-614bf738]]. Notably, ZAYA1-8B was trained end-to-end on AMD Instinct MI300X clusters with AMD Pensando Pollara networking — a rare frontier-relevant result outside the NVIDIA training stack [[zaya1-8b-frontier-intelligence-density-trained-on-amd-3012ef57]].
+
+> ZAYA1-8B is a Mixture-of-Experts language model optimized for maximum reasoning performance per active parameter, with 8.4B total parameters but only 760M active per forward pass.
+
+> With 0.7B active parameters and the 40K/4K Markovian RSA configuration, ZAYA1-8B reaches 91.9% on AIME'25 and 89.6% on HMMT'25.
+
+> Compressed Convolutional Attention (CCA) performs sequence mixing in a compressed latent space, resulting in an 8x reduction in KV-cache size compared to full multi-head attention.
+
+The long-standing open question of whether DeepSeek's reasoning model had shipped now has an answer: DeepSeek R2 is a 32B dense transformer released April 2026 under MIT license, scoring 92.7% on AIME 2025, fitting on a single 24GB consumer GPU, and undercutting Western frontier reasoning APIs by ~70% on token cost [[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]. This is a sharp departure from R1's 671B-parameter MoE — R2 trades raw scale for local-deployability, reframing the frontier question from 'which model is smartest' to 'which is smart enough at a sustainable price' [[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]].
+
+> Where R1 (January 2025) was a 671-billion-parameter Mixture-of-Experts behemoth, R2 ships as a 32B dense transformer released under MIT license, small enough to fit on a single RTX 4090 or A6000.
+
+Looking forward, Google's next Flash tier leaked ahead of I/O 2026: Gemini 3.2 Flash surfaced in the iOS Gemini app and AI Studio on May 5, with early Arena human-preference results showing it beating Gemini 3.1 Pro on creative coding (SVG generation, interactive 3D, animation), and leaked AI Studio pricing of $0.25/$2.00 per Mtoken [[google-accidentally-leaked-gemini-3-2-flash-and-it-already-outperforms-3-1-pro-on-coding-4c205fb8]]. These are preliminary human-preference signals only — Google has not published MMLU-Pro, GPQA Diamond, or SWE-bench Verified scores, expected at I/O — so the leak sits below the topic's methodology bar and is tracked as a forward indicator rather than a confirmed capability claim [[google-accidentally-leaked-gemini-3-2-flash-and-it-already-outperforms-3-1-pro-on-coding-4c205fb8]].
+
+> Gemini 3.2 Flash outperforms Gemini 3.1 Pro on certain creative coding tasks, including the well-circulated ASCII animation benchmark where 3.1 Pro produced broken code while 3.2 Flash succeeded in under two minutes.
+
+### Updates 2026-05-23
+
+The most consequential entrant since the last run is architectural rather than incremental-scale. Miami startup Subquadratic launched SubQ on May 5, 2026 — billed as the first LLM on a fully subquadratic (linear-scaling) attention architecture, with a 12M-token context window, a $29M seed round, and a founding team led by CEO Justin Dangel and CTO Alex Whedon (former Head of Generative AI at Meta) [[subquadratic-launches-with-29m-to-bring-12m-token-context-windows-to-ai-78c846ee]]. The core claim is its SSA (selective sparse attention) layer, which scales linearly with context length instead of quadratically, cutting attention compute by ~1,000x at 12M tokens via content-dependent position selection that itself does not go quadratic [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]].
+
+> SubQ is a large language model from Miami startup Subquadratic, launched May 5, 2026, claiming to be the first LLM on a fully subquadratic (linear-scaling) attention architecture with a 12-million-token context window.
+
+> The SSA architecture scales linearly with context length instead of quadratically, cutting attention compute by roughly 1,000x at 12M tokens.
+
+Crucially for frontier-class status, SubQ is not just a long-context novelty: it reports 81.8% on SWE-bench Verified — within the closed-frontier band — alongside 95.0% on RULER 128K and 65.9% on MRCR v2 at 1M tokens, where it beats Gemini 3.1 Pro (26.3%) but trails GPT-5.5 (74.0%) [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]]. The reported prefill speedups (7.2x at 128K up to 52.2x at 1M tokens vs FlashAttention on B200 GPUs) and the shipped agentic surface (SubQ Code coding agent, SubQ Search deep-research tool) make this directly relevant to whole-repository agentic coding loops [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]].
+
+> SubQ scored 95.0% on RULER 128K, 65.9% on MRCR v2 at 1M tokens, and 81.8% on SWE-Bench Verified. At 1M tokens, SubQ outperforms Gemini 3.1 Pro (65.9% vs 26.3%) on MRCR v2, though it trails GPT-5.5 (74.0%).
+
+> Subquadratic is making this model available through an API with a 12-million-token context window, as well as a coding agent (SubQ Code) and a deep research tool (SubQ Search).
+
+The caveat is sourcing: every headline efficiency number is vendor-run, single-shot, and not yet independently reproduced [[the-context-window-has-been-shattered-subquadratic-debuts-a-12-million-token-window-badc2592]] — there is no artificialanalysis.ai Intelligence Index entry for SubQ yet, so it cannot be slotted into the roster comparison until independent eval lands.
+
+### Updates 2026-05-22
+
+Meta has re-entered the frontier race with Muse Spark, its first frontier-class model since Llama 4 Maverick (April 2025) and — notably — its first model not released as open weights [[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]. Muse Spark scores 52 on the AA Intelligence Index (top-5 overall), sitting ahead of Claude Sonnet 4.6, GLM-5.1, MiniMax-M2.7 and Grok 4.20, and behind Gemini 3.1 Pro Preview, GPT-5.4 and Claude Opus 4.6. The jump is dramatic relative to Meta's open-weight history: Llama 4 Maverick and Scout scored 18 and 13 respectively as non-reasoning models, so Muse Spark closes most of the frontier gap in a single release. It is a multimodal reasoning model (text/image/speech input, text output) with a 260k context window, currently gated to Meta's first-party products (Meta AI, Facebook, Instagram, Threads) with API access promised soon.
+
+> Muse Spark scores 52 on the Artificial Analysis Intelligence Index, placing it within the top 5 models benchmarked.
+
+> It is the first frontier-class model from Meta since Llama 4 Maverick was released in April 2025, and notably the first Meta model that is not being released as open weights.
+
+On open weights, Z.AI's GLM-5 (released February 11, 2026) is the leading open-weights model on the AA Intelligence Index at 50, up 8 points from GLM-4.7's 42 [[glm-5-everything-you-need-to-know-a53ff5c1]]. It is a 744B-total / 40B-active MoE — Z.AI's first new architecture since GLM-4.5 — and is the first model on this list documented to integrate DeepSeek Sparse Attention. GLM-5 takes the highest AA Agentic Index score among open-weights models (63, third overall), driven by GDPval-AA, under an MIT license with a 200k context window (text-only I/O).
+
+> GLM-5 is the new leading open weights model ... GLM-5 achieves the highest Artificial Analysis Agentic Index score among open weights models with a score of 63, ranking third overall.
+
+> GLM-5 ... scaling to 744B total / 40B active parameters, and integrates DeepSeek Sparse Attention.
+
+### Updates 2026-05-21
+
+Google DeepMind released Gemini 3.5 Flash on May 19, 2026, the first model in the Gemini 3.5 series. Despite being a Flash-tier model, it outperforms Gemini 3.1 Pro on agentic and coding benchmarks: Terminal-Bench 2.1 76.2%, MCP Atlas 83.6%, GDPval-AA 1656 Elo, and CharXiv Reasoning 84.2% for multimodal understanding [[gemini-35-flash-model-card-de99f770]]. On independent evaluation it scores 55 on the AA Intelligence Index (a 9-point jump over Gemini 3 Flash, driven by agentic gains and hallucination reduction), runs at over 280 output tokens/sec, and is priced at $1.50/$9 per Mtoken — placing it on the speed-intelligence Pareto frontier [[gemini-35-flash-the-new-leader-in-intelligence-versus-speed-d886178d]].
+
+> Gemini 3.5 Flash outperforms Gemini 3.1 Pro on challenging coding and agentic benchmarks like Terminal-Bench 2.1 with a score of 76.2%.
+
+> Gemini 3.5 Flash (high) scores 55 on the Artificial Analysis Intelligence Index ... a 9-point improvement from Gemini 3 Flash, driven primarily by agentic performance gains and hallucination reduction.
+
+Anthropic's most capable model is Claude Mythos Preview (announced April 7, 2026), which is state-of-the-art on SWE-bench Verified (93.9%), GPQA Diamond (94.6%), USAMO (97.6%), Terminal-Bench 2.0 (82.0%), CyberGym (83.1%), and a saturated Cybench (100% pass@1). Unusually, Anthropic deliberately withheld it from general availability because its autonomous cybersecurity capabilities are judged too dangerous to ship broadly; access is invitation-only through Project Glasswing for critical-infrastructure and open-source defenders [[claude-mythos-preview-d737ab91]]. This means the publicly-rankable frontier (GPT-5.5, Opus 4.7, Gemini 3.1 Pro) sits below an unreleased Anthropic ceiling.
+
+> Claude Mythos Preview is state-of-the-art on SWE-bench Verified (93.9%), GPQA Diamond (94.6%), USAMO (97.6%), Terminal-Bench 2.0 (82.0%), CyberGym (83.1%), and Cybench (100% pass@1, saturated).
+
+> Anthropic does not plan to make Claude Mythos Preview generally available; access is invitation-only as part of Project Glasswing because its autonomous cybersecurity capabilities are judged too powerful to ship without additional safeguards.
+
+On open weights, Moonshot's Kimi K2.6 (released April 20, 2026) is the new leading open-weights model, landing #4 on the AA Intelligence Index at 54 — behind only Anthropic, Google, and OpenAI (all 57). It is a 1T-total / 32B-active MoE with a 256k context, and cut its hallucination rate to 39% from Kimi K2.5's 65%, reaching 1520 Elo on GDPval-AA [[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]. This puts the leading open-weights model within 3 AA-Index points of the closed-source frontier.
+
+> Moonshot's Kimi K2.6 is the new leading open weights model, landing at #4 on the Artificial Analysis Intelligence Index (54) behind only Anthropic, Google, and OpenAI (all 57).
+
+A new benchmark-methodology paper argues the frontier leaderboards have stopped separating models on independent axes, and that the more informative signal is whether capabilities reinforce or trade off across releases [[the-growing-pains-of-frontier-models-when-leaderboards-stop-separating-and-what-to-measure-next-b0488a82]]. The authors decompose paired SWE-bench and GPQA Diamond scores into a population coupling trend plus a per-release residual ("h-field") that diagnoses each release's capability emphasis. Across 34 models from 10 labs (2024–2026) capabilities mostly cooperate, but cooperation varies by lab and over time: DeepSeek reversed from reasoning-rich to coding-first, Google maintains consistent reasoning emphasis, and Anthropic oscillates between coding excursions and recovery — with five April 2026 releases confirming the diagnostic out of sample.
+
+> We decompose paired SWE-bench and GPQA Diamond scores into a population coupling trend and per-release residual (h-field) that diagnoses capability emphasis and identifies which measurement or stress test is most informative next.
+
+> DeepSeek reversed from reasoning-rich to coding-first; Google maintains consistent reasoning emphasis; Anthropic oscillates between coding excursions and recovery.
+
+On the model-release side, OpenAI introduced GPT-Rosalind, a frontier reasoning model specialized for life-sciences R&D (target discovery/validation, genomics interpretation, pathway analysis, hypothesis generation), optimized for scientific tool use across chemistry, protein engineering, and genomics [[introducing-gpt-rosalind-for-life-sciences-research-078f0d54]]. Like Claude Mythos Preview, it is deliberately gated: research preview, enterprise/eligible-institution access only via a trusted-access deployment structure, with no public pricing — a continuation of the pattern where the most specialized frontier capabilities ship behind restricted access rather than open API.
+
+> GPT-Rosalind is a frontier reasoning model built to support research across biology, drug discovery, and translational medicine, with optimization for scientific workflows that combines improved tool use with deeper understanding across chemistry, protein engineering, and genomics.
+
+> GPT-Rosalind is currently in research preview, deployed to eligible institutions, available to eligible U.S. customers with Enterprise agreements, launching through a trusted-access deployment structure.
+
+On open weights, Alibaba shipped Qwen3.6-27B with a 262,144-token native context extensible to ~1.01M tokens, and a notable agentic feature: a `preserve_thinking` option that retains full reasoning context across turns (interleaved thinking), which the model card claims improves decision consistency and can reduce overall token consumption by minimizing redundant reasoning — explicitly framed as beneficial for agent scenarios [[qwen3-6-27b-on-hugging-face-20e9d0e7]].
+
+> The model supports a preserve_thinking option that can be enabled when making API calls to maintain full reasoning context across multiple turns.
+
+> Maintaining full reasoning context can enhance decision consistency and, in many cases, reduce overall token consumption by minimizing redundant reasoning, which is particularly beneficial for agent scenarios.
 
 ## Comparisons
 
@@ -395,170 +561,6 @@ Artificial Analysis ranked **Cursor's Composer 2.5 third on its Coding Agent Ind
 > These competitors cost $4.10 and $4.82 per task respectively, ~10x the cost of Composer 2.5 Fast ($0.44) and ~60x the cost of Composer 2.5 standard ($0.07).
 
 The practical implication for agentic workflows: a model competitive on SWE-Bench-Pro-Hard-AA but 10–60× cheaper per task changes the economics of long-horizon multi-agent pipelines where token spend compounds across subagent fan-out. Read alongside Opus 4.8's retaking the AA Intelligence Index at 61.4 [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]], the curve is bifurcating: capability ceiling still climbing at the top, cost-floor falling faster underneath.
-
-## Updates 2026-05-31
-
-A new agentic-enterprise-IT benchmark, **ITBench-AA**, debuted as a joint Artificial Analysis × IBM Software Innovation Lab effort, testing models on Kubernetes incident root-cause analysis from offline incident snapshots — agents inspect alerts, events, traces and topology to identify contributing-factor entities (deployments, pods, namespaces, network policies) responsible for failures [[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]]. All frontier models score below 50%, making it one of the least saturated agentic benchmarks in the AA suite. Claude Opus 4.7 (Adaptive Reasoning, Max Effort) leads at 47% (at $5.38/task — the most expensive on the board); GPT-5.5 (xhigh) follows at 46% with higher turn-efficiency (31 turns/task vs Gemini 3.1 Pro Preview's 83 at 30%). On open weights: GLM-5.1 leads at 40%, DeepSeek V4 Pro at 38%, Gemma 4 31B at 37%.
-
-> All frontier models score below 50%, making ITBench-AA SRE one of the least saturated agentic benchmarks. Claude Opus 4.7 (Adaptive Reasoning, Max Effort) leads the leaderboard at 47% but is the most expensive at $5.38 per task.
-
-Artificial Analysis also formally announced **AA-LCR** (Long Context Reasoning), now folded into the Intelligence Index v4.0 aggregate [[announcing-artificial-analysis-long-context-reasoning-aa-lcr-7ec45d8d]]. AA-LCR requires models to read 100k tokens of input (cl100k_base tokenizer), integrate information from multiple places, and reason toward answers — 100 questions spanning academic papers, financials, government consultations, legal documents and industry reports, deliberately designed to replicate real knowledge-work reasoning rather than Needle-in-a-Haystack-style retrieval. GPT-5.2 Codex (xhigh) currently leads at 75.7%, followed by GPT-5 (high) at 75.6% and GPT-5.1 (high) at 75.0%.
-
-> AA-LCR is a new benchmark designed to evaluate how well language models can reason across multiple long documents. The benchmark requires models to read 100k tokens of input (measured using the cl100k_base tokenizer), integrate inputs from multiple places in the input documents and reason toward answers.
-
-Mistral shipped **Mistral Medium 3.5** in public preview on May 22, 2026, the company's first flagship merged model — a dense 128B with a 256k context window handling instruction-following, reasoning and coding in a single weight set [[remote-agents-in-vibe-powered-by-mistral-medium-3-5-7dce1573]]. It scores 77.6% on SWE-Bench Verified (ahead of Devstral 2 and Qwen3.5 397B A17B) and becomes the new default model in Mistral Vibe and Le Chat. Mistral also moved coding agents to the cloud as 'remote agents' that run in parallel and notify users when done — directly relevant to parallel-subagent agentic workflows.
-
-> Mistral Medium 3.5 scores 77.6% on SWE-Bench Verified, ahead of Devstral 2 and models like Qwen3.5 397B A17B.
-
-> Mistral moved coding agents to the cloud, where they run on their own, in parallel, and notify you when they're done.
-
-Artificial Analysis' dedicated DeepSeek V4 analysis confirms: V4 Pro lands at #2 among open-weights reasoning models at AA Intelligence Index 52 (behind Kimi K2.6's 54), with V4 Flash at 47 [[deepseek-is-back-among-the-leading-open-weights-models-with-v4-pro-and-v4-flash-d16dda28]]. The three-way open-weights top of the leaderboard now reads: Kimi K2.6 (54), MiMo-V2.5-Pro (54), DeepSeek V4 Pro (52).
-
-> The top open weights models on Artificial Analysis are: 1. Kimi K2.6 (54), 2. MiMo-V2.5-Pro (54), 3. DeepSeek V4 Pro (Reasoning, Max Effort) (52).
-
-_no contradictions or gaps known yet (last reviewed: 2026-05-31)_
-
-### Updates 2026-06-01
-
-Cohere shipped **Command A+** on May 20, 2026 — its first fully Apache-2.0-licensed open-weights model, ending the CC-BY-NC commercial restriction that constrained Command R+ adoption [[introducing-command-a-94d80d08]]. Command A+ is a 218B-total / 25B-active sparse MoE that runs on as few as two NVIDIA H100s (or a single Blackwell B200) at W4A4 quantization, supports 48 languages and a 128K context window, and ships with native citation grounding for agentic enterprise workflows [[introducing-command-a-94d80d08]]. Independent placement: 37 on the Artificial Analysis Intelligence Index — above the median (30) for open-weights models in its size class, but well below the Chinese open-weights frontier (Kimi K2.6 / MiMo-V2.5-Pro at 54, GLM-5.1 at 51) [[cohere-launches-open-weights-model-command-a-more-than-a-year-since-the-command-a-release-7a929ac1]]. The interesting wrinkle is the *licensing-axis* frontier: Command A+ is the first 200B-class open-weights model under unrestricted Apache 2.0, a stricter open-source bar than the MIT-licensed Chinese leaders, and a meaningful win for sovereign / on-prem enterprise agentic deployment.
-
-> Command A+ is a 218B-parameter sparse Mixture-of-Experts model (25B active) released May 20, 2026 under Apache 2.0. It runs on as few as 2 H100 GPUs at W4A4 quantization, supports 48 languages and a 128K context window, ships with native citation grounding, and is positioned for sovereign, on-prem enterprise agentic workflows.
-
-> Command A+ scores 37 on the Artificial Analysis Intelligence Index, placing it above average among other open weight models of similar size (median: 30).
-
-Backfilling the [[claude-opus-4.8]] entity profile: CyberGym vulnerability-reproduction benchmark now confirmed at 78.8%, third behind the invitation-only Claude Mythos Preview (83.1%) and GPT-5.5 (81.8%) [[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]. This is a meaningful jump over Opus 4.7's 73.1% on the same axis [[claude-opus-4-8-benchmarks-explained-60247f20]], confirming the narrowing — but not closing — of the Anthropic public-vs-Mythos cybersecurity capability gap. On SWE-Bench Pro, Opus 4.8's 69.2% is over 10 points ahead of GPT-5.5 (58.6%) and Gemini 3.1 Pro (54.2%), making Opus 4.8 the public-leaderboard #1 on the contamination-resistant coding signal [[claude-opus-4-8-benchmarks-explained-60247f20]].
-
-> Claude Opus 4.8 scored 78.8% on the CyberGym leaderboard, placing it third behind Claude Mythos Preview at 83.1% and GPT-5.5 at 81.8%.
-
-> SWE-Bench Pro (Coding): Opus 4.8 lands at 69.2%, almost 5 points clear of Opus 4.7 (64.3%) and over 10 points ahead of GPT-5.5 (58.6%) and Gemini 3.1 Pro (54.2%).
-
-The public-vs-Mythos Anthropic gap remains lopsided: Mythos still leads on SWE-bench Pro (77.8 vs 69.2) and on the Firefox-exploit subset of CyberGym (70.8% vs 8.8%), but on GPQA Diamond the two models tie at ~94 [[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]].
-
-> Mythos leads on the hardest software work, posting 77.8 to Opus 4.8's 69.2 on SWE-bench Pro. On GPQA Diamond, a set of graduate-level science questions, the two models tie at roughly 94. Anthropic's system cards point to a general-intelligence gap over Opus 4.8 that is modest and uneven, while the cyber gap is vast.
-
-### Updates 2026-06-02
-
-NVIDIA announced Nemotron 3 Ultra during Jensen Huang's Computex keynote on June 1, 2026 — a 550B-parameter mixture-of-experts model (55B active) that is the new leader among US open-weights models on the Artificial Analysis Intelligence Index [[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]. It scores 48 on AA Intelligence Index v4.0, well ahead of Gemma 4 31B (39), Nemotron 3 Super (36), and gpt-oss-120b (33), but six points behind Moonshot's Kimi K2.6 (54), which retains the overall open-weights frontier lead.
-
-> NVIDIA just announced the release of Nemotron 3 Ultra in Jensen Huang's Computex keynote: at 550B parameters (55B active), this is the largest Nemotron 3 model to date, and it is the most intelligent US open weights model.
-
-> Nemotron 3 Ultra scores 48 on the Artificial Analysis Intelligence Index. This is well ahead of the next strongest US open weights models, Gemma 4 31B (39), Nemotron 3 Super (36) and gpt-oss-120b (33), but behind the Chinese-led open weights frontier (Kimi K2.6 at 54).
-
-The more notable differentiator is throughput: over 300 tokens per second on a pre-release DeepInfra endpoint, versus 50–100 tok/s for similarly-sized Chinese open-weights models — a 3–6× speed advantage at the same intelligence tier that materially changes the economics of long-horizon agentic loops [[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]. Ships in both BF16 and NVFP4 quantization, GA targeted June 4, 2026.
-
-> On a pre-release DeepInfra endpoint, Nemotron 3 Ultra served over 300 tokens per second. Peer models in its size class from China-based labs such as DeepSeek and Moonshot (Kimi) are generally served at speeds of 50-100 tokens per second.
-
-### Updates 2026-06-03
-
-Microsoft made its first significant in-house frontier push at Build 2026 (June 2), releasing two models built end-to-end without OpenAI dependency [[microsoft-unveils-new-ai-models-to-lessen-reliance-on-openai-and-lower-costs-for-developers-ef1d54b6]]. **MAI-Code-1-Flash** claims 51.2% SWE-Bench Pro (16 pts over Claude Haiku 4.5), ships to all GitHub Copilot plans today [[introducing-mai-code-1-flash-70f37d2e]]. **MAI-Thinking-1** is a 35B-active-param sparse MoE, 256k context, trained from scratch on commercially licensed data with no distillation from third-party models, in private preview; Microsoft claims it matches Claude Opus 4.6 on coding on SWE Bench Pro [[microsoft-unveils-new-ai-models-to-lessen-reliance-on-openai-and-lower-costs-for-developers-ef1d54b6]].
-
-> MAI-Code-1-Flash outperforms Claude Haiku 4.5 across all four core coding benchmarks tested, including a 16-point lead on SWE-Bench Pro (51.2% vs. 35.2%), and can solve harder coding tasks with up to 60% fewer tokens on SWE-Bench Verified.
-
-> MAI-Thinking-1 is a 35-billion active parameter reasoning model trained on commercially licensed data... a mid-sized sparse Mixture of Experts model with 35 billion active parameters and a 256,000-token context window, trained from scratch on enterprise-grade, commercially licensed data, without distillation from any third-party model.
-
-Anthropic expanded Mythos access on June 2 from ~50 to 150 organizations across 15+ countries through Project Glasswing at $25/$125 per million input/output tokens, with broader GA "coming weeks" [[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]].
-
-> On June 2, Anthropic expanded access to its Claude Mythos cyber-security model, making it available to 150 organisations in more than 15 countries.
-
-> Anthropic said it expects to bring its Mythos-class models to all customers in the coming weeks.
-
-### Updates 2026-06-04
-
-**Nemotron 3 Ultra GA**: NVIDIA Nemotron 3 Ultra became generally available on June 4, 2026 on Hugging Face, ModelScope, OpenRouter, and build.nvidia.com [[nemotron-3-ultra-launches-june-4-the-first-open-frontier-model-built-for-agents-302459f4]]. The model delivers 300+ tokens/second, up to 5x faster inference, and up to 30% lower cost versus open frontier models in its class — confirming the June 1 announcement's AA Intelligence Index 48 rating. The GA launch removes the provisionally-tracked "targeted June 4" qualifier.
-
-> Nemotron 3 Ultra became available on June 4, 2026 on Hugging Face, ModelScope, OpenRouter, and build.nvidia.com.
-
-> Nemotron 3 Ultra ranks as the #1 US open-weights model with an Intelligence Index of 48, delivering 300+ tokens/second. The model offers up to 5x faster inference and up to 30% lower cost than open frontier models in its class.
-
-**Project Polaris — Microsoft's Copilot default shift**: At Microsoft Build 2026 (June 2), Microsoft announced Project Polaris, its in-house MoE coding model, will replace GPT-4 Turbo as the default engine for all GitHub Copilot subscribers starting August 2026 [[github-copilot-replaces-gpt-4-with-project-polaris-ships-multi-agent-vs-code-at-build-ddcc6341]]. Built on Microsoft's custom Maia 200 accelerators inside Azure, Polaris outperforms GPT-4 Turbo on HumanEval and MBPP, particularly in low-resource languages (Rust, Haskell). This makes Microsoft the first major cloud vendor to replace an OpenAI model at the product level with an in-house alternative, following MAI-Code-1-Flash and MAI-Thinking-1 announced at the same event.
-
-> Project Polaris, Microsoft's own in-house AI coding model, will replace GPT-4 Turbo as the default engine for all Copilot subscribers starting in August, as announced at Microsoft Build 2026 on June 2, 2026.
-
-> It outperformed GPT-4 Turbo on HumanEval and MBPP benchmarks — particularly in low-resource languages like Rust and Haskell where training data is scarcer and model quality matters most.
-
-**Trump AI Executive Order** (June 2, 2026): President Trump signed "Promoting Advanced Artificial Intelligence Innovation and Security," requesting AI companies voluntarily provide the federal government access to frontier models for cybersecurity review up to 30 days before planned release [[trump-signs-ai-executive-order-asking-companies-to-give-government-early-access-to-models-32296a4f]]. A classified benchmarking process will assess advanced cyber capabilities. The EO does not force participation; it establishes a voluntary framework [[promoting-advanced-artificial-intelligence-innovation-and-security-f342dd5f]].
-
-> On June 2, 2026, President Trump signed an executive order ... which asks companies building the most capable AI systems to give the federal government a look at those systems up to 30 days before they release them to anyone else.
-
-> The order does not force a single company to participate.
-
-**OpenAI on AWS** (June 1, 2026): GPT-5.5, GPT-5.4, and Codex are now available on Amazon Bedrock through an expanded OpenAI–AWS partnership [[openai-frontier-models-and-codex-are-now-available-on-aws-4df8e51c]]. Pricing matches OpenAI first-party rates; usage counts toward AWS commitments. Codex on Bedrock serves 5+ million users per week.
-
-> On June 1, 2026, customers can now access GPT-5.5 — the most advanced frontier model from OpenAI — along with GPT-5.4 and Codex on Amazon Bedrock.
-
-**Anthropic Series H** ($65B, $965B post-money): Anthropic closed its Series H at a $965B post-money valuation, led by Altimeter Capital, Dragoneer, Greenoaks, and Sequoia [[anthropic-raises-65b-series-h-at-965b-post-money-valuation-b5e22ae0]]. Run-rate revenue crossed $47B — up from Series G in February. At $965B, Anthropic is within 3.6% of a $1T valuation.
-
-> Anthropic has raised 65 billion in Series H funding led by Altimeter Capital, Dragoneer, Greenoaks, and Sequoia Capital, valuing the company at 965 billion post-money.
-
-> Since their Series G in February, adoption has continued to grow across global enterprise customers, and their run-rate revenue crossed 47 billion earlier this month.
-
-**Qwen3.7-Plus**: Alibaba launched Qwen3.7-Plus in June 2026, a multimodal (text, image, video) model on the Bailian platform featuring deep reasoning, tool invocation, self-programming, and autonomous iteration [[alibabas-qwen-team-launches-qwen3-7-plus-adding-vision-deep-reasoning-tool-invocation-and-autonomous-iteration-on-the-bailian-platform-205e908f]]. It scores 79.0 on ScreenSpot Pro (vs GPT-5.4 xhigh 67.4, Opus 4.6 49.5) and 70.3 on Terminal Bench 2.0-Terminus (vs DeepSeek V4-Pro Max 67.9, Gemini 3.1 Pro 63.5). Pricing is approximately $0.40/$1.60 per Mtoken via Bailian API; proprietary, no public weights [[alibabas-qwen3-7-plus-supports-text-video-and-imagery-inputs-at-low-cost-but-its-proprietary-ceed7e8a]].
-
-> Qwen3.7-Plus is a multimodal large language model that understands images and video, alongside written prompts. The model includes capabilities for deep reasoning, self-programming, tool invocation, output verification, and autonomous iteration.
-
-> On ScreenSpot Pro, the model scored 79.0, significantly outpacing legacy industry standouts like GPT-5.4 (xhigh) at 67.4 and Claude-Opus-4.6 at 49.5. On Terminal Bench 2.0-Terminus, Qwen3.7-Plus scored 70.3, outperforming DeepSeek-V4-Pro Max (67.9) and Gemini-3.1 Pro (63.5).
-
-### Updates 2026-06-05
-
-Microsoft formally entered the frontier-tier model race at Build 2026 (June 2-3, 2026) with its first in-house reasoning model, MAI-Thinking-1 — a 35B-active / ~1T-total sparse MoE with a 256K context window, trained from scratch on commercially licensed data without distillation from any third-party model [[introducing-mai-thinking-1-0e3e1662]]. Headline benchmarks include 97.0% on AIME 2025, 94.5% on AIME 2026, 73.5% on SWE-bench Verified, and 52.8% on SWE-Bench Pro — Microsoft positions it as matching Claude Opus 4.6 on coding tasks, with independent human raters on Surge preferring it over Claude Sonnet 4.6 in blind side-by-sides across single and multi-turn tasks [[introducing-mai-thinking-1-0e3e1662]]. MAI-Thinking-1 is available in private preview through Microsoft Foundry; public pricing has not been finalized, and it will be served via the Chat Completions API plus third-party providers (Fireworks AI, Baseten, OpenRouter) [[introducing-mai-thinking-1-0e3e1662]].
-
-> MAI-Thinking-1 reaches 97.0% on AIME 2025, and 94.5% on AIME 2026. It's at 53% on SWE Bench Pro, placing it right alongside Opus 4.6 on one of the toughest coding benchmarks. Independent human raters on Surge prefer MAI-Thinking-1 for overall quality in blind side-by-sides to Sonnet 4.6 across single and multi-turn tasks.
-
-The Build 2026 MAI keynote also confirmed Microsoft is shipping seven MAI models total (MAI-Thinking-1, MAI-Code-1-Flash, MAI-Image-2.5, MAI-Voice-2, MAI-Transcribe-1.5, plus two unnamed) on its in-house MAIA 200 silicon, which Microsoft reports as 30% better performance-per-dollar and 1.4x performance-per-watt versus NVIDIA GB200 — the most aggressive vertical-integration play yet from any frontier lab [[microsoft-build-2026-mai-keynote-transcript-77c10a37]]. Combined with Project Polaris [[github-copilot-replaces-gpt-4-with-project-polaris-ships-multi-agent-vs-code-at-build-ddcc6341]] replacing GPT-4 Turbo as the default Copilot engine in August 2026, Microsoft is now a tier-1 frontier model provider in its own right, decoupling its developer-tooling stack from OpenAI in a single quarter.
-
-> Microsoft announced a family of seven new models across image, voice, transcription, thinking, and coding... When running MAI models on the MAIA 200 chip end-to-end, Microsoft sees 30% better performance per dollar as well as a 1.4x performance-per-watt gain versus GB200.
-
-Anthropic separately formalized its services partner ecosystem on June 3, 2026, launching a three-tier Services Track (Select / Preferred / Global Premier) and a Partner Hub portal — backed by a $100M investment, with 40,000+ firms applied and 10,000+ certified consultants since March 2026 [[introducing-the-services-track-and-partner-hub-of-the-claude-partner-network-c265f4d0]]. The signal here for the frontier landscape: Anthropic is operationalizing a delivery channel matched in scope to its model-capability lead (Opus 4.8 publicly, Mythos Preview gated), turning model dominance into enterprise lock-in via consultancies rather than competing on lowest API price.
-
-> The Services Track has three tiers, each reflecting how deep a firm's Claude practice runs. Select: at least 10 active certified individuals, at least 2 joint customers deployed in production in the trailing 12 months, and at least 1 public customer story. Preferred: at least 100 active certified individuals, at least 15 deployed joint customers, and at least 3 public stories. Global Premier: at least 1,000 active certified individuals, at least 100 deployed joint customers across three or more regions, at least 15 public customer stories, and a joint business plan with named executive sponsors.
-
-### Updates 2026-06-06
-
-OpenAI shipped a new memory architecture called "Dreaming" for ChatGPT on June 4, 2026 [[dreaming-better-memory-for-a-more-helpful-chatgpt-c3ab33c6]]. Dreaming runs a single asynchronous background process that synthesizes memory from many conversations simultaneously, captures context that arises naturally without user prompting, and revises existing memories as circumstances change (e.g. "You're going to Singapore in July" becomes "You went to Singapore in July 2026" after the trip). OpenAI reports factual recall rising from 41.5% (2024) to 82.8% (2026) on its own internal eval, with rollout starting with Plus and Pro subscribers in the United States [[dreaming-better-memory-for-a-more-helpful-chatgpt-c3ab33c6]]. This is the first frontier-lab production memory upgrade since Anthropic's Skills feature, and it shifts the personalization-vs-staleness tradeoff: memories now update with elapsed time rather than freezing at write-time.
-
-> OpenAI reports factual recall rising from 41.5% (2024) to 82.8% (2026) on its own internal eval, with preference and time-sensitive scores in the low-to-mid 70s.
-
-Microsoft AI framed its Build 2026 release as part of a longer-term "hill-climbing machine" — a co-designed pipeline meant to absorb better data, stronger rewards, more capable environments, and more compute cycle after cycle [[building-a-hill-climbing-machine-launching-seven-new-mai-models-adf5b785]]. The full family announced spans seven models: MAI-Thinking-1 (reasoning), MAI-Code-1-Flash (coding), MAI-Image-2.5 (image + edit), MAI Transcribe-1.5 (SOTA transcription, 5x faster, 43 languages), MAI-Voice-2 (15-language TTS), plus two additional models. The framing signals Microsoft is positioning MAI as a long-running roadmap rather than a one-off model release, with explicit independence from OpenAI training data [[building-a-hill-climbing-machine-launching-seven-new-mai-models-adf5b785]].
-
-> The goal is to build what Microsoft thinks of as a hill-climbing machine: an organization that can continuously improve, cycle after cycle, as it applies more compute, better data, and sharper evaluation.
-
-MAI-Code-1-Flash entered general availability inside GitHub Copilot on June 2, 2026 with adaptive thinking, a 5B-active-parameter MoE footprint, and a +16-point lead over Claude Haiku 4.5 on SWE-Bench Pro (51.2% vs 35.2%) [[mai-code-1-flash-61ec7468]]. GitHub's pricing page lists it at $0.75 input / $4.50 output per Mtoken with cached input at $0.075/Mtoken — undercutting Haiku 4.5 on price while leading on coding benchmarks at the Flash tier [[mai-code-1-flash-61ec7468]]. The 60%-fewer-tokens-on-SWE-Bench-Verified claim is the headline efficiency win.
-
-> MAI-Code-1-Flash outperforms Claude Haiku 4.5 across all four core coding benchmarks tested, including a +16-point lead on SWE-Bench Pro (51.2% vs. 35.2%), and solves harder problems with up to 60% fewer tokens on SWE-Bench Verified.
-
-### Updates 2026-06-07
-
-**MiniMax M3 (June 1, 2026)** — first open-weight model to combine frontier-tier coding (59.0% SWE-Bench Pro vendor-reported), 1M-token context, and native multimodality (image + video + computer use) in one architecture [[minimax-m3-frontier-coding-1m-context-native-multimodality-all-in-one-model-d466ccc6]]. Vendor-reported SWE-Bench Pro 59.0% edges GPT-5.5 (58.6%) and Gemini 3.1 Pro (54.2%), at $0.60/$2.40 per Mtoken — roughly 5-10% of closed-frontier prices [[minimax-m3-debuts-eclipsing-gpt-5-5-and-gemini-3-1-pro-on-key-benchmark-performance-for-just-5-10-of-the-cost-11226d25]]. Weights ship on Hugging Face within ~10 days of launch [[minimax-m3-open-weight-coding-model-frontier-claims-unverified-benchmarks-96b02e45]]. See [[minimax-m3]].
-
-> M3 is currently the first and only open-weight model to bring all three together (frontier coding capabilities, 1M context, and native multimodality).
-
-> MiniMax discloses that several results were run on its own infrastructure, often using agent scaffolding such as Claude Code, Mini-SWE-Agent, or Terminus.
-
-**Gemini 3.5 Pro pre-launch (June 2026 target)** — announced at Google I/O May 19, 2026; still in limited Vertex preview as of June 6 [[google-gemini-3-5-pro-nears-june-launch-with-2-million-token-context-and-deep-think-reasoning-3a0c8ff3]]. Targets 2M-token context, Deep Think reasoning mode, and ~$15/$60 per Mtoken pricing [[google-gemini-3-5-pro-nears-june-launch-with-2-million-token-context-and-deep-think-reasoning-3a0c8ff3]].
-
-> Pro targets a 2-million-token context window, a 'Deep Think' reasoning mode, and frontier multimodal understanding.
-
-> Pricing is expected to be about ten times Gemini 3.5 Flash — roughly $15 per million input and $60 per million output tokens.
-
-### Updates 2026-06-08
-
-MiniMax M3 now has an independent Artificial Analysis Intelligence Index placement at 55 (Reasoning configuration), with AA noting M3 is 'well above average among comparable models (averaging 23)' [[minimax-m3-intelligence-performance-price-analysis-418bc9a9]]. This edges past Kimi K2.6 and MiMo-V2.5-Pro (both at 54), making M3 the new public-leaderboard open-weights #1 on AA Intelligence Index v4.0 — pending the still-promised weights drop on Hugging Face. AA flags two practical caveats: M3 is extremely verbose, generating 91M tokens to complete the Intelligence Index battery vs the 29M average across models (~3x cost multiplier on output-dominated agentic loops), and at 41 tok/s it is 'notably slow' on the AA speed comparator [[minimax-m3-intelligence-performance-price-analysis-418bc9a9]].
-
-> MiniMax-M3 (Reasoning) achieves a score of 55 on the Artificial Analysis Intelligence Index, placing it well above average among comparable models (averaging 23).
-
-> When evaluating the Intelligence Index, it generated 91M tokens, which is very verbose in comparison to the average of 29M. At 41 tokens per second, MiniMax-M3 is notably slow.
-
-AA's published M3 list price on the same listing is $0.30/$1.20 per Mtoken — half the $0.60/$2.40 the OpenRouter listing and launch materials reported. The discrepancy is unresolved (see Disputes); likely a post-launch price cut or tier mismatch.
-
-Apple opened WWDC 2026 on June 8 by formalizing a multi-year Gemini partnership at the OS layer: a custom 1.2-trillion-parameter Gemini model — 8x larger than Apple's prior 150B on-device foundation model — will power a rebuilt Siri across iOS 27 / iPadOS 27 / macOS 27, under a deal worth roughly $1B/year [[what-to-expect-from-wwdc-2026-gemini-powered-siri-ios-27-macos-27-and-more-273ea775]]. Critically for the frontier-models lens, the Gemini model weights run inside Apple Private Cloud Compute (not on Google's servers), making this the first frontier-tier model deployed at this scale under a third-party-infra arrangement distinct from Apple's separate ChatGPT hand-off path. Apple also opened Siri to third-party AI 'Extensions' (Claude, Gemini), changing the OS-level distribution dynamic for every frontier-model vendor.
-
-> A custom 1.2-trillion-parameter Gemini model, eight times larger than Apple's current 150-billion-parameter foundation model, will power the new Siri.
-
-> Apple processes Gemini model queries through its Private Cloud Compute framework; Gemini model weights run within Apple's infrastructure, not on Google's servers.
-
-Anthropic's 'A harness for every task' technical post deepens the parallel-subagents architecture documented around Opus 4.8: dynamic workflows are Claude-authored JavaScript scripts that orchestrate 'tens to hundreds of parallel subagents in a single session, checking its work before anything reaches you' [[a-harness-for-every-task-dynamic-workflows-in-claude-code-bbb7a8da]]. The Bun Zig-to-Rust port case study lands a concrete capability data point: 750,000 lines of Rust, 99.8% existing-test-suite pass rate, 11 days from first commit to merge — one of the largest end-to-end agentic-coding deliverables on public record and a direct stress test of Opus 4.8's long-horizon capability in production.
-
-> Jarred Sumner used dynamic workflows to port Bun from Zig to Rust with 99.8% of the existing test suite passing, roughly 750,000 lines of Rust, and eleven days from first commit to merge.
 
 ## See also
 
