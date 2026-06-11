@@ -130,8 +130,13 @@ sources:
   - "[[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]"
   - "[[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]"
   - "[[claude-credit-overhaul-2026-what-changes-on-june-15-bdf7c477]]"
-last_updated: 2026-06-09
-last_verified: 2026-06-09
+  - "[[initial-impressions-of-claude-fable-5-1a99af0c]]"
+  - "[[if-claude-fable-stops-helping-you-you-ll-never-know-1257de46]]"
+  - "[[release-datasette-agent-edit-0-1a0-639f8fe1]]"
+  - "[[live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-76f20b41]]"
+  - "[[holistic-agent-leaderboard-the-missing-infrastructure-for-ai-agent-evaluation-cdd35ebf]]"
+last_updated: 2026-06-11
+last_verified: 2026-06-11
 freshness_window_days: 30
 ---
 
@@ -667,6 +672,8 @@ lint stays quiet until each page actually exists:
 - [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]] finds harness-updating is flat in base capability (Qwen3.5-9B evolver matches Claude Opus 4.6 on the updating axis) and harness-benefit is non-monotonic (strong models hit a ceiling); [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]] frames its observability-driven evolution loop as a path to surpassing human-designed harnesses without explicitly addressing where the bottleneck lives. Status: unresolved
 - [[harnessforge-joint-harness-and-policy-evolution-for-adaptive-agent-systems-0a4762a0]] proposes joint harness-policy co-evolution as the next adaptation step; [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]] argues investing capability budget in the evolver is wasted because harness-updating is flat across model tiers. Status: unresolved
 - [[auditing-agent-harness-safety-e2a88ca4]] reports a 'persistent gap between task capability and safe execution' with inter-component information flow as a critical surface; productivity-oriented harness writeups on dynamic workflows and managed agents do not address mid-trajectory information-flow failure modes. Status: unresolved
+- [[holistic-agent-leaderboard-the-missing-infrastructure-for-ai-agent-evaluation-cdd35ebf]] reports that higher reasoning effort reduces accuracy in the majority of HAL rollouts; this contradicts the implicit assumption that test-time compute / extended reasoning monotonically helps agentic coding. Status: unresolved
+- [[live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-76f20b41]] claims runtime scaffold self-evolution beats human-crafted harnesses (45.8% on SWE-Bench Pro); the wiki's prior coverage frames harness evolution as a between-task observability-driven loop, not within-task. Status: unresolved — both may be correct at different levels of granularity.
 
 ## Open questions
 
@@ -774,6 +781,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does the new Copilot Medium analysis tier use the same Claude/Codex model selection surface as the assignable-agent flow, or a separate higher-reasoning model selection?
 - [ ] SciVisAgentSkills shows token-efficiency from skills 'depends on the agent harness and tool setting' — under what conditions does the harness-mediated skill gain become net-negative?
 - [ ] Does the June 15 credit overhaul apply to credits consumed by scheduled Routines on the Cloud Routines platform, or only to direct Claude Code CLI sessions?
+- [ ] Does Fable 5's silent capability dampening ([[if-claude-fable-stops-helping-you-you-ll-never-know-1257de46]]) extend to non-ML agentic coding tasks that touch training infrastructure (e.g. building eval harnesses for a customer ML team)? The system card's 0.03% traffic figure doesn't disclose task taxonomy.
+- [ ] Can Live-SWE-agent's runtime self-evolution ([[live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-76f20b41]]) be safely composed with Claude Code's checkpoint/rewind system? Self-modifying scaffolds + automatic rollback is a plausible safety story but not demonstrated.
+- [ ] How does HAL's three-dimensional (model × scaffold × benchmark) analysis ([[holistic-agent-leaderboard-the-missing-infrastructure-for-ai-agent-evaluation-cdd35ebf]]) interact with the wiki's existing finding that the LLM dominates over the framework?
 
 ## Recent updates (2026-05-30)
 
@@ -920,6 +930,40 @@ This converges with new empirical data from the **agentic-oversight literature**
 **Pricing realigns to match agentic reality.** Anthropic announced a Claude Code credit overhaul effective 2026-06-15: programmatic/agentic usage moves out of the shared subscription compute pool into a dedicated credit bucket billed at full API rates — Pro $20, Max 5x $100, Max 20x $200 [[claude-credit-overhaul-2026-what-changes-on-june-15-bdf7c477]]. This is the operationally significant follow-on to the Code-with-Claude rate-limit lift: dynamic workflows and routines now draw against a dedicated pool rather than competing with interactive chat.
 
 > On June 15, 2026, Claude Code's programmatic and agentic usage moves from your general subscription compute pool into a dedicated credit system billed at full API rates.
+
+## Fable 5 enters the agentic-coding stack and the silent-safeguards problem (added 2026-06-11)
+
+Anthropic's Claude Fable 5 release on June 9, 2026 — the first publicly available Mythos-class model, a tier above Opus 4.8 — is now landing as an agentic-coding workhorse. Simon Willison's hands-on report is the most concrete first-day signal: Fable 5 has "a big model smell: slow, expensive and capable of crunching through pretty much everything I threw at it" and over a single day completed a stretch goal that required Fable to identify and implement four issues in an upstream LLM library to support a pause-resume mechanism in tool calls [[initial-impressions-of-claude-fable-5-1a99af0c]]. The agentic-coding–relevant pattern here is that the model spontaneously expanded the scope of the work to a dependency it didn't start with — cross-repository agentic behaviour now made trivial by the model alone.
+
+> Claude Fable 5 has a big model smell: slow, expensive and capable of crunching through pretty much everything I threw at it. My initial impressions are that this is something of a beast.
+
+> Over the course of the day, Fable not only solved that problem but also identified and implemented four issues in my underlying LLM library to support this advanced pause-resume mechanism in tool calls.
+
+Fable 5 also introduces a category of safeguard the wiki has not previously documented and which is directly load-bearing for any agentic-coding workflow that operates near the frontier-ML/training-infrastructure boundary: **silent capability dampening**. The Fable 5 system card discloses that these safeguards "will not be visible to the user" and operate via "prompt modification, steering vectors, or parameter-efficient fine-tuning (PEFT)", affecting approximately 0.03% of traffic concentrated in fewer than 0.1% of organizations [[if-claude-fable-stops-helping-you-you-ll-never-know-1257de46]]. This is a new failure mode for agentic workflows: a coding agent silently producing degraded code on niche-but-legitimate ML-infrastructure tasks with no signal to the operator.
+
+> Claude Fable 5 has implemented new interventions that limit effectiveness for requests targeting frontier LLM development, such as building pretraining pipelines, distributed training infrastructure, or ML accelerator design. Unlike interventions for cybersecurity, biology and chemistry, and distillation attempts, these safeguards will not be visible to the user.
+
+> The safeguards limit effectiveness through methods such as prompt modification, steering vectors, or parameter-efficient fine-tuning (PEFT), and they will impact approximately 0.03% of traffic, concentrated in fewer than 0.1% of organizations.
+
+## Self-evolving agent scaffolds and the new eval-infrastructure layer (added 2026-06-11)
+
+The harness-evolution thread the wiki tracks now has a runtime counterpart: **Live-SWE-agent** does scaffold evolution *during* problem-solving rather than between offline iterations. The agent "starts with the most basic agent scaffold with only access to bash tools, and autonomously evolves its own scaffold implementation while solving real-world software problems" and reports the "best-known solve rate of 45.8%" on SWE-Bench Pro plus 75.4% on SWE-bench Verified "without test-time scaling" [[live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-76f20b41]]. This shifts the between-task harness evolution framing to within-task self-modification.
+
+> Live-SWE-agent is the first live software agent that can autonomously and continuously evolve itself on-the-fly during runtime when solving real-world software problems.
+
+> Live-SWE-agent outperforms state-of-the-art manually crafted software agents on the recent SWE-Bench Pro benchmark, achieving the best-known solve rate of 45.8%.
+
+The eval-infrastructure debate gains a structural complement in the **Holistic Agent Leaderboard (HAL)**, framed as "the missing infrastructure for AI agent evaluation" with a harness that "orchestrates parallel evaluations across hundreds of VMs, reducing evaluation time from weeks to hours while eliminating common implementation bugs" [[holistic-agent-leaderboard-the-missing-infrastructure-for-ai-agent-evaluation-cdd35ebf]]. Two findings cut directly against existing wiki framing: three-dimensional analysis spanning models, scaffolds, and benchmarks, and the surprising signal that "higher reasoning effort reduc[es] accuracy in the majority of runs" — in tension with the assumption that test-time compute scaling monotonically helps agentic coding.
+
+> The Holistic Agent Leaderboard (HAL) provides a standardized evaluation harness that orchestrates parallel evaluations across hundreds of VMs, reducing evaluation time from weeks to hours while eliminating common implementation bugs.
+
+> The analysis revealed surprising insights, such as higher reasoning effort reducing accuracy in the majority of runs.
+
+## Reusable text-editing tools as an agentic-plugin primitive (added 2026-06-11)
+
+Simon Willison's **datasette-agent-edit 0.1a0** packages the three-tool text-editor design Anthropic published for Claude (view / str_replace / insert) as a *reusable base plugin* so other agent plugins can inherit it rather than re-implementing each tool [[release-datasette-agent-edit-0-1a0-639f8fe1]]. This is evidence that the tool layer (not just the agent or subagent layer) is now converging on shared, reusable primitives at the OSS package level.
+
+> datasette-agent-edit 0.1a0 is a base plugin for Datasette Agent that implements three text editing tools — view, str_replace, and insert — modeled on Anthropic's Claude text editor tool design. Rather than recreate these patterns for every plugin that needs them, I created this base plugin, datasette-agent-edit, which implements the core tools in a way that allows them to be adapted for other plugins.
 
 ## See also
 
