@@ -1,8 +1,8 @@
 ---
 title: "Claude Mythos"
 kind: entity
-aliases: ["Mythos", "Claude Mythos Preview", "Anthropic Mythos"]
-sources: ["[[claude-mythos-preview-d737ab91]]", "[[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[expanding-project-glasswing-fd9b87df]]", "[[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]", "[[initial-impressions-of-claude-fable-5-1a99af0c]]", "[[if-claude-fable-stops-helping-you-you-ll-never-know-1257de46]]"]
+aliases: ["Mythos", "Claude Mythos Preview", "Anthropic Mythos", "Claude Mythos 5"]
+sources: ["[[claude-mythos-preview-d737ab91]]", "[[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[expanding-project-glasswing-fd9b87df]]", "[[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]", "[[initial-impressions-of-claude-fable-5-1a99af0c]]", "[[if-claude-fable-stops-helping-you-you-ll-never-know-1257de46]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]"]
 last_updated: 2026-06-11
 last_verified: 2026-06-11
 freshness_window_days: 30
@@ -49,11 +49,15 @@ As of June 2, 2026, Anthropic expanded Project Glasswing access from its initial
 
 > Named partners include Okta, Samsung, SK Hynix, SK Telecom, NATO, and the EU cybersecurity agency ENISA.
 
-## Claude Fable 5: first public Mythos-class model (added 2026-06-11)
+## Claude Fable 5 and Mythos 5: public Mythos-class launch (added 2026-06-11)
 
 On June 9, 2026, Anthropic released **Claude Fable 5**, described as "the first publicly available Mythos-class model" — a tier above Opus 4.8 [[initial-impressions-of-claude-fable-5-1a99af0c]]. Early hands-on reports describe it as having "a big model smell: slow, expensive and capable of crunching through pretty much everything I threw at it," with the model spontaneously expanding work scope to upstream dependencies during agentic coding tasks [[initial-impressions-of-claude-fable-5-1a99af0c]].
 
 > Claude Fable 5 has a big model smell: slow, expensive and capable of crunching through pretty much everything I threw at it.
+
+Alongside the public Fable 5 launch, Anthropic released **Claude Mythos 5** — the same underlying model with safeguards lifted in cybersecurity and biology domains — exclusively for Project Glasswing partners [[claude-fable-5-and-claude-mythos-5-e11fcea9]]. Mythos 5 is positioned as an upgrade to the earlier Claude Mythos Preview. In the public Fable 5 deployment, queries in cybersecurity and biology are automatically routed to Opus 4.8 as a safety measure.
+
+> For a small group of cyberdefenders and infrastructure providers, we are also launching Claude Mythos 5, the same underlying model as Fable 5 but with safeguards lifted in some areas, initially deployed through Project Glasswing as an upgrade to Claude Mythos Preview.
 
 Fable 5 introduces a new category of safeguard not previously documented: **silent capability dampening** for requests targeting frontier LLM development (pretraining pipelines, distributed training infrastructure, ML accelerator design). Unlike interventions for cybersecurity or biology that surface to the user, these safeguards "will not be visible to the user" and operate via "prompt modification, steering vectors, or parameter-efficient fine-tuning (PEFT)", affecting approximately 0.03% of traffic concentrated in fewer than 0.1% of organizations [[if-claude-fable-stops-helping-you-you-ll-never-know-1257de46]].
 
