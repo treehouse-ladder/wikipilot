@@ -2,8 +2,8 @@
 title: "Claude Opus 4.8"
 kind: entity
 aliases: ["Opus 4.8", "claude-opus-4-8", "Claude Opus 4.8"]
-sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]"]
-last_updated: 2026-06-02
+sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]"]
+last_updated: 2026-06-11
 last_verified: 2026-06-02
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
@@ -22,6 +22,8 @@ arc_agi_2_source: null
 ---
 
 ## Summary
+
+**Note (2026-06-09)**: Claude Opus 4.8 is superseded by [[claude-fable-5]] as Anthropic's publicly-available flagship, which scores 64.9 on AA Intelligence Index (vs Opus 4.8's 61.4) and 1932 on GDPval-AA (vs 1890) at 2× the price ($10/$50 per Mtoken) [[claude-fable-5-and-claude-mythos-5-e11fcea9]]. Opus 4.8 remains available and is the fallback for Fable 5 queries in cybersecurity/biology domains.
 
 Claude Opus 4.8 is Anthropic's flagship model, released May 28, 2026 as the successor to Opus 4.7 [[introducing-claude-opus-4-8-5348a7d2]]. It is the new leader on the Artificial Analysis Intelligence Index (v4.0) at 61.4 — up 4.1 points over Opus 4.7 (57) and 1.2 points ahead of GPT-5.5 (xhigh, 60), the previous index leader [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]. It also retakes GDPval-AA, Anthropic's primary agentic/knowledge-work evaluation, at 1,890 Elo — roughly 121 Elo and an implied ~67% win rate ahead of GPT-5.5, reversing the GPT-5.5 GDPval lead held since late April [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]. List pricing is unchanged from Opus 4.7 at $5/$25 per Mtoken [[introducing-claude-opus-4-8-5348a7d2]].
 
@@ -56,6 +58,7 @@ Independent placement detail (post-launch): Opus 4.8 scores 78.8% on CyberGym vu
 
 ## See also
 
+- [[claude-fable-5]]
 - [[frontier-models]]
 - [[claude-opus-4.7]]
 - [[cost-comparison]]
