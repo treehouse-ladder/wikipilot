@@ -603,3 +603,19 @@ Mario Kart World's 323-song catalog lands on Nintendo Music (CarPlay/web expansi
 ## [2026-06-09] daily | 5 topics, 22 sources, 34 pages
 
 agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music. PRs #163–#167 all squash-merged to main. 1 new entity (grok-4.3). Report: wiki/reports/2026-06-09.md.
+
+## [2026-06-11] daily | agentic-coding — 5 sources, 8 pages
+
+Claude Fable 5 lands as agentic-coding workhorse (pause-resume tool calls, cross-repo scope expansion); silent capability dampening disclosed (0.03% traffic, PEFT/steering); Live-SWE-agent runtime self-evolution SOTA 45.8% SWE-Bench Pro; HAL eval infra (higher reasoning effort reduces accuracy in majority of runs); datasette-agent-edit reusable tool primitive. PR #171.
+
+## [2026-06-11] daily | ai-in-game-dev — 3 sources, 4 pages
+
+Post-SGF disclosure fallout: 1666 Amsterdam caught with AI art in prologue demo, apologized and reversed; vague-disclosure critique argues Steam policy fails its stated purpose; Inworld Realtime TTS-2 (sub-130ms, #1 Speech Arena, bracket-tag voice direction, 100+ languages). PR #173.
+
+## [2026-06-11] daily | games-of-note — 10 sources, 11 pages
+
+Nintendo Direct June 9: OoT remake confirmed for 2026 (gameplay-free cinematic reveal), Switch 2 AAA port wave (DMC5 June 23, Dragon's Dogma 2 Oct 9, Metaphor Nov 12, Stellar Blade TBA, KH4 day-and-date). Ubisoft closes Winnipeg+Belgrade studios, 380 layoffs. Xbox "this cannot continue" email: $20B content spend, half-billion revenue decline, 3% margin, major layoffs post-June 30. PR #174.
+
+## [2026-06-11] daily | 5 topics, 27 sources, 38 pages
+
+agentic-coding (#171 ✓), ai-in-game-dev (#173 ✓), games-of-note (#174 ✓) merged. frontier-models (#172) and game-music (#175) pending CI with auto-merge enabled. 1 new entity (claude-fable-5). Key story: Claude Fable 5 launched — #1 AA Index (64.9), SWE-bench Pro 80.3%, $10/$50 per Mtoken. OoT Remake confirmed for Switch 2 2026. Xbox "this cannot continue." Report: wiki/reports/2026-06-11.md.
