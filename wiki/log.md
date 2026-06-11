@@ -619,3 +619,7 @@ Nintendo Direct June 9: OoT remake confirmed for 2026 (gameplay-free cinematic r
 ## [2026-06-11] daily | 5 topics, 27 sources, 38 pages
 
 agentic-coding (#171 ✓), ai-in-game-dev (#173 ✓), games-of-note (#174 ✓) merged. frontier-models (#172) and game-music (#175) pending CI with auto-merge enabled. 1 new entity (claude-fable-5). Key story: Claude Fable 5 launched — #1 AA Index (64.9), SWE-bench Pro 80.3%, $10/$50 per Mtoken. OoT Remake confirmed for Switch 2 2026. Xbox "this cannot continue." Report: wiki/reports/2026-06-11.md.
+
+## [2026-06-11] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#172 (wiki/frontier-models daily 2026-06-11) rebased onto main; resolved 1 conflict on wiki/entities/claude-mythos.md (Fable 5 + Mythos 5 content merged); pushed sha 0ada8b2; auto-merge re-queued.
