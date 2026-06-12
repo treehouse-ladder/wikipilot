@@ -135,8 +135,12 @@ sources:
   - "[[release-datasette-agent-edit-0-1a0-639f8fe1]]"
   - "[[live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-76f20b41]]"
   - "[[holistic-agent-leaderboard-the-missing-infrastructure-for-ai-agent-evaluation-cdd35ebf]]"
-last_updated: 2026-06-11
-last_verified: 2026-06-11
+  - "[[claude-code-2-1-172-nested-subagents-and-smarter-model-handling-3d68ad8e]]"
+  - "[[custom-stores-custom-tools-and-auto-review-for-the-cursor-sdk-7da739cc]]"
+  - "[[swe-explore-benchmarking-how-coding-agents-explore-repositories-a0f69e17]]"
+  - "[[release-datasette-agent-0-2a0-346fa206]]"
+last_updated: 2026-06-12
+last_verified: 2026-06-12
 freshness_window_days: 30
 ---
 
@@ -964,6 +968,42 @@ The eval-infrastructure debate gains a structural complement in the **Holistic A
 Simon Willison's **datasette-agent-edit 0.1a0** packages the three-tool text-editor design Anthropic published for Claude (view / str_replace / insert) as a *reusable base plugin* so other agent plugins can inherit it rather than re-implementing each tool [[release-datasette-agent-edit-0-1a0-639f8fe1]]. This is evidence that the tool layer (not just the agent or subagent layer) is now converging on shared, reusable primitives at the OSS package level.
 
 > datasette-agent-edit 0.1a0 is a base plugin for Datasette Agent that implements three text editing tools — view, str_replace, and insert — modeled on Anthropic's Claude text editor tool design. Rather than recreate these patterns for every plugin that needs them, I created this base plugin, datasette-agent-edit, which implements the core tools in a way that allows them to be adapted for other plugins.
+
+## Nested subagents land simultaneously in Claude Code and Cursor (added 2026-06-12)
+
+Both Claude Code and the Cursor SDK shipped **nested subagents** within 24 hours of each other on 2026-06-10. Claude Code 2.1.172 lets sub-agents spawn their own sub-agents up to five levels deep [[claude-code-2-1-172-nested-subagents-and-smarter-model-handling-3d68ad8e]], with context-window offloading — not parallelism — as the stated motivation:
+
+> The motivation for nested sub-agents is context management, not parallelism — each subagent gets a fresh context window, so nesting lets a sub-agent offload before its own context fills.
+
+Cursor's SDK update the same day landed nested subagents alongside custom stores (JSONL, SQLite-backed), custom tools, and auto-review controls [[custom-stores-custom-tools-and-auto-review-for-the-cursor-sdk-7da739cc]]:
+
+> Cursor ships major SDK upgrades for TypeScript and Python, adding custom tools, auto-review controls, JSONL and custom metadata stores, and deeply nested subagents. ... A reviewer subagent can delegate to a test-writer, which can delegate further, with each level keeping its own prompt and model.
+
+The convergence of two competing harnesses shipping the same primitive in the same week is a strong signal that nested subagents are now a stable part of the agentic-coding surface. The JSONL store option is particularly interesting for workflows that want git-diff-able agent state. For Wikipilot's own architecture, this validates `CLAUDE_CODE_FORK_SUBAGENT=1` and suggests future `topic-researcher` agents could fan out sub-researchers per source candidate without blowing parent context.
+
+## SWE-Explore — repository exploration as a first-class benchmark axis (added 2026-06-12)
+
+A June 2026 arxiv preprint (2606.07297) argues that holistic benchmarks like SWE-bench Verified hide where agents actually win or lose by treating tasks as binary (resolved/unresolved) [[swe-explore-benchmarking-how-coding-agents-explore-repositories-a0f69e17]]:
+
+> Repository-level coding benchmarks such as SWE-bench have driven a rapid surge in the capabilities of coding agents, yet they usually treat coding tasks as a holistic, binary prediction problem (e.g., resolved or unresolved), neglecting fine-grained agent capabilities such as repository understanding, context retrieval, code localization, and bug diagnosis.
+
+> SWE-Explore covers 848 issues across 10 programming languages and 203 open-source repositories. Agentic explorers form a clear tier above classical retrieval, while file-level localization is already strong for modern methods, but line-level coverage and efficient ranking remain the key axes differentiating state-of-the-art explorers.
+
+The benchmark isolates the **exploration** sub-task: given a repo and an issue, return a ranked list of relevant code regions under a fixed line budget. The finding that file-level localization is "already strong" while line-level coverage and ranking remain the differentiators maps directly to the utility of nested subagents: a deep grep/read sub-sub-agent is most useful for the hard line-level problem, not the already-solved file-level one.
+
+## Human-in-the-loop save primitives — datasette-agent 0.2a0 (added 2026-06-12)
+
+Simon Willison's `datasette-agent 0.2a0` (2026-06-10) ships a `save_query` tool with **mandatory human approval** at every invocation [[release-datasette-agent-0-2a0-346fa206]]:
+
+> The release includes a new built-in save_query tool that allows the agent to save SQL it has written as a Datasette stored query. Saving always requires human approval — the agent shows the full SQL plus the proposed name, database and visibility, and nothing is stored until you click Yes.
+
+This extends the reusable-tool-primitive thread from `datasette-agent-edit 0.1a0` and provides a clean reference design for any agent that must distinguish between "propose" (agent does it) and "persist" (requires human gate). The analogue in Wikipilot's own routines is `gh pr merge --squash --auto` waiting on GitHub's required-status-checks rule: agent proposes, gate decides.
+
+## Open questions
+
+- Does Claude Code's 5-level subagent depth limit interact badly with `CLAUDE_CODE_FORK_SUBAGENT=1` when a `topic-researcher` fans out further on its own?
+- Cursor's JSONL store claims git-diff-ability — does it survive squash-merging when used in a CI loop?
+- SWE-Explore reports file-level localization is "already strong" for modern methods — what is the actual numeric threshold, and does the leaderboard publish model scores?
 
 ## See also
 
