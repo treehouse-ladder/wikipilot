@@ -623,3 +623,7 @@ agentic-coding (#171 ✓), ai-in-game-dev (#173 ✓), games-of-note (#174 ✓) m
 ## [2026-06-11] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#172 (wiki/frontier-models daily 2026-06-11) rebased onto main; resolved 1 conflict on wiki/entities/claude-mythos.md (Fable 5 + Mythos 5 content merged); pushed sha 0ada8b2; auto-merge re-queued.
+
+## [2026-06-12] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#182 (claude/daily-2026-06-12/ai-in-game-dev) requeued: CLEAN+CI-green but auto-merge was never enabled; enable_pr_auto_merge SQUASH queued.
