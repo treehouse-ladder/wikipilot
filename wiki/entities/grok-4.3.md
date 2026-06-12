@@ -1,8 +1,8 @@
 ---
 title: "Grok 4.3"
 kind: entity
-sources: ["[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]", "[[grok-build-0-1-on-api-c60c4a6b]]", "[[grok-imagine-1-5-preview-7668cc26]]", "[[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]]", "[[grok-v9-rolls-into-tesla-cars-and-x-why-musk-s-distribution-flywheel-worries-ai-rivals-46ba11d8]]"]
-last_updated: 2026-06-11
+sources: ["[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]", "[[grok-build-0-1-on-api-c60c4a6b]]", "[[grok-imagine-1-5-preview-7668cc26]]", "[[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]]", "[[grok-v9-rolls-into-tesla-cars-and-x-why-musk-s-distribution-flywheel-worries-ai-rivals-46ba11d8]]", "[[grok-v9-medium-is-not-grok-5-a-builders-guide-to-xais-mid-june-2026-coding-model-a8b21fd7]]"]
+last_updated: 2026-06-12
 last_verified: 2026-06-09
 freshness_window_days: 30
 input_cost_per_mtoken: 1.25
