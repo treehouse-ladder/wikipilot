@@ -2,8 +2,8 @@
 title: "Claude Fable 5"
 kind: entity
 sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]"]
-last_updated: 2026-06-11
-last_verified: 2026-06-11
+last_updated: 2026-06-12
+last_verified: 2026-06-12
 freshness_window_days: 30
 input_cost_per_mtoken: 10.00
 output_cost_per_mtoken: 50.00
