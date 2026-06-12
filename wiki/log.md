@@ -623,3 +623,27 @@ agentic-coding (#171 ✓), ai-in-game-dev (#173 ✓), games-of-note (#174 ✓) m
 ## [2026-06-11] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#172 (wiki/frontier-models daily 2026-06-11) rebased onto main; resolved 1 conflict on wiki/entities/claude-mythos.md (Fable 5 + Mythos 5 content merged); pushed sha 0ada8b2; auto-merge re-queued.
+
+## [2026-06-12] daily | agentic-coding — 4 sources, 5 pages
+
+Nested subagents ship simultaneously in Claude Code 2.1.172 (5 levels deep) and Cursor SDK (JSONL stores, auto-review). SWE-Explore benchmark isolates repository exploration as first-class axis; datasette-agent 0.2a0 ships propose-then-persist human-approval primitive. PR #178.
+
+## [2026-06-12] daily | frontier-models — 4 sources, 8 pages
+
+Apple AFM 3 family: Cloud Pro positioned as Gemini-frontier-quality; Core Advanced is 20B sparse model with NAND-flash weight routing (1-4B active params/request, first to route around DRAM limit). Grok V9-Medium (1.5T) rolling out to Tesla/X ahead of public API. PR #179.
+
+## [2026-06-12] daily | game-music — 3 sources, 4 pages
+
+Stellar Blade vinyl via Brave Wave Productions. Elliot Millennium Tales 105-song OST (Iwadare, June 24). Wwise 2025.1 Haptic Clip Player: native haptic-audio authoring inside Wwise. PR #180.
+
+## [2026-06-12] daily | games-of-note — 11 sources, 12 pages
+
+Ubisoft restructuring wave continues (further closures, Rainbow Six staff ramp-down to Barcelona). Xbox post-June-30 layoffs may include studio closure. Destiny 2 final update live (8-year era over). Gothic 1 Remake PCGamer 72/100. Halo: Campaign Evolved July 28 confirmed. PR #181.
+
+## [2026-06-12] daily | ai-in-game-dev — 6 sources, 7 pages
+
+Roblox CubePart: part-labeled engine-ready 3D generator (460K assets, no rigging). KH Collection AI-art community detection. PUBG Ally beta (NVIDIA ACE SLM on RTX Spark). Tripo AI $200M + Project Eden world model. Autodesk Wonder 3D USD-native. HDSL hierarchical scene DSL arxiv. PR #182 (pending CI).
+
+## [2026-06-12] daily | 5 topics, 25 sources, 30 pages
+
+agentic-coding (#178 ✓), frontier-models (#179 ✓), game-music (#180 ✓), games-of-note (#181 ✓) merged. ai-in-game-dev (#182) pending CI with auto-merge enabled. Key stories: Apple AFM 3 NAND-flash sparse architecture; Grok V9-Medium rolling out; Destiny 2 era closes; Ubisoft restructuring deepens; Roblox CubePart engine-ready 3D generator. Report: wiki/reports/2026-06-12.md.
