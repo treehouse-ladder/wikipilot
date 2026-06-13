@@ -571,7 +571,7 @@ def check_updates_order(ctx: LintContext) -> list[LintIssue]:
         if section is None:
             continue
         dates: list[str] = _UPDATES_HEADING_RE.findall(section)
-        for newer, older in zip(dates, dates[1:]):
+        for newer, older in zip(dates, dates[1:], strict=False):
             if older > newer:
                 issues.append(
                     LintIssue(
