@@ -19,8 +19,10 @@ sources:
   - "[[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]]"
   - "[[copilot-sdk-is-now-generally-available-f3907ed0]]"
   - "[[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]"
-last_updated: 2026-06-09
-last_verified: 2026-06-09
+  - "[[live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-76f20b41]]"
+  - "[[holistic-agent-leaderboard-the-missing-infrastructure-for-ai-agent-evaluation-cdd35ebf]]"
+last_updated: 2026-06-11
+last_verified: 2026-06-11
 freshness_window_days: 30
 ---
 
@@ -73,6 +75,18 @@ Late May / early June 2026 brought a third generation of harness evolution techn
 However, [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]] provides critical pushback: harness-updating capability is flat across model tiers (Qwen3.5-9B evolver matches Claude Opus 4.6), and harness-benefit is non-monotonic (strong models hit a ceiling). The practical implication: invest capability budget in the task-solving agent, not the evolver.
 
 **Harness-Bench** [[harness-bench-measuring-harness-effects-across-models-in-realistic-agent-workflows-5abc49c8]] is the diagnostic instrument for controlled harness-vs-model decomposition, varying harness configuration while holding the model fixed. The authors recommend future benchmarks report both model and harness conditions for any score.
+
+## Runtime self-evolution and eval-infrastructure maturation (added 2026-06-11)
+
+The harness-evolution timeline now splits into two branches: offline between-task evolution (AHE, RHO, HarnessForge) and **runtime within-task self-modification**. Live-SWE-agent is the first published agent that "starts with the most basic agent scaffold with only access to bash tools, and autonomously evolves its own scaffold implementation while solving real-world software problems," reporting a best-known 45.8% solve rate on SWE-Bench Pro and 75.4% on SWE-bench Verified without test-time scaling [[live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-76f20b41]]. This shifts the harness-evolution framing from a between-session observability loop to an in-session capability.
+
+> Live-SWE-agent is the first live software agent that can autonomously and continuously evolve itself on-the-fly during runtime when solving real-world software problems.
+
+On the evaluation-infrastructure side, the Holistic Agent Leaderboard (HAL) provides a standardized harness that orchestrates parallel evaluations across hundreds of VMs, "reducing evaluation time from weeks to hours while eliminating common implementation bugs" and conducting "three-dimensional analysis spanning models, scaffolds, and benchmarks" [[holistic-agent-leaderboard-the-missing-infrastructure-for-ai-agent-evaluation-cdd35ebf]]. One finding cuts against existing test-time-compute assumptions: "higher reasoning effort reduc[es] accuracy in the majority of runs" — directly relevant to any harness that budgets extra compute for reasoning tokens.
+
+> The Holistic Agent Leaderboard (HAL) provides a standardized evaluation harness that orchestrates parallel evaluations across hundreds of VMs, reducing evaluation time from weeks to hours while eliminating common implementation bugs.
+
+> The analysis revealed surprising insights, such as higher reasoning effort reducing accuracy in the majority of runs.
 
 ## Cross-vendor convergence on embeddable harness SDKs (2026-06-09)
 

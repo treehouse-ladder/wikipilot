@@ -18,7 +18,7 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-06-10
+last_updated: 2026-06-12
 last_verified: '2026-05-22'
 show_glosses: true
 sources: []
@@ -50,8 +50,3 @@ This comparison aggregates `aa_intelligence_index, gdpval_aa_elo, swe_bench_veri
 | [[glm-5]] | 50 | _unknown_ | _unknown_ | _unknown_ | _unknown_ |
 | [[kimi-k2.6]] | 54 | 1520 | 0.802 | 0.413 | _unknown_ |
 | [[qwen3.7-max]] | 57 | _unknown_ | _unknown_ | _unknown_ | _unknown_ |
-
-## Leader changes since last regen
-
-- **`aa_intelligence_index`**: [[claude-opus-4.8]] took #1 from [[gpt-5.5]].
-- **`gdpval_aa_elo`**: [[claude-opus-4.8]] took #1 from [[gpt-5.5]].
