@@ -640,6 +640,30 @@ Stellar Blade vinyl via Brave Wave Productions. Elliot Millennium Tales 105-song
 
 Ubisoft restructuring wave continues (further closures, Rainbow Six staff ramp-down to Barcelona). Xbox post-June-30 layoffs may include studio closure. Destiny 2 final update live (8-year era over). Gothic 1 Remake PCGamer 72/100. Halo: Campaign Evolved July 28 confirmed. PR #181.
 
+## [2026-06-13] daily | 5 topics, 14 sources, 28 pages
+
+agentic-coding (#184 ✓), frontier-models (#185 ✓), game-music (#187 ✓), games-of-note (#186 ✓) merged. ai-in-game-dev (#188) auto-merge enabled post-CI. Key stories: Xbox business reset + exclusivity pivot; US government Fable 5/Mythos 5 suspension order; GitHub agentic coding at ~36% of new repos; Unity 2026 report: 95% AI adoption, 77% project-time drop; Hunyuan3D 2.1 open PBR pipeline. Report: wiki/reports/2026-06-13.md.
+
+## [2026-06-13] daily | ai-in-game-dev — 4 sources, 6 pages
+
+Unity 2026 report: 95% AI adoption, median project time down 77%. Owlcat prototyping-only policy for genAI. Take-Two's former AI head warns genAI hype is damaging behavioral/procedural AI research; his team disbanded April 2026. Hunyuan3D 2.1 open-weight PBR pipeline released (Unity/Unreal-ready). PR #188.
+
+## [2026-06-13] daily | game-music — 1 source, 2 pages
+
+Cyberpunk 2077 Future Sound of Night City physical soundtrack announced for July 2026 order. PR #187.
+
+## [2026-06-13] daily | games-of-note — 4 sources, 5 pages
+
+Xbox business reset: major layoffs announced, console exclusivity returning case-by-case. Game Awards 2026 date set (December 4); GTA 6 looms large. ESA opposes California offline-mode bill AB 1921 (passed Assembly, now Senate). PR #186.
+
+## [2026-06-13] daily | frontier-models — 1 source, 7 pages
+
+US government directive to suspend Fable 5 and Mythos 5 access in 15 countries; first documented federal intervention in frontier-model deployment. PR #185.
+
+## [2026-06-13] daily | agentic-coding — 4 sources, 8 pages
+
+Claw-SWE-Bench harness eval framework; frontier agents use metaprogramming for language adaptation; GitHub agentic adoption ~36% of new repos; GitHub Copilot moves to usage-based billing across all plans. PR #184.
+
 ## [2026-06-12] daily | ai-in-game-dev — 6 sources, 7 pages
 
 Roblox CubePart: part-labeled engine-ready 3D generator (460K assets, no rigging). KH Collection AI-art community detection. PUBG Ally beta (NVIDIA ACE SLM on RTX Spark). Tripo AI $200M + Project Eden world model. Autodesk Wonder 3D USD-native. HDSL hierarchical scene DSL arxiv. PR #182 (pending CI).

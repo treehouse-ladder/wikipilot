@@ -45,6 +45,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 ## Comparisons
 
 - [[cost-comparison]]
+- [[benchmark-leaders]]
 
 ## Sources
 
@@ -589,6 +590,20 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[tripo-ai-raises-nearly-200-million-in-series-a-and-series-a-financing-to-advance-ai-3d-and-world-model-roadmap-999735d1]]
 - [[autodesk-flow-studio-launches-wonder-3d-gen-ai-model-to-help-creators-make-3d-characters-and-objects-faster-and-easier-063ed32f]]
 - [[hdsl-a-hierarchical-domain-specific-language-for-structured-3d-indoor-scene-generation-and-localized-editing-with-llm-agents-e823a320]]
+- [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]]
+- [[frontier-coding-agents-use-metaprogramming-to-adapt-to-unfamiliar-programming-languages-0414ba80]]
+- [[agentic-very-much-adoption-of-coding-agent-in-new-github-projects-e080a2f2]]
+- [[all-github-copilot-plans-are-now-on-usage-based-billing-2e8b23f7]]
+- [[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]
+- [[xbox-announces-business-reset-amid-reports-of-layoffs-66823073]]
+- [[xbox-console-exclusives-are-returning-on-a-case-by-case-basis-e3e71255]]
+- [[the-game-awards-2026-sets-a-date-and-gta-6-looms-large-2e521ef6]]
+- [[esa-says-bill-pushing-for-offline-versions-of-live-service-games-would-hurt-developers-a32dea81]]
+- [[cyberpunk-2077-future-sound-of-night-city-soundtrack-album-now-available-to-order-95729ac6]]
+- [[2026-unity-game-development-report-how-studios-are-building-a-sustainable-future-5f2b23ec]]
+- [[owlcat-games-is-using-generative-ai-to-iterate-faster-on-the-expanse-3e0b2083]]
+- [[playstack-sold-xbox-announces-business-reset-and-is-generative-ai-poisoning-the-well-0c67963c]]
+- [[hunyuan3d-2-1-from-images-to-high-fidelity-3d-assets-with-production-ready-pbr-material-b0de5940]]
 
 ## Reports
 
@@ -614,3 +629,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-09]]
 - [[2026-06-11]]
 - [[2026-06-12]]
+- [[2026-06-13]]
