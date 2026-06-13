@@ -66,7 +66,7 @@ class RunReport:
     # `wiki/comparisons/benchmark-leaders.md`.
     model_snapshot: str = ""
     # One markdown bullet per topic — the head sentence of the
-    # researcher's `summary_addition`, prefixed with `[[topic-id]]`. Renders
+    # researcher's `update_entry`, prefixed with `[[topic-id]]`. Renders
     # as `## Notable findings by topic`.
     notable_findings_by_topic: list[str] = field(default_factory=list)
 

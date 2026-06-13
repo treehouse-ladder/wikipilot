@@ -83,6 +83,53 @@ def main() -> None:
     """Top-level entry point."""
 
 
+def _collect_previous_summary_citations(vault: Vault) -> dict[str, int]:
+    """Best-effort prior ``## Summary`` citation counts from the last git commit.
+
+    Returns an empty dict outside a git repo or when ``git`` is unavailable —
+    the ``check_summary_shrinkage`` rule then no-ops. Only topic ``index.md``
+    pages are sampled (Summaries on other kinds aren't event-sourced views).
+    """
+    import subprocess
+
+    from wikipilot.lint import _count_section_wikilinks
+
+    try:
+        toplevel = subprocess.run(
+            ["git", "rev-parse", "--show-toplevel"],
+            capture_output=True,
+            text=True,
+            check=True,
+        ).stdout.strip()
+    except (OSError, subprocess.CalledProcessError):
+        return {}
+    repo_root = Path(toplevel).resolve()
+    topics_dir = vault.dir_for("topics")
+    result: dict[str, int] = {}
+    for page_path in vault.iter_markdown_files():
+        if page_path.name != "index.md" or page_path.parent.parent != topics_dir:
+            continue
+        try:
+            repo_rel = page_path.resolve().relative_to(repo_root).as_posix()
+        except ValueError:
+            continue
+        try:
+            prior = subprocess.run(
+                ["git", "show", f"HEAD:{repo_rel}"],
+                capture_output=True,
+                encoding="utf-8",
+                errors="replace",
+                check=True,
+            ).stdout
+        except (OSError, subprocess.CalledProcessError):
+            continue
+        if not prior:
+            continue
+        vault_rel = str(page_path.relative_to(vault.root)).replace("\\", "/")
+        result[vault_rel] = _count_section_wikilinks(prior, "## Summary")
+    return result
+
+
 @main.command("lint")
 @click.argument(
     "vault_path",
@@ -132,6 +179,7 @@ def lint_cmd(
         branch_name=branch_name,
         changed_paths=changed_paths,
     )
+    ctx.previous_summary_citations = _collect_previous_summary_citations(vault)
     issues = Linter().run(ctx)
     visible = [i for i in issues if not no_warnings or i.severity == SEVERITY_ERROR]
     for issue in visible:

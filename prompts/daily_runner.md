@@ -66,8 +66,25 @@ git checkout -B "$BRANCH" origin/main
 ```
 
 ```
-# 4b. Apply the proposal.
+# 4b. Apply the proposal. The wiki-merger inserts the day's dated entry at the
+# TOP of the topic page's immutable ## Recent updates log and does NOT touch
+# ## Summary (see wiki-merger.md).
 Task(agent="wiki-merger", input={proposal: <PROPOSAL_JSON>})
+```
+
+```
+# 4b-summary. Regenerate the topic ## Summary view — ONLY when the run is
+# summary-affecting. Gating this avoids needless rewrites (no rewrite = no
+# drift). The summarizer reads the now-updated immutable log + entity
+# frontmatter and regenerates the Summary; it never edits the log/Disputes/
+# Open questions. See topic-summarizer.md and CLAUDE.md "Topic-page summaries
+# are a regenerated view".
+if <PROPOSAL_JSON>.summary_affecting:
+    Task(agent="topic-summarizer", input={
+        topic_id: "$TOPIC_ID",
+        summary_guidance: <PROPOSAL_JSON>.summary_guidance,
+    })
+# else: leave ## Summary untouched; the log already has today's entry.
 ```
 
 ```
@@ -199,7 +216,7 @@ After all topics are aggregated:
    MODEL_SNAPSHOT="### Cost\n\n${COST_TABLE}\n\n### Benchmarks\n\n${BENCH_TABLE}"
    ```
 
-6. **Build the per-topic `notable_findings_by_topic` list.** One markdown bullet per merged topic, of the form `- **[[<topic-id>]]**: <first sentence of the proposal's primary `summary_addition`> [[<top-cited-source-slug>]].`. The curator's `## Today's brief` is for cross-topic editorial — this section keeps the per-topic head-line accessible without re-reading the proposals.
+6. **Build the per-topic `notable_findings_by_topic` list.** One markdown bullet per merged topic, of the form `- **[[<topic-id>]]**: <first sentence of the proposal's primary `update_entry`> [[<top-cited-source-slug>]].`. The curator's `## Today's brief` is for cross-topic editorial — this section keeps the per-topic head-line accessible without re-reading the proposals.
 
 7. **Write `wiki/reports/${DATE}.md`** via `wikipilot.log.write_run_report` with the merged topics in `topics_processed`, every new source path in `sources_added`, every page touched (across all topic PRs) in `pages_touched`, every PR URL in `pr_links`, any `failed_topics` listed in `notes`, AND the curator output (`brief`, `leader_changes`, `watchlist`), the `model_snapshot`, and `notable_findings_by_topic` populated as above.
 

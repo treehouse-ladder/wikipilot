@@ -16,7 +16,7 @@ description: |
   landed first and removed the target page; a frontmatter key the local
   lint missed because it ran against stale changed-paths; ruff fixes
   that landed in a newer ruff version than the routine's pinned one).
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools:
   - Read
   - Grep

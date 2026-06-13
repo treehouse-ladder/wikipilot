@@ -8,7 +8,7 @@ description: |
   dispatched by the Conflict Resolver routine, only for PRs that
   passed the centralized trust check, and only sequentially across the
   daily scan (rebasing one PR can change the next one's mergeability).
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools:
   - Read
   - Grep

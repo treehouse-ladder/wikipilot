@@ -389,7 +389,7 @@ class TestFrontierModelsConfig:
         repo_root = Path(__file__).resolve().parents[1]
         config = load_wikipilot_config(repo_root / "wikipilot.toml")
         fm = config.frontier_models
-        assert "claude-opus-4.7" in fm.roster
+        assert "claude-opus-4.8" in fm.roster
         assert "aa_intelligence_index" in fm.benchmarks
         assert "input_cost_per_mtoken" in fm.cost_fields
         # Every column has a registered gloss (load would have failed otherwise).

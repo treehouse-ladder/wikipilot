@@ -9,7 +9,7 @@ description: |
   `[[source-slug]]` and reuses configured benchmark/cost glosses verbatim
   (or near-paraphrase) when explaining leader changes. Dispatched once per
   Daily Research run at the report-PR step.
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools:
   - Read
   - Grep

@@ -8,7 +8,7 @@ description: |
   to add the answer to related concept/entity pages so it compounds.
   When triggered by a GitHub issue, comments on the issue with the
   answer + page link.
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools:
   - WebSearch
   - mcp__wikipilot-qmd__qmd_search

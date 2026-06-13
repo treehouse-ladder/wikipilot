@@ -6,7 +6,8 @@ compare_fields:
 - cybergym
 - arc_agi_2
 comparison_of:
-- claude-opus-4.7
+- claude-fable-5
+- claude-opus-4.8
 - claude-sonnet-4.6
 - gpt-5.5
 - gemini-3.1-pro
@@ -18,7 +19,7 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-06-08
+last_updated: 2026-06-12
 last_verified: '2026-05-22'
 show_glosses: true
 sources: []
@@ -29,7 +30,7 @@ title: Frontier model benchmark leaders
 
 ## Summary
 
-This comparison aggregates `aa_intelligence_index, gdpval_aa_elo, swe_bench_verified, cybergym, arc_agi_2` across 9 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-benchmark-leaders` to refresh.
+This comparison aggregates `aa_intelligence_index, gdpval_aa_elo, swe_bench_verified, cybergym, arc_agi_2` across 10 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-benchmark-leaders` to refresh.
 
 ## What each column means for me
 
@@ -41,12 +42,18 @@ This comparison aggregates `aa_intelligence_index, gdpval_aa_elo, swe_bench_veri
 
 | Entity | aa_intelligence_index | gdpval_aa_elo | swe_bench_verified | cybergym | arc_agi_2 |
 | --- | --- | --- | --- | --- | --- |
-| [[claude-opus-4.7]] | 57 | _1753_ | _0.876_ | _0.731_ | 0.758 |
+| [[claude-fable-5]] | **64.9** | **1932** | _unknown_ | _unknown_ | _unknown_ |
+| [[claude-opus-4.8]] | _61_ | _1890_ | _0.886_ | _0.788_ | _unknown_ |
 | [[claude-sonnet-4.6]] | 51 | 1683 | _unknown_ | _unknown_ | 0.604 |
-| [[gpt-5.5]] | **60** | **1769** | **0.887** | **0.818** | **0.85** |
+| [[gpt-5.5]] | 60 | 1769 | **0.887** | **0.818** | **0.85** |
 | [[gemini-3.1-pro]] | 57 | _unknown_ | 0.806 | _unknown_ | _0.771_ |
 | [[grok-4.3]] | 53 | 1500 | _unknown_ | _unknown_ | _unknown_ |
 | [[deepseek-v4]] | 52 | _unknown_ | 0.806 | _unknown_ | _unknown_ |
 | [[glm-5]] | 50 | _unknown_ | _unknown_ | _unknown_ | _unknown_ |
 | [[kimi-k2.6]] | 54 | 1520 | 0.802 | 0.413 | _unknown_ |
-| [[qwen3.7-max]] | _57_ | _unknown_ | _unknown_ | _unknown_ | _unknown_ |
+| [[qwen3.7-max]] | 57 | _unknown_ | _unknown_ | _unknown_ | _unknown_ |
+
+## Leader changes since last regen
+
+- **`aa_intelligence_index`**: [[claude-fable-5]] took #1 from [[claude-opus-4.8]].
+- **`gdpval_aa_elo`**: [[claude-fable-5]] took #1 from [[claude-opus-4.8]].

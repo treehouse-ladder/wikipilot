@@ -286,7 +286,7 @@ The `wiki-merger`'s pre-commit validation gate (Layer 6) detected a wikilink in 
 
 This usually means one of:
 
-1. The `topic-researcher` mistyped a source slug in `summary_addition` prose AND didn't pass the deterministic `slug` field in `ProposalSource` (Layer 6.a fix). Re-running the topic with a freshly-rebuilt qmd index often resolves this — the researcher's next attempt should pick up the canonical slug.
+1. The `topic-researcher` mistyped a source slug in `update_entry` prose AND didn't pass the deterministic `slug` field in `ProposalSource` (Layer 6.a fix). Re-running the topic with a freshly-rebuilt qmd index often resolves this — the researcher's next attempt should pick up the canonical slug.
 2. The researcher cited a source it never actually ingested (no matching `ProposalSource` entry). The fix is in the topic-researcher's prompt: the `Citation discipline` mandate already forbids this. If the failure repeats across runs on the same topic, the prompt needs tightening.
 3. Two source pages collided on the same 8-char SHA suffix (vanishingly rare). Manually rename one of them to break the collision and re-run.
 
@@ -556,7 +556,7 @@ Section order, top-to-bottom:
 2. **`## Leader changes`** — only present when a #1 swapped on either comparison page today. Each bullet calls out the new leader, the metric, and the configured `[frontier_models].benchmark_glosses` / `cost_glosses` gloss verbatim so the same one-liner the user sees on the leaderboard appears in the brief.
 3. **`## Frontier model snapshot`** — the regenerated cost + benchmark tables, transcluded so the report is self-contained even if the comparison files change.
 4. **`## Watchlist`** — 0–10 high-signal-but-not-must-read items.
-5. **`## Notable findings by topic`** — one bullet per merged topic (head sentence of the researcher's `summary_addition`).
+5. **`## Notable findings by topic`** — one bullet per merged topic (head sentence of the researcher's `update_entry`).
 6. **`## Disputes & open questions`** — newly raised today.
 7. **Run accounting** (collapsed) — counts, PRs, runtime, token usage, notes.
 

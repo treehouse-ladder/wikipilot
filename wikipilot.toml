@@ -95,7 +95,8 @@ health_template = "claude/health-{date}"
 # pages render as `_unknown_` rows in the comparison tables until the
 # researcher creates them.
 roster = [
-  "claude-opus-4.7",
+  "claude-fable-5",
+  "claude-opus-4.8",
   "claude-sonnet-4.6",
   "gpt-5.5",
   "gemini-3.1-pro",

@@ -19,6 +19,8 @@ from wikipilot.lint import (
     check_orphans,
     check_ownership_violations,
     check_staleness,
+    check_summary_shrinkage,
+    check_updates_order,
 )
 from wikipilot.wiki import Page, Vault
 
@@ -504,3 +506,79 @@ class TestComparisonFrontmatterLint:
         page = Page.read(path)
         errors = page.validate_frontmatter()
         assert any("comparison_of" in e for e in errors)
+
+
+def _write_topic_with_updates(vault: Vault, dates: list[str]) -> None:
+    """Overwrite the ai-agents topic index with a ## Recent updates log of `dates`."""
+    body_lines = [
+        "---",
+        'title: "AI agents and agentic systems"',
+        "kind: topic",
+        "sources:",
+        '  - "[[example-paper-aabbccdd]]"',
+        "last_updated: 2026-05-12",
+        "last_verified: 2026-05-12",
+        "freshness_window_days: 30",
+        "---",
+        "",
+        "# AI agents and agentic systems",
+        "",
+        "## Summary",
+        "",
+        "Current state of agentic systems [[example-paper-aabbccdd]].",
+        "",
+        "> quote",
+        "",
+        "## Recent updates",
+        "",
+    ]
+    for d in dates:
+        body_lines += [f"### Updates {d}", "", f"Finding on {d} [[example-paper-aabbccdd]].", ""]
+    body_lines += ["## See also", "", "- [[transformer-attention]]", ""]
+    (vault.topic_index("ai-agents")).write_text("\n".join(body_lines), encoding="utf-8")
+
+
+class TestCheckUpdatesOrder:
+    def test_newest_first_passes(self, sample_vault: Vault) -> None:
+        _write_topic_with_updates(sample_vault, ["2026-05-12", "2026-05-11", "2026-05-10"])
+        issues = check_updates_order(_ctx(sample_vault, today=date(2026, 5, 12)))
+        assert not any(i.code == "updates-order" for i in issues)
+
+    def test_out_of_order_flagged(self, sample_vault: Vault) -> None:
+        _write_topic_with_updates(sample_vault, ["2026-05-10", "2026-05-12"])
+        issues = check_updates_order(_ctx(sample_vault, today=date(2026, 5, 12)))
+        flagged = [i for i in issues if i.code == "updates-order"]
+        assert len(flagged) == 1
+        assert flagged[0].severity == "warning"
+
+    def test_no_recent_updates_section_skipped(self, sample_vault: Vault) -> None:
+        # The default ai-agents fixture has no ## Recent updates section.
+        issues = check_updates_order(_ctx(sample_vault))
+        assert not any(i.code == "updates-order" for i in issues)
+
+
+class TestCheckSummaryShrinkage:
+    def test_no_baseline_is_noop(self, sample_vault: Vault) -> None:
+        ctx = _ctx(sample_vault)
+        assert ctx.previous_summary_citations == {}
+        assert check_summary_shrinkage(ctx) == []
+
+    def test_large_drop_flagged(self, sample_vault: Vault) -> None:
+        ctx = _ctx(sample_vault)
+        # ai-agents Summary currently has 2 citations; pretend it had 10.
+        ctx.previous_summary_citations = {"topics/ai-agents/index.md": 10}
+        issues = check_summary_shrinkage(ctx)
+        flagged = [i for i in issues if i.code == "summary-shrinkage"]
+        assert len(flagged) == 1
+        assert flagged[0].severity == "warning"
+
+    def test_small_drop_ok(self, sample_vault: Vault) -> None:
+        ctx = _ctx(sample_vault)
+        # 2 -> 2 (no drop), and a baseline of 2 with current 2 is fine.
+        ctx.previous_summary_citations = {"topics/ai-agents/index.md": 2}
+        assert not any(i.code == "summary-shrinkage" for i in check_summary_shrinkage(ctx))
+
+    def test_growth_not_flagged(self, sample_vault: Vault) -> None:
+        ctx = _ctx(sample_vault)
+        ctx.previous_summary_citations = {"topics/ai-agents/index.md": 1}
+        assert not any(i.code == "summary-shrinkage" for i in check_summary_shrinkage(ctx))

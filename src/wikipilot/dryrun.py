@@ -49,7 +49,7 @@ class PageDiff:
 
     path: str
     kind: str  # "topic" | "concept" | "entity" | "answer"
-    summary_addition: str  # text to append to the page's ## Summary
+    update_entry: str  # dated `### Updates` log block (topic pages) / synthesis prose (others)
     new_disputes: list[str] = field(default_factory=list)
     new_open_questions: list[str] = field(default_factory=list)
 
@@ -86,6 +86,17 @@ class Proposal:
     page_diffs: list[PageDiff]
     new_disputes: list[str] = field(default_factory=list)
     new_open_questions: list[str] = field(default_factory=list)
+    summary_affecting: bool = False
+    """Whether this run changes the topic's current-state picture.
+
+    When True, the daily orchestrator dispatches the ``topic-summarizer`` to
+    regenerate the topic page's ``## Summary`` view from the (now-updated)
+    ``## Recent updates`` log + entity frontmatter. When False, the dated log
+    entry is still applied but the Summary is left untouched (no rewrite = no
+    drift). See CLAUDE.md "Topic-page summaries are a regenerated view".
+    """
+    summary_guidance: str = ""
+    """What shifted that the summarizer must reflect (empty when not affecting)."""
 
 
 @dataclass
@@ -134,7 +145,7 @@ def make_fake_proposal(topic: TopicConfig, *, today: date | None = None) -> Prop
         PageDiff(
             path=f"topics/{topic.id}/index.md",
             kind="topic",
-            summary_addition=(
+            update_entry=(
                 f"A dry-run paper [[{src_slug}]] introduces a dry-run technique for testing "
                 "research pipelines."
             ),
@@ -143,7 +154,7 @@ def make_fake_proposal(topic: TopicConfig, *, today: date | None = None) -> Prop
         PageDiff(
             path=f"concepts/{concept_slug}.md",
             kind="concept",
-            summary_addition=(
+            update_entry=(
                 f"Dry-run concept refers to a synthesized payload [[{src_slug}]] used to "
                 "exercise the apply path end-to-end without an Anthropic call."
             ),
@@ -160,6 +171,10 @@ def make_fake_proposal(topic: TopicConfig, *, today: date | None = None) -> Prop
         page_diffs=diffs,
         new_disputes=diffs[1].new_disputes,
         new_open_questions=diffs[0].new_open_questions,
+        summary_affecting=True,
+        summary_guidance=(
+            "Dry-run technique introduced; exercise the gated summarizer dispatch path."
+        ),
     )
 
 
@@ -231,7 +246,15 @@ def apply_proposal_topic_only(
     for diff in proposal.page_diffs:
         target = vault.root / diff.path
         page = _ensure_page(vault, target, diff)
-        _append_summary(page, diff.summary_addition)
+        if diff.kind == "topic":
+            # Topic pages are event-sourced: the dated entry is inserted at the
+            # TOP of the immutable ## Recent updates log. The ## Summary view is
+            # regenerated separately by the topic-summarizer (an Anthropic-driven
+            # agent), so it is intentionally NOT touched here — mirroring the
+            # wiki-merger contract. See CLAUDE.md "Topic-page summaries...".
+            _prepend_recent_update(page, diff.update_entry, today=today)
+        else:
+            _append_summary(page, diff.update_entry)
         for entry in diff.new_disputes:
             _append_section_bullet(page, "## Disputes", entry)
         for entry in diff.new_open_questions:
@@ -592,6 +615,34 @@ def _append_summary(page: Page, addition: str) -> None:
             in_summary = True
         new_parts.append(part)
     page.content = "".join(new_parts)
+
+
+def _prepend_recent_update(page: Page, entry: str, *, today: date) -> None:
+    """Insert a dated `### Updates <today>` block at the TOP of `## Recent updates`.
+
+    Newest-first and immutable: existing `### Updates` entries are preserved
+    verbatim; the new block is placed immediately under the `## Recent updates`
+    heading. Creates the section (after `## Summary` if present, else at the end)
+    when it doesn't yet exist. Mirrors the wiki-merger's append-at-top contract.
+    """
+    if not entry:
+        return
+    block = f"### Updates {today.isoformat()}\n\n{entry.rstrip()}\n"
+    heading = "## Recent updates"
+    if heading not in page.content:
+        insertion = f"\n\n{heading}\n\n{block}"
+        summary = re.compile(r"(^## Summary\s*\n)(.*?)(?=^## |\Z)", re.MULTILINE | re.DOTALL)
+        match = summary.search(page.content)
+        if match:
+            cut = match.end(2)
+            page.content = page.content[:cut].rstrip() + insertion + page.content[cut:]
+        else:
+            page.content = page.content.rstrip() + insertion
+        return
+    pattern = re.compile(rf"(^{re.escape(heading)}\s*\n)(\s*)", re.MULTILINE)
+    match = pattern.search(page.content)
+    insert_at = match.end(1)
+    page.content = page.content[:insert_at] + f"\n{block}\n" + page.content[insert_at:]
 
 
 def _append_section_bullet(page: Page, heading: str, bullet_text: str) -> None:

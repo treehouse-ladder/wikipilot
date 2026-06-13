@@ -121,10 +121,26 @@ The `topic-researcher` (for `TOPIC_ID == "frontier-models"` only) sweeps every e
 
 Concept, entity, topic, and answer pages all share the same structure:
 
-- `## Summary` — synthesis prose. **Every non-trivial claim must include an inline `[[source-slug]]` wikilink.** For each source cited at least once on a page, include one `>` quote block from the source as evidence.
+- `## Summary` — synthesis prose. **Every non-trivial claim must include an inline `[[source-slug]]` wikilink.** For each source cited at least once on a page, include one `>` quote block from the source as evidence. On **topic landing pages** the Summary is a *regenerated current-state view* (see "Topic-page summaries are a regenerated view" below) — it is rewritten in full, not appended to. On all other page kinds it is ordinary additive synthesis.
+- `## Recent updates` (topic landing pages only) — an **immutable, append-at-top, newest-first** event log of dated `### Updates YYYY-MM-DD` entries. This is the lossless system of record for the topic; the `## Summary` above it is a projection of this log. Never edit or delete an existing `### Updates` entry; new entries are inserted at the **top** (newest first).
 - `## Disputes` — append-only. Each entry: `[[source-A]] claims X; [[source-B]] claims not-X. Status: unresolved | resolved-toward-A | resolved-toward-B`. Visible in Obsidian's graph view; researchers read these at the start of each run.
 - `## Open questions` — append-only. Each entry: `- [ ] question text`. Researchers pull these into the next run's agenda.
 - `## See also` — outbound `[[wikilinks]]` to related pages. The `query-back-fill` skill writes here when filing answer pages back into the wiki.
+
+### Topic-page summaries are a regenerated view (event-sourcing)
+
+A topic landing page is modeled as an **event log + a materialized view**:
+
+- **`## Recent updates` is the event log** — immutable, newest-first, append-at-top. Every day's findings land here as a dated `### Updates YYYY-MM-DD` block (written by the `wiki-merger` from the researcher's proposal). Nothing here is ever edited or removed, so no information is lost at the record level.
+- **`## Summary` is the view** — a faithful current-state projection of the log (plus the topic's entity/comparison frontmatter). It is regenerated in full by the `topic-summarizer` agent, **not** by the researcher and **not** by appending.
+
+This split is what makes a full summary rewrite safe: the summary may be lossy because the log behind it is not. Three rules keep the view honest:
+
+1. **Hybrid regeneration.** The `topic-summarizer` uses the *prior* `## Summary` as a draft, but treats the `## Recent updates` log and the entity/comparison frontmatter as the *authoritative* source. Every time-sensitive claim (current leaders, version numbers, prices) must be re-verified against the log/entities, not copied from the stale draft.
+2. **Resurrection.** Because the summarizer reads the whole log, a claim that was dropped from the Summary on an earlier run **must be added back** when the log shows it is frontier-relevant again. The log is the memory.
+3. **Gating ("when").** The summary is regenerated **only on summary-affecting runs** — when the day's findings change a leader, supersede a claim, or change recommended best practice. The researcher flags this with `summary_affecting` (see the Proposal schema). On non-affecting runs the log still gets its entry, but the Summary is left untouched (no rewrite = no drift).
+
+**Summary contract (the fixed skeleton the view must always cover).** To bound drift, the regenerated `## Summary` fills a stable shape rather than free-paraphrasing. For each topic it should cover, where applicable: the current leader(s) on the dimensions the topic tracks; the current best-in-segment entries (e.g. per-lab flagship, open-weights leader); the current recommended best practices; and the key open caveats. Evergreen framing not tied to a date may be carried forward from the prior Summary even when it is absent from the log.
 
 ### Divergence-check sentinel
 
@@ -232,14 +248,15 @@ After every routine run, the orchestrator writes `wiki/reports/YYYY-MM-DD.md` (o
 | Wiki Query orchestrator | Sonnet | tool-use + control flow |
 | Weekly Health orchestrator | Sonnet | tool-use + control flow |
 | Conflict Resolver orchestrator | Sonnet | tool-use + control flow; no synthesis (scans for stuck PRs, dispatches the Opus subagent only when something needs rebasing) |
-| `topic-researcher` | **Opus 4.7** | judgment-heavy synthesis at every ingest entry point |
-| `wiki-merger` | Sonnet | mostly mechanical edits + cross-page sweep |
+| `topic-researcher` | **Opus 4.8** | judgment-heavy synthesis at every ingest entry point |
+| `topic-summarizer` | **Opus 4.8** | regenerates a topic page's `## Summary` view as a faithful current-state projection of the immutable `## Recent updates` log + entity frontmatter; gated to summary-affecting runs; resurrects dropped-but-now-frontier claims |
+| `wiki-merger` | Sonnet | mostly mechanical edits + cross-page sweep; inserts the dated log entry, never touches `## Summary` |
 | `wiki-linter` | **Haiku** | Python linter does the analysis; agent only applies mechanical fixes |
-| `query-answerer` | **Opus 4.7** | user-facing synthesis on demand |
+| `query-answerer` | **Opus 4.8** | user-facing synthesis on demand |
 | `wiki-disputes-scanner` | Sonnet | judgment task, but cost-sensitive (many pages × candidate sets); never auto-resolves disputes |
-| `conflict-resolver` | **Opus 4.7** | intelligent text-conflict resolution (append-only Disputes/Open questions, cross-page sweep awareness); dispatched only when GitHub reports `mergeStateStatus in {DIRTY, BEHIND}` |
-| `wiki-lint-fixer` | **Opus 4.7** | bounded auto-fix for stuck-on-CI `claude/*` PRs (broken-wikilink via `autofix_wikilink`, broken-image-ref, frontmatter, log-format, ruff --fix safe-only). Dispatched only when the conflict-resolver scan classifies a BLOCKED PR's failing CI as `dispatch_kind: lint_fix`. Hard-blocks on `ownership-violation`, pytest failures, and any error code outside the configured allowlist. |
-| `daily-brief-curator` | **Opus 4.7** | one editorial pass per Daily Research run at the report-PR step; reads every merged proposal + the regenerated cost/benchmark tables + yesterday's report and produces the `## Today's brief` + `## Leader changes` + `## Watchlist` sections of the daily report, ranked through the user's "best games + most-optimized agentic workflow" lens |
+| `conflict-resolver` | **Opus 4.8** | intelligent text-conflict resolution (append-only Disputes/Open questions, cross-page sweep awareness); dispatched only when GitHub reports `mergeStateStatus in {DIRTY, BEHIND}` |
+| `wiki-lint-fixer` | **Opus 4.8** | bounded auto-fix for stuck-on-CI `claude/*` PRs (broken-wikilink via `autofix_wikilink`, broken-image-ref, frontmatter, log-format, ruff --fix safe-only). Dispatched only when the conflict-resolver scan classifies a BLOCKED PR's failing CI as `dispatch_kind: lint_fix`. Hard-blocks on `ownership-violation`, pytest failures, and any error code outside the configured allowlist. |
+| `daily-brief-curator` | **Opus 4.8** | one editorial pass per Daily Research run at the report-PR step; reads every merged proposal + the regenerated cost/benchmark tables + yesterday's report and produces the `## Today's brief` + `## Leader changes` + `## Watchlist` sections of the daily report, ranked through the user's "best games + most-optimized agentic workflow" lens |
 
 Routine-UI model picker only sets the orchestrator model; subagents pin their own model via YAML frontmatter.
 
@@ -250,7 +267,7 @@ The canonical prompt lives at [`prompts/daily_runner.md`](prompts/daily_runner.m
 1. Run `python scripts/preflight.py` — fail fast if env broken.
 2. Read `CLAUDE.md`, `topics.yaml`, `wiki/index.md`, last 50 lines of `wiki/log.md`, every `wiki/topics/<id>/purpose.md`. This becomes the cache-warming prefix shared across parallel subagents.
 3. Set `CLAUDE_CODE_FORK_SUBAGENT=1` and dispatch `topic-researcher` **in parallel** via the Task tool, one per enabled topic. Each returns a structured `Proposal` (schema below).
-4. For each topic, in series: branch `claude/daily-YYYY-MM-DD/<topic-id>`, dispatch `wiki-merger`, dispatch `wiki-linter`, run `pytest` + `wikipilot lint wiki/`, commit, push, `gh pr create`, `python scripts/maybe_automerge.py --pr <num> --route daily_research`. The shim calls `apply_static_gate` — it queues `gh pr merge --squash --auto` whenever every deterministic criterion passes (file count, diff lines, human-only paths, trust) and lets GitHub's required-status-checks rule hold the merge until CI is green. The local Python deliberately does NOT predict CI status: predicting CI was what stranded PRs in May 2026 (empty rollup parsed as "all checks passed"); the Conflict Resolver routine (see below) handles the only remaining failure mode. **Per-topic PRs do not write to `wiki/log.md` or `wiki/index.md`** — those writes are batched on the report PR in step 6 to avoid the parallel-merge conflict cascade. Topic PRs end up file-disjoint by construction (topic page + source pages + cross-page sweep targets only) and merge cleanly through the queue in parallel.
+4. For each topic, in series: branch `claude/daily-YYYY-MM-DD/<topic-id>`, dispatch `wiki-merger` (inserts the dated `### Updates` entry at the top of `## Recent updates`; never touches `## Summary`), then — **only when the proposal's `summary_affecting` is true** — dispatch `topic-summarizer` to regenerate the topic's `## Summary` view from the now-updated log + entity frontmatter, then dispatch `wiki-linter`, run `pytest` + `wikipilot lint wiki/`, commit, push, `gh pr create`, `python scripts/maybe_automerge.py --pr <num> --route daily_research`. The shim calls `apply_static_gate` — it queues `gh pr merge --squash --auto` whenever every deterministic criterion passes (file count, diff lines, human-only paths, trust) and lets GitHub's required-status-checks rule hold the merge until CI is green. The local Python deliberately does NOT predict CI status: predicting CI was what stranded PRs in May 2026 (empty rollup parsed as "all checks passed"); the Conflict Resolver routine (see below) handles the only remaining failure mode. **Per-topic PRs do not write to `wiki/log.md` or `wiki/index.md`** — those writes are batched on the report PR in step 6 to avoid the parallel-merge conflict cascade. Topic PRs end up file-disjoint by construction (topic page + source pages + cross-page sweep targets only) and merge cleanly through the queue in parallel.
 5. Wait for every topic PR to reach a terminal state (`MERGED` or terminally failed) before starting step 6. Topic PRs are parallel-mergeable so the wait is typically <3 min.
 6. On a fresh `claude/daily-YYYY-MM-DD/_report` branch cut from post-merge `main`: append one `## [DATE] daily | <topic-id> — N sources, M pages` entry per merged topic via `append-log`, update `wiki/index.md` for every new source/page across all merged topics via `update-index`, write `wiki/reports/YYYY-MM-DD.md` via `wikipilot.log.write_run_report`, append the final summary log entry, commit, push, `gh pr create`, gate. The report PR's diff touches `wiki/log.md`, `wiki/index.md`, and `wiki/reports/<DATE>.md` exclusively — no other open PR competes for those files at this point in the run, so it cannot conflict.
 
@@ -261,7 +278,7 @@ The canonical prompt lives at [`prompts/query_answerer.md`](prompts/query_answer
 1. Run `python scripts/preflight.py`.
 2. Read `CLAUDE.md`, `wiki/index.md`, recent `wiki/log.md` (cache-warming prefix).
 3. Parse the question from the GitHub issue body (if triggered by `issue.opened` with the `query` label) or the API `question` field.
-4. Dispatch `query-answerer` (Opus 4.7) with the question — qmd-search first, WebSearch only as fallback.
+4. Dispatch `query-answerer` (Opus 4.8) with the question — qmd-search first, WebSearch only as fallback.
 5. Apply the `Answer` to a fresh branch `claude/query-YYYY-MM-DD-<slug>`, run lint+tests.
 6. Call `query-back-fill` to add `[[answer-slug]]` references to related concept/entity pages.
 7. `gh pr create`; `python scripts/maybe_automerge.py --pr <num> --route wiki_query`.
@@ -320,9 +337,9 @@ The PR Watcher v2 architecture splits responsibilities like this:
 
 | `dispatch_kind` | Trigger | Handler | LLM? |
 |---|---|---|---|
-| `rebase` | `mergeStateStatus in {DIRTY, BEHIND}` | Opus `conflict-resolver` subagent rebases + resolves + force-pushes + re-queues | yes (Opus 4.7) |
+| `rebase` | `mergeStateStatus in {DIRTY, BEHIND}` | Opus `conflict-resolver` subagent rebases + resolves + force-pushes + re-queues | yes (Opus 4.8) |
 | `requeue` | `mergeStateStatus == CLEAN` AND the PR is not already queued (legacy `autoMergeRequest is null` AND not in the repo's merge-queue snapshot) AND every check is green | `python scripts/maybe_automerge.py` — deterministic re-evaluation through `apply_static_gate` | no |
-| `lint_fix` | `mergeStateStatus == BLOCKED` AND `classify_lint_failure(ci_log).auto_fixable` is True | Opus `wiki-lint-fixer` subagent runs the bounded auto-fix workflow + force-pushes + re-queues | yes (Opus 4.7) |
+| `lint_fix` | `mergeStateStatus == BLOCKED` AND `classify_lint_failure(ci_log).auto_fixable` is True | Opus `wiki-lint-fixer` subagent runs the bounded auto-fix workflow + force-pushes + re-queues | yes (Opus 4.8) |
 
 ### Auto-fix allowlist (`wiki-lint-fixer`)
 
@@ -375,11 +392,13 @@ Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to 
  "also_relevant_to": ["<other-topic-id>", "..."]
  }
  ],
+  "summary_affecting": true,
+  "summary_guidance": "What shifted that the topic-summarizer must reflect (new leader / superseded claim / changed best practice). Empty when summary_affecting is false.",
   "page_diffs": [
     {
       "path": "topics/<id>/index.md | concepts/<slug>.md | entities/<slug>.md",
       "kind": "topic | concept | entity",
-      "summary_addition": "Prose with [[source-slug]] inline citations and a > quote block.",
+      "update_entry": "The dated `### Updates YYYY-MM-DD` log block, prose with [[source-slug]] inline citations and a > quote block. On topic pages this is inserted at the TOP of `## Recent updates` (immutable, newest-first). On concept/entity pages it is additive synthesis appended to `## Summary`.",
       "new_disputes": ["[[A]] claims X; [[B]] claims not-X. Status: unresolved"],
       "new_open_questions": ["What about under FP8?"]
     }
@@ -400,7 +419,9 @@ Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to 
 }
 ```
 
-`slug` on each `ProposalSource` is the **deterministic** source-page slug — exactly what `wikipilot.sources.source_slug(url, title=title)` returns (and exactly what the source file is named). Required: the researcher computes it once (cheap one-liner: `uv run python -c "from wikipilot.sources import source_slug; print(source_slug('URL', title='TITLE'))"`) and uses the same value verbatim in every `[[source-slug]]` citation it writes into `summary_addition`. The `wiki-merger` validates every wikilink in every page it touches against the union of `known_slugs(vault)` and the proposal's `slug` values before committing (Layer 6); unresolved links trigger `autofix_wikilink` (single-candidate slug glob), and any link the merger still can't resolve aborts the topic with a structured error in the run report. Back-compat: when `slug` is omitted on a legacy proposal, the merger computes it on the fly via the same `source_slug` call.
+`summary_affecting` (bool) and `summary_guidance` (string) drive the gated `topic-summarizer` dispatch (see "Topic-page summaries are a regenerated view" and "Daily run workflow"). The researcher sets `summary_affecting: true` only when the run's findings change the topic's current-state picture (new leader, superseded claim, changed best practice); the orchestrator then dispatches the `topic-summarizer` to regenerate `## Summary`. On non-affecting runs the log still gets its `update_entry`, but the Summary is left untouched. The researcher never writes `## Summary` itself.
+
+`slug` on each `ProposalSource` is the **deterministic** source-page slug — exactly what `wikipilot.sources.source_slug(url, title=title)` returns (and exactly what the source file is named). Required: the researcher computes it once (cheap one-liner: `uv run python -c "from wikipilot.sources import source_slug; print(source_slug('URL', title='TITLE'))"`) and uses the same value verbatim in every `[[source-slug]]` citation it writes into `update_entry`. The `wiki-merger` validates every wikilink in every page it touches against the union of `known_slugs(vault)` and the proposal's `slug` values before committing (Layer 6); unresolved links trigger `autofix_wikilink` (single-candidate slug glob), and any link the merger still can't resolve aborts the topic with a structured error in the run report. Back-compat: when `slug` is omitted on a legacy proposal, the merger computes it on the fly via the same `source_slug` call.
 
 `entity_field_updates` is only populated by the `frontier-models` topic-researcher's daily roster sweep (see "Daily run workflow" and the agent prompt). Other topics omit the field or pass `[]`. Each entry has:
 
@@ -564,6 +585,8 @@ Every entry: `## [YYYY-MM-DD] kind | subject` followed by a one-line summary. `k
 | `disputes-format` | warning | `## Disputes` entries that aren't `- ... claims ... Status: ...` bullets |
 | `open-questions-format` | warning | `## Open questions` entries that aren't `- [ ] ...` checkboxes |
 | `divergence-discipline` | warning | synthesis page has empty `## Disputes`, empty `## Open questions`, AND no `_no contradictions or gaps known yet (last reviewed: YYYY-MM-DD)_` sentinel anywhere in the body |
+| `updates-order` | warning | on topic pages, the `### Updates YYYY-MM-DD` entries under `## Recent updates` must be newest-first (descending dates); the log is append-at-top |
+| `summary-shrinkage` | warning | on topic pages, the regenerated `## Summary` dropped ≥ 40% of its `[[wikilink]]` citations vs the previous git revision — a "did the view over-prune?" review signal (the immutable log is the backstop). Only fires when run from a git checkout. |
 | `ownership-violation` | error | only fires when `--branch claude/...` and `--changed-path ...` are passed; flags any human-only path being modified on a Claude branch |
 
 Errors fail the lint (exit code 1); warnings are reported but don't fail. The auto-merge gate (Phase 3) blocks any PR where the lint reports errors *or* the changed paths trip the ownership-violation check.

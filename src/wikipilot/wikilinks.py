@@ -6,7 +6,7 @@ version:
 - ``wikipilot.lint.check_broken_wikilinks`` parsed the lint context's known
   slugs and reported any unresolved ``[[link]]`` as a hard error.
 - The ``wiki-merger`` agent didn't validate at all — it wrote whatever
-  ``summary_addition`` prose the topic-researcher produced verbatim, even
+  ``update_entry`` prose the topic-researcher produced verbatim, even
   when the embedded slugs were typos.
 - The ``wiki-lint-fixer`` agent (Phase 11) wants to repair broken wikilinks
   post-CI by globbing for the actual target.

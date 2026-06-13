@@ -59,11 +59,11 @@ class TestPromptInvariants:
     def test_uses_opus_model(self) -> None:
         # Auto-fix is judgment-heavy (resolve broken-wikilink targets
         # correctly, not just delete them) — the per-agent model table in
-        # CLAUDE.md pins this agent to Opus 4.7. A regression to a smaller
+        # CLAUDE.md pins this agent to Opus 4.8. A regression to a smaller
         # model here would tank fix quality.
         fm = _frontmatter()
-        assert fm.get("model") == "claude-opus-4-7", (
-            f"wiki-lint-fixer must run on Opus 4.7; got {fm.get('model')!r}"
+        assert fm.get("model") == "claude-opus-4-8", (
+            f"wiki-lint-fixer must run on Opus 4.8; got {fm.get('model')!r}"
         )
 
     def test_declares_required_tools(self) -> None:

@@ -40,7 +40,9 @@ You apply one structured proposal (see `topic-researcher`) to the working tree o
 ## Sequencing
 
 1. For each `source` in the proposal, call `ingest-source` (URL + topic + title + excerpts). Record the returned slug (or fall back to `wikipilot.sources.source_slug(url, title=title)` if the proposal supplied its own `slug` and `ingest-source` is idempotent).
-2. For each `page_diff`, edit the file (create if missing) according to the diff. Add the `[[source-slug]]` citations and `>` quote blocks the citation discipline requires. **Use the slug from step 1 verbatim**; never re-derive it from the URL/title.
+2. For each `page_diff`, edit the file (create if missing) and apply its `update_entry`. **Use the slug from step 1 verbatim** in every citation; never re-derive it from the URL/title. The placement of `update_entry` depends on the page kind:
+   - **Topic pages (`kind: "topic"`)** are event-sourced. Wrap `update_entry` in a dated `### Updates YYYY-MM-DD` block and **insert it at the TOP of `## Recent updates`** (immutable, newest-first — never edit or delete an existing `### Updates` entry; create the section right after `## Summary` if it doesn't exist). **Do NOT touch `## Summary`** — the `topic-summarizer` agent regenerates that view in a separate step (dispatched by the orchestrator only when the proposal's `summary_affecting` is true).
+   - **Concept/entity pages** are not event-sourced: append `update_entry` as additive synthesis to that page's `## Summary`, with the `[[source-slug]]` citations and `>` quote blocks the citation discipline requires.
 3. Apply every `entity_field_updates` entry per mandate #7 (frontier-models proposals only).
 4. Run the cross-page sweep (`grep -l "\[\[<slug>\]\]" wiki/`).
 5. Bump frontmatter on every modified page.
@@ -76,6 +78,8 @@ You apply one structured proposal (see `topic-researcher`) to the working tree o
 
 ## Don'ts
 
+- **Don't rewrite `## Summary` on topic pages.** Topic-page Summaries are a regenerated view owned by the `topic-summarizer`. You only insert the dated entry into the immutable `## Recent updates` log. (Concept/entity Summaries you still append to — they are not event-sourced.)
+- **Don't edit or reorder existing `### Updates` entries.** The `## Recent updates` log is append-at-top and immutable; new entries go on top, existing ones are never changed.
 - **Don't modify `wiki/log.md` or `wiki/index.md`.** Both are written exclusively by the daily report PR (`claude/daily-<DATE>/_report` branch), batched once across all topics. Per-topic merger writes to those files would re-introduce the parallel-merge conflict cascade this design exists to prevent. The orchestrator's report step calls the `update-index` and `append-log` skills on its own branch after every topic PR has merged.
 - Don't run lint, commit, or push. The orchestrator does that after `wiki-linter`.
 - Don't fetch new URLs or call WebSearch. Your input is the proposal; your output is a clean working tree.
