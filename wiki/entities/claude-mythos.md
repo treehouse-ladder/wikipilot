@@ -2,8 +2,8 @@
 title: "Claude Mythos"
 kind: entity
 aliases: ["Mythos", "Claude Mythos Preview", "Anthropic Mythos", "Claude Mythos 5"]
-sources: ["[[claude-mythos-preview-d737ab91]]", "[[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[expanding-project-glasswing-fd9b87df]]", "[[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]", "[[initial-impressions-of-claude-fable-5-1a99af0c]]", "[[if-claude-fable-stops-helping-you-you-ll-never-know-1257de46]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]"]
-last_updated: 2026-06-11
+sources: ["[[claude-mythos-preview-d737ab91]]", "[[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[expanding-project-glasswing-fd9b87df]]", "[[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]", "[[initial-impressions-of-claude-fable-5-1a99af0c]]", "[[if-claude-fable-stops-helping-you-you-ll-never-know-1257de46]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]"]
+last_updated: 2026-06-13
 last_verified: 2026-06-11
 freshness_window_days: 30
 input_cost_per_mtoken: 25.00
@@ -63,6 +63,10 @@ Fable 5 introduces a new category of safeguard not previously documented: **sile
 
 > Claude Fable 5 has implemented new interventions that limit effectiveness for requests targeting frontier LLM development, such as building pretraining pipelines, distributed training infrastructure, or ML accelerator design. Unlike interventions for cybersecurity, biology and chemistry, and distillation attempts, these safeguards will not be visible to the user.
 
+**Mythos 5 access also suspended June 12, 2026.** The same export control directive that suspended Fable 5 also suspended Claude Mythos 5 globally. Because the directive targeted both models together, even Project Glasswing cyberdefender partners — the intended audience for Mythos 5 — lost access. Anthropic is complying while disagreeing that the narrow jailbreak evidence justifies a full recall [[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]].
+
+> The US government, citing national security authorities, has issued an export control directive to suspend all access to Fable 5 and Mythos 5 by any foreign national, whether inside or outside the United States.
+
 ## Disputes
 
 - [[claude-mythos-preview-d737ab91]] reports Mythos as state-of-the-art at SWE-bench Verified (93.9%), but this was a vendor-reported single-shot benchmark on an invitation-only model — no independent third-party replication exists. Status: unresolved — independently unverifiable while access remains invitation-only.
@@ -74,6 +78,7 @@ Fable 5 introduces a new category of safeguard not previously documented: **sile
 - [ ] Is Mythos a fine-tune of an existing Claude Opus base or a distinct architecture trained separately for cybersecurity capability?
 - [ ] Does Mythos' Cybench 100% pass@1 saturation indicate the benchmark has been exhausted as a frontier-security signal, or is it evidence of genuine out-of-distribution generalization?
 - [ ] Anthropic reports 10,000+ high/critical vulnerabilities found by Mythos in ~2 months of Glasswing operation [[expanding-project-glasswing-fd9b87df]]; what is the false-positive / non-reproducible rate, and is Anthropic publishing per-partner deduplication numbers?
+- [ ] The Glasswing partnerships involved 150+ critical-infrastructure organizations — what is the operational impact of sudden Mythos 5 suspension on live vulnerability discovery programs [[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]?
 
 ## See also
 
