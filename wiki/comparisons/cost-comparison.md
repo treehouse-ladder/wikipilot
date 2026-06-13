@@ -3,6 +3,7 @@ compare_fields:
 - input_cost_per_mtoken
 - output_cost_per_mtoken
 comparison_of:
+- claude-fable-5
 - claude-opus-4.8
 - claude-sonnet-4.6
 - gpt-5.5
@@ -32,7 +33,7 @@ title: Frontier model cost comparison
 
 ## Summary
 
-This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` across 11 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-cost-comparison` to refresh.
+This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` across 12 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-cost-comparison` to refresh.
 
 ## What each column means for me
 
@@ -41,6 +42,7 @@ This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` acros
 
 | Entity | input_cost_per_mtoken | output_cost_per_mtoken |
 | --- | --- | --- |
+| [[claude-fable-5]] | 10.0 | 50.0 |
 | [[claude-opus-4.8]] | 5.0 | 25.0 |
 | [[claude-sonnet-4.6]] | 3.0 | 15.0 |
 | [[gpt-5.5]] | 5.0 | 30.0 |
