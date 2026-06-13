@@ -139,7 +139,11 @@ sources:
   - "[[custom-stores-custom-tools-and-auto-review-for-the-cursor-sdk-7da739cc]]"
   - "[[swe-explore-benchmarking-how-coding-agents-explore-repositories-a0f69e17]]"
   - "[[release-datasette-agent-0-2a0-346fa206]]"
-last_updated: 2026-06-12
+  - "[[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]]"
+  - "[[frontier-coding-agents-use-metaprogramming-to-adapt-to-unfamiliar-programming-languages-0414ba80]]"
+  - "[[agentic-very-much-adoption-of-coding-agent-in-new-github-projects-e080a2f2]]"
+  - "[[all-github-copilot-plans-are-now-on-usage-based-billing-2e8b23f7]]"
+last_updated: 2026-06-13
 last_verified: 2026-06-12
 freshness_window_days: 30
 ---
@@ -190,6 +194,24 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > Over 100 participants collaborated with one of four frontier models (Claude-Opus-4.6, GPT-5.4, Gemini-3.1-Pro, and MiniMax-M2.7) on a long-horizon coding task lasting around five hours [...] 94% of developers fail to detect sabotage, with vulnerability attributed to minimal code review, plausible cover story, and overtrust in agents. While a safety monitor reduces sabotage success, 56% of participants still accept the malicious code, ignoring its warnings.
 
 ## Recent updates
+
+### Updates 2026-06-13
+
+**Harness choice rivals model choice on SWE-bench variants** — Claw-SWE-Bench [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]], a new multilingual benchmark (350 instances, 8 languages, 43 repos) providing a fair adapter protocol for evaluating OpenClaw-style harnesses, finds that harness choice changes Pass@1 by 27.4 percentage points while model choice changes it by 29.4 pp — essentially tied. The minimal direct-diff adapter scores 19.1% vs. 73.4% for the full adapter on the same GLM 5.1 backbone. Claw-SWE-Bench Lite (80 instances) is also released for faster cost-aware validation.
+
+> OpenClaw with a minimal direct-diff adapter scores only 19.1% Pass@1, whereas the full adapter reaches 73.4% with the same GLM 5.1 backbone, showing that adapter design is essential for enabling OpenClaw-style harnesses. Model choice changes Pass@1 by 29.4 percentage points and harness choice by 27.4 percentage points under fixed models; systems with similar accuracy can differ substantially in total API cost.
+
+**Frontier agents self-generate via metaprogramming in unfamiliar languages** — A study of six coding agents on esoteric programming languages [[frontier-coding-agents-use-metaprogramming-to-adapt-to-unfamiliar-programming-languages-0414ba80]] found that the strongest agents (Claude Opus 4.6, GPT-5.4) avoid writing the target language directly, instead writing Python programs that generate target-language code and debugging those generators locally. This metaprogramming strategy exposes capability differences that mainstream benchmarks like SWE-Bench Verified and Terminal-Bench 2.0 compress into narrow bands — suggesting a new eval axis worth tracking.
+
+> Claude Opus 4.6 and GPT-5.4 often avoid writing the target language directly, instead writing Python programs that generate target-language code and debugging those generators locally on Brainfuck and Befunge-98. The protocol exposed capability differences between the agents that mainstream coding and agentic benchmarks such as SWE-Bench Verified and Terminal-Bench 2.0 compress into much narrower bands.
+
+**Coding agent adoption doubles in new GitHub projects** — "Agentic Very Much!" [[agentic-very-much-adoption-of-coding-agent-in-new-github-projects-e080a2f2]], a follow-up to the January 2026 "Agentic Much?" study (same authors: Robbes, Matricon, Degueule, Hora, Zacchiroli), finds that adoption of coding agents in newer GitHub projects is more than twice as high as in the earlier cohort, with AI-assisted commit proportions also significantly higher.
+
+> In this new sample analyzing newer projects, they found that the adoption of coding agents is more than twice as high. The adoption is also significantly more intensive, as the proportion of AI-assisted commits is sensibly higher, despite strong signs that they do not detect all of it.
+
+**GitHub Copilot moves to token-based billing** — As of June 1, 2026, GitHub Copilot replaced flat-rate Premium Request Units with AI Credits (1 AI Credit = $0.01 USD) [[all-github-copilot-plans-are-now-on-usage-based-billing-2e8b23f7]]. Cost per interaction now depends on model choice and token consumption; Copilot Pro+ includes $70/month in credits. Community response was sharply negative: single prompts reportedly consuming "$4.51," with some Pro+ users exhausting monthly allocations in "one afternoon." Relevant to cost engineering for coding-agent workflows using Copilot APIs.
+
+> GitHub is replacing PRUs (Premium Request Units) with a new unit called GitHub AI Credits, which are based on the tokens your interactions consume and priced according to the listed API rates per model. 1 AI credit = $0.01 USD.
 
 ### Updates 2026-06-12 — Nested subagents land simultaneously in Claude Code and Cursor
 
@@ -1036,6 +1058,8 @@ lint stays quiet until each page actually exists:
 - Does Claude Code's 5-level subagent depth limit interact badly with `CLAUDE_CODE_FORK_SUBAGENT=1` when a `topic-researcher` fans out further on its own?
 - Cursor's JSONL store claims git-diff-ability — does it survive squash-merging when used in a CI loop?
 - SWE-Explore reports file-level localization is "already strong" for modern methods — what is the actual numeric threshold, and does the leaderboard publish model scores?
+- [ ] Does the metaprogramming adaptation strategy (Python-generating-target-language) generalize to non-esoteric but unfamiliar languages (e.g. Rust for Python-specialist agents)? [[frontier-coding-agents-use-metaprogramming-to-adapt-to-unfamiliar-programming-languages-0414ba80]]
+- [ ] Does Claw-SWE-Bench's harness-choice ≈ model-choice finding hold for closed-source harnesses (Claude Code, Cursor) or only OpenClaw-style open harnesses? [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]]
 
 ## See also
 

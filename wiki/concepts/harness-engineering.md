@@ -21,7 +21,7 @@ sources:
   - "[[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]"
   - "[[live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-76f20b41]]"
   - "[[holistic-agent-leaderboard-the-missing-infrastructure-for-ai-agent-evaluation-cdd35ebf]]"
-last_updated: 2026-06-11
+last_updated: 2026-06-13
 last_verified: 2026-06-11
 freshness_window_days: 30
 ---
