@@ -3,7 +3,7 @@ title: Parallel Subagents
 kind: concept
 sources:
   - "[[build-programmatic-agents-with-the-cursor-sdk-fe66773e]]"
-last_updated: 2026-06-06
+last_updated: 2026-06-13
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---

@@ -8,7 +8,8 @@ sources:
   - "[[copilot-sdk-is-now-generally-available-f3907ed0]]"
   - "[[shape-copilot-code-review-around-your-team-1a940a72]]"
   - "[[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]"
-last_updated: 2026-06-09
+  - "[[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]]"
+last_updated: 2026-06-13
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -35,7 +36,9 @@ ADK Arena introduces 'LLM-as-a-Developer' as a measurement methodology for harne
 
 > The skills are evaluated on Codex and Claude Code using SciVisAgentBench, a benchmark of 108 expert-designed multi-step tasks. Results show that agent skills improve mean task scores across the evaluated suites, with token-efficiency benefits that depend on the agent harness and tool setting.
 
-_no contradictions or gaps known yet (last reviewed: 2026-06-09)_
+**Harness choice quantitatively rivals model choice (June 2026).** Claw-SWE-Bench [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]] (2026-06-13) establishes experimentally that harness choice and model choice have nearly equal impact on coding task Pass@1: 27.4 pp from harness vs. 29.4 pp from model under fixed counterparts, across 350 instances in 8 languages. This quantifies a long-suspected result — harness engineering matters as much as model capability for practical outcomes.
+
+> Model choice changes Pass@1 by 29.4 percentage points and harness choice by 27.4 percentage points under fixed models; systems with similar accuracy can differ substantially in total API cost.
 
 ## Disputes
 
