@@ -1,8 +1,8 @@
 ---
 title: "Claude Fable 5"
 kind: entity
-sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]"]
-last_updated: 2026-06-12
+sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]"]
+last_updated: 2026-06-13
 last_verified: 2026-06-12
 freshness_window_days: 30
 input_cost_per_mtoken: 10.00
@@ -34,10 +34,15 @@ Safety routing: queries in cybersecurity and biology domains are automatically r
 
 > For a small group of cyberdefenders and infrastructure providers, we are also launching Claude Mythos 5, the same underlying model as Fable 5 but with safeguards lifted in some areas.
 
+**Access suspended June 12, 2026.** The US Commerce Department issued an export control directive on June 12 requiring Anthropic to disable Claude Fable 5 globally. Anthropic complied immediately, citing inability to reliably exclude foreign nationals from its user base. The stated trigger was a reported narrow jailbreak (asking the model to read a codebase for vulnerability fixes) — Anthropic publicly disputes this justification [[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]].
+
+> Anthropic received the directive from the government on June 12, 2026 at 5:21pm ET... Anthropic is complying with the government's legal directive and is removing access to Fable 5 and Mythos 5 for all users.
+
 ## Open questions
 
 - [ ] What is Fable 5's score on CyberGym and ARC-AGI-2 given the cyber/bio routing to Opus 4.8 — are those benchmarks even runnable on the public Fable 5 endpoint?
 - [ ] Is the AA Intelligence Index score 64.9 (article text) or 65 (model card)? Reconciliation needed for the comparison page.
+- [ ] Will Fable 5 return to general availability, and on what timeline? Anthropic says it is 'working to restore access' but provides no timeline [[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]].
 
 ## See also
 
