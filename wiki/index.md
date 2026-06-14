@@ -604,6 +604,14 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[owlcat-games-is-using-generative-ai-to-iterate-faster-on-the-expanse-3e0b2083]]
 - [[playstack-sold-xbox-announces-business-reset-and-is-generative-ai-poisoning-the-well-0c67963c]]
 - [[hunyuan3d-2-1-from-images-to-high-fidelity-3d-assets-with-production-ready-pbr-material-b0de5940]]
+- [[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]]
+- [[fluid-natural-voice-translation-with-gemini-3-5-live-translate-5c65331b]]
+- [[gemini-3-5-audio-live-translate-model-card-68bc7af3]]
+- [[3dcodebench-benchmarking-agentic-procedural-3d-modeling-via-code-4a2089d0]]
+- [[gta-6-won-t-save-the-struggling-games-industry-expert-says-0b364650]]
+- [[gta-6-could-help-make-2026-gaming-s-biggest-year-ever-analysts-say-b29e7b47]]
+- [[behaviour-interactive-cuts-95-jobs-in-strategic-corporate-change-c6d65431]]
+- [[stellar-blade-original-soundtrack-vinyl-pre-orders-are-now-live-3bf50292]]
 
 ## Reports
 
@@ -630,3 +638,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-11]]
 - [[2026-06-12]]
 - [[2026-06-13]]
+- [[2026-06-14]]
