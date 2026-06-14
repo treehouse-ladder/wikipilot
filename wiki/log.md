@@ -675,3 +675,27 @@ agentic-coding (#178 ✓), frontier-models (#179 ✓), game-music (#180 ✓), ga
 ## [2026-06-14] health | weekly sweep — 3 disputes filed
 
 Weekly health sweep 2026-06-14. 31 candidate sets scanned (30 source-triggered + 1 stale_sweep), 6 parallel scanner agents. 3 disputes filed: Grok V9-Medium training date conflict (May 25 vs June 5), Binding Constraint Thesis vs LLM-primacy on harness-engineering.md, Muse Spark top-5 staleness superseded by Opus 4.7/4.8/Fable 5. No stale synthesis pages with zero divergence signals. Lint: 0 errors. PR #190 opened and queued for auto-merge.
+
+## [2026-06-14] daily | agentic-coding — 1 source, 2 pages
+
+PR #191. "The End of Code Review" (Monperrus, arxiv 2606.13175): agents have crossed the capability threshold making human code review structurally unnecessary. New disputes filed on agent-review-vs-sabotage and merge-success evidence. Summary updated with two-sided pressure framing.
+
+## [2026-06-14] daily | frontier-models — 2 sources, 3 pages
+
+PR #192. Gemini 3.5 Live Translate announced (speech-to-speech, preserves voice character/emotion); model card confirms it is based on Gemini 3 Pro and explicitly less capable than Gemini 3.1 Pro. No leader changes on cost/benchmark tables.
+
+## [2026-06-14] daily | ai-in-game-dev — 1 source, 2 pages
+
+PR #193. 3DCodeBench (arxiv 2606.01057): first benchmark for code-based procedural 3D modeling, covering 12 VLMs across 1,600 tasks. Open question filed on editability vs neural mesh generation.
+
+## [2026-06-14] daily | games-of-note — 3 sources, 4 pages
+
+PR #194. GTA 6 analyst split: van Dreunen (NYU Stern) says GTA 6 won't rescue industry; Circana forecasts $62.8B record year. Behaviour Interactive second layoff wave (95 jobs, strategic pivot to horror/service/LBE). New dispute and open question filed.
+
+## [2026-06-14] daily | game-music — 1 source, 2 pages
+
+PR #195. Stellar Blade vinyl pre-orders confirmed live June 11 (4LP $98 / 2LP $42); standard black editions available at retail partners.
+
+## [2026-06-14] daily | 5 topics, 8 sources, 13 pages
+
+Daily Research 2026-06-14 complete. PRs #191-195 queued for auto-merge. Key stories: agents supersede code review (agentic-coding); Gemini 3.5 Live Translate (frontier-models); 3DCodeBench procedural 3D (ai-in-game-dev); GTA 6 analyst split + Behaviour Interactive layoffs (games-of-note); Stellar Blade vinyl live (game-music). Report: wiki/reports/2026-06-14.md.
