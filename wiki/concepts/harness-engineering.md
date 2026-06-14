@@ -21,7 +21,7 @@ sources:
   - "[[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]"
   - "[[live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-76f20b41]]"
   - "[[holistic-agent-leaderboard-the-missing-infrastructure-for-ai-agent-evaluation-cdd35ebf]]"
-last_updated: 2026-06-13
+last_updated: 2026-06-14
 last_verified: 2026-06-11
 freshness_window_days: 30
 ---
@@ -97,6 +97,10 @@ GitHub's Copilot SDK reached general availability on 2026-06-02, exposing the un
 The SDK convergence is significant for harness engineering because it makes the control plane (planning, tool invocation, subagent dispatch) a stable API surface that third-party tooling can target. However, a June 2026 skills evaluation on Codex and Claude Code shows that skills effectiveness is harness-mediated: the same SKILL.md preamble can improve task scores on one harness while delivering different token-efficiency on another [[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]. This suggests the cross-vendor SDK surface has converged on *interface* but not yet on *semantics*.
 
 > The skills are evaluated on Codex and Claude Code using SciVisAgentBench, a benchmark of 108 expert-designed multi-step tasks. Results show that agent skills improve mean task scores across the evaluated suites, with token-efficiency benefits that depend on the agent harness and tool setting.
+
+## Disputes
+
+- [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]] claims the agent harness is "often a stronger determinant of agent performance than the model it wraps" (Binding Constraint Thesis); [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] directly contradicts this with trajectory-scale empirical evidence showing "the LLM is the primary driver of both outcome and behavior: agents sharing the same LLM agree on far more tasks than agents sharing the same framework." Status: unresolved — the dispute may be task-horizon-dependent; the Binding Constraint Thesis holds at long horizons where context management dominates, while the LLM-primacy finding may reflect shorter-horizon or per-task comparisons.
 
 ## Open questions
 

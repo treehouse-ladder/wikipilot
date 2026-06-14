@@ -2,7 +2,7 @@
 title: "Muse Spark"
 kind: entity
 sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]"]
-last_updated: "2026-05-22"
+last_updated: "2026-06-14"
 last_verified: "2026-05-22"
 freshness_window_days: 30
 ---
@@ -19,12 +19,17 @@ Muse Spark is a multimodal reasoning model that can process text, image, and spe
 
 > Muse Spark essentially closes the gap to the frontier in a single release.
 
+## Disputes
+
+- [[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]] claims Muse Spark (AA Index 52) sits "within the top 5 models benchmarked" and "behind Gemini 3.1 Pro Preview, GPT-5.4 and Claude Opus 4.6"; however, since this source's publication, Anthropic released Claude Opus 4.7 (AA Index 57, April 16 2026), Claude Opus 4.8 (AA Index 61.4, May 28 2026), and Claude Fable 5 (AA Index 64.9, June 9 2026), all of which rank above Muse Spark's 52. Status: unresolved (confidence: high; sweep: 2026-06-14)
+
 ## Open questions
 
 - [ ] Does Muse Spark's AA Index 52 hold on contamination-resistant benchmarks (SWE-bench Pro), or does Meta's single-release frontier jump look weaker on harder evals?
 - [ ] Is Muse Spark a clean-room new architecture or a continuation/scale-up of the Llama line?
 - [ ] What does Meta's pivot away from open weights with Muse Spark imply for the open/closed competitive balance going forward?
 - [ ] When will API access become available, and what will the pricing structure be relative to other frontier models?
+- [ ] Where does Muse Spark now rank on the AA Intelligence Index relative to the post-May releases (Opus 4.7, Opus 4.8, Fable 5)?
 
 ## See also
 

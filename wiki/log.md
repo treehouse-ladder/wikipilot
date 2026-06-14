@@ -671,3 +671,7 @@ Roblox CubePart: part-labeled engine-ready 3D generator (460K assets, no rigging
 ## [2026-06-12] daily | 5 topics, 25 sources, 30 pages
 
 agentic-coding (#178 ✓), frontier-models (#179 ✓), game-music (#180 ✓), games-of-note (#181 ✓) merged. ai-in-game-dev (#182) pending CI with auto-merge enabled. Key stories: Apple AFM 3 NAND-flash sparse architecture; Grok V9-Medium rolling out; Destiny 2 era closes; Ubisoft restructuring deepens; Roblox CubePart engine-ready 3D generator. Report: wiki/reports/2026-06-12.md.
+
+## [2026-06-14] health | weekly sweep — 3 disputes filed
+
+Weekly health sweep 2026-06-14. 31 candidate sets scanned (30 source-triggered + 1 stale_sweep), 6 parallel scanner agents. 3 disputes filed: Grok V9-Medium training date conflict (May 25 vs June 5), Binding Constraint Thesis vs LLM-primacy on harness-engineering.md, Muse Spark top-5 staleness superseded by Opus 4.7/4.8/Fable 5. No stale synthesis pages with zero divergence signals. Lint: 0 errors. PR #190 opened and queued for auto-merge.
