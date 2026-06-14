@@ -2,7 +2,7 @@
 title: "Grok 4.3"
 kind: entity
 sources: ["[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]", "[[grok-build-0-1-on-api-c60c4a6b]]", "[[grok-imagine-1-5-preview-7668cc26]]", "[[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]]", "[[grok-v9-rolls-into-tesla-cars-and-x-why-musk-s-distribution-flywheel-worries-ai-rivals-46ba11d8]]", "[[grok-v9-medium-is-not-grok-5-a-builders-guide-to-xais-mid-june-2026-coding-model-a8b21fd7]]"]
-last_updated: 2026-06-12
+last_updated: 2026-06-14
 last_verified: 2026-06-09
 freshness_window_days: 30
 input_cost_per_mtoken: 1.25
@@ -38,7 +38,9 @@ xAI's Grok 4.3 generation includes the dedicated coding model Grok Build 0.1 (pu
 
 > xAI has begun pushing Grok V9-Medium, its largest model yet, into Tesla's connected-car fleet and the X social network. Grok V9-Medium completed training on June 5, 2026 at 1.5 trillion parameters — about three times the size of the current v8-small production model.
 
-_no contradictions or gaps known yet (last reviewed: 2026-06-09)_
+## Disputes
+
+- [[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]] reports Musk announced Grok V9-Medium training completion on May 25, 2026; [[grok-v9-rolls-into-tesla-cars-and-x-why-musk-s-distribution-flywheel-worries-ai-rivals-46ba11d8]] reports Musk said training completed June 5, 2026. Status: unresolved — the two dates are mutually exclusive; Musk may have been referring to two separate training phases or corrected an earlier estimate.
 
 ## Open questions
 
