@@ -1,8 +1,8 @@
 ---
 title: "GLM-5"
 kind: entity
-sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]"]
-last_updated: 2026-05-28
+sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]", "[[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]"]
+last_updated: 2026-06-15
 last_verified: 2026-05-25
 freshness_window_days: 30
 input_cost_per_mtoken: 1.00
@@ -49,6 +49,12 @@ GLM-5.1's vendor SWE-Bench Pro SOTA claim now has an independent counterpoint: o
 The GLM-5 line now also has a primary technical report (arXiv 2602.15763), which frames GLM-5 as a transition from 'vibe coding' to 'agentic engineering' on ARC capabilities, confirms DSA (DeepSeek Sparse Attention) as the cost-reduction mechanism, and details a new asynchronous agent-RL infrastructure that decouples generation from training to learn from long-horizon interactions [[glm-5-from-vibe-coding-to-agentic-engineering-43553238]].
 
 > GLM-5 ... adopts DSA to significantly reduce training and inference costs while maintaining long-context fidelity.
+
+Z.AI released **GLM-5.2** on June 13, 2026, the latest model in the GLM-5 line, available immediately on the GLM Coding Plan tiers with the standalone API, Z.ai chatbot, and MIT open weights confirmed for the following week [[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]. GLM-5.2 retains GLM-5's 744B-total / 40B-active MoE architecture but extends the context window to a usable 1M tokens (vs 200K on GLM-5/5.1) and adds a dual thinking-effort system (High / Max, no Auto/Low tier), with max output capped at 131,072 tokens; Z.AI recommends Max as the coding default [[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]. The MIT open-weights release carries no regional usage restrictions. No benchmark numbers were published at launch, so frontmatter benchmark/cost fields are left unchanged pending independent measurement and a published per-token API price.
+
+> GLM-5.2 will be released as open-source software under the MIT license, with a 1 million token context window — among the largest available from any open-source LLM — and will carry no regional usage restrictions.
+
+> Maximum output is capped at 131,072 tokens. Zhipu's own guidance is that Max should be the default for coding work.
 
 ## Disputes
 
