@@ -9,7 +9,8 @@ sources:
   - "[[shape-copilot-code-review-around-your-team-1a940a72]]"
   - "[[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]"
   - "[[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]]"
-last_updated: 2026-06-13
+  - "[[what-makes-a-harness-a-harness-necessary-and-sufficient-conditions-for-an-agent-harness-1afa2530]]"
+last_updated: 2026-06-16
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -39,6 +40,10 @@ ADK Arena introduces 'LLM-as-a-Developer' as a measurement methodology for harne
 **Harness choice quantitatively rivals model choice (June 2026).** Claw-SWE-Bench [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]] (2026-06-13) establishes experimentally that harness choice and model choice have nearly equal impact on coding task Pass@1: 27.4 pp from harness vs. 29.4 pp from model under fixed counterparts, across 350 instances in 8 languages. This quantifies a long-suspected result — harness engineering matters as much as model capability for practical outcomes.
 
 > Model choice changes Pass@1 by 29.4 percentage points and harness choice by 27.4 percentage points under fixed models; systems with similar accuracy can differ substantially in total API cost.
+
+A June 2026 paper supplies the first constitutive definition of "agent harness," cutting through the term's polysemy (product vs. eval scaffold vs. SDK vs. orchestrator): a harness is a stateful program that wraps an LLM and determines what context the model sees at each step, and the definition is operationalized as an inclusion/exclusion test applied to Claude Code, Codex CLI, Aider, Cline, OpenHands, and SWE-agent [[what-makes-a-harness-a-harness-necessary-and-sufficient-conditions-for-an-agent-harness-1afa2530]]. This gives the wiki a load-bearing boundary line: an eval harness (the SWE-bench runner) and an orchestrator are explicitly *not* harnesses under the definition.
+
+> A harness is a stateful program that wraps a language model and determines what context the model sees at each step.
 
 ## Disputes
 
