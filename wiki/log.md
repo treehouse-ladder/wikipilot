@@ -699,3 +699,7 @@ PR #195. Stellar Blade vinyl pre-orders confirmed live June 11 (4LP $98 / 2LP $4
 ## [2026-06-14] daily | 5 topics, 8 sources, 13 pages
 
 Daily Research 2026-06-14 complete. PRs #191-195 queued for auto-merge. Key stories: agents supersede code review (agentic-coding); Gemini 3.5 Live Translate (frontier-models); 3DCodeBench procedural 3D (ai-in-game-dev); GTA 6 analyst split + Behaviour Interactive layoffs (games-of-note); Stellar Blade vinyl live (game-music). Report: wiki/reports/2026-06-14.md.
+
+## [2026-06-16] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#203 requeued (claude/daily-2026-06-16/game-music, CLEAN+CI-green, auto-merge was missing)
