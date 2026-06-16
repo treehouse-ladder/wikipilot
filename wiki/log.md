@@ -699,3 +699,27 @@ PR #195. Stellar Blade vinyl pre-orders confirmed live June 11 (4LP $98 / 2LP $4
 ## [2026-06-14] daily | 5 topics, 8 sources, 13 pages
 
 Daily Research 2026-06-14 complete. PRs #191-195 queued for auto-merge. Key stories: agents supersede code review (agentic-coding); Gemini 3.5 Live Translate (frontier-models); 3DCodeBench procedural 3D (ai-in-game-dev); GTA 6 analyst split + Behaviour Interactive layoffs (games-of-note); Stellar Blade vinyl live (game-music). Report: wiki/reports/2026-06-14.md.
+
+## [2026-06-16] daily | agentic-coding — 4 sources, 7 pages
+
+Harness constitutive definition (arxiv 2606.10106); Windsurf retired, relaunched as Devin Desktop with ACP; MCP donated to Linux Foundation Agentic AI Foundation (co-founded with Block and OpenAI); Parallel-Synthesis KV-cache-space merge for parallel subagents. Summary regenerated. PR #199.
+
+## [2026-06-16] daily | frontier-models — 2 sources, 3 pages
+
+FrontierMath v2 audit: 42% of problems had errors; GPT-5.5 Tier 4 score jumped 35->73% from fixes; Fable 5 leads at 87-88% on audited axis. No leader changes. PR #200.
+
+## [2026-06-16] daily | ai-in-game-dev — 1 source, 2 pages
+
+Pearl Abyss/Crimson Desert undisclosed GenAI placeholder art: largest-scale caught-apologized-pledged-audit case to date. PR #201.
+
+## [2026-06-16] daily | games-of-note — 3 sources, 4 pages
+
+Xbox June 15: Compulsion Games (South of Midnight/We Happy Few, 100+ staff) reportedly to be shut down; Craig Duncan and Louise O'Connor exit Xbox Game Studios. Summary regenerated. PR #202.
+
+## [2026-06-16] daily | game-music — 1 source, 2 pages
+
+Shoji Meguro confirmed as special guest at GMF 2026 London Persona Grooves concert (Bartosz Pernal jazz orchestra + London Mozart Players, June 27 Royal Festival Hall). PR #203.
+
+## [2026-06-16] daily | 5 topics, 11 sources, 18 pages
+
+Daily Research 2026-06-16 complete. PRs #199-203 queued for auto-merge. Key stories: MCP to Linux Foundation AAIF + Windsurf to Devin Desktop/ACP (agentic-coding); FrontierMath v2 42%-error-rate audit (frontier-models); Crimson Desert undisclosed AI art (ai-in-game-dev); Compulsion Games closure + Craig Duncan resignation (games-of-note); Shoji Meguro at GMF London (game-music). Report: wiki/reports/2026-06-16.md.
