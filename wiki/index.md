@@ -612,6 +612,17 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gta-6-could-help-make-2026-gaming-s-biggest-year-ever-analysts-say-b29e7b47]]
 - [[behaviour-interactive-cuts-95-jobs-in-strategic-corporate-change-c6d65431]]
 - [[stellar-blade-original-soundtrack-vinyl-pre-orders-are-now-live-3bf50292]]
+- [[what-makes-a-harness-a-harness-necessary-and-sufficient-conditions-for-an-agent-harness-1afa2530]]
+- [[windsurf-is-now-devin-desktop-1283bfa0]]
+- [[donating-the-model-context-protocol-and-establishing-the-agentic-ai-foundation-f8e84c32]]
+- [[towards-direct-latent-space-synthesis-for-parallel-branches-in-llm-agent-workflows-726d5fa9]]
+- [[frontiermath-tier-4-v2-9558ff2f]]
+- [[claude-fable-5-outpaces-gpt-5-5-by-13-points-on-frontiermath-s-toughest-problems-b1737496]]
+- [[pearl-abyss-used-generative-ai-tools-to-create-crimson-desert-b640ec99]]
+- [[xbox-is-planning-to-shutter-peabody-award-winning-south-of-midnight-studio-compulsion-games-e20b6f35]]
+- [[xbox-is-reportedly-closing-south-of-midnight-studio-compulsion-games-after-bragging-about-its-award-winning-developers-earlier-this-year-ef41509c]]
+- [[xbox-game-studios-boss-resigns-ahead-of-mass-layoffs-368649ed]]
+- [[persona-grooves-concert-featuring-music-from-persona-3-4-5-e05bec72]]
 
 ## Reports
 
@@ -639,3 +650,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-12]]
 - [[2026-06-13]]
 - [[2026-06-14]]
+- [[2026-06-16]]
