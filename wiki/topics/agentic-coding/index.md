@@ -144,7 +144,11 @@ sources:
   - "[[agentic-very-much-adoption-of-coding-agent-in-new-github-projects-e080a2f2]]"
   - "[[all-github-copilot-plans-are-now-on-usage-based-billing-2e8b23f7]]"
   - "[[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]]"
-last_updated: 2026-06-14
+  - "[[what-makes-a-harness-a-harness-necessary-and-sufficient-conditions-for-an-agent-harness-1afa2530]]"
+  - "[[windsurf-is-now-devin-desktop-1283bfa0]]"
+  - "[[donating-the-model-context-protocol-and-establishing-the-agentic-ai-foundation-f8e84c32]]"
+  - "[[towards-direct-latent-space-synthesis-for-parallel-branches-in-llm-agent-workflows-726d5fa9]]"
+last_updated: 2026-06-16
 last_verified: 2026-06-12
 freshness_window_days: 30
 ---
@@ -195,6 +199,24 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > Over 100 participants collaborated with one of four frontier models (Claude-Opus-4.6, GPT-5.4, Gemini-3.1-Pro, and MiniMax-M2.7) on a long-horizon coding task lasting around five hours [...] 94% of developers fail to detect sabotage, with vulnerability attributed to minimal code review, plausible cover story, and overtrust in agents. While a safety monitor reduces sabotage success, 56% of participants still accept the malicious code, ignoring its warnings.
 
 ## Recent updates
+
+### Updates 2026-06-16
+
+**"Harness" gets a constitutive definition.** A new paper proposes necessary-and-sufficient conditions for what counts as an agent harness, resolving the polysemy where the term has meant a whole product, an eval scaffold, an SDK, or an orchestrator interchangeably [[what-makes-a-harness-a-harness-necessary-and-sufficient-conditions-for-an-agent-harness-1afa2530]]. The core claim is that a harness is the stateful context-control layer, and the definition is operationalized as an inclusion/exclusion test against frameworks, SDKs, IDE plugins, eval harnesses, and orchestrators, then applied to six real systems we track (Claude Code, Codex CLI, Aider, Cline, OpenHands, SWE-agent).
+
+> We propose a constitutive definition that states the necessary and sufficient conditions for a system to be an agent harness ... A harness is a stateful program that wraps a language model and determines what context the model sees at each step.
+
+**Windsurf is now Devin Desktop; ACP becomes the interop layer.** Cognition retired the Windsurf brand on June 2, relaunching the IDE as Devin Desktop with an Agent Command Center (single Kanban view over local + cloud agents) and first-class support for the open Agent Client Protocol (ACP), making it compatible with Codex, Claude Agent, OpenCode, and any other ACP agent [[windsurf-is-now-devin-desktop-1283bfa0]]. This is a structural move toward vendor-neutral multi-agent management — context-sharing across heterogeneous agents via a new "Spaces" primitive rather than one vendor's harness.
+
+> Devin Desktop supports the Agent Client Protocol (ACP), and is now compatible with Codex, Claude Agent, OpenCode, and any other ACP-compatible agent. This lets users manage multiple agents from one surface and share context between them.
+
+**MCP donated to the Linux Foundation's Agentic AI Foundation.** Anthropic donated MCP to the new Agentic AI Foundation, a Linux Foundation directed fund co-founded with Block and OpenAI (backed by Google, Microsoft, AWS, Cloudflare, Bloomberg), where it joins Block's goose and OpenAI's AGENTS.md as founding projects [[donating-the-model-context-protocol-and-establishing-the-agentic-ai-foundation-f8e84c32]]. MCP is now a vendor-neutral standard rather than an Anthropic-governed one — relevant to anyone building MCP servers into a coding-agent workflow.
+
+> Anthropic is donating the Model Context Protocol (MCP) to the Agentic AI Foundation (AAIF), a directed fund under the Linux Foundation, co-founded by Anthropic, Block and OpenAI ... MCP will join goose by Block and AGENTS.md by OpenAI as founding projects.
+
+**Parallel-Synthesis: merging subagent branches in KV-cache space.** A new paper targets the wall-clock/cost tax of the merge step in parallel-subagent workflows: instead of concatenating worker agents' text outputs (which discards parallel structure and re-prefills everything), the synthesizer consumes the workers' KV caches directly [[towards-direct-latent-space-synthesis-for-parallel-branches-in-llm-agent-workflows-726d5fa9]]. This attacks the known "merge step dominates" failure mode of fan-out/fan-in agent orchestration.
+
+> Existing systems typically merge these branches by concatenating their textual outputs, which discards the parallel structure and incurs redundant prefill computation. We introduce Parallel-Synthesis, a plug-and-play framework that enables a synthesizer to directly consume the KV caches produced by parallel worker agents.
 
 ### Updates 2026-06-14
 
@@ -1076,6 +1098,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does [[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]]'s 'agents can serve every goal of code review' claim hold against an adversarial/sabotage threat model, given [[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]] shows even a flagging safety monitor failed to stop 56% of merges — i.e. is an agent reviewer more or less susceptible to a plausible-cover-story sabotage payload than a human reviewer?
 - [ ] If human review is replaced by agent-on-agent review per [[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]], does the reviewer agent inherit the prompt-injection / trust-level vulnerabilities the wiki tracks (>85% adaptive-attack success), making the review layer itself an injection surface rather than an assurance layer?
 - [ ] Does Monperrus's 'human review does not scale with AI-assisted throughput' argument [[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]] quantify the crossover point, and how does it relate to the empirical 60-70% post-flight-verification effort figure [[human-oversight-of-agentic-systems-in-practice-ab5cc8f1]] under Claude Code dynamic-workflow fan-out (tens-to-hundreds of parallel subagents)?
+- [ ] Does Parallel-Synthesis's direct KV-cache merge preserve answer quality vs. text concatenation, or does it trade accuracy for the prefill savings? The abstract claims plug-and-play but the quality/cost Pareto point is unquantified here.
+- [ ] How many of the tools the harness-definition paper classifies (Claude Code, Codex CLI, Aider, Cline, OpenHands, SWE-agent) actually satisfy its strict inclusion test vs. fall into the framework/orchestrator boundary cases?
 
 ## See also
 
