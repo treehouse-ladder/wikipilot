@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-06-17] daily | 5 topics, 12 sources, 22 pages
+
+Daily Research 2026-06-17 complete. PRs #205-209 merged. Key stories: Bayesian-Agent posterior skill evolution + BugBot speed/cost upgrade (agentic-coding); AA Intelligence Index v4.1 agentic shift + GLM-5.2 open-weights leader (frontier-models); NVIDIA ACE Game Agent SDK Beta + Ubisoft AI NPC experiment (ai-in-game-dev); Xbox spin-off negotiations for Double Fine/Ninja Theory/Compulsion + Ninja Theory cancels Project Mara (games-of-note). Report: wiki/reports/2026-06-17.md.
+
+## [2026-06-17] daily | game-music — 0 sources, 1 page
+
+No new game-music sources today; GMF 2026 London cycle continues. Minimal log entry. PR #209.
+
+## [2026-06-17] daily | games-of-note — 4 sources, 6 pages
+
+Xbox spin-offs: Double Fine, Ninja Theory, and Compulsion reportedly in equity spin-off negotiations (studios retain IP licence); Ninja Theory cancels Project Mara to focus on Hellblade 3; Psychonauts 2 studio responds to Xbox layoff discussion. Summary regenerated with structured spin-off mechanic framing. PR #208.
+
+## [2026-06-17] daily | ai-in-game-dev — 2 sources, 3 pages
+
+NVIDIA ACE Game Agent SDK Beta for Unreal Engine 5: first SDK targeting on-device AI companions with context memory; Ubisoft debuts generative AI NPC experiment (Project NEO Alive). Summary regenerated. PR #207.
+
+## [2026-06-17] daily | frontier-models — 3 sources, 6 pages
+
+Artificial Analysis Intelligence Index v4.1 shifts to agentic workloads (v4.0 scores non-comparable); GLM-5.2 is open-weights leader at AA rank 51 on v4.1; Grok V9-Medium mid-cycle drop. Summary regenerated. Dispute filed on v4.0/v4.1 score comparability. PR #206.
+
+## [2026-06-17] daily | agentic-coding — 3 sources, 6 pages
+
+Bayesian-Agent posterior-guided skill evolution framework (arxiv 2606.08348); BugBot 3×+ speed / 22%-cheaper upgrade; harness-flaw diagnosis from failed trajectories (arxiv 2606.09876). Concept pages updated: agent-harnesses, harness-engineering. PR #205.
+
 ## [2026-05-11] manual | bootstrap
 
 Empty wiki initialized. No topics enabled yet.
