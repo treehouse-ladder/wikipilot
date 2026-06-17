@@ -1,8 +1,8 @@
 ---
 title: "GLM-5"
 kind: entity
-sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]", "[[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]"]
-last_updated: 2026-06-15
+sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]", "[[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]", "[[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]", "[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]"]
+last_updated: 2026-06-17
 last_verified: 2026-05-25
 freshness_window_days: 30
 input_cost_per_mtoken: 1.00
@@ -50,11 +50,15 @@ The GLM-5 line now also has a primary technical report (arXiv 2602.15763), which
 
 > GLM-5 ... adopts DSA to significantly reduce training and inference costs while maintaining long-context fidelity.
 
-Z.AI released **GLM-5.2** on June 13, 2026, the latest model in the GLM-5 line, available immediately on the GLM Coding Plan tiers with the standalone API, Z.ai chatbot, and MIT open weights confirmed for the following week [[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]. GLM-5.2 retains GLM-5's 744B-total / 40B-active MoE architecture but extends the context window to a usable 1M tokens (vs 200K on GLM-5/5.1) and adds a dual thinking-effort system (High / Max, no Auto/Low tier), with max output capped at 131,072 tokens; Z.AI recommends Max as the coding default [[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]. The MIT open-weights release carries no regional usage restrictions. No benchmark numbers were published at launch, so frontmatter benchmark/cost fields are left unchanged pending independent measurement and a published per-token API price.
+Z.AI released **GLM-5.2** on June 13, 2026, the latest model in the GLM-5 line, available immediately on the GLM Coding Plan tiers with the standalone API, Z.ai chatbot, and MIT open weights confirmed for the following week [[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]. GLM-5.2 retains GLM-5's 744B-total / 40B-active MoE architecture but extends the context window to a usable 1M tokens (vs 200K on GLM-5/5.1) and adds a dual thinking-effort system (High / Max, no Auto/Low tier), with max output capped at 131,072 tokens; Z.AI recommends Max as the coding default [[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]. The MIT open-weights release carries no regional usage restrictions.
 
 > GLM-5.2 will be released as open-source software under the MIT license, with a 1 million token context window — among the largest available from any open-source LLM — and will carry no regional usage restrictions.
 
 > Maximum output is capped at 131,072 tokens. Zhipu's own guidance is that Max should be the default for coding work.
+
+**GLM-5.2 now holds the open-weights #1 position on AA Intelligence Index v4.1 at 51**, ahead of MiniMax-M3 (44), DeepSeek V4-Pro (44), and Kimi K2.6 (43) [[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]. Note that this is on v4.1 of the AA Intelligence Index, which re-scales scores vs v4.0 (where the GLM-5 line scored 50 for GLM-5 and 51 for GLM-5.1); **v4.0 and v4.1 scores are not directly comparable** due to Artificial Analysis's June 2026 methodology shift toward agentic workloads, upgrading GDPval-AA to v2 and reweighting evaluations [[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]. GLM-5.2 scores 11 points higher than GLM-5.1 on the new v4.1 scale, with gains concentrated in scientific reasoning (CritPt +16 to 21%, HLE +12 to 40%), long-context reasoning (AA-LCR +9 to 71%), agentic banking (τ³ +15 to 27%), and SciCode (+7 to 50%) [[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]. Pricing holds at $1.4/$4.4/$0.26 per 1M input/output/cache-hit tokens. The verbosity caveat remains: GLM-5.2 uses 43k output tokens per AA Index task (37k reasoning), up from GLM-5.1's 26k and well above MiniMax-M3 (24k) — a cost multiplier on output-dominated agentic loops [[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]].
+
+> Z.ai's GLM-5.2 is the new leading open weights model on the Artificial Analysis Intelligence Index, scoring 51. GLM-5.2 is the same size as GLM-5.1 (744B total / 40B active parameters) but scores 11 points higher on the Intelligence Index v4.1, placing ahead of MiniMax-M3 (44), DeepSeek V4 Pro (max, 44) and Kimi K2.6 (43).
 
 ## Disputes
 

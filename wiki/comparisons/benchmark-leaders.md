@@ -19,10 +19,10 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-06-13
+last_updated: 2026-06-17
 last_verified: '2026-05-22'
 show_glosses: true
-sources: []
+sources: ["[[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]", "[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]"]
 title: Frontier model benchmark leaders
 ---
 
@@ -31,6 +31,8 @@ title: Frontier model benchmark leaders
 ## Summary
 
 This comparison aggregates `aa_intelligence_index, gdpval_aa_elo, swe_bench_verified, cybergym, arc_agi_2` across 10 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-benchmark-leaders` to refresh.
+
+**Note (2026-06-17):** Artificial Analysis migrated the Intelligence Index to v4.1 in June 2026, re-scaling all scores through an agentic-workloads reweighting (GDPval-AA v2, new evaluation mix, IFBench removed) [[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]. v4.0 and v4.1 `aa_intelligence_index` values are **not directly comparable**. The entity frontmatter `aa_intelligence_index` fields in this table currently carry mixed v4.0 (most closed-frontier leaders) and v4.1 (GLM-5.2, and likely MiniMax-M3 / Kimi-K2.6 / DeepSeek-V4) values. A consistent-version re-sweep is needed before cross-model leader claims can be made on the new v4.1 basis [[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]].
 
 ## What each column means for me
 
