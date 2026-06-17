@@ -10,7 +10,8 @@ sources:
   - "[[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]"
   - "[[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]]"
   - "[[what-makes-a-harness-a-harness-necessary-and-sufficient-conditions-for-an-agent-harness-1afa2530]]"
-last_updated: 2026-06-16
+  - "[[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]"
+last_updated: 2026-06-17
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -44,6 +45,10 @@ ADK Arena introduces 'LLM-as-a-Developer' as a measurement methodology for harne
 A June 2026 paper supplies the first constitutive definition of "agent harness," cutting through the term's polysemy (product vs. eval scaffold vs. SDK vs. orchestrator): a harness is a stateful program that wraps an LLM and determines what context the model sees at each step, and the definition is operationalized as an inclusion/exclusion test applied to Claude Code, Codex CLI, Aider, Cline, OpenHands, and SWE-agent [[what-makes-a-harness-a-harness-necessary-and-sufficient-conditions-for-an-agent-harness-1afa2530]]. This gives the wiki a load-bearing boundary line: an eval harness (the SWE-bench runner) and an orchestrator are explicitly *not* harnesses under the definition.
 
 > A harness is a stateful program that wraps a language model and determines what context the model sees at each step.
+
+**Self-evolving skills via Bayesian posterior tracking.** Bayesian-Agent reframes the self-evolving skills/SOPs thread by treating each reusable skill as a hypothesis about when a frozen model succeeds, maintaining a feature-conditioned posterior over verified trajectory evidence and mapping posterior state to inspectable harness actions (patch, split, compress, retire, explore) [[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]. This is a methodological response to the SkillsBench finding that self-generated skills give no average benefit: the claim is that principled belief-tracking over verified trajectories can make self-authored skills reliable where naive heuristic reflection cannot.
+
+> Bayesian-Agent records verified trajectory evidence, maintains a feature-conditioned categorical posterior over each skill, and maps posterior state into inspectable actions such as patch, split, compress, retire, and explore.
 
 ## Disputes
 

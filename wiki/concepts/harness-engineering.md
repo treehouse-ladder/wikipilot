@@ -21,7 +21,9 @@ sources:
   - "[[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]"
   - "[[live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-76f20b41]]"
   - "[[holistic-agent-leaderboard-the-missing-infrastructure-for-ai-agent-evaluation-cdd35ebf]]"
-last_updated: 2026-06-14
+  - "[[from-failed-trajectories-to-reliable-llm-agents-diagnosing-and-repairing-harness-flaws-9dd308d1]]"
+  - "[[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]"
+last_updated: 2026-06-17
 last_verified: 2026-06-11
 freshness_window_days: 30
 ---
@@ -97,6 +99,12 @@ GitHub's Copilot SDK reached general availability on 2026-06-02, exposing the un
 The SDK convergence is significant for harness engineering because it makes the control plane (planning, tool invocation, subagent dispatch) a stable API surface that third-party tooling can target. However, a June 2026 skills evaluation on Codex and Claude Code shows that skills effectiveness is harness-mediated: the same SKILL.md preamble can improve task scores on one harness while delivering different token-efficiency on another [[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]]. This suggests the cross-vendor SDK surface has converged on *interface* but not yet on *semantics*.
 
 > The skills are evaluated on Codex and Claude Code using SciVisAgentBench, a benchmark of 108 expert-designed multi-step tasks. Results show that agent skills improve mean task scores across the evaluated suites, with token-efficiency benefits that depend on the agent harness and tool setting.
+
+**Harness-flaw diagnosis and skill-evolution belief-tracking** (added 2026-06-17). A June 2026 paper argues the self-evolving-harness loop suffers from coarse attribution: existing methods modify the harness based on final outcomes but fail to localize which harness layer (execution env, tool interface, context, lifecycle, observability, verification, governance) actually caused a failed trajectory [[from-failed-trajectories-to-reliable-llm-agents-diagnosing-and-repairing-harness-flaws-9dd308d1]]. This sharpens the diagnostic precision critique: the bottleneck may not be evolver capability (which [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]] already showed is flat across model tiers) but the inability to pin the responsible layer. Bayesian-Agent proposes one solution by treating reusable skills/SOPs as *hypotheses* about when a frozen model succeeds, maintaining a feature-conditioned posterior and mapping it to inspectable actions (patch, split, compress, retire, explore) [[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]. This is a direct methodological response to SkillsBench's finding that self-generated skills give no average benefit: the claim is that principled belief-tracking over verified trajectories can make self-authored skills reliable where naive heuristic reflection cannot.
+
+> Existing self-improving agents and automatic harness evolution methods mainly improve agents through runtime supervision, prompt optimization, workflow search, or harness modification based on final outcomes, but often fail to diagnose where responsible evidence lies in failed trajectories and which harness layer causes unreliable behavior, resulting in broad, indirect, or poorly scoped changes.
+
+> Bayesian-Agent records verified trajectory evidence, maintains a feature-conditioned categorical posterior over each skill, and maps posterior state into inspectable actions such as patch, split, compress, retire, and explore.
 
 ## Disputes
 

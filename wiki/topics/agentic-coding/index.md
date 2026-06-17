@@ -148,7 +148,10 @@ sources:
   - "[[windsurf-is-now-devin-desktop-1283bfa0]]"
   - "[[donating-the-model-context-protocol-and-establishing-the-agentic-ai-foundation-f8e84c32]]"
   - "[[towards-direct-latent-space-synthesis-for-parallel-branches-in-llm-agent-workflows-726d5fa9]]"
-last_updated: 2026-06-16
+  - "[[bugbot-is-now-over-3x-faster-22-cheaper-and-finds-10-more-bugs-551056fa]]"
+  - "[[from-failed-trajectories-to-reliable-llm-agents-diagnosing-and-repairing-harness-flaws-9dd308d1]]"
+  - "[[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]"
+last_updated: 2026-06-17
 last_verified: 2026-06-16
 freshness_window_days: 30
 ---
@@ -207,6 +210,22 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > Over 100 participants collaborated with one of four frontier models (Claude-Opus-4.6, GPT-5.4, Gemini-3.1-Pro, and MiniMax-M2.7) on a long-horizon coding task lasting around five hours [...] 94% of developers fail to detect sabotage, with vulnerability attributed to minimal code review, plausible cover story, and overtrust in agents. While a safety monitor reduces sabotage success, 56% of participants still accept the malicious code, ignoring its warnings.
 
 ## Recent updates
+
+### Updates 2026-06-17
+
+**Bugbot economics shift: 3x faster, 22% cheaper, usage-based billing.** Cursor updated Bugbot — its PR-review agent — to run over 3x faster (90% of runs now finish under three minutes), cost ~22% less per run, and find ~10% more bugs per review [[bugbot-is-now-over-3x-faster-22-cheaper-and-finds-10-more-bugs-551056fa]]. The pricing model also flips: Bugbot moves off a flat $40/seat/month subscription onto usage-based billing for Teams and Individual plans, keeping the average run at $1.00-$1.50 depending on PR size, and adds a Premium seat with 5x the Standard seat's included usage. A new `/review` command runs Bugbot (and Security Review) before pushing, and Bugbot now de-duplicates: if a pre-push `/review` diff matches a later PR, it skips re-reviewing. This is a concrete refresh of the per-PR-review cost figure already on this page (the May Bugbot economics [[updates-to-bugbot-for-teams-and-individuals-7716e08c]]) and reinforces the broader move from seat-based to consumption-based billing seen across Copilot's AI Credits [[all-github-copilot-plans-are-now-on-usage-based-billing-2e8b23f7]] and Anthropic's Claude Code credit overhaul [[claude-credit-overhaul-2026-what-changes-on-june-15-bdf7c477]].
+
+> Bugbot is now over 3x faster to run, 22% cheaper, and finds 10% more bugs per review. In practice, 90% of Bugbot runs now finish in under three minutes.
+
+> Bugbot is switching from a $40 per seat per month subscription to usage-based billing for Teams and Individual plans. The average Bugbot run costs $1.00-$1.50, depending on PR size and complexity.
+
+**Harness-flaw diagnosis as a localization problem.** A new paper argues the current self-evolving-harness loop is too coarse: existing methods modify the harness based on final outcomes but fail to localize *which harness layer* (execution env, tool interface, context, lifecycle orchestration, observability, verification, governance) actually caused a failed trajectory, producing 'broad, indirect, or poorly scoped changes' [[from-failed-trajectories-to-reliable-llm-agents-diagnosing-and-repairing-harness-flaws-9dd308d1]]. This sharpens the wiki's standing critique that harness-updating is non-specific (cf. [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]]): the bottleneck may be diagnostic precision, not evolver capability.
+
+> Existing self-improving agents and automatic harness evolution methods mainly improve agents through runtime supervision, prompt optimization, workflow search, or harness modification based on final outcomes, but often fail to diagnose where responsible evidence lies in failed trajectories and which harness layer causes unreliable behavior, resulting in broad, indirect, or poorly scoped changes.
+
+**Skills-as-hypotheses: a Bayesian framing for skill evolution.** Bayesian-Agent reframes the self-evolving-Skills thread (which SkillsBench [[skillsbench-benchmarking-how-well-agent-skills-work-across-diverse-tasks-1743f5a5]] found gives no average benefit when self-generated) by treating each reusable Skill/SOP as a *hypothesis* about whether a frozen model will succeed under a given prompt/context/harness, maintaining a feature-conditioned posterior over each skill and mapping posterior state into inspectable patch/split/compress/retire/explore actions [[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]. The explicit critique it makes — that heuristic reflection treats raw success/failure 'counts alone' as reliable belief — is a direct methodological response to why naive self-authored skills underperform.
+
+> Bayesian-Agent records verified trajectory evidence, maintains a feature-conditioned categorical posterior over each skill, and maps posterior state into inspectable actions such as patch, split, compress, retire, and explore. Model-facing prompts receive executable guardrails and failure-mode patches, while posterior summaries remain available for audit.
 
 ### Updates 2026-06-16
 
@@ -989,6 +1008,7 @@ lint stays quiet until each page actually exists:
 - [[live-swe-agent-can-software-engineering-agents-self-evolve-on-the-fly-76f20b41]] claims runtime scaffold self-evolution beats human-crafted harnesses (45.8% on SWE-Bench Pro); the wiki's prior coverage frames harness evolution as a between-task observability-driven loop, not within-task. Status: unresolved — both may be correct at different levels of granularity.
 - [[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]] argues human code review is no longer a necessary quality gate and that the 'agent writes, human reviews' model is a dead end because it neither assures quality nor scales; [[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]] finds 94% of developers fail to detect AI-agent sabotage and 56% accept malicious code even when a safety monitor flags it, and [[human-oversight-of-agentic-systems-in-practice-ab5cc8f1]] finds developers spend 60-70% of oversight effort on post-flight verification. The three agree current human review is failing but disagree on the remedy: Monperrus argues to remove the human reviewer in favor of agent-based review, while the empirical oversight/sabotage work implies the failure of human review leaves a dangerous assurance gap that agent-on-agent review has not been shown to close. Status: unresolved
 - [[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]] claims every stated goal of code review can be served by agents at lower cost and higher throughput; [[where-do-ai-coding-agents-fail-an-empirical-study-of-failed-agentic-pull-requests-in-github-d7b61822]] finds in the open-source wild that larger/more-files agentic PRs are less likely to merge and that performance/bug-fix tasks have the worst merge success, suggesting unreviewed high-throughput agentic output is exactly where quality assurance is most needed. Status: unresolved — Monperrus's argument is a position synthesis, not a field measurement of agent-reviewed-agent-code quality.
+- [[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]] claims a posterior-guided framing makes self-evolving reusable skills/SOPs reliable across harnesses by treating each as a hypothesis with verified-evidence-conditioned belief; [[skillsbench-benchmarking-how-well-agent-skills-work-across-diverse-tasks-1743f5a5]] found that self-generated Skills 'provide no benefit on average, showing that models cannot reliably author the procedural knowledge they benefit from consuming.' The two disagree on whether principled belief-tracking over self-authored skills closes the self-generation gap or whether the gap is in authoring quality the posterior cannot recover. Status: unresolved
 
 ## Open questions
 
@@ -1108,6 +1128,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does Monperrus's 'human review does not scale with AI-assisted throughput' argument [[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]] quantify the crossover point, and how does it relate to the empirical 60-70% post-flight-verification effort figure [[human-oversight-of-agentic-systems-in-practice-ab5cc8f1]] under Claude Code dynamic-workflow fan-out (tens-to-hundreds of parallel subagents)?
 - [ ] Does Parallel-Synthesis's direct KV-cache merge preserve answer quality vs. text concatenation, or does it trade accuracy for the prefill savings? The abstract claims plug-and-play but the quality/cost Pareto point is unquantified here.
 - [ ] How many of the tools the harness-definition paper classifies (Claude Code, Codex CLI, Aider, Cline, OpenHands, SWE-agent) actually satisfy its strict inclusion test vs. fall into the framework/orchestrator boundary cases?
+- [ ] Does the harness-layer localization in [[from-failed-trajectories-to-reliable-llm-agents-diagnosing-and-repairing-harness-flaws-9dd308d1]] actually pin the resource/infrastructure configuration when attributing a failed trajectory to a harness layer, given [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] shows config alone can swing scores several points — i.e. can it distinguish a genuine harness-layer flaw from infrastructure noise?
+- [ ] Does Bayesian-Agent's posterior-guided skill evolution [[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]] reduce to the same flat-capability ceiling [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]] reports — i.e. would a cheap Haiku-class agent maintaining the posterior match an Opus-class one, making the belief-tracking the value rather than the evolver?
+- [ ] Cursor's new pre-push `/review` de-duplication (skip re-reviewing a matching PR diff) [[bugbot-is-now-over-3x-faster-22-cheaper-and-finds-10-more-bugs-551056fa]] saves cost when the diff is byte-identical — what is the cache-hit / dedup rate in practice given agents commonly rebase or amend between local `/review` and PR open, busting the exact-diff match?
 
 ## See also
 
