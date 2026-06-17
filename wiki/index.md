@@ -623,6 +623,18 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[xbox-is-reportedly-closing-south-of-midnight-studio-compulsion-games-after-bragging-about-its-award-winning-developers-earlier-this-year-ef41509c]]
 - [[xbox-game-studios-boss-resigns-ahead-of-mass-layoffs-368649ed]]
 - [[persona-grooves-concert-featuring-music-from-persona-3-4-5-e05bec72]]
+- [[bugbot-is-now-over-3x-faster-22-cheaper-and-finds-10-more-bugs-551056fa]]
+- [[from-failed-trajectories-to-reliable-llm-agents-diagnosing-and-repairing-harness-flaws-9dd308d1]]
+- [[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]
+- [[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]
+- [[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]
+- [[grok-v9-medium-arrives-as-spacex-seals-cursor-developers-face-model-choice-risk-37bb8bd7]]
+- [[ubisoft-debuts-playable-generative-ai-experiment-c3b7ccdc]]
+- [[build-on-device-ai-companions-with-the-nvidia-ace-game-agent-sdk-and-unreal-engine-5-plugins-fbbc754b]]
+- [[double-fine-ninja-theory-and-more-reportedly-trying-to-spin-off-from-xbox-game-studios-1763861d]]
+- [[ninja-theory-cancels-ambitious-horror-title-to-focus-on-senua-d4f98883]]
+- [[psychonauts-2-studio-responds-to-xbox-layoff-discussions-b359742a]]
+- [[xbox-in-talks-to-close-double-fine-and-ninja-theory-which-just-revealed-its-new-game-80f033c4]]
 
 ## Reports
 
@@ -651,3 +663,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-13]]
 - [[2026-06-14]]
 - [[2026-06-16]]
+- [[2026-06-17]]
