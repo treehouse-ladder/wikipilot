@@ -1,17 +1,17 @@
 ---
 title: "Claude Fable 5"
 kind: entity
-sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]"]
-last_updated: 2026-06-13
-last_verified: 2026-06-12
+sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]"]
+last_updated: 2026-06-18
+last_verified: 2026-06-18
 freshness_window_days: 30
 input_cost_per_mtoken: 10.00
 output_cost_per_mtoken: 50.00
 cost_source: "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]"
-aa_intelligence_index: 64.9
-aa_intelligence_index_source: "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]"
-gdpval_aa_elo: 1932
-gdpval_aa_elo_source: "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]"
+aa_intelligence_index: 60
+aa_intelligence_index_source: "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]"
+gdpval_aa_elo: 1818
+gdpval_aa_elo_source: "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]"
 swe_bench_verified: null
 swe_bench_verified_source: null
 cybergym: null
@@ -37,6 +37,10 @@ Safety routing: queries in cybersecurity and biology domains are automatically r
 **Access suspended June 12, 2026.** The US Commerce Department issued an export control directive on June 12 requiring Anthropic to disable Claude Fable 5 globally. Anthropic complied immediately, citing inability to reliably exclude foreign nationals from its user base. The stated trigger was a reported narrow jailbreak (asking the model to read a codebase for vulnerability fixes) — Anthropic publicly disputes this justification [[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]].
 
 > Anthropic received the directive from the government on June 12, 2026 at 5:21pm ET... Anthropic is complying with the government's legal directive and is removing access to Fable 5 and Mythos 5 for all users.
+
+> Claude Fable 5 (with fallback) leads at 60 but is currently unavailable [on the Artificial Analysis Intelligence Index v4.1].
+
+> Claude Fable 5 with fallback scored 1818 [on GDPval-AA v2] but is currently unavailable.
 
 ## Open questions
 
