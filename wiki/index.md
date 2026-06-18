@@ -635,6 +635,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[ninja-theory-cancels-ambitious-horror-title-to-focus-on-senua-d4f98883]]
 - [[psychonauts-2-studio-responds-to-xbox-layoff-discussions-b359742a]]
 - [[xbox-in-talks-to-close-double-fine-and-ninja-theory-which-just-revealed-its-new-game-80f033c4]]
+- [[state-of-unreal-2026-top-news-from-the-show-d0361986]]
+- [[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]
+- [[claude-code-whats-new-week-25-june-15-19-2026-ee74f870]]
+- [[coda-bench-can-code-agents-handle-data-intensive-tasks-6c2259df]]
+- [[harnessx-a-composable-adaptive-and-evolvable-agent-harness-foundry-b7dba9d4]]
+- [[xbox-is-reportedly-closing-ninja-theory-double-fine-and-compulsion-games-5bf43411]]
+- [[new-hellblade-project-was-bait-for-potential-ninja-theory-buyers-f63f4811]]
+- [[maker-of-acclaimed-2026-game-pass-shooter-is-already-closing-5cc671f0]]
+- [[meccha-chameleon-hits-3-million-steam-sales-solo-dev-tops-charts-in-one-week-7b46ca18]]
 
 ## Reports
 
@@ -664,3 +673,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-14]]
 - [[2026-06-16]]
 - [[2026-06-17]]
+- [[2026-06-18]]
