@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-06-18] daily | 5 topics, 9 sources, 19 pages
+
+Daily Research 2026-06-18 complete. PRs #211-215 merged. Key stories: Ultracode GA + HarnessX composable harness foundry + CoDA-Bench data-intensive evaluation (agentic-coding); AA Intelligence Index v4.1 re-placements for Opus 4.8/GPT-5.5/Fable 5 (frontier-models); UE 5.8 first-party MCP plugin + UE6 open MCP foundation (ai-in-game-dev); Xbox Reset first confirmed closures (Ninja Theory), Luna Abyss 26-day postmortem, Meccha Chameleon 3M solo-dev breakout (games-of-note). Report: wiki/reports/2026-06-18.md.
+
+## [2026-06-18] daily | games-of-note — 4 sources, 5 pages
+
+Xbox Reset's first confirmed studio closure: Ninja Theory closing, Double Fine in spin-off talks; Hellblade Senua reveal was strategic buyer-bait; Luna Abyss (Kwalee Labs) closes 26 days post-launch due to flat Game Pass licensing fee; Meccha Chameleon solo dev 3M units in one week, #1 Steam. 2 new disputes, 3 new open questions. PR #215.
+
+## [2026-06-18] daily | agentic-coding — 3 sources, 4 pages
+
+Claude Code Week 25 changelog (Ultracode GA, /config syntax, subagent panel polish); HarnessX arXiv 2606.14249 — composable adaptive harness foundry with AEGIS trace-driven evolution (+14.5% avg across 5 benchmarks); CoDA-Bench arXiv 2606.15300 — 1,009 data-intensive coding tasks from Kaggle ecosystem. 2 new open questions. PR #214.
+
+## [2026-06-18] daily | frontier-models — 1 source, 7 pages
+
+AA Intelligence Index v4.1 re-placements for closed-frontier tier: Opus 4.8 (56, -5), GPT-5.5 (55, -5), Fable 5 (60, -4.9) — v4.0→v4.1 migration complete; GDPval-AA v2 Elo scale applied. Opus 4.8 retains AA #1 but lead over GPT-5.5 compresses 1.2→1 pt. Benchmark-leaders and cost-comparison regenerated. PR #213.
+
+## [2026-06-18] daily | ai-in-game-dev — 1 source, 2 pages
+
+UE 5.8 ships experimental first-party MCP plugin connecting Claude/Gemini/any model to Unreal Editor; UE6 (Early Access end-2027) built on open MCP foundation. Both major engines (Unity AI Gateway + Unreal MCP plugin) now have first-party agent paths. PCG graduated to Production-Ready. Summary regenerated. PR #212.
+
+## [2026-06-18] daily | game-music — 0 sources, 1 page
+
+No new game-music sources today; minimal log entry with pending GMF 2026 London June 27 closer. PR #211.
+
 ## [2026-06-17] daily | 5 topics, 12 sources, 22 pages
 
 Daily Research 2026-06-17 complete. PRs #205-209 merged. Key stories: Bayesian-Agent posterior skill evolution + BugBot speed/cost upgrade (agentic-coding); AA Intelligence Index v4.1 agentic shift + GLM-5.2 open-weights leader (frontier-models); NVIDIA ACE Game Agent SDK Beta + Ubisoft AI NPC experiment (ai-in-game-dev); Xbox spin-off negotiations for Double Fine/Ninja Theory/Compulsion + Ninja Theory cancels Project Mara (games-of-note). Report: wiki/reports/2026-06-17.md.
