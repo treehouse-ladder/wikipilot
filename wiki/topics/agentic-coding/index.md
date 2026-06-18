@@ -151,8 +151,11 @@ sources:
   - "[[bugbot-is-now-over-3x-faster-22-cheaper-and-finds-10-more-bugs-551056fa]]"
   - "[[from-failed-trajectories-to-reliable-llm-agents-diagnosing-and-repairing-harness-flaws-9dd308d1]]"
   - "[[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]"
-last_updated: 2026-06-17
-last_verified: 2026-06-16
+  - "[[claude-code-whats-new-week-25-june-15-19-2026-ee74f870]]"
+  - "[[coda-bench-can-code-agents-handle-data-intensive-tasks-6c2259df]]"
+  - "[[harnessx-a-composable-adaptive-and-evolvable-agent-harness-foundry-b7dba9d4]]"
+last_updated: 2026-06-18
+last_verified: 2026-06-18
 freshness_window_days: 30
 ---
 
@@ -210,6 +213,20 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > Over 100 participants collaborated with one of four frontier models (Claude-Opus-4.6, GPT-5.4, Gemini-3.1-Pro, and MiniMax-M2.7) on a long-horizon coding task lasting around five hours [...] 94% of developers fail to detect sabotage, with vulnerability attributed to minimal code review, plausible cover story, and overtrust in agents. While a safety monitor reduces sabotage success, 56% of participants still accept the malicious code, ignoring its warnings.
 
 ## Recent updates
+
+## Updates 2026-06-18
+
+**Claude Code Week 25 (June 15–19, 2026): Ultracode goes GA on all paid plans.** The most significant change of the week is that dynamic workflows — and therefore Ultracode — are now available on every paid Claude Code plan, with the launch trigger renamed from `workflow` to `ultracode` [[claude-code-whats-new-week-25-june-15-19-2026-ee74f870]]. Operationally useful additions: `/config key=value` syntax now sets any setting from the prompt (e.g. `/config thinking=false`) across interactive, `-p`, and Remote Control modes; `CLAUDE_CLIENT_PRESENCE_FILE` suppresses mobile push notifications while at the machine; `sandbox.allowAppleEvents` enables macOS Apple Events for sandboxed commands [[claude-code-whats-new-week-25-june-15-19-2026-ee74f870]]. Subagent panel polish: idle agents auto-hide after 30 s, list caps at 5 rows with scroll hints, reduced idle CPU from fewer UI re-renders while subagents run in parallel [[claude-code-whats-new-week-25-june-15-19-2026-ee74f870]].
+
+> Dynamic workflows — and therefore Ultracode — are available on every paid Claude Code plan as of June 2026, with the trigger renamed from workflow to ultracode.
+
+**HarnessX: a composable, trace-driven harness foundry (arXiv 2606.14249).** A new research system that assembles typed harness primitives via a substitution algebra, adapts them through AEGIS (a trace-driven multi-agent evolution engine), and closes the harness–model loop by converting trajectories into both harness updates AND model training signal [[harnessx-a-composable-adaptive-and-evolvable-agent-harness-foundry-b7dba9d4]]. The AEGIS engine is grounded in an operational mirror between symbolic adaptation and reinforcement learning that identifies three failure modes analogous to known RL pathologies: reward hacking, catastrophic forgetting, and under-exploration [[harnessx-a-composable-adaptive-and-evolvable-agent-harness-foundry-b7dba9d4]]. Reported gains: +14.5% average across five benchmarks (ALFWorld, GAIA, WebShop, tau-cubed-Bench, SWE-bench Verified), with up to +44.0% on individual benchmarks. The "harness-as-first-class-object" framing continues the thesis from the late-May 2026 cluster of preprints on this page; what distinguishes HarnessX is the closed-loop feedback from execution traces back to harness updates rather than static scaffold design.
+
+> HarnessX assembles typed harness primitives via a substitution algebra, adapts them through AEGIS, a trace-driven multi-agent evolution engine grounded in an operational mirror between symbolic adaptation and reinforcement learning, and closes the harness-model loop by turning trajectories into both harness updates and model training signal.
+
+**CoDA-Bench: a new benchmark for code agents on data-intensive tasks (arXiv 2606.15300).** The first benchmark to jointly test code intelligence and data intelligence in a single evaluation environment — a data-intensive Linux sandbox built on the Kaggle ecosystem (hundreds of real datasets), where agents must explore complex file hierarchies to identify relevant resources before writing analytical code [[coda-bench-can-code-agents-handle-data-intensive-tasks-6c2259df]]. 1,009 high-quality tasks derived from 323 Kaggle dataset communities via progressive filtering through environment construction, task extraction, and quality verification [[coda-bench-can-code-agents-handle-data-intensive-tasks-6c2259df]]. Unlike repo-level benchmarks (SWE-bench, SWE-EVO, FeatureBench) that center on bug-fixing or feature implementation, CoDA-Bench stresses the file-exploration and data-reasoning capabilities agents need for real data-engineering and analytics pipelines — a dimension current SWE-bench Verified does not exercise.
+
+> CoDA-Bench is the first benchmark to jointly evaluate the code and data intelligence of agents. It constructs a data-intensive Linux sandbox based on the Kaggle ecosystem (containing hundreds of datasets), where agents must actively explore complex file hierarchies to identify relevant resources and generate code for data-driven analytical tasks.
 
 ### Updates 2026-06-17
 
@@ -1096,6 +1113,7 @@ lint stays quiet until each page actually exists:
 - [ ] Does Windows' agent-as-OS-principal identity model [[windows-platform-security-for-ai-agents-83834df9]] propagate into the agent's audit trail well enough to make agent-attributable security regressions traceable post-hoc?
 - [ ] Does Salt Code's MCP Security Top 10 policy bundle [[salt-security-launches-salt-code-the-first-agentic-security-solution-to-enforce-security-policies-inside-ai-coding-assistants-9b77880d]] catch SkillJect-style automated injection in practice, or only the static OWASP-class vulnerabilities the policy library targets?
 - [ ] Salt Code claims compatibility with eight named coding assistants — is enforcement actually uniform across them, or does the per-assistant integration depth vary (e.g. inline blocking on some, post-commit scanning on others)?
+<<<<<<< HEAD
 - [ ] Does GPT-5.3-Codex's 26.5pp jump on OSWorld-Verified over GPT-5.2-Codex [[introducing-gpt-5-3-codex-9aba7995]] generalize to agentic-coding tasks that involve heavy GUI manipulation, or is it limited to the OS-productivity task distribution OSWorld measures?
 - [ ] Codex-Spark's 1000+ tok/s tier is restricted to ChatGPT Pro at launch and explicitly 'not available in the API' [[introducing-gpt-5-3-codex-spark-4a841ea7]] — does the Cerebras-served latency tier compose with subagent dispatch, or does each subagent need its own session-bound Cerebras server allocation?
 - [ ] Cursor 3.7's context explorer instruments token usage by source (system prompt, tool definitions, rules, skills) [[cursor-3-7-canvases-design-mode-and-context-explorer-b28194f5]] — does this enable users to operationalize the harness-design framework from [[architectural-design-decisions-in-ai-agent-harnesses-523b6fa0]], or is it purely diagnostic?
@@ -1131,6 +1149,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does the harness-layer localization in [[from-failed-trajectories-to-reliable-llm-agents-diagnosing-and-repairing-harness-flaws-9dd308d1]] actually pin the resource/infrastructure configuration when attributing a failed trajectory to a harness layer, given [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] shows config alone can swing scores several points — i.e. can it distinguish a genuine harness-layer flaw from infrastructure noise?
 - [ ] Does Bayesian-Agent's posterior-guided skill evolution [[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]] reduce to the same flat-capability ceiling [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]] reports — i.e. would a cheap Haiku-class agent maintaining the posterior match an Opus-class one, making the belief-tracking the value rather than the evolver?
 - [ ] Cursor's new pre-push `/review` de-duplication (skip re-reviewing a matching PR diff) [[bugbot-is-now-over-3x-faster-22-cheaper-and-finds-10-more-bugs-551056fa]] saves cost when the diff is byte-identical — what is the cache-hit / dedup rate in practice given agents commonly rebase or amend between local `/review` and PR open, busting the exact-diff match?
+- [ ] Does HarnessX's AEGIS trace-driven evolution generalize beyond its five evaluation benchmarks to real-world coding agent workloads with noisier traces and irreproducible environments [[harnessx-a-composable-adaptive-and-evolvable-agent-harness-foundry-b7dba9d4]]?
+- [ ] Does CoDA-Bench's data-intensive sandbox expose failure modes absent in SWE-bench Verified — i.e., do top SWE-bench models fail at CoDA-Bench file-hierarchy exploration, or do the same models lead both leaderboards [[coda-bench-can-code-agents-handle-data-intensive-tasks-6c2259df]]?
 
 ## See also
 
