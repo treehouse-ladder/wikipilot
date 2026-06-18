@@ -19,10 +19,12 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-06-17
+last_updated: 2026-06-18
 last_verified: '2026-05-22'
 show_glosses: true
-sources: ["[[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]", "[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]"]
+sources:
+- '[[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]'
+- '[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]'
 title: Frontier model benchmark leaders
 ---
 
@@ -31,8 +33,6 @@ title: Frontier model benchmark leaders
 ## Summary
 
 This comparison aggregates `aa_intelligence_index, gdpval_aa_elo, swe_bench_verified, cybergym, arc_agi_2` across 10 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-benchmark-leaders` to refresh.
-
-**Note (2026-06-17):** Artificial Analysis migrated the Intelligence Index to v4.1 in June 2026, re-scaling all scores through an agentic-workloads reweighting (GDPval-AA v2, new evaluation mix, IFBench removed) [[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]. v4.0 and v4.1 `aa_intelligence_index` values are **not directly comparable**. The entity frontmatter `aa_intelligence_index` fields in this table currently carry mixed v4.0 (most closed-frontier leaders) and v4.1 (GLM-5.2, and likely MiniMax-M3 / Kimi-K2.6 / DeepSeek-V4) values. A consistent-version re-sweep is needed before cross-model leader claims can be made on the new v4.1 basis [[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]].
 
 ## What each column means for me
 
@@ -44,18 +44,13 @@ This comparison aggregates `aa_intelligence_index, gdpval_aa_elo, swe_bench_veri
 
 | Entity | aa_intelligence_index | gdpval_aa_elo | swe_bench_verified | cybergym | arc_agi_2 |
 | --- | --- | --- | --- | --- | --- |
-| [[claude-fable-5]] | **64.9** | **1932** | _unknown_ | _unknown_ | _unknown_ |
-| [[claude-opus-4.8]] | _61_ | _1890_ | _0.886_ | _0.788_ | _unknown_ |
-| [[claude-sonnet-4.6]] | 51 | 1683 | _unknown_ | _unknown_ | 0.604 |
-| [[gpt-5.5]] | 60 | 1769 | **0.887** | **0.818** | **0.85** |
+| [[claude-fable-5]] | **60** | **1818** | _unknown_ | _unknown_ | _unknown_ |
+| [[claude-opus-4.8]] | 56 | 1638 | _0.886_ | _0.788_ | _unknown_ |
+| [[claude-sonnet-4.6]] | 51 | _1683_ | _unknown_ | _unknown_ | 0.604 |
+| [[gpt-5.5]] | 55 | 1531 | **0.887** | **0.818** | **0.85** |
 | [[gemini-3.1-pro]] | 57 | _unknown_ | 0.806 | _unknown_ | _0.771_ |
 | [[grok-4.3]] | 53 | 1500 | _unknown_ | _unknown_ | _unknown_ |
 | [[deepseek-v4]] | 52 | _unknown_ | 0.806 | _unknown_ | _unknown_ |
 | [[glm-5]] | 50 | _unknown_ | _unknown_ | _unknown_ | _unknown_ |
 | [[kimi-k2.6]] | 54 | 1520 | 0.802 | 0.413 | _unknown_ |
-| [[qwen3.7-max]] | 57 | _unknown_ | _unknown_ | _unknown_ | _unknown_ |
-
-## Leader changes since last regen
-
-- **`aa_intelligence_index`**: [[claude-fable-5]] took #1 from [[claude-opus-4.8]].
-- **`gdpval_aa_elo`**: [[claude-fable-5]] took #1 from [[claude-opus-4.8]].
+| [[qwen3.7-max]] | _57_ | _unknown_ | _unknown_ | _unknown_ | _unknown_ |

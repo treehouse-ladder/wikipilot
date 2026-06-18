@@ -1,17 +1,17 @@
 ---
 title: "GPT-5.5"
 kind: entity
-sources: ["[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[openai-api-pricing-fa525e16]]", "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]"]
-last_updated: "2026-05-31"
-last_verified: "2026-05-22"
+sources: ["[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[openai-api-pricing-fa525e16]]", "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]"]
+last_updated: 2026-06-18
+last_verified: 2026-06-18
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
 output_cost_per_mtoken: 30.00
 cost_source: "[[openai-api-pricing-fa525e16]]"
-aa_intelligence_index: 60
-aa_intelligence_index_source: "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]"
-gdpval_aa_elo: 1769
-gdpval_aa_elo_source: "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]"
+aa_intelligence_index: 55
+aa_intelligence_index_source: "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]"
+gdpval_aa_elo: 1531
+gdpval_aa_elo_source: "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]"
 swe_bench_verified: 0.887
 swe_bench_verified_source: "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]"
 cybergym: 0.818
@@ -41,6 +41,10 @@ On the live [[gdpval-aa-leaderboard-artificial-analysis-5d24e844]], GPT-5.5 (xhi
 > GPT-5.5 leads the ARC-AGI-2 leaderboard with 85%.
 
 > GPT-5.5 sits at 81.8% [on CyberGym].
+
+> GPT-5.5 (xhigh) scores 55 [on the Artificial Analysis Intelligence Index v4.1].
+
+> GPT-5.5 xhigh scored 1531 [on GDPval-AA v2].
 
 ## Disputes
 

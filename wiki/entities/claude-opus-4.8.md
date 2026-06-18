@@ -2,17 +2,17 @@
 title: "Claude Opus 4.8"
 kind: entity
 aliases: ["Opus 4.8", "claude-opus-4-8", "Claude Opus 4.8"]
-sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]"]
-last_updated: 2026-06-13
-last_verified: 2026-06-12
+sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]"]
+last_updated: 2026-06-18
+last_verified: 2026-06-18
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
 output_cost_per_mtoken: 25.00
 cost_source: "[[introducing-claude-opus-4-8-5348a7d2]]"
-aa_intelligence_index: 61
-aa_intelligence_index_source: "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]"
-gdpval_aa_elo: 1890
-gdpval_aa_elo_source: "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]"
+aa_intelligence_index: 56
+aa_intelligence_index_source: "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]"
+gdpval_aa_elo: 1638
+gdpval_aa_elo_source: "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]"
 swe_bench_verified: 0.886
 swe_bench_verified_source: "[[claude-opus-4-8-benchmarks-explained-60247f20]]"
 cybergym: 0.788
@@ -46,6 +46,10 @@ Independent placement detail (post-launch): Opus 4.8 scores 78.8% on CyberGym vu
 > SWE-Bench Pro (Coding): Opus 4.8 lands at 69.2%, almost 5 points clear of Opus 4.7 (64.3%) and over 10 points ahead of GPT-5.5 (58.6%) and Gemini 3.1 Pro (54.2%).
 
 > Claude Opus 4.8 (Adaptive Reasoning, Max Effort) currently has the highest Artificial Analysis Intelligence Index score, with a score of 61 among models with published results.
+
+> Claude Opus 4.8 (max, 56) is the most intelligent available model according to the Artificial Analysis Intelligence Index v4.1.
+
+> GDPval-AA v2 is the highest weighted evaluation in the Intelligence Index v4.1. Claude Opus 4.8 scored 1638 on GDPval-AA v2, the highest among available models.
 
 ## Disputes
 
