@@ -771,3 +771,27 @@ Shoji Meguro confirmed as special guest at GMF 2026 London Persona Grooves conce
 ## [2026-06-16] daily | 5 topics, 11 sources, 18 pages
 
 Daily Research 2026-06-16 complete. PRs #199-203 queued for auto-merge. Key stories: MCP to Linux Foundation AAIF + Windsurf to Devin Desktop/ACP (agentic-coding); FrontierMath v2 42%-error-rate audit (frontier-models); Crimson Desert undisclosed AI art (ai-in-game-dev); Compulsion Games closure + Craig Duncan resignation (games-of-note); Shoji Meguro at GMF London (game-music). Report: wiki/reports/2026-06-16.md.
+
+## [2026-06-19] daily | agentic-coding — 6 sources, 4 pages
+
+Cursor /in-cloud VM-per-subagent isolation + Automations v2 GitHub/Slack triggers; APEX three-layer co-evolution (arXiv 2606.15363); Codex Record & Replay demonstration-to-Skill; FastContext +5.5% SWE/RepoQA at -60% tokens (arXiv 2606.14066); agent trajectory fingerprinting 85.7% (arXiv 2606.16988). PR #217.
+
+## [2026-06-19] daily | frontier-models — 3 sources, 2 pages
+
+Grok 4.3 AA Intelligence Index 53→38 (re-benchmarked vs v4.1); Fable 5 Kalshi/Polymarket 68-71% odds of return before July 1; Anthropic MD "very confident" Fable 5 returns in coming days (Seoul, June 18). Summary regenerated. PRs #218, #219.
+
+## [2026-06-19] daily | ai-in-game-dev — 3 sources, 1 page
+
+PUBG Ally Duo Mode two-week beta (NVIDIA ACE, RTX ≥8GB); GameCraft-Bench 41.46% agent game-dev pass rate in Unity (arXiv 2606.17861); TechRadar counter-review: CPCs as "glorified bots." PR #220.
+
+## [2026-06-19] daily | games-of-note — 4 sources, 1 page
+
+Global games revenue $201.6B in 2025 (Newzoo, first time over $200B, +9.1% YoY); ZeniMax/id Software layoffs begin; July 1 wave threatens Sony/EA/BioWare; GTA 6 pre-orders June 25, Nov 19 release confirmed. Summary regenerated. PR #221.
+
+## [2026-06-19] daily | game-music — 4 sources, 1 page
+
+Bobby Prince (Doom/Wolfenstein/Duke Nukem 3D) dies June 16 at 81; Doom OST in Library of Congress National Recording Registry. Stellar Blade Arranged Tracks and CS2 OST reviews. Umineko vinyl pre-orders open (Materia Collective, $39.99, Q3 2026). Summary regenerated. PR #222.
+
+## [2026-06-19] daily | 5 topics, 20 sources, 9 pages
+
+Daily Research 2026-06-19 complete. PRs #217-#222 merged. Key stories: Cursor cloud VM subagents + APEX co-evolution (agentic-coding); Grok 4.3 re-benchmarked at AA=38 + Fable 5 imminent return (frontier-models); PUBG Ally beta + GameCraft-Bench 41.46% (ai-in-game-dev); $201.6B games revenue record + July 1 layoff wave + GTA 6 (games-of-note); Bobby Prince death + Doom OST in Library of Congress (game-music). Report: wiki/reports/2026-06-19.md.
