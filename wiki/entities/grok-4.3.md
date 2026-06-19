@@ -1,15 +1,15 @@
 ---
 title: "Grok 4.3"
 kind: entity
-sources: ["[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]", "[[grok-build-0-1-on-api-c60c4a6b]]", "[[grok-imagine-1-5-preview-7668cc26]]", "[[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]]", "[[grok-v9-rolls-into-tesla-cars-and-x-why-musk-s-distribution-flywheel-worries-ai-rivals-46ba11d8]]", "[[grok-v9-medium-is-not-grok-5-a-builders-guide-to-xais-mid-june-2026-coding-model-a8b21fd7]]"]
-last_updated: 2026-06-14
-last_verified: 2026-06-09
+sources: ["[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]", "[[grok-build-0-1-on-api-c60c4a6b]]", "[[grok-imagine-1-5-preview-7668cc26]]", "[[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]]", "[[grok-v9-rolls-into-tesla-cars-and-x-why-musk-s-distribution-flywheel-worries-ai-rivals-46ba11d8]]", "[[grok-v9-medium-is-not-grok-5-a-builders-guide-to-xais-mid-june-2026-coding-model-a8b21fd7]]", "[[grok-4-3-high-intelligence-performance-price-analysis-18472372]]"]
+last_updated: 2026-06-19
+last_verified: 2026-06-19
 freshness_window_days: 30
 input_cost_per_mtoken: 1.25
 output_cost_per_mtoken: 2.50
 cost_source: "[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]"
-aa_intelligence_index: 53
-aa_intelligence_index_source: "[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]"
+aa_intelligence_index: 38
+aa_intelligence_index_source: "[[grok-4-3-high-intelligence-performance-price-analysis-18472372]]"
 gdpval_aa_elo: 1500
 gdpval_aa_elo_source: "[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]"
 swe_bench_verified: null
@@ -38,15 +38,21 @@ xAI's Grok 4.3 generation includes the dedicated coding model Grok Build 0.1 (pu
 
 > xAI has begun pushing Grok V9-Medium, its largest model yet, into Tesla's connected-car fleet and the X social network. Grok V9-Medium completed training on June 5, 2026 at 1.5 trillion parameters — about three times the size of the current v8-small production model.
 
+**Update 2026-06-19**: Artificial Analysis published Grok 4.3 (high)'s v4.1 AA Intelligence Index score: **38** — down from the v4.0 score of 53, under the agentic-reweighted v4.1 methodology [[grok-4-3-high-intelligence-performance-price-analysis-18472372]].
+
+> Grok 4.3 (high) achieves a score of 38 on the Artificial Analysis Intelligence Index. This composite benchmark evaluates models across reasoning, knowledge, mathematics, and coding.
+
 ## Disputes
 
 - [[grok-ai-new-model-triples-parameter-count-targets-coding-lead-release-expected-mid-june-083853d8]] reports Musk announced Grok V9-Medium training completion on May 25, 2026; [[grok-v9-rolls-into-tesla-cars-and-x-why-musk-s-distribution-flywheel-worries-ai-rivals-46ba11d8]] reports Musk said training completed June 5, 2026. Status: unresolved — the two dates are mutually exclusive; Musk may have been referring to two separate training phases or corrected an earlier estimate.
+- [[grok-4-3-high-intelligence-performance-price-analysis-18472372]] places Grok 4.3 (high) at AA Intelligence Index v4.1 = 38; the v4.0 score of 53 was not directly comparable (different benchmark weighting). Status: resolved — v4.1 is the current scale; the v4.0 score is superseded.
 
 ## Open questions
 
 - [ ] SWE-bench Verified, Cybench, and ARC-AGI-2 scores for Grok 4.3 — pending researcher sweep.
 - [ ] Grok Build 0.1 published 100+ tok/sec and $1/$2 Mtoken pricing but xAI has not yet published a SWE-bench Verified or AA Intelligence Index score for the model itself [[grok-build-0-1-on-api-c60c4a6b]] — independent benchmarks pending.
 - [ ] Does Grok V9-Medium replace Grok 4.3 on the xAI API, or run as a separate model? Pricing/capability comparison TBD pending public release.
+- [ ] Does Grok V9-Medium (1.5T params, Cursor-trained) score significantly higher than 38 on AA Intelligence Index v4.1? Published v4.1 score pending.
 
 ## See also
 
