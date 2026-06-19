@@ -771,3 +771,7 @@ Shoji Meguro confirmed as special guest at GMF 2026 London Persona Grooves conce
 ## [2026-06-16] daily | 5 topics, 11 sources, 18 pages
 
 Daily Research 2026-06-16 complete. PRs #199-203 queued for auto-merge. Key stories: MCP to Linux Foundation AAIF + Windsurf to Devin Desktop/ACP (agentic-coding); FrontierMath v2 42%-error-rate audit (frontier-models); Crimson Desert undisclosed AI art (ai-in-game-dev); Compulsion Games closure + Craig Duncan resignation (games-of-note); Shoji Meguro at GMF London (game-music). Report: wiki/reports/2026-06-16.md.
+
+## [2026-06-19] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#223 kind=requeue resolved=true — enabled squash auto-merge on claude/daily-2026-06-19/_report (daily_research; CLEAN + CI green; auto-merge was not set)
