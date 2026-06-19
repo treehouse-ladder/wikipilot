@@ -23,7 +23,8 @@ sources:
   - "[[holistic-agent-leaderboard-the-missing-infrastructure-for-ai-agent-evaluation-cdd35ebf]]"
   - "[[from-failed-trajectories-to-reliable-llm-agents-diagnosing-and-repairing-harness-flaws-9dd308d1]]"
   - "[[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]"
-last_updated: 2026-06-17
+  - "[[apex-adaptive-principle-extraction-a-three-layer-self-evolution-framework-for-production-ai-agents-59f9b9c9]]"
+last_updated: 2026-06-19
 last_verified: 2026-06-11
 freshness_window_days: 30
 ---
@@ -105,6 +106,10 @@ The SDK convergence is significant for harness engineering because it makes the 
 > Existing self-improving agents and automatic harness evolution methods mainly improve agents through runtime supervision, prompt optimization, workflow search, or harness modification based on final outcomes, but often fail to diagnose where responsible evidence lies in failed trajectories and which harness layer causes unreliable behavior, resulting in broad, indirect, or poorly scoped changes.
 
 > Bayesian-Agent records verified trajectory evidence, maintains a feature-conditioned categorical posterior over each skill, and maps posterior state into inspectable actions such as patch, split, compress, retire, and explore.
+
+**Multi-axis co-evolution beyond single-axis harness optimization** (added 2026-06-19). APEX (Adaptive Principle EXtraction) is a three-layer co-evolution framework that simultaneously evolves the harness (L1, via failure-mode patching), behavioral principles (L2, via success-trace distillation), and the agent workflow topology (L3, via structural fitness-based selection) [[apex-adaptive-principle-extraction-a-three-layer-self-evolution-framework-for-production-ai-agents-59f9b9c9]]. Deployed on a production NVIDIA-Nemotron agent managing a 15-node fleet over 18 days of real task traces, it reported a +90% composite health-score gain. APEX claims that workflow topology and distilled principles are co-equal evolution axes with the harness scaffold, advancing the harness-evolution cluster (AHE, HarnessX) by adding those two dimensions — but the evidence comes from a single production deployment with a bespoke metric ("APEX Health Score") rather than a standard agentic-coding benchmark, so cross-task generality is unverified.
+
+> APEX is a three-layer co-evolution framework that simultaneously evolves: (L1) the harness via failure-mode patching, (L2) behavioural principles via success-trace distillation, and (L3) the agent workflow topology via structural fitness-based selection.
 
 ## Disputes
 

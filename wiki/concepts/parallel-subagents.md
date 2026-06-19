@@ -4,7 +4,8 @@ kind: concept
 sources:
   - "[[build-programmatic-agents-with-the-cursor-sdk-fe66773e]]"
   - "[[towards-direct-latent-space-synthesis-for-parallel-branches-in-llm-agent-workflows-726d5fa9]]"
-last_updated: 2026-06-16
+  - "[[cloud-environment-setup-and-cloud-subagents-in-agents-window-ac3775dd]]"
+last_updated: 2026-06-19
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
@@ -20,6 +21,10 @@ Cursor's 2026-06-04 SDK release adds recursive subagent nesting: a subagent sess
 The merge step in parallel-subagent workflows has a measurable cost: Parallel-Synthesis observes that current systems merge fan-out branches by concatenating worker text outputs, discarding parallel structure and re-incurring prefill, and instead has the synthesizer consume the workers' KV caches directly [[towards-direct-latent-space-synthesis-for-parallel-branches-in-llm-agent-workflows-726d5fa9]]. This is a concrete attack on the "merge dominates wall-clock" caveat that makes naive parallel subagents not always faster than serial execution.
 
 > Existing systems typically merge these branches by concatenating their textual outputs, which discards the parallel structure and incurs redundant prefill computation. We introduce Parallel-Synthesis, a plug-and-play framework that enables a synthesizer to directly consume the KV caches produced by parallel worker agents.
+
+Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktree-per-subagent to full cloud VM per subagent: a cloud subagent runs on its own VM and branch, keeping long-running or parallel work (CI fixes, issue investigation, codebase exploration) off the local machine while the workspace stays responsive [[cloud-environment-setup-and-cloud-subagents-in-agents-window-ac3775dd]]. Cloud environment setup completes in under ten minutes and is captured in reusable snapshots for faster subsequent starts. This extends the worktree-isolation mental model (Cursor 2.0, nested subagents) to a full per-subagent VM isolation boundary — structurally heavier but with stronger blast-radius containment for parallel work.
+
+> You can use /in-cloud to spin up a cloud subagent in its own VM to work on the next task you submit. It runs on its own VM and branch, so your local workspace stays clean and responsive. This is especially useful for isolating long-running or parallel work like fixing CI, investigating an issue, or exploring a codebase while you keep working locally.
 
 ## Disputes
 

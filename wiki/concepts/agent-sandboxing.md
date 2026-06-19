@@ -5,7 +5,8 @@ sources:
   - "[[sandlock-confining-ai-agent-code-with-unprivileged-linux-primitives-6c9c9e93]]"
   - "[[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]]"
   - "[[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]"
-last_updated: 2026-06-09
+  - "[[cloud-environment-setup-and-cloud-subagents-in-agents-window-ac3775dd]]"
+last_updated: 2026-06-19
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -23,6 +24,10 @@ The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-hum
 **MicroPython + WASM as a drop-in code-execution sandbox.** Simon Willison's `micropython-wasm` (alpha, 2026-06-06) demonstrates a lightweight pattern for the code-execution-tool half of an agentic harness: a MicroPython interpreter compiled to a WASI WebAssembly module, executed from host Python via wasmtime, with no filesystem (unless an explicit read-only dir is preopened), no network, and configurable memory/fuel/wall-clock budgets [[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]. The notable engineering wrinkle was preserving interpreter state across calls — vanilla MicroPython runs once and exits, but agentic loops require variables and imports to persist across exec invocations. GPT-5.5 has failed to break out of the sandbox in initial testing.
 
 > The alpha bundles a lightly customized WASM build of MicroPython with a wrapper to execute code in it via wasmtime. The sandbox provides no host filesystem access unless an explicit read-only directory is preopened, no network capability, and configurable WebAssembly memory, fuel, and wall-clock controls.
+
+**Full cloud-VM isolation per subagent.** Cursor's June 2026 `/in-cloud` command escalates the isolation boundary from worktree-per-subagent to full VM per subagent: each cloud subagent runs on its own VM and branch, suitable for long-running or parallel work (CI fixes, issue investigation) while keeping the local workspace responsive [[cloud-environment-setup-and-cloud-subagents-in-agents-window-ac3775dd]]. This is a heavier isolation tier than process-level sandboxing (Sandlock, bubblewrap, MicroPython-WASM) — stronger blast-radius containment but at higher per-subagent resource cost. Cloud environment setup completes in under ten minutes and is reusable across tasks via snapshots.
+
+> You can use /in-cloud to spin up a cloud subagent in its own VM to work on the next task you submit. It runs on its own VM and branch, so your local workspace stays clean and responsive. This is especially useful for isolating long-running or parallel work like fixing CI, investigating an issue, or exploring a codebase while you keep working locally.
 
 ## Disputes
 

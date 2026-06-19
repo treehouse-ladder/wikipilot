@@ -154,7 +154,13 @@ sources:
   - "[[claude-code-whats-new-week-25-june-15-19-2026-ee74f870]]"
   - "[[coda-bench-can-code-agents-handle-data-intensive-tasks-6c2259df]]"
   - "[[harnessx-a-composable-adaptive-and-evolvable-agent-harness-foundry-b7dba9d4]]"
-last_updated: 2026-06-18
+  - "[[cloud-environment-setup-and-cloud-subagents-in-agents-window-ac3775dd]]"
+  - "[[improvements-to-cursor-automations-971d4a61]]"
+  - "[[apex-adaptive-principle-extraction-a-three-layer-self-evolution-framework-for-production-ai-agents-59f9b9c9]]"
+  - "[[record-replay-codex-e151d705]]"
+  - "[[fastcontext-training-efficient-repository-explorer-for-coding-agents-cad2c0ce]]"
+  - "[[agent-trajectories-as-programs-fingerprinting-and-programming-coding-agent-behavior-03941d36]]"
+last_updated: 2026-06-19
 last_verified: 2026-06-18
 freshness_window_days: 30
 ---
@@ -214,7 +220,43 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 
 ## Recent updates
 
-## Updates 2026-06-18
+### Updates 2026-06-19
+
+**Cursor pushes subagent isolation from worktree to full cloud VM.** Cursor's June 17 update lets `/in-cloud` spin up a cloud subagent in its own VM and branch, so long-running or parallel work (fixing CI, investigating an issue, exploring a codebase) runs off the local machine while the workspace stays responsive [[cloud-environment-setup-and-cloud-subagents-in-agents-window-ac3775dd]]. Cloud environment setup now completes in under ten minutes and is captured in a reusable snapshot for faster subsequent starts, and a `/babysit` action has a remote agent iterate a PR to merge-ready without tying up the local session.
+
+> You can use /in-cloud to spin up a cloud subagent in its own VM to work on the next task you submit. It runs on its own VM and branch, so your local workspace stays clean and responsive. This is especially useful for isolating long-running or parallel work like fixing CI, investigating an issue, or exploring a codebase while you keep working locally.
+
+This extends the parallel-subagent + sandbox-isolation threads already on this page: where the prior mental model was worktree-per-subagent (Cursor 2.0 [[cursor-2-0-multi-agents-and-composer-changelog-4665f068]], nested subagents [[custom-stores-custom-tools-and-auto-review-for-the-cursor-sdk-7da739cc]]), the isolation boundary is now a full per-subagent VM. It does not, however, resolve the standing parallel-agent cost-economics open question — VM-per-subagent is more expensive per unit work, not less.
+
+**Cursor Automations gains a `/automate` skill, more event triggers, and default computer use.** The June 18 update adds a `/automate` skill that configures an automation's triggers, instructions, and tools from a plain-language description in a local agent session; five new GitHub triggers (issue comment, PR review comment, PR review submitted, review thread updated, workflow run completed); Slack-emoji triggering; and computer use enabled by default for automation-launched cloud agents [[improvements-to-cursor-automations-971d4a61]]. This is event-driven agentic-workflow orchestration — agents that fire on repo/Slack events rather than interactive prompts — and the default-on computer-use tool is notable for an unattended cloud agent.
+
+> This release introduces the /automate skill, new triggers for GitHub and Slack, and support for computer use. You can use /automate to create an automation directly in your local agent session by describing the task you want to automate in plain language and Cursor will configure the triggers, instructions, and tools for you.
+
+**APEX: multi-axis self-evolution beyond single-axis harness optimization (arXiv 2606.15363).** APEX is a three-layer co-evolution framework that simultaneously evolves the harness (L1, via failure-mode patching), behavioural principles (L2, via success-trace distillation), and the agent workflow topology (L3, via structural fitness-based selection) [[apex-adaptive-principle-extraction-a-three-layer-self-evolution-framework-for-production-ai-agents-59f9b9c9]]. It was deployed on a production NVIDIA-Nemotron agent ("Joe") managing a 15-node fleet over 18 days of real task traces, reporting a +90% composite health-score gain and arguing that multi-dimensional co-evolution substantially outperforms single-axis harness optimisation at a cost of ~4 LLM calls (~270 s) on a local qwen2.5-coder:32b instance.
+
+> APEX is a three-layer co-evolution framework that simultaneously evolves: (L1) the harness via failure-mode patching, (L2) behavioural principles via success-trace distillation, and (L3) the agent workflow topology via structural fitness-based selection.
+
+This advances the harness-evolution cluster the wiki tracks (Agentic Harness Engineering [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]], HarnessX [[harnessx-a-composable-adaptive-and-evolvable-agent-harness-foundry-b7dba9d4]]) by claiming the workflow *topology* and distilled *principles* are co-equal evolution axes with the harness scaffold — but the evidence is a single production deployment with a bespoke composite metric ("APEX Health Score"), not a standard agentic-coding benchmark, so the cross-task generality of the +90% claim is unverified.
+
+**FastContext: separated repo-exploration subagent cuts tokens 60%, raises resolution 5.5% (arXiv 2606.14066).** FastContext addresses the known problem that locating relevant code "consumes substantial token budget and pollutes the agent's context with irrelevant snippets" by introducing a dedicated exploration subagent invoked on demand to issue parallel tool calls and return concise file paths and line ranges [[fastcontext-training-efficient-repository-explorer-for-coding-agents-cad2c0ce]]. The exploration models (4B–30B params) are bootstrapped from strong reference-model trajectories and refined with task-grounded rewards for three subtasks: broad first-turn search, multi-turn evidence gathering, and precise citation generation.
+
+> Integrating FastContext improves end-to-end resolution rates up to 5.5% while reducing coding-agent token consumption up to 60%.
+
+This is a concrete implementation of the separation-of-concerns principle already on this page — but achieving it through a *trained* specialist subagent rather than a prompted router or static indexer is new, and the 60% token reduction addresses the context-budget constraint flagged across harness-engineering papers.
+
+**Codex Record & Replay: demonstration-to-Skill for macOS workflows.** OpenAI Codex ships a Record & Replay feature that captures a demonstrated Mac workflow and converts it into a reusable Skill — "drafting a skill [that] explains when to use the workflow, what inputs it needs, what steps to follow, and how to verify the result" [[record-replay-codex-e151d705]]. The Skill then drives future completions using Computer Use, browser actions, and installed plugins. Initial availability excludes EEA/UK/Switzerland.
+
+> Record & Replay lets you demonstrate a workflow on your Mac and turn it into a reusable skill. Use it when the workflow is repetitive, depends on your preferences, or is easier to show than to describe in a prompt.
+
+This extends the Skills-as-reusable-context thread: where previous skill-authoring was prompt-based or LLM-reflection-based (Retrospective Harness Optimization [[retrospective-harness-optimization-improving-llm-agents-via-self-preference-over-trajectory-rollouts-5f71be82]], SkillsBench [[skillsbench-benchmarking-how-well-agent-skills-work-across-diverse-tasks-1743f5a5]]), demonstration-capture offers an orthogonal signal (human show-don't-tell).
+
+**Agent trajectories as programs: 85.7% fingerprinting accuracy across 10 agents (arXiv 2606.16988).** Using an emergent vocabulary induction technique to extract "maximally compressive" procedural representations of agent problem-solving, this paper fingerprints ten agents on SWE-Bench and achieves 85.7% attribution accuracy — i.e. behavioral habits are identity-stable enough to be predictive [[agent-trajectories-as-programs-fingerprinting-and-programming-coding-agent-behavior-03941d36]].
+
+> We compare ten agents and find that they are identifiable by their behavioral habits, which we define as fingerprints: a probe over these procedural signatures attributes an unseen trajectory to the correct agent at 85.7% accuracy.
+
+Practically, this means agent harness + model choices leave a detectable behavioral signature — a constraint (or feature) for harness-design: changing any design axis should shift the fingerprint in measurable ways, enabling A/B isolation of harness changes independent of model changes.
+
+### Updates 2026-06-18
 
 **Claude Code Week 25 (June 15–19, 2026): Ultracode goes GA on all paid plans.** The most significant change of the week is that dynamic workflows — and therefore Ultracode — are now available on every paid Claude Code plan, with the launch trigger renamed from `workflow` to `ultracode` [[claude-code-whats-new-week-25-june-15-19-2026-ee74f870]]. Operationally useful additions: `/config key=value` syntax now sets any setting from the prompt (e.g. `/config thinking=false`) across interactive, `-p`, and Remote Control modes; `CLAUDE_CLIENT_PRESENCE_FILE` suppresses mobile push notifications while at the machine; `sandbox.allowAppleEvents` enables macOS Apple Events for sandboxed commands [[claude-code-whats-new-week-25-june-15-19-2026-ee74f870]]. Subagent panel polish: idle agents auto-hide after 30 s, list caps at 5 rows with scroll hints, reduced idle CPU from fewer UI re-renders while subagents run in parallel [[claude-code-whats-new-week-25-june-15-19-2026-ee74f870]].
 
@@ -1113,7 +1155,6 @@ lint stays quiet until each page actually exists:
 - [ ] Does Windows' agent-as-OS-principal identity model [[windows-platform-security-for-ai-agents-83834df9]] propagate into the agent's audit trail well enough to make agent-attributable security regressions traceable post-hoc?
 - [ ] Does Salt Code's MCP Security Top 10 policy bundle [[salt-security-launches-salt-code-the-first-agentic-security-solution-to-enforce-security-policies-inside-ai-coding-assistants-9b77880d]] catch SkillJect-style automated injection in practice, or only the static OWASP-class vulnerabilities the policy library targets?
 - [ ] Salt Code claims compatibility with eight named coding assistants — is enforcement actually uniform across them, or does the per-assistant integration depth vary (e.g. inline blocking on some, post-commit scanning on others)?
-<<<<<<< HEAD
 - [ ] Does GPT-5.3-Codex's 26.5pp jump on OSWorld-Verified over GPT-5.2-Codex [[introducing-gpt-5-3-codex-9aba7995]] generalize to agentic-coding tasks that involve heavy GUI manipulation, or is it limited to the OS-productivity task distribution OSWorld measures?
 - [ ] Codex-Spark's 1000+ tok/s tier is restricted to ChatGPT Pro at launch and explicitly 'not available in the API' [[introducing-gpt-5-3-codex-spark-4a841ea7]] — does the Cerebras-served latency tier compose with subagent dispatch, or does each subagent need its own session-bound Cerebras server allocation?
 - [ ] Cursor 3.7's context explorer instruments token usage by source (system prompt, tool definitions, rules, skills) [[cursor-3-7-canvases-design-mode-and-context-explorer-b28194f5]] — does this enable users to operationalize the harness-design framework from [[architectural-design-decisions-in-ai-agent-harnesses-523b6fa0]], or is it purely diagnostic?
@@ -1151,6 +1192,8 @@ lint stays quiet until each page actually exists:
 - [ ] Cursor's new pre-push `/review` de-duplication (skip re-reviewing a matching PR diff) [[bugbot-is-now-over-3x-faster-22-cheaper-and-finds-10-more-bugs-551056fa]] saves cost when the diff is byte-identical — what is the cache-hit / dedup rate in practice given agents commonly rebase or amend between local `/review` and PR open, busting the exact-diff match?
 - [ ] Does HarnessX's AEGIS trace-driven evolution generalize beyond its five evaluation benchmarks to real-world coding agent workloads with noisier traces and irreproducible environments [[harnessx-a-composable-adaptive-and-evolvable-agent-harness-foundry-b7dba9d4]]?
 - [ ] Does CoDA-Bench's data-intensive sandbox expose failure modes absent in SWE-bench Verified — i.e., do top SWE-bench models fail at CoDA-Bench file-hierarchy exploration, or do the same models lead both leaderboards [[coda-bench-can-code-agents-handle-data-intensive-tasks-6c2259df]]?
+- [ ] Does per-subagent cloud-VM isolation (Cursor `/in-cloud`) change the parallel-subagent cost economics already flagged on this page, or just relocate the same fan-out cost to rented VMs?
+- [ ] Is APEX's three-axis co-evolution gain (+90% on a bespoke health score) reproducible on a standard agentic-coding benchmark, or is it specific to the single NVIDIA Agent Challenge deployment it was measured on?
 
 ## See also
 
