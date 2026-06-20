@@ -664,6 +664,13 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[stellar-blade-arranged-tracks-music-review-628f3c65]]
 - [[citizen-sleeper-2-starward-vector-soundtrack-music-review-3bac9e04]]
 - [[umineko-no-naku-koro-ni-original-soundtrack-selections-vol-1-vinyl-pre-orders-open-7e5c06bc]]
+- [[when-will-fable-5-be-available-again-what-we-know-50f455c4]]
+- [[epic-reveals-unreal-engine-6-is-integrating-ai-models-so-developers-can-reduce-tedious-work-30faba5d]]
+- [[11-bit-studios-cuts-staff-after-canceling-console-focused-project-8-game-152db4d4]]
+- [[halo-soundtrack-getting-vinyl-release-ahead-of-campaign-evolved-remake-9240e484]]
+- [[halo-composer-hits-out-at-vinyl-release-none-of-the-performers-will-see-a-dime-6a0e1792]]
+- [[bobby-prince-the-legendary-composer-behind-doom-and-wolfenstein-3d-has-died-88b607d4]]
+- [[the-police-stewart-copeland-won-t-be-back-for-new-spyro-soundtrack-776aefc6]]
 
 ## Reports
 
@@ -695,3 +702,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-17]]
 - [[2026-06-18]]
 - [[2026-06-19]]
+- [[2026-06-20]]

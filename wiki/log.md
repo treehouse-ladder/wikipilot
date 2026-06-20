@@ -795,3 +795,23 @@ Bobby Prince (Doom/Wolfenstein/Duke Nukem 3D) dies June 16 at 81; Doom OST in Li
 ## [2026-06-19] daily | 5 topics, 20 sources, 9 pages
 
 Daily Research 2026-06-19 complete. PRs #217-#222 merged. Key stories: Cursor cloud VM subagents + APEX co-evolution (agentic-coding); Grok 4.3 re-benchmarked at AA=38 + Fable 5 imminent return (frontier-models); PUBG Ally beta + GameCraft-Bench 41.46% (ai-in-game-dev); $201.6B games revenue record + July 1 layoff wave + GTA 6 (games-of-note); Bobby Prince death + Doom OST in Library of Congress (game-music). Report: wiki/reports/2026-06-19.md.
+
+## [2026-06-20] daily | frontier-models — 1 source, 1 page
+
+Trump described G7 Fable 5 discussions as "going fine" with no deal terms; refund deadline June 20; no new model releases confirmed. PR #224.
+
+## [2026-06-20] daily | ai-in-game-dev — 1 source, 1 page
+
+Epic live-demo'd Claude driving UE6 editor directly (furnishing apartment, adjusting lighting); UE6 Early Access targeting end of 2027 with open MCP foundation. PR #225.
+
+## [2026-06-20] daily | games-of-note — 1 source, 1 page
+
+11 Bit Studios cancels Project 8 (narrative console game, 2018–2026, 37-person team, PLN 48.4M/$11.8M loss); staff cuts with half offered internal transfers. PR #226.
+
+## [2026-06-20] daily | game-music — 4 sources, 1 page
+
+Halo Original Trilogy 8LP vinyl: O'Donnell objects ("none of the composers or performers will see a dime," no original multitracks). Bobby Prince tributes (Romero, Broussard). Stewart Copeland not returning for Spyro: A Realm Beyond. Summary regenerated. PRs #227, #228.
+
+## [2026-06-20] daily | 4 topics, 7 sources, 4 pages
+
+Daily Research 2026-06-20 complete. PRs #224–#228 merged. Key stories: Fable 5 suspension ongoing with June 20 refund deadline (frontier-models); Epic UE6 Claude-driven editor live demo (ai-in-game-dev); 11 Bit Studios Project 8 cancelled after 7 years ($11.8M loss) (games-of-note); Halo vinyl O'Donnell compensation controversy + Bobby Prince tributes (game-music). Report: wiki/reports/2026-06-20.md.
