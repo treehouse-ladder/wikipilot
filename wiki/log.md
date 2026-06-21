@@ -16,6 +16,18 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-06-21] daily | 5 topics, 12 sources, 12 pages
+
+## [2026-06-21] daily | game-music — 2 sources, 2 pages
+
+## [2026-06-21] daily | games-of-note — 1 source, 1 page
+
+## [2026-06-21] daily | ai-in-game-dev — 5 sources, 1 page
+
+## [2026-06-21] daily | frontier-models — 1 source, 4 pages
+
+## [2026-06-21] daily | agentic-coding — 3 sources, 4 pages
+
 ## [2026-06-18] daily | 5 topics, 9 sources, 19 pages
 
 Daily Research 2026-06-18 complete. PRs #211-215 merged. Key stories: Ultracode GA + HarnessX composable harness foundry + CoDA-Bench data-intensive evaluation (agentic-coding); AA Intelligence Index v4.1 re-placements for Opus 4.8/GPT-5.5/Fable 5 (frontier-models); UE 5.8 first-party MCP plugin + UE6 open MCP foundation (ai-in-game-dev); Xbox Reset first confirmed closures (Ninja Theory), Luna Abyss 26-day postmortem, Meccha Chameleon 3M solo-dev breakout (games-of-note). Report: wiki/reports/2026-06-18.md.

@@ -41,6 +41,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[mai-code-1-flash]]
 - [[minimax-m3]]
 - [[grok-4.3]]
+- [[yoko-shimomura]]
 
 ## Comparisons
 
@@ -671,6 +672,18 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[halo-composer-hits-out-at-vinyl-release-none-of-the-performers-will-see-a-dime-6a0e1792]]
 - [[bobby-prince-the-legendary-composer-behind-doom-and-wolfenstein-3d-has-died-88b607d4]]
 - [[the-police-stewart-copeland-won-t-be-back-for-new-spyro-soundtrack-776aefc6]]
+- [[agentic-coding-and-persistent-returns-to-expertise-a6ebb163]]
+- [[n-version-programming-with-coding-agents-78ec96e9]]
+- [[probe-and-refine-tuning-of-repository-guidance-for-coding-agents-86f1891b]]
+- [[gemini-3-1-pro-preview-intelligence-performance-price-analysis-3a3f9933]]
+- [[augmenting-game-ai-with-deep-reinforcement-learning-bcb37066]]
+- [[ivie-a-neuro-symbolic-approach-to-incremental-and-validated-generation-of-interactive-fiction-worlds-57efcab0]]
+- [[playstation-sees-ai-as-a-powerful-tool-bbfc1257]]
+- [[pocketpair-lead-on-generative-ai-gamers-don-t-want-it-6f0a305f]]
+- [[vampire-survivors-dev-reviewing-fortnite-collab-after-ai-news-88ca0106]]
+- [[call-of-duty-studio-treyarch-is-losing-its-studio-head-of-nearly-a-decade-b11c367d]]
+- [[the-music-of-square-enix-the-moments-that-will-undo-you-67ea1b78]]
+- [[the-music-of-square-enix-magic-memories-and-melodies-is-a-confident-celebration-of-decades-of-live-concerts-2fdd823a]]
 
 ## Reports
 
@@ -704,3 +717,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-19]]
 - [[2026-06-20]]
 - [[health-2026-06-21]]
+- [[2026-06-21]]
