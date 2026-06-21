@@ -815,3 +815,7 @@ Halo Original Trilogy 8LP vinyl: O'Donnell objects ("none of the composers or pe
 ## [2026-06-20] daily | 4 topics, 7 sources, 4 pages
 
 Daily Research 2026-06-20 complete. PRs #224–#228 merged. Key stories: Fable 5 suspension ongoing with June 20 refund deadline (frontier-models); Epic UE6 Claude-driven editor live demo (ai-in-game-dev); 11 Bit Studios Project 8 cancelled after 7 years ($11.8M loss) (games-of-note); Halo vinyl O'Donnell compensation controversy + Bobby Prince tributes (game-music). Report: wiki/reports/2026-06-20.md.
+
+## [2026-06-21] health | weekly sweep — 1 dispute filed
+
+Weekly health sweep 2026-06-21. 12 candidate sets (11 source-triggered + 1 stale sweep), 6 scanner passes. 1 new dispute on frontier-models/index.md: Grok 4.3 v4.1 AA score (38) documented in 2026-06-19 log entry but Summary still carries stale "pending re-placement" framing. Lint: 0 errors, 147 warnings. 1 stale page (kimi-k2.6). PR #231.
