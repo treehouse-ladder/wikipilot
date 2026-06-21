@@ -160,8 +160,11 @@ sources:
   - "[[record-replay-codex-e151d705]]"
   - "[[fastcontext-training-efficient-repository-explorer-for-coding-agents-cad2c0ce]]"
   - "[[agent-trajectories-as-programs-fingerprinting-and-programming-coding-agent-behavior-03941d36]]"
-last_updated: 2026-06-19
-last_verified: 2026-06-18
+  - "[[agentic-coding-and-persistent-returns-to-expertise-a6ebb163]]"
+  - "[[probe-and-refine-tuning-of-repository-guidance-for-coding-agents-86f1891b]]"
+  - "[[n-version-programming-with-coding-agents-78ec96e9]]"
+last_updated: 2026-06-21
+last_verified: 2026-06-19
 freshness_window_days: 30
 ---
 
@@ -219,6 +222,26 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > Over 100 participants collaborated with one of four frontier models (Claude-Opus-4.6, GPT-5.4, Gemini-3.1-Pro, and MiniMax-M2.7) on a long-horizon coding task lasting around five hours [...] 94% of developers fail to detect sabotage, with vulnerability attributed to minimal code review, plausible cover story, and overtrust in agents. While a safety monitor reduces sabotage success, 56% of participants still accept the malicious code, ignoring its warnings.
 
 ## Recent updates
+
+### Updates 2026-06-21
+
+An Anthropic research team published the first large-scale observational study of real Claude Code sessions: [[agentic-coding-and-persistent-returns-to-expertise-a6ebb163]] draws on ~400,000 sessions from ~235,000 users (Oct 2025–Apr 2026) and finds that **domain expertise, not coding background, is the primary amplifier of effective use**. Expert users trigger 12 Claude actions and 3,200 words of output per prompt vs. 5 actions and 600 words for novices, and every major occupation (not just software engineers) succeeds at roughly equal rates. The share of sessions spent fixing broken code fell from 33% to 19%; operating software grew from 14% to 21%; the estimated value of the average session rose 27% over the period.
+
+> Domain expertise, and not coding proficiency, amplifies effective use of the tool. In particular, domain experts succeed more often, and more easily recover from errors and misunderstandings. [[agentic-coding-and-persistent-returns-to-expertise-a6ebb163]]
+
+> In typical novice sessions, each prompt sets off about 5 Claude actions and roughly 600 words of output, while expert sessions set off action chains more than twice as long (12 actions) carrying five times the output (3200 words). [[agentic-coding-and-persistent-returns-to-expertise-a6ebb163]]
+
+On the AGENTS.md guidance-file front, [[probe-and-refine-tuning-of-repository-guidance-for-coding-agents-86f1891b]] (Shepard & Albrecht, arXiv 2606.20512) introduces probe-and-refine tuning: synthetic bug-fix probes iteratively diagnose and patch a repository's AGENTS.md through single-shot LLM calls (no agent loop during tuning). On SWE-bench Verified with Qwen3.5-35B-A3B at 200 steps this achieves **33.0% mean resolve rate vs. 28.3% for a static knowledge base** — a 4.7-point gain from automated guidance-file curation alone.
+
+> LLM-based coding agents need higher-level operational knowledge about a repository (which files house which subsystems, how to run the test suite, which workflows have historically led to wrong fixes) that does not exist in the code itself. [[probe-and-refine-tuning-of-repository-guidance-for-coding-agents-86f1891b]]
+
+> On SWE-bench Verified across four independent trials with Qwen3.5-35B-A3B at 200 steps, probe-and-refine achieves 33.0% mean resolve rate vs. 28.3% for the static knowledge base. [[probe-and-refine-tuning-of-repository-guidance-for-coding-agents-86f1891b]]
+
+On agent diversity and fault tolerance, [[n-version-programming-with-coding-agents-78ec96e9]] (Ron, Baudry & Monperrus, KTH/Montréal, arXiv 2606.20158) revisits the Knight–Leveson N-version programming experiment with 48 agent-generated implementations of the Launch Interceptor Program. Despite diversity across agent systems, models, and implementation languages, the study finds **substantial common-mode failure** — agents tend to fail in similar ways, mostly tracing to specification ambiguity. Majority-voting three-version units reduce mean failure count from 387 to 131, and 11,844 N-version units exhibit zero observed failures, suggesting NVP with agents still delivers fault-tolerance gains even if independence is lower than hoped.
+
+> The results show substantial common-mode failure, along the findings of Knight–Leveson, and many of those co-occurring failures can be traced to where the specification is particularly hard or ambiguous. [[n-version-programming-with-coding-agents-78ec96e9]]
+
+> Across majority voting three-version units, the mean failure count drops from 387.44 for single versions to 130.99 for triples, and 11,844 N-version units exhibit zero observed failures. [[n-version-programming-with-coding-agents-78ec96e9]]
 
 ### Updates 2026-06-19
 
@@ -1089,6 +1112,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does CursorBench [[continually-improving-our-agent-harness-cursor-blog-173ad132]] pin infrastructure/resource configuration, given that [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] showed several-percent score swings from config alone?
 - [ ] Cursor's automated Split PRs flow [[cursor-changelog-pr-review-build-plan-in-parallel-and-split-prs-may-7-2026-29f64665]] proposes independent PRs from chat context — how does it detect cross-slice dependencies, and what is the false-independence rate (slices marked independent that actually conflict on merge)?
 - [ ] Does SWE-WebDevBench's frontend-backend decoupling finding [[swe-webdevbench-evaluating-coding-agent-application-platforms-as-virtual-software-agencies-c47cb7a6]] persist under the autonomous three-agent planner/generator/evaluator harness [[harness-design-for-long-running-application-development-anthropic-engineering-9fa759b7]], or is the decoupling an artifact of single-pass app-platform generation?
+- [ ] Does the domain-expertise advantage in Claude Code sessions [[agentic-coding-and-persistent-returns-to-expertise-a6ebb163]] generalize to other agentic coding tools (Cursor, Codex), or is it specific to Claude Code's interaction model?
+- [ ] Probe-and-refine AGENTS.md tuning [[probe-and-refine-tuning-of-repository-guidance-for-coding-agents-86f1891b]] achieves a 4.7pp SWE-bench Verified gain from automated guidance-file curation — does this gap persist when the static knowledge base is human-curated rather than LLM-generated?
 - [ ] Does the C-compiler agent-team result [[building-a-c-compiler-with-a-team-of-parallel-claudes-1eba12a4]] generalize beyond the unusual property that a known-good oracle (GCC) existed to decompose the monolithic compile task — i.e. how do you parallelize a monolithic task with no oracle to diff against?
 - [ ] What is the per-completed-task cost delta between the Managed Agents brain/hands-decoupled architecture [[scaling-managed-agents-decoupling-the-brain-from-the-hands-8537165d]] and a coupled single-session harness, given the extra event-transformation layer it inserts before context?
 - [ ] SkillsBench finds self-generated Skills provide no average benefit [[skillsbench-benchmarking-how-well-agent-skills-work-across-diverse-tasks-1743f5a5]]; does this contradict the Agentic Harness Engineering claim that an evolution agent can productively edit its own skills/sub-agents [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]], or is AHE's human-in-the-loop observability the missing ingredient?
