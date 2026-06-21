@@ -1,15 +1,15 @@
 ---
 title: "Gemini 3.1 Pro"
 kind: entity
-sources: ["[[gemini-31-pro-model-card-225ab705]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]"]
-last_updated: "2026-05-27"
-last_verified: "2026-05-27"
+sources: ["[[gemini-31-pro-model-card-225ab705]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]", "[[gemini-3-1-pro-preview-intelligence-performance-price-analysis-3a3f9933]]"]
+last_updated: 2026-06-21
+last_verified: 2026-06-21
 freshness_window_days: 30
 input_cost_per_mtoken: 2.00
 output_cost_per_mtoken: 12.00
 cost_source: "[[gemini-31-pro-model-card-225ab705]]"
-aa_intelligence_index: 57
-aa_intelligence_index_source: "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]"
+aa_intelligence_index: 46
+aa_intelligence_index_source: "[[gemini-3-1-pro-preview-intelligence-performance-price-analysis-3a3f9933]]"
 gdpval_aa_elo: null
 gdpval_aa_elo_source: null
 swe_bench_verified: 0.806
@@ -22,17 +22,19 @@ arc_agi_2_source: "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]"
 
 ## Summary
 
-Gemini 3.1 Pro Preview is Google DeepMind's current frontier model on the Pro tier, with a 1M-token input context window and up to 64k-token output [[gemini-31-pro-model-card-225ab705]]. Pricing is tiered by context length — a first among major frontier models: $2/$12 per Mtoken (input/output, including thinking tokens) for prompts at or below 200k tokens, jumping to $4/$18 above 200k. It scores 57 on the Artificial Analysis Intelligence Index [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]], and leads the AA Omniscience Index.
+Gemini 3.1 Pro Preview is Google DeepMind's current frontier model on the Pro tier, with a 1M-token input context window and up to 64k-token output [[gemini-31-pro-model-card-225ab705]]. Pricing is tiered by context length — a first among major frontier models: $2/$12 per Mtoken (input/output, including thinking tokens) for prompts at or below 200k tokens, jumping to $4/$18 above 200k. It scores **46 on the Artificial Analysis Intelligence Index v4.1** [[gemini-3-1-pro-preview-intelligence-performance-price-analysis-3a3f9933]], down from 57 on v4.0, reflecting the v4.1 re-weighting toward agentic workloads (GDPval-AA, Terminal-Bench, tau3). It retains the #1 spot on AA-Omniscience at 33, though now surpassed by Claude Fable 5 at 40 [[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]].
 
-> Input price: $2.00 for prompts <= 200k tokens, $4.00 for prompts > 200k tokens; Output price (including thinking tokens): $12.00 for prompts <= 200k tokens, $18.00 for prompts > 200k tokens.
+> Gemini 3.1 Pro Preview scores 46 on the Artificial Analysis Intelligence Index, placing it well above average among other reasoning models in a similar price tier (median: 29). On AA-Omniscience, Fable 5 scores 40, +7 points over the previous leader, Gemini 3.1 Pro Preview, driven primarily by higher accuracy. [[gemini-3-1-pro-preview-intelligence-performance-price-analysis-3a3f9933]]
+
+> Input price: $2.00 for prompts <= 200k tokens, $4.00 for prompts > 200k tokens; Output price (including thinking tokens): $12.00 for prompts <= 200k tokens, $18.00 for prompts > 200k tokens. [[gemini-31-pro-model-card-225ab705]]
 
 On [[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]], Gemini 3.1 Pro scores 80.6% (tied with DeepSeek V4 Pro Max), well behind the GPT-5.5 / Opus 4.7 frontier. On [[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]] Gemini 3.1 Pro is the strongest non-reasoning model at 77.1% — ahead of Opus 4.7 Adaptive (75.8%) and only behind GPT-5.5 and GPT-5.4 Pro.
 
-> Gemini 3.1 Pro at 80.6% [SWE-bench Verified].
+> Gemini 3.1 Pro at 80.6% [SWE-bench Verified]. [[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]
 
-> Gemini 3.1 Pro — Non-Reasoning — 77.1 [ARC-AGI-2].
+> Gemini 3.1 Pro — Non-Reasoning — 77.1 [ARC-AGI-2]. [[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]
 
-_no contradictions or gaps known yet (last reviewed: 2026-05-22)_
+_no contradictions or gaps known yet (last reviewed: 2026-06-21)_
 
 ## Open questions
 
