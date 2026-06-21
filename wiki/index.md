@@ -703,3 +703,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-18]]
 - [[2026-06-19]]
 - [[2026-06-20]]
+- [[health-2026-06-21]]
