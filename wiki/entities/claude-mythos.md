@@ -2,17 +2,17 @@
 title: "Claude Mythos"
 kind: entity
 aliases: ["Mythos", "Claude Mythos Preview", "Anthropic Mythos", "Claude Mythos 5"]
-sources: ["[[claude-mythos-preview-d737ab91]]", "[[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[expanding-project-glasswing-fd9b87df]]", "[[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]", "[[initial-impressions-of-claude-fable-5-1a99af0c]]", "[[if-claude-fable-stops-helping-you-you-ll-never-know-1257de46]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]"]
-last_updated: 2026-06-13
-last_verified: 2026-06-11
+sources: ["[[claude-mythos-preview-d737ab91]]", "[[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[expanding-project-glasswing-fd9b87df]]", "[[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]", "[[initial-impressions-of-claude-fable-5-1a99af0c]]", "[[if-claude-fable-stops-helping-you-you-ll-never-know-1257de46]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[gemini-3-1-pro-preview-intelligence-performance-price-analysis-3a3f9933]]"]
+last_updated: 2026-06-21
+last_verified: 2026-06-21
 freshness_window_days: 30
 input_cost_per_mtoken: 25.00
 output_cost_per_mtoken: 125.00
 cost_source: "[[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]"
-aa_intelligence_index: null
-aa_intelligence_index_source: null
-gdpval_aa_elo: null
-gdpval_aa_elo_source: null
+aa_intelligence_index: 64.9
+aa_intelligence_index_source: "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]"
+gdpval_aa_elo: 1932
+gdpval_aa_elo_source: "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]"
 swe_bench_verified: 0.939
 swe_bench_verified_source: "[[claude-mythos-preview-d737ab91]]"
 cybergym: 0.831
@@ -49,6 +49,10 @@ As of June 2, 2026, Anthropic expanded Project Glasswing access from its initial
 
 > Named partners include Okta, Samsung, SK Hynix, SK Telecom, NATO, and the EU cybersecurity agency ENISA.
 
+Claude Fable 5, the first publicly available Mythos-class model, **launched at #1 on the Artificial Analysis Intelligence Index (v4.0 = 64.9)** — approximately 5 points ahead of the closest non-Anthropic model (GPT-5.5), with Anthropic models occupying both of the top 2 places; its GDPval-AA Elo (v1) of **1932** put it at #1 on the agentic real-world-task axis [[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]. On the v4.1 re-scale (published 2026-06-18), Fable 5 re-places at **60** — still the closed-frontier leader above Opus 4.8 (56) and GPT-5.5 (55) — though it remains export-suspended since June 12, 2026 [[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]. On AA-Omniscience, Fable 5 scores **40**, +7 points over the prior leader Gemini 3.1 Pro Preview (33) [[gemini-3-1-pro-preview-intelligence-performance-price-analysis-3a3f9933]].
+
+> Claude Fable 5 (Adaptive Reasoning, Max Effort, Opus 4.8 Fallback) takes the #1 position on the Artificial Analysis Intelligence Index, scoring 64.9 and setting the highest score on 5 of the 10 underlying benchmarks. Claude Fable 5 is approximately 5 points ahead of the closest non-Anthropic model (GPT-5.5), and Anthropic models now occupy both of the top 2 places. Claude Fable 5 scores 1932 on GDPval-AA, our benchmark for agentic real-world work tasks, taking the #1 position and putting Anthropic models in 3 of the top 4 spots. [[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]
+
 ## Claude Fable 5 and Mythos 5: public Mythos-class launch (added 2026-06-11)
 
 On June 9, 2026, Anthropic released **Claude Fable 5**, described as "the first publicly available Mythos-class model" — a tier above Opus 4.8 [[initial-impressions-of-claude-fable-5-1a99af0c]]. Early hands-on reports describe it as having "a big model smell: slow, expensive and capable of crunching through pretty much everything I threw at it," with the model spontaneously expanding work scope to upstream dependencies during agentic coding tasks [[initial-impressions-of-claude-fable-5-1a99af0c]].
@@ -74,7 +78,8 @@ Fable 5 introduces a new category of safeguard not previously documented: **sile
 
 ## Open questions
 
-- [ ] When Mythos reaches general availability, will it receive an independent AA Intelligence Index placement, and where will it rank relative to Opus 4.8 (61.4) on the aggregate index?
+- [ ] When Mythos reaches general availability, will it receive an independent AA Intelligence Index placement, and where will it rank relative to Opus 4.8 (61.4) on the aggregate index? (Partially answered for Fable 5 / Mythos 5: v4.0 = 64.9, v4.1 = 60, GDPval-AA v1 = 1932 [[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]; the original Mythos Preview remains unplaced.)
+- [ ] Entity `aa_intelligence_index` currently stores the v4.0 value (64.9) from the Fable 5 launch source; should it be updated to the v4.1 value (60) once a dedicated v4.1 Fable 5 analysis page is available?
 - [ ] Is Mythos a fine-tune of an existing Claude Opus base or a distinct architecture trained separately for cybersecurity capability?
 - [ ] Does Mythos' Cybench 100% pass@1 saturation indicate the benchmark has been exhausted as a frontier-security signal, or is it evidence of genuine out-of-distribution generalization?
 - [ ] Anthropic reports 10,000+ high/critical vulnerabilities found by Mythos in ~2 months of Glasswing operation [[expanding-project-glasswing-fd9b87df]]; what is the false-positive / non-reproducible rate, and is Anthropic publishing per-partner deduplication numbers?
