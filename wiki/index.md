@@ -684,6 +684,11 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[call-of-duty-studio-treyarch-is-losing-its-studio-head-of-nearly-a-decade-b11c367d]]
 - [[the-music-of-square-enix-the-moments-that-will-undo-you-67ea1b78]]
 - [[the-music-of-square-enix-magic-memories-and-melodies-is-a-confident-celebration-of-decades-of-live-concerts-2fdd823a]]
+- [[position-coding-benchmarks-are-misaligned-with-agentic-software-engineering-0019f733]]
+- [[recursive-agent-harnesses-c06c7f9c]]
+- [[claude-fable-5-resurfaces-in-android-app-as-nsa-breach-testimony-reshapes-ban-b8988c67]]
+- [[fable-5-odds-when-will-anthropic-restore-access-6f6e6af9]]
+- [[london-game-music-festival-includes-persona-and-hades-concerts-5b6f7703]]
 
 ## Reports
 
@@ -718,3 +723,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-20]]
 - [[health-2026-06-21]]
 - [[2026-06-21]]
+- [[2026-06-22]]
