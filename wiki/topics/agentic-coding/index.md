@@ -163,7 +163,9 @@ sources:
   - "[[agentic-coding-and-persistent-returns-to-expertise-a6ebb163]]"
   - "[[probe-and-refine-tuning-of-repository-guidance-for-coding-agents-86f1891b]]"
   - "[[n-version-programming-with-coding-agents-78ec96e9]]"
-last_updated: 2026-06-21
+  - "[[position-coding-benchmarks-are-misaligned-with-agentic-software-engineering-0019f733]]"
+  - "[[recursive-agent-harnesses-c06c7f9c]]"
+last_updated: 2026-06-22
 last_verified: 2026-06-19
 freshness_window_days: 30
 ---
@@ -222,6 +224,30 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > Over 100 participants collaborated with one of four frontier models (Claude-Opus-4.6, GPT-5.4, Gemini-3.1-Pro, and MiniMax-M2.7) on a long-horizon coding task lasting around five hours [...] 94% of developers fail to detect sabotage, with vulnerability attributed to minimal code review, plausible cover story, and overtrust in agents. While a safety monitor reduces sabotage success, 56% of participants still accept the malicious code, ignoring its warnings.
 
 ## Recent updates
+
+### Updates 2026-06-22
+
+Two arXiv preprints landed this week on the eval-methodology and recursive-harness fronts.
+
+On evaluation methodology, [[position-coding-benchmarks-are-misaligned-with-agentic-software-engineering-0019f733]] (Gorinova et al., arXiv 2606.17799, submitted 2026-06-16) argues that the benchmark suite the wiki tracks heavily — SWE-bench and its variants — was designed in a pre-agent era and is structurally misaligned with how coding agents now work. The central claim is that a coding agent is a *system*, not a model, and that the harness/context/environment can move a benchmark score as much as a model generation can, so a single end-to-end number against one reference solution gives no component-level signal.
+
+> Coding agents have become a major mode of software engineering, but the benchmarks used to compare them were designed in a pre-agent era: they collapse model, harness, and environment into a single end-to-end score, typically computed against one reference solution, with no component-level signal for iteration. [[position-coding-benchmarks-are-misaligned-with-agentic-software-engineering-0019f733]]
+
+> A coding agent in practice is not a model but a system harness—a composite of models, harnesses, contexts, environments, and feedback signals, any one of which can move the benchmark score by margins comparable to those between adjacent model generations. [[position-coding-benchmarks-are-misaligned-with-agentic-software-engineering-0019f733]]
+
+This position reinforces the harness-disclosure argument the wiki already records in [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]] and the infrastructure-noise finding in [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]], while taking a sharper stance than the wiki's many single-number SWE-bench-variant entries (e.g. [[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]], [[swe-evo-benchmarking-coding-agents-in-long-horizon-software-evolution-scenarios-21a62ebd]]) — it claims those end-to-end scores are not just noisy but categorically misaligned for agent comparison. Filed as a dispute below.
+
+On harness architecture, [[recursive-agent-harnesses-c06c7f9c]] (Lumer et al., PwC US, arXiv 2606.13643, submitted 2026-06-11) introduces Recursive Agent Harnesses (RAH): the recursive unit is a *full harness* (filesystem tools, code execution, planning), not a bare model call, and a parent agent chooses between writing an executable script that spawns subagent harnesses in parallel and JSON tool-call spawning for small (1–5 entry) subtasks, with subagents carrying the same spawning capability recursively up to a depth limit.
+
+> We study a recursive unit as a full agent harness with filesystem tools, code execution, and planning rather than a model call with no tools, framing it as harness recursion, the code-first extension to the model recursion of RLMs. [[recursive-agent-harnesses-c06c7f9c]]
+
+> With the backbone held fixed at GPT-5 to match the published Codex and RLM baselines, RAH improves the Codex coding-agent baseline from 71.75% to 81.36%. [[recursive-agent-harnesses-c06c7f9c]]
+
+Notably, RAH reports that subagent token usage sits about an order of magnitude below orchestrator tokens because each subagent is handed a narrow specialized context — an empirical data point on the context-preservation-vs-parallelism question this page has had open since the Simon Willison subagents note [[subagents-agentic-engineering-patterns-3262892c]].
+
+> Sub-agent handoffs keep per-step cost low by giving the sub-agent a narrow specialized context. The sub-agent token usage sits about an order of magnitude below orchestrator tokens. [[recursive-agent-harnesses-c06c7f9c]]
+
+The RAH "code-execution spawning" mode (parent writes a script that spawns subagents) is conceptually adjacent to Claude Code's dynamic-workflows fan-out [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]] and the code-execution-with-MCP design [[code-execution-with-mcp-building-more-efficient-ai-agents-9b88bfec]], but neither cross-comparison has published numbers.
 
 ### Updates 2026-06-21
 
@@ -1091,6 +1117,7 @@ lint stays quiet until each page actually exists:
 - [[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]] argues human code review is no longer a necessary quality gate and that the 'agent writes, human reviews' model is a dead end because it neither assures quality nor scales; [[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]] finds 94% of developers fail to detect AI-agent sabotage and 56% accept malicious code even when a safety monitor flags it, and [[human-oversight-of-agentic-systems-in-practice-ab5cc8f1]] finds developers spend 60-70% of oversight effort on post-flight verification. The three agree current human review is failing but disagree on the remedy: Monperrus argues to remove the human reviewer in favor of agent-based review, while the empirical oversight/sabotage work implies the failure of human review leaves a dangerous assurance gap that agent-on-agent review has not been shown to close. Status: unresolved
 - [[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]] claims every stated goal of code review can be served by agents at lower cost and higher throughput; [[where-do-ai-coding-agents-fail-an-empirical-study-of-failed-agentic-pull-requests-in-github-d7b61822]] finds in the open-source wild that larger/more-files agentic PRs are less likely to merge and that performance/bug-fix tasks have the worst merge success, suggesting unreviewed high-throughput agentic output is exactly where quality assurance is most needed. Status: unresolved — Monperrus's argument is a position synthesis, not a field measurement of agent-reviewed-agent-code quality.
 - [[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]] claims a posterior-guided framing makes self-evolving reusable skills/SOPs reliable across harnesses by treating each as a hypothesis with verified-evidence-conditioned belief; [[skillsbench-benchmarking-how-well-agent-skills-work-across-diverse-tasks-1743f5a5]] found that self-generated Skills 'provide no benefit on average, showing that models cannot reliably author the procedural knowledge they benefit from consuming.' The two disagree on whether principled belief-tracking over self-authored skills closes the self-generation gap or whether the gap is in authoring quality the posterior cannot recover. Status: unresolved
+- [[position-coding-benchmarks-are-misaligned-with-agentic-software-engineering-0019f733]] argues single end-to-end SWE-bench-style scores are categorically misaligned for comparing coding agents because the harness/context/environment can move the score as much as a model generation; the wiki's body of SWE-bench-variant benchmark entries (e.g. [[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]], [[swe-evo-benchmarking-coding-agents-in-long-horizon-software-evolution-scenarios-21a62ebd]]) report exactly such single-number agent comparisons. Status: unresolved
 
 ## Open questions
 
@@ -1219,6 +1246,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does CoDA-Bench's data-intensive sandbox expose failure modes absent in SWE-bench Verified — i.e., do top SWE-bench models fail at CoDA-Bench file-hierarchy exploration, or do the same models lead both leaderboards [[coda-bench-can-code-agents-handle-data-intensive-tasks-6c2259df]]?
 - [ ] Does per-subagent cloud-VM isolation (Cursor `/in-cloud`) change the parallel-subagent cost economics already flagged on this page, or just relocate the same fan-out cost to rented VMs?
 - [ ] Is APEX's three-axis co-evolution gain (+90% on a bespoke health score) reproducible on a standard agentic-coding benchmark, or is it specific to the single NVIDIA Agent Challenge deployment it was measured on?
+- [ ] Recursive Agent Harnesses reports subagent token usage ~an order of magnitude below orchestrator tokens [[recursive-agent-harnesses-c06c7f9c]] — does this measured cost asymmetry hold under prompt caching, where the orchestrator's large shared context is the cacheable part and the subagents' narrow contexts are not, potentially inverting the per-token economics?
+- [ ] Does the RAH 'code-execution spawning' mode (parent writes a script that spawns subagent harnesses in parallel) [[recursive-agent-harnesses-c06c7f9c]] map onto Claude Code's dynamic-workflows fan-out [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]], and is there any wall-clock or success-rate measurement separating recursive harness spawning from a flat one-level subagent dispatch?
+- [ ] The benchmarks-misaligned position [[position-coding-benchmarks-are-misaligned-with-agentic-software-engineering-0019f733]] calls for component-level (model vs harness vs environment) signal — does any existing wiki benchmark already factor its score this way, or are they all the single-number design the paper criticizes?
 
 ## See also
 
