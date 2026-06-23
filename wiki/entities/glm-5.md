@@ -1,8 +1,8 @@
 ---
 title: "GLM-5"
 kind: entity
-sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]", "[[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]", "[[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]", "[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]"]
-last_updated: 2026-06-17
+sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]", "[[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]", "[[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]", "[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]", "[[glm-5-2-built-for-long-horizon-tasks-9e3636b0]]"]
+last_updated: 2026-06-23
 last_verified: 2026-05-25
 freshness_window_days: 30
 input_cost_per_mtoken: 1.00
@@ -60,9 +60,14 @@ Z.AI released **GLM-5.2** on June 13, 2026, the latest model in the GLM-5 line, 
 
 > Z.ai's GLM-5.2 is the new leading open weights model on the Artificial Analysis Intelligence Index, scoring 51. GLM-5.2 is the same size as GLM-5.1 (744B total / 40B active parameters) but scores 11 points higher on the Intelligence Index v4.1, placing ahead of MiniMax-M3 (44), DeepSeek V4 Pro (max, 44) and Kimi K2.6 (43).
 
+Z.AI's technical blog for GLM-5.2 adds coding benchmark detail: SWE-bench Pro 62.1% (up from GLM-5.1's 58.4%), Terminal-Bench 2.1 81.0% (vs 63.5%), and FrontierSWE Dominance 74.4% (vs 30.5%) [[glm-5-2-built-for-long-horizon-tasks-9e3636b0]]. This positions GLM-5.2 ahead of GPT-5.5 (58.6%) on SWE-bench Pro, while trailing Opus 4.8 (69.2%).
+
+> Terminal-Bench 2.1: 81.0 vs. 63.5 (previous version). SWE-bench Pro: 62.1 vs. 58.4. FrontierSWE (Dominance): 74.4 vs. 30.5. [[glm-5-2-built-for-long-horizon-tasks-9e3636b0]]
+
 ## Disputes
 
 - [[glm-5-everything-you-need-to-know-a53ff5c1]] claims GLM-5 (AA Index 50, released Feb 11 2026) is the leading open-weights model, but [[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]] reports a later open-weights leader: Moonshot's Kimi K2.6 at AA Index 54 (released Apr 20), co-tied with Xiaomi's MiMo-V2.5-Pro at 54 (released Apr 22) [[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]. Qwen3.7 Max scores 57 but is closed-weights API-only [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]. Status: resolved-toward-B — GLM-5 was the open-weights leader at its February release but has since been overtaken by the Kimi K2.6 / MiMo-V2.5-Pro co-leadership at 54; the 'new leading open weights model' framing is time-bound to early 2026.
+- The page Summary states "GLM-5.2 now holds the open-weights #1 position on AA Intelligence Index v4.1 at 51" citing [[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]], but [[glm-5-2-built-for-long-horizon-tasks-9e3636b0]] states GLM-5.2 scores 51 on AA Index v4.0 and 41 on AA Index v4.1 (agentic-reweighted). Status: unresolved — if v4.1 = 41, GLM-5.2 would be below MiniMax-M3 (44) and DeepSeek V4-Pro (44) on v4.1, reversing the open-weights leadership claim.
 - [[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]] claims GLM-5.1 sets SWE-Bench Pro SOTA at 58.4 ahead of GPT-5.4 / Opus 4.6 / Gemini 3.1 Pro; independent [[glm-5-1-intelligence-performance-price-analysis-fb6f086c]] places GLM-5.1 at AA Intelligence Index 51 and GDPval-AA #2 among open weights — strong for open weights but below the closed frontier. Status: resolved-toward-A-narrowly — the coding-axis SOTA is plausible but GLM-5.1 is not an aggregate-leaderboard frontier model.
 
 ## Open questions

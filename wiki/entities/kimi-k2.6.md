@@ -1,8 +1,8 @@
 ---
 title: "Kimi K2.6"
 kind: entity
-sources: ["[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]", "[[multi-modal-model-kimi-k2-6-pricing-774b549a]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]"]
-last_updated: "2026-05-28"
+sources: ["[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]", "[[multi-modal-model-kimi-k2-6-pricing-774b549a]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[kimi-k2-7-code-9c6b3767]]", "[[kimi-k2-7-code-intelligence-performance-and-price-analysis-b3d43ac0]]"]
+last_updated: 2026-06-23
 last_verified: "2026-05-21"
 freshness_window_days: 30
 input_cost_per_mtoken: 0.95
@@ -37,6 +37,10 @@ On [[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]] Kimi K2.6 scor
 > Kimi K2.6 (80.2%, new open-weight) ties MiniMax M2.5.
 
 > Kimi K2.6 ... 0.413 [CyberGym].
+
+**Kimi K2.7 Code (released June 12, 2026)** is K2.6's direct successor for coding-specialist tasks — same 1T total / 32B active MoE architecture, retrained for long-horizon agentic coding [[kimi-k2-7-code-9c6b3767]]. Key benchmark improvements over K2.6: Kimi Code Bench v2 62.0 vs. 50.9 (+21.8%), MCP Atlas 76.0 vs. 69.4, MCP Mark Verified 81.1 vs. 72.8; ~30% fewer thinking tokens than K2.6. AA Intelligence Index v4.1: 42 (vs K2.6's 43) [[kimi-k2-7-code-intelligence-performance-and-price-analysis-b3d43ac0]].
+
+> With substantial improvements on real-world long-horizon coding tasks, it strengthens end-to-end task completion across complex software engineering workflows...reducing thinking-token usage by approximately 30% compared with Kimi K2.6. [[kimi-k2-7-code-9c6b3767]]
 
 ## Disputes
 
