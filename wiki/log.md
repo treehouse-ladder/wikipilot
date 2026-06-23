@@ -16,6 +16,20 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-06-23] daily | 5 topics, 13 sources, 8 pages
+
+Daily Research 2026-06-23 complete. PRs #245–#249 merged. Key stories: agent CLAUDE.md config anti-patterns + dynamic workflow orchestration (agentic-coding); Kimi K2.7 Code (AA=42, SWE-bench 63.1%) + GLM-5.2 leads open-weights AA Index at 51 (frontier-models); JAMER benchmark for pro game-engine code + UE6 announced as UE5/UEFN merger (ai-in-game-dev); OtherSide/Deus Ex cancelled + Xbox leadership crisis deepens (games-of-note); Castlevania 46LP boxset + Adventures of Elliot OST review (game-music). Report: wiki/reports/2026-06-23.md.
+
+## [2026-06-23] daily | game-music — 2 sources, 1 page
+
+## [2026-06-23] daily | games-of-note — 4 sources, 1 page
+
+## [2026-06-23] daily | ai-in-game-dev — 2 sources, 1 page
+
+## [2026-06-23] daily | frontier-models — 3 sources, 4 pages
+
+## [2026-06-23] daily | agentic-coding — 2 sources, 1 page
+
 ## [2026-06-22] daily | 4 topics, 6 sources, 9 pages
 
 Daily Research 2026-06-22 complete. PRs #239-242 created. Key stories: NSA Director Gen. Rudd Senate testimony reveals Fable 5 ban is architectural autonomous-offense concern, not a fixable jailbreak; prediction markets 57–75% probability of restoration before July 1–17 (frontier-models); benchmark evaluation methodology challenge from arXiv (agentic-coding); GMF 2026 June 27 double-bill confirmed — Hades at 1:30pm, Persona at 8pm (game-music); EA Stockholm RL vision paper for game AI (ai-in-game-dev). games-of-note: 0 new sources. Report: wiki/reports/2026-06-22.md.
