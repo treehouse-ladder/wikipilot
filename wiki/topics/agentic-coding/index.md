@@ -165,7 +165,10 @@ sources:
   - "[[n-version-programming-with-coding-agents-78ec96e9]]"
   - "[[position-coding-benchmarks-are-misaligned-with-agentic-software-engineering-0019f733]]"
   - "[[recursive-agent-harnesses-c06c7f9c]]"
-last_updated: 2026-06-22
+  - "[[a-harness-for-every-task-dynamic-workflows-in-claude-code-bbb7a8da]]"
+  - "[[orchestrate-subagents-at-scale-with-dynamic-workflows-8516d91b]]"
+  - "[[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]]"
+last_updated: 2026-06-23
 last_verified: 2026-06-19
 freshness_window_days: 30
 ---
@@ -224,6 +227,26 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > Over 100 participants collaborated with one of four frontier models (Claude-Opus-4.6, GPT-5.4, Gemini-3.1-Pro, and MiniMax-M2.7) on a long-horizon coding task lasting around five hours [...] 94% of developers fail to detect sabotage, with vulnerability attributed to minimal code review, plausible cover story, and overtrust in agents. While a safety monitor reduces sabotage success, 56% of participants still accept the malicious code, ignoring its warnings.
 
 ## Recent updates
+
+### Updates 2026-06-23
+
+**Claude Code Dynamic Workflows reach GA — up to 1,000 subagents per run.** Anthropic published "A harness for every task" [[a-harness-for-every-task-dynamic-workflows-in-claude-code-bbb7a8da]] on June 2, 2026, describing the six composable patterns baked into Claude Code's new dynamic-workflow runtime (GA as of v2.1.154 per official docs [[orchestrate-subagents-at-scale-with-dynamic-workflows-8516d91b]]). The patterns — _classify-and-act_, _fan-out-and-synthesize_, _adversarial verification_, _generate-and-filter_, _tournament_, and _loop-until-done_ — each target a distinct failure mode of single-agent approaches (agentic laziness, self-preferential bias, goal drift). The runtime enforces 16 concurrent subagents maximum and caps total agents at 1,000/run to bound resource use; intermediate results stay in script variables rather than Claude's context window, making runs resumable and repeatable.
+
+> A dynamic workflow is a JavaScript script that orchestrates subagents at scale. Claude writes the script for the task you describe, and a runtime executes it in the background while your session stays responsive. [[orchestrate-subagents-at-scale-with-dynamic-workflows-8516d91b]]
+
+> Adversarial verification: for each finding, spawn a separate skeptic whose only job is to refute it. Survivors are the findings the skeptic could not knock down. [[a-harness-for-every-task-dynamic-workflows-in-claude-code-bbb7a8da]]
+
+The `ultracode` keyword (introduced v2.1.160, June 2, 2026) triggers xhigh reasoning effort plus automatic workflow orchestration — Claude plans a workflow for every substantive task in the session rather than waiting for an explicit request. Users can save workflow scripts as slash commands under `.claude/workflows/` (project-shared) or `~/.claude/workflows/` (personal).
+
+**AGENTS.md configuration smells catalog.** A grey-literature and repository-mining study (arXiv 2606.15828) [[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]] analyzed 100 popular repos with AGENTS.md or CLAUDE.md files, finding six recurring configuration smells: _Lint Leakage_ (62% prevalence — repeating rules linters already enforce), _Context Bloat_ (42% — over-specifying every behavior, burying important instructions under token weight), and _Skill Leakage_ (35% — loading task-specific workflows into every session instead of isolating them in separate skill files). Skill Leakage and Conflicting Instructions co-occur in ways that raise the likelihood of Context Bloat.
+
+> Configuration smells: Lint Leakage (62% prevalence), Context Bloat (42%), Skill Leakage (35%). The smells are not independent — Skill Leakage and Conflicting Instructions co-occur in ways that raise the likelihood of Context Bloat. [[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]]
+
+The implication for CLAUDE.md / AGENTS.md authors: keep config slim and push task-specific workflows into skill files or `.claude/workflows/` scripts; let linters enforce syntax rules rather than repeating them in the config.
+
+**Agentic coding adoption doubles in new GitHub projects.** A follow-up empirical study (arXiv 2606.07448) [[agentic-very-much-adoption-of-coding-agent-in-new-github-projects-e080a2f2]] to the January 2026 "Agentic Much?" paper (which found 22–28% adoption in 128K projects) found that in a new cohort of GitHub projects created later, coding agent adoption is more than twice as high and the share of AI-assisted commits is substantially greater — though authors note detection heuristics likely undercount actual AI-assisted commits.
+
+> In a new sample of projects created after a previous study, the adoption of coding agents is more than twice as high. The proportion of AI-assisted commits is sensibly higher, despite strong signs that not all of it is detected. [[agentic-very-much-adoption-of-coding-agent-in-new-github-projects-e080a2f2]]
 
 ### Updates 2026-06-22
 
@@ -1249,6 +1272,8 @@ lint stays quiet until each page actually exists:
 - [ ] Recursive Agent Harnesses reports subagent token usage ~an order of magnitude below orchestrator tokens [[recursive-agent-harnesses-c06c7f9c]] — does this measured cost asymmetry hold under prompt caching, where the orchestrator's large shared context is the cacheable part and the subagents' narrow contexts are not, potentially inverting the per-token economics?
 - [ ] Does the RAH 'code-execution spawning' mode (parent writes a script that spawns subagent harnesses in parallel) [[recursive-agent-harnesses-c06c7f9c]] map onto Claude Code's dynamic-workflows fan-out [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]], and is there any wall-clock or success-rate measurement separating recursive harness spawning from a flat one-level subagent dispatch?
 - [ ] The benchmarks-misaligned position [[position-coding-benchmarks-are-misaligned-with-agentic-software-engineering-0019f733]] calls for component-level (model vs harness vs environment) signal — does any existing wiki benchmark already factor its score this way, or are they all the single-number design the paper criticizes?
+- [ ] What is the empirical token-cost overhead of a typical dynamic-workflow run vs. a turn-by-turn subagent approach for the same task? The docs warn of 'meaningfully more tokens' but no comparison numbers are published. [[orchestrate-subagents-at-scale-with-dynamic-workflows-8516d91b]]
+- [ ] Do the AGENTS.md smell heuristics from arXiv 2606.15828 generalize to Claude Code's skill-file pattern (.claude/workflows/ scripts vs. monolithic CLAUDE.md)? The paper studied AGENTS.md/CLAUDE.md only. [[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]]
 
 ## See also
 
