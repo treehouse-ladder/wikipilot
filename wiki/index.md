@@ -42,6 +42,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[minimax-m3]]
 - [[grok-4.3]]
 - [[yoko-shimomura]]
+- [[kimi-k2.7-code]]
 
 ## Comparisons
 
@@ -689,6 +690,19 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[claude-fable-5-resurfaces-in-android-app-as-nsa-breach-testimony-reshapes-ban-b8988c67]]
 - [[fable-5-odds-when-will-anthropic-restore-access-6f6e6af9]]
 - [[london-game-music-festival-includes-persona-and-hades-concerts-5b6f7703]]
+- [[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]]
+- [[orchestrate-subagents-at-scale-with-dynamic-workflows-8516d91b]]
+- [[kimi-k2-7-code-9c6b3767]]
+- [[kimi-k2-7-code-intelligence-performance-and-price-analysis-b3d43ac0]]
+- [[glm-5-2-built-for-long-horizon-tasks-9e3636b0]]
+- [[jamer-project-level-code-framework-dataset-and-benchmark-on-professional-game-engines-07fa14d8]]
+- [[unreal-engine-6-will-merge-ue5-and-uefn-into-one-engine-f4b51fc2]]
+- [[deus-ex-creator-immersive-sim-is-cancelled-with-17-staff-lost-b2943e24]]
+- [[otherside-entertainment-lays-off-17-employees-956a51e8]]
+- [[founding-xbox-staff-says-original-skepticisms-are-coming-true-f5c0aec9]]
+- [[former-sony-boss-says-xbox-is-misunderstanding-the-industry-a89692e8]]
+- [[music-from-castlevania-the-definite-complete-boxset-vinyl-a98cb2f9]]
+- [[the-adventures-of-elliot-the-millennium-tales-review-f1498fe3]]
 
 ## Reports
 
@@ -724,3 +738,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[health-2026-06-21]]
 - [[2026-06-21]]
 - [[2026-06-22]]
+- [[2026-06-23]]
