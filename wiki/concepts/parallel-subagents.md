@@ -5,7 +5,9 @@ sources:
   - "[[build-programmatic-agents-with-the-cursor-sdk-fe66773e]]"
   - "[[towards-direct-latent-space-synthesis-for-parallel-branches-in-llm-agent-workflows-726d5fa9]]"
   - "[[cloud-environment-setup-and-cloud-subagents-in-agents-window-ac3775dd]]"
-last_updated: 2026-06-19
+  - "[[customize-cursor-16819559]]"
+  - "[[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]]"
+last_updated: 2026-06-25
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
@@ -25,6 +27,10 @@ The merge step in parallel-subagent workflows has a measurable cost: Parallel-Sy
 Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktree-per-subagent to full cloud VM per subagent: a cloud subagent runs on its own VM and branch, keeping long-running or parallel work (CI fixes, issue investigation, codebase exploration) off the local machine while the workspace stays responsive [[cloud-environment-setup-and-cloud-subagents-in-agents-window-ac3775dd]]. Cloud environment setup completes in under ten minutes and is captured in reusable snapshots for faster subsequent starts. This extends the worktree-isolation mental model (Cursor 2.0, nested subagents) to a full per-subagent VM isolation boundary — structurally heavier but with stronger blast-radius containment for parallel work.
 
 > You can use /in-cloud to spin up a cloud subagent in its own VM to work on the next task you submit. It runs on its own VM and branch, so your local workspace stays clean and responsive. This is especially useful for isolating long-running or parallel work like fixing CI, investigating an issue, or exploring a codebase while you keep working locally.
+
+**Team-wide skill/MCP distribution for parallel-subagent contexts.** Cursor 3.9's Customize page consolidates plugins, skills, MCPs, subagents, rules, commands, and hooks into one place manageable at user/team/workspace scope, with a popularity leaderboard and one-click install across a team [[customize-cursor-16819559]]. This operationalizes the configuration-distribution layer for parallel-subagent workflows: when every team member can spawn subagents with shared skills/MCPs via the leaderboard, curation becomes an organizational asset rather than per-developer config drift — the failure mode catalogued as Skill Leakage (35% prevalence) in the AGENTS.md configuration-smells study [[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]].
+
+> You can now add and manage plugins, skills, MCPs, subagents, rules, commands, and hooks at the user, team, or workspace level, and even bring your own custom MCPs. Cursor now shows you a leaderboard of the most popular plugins, skills, and MCPs across your team. [[customize-cursor-16819559]]
 
 ## Disputes
 

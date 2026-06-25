@@ -6,7 +6,9 @@ sources:
   - "[[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]]"
   - "[[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]"
   - "[[cloud-environment-setup-and-cloud-subagents-in-agents-window-ac3775dd]]"
-last_updated: 2026-06-19
+  - "[[how-we-built-claude-code-auto-mode-a-safer-way-to-skip-permissions-d5f9dbd6]]"
+  - "[[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]]"
+last_updated: 2026-06-25
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -29,7 +31,13 @@ The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-hum
 
 > You can use /in-cloud to spin up a cloud subagent in its own VM to work on the next task you submit. It runs on its own VM and branch, so your local workspace stays clean and responsive. This is especially useful for isolating long-running or parallel work like fixing CI, investigating an issue, or exploring a codebase while you keep working locally.
 
+**Classifier-mediated autonomy gates.** Claude Code's auto mode pairs the OS-level sandbox (bubblewrap/seatbelt + network proxy) with a second policy layer: a transcript classifier (Sonnet 4.6) evaluating each proposed action before execution [[how-we-built-claude-code-auto-mode-a-safer-way-to-skip-permissions-d5f9dbd6]]. The classifier runs in two stages (fast single-token allow/block, then chain-of-thought only when flagged) and acts as a substitute for a human approver. Denials return as tool results instructing Claude to find a safer path rather than halt the session. This is defense-in-depth — the sandbox bounds kernel-level blast radius; the classifier is an in-loop policy gate at the action boundary. However, [[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]] argues such detect-and-separate defenses are subject to a fundamental data-instruction-separation trade-off: an LLM classifier is itself an instruction-following surface, and the impossibility framing implies any defense premised on detecting/separating injected instructions is structurally limited.
+
+> Auto mode is meant to replace --dangerously-skip-permissions without bringing back interruptions. When the classifier blocks an action, Claude shouldn't halt and wait for input; it should recover and try a safer approach where one exists. [[how-we-built-claude-code-auto-mode-a-safer-way-to-skip-permissions-d5f9dbd6]]
+
 ## Disputes
+
+- [[how-we-built-claude-code-auto-mode-a-safer-way-to-skip-permissions-d5f9dbd6]] presents an LLM transcript classifier as a viable substitute for human approval that lets Claude run autonomously while staying safe; [[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]] argues prompt-injection/contextual-manipulation defense is subject to a fundamental data-instruction-separation trade-off, and [[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]] finds even human reviewers fail to detect 94% of AI agent sabotage — so an LLM classifier inheriting the same instruction-following surface may be a weaker approver than the human it replaces. Status: unresolved
 
 ## Open questions
 
