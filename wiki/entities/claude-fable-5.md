@@ -1,8 +1,8 @@
 ---
 title: "Claude Fable 5"
 kind: entity
-sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]"]
-last_updated: 2026-06-18
+sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]"]
+last_updated: 2026-06-25
 last_verified: 2026-06-18
 freshness_window_days: 30
 input_cost_per_mtoken: 10.00
@@ -41,6 +41,10 @@ Safety routing: queries in cybersecurity and biology domains are automatically r
 > Claude Fable 5 (with fallback) leads at 60 but is currently unavailable [on the Artificial Analysis Intelligence Index v4.1].
 
 > Claude Fable 5 with fallback scored 1818 [on GDPval-AA v2] but is currently unavailable.
+
+**AA-Briefcase leadership.** Fable 5 leads the new AA-Briefcase multi-week agentic knowledge-work benchmark — a long-horizon evaluation with linked tasks, thousands of input files, and deliverables (spreadsheets, presentations, memos) graded on analytical quality and presentation [[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]. However, Fable 5 is one of the highest token users at ~139k output tokens per task — reinforcing the verbosity-as-cost-multiplier caveat for long-horizon agentic loops.
+
+> AA-Briefcase is a new frontier agentic evaluation measuring how well AI models perform realistic, long-horizon knowledge work across multi-week scenarios. Claude Fable 5 leads the benchmark and is one of the highest token users, averaging 139k output tokens per task.
 
 ## Open questions
 
