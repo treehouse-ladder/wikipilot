@@ -703,6 +703,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[former-sony-boss-says-xbox-is-misunderstanding-the-industry-a89692e8]]
 - [[music-from-castlevania-the-definite-complete-boxset-vinyl-a98cb2f9]]
 - [[the-adventures-of-elliot-the-millennium-tales-review-f1498fe3]]
+- [[how-we-built-claude-code-auto-mode-a-safer-way-to-skip-permissions-d5f9dbd6]]
+- [[customize-cursor-16819559]]
+- [[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]
+- [[north-mini-code-cohere-s-small-coding-focused-moe-model-323509ec]]
+- [[hierarchical-control-in-multi-agent-games-llm-based-planning-and-rl-execution-1c4590d0]]
+- [[gta-6-reveals-80-price-tag-and-ultimate-edition-bonuses-648748fe]]
+- [[the-internet-reacts-to-grand-theft-auto-6s-price-and-missing-physical-disc-7d2426d0]]
+- [[two-game-retailers-are-refusing-to-sell-gta-6-until-theres-a-disc-71975e49]]
+- [[deltarune-chapter-5-original-game-soundtrack-aec2c961]]
+- [[stellar-blade-original-soundtrack-plus-music-review-c645cdd8]]
 
 ## Reports
 
@@ -739,3 +749,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-21]]
 - [[2026-06-22]]
 - [[2026-06-23]]
+- [[2026-06-25]]
