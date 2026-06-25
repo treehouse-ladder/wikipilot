@@ -16,6 +16,20 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-06-25] daily | 5 topics, 10 sources, 8 pages
+
+Daily Research 2026-06-25 complete. PRs #252–#256 merged. Key stories: Claude Code auto-mode transcript-classifier replacing --dangerously-skip-permissions + Cursor 3.9 unified Customize page (agentic-coding); AA-Briefcase multi-week agentic KW benchmark (Fable 5 suspended leads) + Cohere North Mini Code open-weights 30B coding MoE (frontier-models); LLM+RL hierarchical control reaches parity with hand-crafted BTs in 2v2 game AI (ai-in-game-dev); GTA 6 confirms $80/$100 pricing, code-in-box no-disc launch, two retailers boycotting (games-of-note); Deltarune Ch5 OST most guest-heavy chapter + Stellar Blade OST PLUS review (game-music). Report: wiki/reports/2026-06-25.md.
+
+## [2026-06-25] daily | game-music — 2 sources, 1 page
+
+## [2026-06-25] daily | games-of-note — 3 sources, 1 page
+
+## [2026-06-25] daily | ai-in-game-dev — 1 source, 1 page
+
+## [2026-06-25] daily | frontier-models — 2 sources, 2 pages
+
+## [2026-06-25] daily | agentic-coding — 2 sources, 3 pages
+
 ## [2026-06-23] daily | 5 topics, 13 sources, 8 pages
 
 Daily Research 2026-06-23 complete. PRs #245–#249 merged. Key stories: agent CLAUDE.md config anti-patterns + dynamic workflow orchestration (agentic-coding); Kimi K2.7 Code (AA=42, SWE-bench 63.1%) + GLM-5.2 leads open-weights AA Index at 51 (frontier-models); JAMER benchmark for pro game-engine code + UE6 announced as UE5/UEFN merger (ai-in-game-dev); OtherSide/Deus Ex cancelled + Xbox leadership crisis deepens (games-of-note); Castlevania 46LP boxset + Adventures of Elliot OST review (game-music). Report: wiki/reports/2026-06-23.md.
