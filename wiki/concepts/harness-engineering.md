@@ -24,7 +24,8 @@ sources:
   - "[[from-failed-trajectories-to-reliable-llm-agents-diagnosing-and-repairing-harness-flaws-9dd308d1]]"
   - "[[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]"
   - "[[apex-adaptive-principle-extraction-a-three-layer-self-evolution-framework-for-production-ai-agents-59f9b9c9]]"
-last_updated: 2026-06-19
+  - "[[self-harness-harnesses-that-improve-themselves-ef3edbde]]"
+last_updated: 2026-06-27
 last_verified: 2026-06-11
 freshness_window_days: 30
 ---
@@ -110,6 +111,10 @@ The SDK convergence is significant for harness engineering because it makes the 
 **Multi-axis co-evolution beyond single-axis harness optimization** (added 2026-06-19). APEX (Adaptive Principle EXtraction) is a three-layer co-evolution framework that simultaneously evolves the harness (L1, via failure-mode patching), behavioral principles (L2, via success-trace distillation), and the agent workflow topology (L3, via structural fitness-based selection) [[apex-adaptive-principle-extraction-a-three-layer-self-evolution-framework-for-production-ai-agents-59f9b9c9]]. Deployed on a production NVIDIA-Nemotron agent managing a 15-node fleet over 18 days of real task traces, it reported a +90% composite health-score gain. APEX claims that workflow topology and distilled principles are co-equal evolution axes with the harness scaffold, advancing the harness-evolution cluster (AHE, HarnessX) by adding those two dimensions — but the evidence comes from a single production deployment with a bespoke metric ("APEX Health Score") rather than a standard agentic-coding benchmark, so cross-task generality is unverified.
 
 > APEX is a three-layer co-evolution framework that simultaneously evolves: (L1) the harness via failure-mode patching, (L2) behavioural principles via success-trace distillation, and (L3) the agent workflow topology via structural fitness-based selection.
+
+Self-Harness extends the harness-evolution cluster with a fully self-driven loop: the agent improves its own harness without any human engineer or stronger external teacher agent, on the premise that effective harness design is inherently model-specific [[self-harness-harnesses-that-improve-themselves-ef3edbde]]. Its three-stage loop (Weakness Mining over execution traces, Harness Proposal of minimal modifications, and selection) is a self-supervised variant of the observability-driven and continual-adaptation approaches already cataloged here.
+
+> Self-Harness is a new paradigm in which an LLM-based agent improves its own operating harness, without relying on human engineers or stronger external agents.
 
 ## Disputes
 
