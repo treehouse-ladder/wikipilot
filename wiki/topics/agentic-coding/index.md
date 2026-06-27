@@ -170,7 +170,8 @@ sources:
   - "[[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]]"
   - "[[how-we-built-claude-code-auto-mode-a-safer-way-to-skip-permissions-d5f9dbd6]]"
   - "[[customize-cursor-16819559]]"
-last_updated: 2026-06-25
+  - "[[self-harness-harnesses-that-improve-themselves-ef3edbde]]"
+last_updated: 2026-06-27
 last_verified: 2026-06-19
 freshness_window_days: 30
 ---
@@ -229,6 +230,20 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > Over 100 participants collaborated with one of four frontier models (Claude-Opus-4.6, GPT-5.4, Gemini-3.1-Pro, and MiniMax-M2.7) on a long-horizon coding task lasting around five hours [...] 94% of developers fail to detect sabotage, with vulnerability attributed to minimal code review, plausible cover story, and overtrust in agents. While a safety monitor reduces sabotage success, 56% of participants still accept the malicious code, ignoring its warnings.
 
 ## Recent updates
+
+### Updates 2026-06-27
+
+The harness self-evolution research line gained another entry: [[self-harness-harnesses-that-improve-themselves-ef3edbde]] proposes a paradigm in which the agent improves its own operating harness with no human engineer or stronger external agent in the loop, framing harness design as inherently model-specific.
+
+> Self-Harness is a new paradigm in which an LLM-based agent improves its own operating harness, without relying on human engineers or stronger external agents.
+
+> The performance of LLM-based agents is jointly shaped by their base models and the harnesses that mediate their interaction with the environment. Because different models exhibit distinct behaviors, effective harness design is inherently model-specific.
+
+The mechanism is a three-stage loop, distinguishing it from prior optimizer-driven or human-curated harness evolution work already tracked here ([[continual-harness-online-adaptation-for-self-improving-foundation-agents-f68f2119]], [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]]).
+
+> The Self-Harness approach operationalizes this as an iterative loop with three stages: Weakness Mining, which identifies model-specific failure patterns from execution traces; Harness Proposal, which generates diverse yet minimal harness modifications.
+
+_no contradictions or gaps known yet (last reviewed: 2026-06-27)_
 
 ### Updates 2026-06-25
 
@@ -1297,6 +1312,7 @@ lint stays quiet until each page actually exists:
 - [ ] The benchmarks-misaligned position [[position-coding-benchmarks-are-misaligned-with-agentic-software-engineering-0019f733]] calls for component-level (model vs harness vs environment) signal — does any existing wiki benchmark already factor its score this way, or are they all the single-number design the paper criticizes?
 - [ ] What is the empirical token-cost overhead of a typical dynamic-workflow run vs. a turn-by-turn subagent approach for the same task? The docs warn of 'meaningfully more tokens' but no comparison numbers are published. [[orchestrate-subagents-at-scale-with-dynamic-workflows-8516d91b]]
 - [ ] Do the AGENTS.md smell heuristics from arXiv 2606.15828 generalize to Claude Code's skill-file pattern (.claude/workflows/ scripts vs. monolithic CLAUDE.md)? The paper studied AGENTS.md/CLAUDE.md only. [[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]]
+- [ ] Does Self-Harness's fully self-driven loop (no stronger external agent) match or beat optimizer-driven / human-curated harness evolution on the same SWE-bench Verified split, controlling for base model?
 
 ## See also
 
