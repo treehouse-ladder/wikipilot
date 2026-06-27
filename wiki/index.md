@@ -713,6 +713,17 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[two-game-retailers-are-refusing-to-sell-gta-6-until-theres-a-disc-71975e49]]
 - [[deltarune-chapter-5-original-game-soundtrack-aec2c961]]
 - [[stellar-blade-original-soundtrack-plus-music-review-c645cdd8]]
+- [[self-harness-harnesses-that-improve-themselves-ef3edbde]]
+- [[nex-n2-pro-intelligence-performance-price-analysis-ec849eea]]
+- [[qwen3-7-plus-intelligence-performance-price-analysis-ce790755]]
+- [[unreal-engine-s-ai-push-sparks-backlash-as-developers-fear-the-end-of-blueprints-fdbdbcf8]]
+- [[valve-tweaks-and-clarifies-ai-disclosure-rules-for-steam-a3f002de]]
+- [[krafton-names-chief-ai-officer-to-advance-ai-driven-game-innovation-cb2a14cb]]
+- [[sony-lays-off-most-of-the-destiny-team-and-some-marathon-devs-ce93e0a4]]
+- [[compulsion-games-begins-an-unknown-number-of-layoffs-at-the-studio-behind-south-of-midnight-and-we-happy-few-cc6ae37d]]
+- [[gta-6-pre-orders-send-take-two-stock-down-as-price-and-launch-details-disappoint-e1fe4146]]
+- [[assassins-creed-black-flag-soundtrack-getting-bumper-vinyl-release-7cafb150]]
+- [[hitman-world-of-assassination-soundtrack-hits-streaming-ahead-of-vinyl-release-3ee1ed95]]
 
 ## Reports
 
@@ -750,3 +761,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-22]]
 - [[2026-06-23]]
 - [[2026-06-25]]
+- [[2026-06-27]]

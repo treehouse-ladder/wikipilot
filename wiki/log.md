@@ -16,6 +16,20 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-06-27] daily | 5 topics, 11 sources, 8 pages
+
+Daily Research 2026-06-27 complete. PRs #259–#263 merged. Key stories: Self-Harness (arXiv 2606.09498) — fully self-supervised harness-improvement loop, no external agent required (agentic-coding); Nex-N2-Pro AA=41 open-weights MoE + Qwen3.7 Plus AA=39 multimodal confirmed (frontier-models); UE6 AI/Blueprints phaseout backlash + Valve Steam AI disclosure clarification + Krafton CAIO appointment (ai-in-game-dev); Bungie WARN 292 jobs Jul 9 + Compulsion layoffs begun Jun 25 + GTA 6 stock −3% on pre-order open (games-of-note); AC Black Flag 5LP + Hitman: WoA 4LP vinyl announced (game-music). Report: wiki/reports/2026-06-27.md.
+
+## [2026-06-27] daily | game-music — 2 sources, 1 page
+
+## [2026-06-27] daily | games-of-note — 3 sources, 2 pages
+
+## [2026-06-27] daily | ai-in-game-dev — 3 sources, 1 page
+
+## [2026-06-27] daily | frontier-models — 2 sources, 2 pages
+
+## [2026-06-27] daily | agentic-coding — 1 source, 2 pages
+
 ## [2026-06-25] daily | 5 topics, 10 sources, 8 pages
 
 Daily Research 2026-06-25 complete. PRs #252–#256 merged. Key stories: Claude Code auto-mode transcript-classifier replacing --dangerously-skip-permissions + Cursor 3.9 unified Customize page (agentic-coding); AA-Briefcase multi-week agentic KW benchmark (Fable 5 suspended leads) + Cohere North Mini Code open-weights 30B coding MoE (frontier-models); LLM+RL hierarchical control reaches parity with hand-crafted BTs in 2v2 game AI (ai-in-game-dev); GTA 6 confirms $80/$100 pricing, code-in-box no-disc launch, two retailers boycotting (games-of-note); Deltarune Ch5 OST most guest-heavy chapter + Stellar Blade OST PLUS review (game-music). Report: wiki/reports/2026-06-25.md.
