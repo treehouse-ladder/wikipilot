@@ -1,8 +1,8 @@
 ---
 title: "Qwen3.7 Max"
 kind: entity
-sources: ["[[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]"]
-last_updated: "2026-05-26"
+sources: ["[[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[qwen3-7-plus-intelligence-performance-price-analysis-ce790755]]"]
+last_updated: "2026-06-27"
 last_verified: "2026-05-26"
 freshness_window_days: 30
 input_cost_per_mtoken: 2.50
@@ -30,11 +30,15 @@ Stub entity page seeded for `[frontier_models].roster` resolution. The daily `to
 
 Benchmark and pricing detail confirmed 2026-05-26: Qwen3.7 Max is a **closed-weights, API-only** model (not open-weights) [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]. On Alibaba Cloud DashScope it is priced at $2.50 input / $7.50 output per Mtoken. It scores 92.4 on GPQA Diamond (ahead of Claude Opus 4.6 Max 91.3, behind GPT-5.5 93.6), 60.6 on SWE-Pro, and 69.7 on Terminal-Bench 2.0, putting it ahead of DeepSeek V4-Pro and Claude Opus 4.6 on agentic coding [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]].
 
+The sibling **Qwen3.7 Plus** multimodal variant (text/image/video input, text output) was placed at **AA Intelligence Index v4.1 = 39** on 2026-06-27, well below Max's 57 (v4.0) — trading reasoning headroom for vision capability [[qwen3-7-plus-intelligence-performance-price-analysis-ce790755]].
+
 > Qwen 3.7 Max and Qwen 3.7 Plus are both closed-weights, API-only. On Alibaba Cloud DashScope pricing is $2.50 per million input tokens and $7.50 per million output tokens.
 
 > Qwen3.7-Max scores 92.4 on GPQA Diamond, 60.6% on SWE-Pro, 69.7 on Terminal-Bench 2.0.
 
 > Qwen3.7 Max scored 57 on the Artificial Analysis Intelligence Index.
+
+> Qwen3.7 Plus achieves a score of 39 on the Artificial Analysis Intelligence Index, which is a composite benchmark that evaluates models across reasoning, knowledge, mathematics, and coding. This score places it well above average among comparable models (averaging 16). Qwen3.7 Plus is multimodal and can process text, image, and video input and generate text output.
 
 ## Disputes
 
