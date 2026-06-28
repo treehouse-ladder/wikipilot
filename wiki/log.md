@@ -889,3 +889,7 @@ Daily Research 2026-06-20 complete. PRs #224–#228 merged. Key stories: Fable 5
 ## [2026-06-21] health | weekly sweep — 1 dispute filed
 
 Weekly health sweep 2026-06-21. 12 candidate sets (11 source-triggered + 1 stale sweep), 6 scanner passes. 1 new dispute on frontier-models/index.md: Grok 4.3 v4.1 AA score (38) documented in 2026-06-19 log entry but Summary still carries stale "pending re-placement" framing. Lint: 0 errors, 147 warnings. 1 stale page (kimi-k2.6). PR #231.
+
+## [2026-06-28] manual | conflict-resolver — 4 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+4 daily research PRs (#267–#270) for 2026-06-28 cherry-picked onto force-pushed main (no shared merge base); conflicts resolved in 4 topic index files (agentic-coding, ai-in-game-dev, games-of-note, game-music); auto-merge re-queued via MCP.
