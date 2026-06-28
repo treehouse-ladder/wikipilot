@@ -724,6 +724,17 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gta-6-pre-orders-send-take-two-stock-down-as-price-and-launch-details-disappoint-e1fe4146]]
 - [[assassins-creed-black-flag-soundtrack-getting-bumper-vinyl-release-7cafb150]]
 - [[hitman-world-of-assassination-soundtrack-hits-streaming-ahead-of-vinyl-release-3ee1ed95]]
+- [[hy3-preview-intelligence-performance-price-analysis-21514fce]]
+- [[step-3-7-flash-intelligence-performance-price-analysis-d4a7ba42]]
+- [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
+- [[swe-marathon-can-agents-autonomously-complete-ultra-long-horizon-software-work-d6412321]]
+- [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
+- [[epic-games-ceo-says-it-is-really-irresponsible-of-steam-to-make-studios-disclose-ai-use-b554e3b2]]
+- [[hy-motion-1-0-text-to-3d-human-motion-and-character-animation-generation-16c365c2]]
+- [[i-knew-video-games-were-using-ai-but-these-numbers-are-staggering-280dfed8]]
+- [[striking-quantic-dream-developers-claim-star-wars-eclipse-is-in-big-trouble-if-the-studio-continues-with-mass-layoffs-c275f675]]
+- [[union-calls-for-entire-video-game-sector-to-strike-later-this-week-30c2a13f]]
+- [[iam8bit-vinyl-bonanza-with-6-new-game-soundtracks-up-for-preorder-is-now-live-5e554139]]
 
 ## Reports
 
@@ -762,3 +773,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-23]]
 - [[2026-06-25]]
 - [[2026-06-27]]
+- [[2026-06-28]]
