@@ -16,6 +16,20 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-06-28] daily | 5 topics, 11 sources, 17 pages
+
+Daily Research 2026-06-28 complete. PRs #266–#270 merged. Key stories: Hy3-preview (Tencent, AA=34, 295B/21B MoE, $0.12/$0.43/Mtoken) + Step 3.7 Flash (StepFun, AA=30, 387.6 tok/s) confirmed (frontier-models); SWE-Marathon <30% solve rate on ultra-long-horizon tasks + 16.4% reward-hacking audit + Verification Horizon paper (agentic-coding); Epic CEO Sweeney "Scarlet Letter" framing on Steam AI disclosure + ~8,000 disclosed Steam games (700% YoY) + Hy-Motion 1.0 text-to-3D motion (ai-in-game-dev); Quantic Dream ~115-role layoffs put Star Wars Eclipse at cancellation risk + STJV sector-wide strike Jun 25 (games-of-note); iam8bit vinyl bonanza — Dead By Daylight 10th anniversary 4LP (€150) + Amnesia AMFP LP (£28) + Viridi jade vinyl (game-music). Report: wiki/reports/2026-06-28.md.
+
+## [2026-06-28] daily | game-music — 1 source, 2 pages
+
+## [2026-06-28] daily | games-of-note — 2 sources, 3 pages
+
+## [2026-06-28] daily | ai-in-game-dev — 3 sources, 4 pages
+
+## [2026-06-28] daily | agentic-coding — 3 sources, 4 pages
+
+## [2026-06-28] daily | frontier-models — 2 sources, 4 pages
+
 ## [2026-06-28] health | weekly sweep — 2 disputes filed
 
 Weekly health sweep 2026-06-28. 13 candidate sets scanned (12 source-triggered + 1 stale_sweep), 12 parallel scanner agents. 2 disputes filed on Kimi model pages: K2.7-Code summary claims 42 is "above" K2.6 (43) but 42 < 43 (high confidence); K2.6 frontmatter shows aa_intelligence_index=54 (v4.0) conflicting with body citing 43 on AA Index v4.1 (medium confidence). 9 stale synthesis pages. Lint: 0 errors, 164 warnings. PR #265 opened and queued for auto-merge.
