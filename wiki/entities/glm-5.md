@@ -2,16 +2,16 @@
 title: "GLM-5"
 kind: entity
 sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]", "[[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]", "[[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]", "[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]", "[[glm-5-2-built-for-long-horizon-tasks-9e3636b0]]"]
-last_updated: 2026-06-23
-last_verified: 2026-05-25
+last_updated: 2026-06-28
+last_verified: 2026-06-28
 freshness_window_days: 30
 input_cost_per_mtoken: 1.00
 output_cost_per_mtoken: 3.20
 cost_source: "[[z-ai-developer-document-pricing-667e8002]]"
 aa_intelligence_index: 50
 aa_intelligence_index_source: "[[glm-5-everything-you-need-to-know-a53ff5c1]]"
-gdpval_aa_elo: null
-gdpval_aa_elo_source: null
+gdpval_aa_elo: 1524
+gdpval_aa_elo_source: "[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]"
 swe_bench_verified: null
 swe_bench_verified_source: null
 cybergym: null
@@ -63,6 +63,10 @@ Z.AI released **GLM-5.2** on June 13, 2026, the latest model in the GLM-5 line, 
 Z.AI's technical blog for GLM-5.2 adds coding benchmark detail: SWE-bench Pro 62.1% (up from GLM-5.1's 58.4%), Terminal-Bench 2.1 81.0% (vs 63.5%), and FrontierSWE Dominance 74.4% (vs 30.5%) [[glm-5-2-built-for-long-horizon-tasks-9e3636b0]]. This positions GLM-5.2 ahead of GPT-5.5 (58.6%) on SWE-bench Pro, while trailing Opus 4.8 (69.2%).
 
 > Terminal-Bench 2.1: 81.0 vs. 63.5 (previous version). SWE-bench Pro: 62.1 vs. 58.4. FrontierSWE (Dominance): 74.4 vs. 30.5. [[glm-5-2-built-for-long-horizon-tasks-9e3636b0]]
+
+GLM-5.2's agentic-leaderboard position is further substantiated on GDPval-AA v2, the highest-weighted sub-evaluation in AA Intelligence Index v4.1 (Agents = 34% of weighting): GLM-5.2 scores **1524** on GDPval-AA v2, ahead of MiniMax-M3 (1418) and DeepSeek V4 Pro (max, 1328), and in-line with proprietary models including GPT-5.5 (xhigh reasoning) [[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]].
+
+> GLM-5.2 scores 1524 on GDPval-AA v2, ahead of MiniMax-M3 (1418) and DeepSeek V4 Pro (max, 1328), placing it in-line with proprietary models including GPT-5.5 (xhigh reasoning). [[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]
 
 ## Disputes
 
