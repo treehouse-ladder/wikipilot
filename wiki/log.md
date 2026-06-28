@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-06-28] health | weekly sweep — 2 disputes filed
+
+Weekly health sweep 2026-06-28. 13 candidate sets scanned (12 source-triggered + 1 stale_sweep), 12 parallel scanner agents. 2 disputes filed on Kimi model pages: K2.7-Code summary claims 42 is "above" K2.6 (43) but 42 < 43 (high confidence); K2.6 frontmatter shows aa_intelligence_index=54 (v4.0) conflicting with body citing 43 on AA Index v4.1 (medium confidence). 9 stale synthesis pages. Lint: 0 errors, 164 warnings. PR #265 opened and queued for auto-merge.
+
 ## [2026-06-27] daily | 5 topics, 11 sources, 8 pages
 
 Daily Research 2026-06-27 complete. PRs #259–#263 merged. Key stories: Self-Harness (arXiv 2606.09498) — fully self-supervised harness-improvement loop, no external agent required (agentic-coding); Nex-N2-Pro AA=41 open-weights MoE + Qwen3.7 Plus AA=39 multimodal confirmed (frontier-models); UE6 AI/Blueprints phaseout backlash + Valve Steam AI disclosure clarification + Krafton CAIO appointment (ai-in-game-dev); Bungie WARN 292 jobs Jul 9 + Compulsion layoffs begun Jun 25 + GTA 6 stock −3% on pre-order open (games-of-note); AC Black Flag 5LP + Hitman: WoA 4LP vinyl announced (game-music). Report: wiki/reports/2026-06-27.md.

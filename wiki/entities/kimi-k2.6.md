@@ -2,7 +2,7 @@
 title: "Kimi K2.6"
 kind: entity
 sources: ["[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]", "[[multi-modal-model-kimi-k2-6-pricing-774b549a]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[kimi-k2-7-code-9c6b3767]]", "[[kimi-k2-7-code-intelligence-performance-and-price-analysis-b3d43ac0]]"]
-last_updated: 2026-06-23
+last_updated: 2026-06-28
 last_verified: "2026-05-21"
 freshness_window_days: 30
 input_cost_per_mtoken: 0.95
@@ -45,6 +45,7 @@ On [[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]] Kimi K2.6 scor
 ## Disputes
 
 - [[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]] calls Kimi K2.6 "the new leading open weights model" (sole #4 at AA Index 54, released April 20, 2026), but [[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]] reports MiMo-V2.5-Pro also at 54 (released April 22, 2026), creating a co-leadership tie. Status: unresolved — both models share the top open-weights position at 54; neither is the sole leader.
+- The frontmatter `aa_intelligence_index: 54` is sourced from the April 2026 release announcement ([[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]], AA Index v4.0), but the body text (citing [[kimi-k2-7-code-intelligence-performance-and-price-analysis-b3d43ac0]]) states K2.6's score is 43 on AA Intelligence Index v4.1 (the June 2026 agentic-reweighted version). The two scores reflect different index versions (54 on v4.0 vs. 43 on v4.1) and are not directly comparable. Status: unresolved — the frontmatter should clarify which index version it reflects, or be updated to the v4.1 score with a note that the v4.0 score was 54.
 
 ## Open questions
 
