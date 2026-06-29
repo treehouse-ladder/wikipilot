@@ -907,3 +907,7 @@ Weekly health sweep 2026-06-21. 12 candidate sets (11 source-triggered + 1 stale
 ## [2026-06-28] manual | conflict-resolver — 4 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 4 daily research PRs (#267–#270) for 2026-06-28 cherry-picked onto force-pushed main (no shared merge base); conflicts resolved in 4 topic index files (agentic-coding, ai-in-game-dev, games-of-note, game-music); auto-merge re-queued via MCP.
+
+## [2026-06-29] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#278 requeued — CI green (success 09:51Z), auto-merge re-enabled for game-music daily 2026-06-29
