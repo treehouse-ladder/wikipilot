@@ -935,3 +935,7 @@ NieR:Orchestra Concert 12026 [YoRHa] 10-stop US tour Aug 2026–Mar 2027 (Okabe 
 ## [2026-06-29] daily | 5 topics, 13 sources, 23 pages
 
 Daily Research 2026-06-29 complete. PRs #274–#278 merged. Key stories: ContextBench Bitter Lesson + Codex Remote GA (agentic-coding); GPT-5.6 Sol preview + Mythos 5 US critical-infra carve-out + Fable 5 suspended (frontier-models); Nwiro UE plugin + GBQA sub-50% QA ceiling (ai-in-game-dev); EU SKG rejection + Ubisoft Barcelona strike + GTA 6 pre-order demand (games-of-note); NieR:Orchestra Concert 12026 US tour + Blue Prince/ARC Raiders vinyl (game-music). Report: wiki/reports/2026-06-29.md.
+
+## [2026-06-29] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#280 (_report daily 2026-06-29) rebased onto main; conflict in wiki/log.md resolved (append-only merge: conflict-resolver entry #279 + 6 daily research entries in chronological order); auto-merge re-queued via MCP.
