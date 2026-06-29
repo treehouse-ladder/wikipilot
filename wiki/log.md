@@ -939,3 +939,7 @@ Daily Research 2026-06-29 complete. PRs #274–#278 merged. Key stories: Context
 ## [2026-06-29] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#280 (_report daily 2026-06-29) rebased onto main; conflict in wiki/log.md resolved (append-only merge: conflict-resolver entry #279 + 6 daily research entries in chronological order); auto-merge re-queued via MCP.
+
+## [2026-06-29] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#281 (claude/youthful-mayer-0nj7cs, prior conflict-resolver log entry) rebased onto main; wiki/log.md conflict resolved (append-only merge: 6 daily entries from #280 + prior resolver entry); force-pushed sha=9d86adf; auto-merge re-queued via MCP.
