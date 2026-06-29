@@ -11,7 +11,8 @@ sources:
   - "[[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]]"
   - "[[what-makes-a-harness-a-harness-necessary-and-sufficient-conditions-for-an-agent-harness-1afa2530]]"
   - "[[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]"
-last_updated: 2026-06-17
+  - "[[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]"
+last_updated: 2026-06-29
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -49,6 +50,10 @@ A June 2026 paper supplies the first constitutive definition of "agent harness,"
 **Self-evolving skills via Bayesian posterior tracking.** Bayesian-Agent reframes the self-evolving skills/SOPs thread by treating each reusable skill as a hypothesis about when a frozen model succeeds, maintaining a feature-conditioned posterior over verified trajectory evidence and mapping posterior state to inspectable harness actions (patch, split, compress, retire, explore) [[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]. This is a methodological response to the SkillsBench finding that self-generated skills give no average benefit: the claim is that principled belief-tracking over verified trajectories can make self-authored skills reliable where naive heuristic reflection cannot.
 
 > Bayesian-Agent records verified trajectory evidence, maintains a feature-conditioned categorical posterior over each skill, and maps posterior state into inspectable actions such as patch, split, compress, retire, and explore.
+
+**The "Bitter Lesson" of coding agents: scaffolding yields marginal retrieval gains (June 2026).** ContextBench is a process-oriented context-retrieval benchmark measuring recall, precision, and efficiency across agent trajectories on 1,136 issue-resolution tasks [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]. The headline finding: across four frontier LLMs and five coding agents, sophisticated agent scaffolding yields only marginal gains in context retrieval, and LLMs consistently favor recall over precision. This is process-level evidence on the model-vs-harness debate landing on the model-dominates side for the retrieval sub-task specifically, complementing the end-to-end harness≈model finding in Claw-SWE-Bench above — the scaffolding gain may surface at the downstream repair stage rather than retrieval.
+
+> Results show that sophisticated agent scaffolding yields only marginal gains in context retrieval (The Bitter Lesson of coding agents), and LLMs consistently favor recall over precision. [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]
 
 ## Disputes
 
