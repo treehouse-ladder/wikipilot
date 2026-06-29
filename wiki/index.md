@@ -43,6 +43,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[grok-4.3]]
 - [[yoko-shimomura]]
 - [[kimi-k2.7-code]]
+- [[claude-fable-5]]
 
 ## Comparisons
 
@@ -559,6 +560,19 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[xbox-will-reportedly-undergo-major-layoffs-next-month-9fa40cc2]]
 - [[xbox-ceo-kills-the-vibes-with-harsh-truths-about-the-business-7c82f4a0]]
 - [[stellar-blade-and-other-big-rpgs-are-finally-coming-to-switch-2-156cce53]]
+- [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]
+- [[llm-agents-can-see-code-repositories-61ac650c]]
+- [[work-with-codex-from-anywhere-18f13afb]]
+- [[previewing-gpt-5-6-sol-a-next-generation-model-30f48121]]
+- [[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]
+- [[connect-ai-models-directly-to-unreal-engine-with-nwiro-integration-kit-373312b6]]
+- [[gbqa-a-game-benchmark-for-evaluating-llms-as-quality-assurance-engineers-aabb86ad]]
+- [[stop-killing-games-says-the-fight-goes-on-after-european-commission-rejects-proposed-rule-changes-e7cd32fb]]
+- [[ubisoft-barcelona-to-strike-following-latest-restructuring-which-will-layoff-51-developers-52d572c2]]
+- [[xbox-reports-record-gta-6-orders-and-says-people-should-wait-for-real-data-719ff3ec]]
+- [[nier-orchestra-concert-12026-yorha-announced-with-performances-from-august-2026-through-march-2027-38c11783]]
+- [[blue-prince-vinyl-soundtrack-now-up-for-preorder-via-iam8bit-b4c41f87]]
+- [[arc-raiders-vinyl-soundtrack-now-up-for-preorder-via-iam8bit-ab36bb88]]
 
 ## Answers
 
@@ -774,3 +788,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-25]]
 - [[2026-06-27]]
 - [[2026-06-28]]
+- [[2026-06-29]]

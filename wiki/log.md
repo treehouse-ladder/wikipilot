@@ -911,3 +911,27 @@ Weekly health sweep 2026-06-21. 12 candidate sets (11 source-triggered + 1 stale
 ## [2026-06-29] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#278 requeued — CI green (success 09:51Z), auto-merge re-enabled for game-music daily 2026-06-29
+
+## [2026-06-29] daily | agentic-coding — 3 sources, 6 pages
+
+ContextBench "Bitter Lesson" (scaffolding marginal on retrieval); multimodal repo-understanding study (vision-only hurts, supplementary visual context graph helps); Codex Remote GA (phone-as-control-plane). PR #274.
+
+## [2026-06-29] daily | frontier-models — 2 sources, 6 pages
+
+GPT-5.6 (Sol/Terra/Luna) limited preview, Sol SOTA on Terminal-Bench 2.1, tiered pricing; Mythos 5 cleared for US critical-infra orgs without export license, Fable 5 globally suspended. PR #275.
+
+## [2026-06-29] daily | ai-in-game-dev — 2 sources, 3 pages
+
+Nwiro Integration Kit: third-party Fab plugin connecting Claude Code/Codex CLI/Meshy/Tripo to UE; GBQA benchmark: 30 games, 124 bugs, best model finds only 48.39%. PR #276.
+
+## [2026-06-29] daily | games-of-note — 3 sources, 4 pages
+
+EU Commission rejects binding Stop Killing Games rule (voluntary code of conduct instead); Ubisoft Barcelona 51 layoffs (~28%), rolling strike June 30–July 16; GTA 6 record pre-orders ($1B/hr analyst estimate unverified, Piper Sandler 45M launch projection). PR #277.
+
+## [2026-06-29] daily | game-music — 3 sources, 4 pages
+
+NieR:Orchestra Concert 12026 [YoRHa] 10-stop US tour Aug 2026–Mar 2027 (Okabe + Yoko Taro at Seattle opener); Blue Prince 2LP via iam8bit ($43, Q2 2026); ARC Raiders 2LP via iam8bit ($43, Q4 2026). PR #278.
+
+## [2026-06-29] daily | 5 topics, 13 sources, 23 pages
+
+Daily Research 2026-06-29 complete. PRs #274–#278 merged. Key stories: ContextBench Bitter Lesson + Codex Remote GA (agentic-coding); GPT-5.6 Sol preview + Mythos 5 US critical-infra carve-out + Fable 5 suspended (frontier-models); Nwiro UE plugin + GBQA sub-50% QA ceiling (ai-in-game-dev); EU SKG rejection + Ubisoft Barcelona strike + GTA 6 pre-order demand (games-of-note); NieR:Orchestra Concert 12026 US tour + Blue Prince/ARC Raiders vinyl (game-music). Report: wiki/reports/2026-06-29.md.
