@@ -1,8 +1,8 @@
 ---
 title: "GPT-5.5"
 kind: entity
-sources: ["[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[openai-api-pricing-fa525e16]]", "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]"]
-last_updated: 2026-06-18
+sources: ["[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[openai-api-pricing-fa525e16]]", "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[previewing-gpt-5-6-sol-a-next-generation-model-30f48121]]"]
+last_updated: 2026-06-29
 last_verified: 2026-06-18
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
@@ -45,6 +45,10 @@ On the live [[gdpval-aa-leaderboard-artificial-analysis-5d24e844]], GPT-5.5 (xhi
 > GPT-5.5 (xhigh) scores 55 [on the Artificial Analysis Intelligence Index v4.1].
 
 > GPT-5.5 xhigh scored 1531 [on GDPval-AA v2].
+
+OpenAI announced a successor flagship line, **GPT-5.6 (Sol / Terra / Luna)**, in limited preview on June 26, 2026 — Sol is positioned as OpenAI's new strongest model, setting a new state of the art on Terminal-Bench 2.1 and improving over GPT-5.5 on software engineering, computer use, knowledge work, scientific research, and cybersecurity [[previewing-gpt-5-6-sol-a-next-generation-model-30f48121]]. GPT-5.6 Sol lists at the same $5/$30 per Mtoken as GPT-5.5, with cheaper Terra ($2.50/$15) and Luna ($1/$6) tiers; the family is partner-gated in preview (no public Artificial Analysis Intelligence Index placement yet) ahead of planned general availability in ChatGPT, Codex, and the API "in the coming weeks." GPT-5.5 (AA Intelligence Index v4.1 = 55) therefore remains OpenAI's current publicly-placed flagship until GPT-5.6 is independently benchmarked and reaches GA.
+
+> We're beginning a limited preview of the GPT-5.6 series: Sol, our new flagship model; Terra, a balanced model for everyday work; and Luna, a fast and affordable model. GPT-5.6 Sol is OpenAI's strongest model yet. [[previewing-gpt-5-6-sol-a-next-generation-model-30f48121]]
 
 ## Disputes
 

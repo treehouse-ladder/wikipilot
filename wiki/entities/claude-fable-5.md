@@ -1,8 +1,8 @@
 ---
 title: "Claude Fable 5"
 kind: entity
-sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]"]
-last_updated: 2026-06-25
+sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]", "[[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]"]
+last_updated: 2026-06-29
 last_verified: 2026-06-18
 freshness_window_days: 30
 input_cost_per_mtoken: 10.00
@@ -34,13 +34,17 @@ Safety routing: queries in cybersecurity and biology domains are automatically r
 
 > For a small group of cyberdefenders and infrastructure providers, we are also launching Claude Mythos 5, the same underlying model as Fable 5 but with safeguards lifted in some areas.
 
-**Access suspended June 12, 2026.** The US Commerce Department issued an export control directive on June 12 requiring Anthropic to disable Claude Fable 5 globally. Anthropic complied immediately, citing inability to reliably exclude foreign nationals from its user base. The stated trigger was a reported narrow jailbreak (asking the model to read a codebase for vulnerability fixes) — Anthropic publicly disputes this justification [[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]].
+**Access suspended June 12, 2026; Mythos 5 partially restored June 26 for US critical infrastructure while Fable 5 remains down.** The US Commerce Department issued an export control directive on June 12 requiring Anthropic to disable Claude Fable 5 globally. Anthropic complied immediately, citing inability to reliably exclude foreign nationals from its user base. The stated trigger was a reported narrow jailbreak (asking the model to read a codebase for vulnerability fixes) — Anthropic publicly disputes this justification [[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]. On **June 26, 2026**, Commerce Secretary Howard Lutnick partially lifted the export control via letter to Anthropic co-founder Tom Brown, allowing **Claude Mythos 5** (the unrestricted, safeguard-free variant) to be deployed without an export license to a defined set of US organizations operating and defending critical infrastructure. **Claude Fable 5 — the public safeguarded model — remains suspended worldwide for all general users** (consumers, API developers, Claude Code, international subscribers) as of June 27, 2026, with all criminal and civil penalties from the original June 12 directive still in force [[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]. The key architectural difference: Fable 5 carries three classifier-based safety layers that redirect flagged cybersecurity, biology-chemistry, and model-distillation queries to Opus 4.8, while Mythos 5 removes those classifiers — precisely why the export-control carve-out reached only Mythos 5 (for vetted defenders) and not the broadly-available Fable 5.
 
 > Anthropic received the directive from the government on June 12, 2026 at 5:21pm ET... Anthropic is complying with the government's legal directive and is removing access to Fable 5 and Mythos 5 for all users.
 
 > Claude Fable 5 (with fallback) leads at 60 but is currently unavailable [on the Artificial Analysis Intelligence Index v4.1].
 
 > Claude Fable 5 with fallback scored 1818 [on GDPval-AA v2] but is currently unavailable.
+
+> Commerce Secretary Howard Lutnick partially lifted the Anthropic export control on June 26, allowing Claude Mythos 5 to be deployed without an export license to a defined set of U.S. organizations operating and defending critical infrastructure, following a June 26 letter to Anthropic co-founder Tom Brown. [[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]
+
+> The version millions of developers and subscribers had been using, Claude Fable 5, remains suspended worldwide as of June 27, 2026, with all criminal and civil penalties from the original June 12 directive still in force. The key difference between the two models is that Fable 5 includes three classifier-based safety layers that redirect flagged cybersecurity, biology-chemistry, and model-distillation queries to Claude Opus 4.8, while Mythos 5 removes those classifiers, making it more capable for both offensive and defensive cyber tasks. [[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]
 
 **AA-Briefcase leadership.** Fable 5 leads the new AA-Briefcase multi-week agentic knowledge-work benchmark — a long-horizon evaluation with linked tasks, thousands of input files, and deliverables (spreadsheets, presentations, memos) graded on analytical quality and presentation [[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]. However, Fable 5 is one of the highest token users at ~139k output tokens per task — reinforcing the verbosity-as-cost-multiplier caveat for long-horizon agentic loops.
 
