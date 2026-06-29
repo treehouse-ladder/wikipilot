@@ -25,7 +25,8 @@ sources:
   - "[[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]"
   - "[[apex-adaptive-principle-extraction-a-three-layer-self-evolution-framework-for-production-ai-agents-59f9b9c9]]"
   - "[[self-harness-harnesses-that-improve-themselves-ef3edbde]]"
-last_updated: 2026-06-27
+  - "[[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]"
+last_updated: 2026-06-29
 last_verified: 2026-06-11
 freshness_window_days: 30
 ---
@@ -55,6 +56,10 @@ This dovetails with [[towards-direct-evaluation-of-harness-optimizers-via-priori
 [[towards-evaluation-engineering-an-empirical-study-of-ml-evaluation-harnesses-in-the-wild-9be30311]] provides the empirical grounding (57 harnesses, 16,560 issues) and identifies the **Specification stage** as the single largest source of operational pain — 41.4% of issues come from integrating external models, datasets, and judges.
 
 > Most harness operational challenges concentrate in the Specification stage (41.4% of issues).
+
+**The "Bitter Lesson" of coding agents: marginal scaffolding gains on retrieval (2026-06-29).** ContextBench introduces a process-oriented context-retrieval evaluation measuring recall, precision, and efficiency across agent trajectories [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]. Tested across four frontier LLMs and five coding agents on 1,136 issue-resolution tasks, the headline finding is a "Bitter Lesson": sophisticated agent scaffolding yields only marginal gains in context retrieval, and LLMs consistently favor recall over precision. This is process-level evidence on the model-vs-harness debate that lands on the model-dominates side for the retrieval sub-task specifically, complementing the Binding Constraint Thesis's end-to-end finding. The scaffolding gain may surface at the downstream repair stage rather than retrieval, suggesting harness engineering impact is task-phase-dependent.
+
+> Results show that sophisticated agent scaffolding yields only marginal gains in context retrieval (The Bitter Lesson of coding agents), and LLMs consistently favor recall over precision. [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]
 
 ## Harness adaptation without retraining
 
