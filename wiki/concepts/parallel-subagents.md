@@ -7,7 +7,8 @@ sources:
   - "[[cloud-environment-setup-and-cloud-subagents-in-agents-window-ac3775dd]]"
   - "[[customize-cursor-16819559]]"
   - "[[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]]"
-last_updated: 2026-06-25
+  - "[[claude-code-whats-new-week-26-june-22-26-2026-d0712d54]]"
+last_updated: 2026-06-30
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
@@ -31,6 +32,10 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 **Team-wide skill/MCP distribution for parallel-subagent contexts.** Cursor 3.9's Customize page consolidates plugins, skills, MCPs, subagents, rules, commands, and hooks into one place manageable at user/team/workspace scope, with a popularity leaderboard and one-click install across a team [[customize-cursor-16819559]]. This operationalizes the configuration-distribution layer for parallel-subagent workflows: when every team member can spawn subagents with shared skills/MCPs via the leaderboard, curation becomes an organizational asset rather than per-developer config drift — the failure mode catalogued as Skill Leakage (35% prevalence) in the AGENTS.md configuration-smells study [[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]].
 
 > You can now add and manage plugins, skills, MCPs, subagents, rules, commands, and hooks at the user, team, or workspace level, and even bring your own custom MCPs. Cursor now shows you a leaderboard of the most popular plugins, skills, and MCPs across your team. [[customize-cursor-16819559]]
+
+**Claude Code background-subagent permission surfacing closes the silent-denial gap.** Claude Code Week 26 (June 22–26) added background-subagent permission prompts to the main session: when a background subagent requests a tool, the permission dialog surfaces in the main session showing which agent is asking, and Esc denies only that tool rather than halting the entire workflow [[claude-code-whats-new-week-26-june-22-26-2026-d0712d54]]. This closes a critical gap in parallel-subagent workflows: previously a background-subagent denial was silent and irrecoverable without restarting the agent, breaking the "fork-and-forget" parallelism model that makes subagents viable for fan-out tasks.
+
+> Background subagents now surface permission prompts in the main session instead of auto-denying; the dialog shows which agent is asking, and Esc denies only that tool. [[claude-code-whats-new-week-26-june-22-26-2026-d0712d54]]
 
 ## Disputes
 
