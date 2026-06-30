@@ -948,50 +948,26 @@ pr#280 (_report daily 2026-06-29) rebased onto main; conflict in wiki/log.md res
 
 pr#281 (claude/youthful-mayer-0nj7cs, prior conflict-resolver log entry) rebased onto main; wiki/log.md conflict resolved (append-only merge: 6 daily entries from #280 + prior resolver entry); force-pushed sha=9d86adf; auto-merge re-queued via MCP.
 
-## [2026-06-30] daily | agentic-coding — 2 sources, 4 pages
-
-Cursor iOS public beta (mobile launch/manage always-on agents, Remote Control, push notifications, lock-screen Live Activities); Claude Code Week 26 (`claude mcp login/logout` OAuth, background-subagent permission surfacing in main session, 37% CPU reduction). PR #283.
-
-## [2026-06-30] daily | frontier-models — 2 sources, 3 pages
-
-Claude Opus 4.8 + Haiku 4.5 GA in Microsoft Azure Foundry (Azure-native IAM/VNet/governance); GPT-5.5 Instant documented as ChatGPT free-tier default (52.5% hallucination reduction in law/medicine/finance); Fable 5 day-18 Kalshi market resolves NO; Gemini 3.5 Pro June GA target missed (slipped to July). PR #285.
-
-## [2026-06-30] daily | games-of-note — 7 sources, 1 page
-
-MW4 (Oct 23) confirmed not on Game Pass at launch — first CoD skip in 2 years; BO6 day-one Game Pass cost ~$300M in lost sales (Bloomberg); analysts warn other marquee titles may follow; CWA Xbox union press conference on fiscal-year-close layoffs demands recall rights + advance notice + hiring freeze; ZeniMax Workers United tentative contract includes 2-year recall rights. PR #286.
-
-## [2026-06-30] daily | ai-in-game-dev — 0 sources, 1 page
-
-No new primary sources; fiscal-year-end industry quiet. Capability ceiling context from GBQA (48.39%) and GameCraft-Bench (41.46%) carried forward. PR #287.
-
-## [2026-06-30] daily | game-music — 2 sources, 1 page
-
-"Undertale: The Determination Symphony" 2026 — 7 UK cities (Sep–Nov), 25-piece orchestra, first full orchestral tour for Toby Fox's score; WoW: 20 Years of Music World Tour 2026 — 6 NA cities (Sep–Oct, Helvepic). PR #288.
-
 ## [2026-06-30] daily | 5 topics, 13 sources, 10 pages
 
-Daily Research 2026-06-30 complete. PRs #283–#288 merged. Key stories: Cursor iOS + Claude Code Week 26 MCP OAuth (agentic-coding); Azure Foundry GA + GPT-5.5 Instant + Fable 5 day-18 NO + Gemini 3.5 Pro June miss (frontier-models); MW4 off Game Pass + BO6 $300M cost + Xbox union recall-rights push (games-of-note); ai-in-game-dev quiet; Undertale orchestral UK tour + WoW 20th NA tour (game-music). Report: wiki/reports/2026-06-30.md.
-
-## [2026-06-30] daily | agentic-coding — 2 sources, 4 pages
-
-Cursor for iOS launched (mobile agent supervision, Remote Control, Live Activities on lock screen, approve diffs from app); Claude Code Week 26 (`claude mcp login/logout` OAuth, background subagent permission prompts surface in main session, 37% streaming CPU reduction). PR #284.
-
-## [2026-06-30] daily | frontier-models — 2 sources, 3 pages
-
-GPT-5.5 Instant becomes ChatGPT consumer default (52.5% hallucination reduction in law/medicine/finance, 30% fewer words per response); Claude Opus 4.8 + Haiku 4.5 GA in Microsoft Azure Foundry (Azure-native identity/networking/governance). PR #285.
-
-## [2026-06-30] daily | games-of-note — 7 sources, 1 page
-
-MW4 confirmed October 23 launch without Game Pass day-one inclusion; Black Ops 6 Game Pass cost ~$300M in lost sales (Bloomberg); analysts warn other marquee releases may follow; CWA/ZeniMax workers demand advance notice, hiring freezes, 2-year recall rights ahead of fiscal-year-end layoffs. PR #286.
-
-## [2026-06-30] daily | ai-in-game-dev — 0 sources, 1 page
-
-Quiet day (fiscal year-end); GBQA 48.39% bug-detection ceiling carried forward; open question on AI tooling offsetting Xbox headcount reductions filed. PR #287.
+Daily Research 2026-06-30 complete. PRs #284–#288 merged; PR #289 (agentic-coding supplemental — Foundry GA entry on agentic-coding topic) auto-merge queued pending CI. Key stories: Cursor iOS + Claude Code Week 26 MCP OAuth (agentic-coding); GPT-5.5 Instant ChatGPT default + Azure Foundry GA for Opus 4.8 (frontier-models); MW4 skips Game Pass + ~$300M lost-sales figure for Black Ops 6 + Xbox ZeniMax union actions (games-of-note); Undertale orchestral UK tour expansion + WoW 20th anniversary world tour (game-music). Report: wiki/reports/2026-06-30.md.
 
 ## [2026-06-30] daily | game-music — 2 sources, 1 page
 
 Undertale: The Determination Symphony 2026 — 7 UK shows (25-piece orchestra, September–November); WoW: 20 Years of Music World Tour 2026 — 6 North American cities (Helvepic, September–October). PR #288.
 
-## [2026-06-30] daily | 5 topics, 13 sources, 10 pages
+## [2026-06-30] daily | ai-in-game-dev — 0 sources, 1 page
 
-Daily Research 2026-06-30 complete. PRs #284–#288 merged; PR #289 (agentic-coding supplemental — Foundry GA entry on agentic-coding topic) auto-merge queued pending CI. Key stories: Cursor iOS + Claude Code Week 26 MCP OAuth (agentic-coding); GPT-5.5 Instant ChatGPT default + Azure Foundry GA for Opus 4.8 (frontier-models); MW4 skips Game Pass + ~$300M lost-sales figure for Black Ops 6 + Xbox ZeniMax union actions (games-of-note); Undertale orchestral UK tour expansion + WoW 20th anniversary world tour (game-music). Report: wiki/reports/2026-06-30.md.
+Quiet day (fiscal year-end); GBQA 48.39% bug-detection ceiling carried forward; open question on AI tooling offsetting Xbox headcount reductions filed. PR #287.
+
+## [2026-06-30] daily | games-of-note — 7 sources, 1 page
+
+MW4 confirmed October 23 launch without Game Pass day-one inclusion; Black Ops 6 Game Pass cost ~$300M in lost sales (Bloomberg); analysts warn other marquee releases may follow; CWA/ZeniMax workers demand advance notice, hiring freezes, 2-year recall rights ahead of fiscal-year-end layoffs. PR #286.
+
+## [2026-06-30] daily | frontier-models — 2 sources, 3 pages
+
+GPT-5.5 Instant becomes ChatGPT consumer default (52.5% hallucination reduction in law/medicine/finance, 30% fewer words per response); Claude Opus 4.8 + Haiku 4.5 GA in Microsoft Azure Foundry (Azure-native identity/networking/governance). PR #285.
+
+## [2026-06-30] daily | agentic-coding — 2 sources, 4 pages
+
+Cursor for iOS launched (mobile agent supervision, Remote Control, Live Activities on lock screen, approve diffs from app); Claude Code Week 26 (`claude mcp login/logout` OAuth, background subagent permission prompts surface in main session, 37% streaming CPU reduction). PR #284.
