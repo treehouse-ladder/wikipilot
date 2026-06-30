@@ -179,6 +179,7 @@ sources:
   - "[[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]"
   - "[[build-from-anywhere-with-cursor-for-ios-097d5a19]]"
   - "[[claude-code-whats-new-week-26-june-22-26-2026-d0712d54]]"
+  - "[[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]"
 last_updated: 2026-06-30
 last_verified: 2026-06-28
 freshness_window_days: 30
@@ -264,6 +265,12 @@ This continues the mobile-control-plane pattern initiated by Codex Remote GA [[w
 > Background subagents now surface permission prompts in the main session instead of auto-denying; the dialog shows which agent is asking, and Esc denies only that tool. [[claude-code-whats-new-week-26-june-22-26-2026-d0712d54]]
 
 The subagent permission surfacing closes a critical gap in parallel-subagent workflows: previously a background-subagent denial was silent and irrecoverable without restarting the agent. The `autoMode.classifyAllShell` setting (routes all shell commands through the auto-mode classifier) and `sandbox.credentials` (blocks sandboxed reads of credential files) extend the OS-level and policy-gate containment story already tracked here. A 37% streaming CPU reduction further tightens Claude Code's long-session efficiency profile.
+
+**Claude reaches GA in Microsoft Foundry on Azure: an Azure-native deployment surface for coding/agentic Claude Code workloads with enterprise governance.** Anthropic shipped Claude to general availability in Microsoft Foundry on June 29–30, 2026, putting Claude Opus 4.8 and Claude Haiku 4.5 in the Messages API with prompt caching and extended thinking intact, explicitly framed for "coding and agentic work" alongside complex reasoning [[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]. The agentic-workflow-relevant pieces are deployment-side: the integration is Azure-native (existing Azure identity, networking, governance controls; single consolidated invoice; eligible Microsoft Enterprise Agreement customers draw Claude usage down against an Azure commitment), and Claude Code itself can run on Foundry, giving enterprise teams a governed control plane for coding agents inside their existing Azure boundary.
+
+> Claude in Microsoft Foundry is generally available today. Claude Opus 4.8 and Claude Haiku 4.5 are available in the Messages API, with core capabilities like prompt caching and extended thinking to support use cases ranging from coding and agentic work to complex reasoning. Claude in Microsoft Foundry is Azure-native, working with your existing Azure identity, networking, and governance controls. [[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]
+
+Two hosting modes ship: hosted-on-Azure (Azure authentication, billing, governance, US data zone) for teams where running inside their Azure boundary matters, and hosted-on-Anthropic for the full API feature set or models not yet on Azure. This extends the enterprise-deployment/governance thread already tracked here (managed-agent sandboxing, `how-we-contain-claude`, Windows platform security for AI agents) onto a third major cloud control plane — pricing/benchmark parity for Opus 4.8 and Haiku 4.5 is unchanged, so this is a distribution/governance event, not a capability shift.
 
 ### Updates 2026-06-29
 
