@@ -995,3 +995,7 @@ Undertale: The Determination Symphony 2026 — 7 UK shows (25-piece orchestra, S
 ## [2026-06-30] daily | 5 topics, 13 sources, 10 pages
 
 Daily Research 2026-06-30 complete. PRs #284–#288 merged; PR #289 (agentic-coding supplemental — Foundry GA entry on agentic-coding topic) auto-merge queued pending CI. Key stories: Cursor iOS + Claude Code Week 26 MCP OAuth (agentic-coding); GPT-5.5 Instant ChatGPT default + Azure Foundry GA for Opus 4.8 (frontier-models); MW4 skips Game Pass + ~$300M lost-sales figure for Black Ops 6 + Xbox ZeniMax union actions (games-of-note); Undertale orchestral UK tour expansion + WoW 20th anniversary world tour (game-music). Report: wiki/reports/2026-06-30.md.
+
+## [2026-06-30] manual | conflict-resolver — 1 rebased, 2 requeued, 0 lint-fixed, 0 failed
+
+pr#287 (claude/daily-2026-06-30/ai-in-game-dev) requeued via enable_pr_auto_merge --squash (CI green, clean); pr#288 (claude/daily-2026-06-30/game-music) requeued same; pr#289 (claude/daily-2026-06-30/agentic-coding, dirty) dispatched conflict-resolver — squash-merged concurrently by daily run before force-push landed (sha=bff708e), subagent validated clean resolution.
