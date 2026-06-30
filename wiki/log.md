@@ -971,3 +971,7 @@ GPT-5.5 Instant becomes ChatGPT consumer default (52.5% hallucination reduction 
 ## [2026-06-30] daily | agentic-coding — 2 sources, 4 pages
 
 Cursor for iOS launched (mobile agent supervision, Remote Control, Live Activities on lock screen, approve diffs from app); Claude Code Week 26 (`claude mcp login/logout` OAuth, background subagent permission prompts surface in main session, 37% streaming CPU reduction). PR #284.
+
+## [2026-06-30] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#292 (claude/daily-2026-06-30/_report) rebased onto main (c8779f3); deduplicated wiki/log.md (6 unique 2026-06-30 entries) and wiki/index.md (1 report entry + 13 source slugs); force-pushed sha=8754805; auto-merge re-queued via MCP enable_pr_auto_merge.
