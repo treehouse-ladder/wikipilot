@@ -2,8 +2,8 @@
 title: "Claude Opus 4.8"
 kind: entity
 aliases: ["Opus 4.8", "claude-opus-4-8", "Claude Opus 4.8"]
-sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]"]
-last_updated: 2026-06-18
+sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]"]
+last_updated: 2026-06-30
 last_verified: 2026-06-18
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
@@ -50,6 +50,10 @@ Independent placement detail (post-launch): Opus 4.8 scores 78.8% on CyberGym vu
 > Claude Opus 4.8 (max, 56) is the most intelligent available model according to the Artificial Analysis Intelligence Index v4.1.
 
 > GDPval-AA v2 is the highest weighted evaluation in the Intelligence Index v4.1. Claude Opus 4.8 scored 1638 on GDPval-AA v2, the highest among available models.
+
+**Distribution milestone (2026-06-30)**: Claude Opus 4.8 and Claude Haiku 4.5 are now generally available in Microsoft Azure Foundry [[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]. Azure-native deployment with existing Azure identity, networking, and governance controls.
+
+> Claude in Microsoft Foundry is generally available today. Claude Opus 4.8 and Claude Haiku 4.5 are available in the Messages API, with core capabilities like prompt caching and extended thinking to support use cases ranging from coding and agentic work to complex reasoning. [[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]
 
 ## Disputes
 
