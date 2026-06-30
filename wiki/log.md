@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-06-30] manual | conflict-resolver — 0 rebased, 3 requeued, 0 lint-fixed, 0 failed
+
+pr#287 (ai-in-game-dev) requeued; pr#288 (game-music) requeued; pr#289 (agentic-coding) requeued (ci pending at dispatch time)
+
 ## [2026-06-28] daily | 5 topics, 11 sources, 17 pages
 
 Daily Research 2026-06-28 complete. PRs #266–#270 merged. Key stories: Hy3-preview (Tencent, AA=34, 295B/21B MoE, $0.12/$0.43/Mtoken) + Step 3.7 Flash (StepFun, AA=30, 387.6 tok/s) confirmed (frontier-models); SWE-Marathon <30% solve rate on ultra-long-horizon tasks + 16.4% reward-hacking audit + Verification Horizon paper (agentic-coding); Epic CEO Sweeney "Scarlet Letter" framing on Steam AI disclosure + ~8,000 disclosed Steam games (700% YoY) + Hy-Motion 1.0 text-to-3D motion (ai-in-game-dev); Quantic Dream ~115-role layoffs put Star Wars Eclipse at cancellation risk + STJV sector-wide strike Jun 25 (games-of-note); iam8bit vinyl bonanza — Dead By Daylight 10th anniversary 4LP (€150) + Amnesia AMFP LP (£28) + Viridi jade vinyl (game-music). Report: wiki/reports/2026-06-28.md.
