@@ -573,6 +573,19 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[nier-orchestra-concert-12026-yorha-announced-with-performances-from-august-2026-through-march-2027-38c11783]]
 - [[blue-prince-vinyl-soundtrack-now-up-for-preorder-via-iam8bit-b4c41f87]]
 - [[arc-raiders-vinyl-soundtrack-now-up-for-preorder-via-iam8bit-ab36bb88]]
+- [[build-from-anywhere-with-cursor-for-ios-097d5a19]]
+- [[claude-code-whats-new-week-26-june-22-26-2026-d0712d54]]
+- [[gpt-5-5-instant-smarter-clearer-and-more-personalized-01a8b52e]]
+- [[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]
+- [[black-ops-6-on-game-pass-cost-microsoft-00-million-in-lost-sales-ca9f4e64]]
+- [[call-of-duty-modern-warfare-4-pre-order-ad-reminds-everyone-it-s-not-on-xbox-game-pass-this-year-452ccc79]]
+- [[call-of-duty-modern-warfare-4-release-date-is-a-month-before-gta-6-won-t-be-on-game-pass-812e8b60]]
+- [[how-union-backed-recall-rights-can-protect-jobs-at-zenimax-and-beyond-bb0e6a87]]
+- [[xbox-devs-call-for-worker-protections-ahead-of-likely-layoffs-143fc38d]]
+- [[xbox-game-pass-could-lose-other-day-one-new-releases-beyond-call-of-duty-expert-says-82d7f5f1]]
+- [[xbox-union-workers-say-they-will-not-be-treated-as-disposable-6136e5ed]]
+- [[undertale-orchestral-tour-adds-four-more-uk-shows-d30629a0]]
+- [[world-of-warcraft-20-years-of-music-official-world-tour-2026-a12dae48]]
 
 ## Answers
 
@@ -749,6 +762,19 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[striking-quantic-dream-developers-claim-star-wars-eclipse-is-in-big-trouble-if-the-studio-continues-with-mass-layoffs-c275f675]]
 - [[union-calls-for-entire-video-game-sector-to-strike-later-this-week-30c2a13f]]
 - [[iam8bit-vinyl-bonanza-with-6-new-game-soundtracks-up-for-preorder-is-now-live-5e554139]]
+- [[build-from-anywhere-with-cursor-for-ios-097d5a19]]
+- [[claude-code-whats-new-week-26-june-22-26-2026-d0712d54]]
+- [[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]
+- [[gpt-5-5-instant-smarter-clearer-and-more-personalized-01a8b52e]]
+- [[black-ops-6-on-game-pass-cost-microsoft-00-million-in-lost-sales-ca9f4e64]]
+- [[call-of-duty-modern-warfare-4-pre-order-ad-reminds-everyone-it-s-not-on-xbox-game-pass-this-year-452ccc79]]
+- [[call-of-duty-modern-warfare-4-release-date-is-a-month-before-gta-6-won-t-be-on-game-pass-812e8b60]]
+- [[how-union-backed-recall-rights-can-protect-jobs-at-zenimax-and-beyond-bb0e6a87]]
+- [[xbox-devs-call-for-worker-protections-ahead-of-likely-layoffs-143fc38d]]
+- [[xbox-game-pass-could-lose-other-day-one-new-releases-beyond-call-of-duty-expert-says-82d7f5f1]]
+- [[xbox-union-workers-say-they-will-not-be-treated-as-disposable-6136e5ed]]
+- [[undertale-orchestral-tour-adds-four-more-uk-shows-d30629a0]]
+- [[world-of-warcraft-20-years-of-music-official-world-tour-2026-a12dae48]]
 
 ## Reports
 
@@ -789,3 +815,5 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-27]]
 - [[2026-06-28]]
 - [[2026-06-29]]
+- [[2026-06-30]]
+- [[2026-06-30]]
