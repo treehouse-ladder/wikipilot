@@ -180,7 +180,9 @@ sources:
   - "[[build-from-anywhere-with-cursor-for-ios-097d5a19]]"
   - "[[claude-code-whats-new-week-26-june-22-26-2026-d0712d54]]"
   - "[[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]"
-last_updated: 2026-06-30
+  - "[[claude-code-changelog-background-session-reliability-and-code-review-token-cuts-july-2026-79752d66]]"
+  - "[[openhands-agent-canvas-a-self-hosted-acp-based-control-center-for-coding-agents-6346ff70]]"
+last_updated: 2026-07-01
 last_verified: 2026-06-28
 freshness_window_days: 30
 ---
@@ -249,6 +251,22 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-01
+
+Two incremental developments today: Claude Code shipped background-agent durability fixes, and OpenHands launched a vendor-agnostic multi-agent control center.
+
+The Claude Code CHANGELOG [[claude-code-changelog-background-session-reliability-and-code-review-token-cuts-july-2026-79752d66]] hardens the background-agent execution model that the wiki has been tracking since dynamic workflows: background workers killed by a daemon restart now resume from where they left off, and long-running sessions survive the host process being stopped/restarted/updated (background shells are handed off rather than killed on Windows). The `/code-review` workflow was consolidated (five cleanup finders merged into one) for roughly a 25% token cut, and a streaming idle watchdog that aborts and retries after 5 minutes of no stream events is now on by default for all providers. The same changelog confirms fast mode for Claude Opus 4.7 is deprecated with removal on 2026-07-24, with users steered to Opus 4.8 fast mode.
+
+> Improved background agents: workers killed by a daemon restart are now automatically resumed from where they left off the next time the agents view opens. [[claude-code-changelog-background-session-reliability-and-code-review-token-cuts-july-2026-79752d66]]
+
+> Improved /code-review workflow: merged five cleanup finders into one, cutting token usage by roughly 25%. [[claude-code-changelog-background-session-reliability-and-code-review-token-cuts-july-2026-79752d66]]
+
+OpenHands released Agent Canvas [[openhands-agent-canvas-a-self-hosted-acp-based-control-center-for-coding-agents-6346ff70]], a self-hosted, local-first control center that orchestrates coding agents across local, remote, and cloud backends, notably running not just OpenHands but Claude Code, Codex, Gemini, or any agent speaking the Agent-Client Protocol (ACP). It is backed by the OpenHands Agent Server, a REST API for running multiple agents on one host, with the Canvas fronting several Agent Servers. This is the first ACP-standardized, vendor-agnostic multi-agent hub the wiki has tracked, positioning ACP alongside MCP as a cross-vendor interface layer and extending the orchestration-substrate landscape already covering Cursor's Agents Window, OpenAI's Symphony, and Claude Code Routines.
+
+> You can run OpenHands, Claude Code, Codex, Gemini, or any ACP-compatible agent across local, remote, and cloud backends. [[openhands-agent-canvas-a-self-hosted-acp-based-control-center-for-coding-agents-6346ff70]]
+
+> Agent Canvas is powered by the OpenHands Agent Server, a REST API for running multiple agents on a single machine. [[openhands-agent-canvas-a-self-hosted-acp-based-control-center-for-coding-agents-6346ff70]]
 
 ### Updates 2026-06-30
 
@@ -1395,6 +1413,7 @@ lint stays quiet until each page actually exists:
 - [ ] Codex Remote's GA moves the human approval surface to a phone [[work-with-codex-from-anywhere-18f13afb]] — given that developers already spend 60-70% of oversight effort on post-flight verification that scales poorly [[human-oversight-of-agentic-systems-in-practice-ab5cc8f1]] and 94% miss intentional sabotage [[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]], does a screenshot/diff-on-phone approval flow degrade reviewer detection rates further than at-desk review, or does the forced-async cadence improve attention per approval?
 - [ ] ContextBench's "Bitter Lesson" finding [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]] is reported on the retrieval sub-task — does the marginal-scaffolding-gain result hold once the retrieved context feeds the downstream repair step, where SWE-Atlas [[swe-atlas-benchmarking-coding-agents-beyond-issue-resolution-955fe09e]] found native scaffolds exercise sub-agent delegation/planning that minimal scaffolds cannot?
 - [ ] Does mobile-only agent supervision increase or decrease the effective human oversight rate — is approving agent actions from a phone lock screen meaningfully better than auto-approve in a sandboxed cloud environment?
+- [ ] Does OpenHands Agent Canvas's Agent-Client Protocol (ACP) [[openhands-agent-canvas-a-self-hosted-acp-based-control-center-for-coding-agents-6346ff70]] provide the portable cross-vendor subagent interchange the wiki's existing open questions ask for (Codex TOML vs Claude Code markdown definitions), or is ACP only a runtime agent-invocation protocol that does not standardize subagent definitions across vendors?
 
 ## See also
 
