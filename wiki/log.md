@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-02] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#298 (frontier-models) rebased onto main; resolved add/add conflict on wiki/sources/introducing-claude-sonnet-5-4307222b.md (kept main's canonical excerpt, topic: agentic-coding); auto-merge re-queued via MCP. gh CLI GraphQL blocked in this environment.
+
 ## [2026-06-30] manual | conflict-resolver — 0 rebased, 3 requeued, 0 lint-fixed, 0 failed
 
 pr#287 (ai-in-game-dev) requeued; pr#288 (game-music) requeued; pr#289 (agentic-coding) requeued (ci pending at dispatch time)
