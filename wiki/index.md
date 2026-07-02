@@ -44,6 +44,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[yoko-shimomura]]
 - [[kimi-k2.7-code]]
 - [[claude-fable-5]]
+- [[claude-sonnet-5]]
 
 ## Comparisons
 
@@ -762,6 +763,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[striking-quantic-dream-developers-claim-star-wars-eclipse-is-in-big-trouble-if-the-studio-continues-with-mass-layoffs-c275f675]]
 - [[union-calls-for-entire-video-game-sector-to-strike-later-this-week-30c2a13f]]
 - [[iam8bit-vinyl-bonanza-with-6-new-game-soundtracks-up-for-preorder-is-now-live-5e554139]]
+- [[introducing-claude-sonnet-5-4307222b]]
+- [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]
+- [[claude-sonnet-5-strong-agentic-performance-at-a-higher-cost-per-task-c4346bb2]]
+- [[anthropic-claude-fable-5-on-aws-mythos-class-capabilities-with-built-in-safeguards-now-available-356c6653]]
+- [[microsoft-could-cancel-marvel-s-blade-and-close-its-developer-cf0e7ecc]]
+- [[xbox-reportedly-wants-to-sell-off-dishonored-developer-arkane-dacd948d]]
+- [[hideo-kojima-s-od-is-reportedly-safe-from-upcoming-xbox-cuts-4a4b1eeb]]
+- [[nintendo-music-special-release-update-adds-songs-from-the-new-rhythm-heaven-game-451f92b9]]
+- [[saint-slayer-spear-of-sacrilege-now-available-on-switch-vinyl-soundtrack-up-for-pre-order-b613194f]]
 
 ## Reports
 
@@ -803,3 +813,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-28]]
 - [[2026-06-29]]
 - [[2026-06-30]]
+- [[2026-07-02]]

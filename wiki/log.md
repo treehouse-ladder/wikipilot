@@ -975,3 +975,27 @@ Cursor for iOS launched (mobile agent supervision, Remote Control, Live Activiti
 ## [2026-06-30] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#292 (claude/daily-2026-06-30/_report) rebased onto main (c8779f3); deduplicated wiki/log.md (6 unique 2026-06-30 entries) and wiki/index.md (1 report entry + 13 source slugs); force-pushed sha=8754805; auto-merge re-queued via MCP enable_pr_auto_merge.
+
+## [2026-07-02] daily | agentic-coding — 2 sources, 6 pages
+
+Claude Sonnet 5 becomes default model in Claude Code (v2.1.197, 1M context, $2/$10 intro); v2.1.198 adds auto-commit/push/PR for background agents and Explore-on-Opus upgrade. PR #297.
+
+## [2026-07-02] daily | frontier-models — 3 sources, 7 pages
+
+Claude Sonnet 5 (AA Index 53, SWE-bench 85.2%, GDPval-AA 1603) + new claude-sonnet-5 entity page; Fable 5 GA on AWS Bedrock + Claude Platform; Opus 4.8 re-verified. PR #298.
+
+## [2026-07-02] daily | ai-in-game-dev — 0 sources, 1 pages
+
+Quiet day — no new in-scope sources; sub-50% agentic game-dev ceiling unchanged. PR #299.
+
+## [2026-07-02] daily | games-of-note — 3 sources, 4 pages
+
+Xbox Reset July 6 wave: 5 studios at risk (Arkane Lyon, Compulsion, Double Fine, Ninja Theory, Undead Labs); Marvel's Blade cancellation candidate; Kojima's OD reportedly safe. PR #300.
+
+## [2026-07-02] daily | game-music — 2 sources, 3 pages
+
+Rhythm Heaven Groove Nintendo Music special release (Tsunku); Saint Slayer 300-copy 8-bit vinyl indie pressing. PR #301.
+
+## [2026-07-02] daily | 5 topics, 9 sources, 21 pages
+
+Claude Sonnet 5 default in Code v2.1.197; autonomous background agents in v2.1.198; Fable 5 on AWS; Xbox/MS cutting Marvel Blade, exploring Arkane sale; OD safe; game-music quiet day.
