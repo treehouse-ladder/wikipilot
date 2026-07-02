@@ -26,7 +26,9 @@ sources:
   - "[[apex-adaptive-principle-extraction-a-three-layer-self-evolution-framework-for-production-ai-agents-59f9b9c9]]"
   - "[[self-harness-harnesses-that-improve-themselves-ef3edbde]]"
   - "[[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]"
-last_updated: 2026-06-29
+  - "[[introducing-claude-sonnet-5-4307222b]]"
+  - "[[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]"
+last_updated: 2026-07-02
 last_verified: 2026-06-11
 freshness_window_days: 30
 ---
@@ -120,6 +122,10 @@ The SDK convergence is significant for harness engineering because it makes the 
 Self-Harness extends the harness-evolution cluster with a fully self-driven loop: the agent improves its own harness without any human engineer or stronger external teacher agent, on the premise that effective harness design is inherently model-specific [[self-harness-harnesses-that-improve-themselves-ef3edbde]]. Its three-stage loop (Weakness Mining over execution traces, Harness Proposal of minimal modifications, and selection) is a self-supervised variant of the observability-driven and continual-adaptation approaches already cataloged here.
 
 > Self-Harness is a new paradigm in which an LLM-based agent improves its own operating harness, without relying on human engineers or stronger external agents.
+
+**Claude Code v2.1.197: default model shifts to a native-1M-context Sonnet tier (July 2026).** Claude Code switched its default model to Claude Sonnet 5, a hybrid reasoning model with a native 1M-token context window and promo pricing of $2/$10 per Mtok through August 31, 2026 (then $3/$15) [[introducing-claude-sonnet-5-4307222b]] [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]. For harness engineering this is relevant through the ContextBench lens: if sophisticated retrieval scaffolding yields only marginal gains and a larger native context window further reduces the need for aggressive context compaction, then the marginal value of harness-layer retrieval strategies declines as models scale to larger native windows — shifting the harness-engineering focus from context compaction toward verification and orchestration layers.
+
+> Claude Sonnet 5 is a hybrid reasoning model with fast, capable intelligence for real-time agents and high-volume work, featuring a 1M context window. [[introducing-claude-sonnet-5-4307222b]]
 
 ## Disputes
 

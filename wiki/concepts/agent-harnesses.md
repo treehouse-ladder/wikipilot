@@ -12,7 +12,9 @@ sources:
   - "[[what-makes-a-harness-a-harness-necessary-and-sufficient-conditions-for-an-agent-harness-1afa2530]]"
   - "[[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]]"
   - "[[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]"
-last_updated: 2026-06-29
+  - "[[introducing-claude-sonnet-5-4307222b]]"
+  - "[[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]"
+last_updated: 2026-07-02
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -54,6 +56,14 @@ A June 2026 paper supplies the first constitutive definition of "agent harness,"
 **The "Bitter Lesson" of coding agents: scaffolding yields marginal retrieval gains (June 2026).** ContextBench is a process-oriented context-retrieval benchmark measuring recall, precision, and efficiency across agent trajectories on 1,136 issue-resolution tasks [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]. The headline finding: across four frontier LLMs and five coding agents, sophisticated agent scaffolding yields only marginal gains in context retrieval, and LLMs consistently favor recall over precision. This is process-level evidence on the model-vs-harness debate landing on the model-dominates side for the retrieval sub-task specifically, complementing the end-to-end harness≈model finding in Claw-SWE-Bench above — the scaffolding gain may surface at the downstream repair stage rather than retrieval.
 
 > Results show that sophisticated agent scaffolding yields only marginal gains in context retrieval (The Bitter Lesson of coding agents), and LLMs consistently favor recall over precision. [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]
+
+**Harness autonomy escalation: Claude Code v2.1.198 ships background agents that auto-commit/push/open draft PRs (July 2026).** Claude Code's v2.1.198 release escalates background-agent autonomy defaults — background agents now commit, push, and open a draft PR when they finish code work in a worktree, instead of stopping to ask for approval [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]. This shifts the default oversight surface from pre-flight confirmation (approval before the agent acts on the remote) to post-flight review (a draft PR already exists, reviewers inspect after the fact). The same release escalates the built-in Explore subagent's default model from Haiku to the main session's model (capped at Opus), trading token cost for exploration quality. Both changes extend the harness-design thread this page tracks: the post-flight verification bottleneck [[human-oversight-of-agentic-systems-in-practice-ab5cc8f1]] is inherent to the autonomy/oversight Pareto frontier — moving the approval gate later in the workflow (to draft PRs) reduces friction but increases the per-review inspection burden.
+
+> Background agents launched from `claude agents` now commit, push, and open a draft PR when they finish code work in a worktree, instead of stopping to ask. [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]
+
+**Claude Sonnet 5 becomes the default harness model in Claude Code (July 2026).** Claude Code v2.1.197 switches its default model to Claude Sonnet 5, a hybrid reasoning model with a native 1M-token context window and promo pricing of $2/$10 per Mtok through August 31, 2026 (then $3/$15) [[introducing-claude-sonnet-5-4307222b]] [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]. For the cost-vs-quality Pareto frontier that defines harness choice [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]], this shifts the in-tool default onto a cheaper, natively-long-context tier that reduces the need for aggressive context compaction — relevant to the ContextBench finding that sophisticated retrieval scaffolding yields only marginal gains, since a larger default window may further reduce the marginal value of harness-layer retrieval strategies.
+
+> Claude Sonnet 5 is a hybrid reasoning model with fast, capable intelligence for real-time agents and high-volume work, featuring a 1M context window. [[introducing-claude-sonnet-5-4307222b]]
 
 ## Disputes
 
