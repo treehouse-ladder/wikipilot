@@ -1,8 +1,8 @@
 ---
 title: "Claude Sonnet 4.6"
 kind: entity
-sources: ["[[introducing-claude-sonnet-46-c4a45eed]]", "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]"]
-last_updated: "2026-05-31"
+sources: ["[[introducing-claude-sonnet-46-c4a45eed]]", "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]", "[[claude-sonnet-5-strong-agentic-performance-at-a-higher-cost-per-task-c4346bb2]]"]
+last_updated: "2026-07-02"
 last_verified: "2026-05-22"
 freshness_window_days: 30
 input_cost_per_mtoken: 3.00
@@ -21,6 +21,8 @@ arc_agi_2_source: "[[introducing-claude-sonnet-46-c4a45eed]]"
 ---
 
 ## Summary
+
+**Note (2026-07-02)**: Claude Sonnet 4.6 has been superseded by [[claude-sonnet-5]], released June 30, 2026, which scores AA Intelligence Index v4.1 = 53 (+6 over Sonnet 4.6's v4.1 re-placement) and SWE-bench Pro 63.2% (up from 58.1%) [[claude-sonnet-5-strong-agentic-performance-at-a-higher-cost-per-task-c4346bb2]].
 
 Claude Sonnet 4.6 is Anthropic's mid-tier frontier model, released February 17, 2026 [[introducing-claude-sonnet-46-c4a45eed]]. Pricing starts at $3/$15 per million input/output tokens, with a 1M-token context window in beta. Sonnet 4.6 scores 51 on the Artificial Analysis Intelligence Index — an 8-point jump over Sonnet 4.5 — and leads all tested models on GDPval-AA and TerminalBench at the time of release (outperforming even Opus 4.6). On the contamination-controlled ARC-AGI-2 it scores 60.4% with 120k thinking tokens at High effort.
 
