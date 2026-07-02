@@ -8,7 +8,8 @@ sources:
   - "[[customize-cursor-16819559]]"
   - "[[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]]"
   - "[[claude-code-whats-new-week-26-june-22-26-2026-d0712d54]]"
-last_updated: 2026-06-30
+  - "[[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]"
+last_updated: 2026-07-02
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
@@ -36,6 +37,10 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 **Claude Code background-subagent permission surfacing closes the silent-denial gap.** Claude Code Week 26 (June 22–26) added background-subagent permission prompts to the main session: when a background subagent requests a tool, the permission dialog surfaces in the main session showing which agent is asking, and Esc denies only that tool rather than halting the entire workflow [[claude-code-whats-new-week-26-june-22-26-2026-d0712d54]]. This closes a critical gap in parallel-subagent workflows: previously a background-subagent denial was silent and irrecoverable without restarting the agent, breaking the "fork-and-forget" parallelism model that makes subagents viable for fan-out tasks.
 
 > Background subagents now surface permission prompts in the main session instead of auto-denying; the dialog shows which agent is asking, and Esc denies only that tool. [[claude-code-whats-new-week-26-june-22-26-2026-d0712d54]]
+
+**Claude Code v2.1.198: built-in Explore subagent now inherits the main session's model (July 2026).** The release escalates the built-in Explore agent's default model from Haiku to the main session's model (capped at Opus) [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]. For parallel-subagent workflows this trades token cost for exploration quality — Explore is a subagent that typically gathers context across a large repo, so upgrading it from Haiku to Sonnet/Opus increases the per-exploration-task token spend but may reduce the number of exploration rounds needed. This is the reverse cost-quality tradeoff from the background-session durability and permission-surfacing improvements the wiki already tracks: those reduced friction with no quality regression, while the Explore upgrade deliberately spends more tokens per call.
+
+> The built-in Explore agent now inherits the main session's model (capped at opus) instead of running on haiku. [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]
 
 ## Disputes
 

@@ -182,7 +182,9 @@ sources:
   - "[[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]"
   - "[[claude-code-changelog-background-session-reliability-and-code-review-token-cuts-july-2026-79752d66]]"
   - "[[openhands-agent-canvas-a-self-hosted-acp-based-control-center-for-coding-agents-6346ff70]]"
-last_updated: 2026-07-01
+  - "[[introducing-claude-sonnet-5-4307222b]]"
+  - "[[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]"
+last_updated: 2026-07-02
 last_verified: 2026-06-28
 freshness_window_days: 30
 ---
@@ -251,6 +253,22 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-02
+
+**Claude Sonnet 5 becomes the default model in Claude Code (v2.1.197), shipping a native 1M-token context window at promo pricing.** Anthropic released Claude Sonnet 5 and it is now the default model in Claude Code as of v2.1.197 [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]. Sonnet 5 is a hybrid reasoning model positioned for "real-time agents and high-volume work" with a 1M-token context window that is on by default (no beta header, standard billing), and introductory pricing of $2/$10 per Mtok through August 31, 2026, reverting to $3/$15 afterward [[introducing-claude-sonnet-5-4307222b]]. For agentic coding this shifts the in-tool default off the Opus/Sonnet-4.x line onto a cheaper, natively-long-context Sonnet tier — relevant to the cost/latency-to-PR Pareto frontier this topic tracks, since the promo pricing undercuts prior Sonnet pricing while the 1M window reduces the need for aggressive context compaction on large repos.
+
+> Claude Sonnet 5 is a hybrid reasoning model with fast, capable intelligence for real-time agents and high-volume work, featuring a 1M context window. Claude Sonnet 5 is available on the Claude Platform with introductory pricing of $2 per million input tokens and $10 per million output tokens through August 31, 2026, after which it will be priced at $3 per million input tokens and $15 per million output tokens. [[introducing-claude-sonnet-5-4307222b]]
+
+> Introducing Claude Sonnet 5: now the default model in Claude Code, with a native 1M-token context window and promotional pricing of $2/$10 per Mtok through August 31. [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]
+
+**Claude Code v2.1.198 escalates background-agent autonomy and upgrades the Explore subagent.** The release makes two harness-level changes that move autonomy defaults: background agents launched from `claude agents` now commit, push, and open a draft PR when they finish code work in a worktree instead of stopping to ask, and the built-in Explore agent now inherits the main session's model (capped at Opus) rather than running on Haiku [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]. Two further harness refinements: subagents and context compaction now inherit the session's extended-thinking configuration (delegated tasks get the same reasoning budget as the parent), and transient network drops (ECONNRESET) mid-response now retry with backoff instead of aborting the turn — tightening the long-session durability thread tracked here (streaming idle watchdog, background-session handoff). The release also GA'd Claude in Chrome and added a `/dataviz` skill for chart/dashboard design. A notable orchestration-semantics note: subagents now treat messages from the agent that launched them as normal task direction, while an agent's message is still never treated as the user's approval — preserving the human-only-consent boundary even as agent-to-agent direction is formalized.
+
+> Background agents launched from `claude agents` now commit, push, and open a draft PR when they finish code work in a worktree, instead of stopping to ask. [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]
+
+> The built-in Explore agent now inherits the main session's model (capped at opus) instead of running on haiku. [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]
+
+The auto-commit/push/draft-PR default and the Explore-on-Opus change are filed as open questions below (oversight-modality and cost implications, respectively).
 
 ### Updates 2026-07-01
 
@@ -1414,6 +1432,9 @@ lint stays quiet until each page actually exists:
 - [ ] ContextBench's "Bitter Lesson" finding [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]] is reported on the retrieval sub-task — does the marginal-scaffolding-gain result hold once the retrieved context feeds the downstream repair step, where SWE-Atlas [[swe-atlas-benchmarking-coding-agents-beyond-issue-resolution-955fe09e]] found native scaffolds exercise sub-agent delegation/planning that minimal scaffolds cannot?
 - [ ] Does mobile-only agent supervision increase or decrease the effective human oversight rate — is approving agent actions from a phone lock screen meaningfully better than auto-approve in a sandboxed cloud environment?
 - [ ] Does OpenHands Agent Canvas's Agent-Client Protocol (ACP) [[openhands-agent-canvas-a-self-hosted-acp-based-control-center-for-coding-agents-6346ff70]] provide the portable cross-vendor subagent interchange the wiki's existing open questions ask for (Codex TOML vs Claude Code markdown definitions), or is ACP only a runtime agent-invocation protocol that does not standardize subagent definitions across vendors?
+- [ ] Does the v2.1.198 default of background agents auto-committing, pushing, and opening a draft PR on finish (rather than pausing to ask) worsen the post-flight-verification oversight problem this page already tracks — i.e. does a draft PR that already exists bias reviewers toward acceptance vs. an agent that stops for confirmation before writing to the remote?
+- [ ] What is the cost/latency impact of the built-in Explore agent now inheriting the main model capped at Opus instead of running on Haiku — does the improved exploration quality justify the token-cost increase on large-repo context-gathering, and is there a config to pin Explore back to a cheaper model?
+- [ ] How does Claude Sonnet 5's native 1M-token context window change the calculus on context compaction and retrieval harnesses (SWE-Explore, ContextBench, FastContext) for coding agents — does a larger default window reduce the marginal value of sophisticated retrieval scaffolding, consistent with ContextBench's 'Bitter Lesson' finding?
 
 ## See also
 
