@@ -772,6 +772,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[hideo-kojima-s-od-is-reportedly-safe-from-upcoming-xbox-cuts-4a4b1eeb]]
 - [[nintendo-music-special-release-update-adds-songs-from-the-new-rhythm-heaven-game-451f92b9]]
 - [[saint-slayer-spear-of-sacrilege-now-available-on-switch-vinyl-soundtrack-up-for-pre-order-b613194f]]
+- [[more-details-on-fable-5-s-cyber-safeguards-and-our-jailbreak-framework-aaef033d]]
 
 ## Reports
 

@@ -1,9 +1,9 @@
 ---
 title: "Claude Sonnet 4.6"
 kind: entity
-sources: ["[[introducing-claude-sonnet-46-c4a45eed]]", "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]", "[[claude-sonnet-5-strong-agentic-performance-at-a-higher-cost-per-task-c4346bb2]]"]
-last_updated: "2026-07-02"
-last_verified: "2026-05-22"
+sources: ["[[introducing-claude-sonnet-46-c4a45eed]]", "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]", "[[claude-sonnet-5-strong-agentic-performance-at-a-higher-cost-per-task-c4346bb2]]", "[[introducing-claude-sonnet-5-4307222b]]"]
+last_updated: 2026-07-03
+last_verified: 2026-07-03
 freshness_window_days: 30
 input_cost_per_mtoken: 3.00
 output_cost_per_mtoken: 15.00
@@ -35,6 +35,10 @@ Claude Sonnet 4.6 is Anthropic's mid-tier frontier model, released February 17, 
 Sonnet 4.6 currently sits at 1683 Elo on the live [[gdpval-aa-leaderboard-artificial-analysis-5d24e844]] — #4 globally, ahead of every other Anthropic model on this evaluation and 30 Elo points ahead of Opus 4.6.
 
 > Claude Sonnet 4.6 (Adaptive Reasoning, Max Effort) is #4 at 1683.
+
+**Superseded by [[claude-sonnet-5]] (released June 30, 2026).** Claude Sonnet 5 is the successor mid-tier Anthropic flagship; it is a strict improvement over Sonnet 4.6 (+9 points on Terminal-Bench v2.1, AA Intelligence Index v4.1 = 53) and is now the recommended Sonnet-tier default [[introducing-claude-sonnet-5-4307222b]] [[claude-sonnet-5-strong-agentic-performance-at-a-higher-cost-per-task-c4346bb2]].
+
+> Sonnet 5 is a strict improvement over Sonnet 4.6 and covers a much wider range of cost-performance options than Opus 4.8. [[introducing-claude-sonnet-5-4307222b]]
 
 ## Disputes
 
