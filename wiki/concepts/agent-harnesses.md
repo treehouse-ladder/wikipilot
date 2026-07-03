@@ -14,7 +14,9 @@ sources:
   - "[[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]"
   - "[[introducing-claude-sonnet-5-4307222b]]"
   - "[[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]"
-last_updated: 2026-07-02
+  - "[[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]]"
+  - "[[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]]"
+last_updated: 2026-07-03
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -64,6 +66,12 @@ A June 2026 paper supplies the first constitutive definition of "agent harness,"
 **Claude Sonnet 5 becomes the default harness model in Claude Code (July 2026).** Claude Code v2.1.197 switches its default model to Claude Sonnet 5, a hybrid reasoning model with a native 1M-token context window and promo pricing of $2/$10 per Mtok through August 31, 2026 (then $3/$15) [[introducing-claude-sonnet-5-4307222b]] [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]. For the cost-vs-quality Pareto frontier that defines harness choice [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]], this shifts the in-tool default onto a cheaper, natively-long-context tier that reduces the need for aggressive context compaction — relevant to the ContextBench finding that sophisticated retrieval scaffolding yields only marginal gains, since a larger default window may further reduce the marginal value of harness-layer retrieval strategies.
 
 > Claude Sonnet 5 is a hybrid reasoning model with fast, capable intelligence for real-time agents and high-volume work, featuring a 1M context window. [[introducing-claude-sonnet-5-4307222b]]
+
+**The eval frontier pivots from single-turn autonomous resolution to multi-turn interactive collaboration (July 2026).** Two independent benchmarks landing the same week — SWE-INTERACT [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]] and SWE-Together [[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]] — both find that strong single-turn SWE performance does not reliably transfer to multi-turn, user-driven interactive sessions. This convergence signals a measurement shift: harnesses optimized for autonomous single-shot resolution (SWE-bench Verified's bash-only mini-SWE-agent) may systematically under-represent the interactive-collaboration capability that production agentic-coding workflows demand. The harness design space must now account for feedback-driven iteration, progressive requirement revelation, and the number of corrective turns required — dimensions the single-turn eval paradigm does not capture.
+
+> Strong performance on single-turn SWE tasks does not reliably transfer to multi-turn, user-driven workflows. [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]]
+
+> To evaluate agents as collaborators, we measure both final repository correctness and the number of corrective feedback turns required during the interaction. [[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]]
 
 ## Disputes
 
