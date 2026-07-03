@@ -8,7 +8,8 @@ sources:
   - "[[cloud-environment-setup-and-cloud-subagents-in-agents-window-ac3775dd]]"
   - "[[how-we-built-claude-code-auto-mode-a-safer-way-to-skip-permissions-d5f9dbd6]]"
   - "[[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]]"
-last_updated: 2026-06-25
+  - "[[aura-15-0-releases-with-new-features-and-unlimited-usage-for-unreal-engine-and-unity-34445073]]"
+last_updated: 2026-07-03
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -34,6 +35,10 @@ The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-hum
 **Classifier-mediated autonomy gates.** Claude Code's auto mode pairs the OS-level sandbox (bubblewrap/seatbelt + network proxy) with a second policy layer: a transcript classifier (Sonnet 4.6) evaluating each proposed action before execution [[how-we-built-claude-code-auto-mode-a-safer-way-to-skip-permissions-d5f9dbd6]]. The classifier runs in two stages (fast single-token allow/block, then chain-of-thought only when flagged) and acts as a substitute for a human approver. Denials return as tool results instructing Claude to find a safer path rather than halt the session. This is defense-in-depth — the sandbox bounds kernel-level blast radius; the classifier is an in-loop policy gate at the action boundary. However, [[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]] argues such detect-and-separate defenses are subject to a fundamental data-instruction-separation trade-off: an LLM classifier is itself an instruction-following surface, and the impossibility framing implies any defense premised on detecting/separating injected instructions is structurally limited.
 
 > Auto mode is meant to replace --dangerously-skip-permissions without bringing back interruptions. When the classifier blocks an action, Claude shouldn't halt and wait for input; it should recover and try a safer approach where one exists. [[how-we-built-claude-code-auto-mode-a-safer-way-to-skip-permissions-d5f9dbd6]]
+
+**Editor-side sandboxing in game development tooling.** Aura 15.0 (June 2026) extends the isolated-workspace pattern to game engine editors: its Sandbox Mode lets the agent make changes to Unreal Engine or Unity projects in an isolated environment without breaking the live project [[aura-15-0-releases-with-new-features-and-unlimited-usage-for-unreal-engine-and-unity-34445073]]. This is the editor-side analogue to the git-worktree-style change staging that repo-driving agent harnesses use for code projects — directly relevant to shipping AI edits into a live game project without corrupting it. The pattern is structurally similar to Cursor's cloud-VM-per-subagent isolation (full environment per agent task) and OpenHands' Docker-runtime sandboxing, but adapted to the game-editor domain where the blast radius includes not just code but also scene hierarchies, asset references, and build configuration.
+
+> Sandbox Mode allows the agent to make changes in an isolated environment without breaking the project. [[aura-15-0-releases-with-new-features-and-unlimited-usage-for-unreal-engine-and-unity-34445073]]
 
 ## Disputes
 
