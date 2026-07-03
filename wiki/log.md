@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-03] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#306 (claude/daily-2026-07-03/games-of-note) requeued — CI green, clean merge state, auto-merge was missing; squash auto-merge re-queued via MCP enable_pr_auto_merge (gh CLI unavailable in this environment).
+
 ## [2026-06-30] manual | conflict-resolver — 0 rebased, 3 requeued, 0 lint-fixed, 0 failed
 
 pr#287 (ai-in-game-dev) requeued; pr#288 (game-music) requeued; pr#289 (agentic-coding) requeued (ci pending at dispatch time)
