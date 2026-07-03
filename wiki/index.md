@@ -53,6 +53,9 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[the-witcher-3-anniversary-tour-confirms-2026-dates-a5127647]]
+- [[preorders-open-for-final-fantasy-x-lp-vinyl-set-eternal-calm-a69e0f99]]
+- [[saint-slayer-spear-of-sacrilege-official-vinyl-soundtrack-coming-july-2026-pre-orders-live-42d85040]]
 - [[how-we-contain-claude-across-products-64af1d1a]]
 - [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]]
 - [[towards-direct-evaluation-of-harness-optimizers-via-priority-ranking-b643bf3f]]
