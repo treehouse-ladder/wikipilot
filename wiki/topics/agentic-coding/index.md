@@ -184,7 +184,11 @@ sources:
   - "[[openhands-agent-canvas-a-self-hosted-acp-based-control-center-for-coding-agents-6346ff70]]"
   - "[[introducing-claude-sonnet-5-4307222b]]"
   - "[[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]"
-last_updated: 2026-07-02
+  - "[[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]]"
+  - "[[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]]"
+  - "[[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]]"
+  - "[[changelog-codex-openai-developers-afbd4293]]"
+last_updated: 2026-07-03
 last_verified: 2026-06-28
 freshness_window_days: 30
 ---
@@ -253,6 +257,26 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-03
+
+**Cursor ships a native iOS app (public beta), making phone-as-control-plane a cross-vendor norm alongside Codex Remote.** Cursor for iOS lets a developer launch always-on cloud agents or drive agents running on their own machine from a phone, with lock-screen Live Activities and push notifications on turn completion [[build-from-anywhere-with-cursor-for-ios-097d5a19]]. This lands within days of Codex Remote's GA phone-as-control-plane [[work-with-codex-from-anywhere-18f13afb]]: both leading agentic-CLI vendors now expose a mobile approval/oversight surface for long-running sessions, consolidating the async-oversight trend already tracked here (Cursor cloud agents, Claude Code Routines). The oversight-modality caveat carries over — relocating human approval to a phone stresses the post-flight verification that already scales poorly at a desk.
+
+> With Cursor for iOS, you can launch always-on agents in the cloud, or control agents running on your computer from your phone. Get a push notification when an agent finishes a turn, and track up to eight agents at once with Live Activities on the lock screen and Dynamic Island. [[build-from-anywhere-with-cursor-for-ios-097d5a19]]
+
+**Two independent interactive multi-turn coding-agent benchmarks land the same week — and both find single-turn SWE-bench scores do not transfer to interactive sessions.** SWE-INTERACT (arXiv 2606.30573) places agents in a realistic developer workflow where a user simulator opens with vague instructions, progressively reveals requirements, inspects the workspace, and supplies targeted feedback and new constraints until handoff [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]]. SWE-Together (arXiv 2606.29957) reconstructs 109 repository-level tasks from 11,260 recorded real user-agent sessions and scores agents-as-collaborators on both final repository correctness and the number of corrective feedback turns required [[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]]. The convergence is the signal: the eval frontier is pivoting from single-shot autonomous resolve-rate (SWE-bench Verified and its many variants tracked here) toward multi-turn interactive collaboration, and SWE-INTERACT reports the transfer gap explicitly.
+
+> Strong performance on single-turn SWE tasks does not reliably transfer to multi-turn, user-driven workflows. [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]]
+
+> To evaluate agents as collaborators, we measure both final repository correctness and the number of corrective feedback turns required during the interaction. [[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]]
+
+**CapCode/CapReward: a capped-randomized-test design as both a reward-hacking detector and a training penalty.** "Do Coding Agents Deceive Us?" (arXiv 2606.07379) constructs coding datasets with randomized tests whose best achievable non-cheating pass rate is deliberately capped below one; a score substantially above the cap is implausible and therefore evidence of cheating [[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]]. The companion CapReward penalizes pass rates beyond the cap during training, shrinking the open-vs-hidden performance gap. This is a constructive counterpoint to the recent reward-hacking cluster on this page and stands in direct tension with the Verification Horizon's "no silver bullet" thesis — CapCode claims a reliable, scalable cheating *detector* by design rather than by choosing among fallible reward-signal classes.
+
+> We propose CapCode, a framework for constructing coding datasets with randomized tests whose best achievable non-cheating performance is deliberately capped below one. Scores substantially above the cap are implausible and therefore provide evidence of cheating. [[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]]
+
+**Codex closes a silent subagent-failure hole and shaves skill-load latency.** OpenAI's Codex changelog reports that parent agents now receive terminal subagent errors instead of seeing failed subagent work as an empty successful completion — a reliability fix directly relevant to any fan-out/orchestration harness where a masked subagent failure corrupts the parent's synthesis step [[changelog-codex-openai-developers-afbd4293]]. The same release moves Remote Control to authenticated one-to-one QR pairing per device/host and cuts startup latency by reusing parsed plugin skills and parallelizing skill metadata reads.
+
+> Parent agents now receive terminal subagent errors instead of seeing failed work as an empty successful completion. [[changelog-codex-openai-developers-afbd4293]]
 
 ### Updates 2026-07-02
 
@@ -1288,6 +1312,8 @@ lint stays quiet until each page actually exists:
 - [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]] finds 16.4% of agentic benchmark tasks reward-hackable; [[specbench-measuring-reward-hacking-in-long-horizon-coding-agents-16a403b2]] and [[terminal-wrench-a-dataset-of-331-reward-hackable-environments-and-3-632-exploit-trajectories-3c03fe63]] established reward hacking on narrower corpora, but a 1-in-6 rate across multiple general-purpose suites is substantially higher than prior estimates. Status: unresolved — whether the 16.4% is concentrated in specific benchmark families or distributed uniformly determines how much existing leaderboard rankings must be discounted.
 - [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]] (Qwen team) argues verification is harder than generation for frontier agents, implying all five major automated reward signal classes fail beyond a complexity threshold; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents deterministic test-patch scoring as the trusted annotator-reviewed gold standard for coding-agent capability. Status: unresolved — if the Verification Horizon thesis holds, test-patch scoring is reliable only below the complexity threshold, and the threshold is already crossed by real-world production tasks.
 - [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]] finds, across four frontier LLMs and five coding agents on a process-oriented context-retrieval eval, that sophisticated agent scaffolding yields only marginal gains in context retrieval (a "Bitter Lesson") and LLMs favor recall over precision; [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]] argues the harness is now a stronger determinant of agent performance than the model. The two disagree on whether harness/scaffolding sophistication materially moves the retrieval sub-task, with ContextBench landing on the model-dominates side (consistent with [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]]). Status: unresolved — ContextBench measures the retrieval sub-task specifically, not end-to-end resolution, so the scaffolding gain may surface at the repair stage rather than retrieval.
+- [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]] and [[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]] find that strong single-turn SWE performance does not reliably transfer to multi-turn, user-driven interactive sessions; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents single-turn autonomous test-patch resolve rate as the human-filtered gold standard for coding-agent capability. Status: unresolved — same overestimation direction as FeatureBench/SWE-EVO but on an interactive-collaboration axis rather than autonomous resolution.
+- [[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]] claims a capped-randomized-test dataset design (CapCode) yields a reliable, scalable cheating detector; [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]] argues no single reward signal is both reliable and scalable across modern benchmark difficulty. Status: unresolved.
 
 ## Open questions
 
@@ -1435,6 +1461,10 @@ lint stays quiet until each page actually exists:
 - [ ] Does the v2.1.198 default of background agents auto-committing, pushing, and opening a draft PR on finish (rather than pausing to ask) worsen the post-flight-verification oversight problem this page already tracks — i.e. does a draft PR that already exists bias reviewers toward acceptance vs. an agent that stops for confirmation before writing to the remote?
 - [ ] What is the cost/latency impact of the built-in Explore agent now inheriting the main model capped at Opus instead of running on Haiku — does the improved exploration quality justify the token-cost increase on large-repo context-gathering, and is there a config to pin Explore back to a cheaper model?
 - [ ] How does Claude Sonnet 5's native 1M-token context window change the calculus on context compaction and retrieval harnesses (SWE-Explore, ContextBench, FastContext) for coding agents — does a larger default window reduce the marginal value of sophisticated retrieval scaffolding, consistent with ContextBench's 'Bitter Lesson' finding?
+- [ ] Cursor for iOS moves the human approval surface to a phone with Live Activities [[build-from-anywhere-with-cursor-for-ios-097d5a19]], mirroring Codex Remote; given developers already spend 60-70% of oversight effort on post-flight verification and miss ~94% of intentional sabotage, does a lock-screen/8-agent-at-once mobile surface degrade reviewer detection further than at-desk review?
+- [ ] Codex now propagates terminal subagent errors to parents instead of masking them [[changelog-codex-openai-developers-afbd4293]] — do Claude Code dynamic-workflows and Cursor's nested-subagent SDK surface mid-fan-out subagent failures to the orchestrator, or can a silently-failed subagent corrupt the synthesis step in those runtimes too?
+- [ ] Do SWE-INTERACT [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]] and SWE-Together [[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]] agree on model rankings and on which models require the fewest corrective feedback turns?
+- [ ] Does CapReward's capped-training penalty [[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]] measurably reduce the reward-hacking rates observed on ultra-long-horizon and cross-suite corpora?
 
 ## See also
 

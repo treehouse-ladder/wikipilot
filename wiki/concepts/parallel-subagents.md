@@ -9,7 +9,9 @@ sources:
   - "[[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]]"
   - "[[claude-code-whats-new-week-26-june-22-26-2026-d0712d54]]"
   - "[[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]"
-last_updated: 2026-07-02
+  - "[[build-from-anywhere-with-cursor-for-ios-097d5a19]]"
+  - "[[changelog-codex-openai-developers-afbd4293]]"
+last_updated: 2026-07-03
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
@@ -41,6 +43,14 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 **Claude Code v2.1.198: built-in Explore subagent now inherits the main session's model (July 2026).** The release escalates the built-in Explore agent's default model from Haiku to the main session's model (capped at Opus) [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]. For parallel-subagent workflows this trades token cost for exploration quality — Explore is a subagent that typically gathers context across a large repo, so upgrading it from Haiku to Sonnet/Opus increases the per-exploration-task token spend but may reduce the number of exploration rounds needed. This is the reverse cost-quality tradeoff from the background-session durability and permission-surfacing improvements the wiki already tracks: those reduced friction with no quality regression, while the Explore upgrade deliberately spends more tokens per call.
 
 > The built-in Explore agent now inherits the main session's model (capped at opus) instead of running on haiku. [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]
+
+**Mobile oversight of parallel-subagent workflows lands across vendors (Cursor iOS, June 2026).** Cursor for iOS allows launching and managing parallel always-on cloud agents from a phone, with Live Activities tracking up to eight agents at once on the lock screen and push notifications on agent turn completion [[build-from-anywhere-with-cursor-for-ios-097d5a19]]. This extends the mobile-control-plane pattern to the IDE-native agent side (joining Codex Remote) and shifts the approval/oversight modality for parallel long-running subagents from desktop to mobile — stressing post-flight verification that already scales poorly on larger screens.
+
+> Get a push notification when an agent finishes a turn, and track up to eight agents at once with Live Activities on the lock screen and Dynamic Island. [[build-from-anywhere-with-cursor-for-ios-097d5a19]]
+
+**Codex closes a silent subagent-failure hole (July 2026).** OpenAI's Codex changelog reports that parent agents now receive terminal subagent errors instead of seeing failed subagent work as an empty successful completion [[changelog-codex-openai-developers-afbd4293]]. This reliability fix is directly relevant to parallel-subagent orchestration harnesses where a masked subagent failure would corrupt the parent's synthesis step — the merge-step cost tax that Parallel-Synthesis targets is worse when the parent merges empty/failed output without knowing it failed.
+
+> Parent agents now receive terminal subagent errors instead of seeing failed work as an empty successful completion. [[changelog-codex-openai-developers-afbd4293]]
 
 ## Disputes
 

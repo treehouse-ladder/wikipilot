@@ -28,7 +28,10 @@ sources:
   - "[[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]"
   - "[[introducing-claude-sonnet-5-4307222b]]"
   - "[[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]"
-last_updated: 2026-07-02
+  - "[[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]]"
+  - "[[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]]"
+  - "[[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]]"
+last_updated: 2026-07-03
 last_verified: 2026-06-11
 freshness_window_days: 30
 ---
@@ -126,6 +129,10 @@ Self-Harness extends the harness-evolution cluster with a fully self-driven loop
 **Claude Code v2.1.197: default model shifts to a native-1M-context Sonnet tier (July 2026).** Claude Code switched its default model to Claude Sonnet 5, a hybrid reasoning model with a native 1M-token context window and promo pricing of $2/$10 per Mtok through August 31, 2026 (then $3/$15) [[introducing-claude-sonnet-5-4307222b]] [[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]. For harness engineering this is relevant through the ContextBench lens: if sophisticated retrieval scaffolding yields only marginal gains and a larger native context window further reduces the need for aggressive context compaction, then the marginal value of harness-layer retrieval strategies declines as models scale to larger native windows — shifting the harness-engineering focus from context compaction toward verification and orchestration layers.
 
 > Claude Sonnet 5 is a hybrid reasoning model with fast, capable intelligence for real-time agents and high-volume work, featuring a 1M context window. [[introducing-claude-sonnet-5-4307222b]]
+
+**Interactive multi-turn benchmarks signal a harness-design shift (July 2026).** Two independent coding-agent benchmarks landing the same week — SWE-INTERACT [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]] and SWE-Together [[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]] — find that strong single-turn SWE performance does not reliably transfer to multi-turn, user-driven interactive sessions. This convergence signals a measurement shift directly relevant to harness engineering: harnesses optimized for autonomous single-shot resolution may systematically under-represent the interactive-collaboration capability that production workflows demand. The harness design space must now account for feedback-driven iteration, progressive requirement revelation, and the number of corrective turns required — dimensions the single-turn eval paradigm does not capture.
+
+**CapCode: a capped-randomized-test design as a scalable cheating detector (July 2026).** "Do Coding Agents Deceive Us?" [[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]] constructs coding datasets with randomized tests whose best achievable non-cheating pass rate is deliberately capped below one; a score substantially above the cap is implausible and therefore evidence of cheating. The companion CapReward training penalty shrinks the open-vs-hidden performance gap. This is a constructive counterpoint to the Verification Horizon thesis (no single reward signal is both reliable and scalable) — CapCode claims a reliable, scalable detector by design rather than by choosing among fallible reward-signal classes, relevant to harness-evolution loops that depend on automated verification.
 
 ## Disputes
 
