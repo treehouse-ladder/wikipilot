@@ -1,9 +1,9 @@
 ---
 title: "Claude Fable 5"
 kind: entity
-sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]", "[[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]", "[[redeploying-claude-fable-5-fdd9745e]]", "[[commerce-department-gives-green-light-for-anthropic-to-bring-back-fable-5-e657d00f]]"]
-last_updated: 2026-07-01
-last_verified: 2026-07-01
+sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]", "[[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]", "[[redeploying-claude-fable-5-fdd9745e]]", "[[commerce-department-gives-green-light-for-anthropic-to-bring-back-fable-5-e657d00f]]", "[[more-details-on-fable-5-s-cyber-safeguards-and-our-jailbreak-framework-aaef033d]]"]
+last_updated: 2026-07-03
+last_verified: 2026-07-03
 freshness_window_days: 30
 input_cost_per_mtoken: 10.00
 output_cost_per_mtoken: 50.00
@@ -51,6 +51,10 @@ Safety routing: queries in cybersecurity and biology domains are automatically r
 **AA-Briefcase leadership.** Fable 5 leads the new AA-Briefcase multi-week agentic knowledge-work benchmark — a long-horizon evaluation with linked tasks, thousands of input files, and deliverables (spreadsheets, presentations, memos) graded on analytical quality and presentation [[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]. However, Fable 5 is one of the highest token users at ~139k output tokens per task — reinforcing the verbosity-as-cost-multiplier caveat for long-horizon agentic loops.
 
 > AA-Briefcase is a new frontier agentic evaluation measuring how well AI models perform realistic, long-horizon knowledge work across multi-week scenarios. Claude Fable 5 leads the benchmark and is one of the highest token users, averaging 139k output tokens per task.
+
+**Redeployed July 1, 2026 — export controls lifted June 30.** The US Commerce Department export controls on Fable 5 (and Mythos 5) were lifted June 30, 2026, and Fable 5 returned globally on July 1 across the Claude Platform, Claude.ai, Claude Code, and Claude Cowork — ending the June 12 global suspension [[redeploying-claude-fable-5-fdd9745e]]. Availability terms: for Pro, Max, Team and select Enterprise plans, Fable 5 is included for up to 50% of weekly usage limits through July 7, then reverts to usage credits at the unchanged $10/$50 per Mtoken list price [[redeploying-claude-fable-5-fdd9745e]]. With Fable 5 accessible again at AA Intelligence Index v4.1 = 60, it re-takes the publicly-accessible aggregate-intelligence #1 from Opus 4.8 (56). Anthropic's redeployment testing found the triggering vulnerability-identification jailbreak was not unique to Fable 5 — many less capable models identified the same vulnerabilities — and it is proposing an industry jailbreak-severity framework (narrow vs universal) with Amazon, Microsoft, Google and other Glasswing partners [[redeploying-claude-fable-5-fdd9745e]] [[more-details-on-fable-5-s-cyber-safeguards-and-our-jailbreak-framework-aaef033d]].
+
+> As of June 30, the export controls on Fable 5 and Mythos 5 have been lifted. Fable 5 will be available starting July 1 to users globally on the Claude Platform, Claude.ai, Claude Code, and Claude Cowork. [[redeploying-claude-fable-5-fdd9745e]]
 
 ## Open questions
 
