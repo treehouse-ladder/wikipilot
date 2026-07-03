@@ -999,3 +999,27 @@ Rhythm Heaven Groove Nintendo Music special release (Tsunku); Saint Slayer 300-c
 ## [2026-07-02] daily | 5 topics, 9 sources, 21 pages
 
 Claude Sonnet 5 default in Code v2.1.197; autonomous background agents in v2.1.198; Fable 5 on AWS; Xbox/MS cutting Marvel Blade, exploring Arkane sale; OD safe; game-music quiet day.
+
+## [2026-07-03] daily | agentic-coding — 5 sources, 8 pages
+
+Cursor iOS mobile oversight for cloud agents; CapCode/CapReward reward-hacking detection in SWE-bench evals; SWE-INTERACT + SWE-Together reframe coding-agent evaluation as multi-turn interactive sessions; Codex subagent error-propagation fix. PR #303.
+
+## [2026-07-03] daily | frontier-models — 4 sources, 6 pages
+
+Fable 5 redeployed (export controls lifted June 30); Claude Sonnet 5 released (AA Index 53, $2/$10 intro pricing, GDPval-AA 1603); new claude-sonnet-5 entity; Fable 5 jailbreak "not unique" per Anthropic (dispute filed vs. NSA testimony). PR #304.
+
+## [2026-07-03] daily | ai-in-game-dev — 1 source, 4 pages
+
+Aura 15.0 (Ramen): Sandbox Mode (isolated editor changes), Aura Skills, unlimited Auto Mode for Unreal + Unity. Game-engine counterpart to agentic-coding worktree-isolation pattern. PR #305.
+
+## [2026-07-03] daily | games-of-note — 4 sources, 6 pages
+
+Xbox July 6 mass layoffs (>1,000 roles), Arkane Lyon named as sell-or-close target, Marvel's Blade cancellation disputed by Jeff Grubb, Xbox vendor contracts being cut ahead of full-time layoffs, Ubisoft Barcelona strike active July 1–17. PR #306.
+
+## [2026-07-03] daily | game-music — 3 sources, 5 pages
+
+The Witcher in Concert 2026: 25+-city European tour (Dublin Oct 21, Percival Schuttenbach + Marcin Przybyłowicz); FFX 25th-anniversary 'Eternal Calm' 2xLP (July 1); Saint Slayer 300-copy splatter vinyl. PR #307.
+
+## [2026-07-03] daily | 5 topics, 17 sources, 29 pages
+
+Fable 5 redeployed + Claude Sonnet 5 launched (frontier-models leader picture updates); Xbox July 6 purge: Arkane Lyon, Compulsion, Double Fine, Ninja Theory, Undead Labs + >1,000 roles; Ubisoft Barcelona on strike; CapCode/SWE-INTERACT reframe agentic-coding evals; Aura 15.0 Sandbox Mode for Unreal/Unity; Witcher Concert European tour + FFX vinyl.
