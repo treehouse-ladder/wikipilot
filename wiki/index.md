@@ -774,6 +774,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[nintendo-music-special-release-update-adds-songs-from-the-new-rhythm-heaven-game-451f92b9]]
 - [[saint-slayer-spear-of-sacrilege-now-available-on-switch-vinyl-soundtrack-up-for-pre-order-b613194f]]
 - [[more-details-on-fable-5-s-cyber-safeguards-and-our-jailbreak-framework-aaef033d]]
+- [[report-xbox-considering-sale-or-closure-of-arkane-other-studios-as-layoffs-loom-d36a3eec]]
+- [[marvel-s-blade-isn-t-dead-despite-recent-rumblings-report-c3ad8896]]
+- [[contracts-are-already-being-cut-at-xbox-on-the-eve-of-mass-layoffs-82f58907]]
+- [[ubisoft-barcelona-strikes-over-proposed-layoffs-7587a471]]
 
 ## Reports
 
