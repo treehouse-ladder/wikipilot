@@ -9,7 +9,8 @@ sources:
   - "[[how-we-built-claude-code-auto-mode-a-safer-way-to-skip-permissions-d5f9dbd6]]"
   - "[[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]]"
   - "[[aura-15-0-releases-with-new-features-and-unlimited-usage-for-unreal-engine-and-unity-34445073]]"
-last_updated: 2026-07-03
+  - "[[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]"
+last_updated: 2026-07-04
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -39,6 +40,10 @@ The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-hum
 **Editor-side sandboxing in game development tooling.** Aura 15.0 (June 2026) extends the isolated-workspace pattern to game engine editors: its Sandbox Mode lets the agent make changes to Unreal Engine or Unity projects in an isolated environment without breaking the live project [[aura-15-0-releases-with-new-features-and-unlimited-usage-for-unreal-engine-and-unity-34445073]]. This is the editor-side analogue to the git-worktree-style change staging that repo-driving agent harnesses use for code projects — directly relevant to shipping AI edits into a live game project without corrupting it. The pattern is structurally similar to Cursor's cloud-VM-per-subagent isolation (full environment per agent task) and OpenHands' Docker-runtime sandboxing, but adapted to the game-editor domain where the blast radius includes not just code but also scene hierarchies, asset references, and build configuration.
 
 > Sandbox Mode allows the agent to make changes in an isolated environment without breaking the project. [[aura-15-0-releases-with-new-features-and-unlimited-usage-for-unreal-engine-and-unity-34445073]]
+
+**Cursor sandbox escape via LLM-controlled working directory (DuneSlide, CVE-2026-50548).** Cato Networks disclosed a zero-click prompt-injection exploit that escaped Cursor's terminal sandbox by abusing the `working_directory` parameter of the `run_terminal_cmd` tool [[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]. When the LLM set a non-default path via this optional parameter, Cursor added that path to the sandbox's allowed-write list without validation. An attacker could inject a prompt that steered the agent to set `working_directory` to a system path, then write over the `cursorsandbox` helper binary, converting sandboxed commands into unsandboxed RCE. Fixed in Cursor 3.0 (April 2026), but the exploit primitive generalizes: any LLM-controlled sandbox parameter (working directory, environment variables, mount points) is itself an injection sink if the sandbox trusts the agent's choice without validation. This is a concrete demonstration that sandboxing must treat every agent-supplied parameter as untrusted input.
+
+> CVE-2026-50548 abuses a setting where the sandbox permits writes into a command's working folder, and that folder is an optional parameter, working_directory, on Cursor's run_terminal_cmd tool. When the agent sets it to a non-default path, Cursor adds that path to the allowed-write list without question. [[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]
 
 ## Disputes
 
