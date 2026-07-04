@@ -1016,6 +1016,10 @@ Aura 15.0 (Ramen): Sandbox Mode (isolated editor changes), Aura Skills, unlimite
 
 Xbox July 6 mass layoffs (>1,000 roles), Arkane Lyon named as sell-or-close target, Marvel's Blade cancellation disputed by Jeff Grubb, Xbox vendor contracts being cut ahead of full-time layoffs, Ubisoft Barcelona strike active July 1–17. PR #306.
 
+## [2026-07-04] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#312 requeued (orphan-CLEAN): wiki(game-music): daily 2026-07-04 — auto-merge re-enabled via MCP (gh CLI unavailable).
+
 ## [2026-07-03] daily | game-music — 3 sources, 5 pages
 
 The Witcher in Concert 2026: 25+-city European tour (Dublin Oct 21, Percival Schuttenbach + Marcin Przybyłowicz); FFX 25th-anniversary 'Eternal Calm' 2xLP (July 1); Saint Slayer 300-copy splatter vinyl. PR #307.
