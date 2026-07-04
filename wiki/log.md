@@ -1023,3 +1023,7 @@ The Witcher in Concert 2026: 25+-city European tour (Dublin Oct 21, Percival Sch
 ## [2026-07-03] daily | 5 topics, 17 sources, 29 pages
 
 Fable 5 redeployed + Claude Sonnet 5 launched (frontier-models leader picture updates); Xbox July 6 purge: Arkane Lyon, Compulsion, Double Fine, Ninja Theory, Undead Labs + >1,000 roles; Ubisoft Barcelona on strike; CapCode/SWE-INTERACT reframe agentic-coding evals; Aura 15.0 Sandbox Mode for Unreal/Unity; Witcher Concert European tour + FFX vinyl.
+
+## [2026-07-04] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#312 (game-music daily 2026-07-04) requeued auto-merge (SQUASH); pr#310 and pr#311 were already merged by owner before dispatch landed.
