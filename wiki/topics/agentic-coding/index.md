@@ -188,7 +188,9 @@ sources:
   - "[[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]]"
   - "[[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]]"
   - "[[changelog-codex-openai-developers-afbd4293]]"
-last_updated: 2026-07-03
+  - "[[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]"
+  - "[[copilot-agent-session-streaming-is-now-in-public-preview-9f657521]]"
+last_updated: 2026-07-04
 last_verified: 2026-06-28
 freshness_window_days: 30
 ---
@@ -257,6 +259,16 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-04
+
+**Cursor terminal sandbox escaped via zero-click prompt injection (DuneSlide).** Cato Networks disclosed two CVSS 9.8 RCE vulnerabilities in Cursor's agent sandbox, CVE-2026-50548 and CVE-2026-50549 [[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]. Both are zero-click: a prompt injection hidden in content the agent reads (an MCP connector response or a web-search result) can escape Cursor's terminal sandbox with no user approval. The shared exploit primitive is getting the agent to write one file it shouldn't, then using that write to disable the sandbox. CVE-2026-50548 abuses the LLM-controlled optional `working_directory` parameter of the `run_terminal_cmd` tool — Cursor adds whatever path the agent sets to the allowed-write list without question — while CVE-2026-50549 abuses a symlink-canonicalization fallback; either lets the attacker overwrite the `cursorsandbox` binary and convert sandboxed commands into unsandboxed RCE. Both were fixed in Cursor 3.0 (Apr 2); every prior version is affected. This is a concrete demonstration that an LLM-controlled sandbox parameter (working directory) is itself an injection sink — relevant to any shell-using agentic harness that lets the model choose where commands run.
+
+> Both flaws use the same trick: get the agent to write one file it should not be allowed to write, then use that write to turn the sandbox off. CVE-2026-50548 abuses a setting where the sandbox permits writes into a command's working folder, and that folder is an optional parameter, working_directory, on Cursor's run_terminal_cmd tool.
+
+**GitHub Copilot ships agent session streaming (public preview).** Copilot now streams agent session activity — prompts, responses, and tool calls — to a customer's own event collector, SIEM, or Microsoft Purview via a streaming endpoint or REST API, across all Copilot clients [[copilot-agent-session-streaming-is-now-in-public-preview-9f657521]]. This is an enterprise observability/governance lever for agentic-coding fleets: tool-call-level auditability is the missing piece for teams that need to review what background/cloud coding agents actually did.
+
+> Copilot agent session streaming is now in public preview and gives you direct visibility into agent session activity (e.g., prompts, responses, and tool calls) so you can manage AI usage across your enterprise.
 
 ### Updates 2026-07-03
 
@@ -1465,6 +1477,7 @@ lint stays quiet until each page actually exists:
 - [ ] Codex now propagates terminal subagent errors to parents instead of masking them [[changelog-codex-openai-developers-afbd4293]] — do Claude Code dynamic-workflows and Cursor's nested-subagent SDK surface mid-fan-out subagent failures to the orchestrator, or can a silently-failed subagent corrupt the synthesis step in those runtimes too?
 - [ ] Do SWE-INTERACT [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]] and SWE-Together [[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]] agree on model rankings and on which models require the fewest corrective feedback turns?
 - [ ] Does CapReward's capped-training penalty [[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]] measurably reduce the reward-hacking rates observed on ultra-long-horizon and cross-suite corpora?
+- [ ] Do other shell-using coding agents (Claude Code, Codex, Aider) expose an LLM-controlled working-directory / cwd parameter that could be steered by prompt injection the way Cursor's run_terminal_cmd working_directory was in CVE-2026-50548? Is the working-directory-as-write-allowlist pattern unique to Cursor's pre-3.0 sandbox?
 
 ## See also
 
