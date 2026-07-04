@@ -591,6 +591,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[undertale-orchestral-tour-adds-four-more-uk-shows-d30629a0]]
 - [[world-of-warcraft-20-years-of-music-official-world-tour-2026-a12dae48]]
 - [[aura-15-0-releases-with-new-features-and-unlimited-usage-for-unreal-engine-and-unity-34445073]]
+- [[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]
+- [[copilot-agent-session-streaming-is-now-in-public-preview-9f657521]]
+- [[caves-of-qud-vinyl-soundtrack-now-available-to-pre-order-6f33c6a6]]
+- [[from-screen-to-stage-how-gaming-music-is-transformed-for-the-concert-hall-3cae643a]]
+- [[sony-ending-all-physical-playstation-game-discs-starting-in-2028-e3f5c0b9]]
+- [[we-re-one-step-closer-to-death-of-physical-games-analysts-say-547d5ac8]]
+- [[playstation-6-project-helix-will-almost-certainly-be-digital-only-launch-in-2028-analysts-say-6f1c335b]]
+- [[gta-6-reportedly-won-t-get-disc-copy-even-months-after-launch-eb46ee46]]
+- [[ex-xbox-workers-warn-of-potential-retaliation-in-rumored-layoffs-beb6ed0e]]
 
 ## Answers
 
@@ -823,3 +832,5 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-06-29]]
 - [[2026-06-30]]
 - [[2026-07-02]]
+- [[2026-07-03]]
+- [[2026-07-04]]

@@ -1023,3 +1023,27 @@ The Witcher in Concert 2026: 25+-city European tour (Dublin Oct 21, Percival Sch
 ## [2026-07-03] daily | 5 topics, 17 sources, 29 pages
 
 Fable 5 redeployed + Claude Sonnet 5 launched (frontier-models leader picture updates); Xbox July 6 purge: Arkane Lyon, Compulsion, Double Fine, Ninja Theory, Undead Labs + >1,000 roles; Ubisoft Barcelona on strike; CapCode/SWE-INTERACT reframe agentic-coding evals; Aura 15.0 Sandbox Mode for Unreal/Unity; Witcher Concert European tour + FFX vinyl.
+
+## [2026-07-04] daily | agentic-coding — 2 sources, 4 pages
+
+DuneSlide: CVE-2026-50548 + CVE-2026-50549 (CVSS 9.8), zero-click RCE via prompt injection in Cursor IDE terminal sandbox, patched in Cursor 3.0; Copilot agent session streaming (prompts, tool calls, responses) to SIEM/Purview now in public preview. PR #309.
+
+## [2026-07-04] daily | frontier-models — 0 sources, 1 page
+
+Quiet day. July 3 picture holds: Fable 5 (AA v4.1 = 60) leads publicly-accessible frontier; GLM-5.2 holds open-weights #1. PR #310.
+
+## [2026-07-04] daily | ai-in-game-dev — 0 sources, 1 page
+
+Quiet day. No new notable sources in scope. PR #311.
+
+## [2026-07-04] daily | game-music — 2 sources, 3 pages
+
+Caves of Qud 3LP vinyl pre-order (Stumpy Frog Records × Saint Vulture, 2+ hours atmospheric OST); Death Stranding composer Ludvig Forssell + Chad Seiter adapting ambient/synth score for orchestra. PR #312.
+
+## [2026-07-04] daily | games-of-note — 5 sources, 6 pages
+
+Physical media end-of-life crystallizes: Sony halts all PlayStation disc production from January 2028 (80% digital by 2025); PS6 + Xbox Project Helix projected digital-only at 2028 launch (analyst forecast); GTA 6 confirmed disc-free — not at launch, not months after; ex-Xbox workers warn of retaliation in July 6 layoffs (>1,000 roles). PRs #313 + #314 (summary regen).
+
+## [2026-07-04] daily | 5 topics, 9 sources, 15 pages
+
+Physical disc death crystallizes (Sony Jan 2028 halt; GTA 6 disc-free confirmed; PS6/Project Helix digital-only forecast). DuneSlide CVEs (CVSS 9.8) in Cursor IDE patched in Cursor 3.0; Copilot enterprise session streaming GA. Caves of Qud vinyl + Death Stranding concert arrangement (game-music). Frontier-models + ai-in-game-dev quiet.
