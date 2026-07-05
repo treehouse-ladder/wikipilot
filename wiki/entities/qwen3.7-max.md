@@ -2,7 +2,7 @@
 title: "Qwen3.7 Max"
 kind: entity
 sources: ["[[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[qwen3-7-plus-intelligence-performance-price-analysis-ce790755]]"]
-last_updated: "2026-06-27"
+last_updated: "2026-07-05"
 last_verified: "2026-05-26"
 freshness_window_days: 30
 input_cost_per_mtoken: 2.50
@@ -43,6 +43,7 @@ The sibling **Qwen3.7 Plus** multimodal variant (text/image/video input, text ou
 ## Disputes
 
 - This entity page's earlier description implied Qwen3.7 Max was an open-weights model, but [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]] confirms Qwen3.7 Max (and Qwen3.7 Plus) are closed-weights, API-only. Status: resolved-toward-B — Qwen3.7 Max is closed-weights.
+- [[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]] claims Qwen3.7 Max "scored 57 on the AA Intelligence Index at its May 19, 2026 release, becoming the current open-weights leader"; [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]] confirms Qwen3.7 Max is closed-weights, API-only, not open-weights. Status: unresolved (confidence: high; sweep: 2026-07-05) — the "open-weights leader" claim is factually incorrect; Qwen3.7 Max is a closed-weights model and therefore not a candidate for open-weights leadership.
 
 ## Open questions
 

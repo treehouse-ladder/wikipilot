@@ -2,7 +2,7 @@
 title: "GPT-5.5"
 kind: entity
 sources: ["[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[openai-api-pricing-fa525e16]]", "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[previewing-gpt-5-6-sol-a-next-generation-model-30f48121]]"]
-last_updated: 2026-06-29
+last_updated: 2026-07-05
 last_verified: 2026-06-18
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
@@ -55,6 +55,7 @@ OpenAI announced a successor flagship line, **GPT-5.6 (Sol / Terra / Luna)**, in
 - [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]] claims GPT-5.5 #1 on aggregate AA Intelligence Index, but [[claude-opus-47-everything-you-need-to-know-751c1827]] claims Claude Opus 4.7 leads GDPval-AA (the agentic/economic-value sub-benchmark) by 79 Elo points. Status: unresolved — top-of-leaderboard depends on whether you weight aggregate intelligence or agentic task performance.
 - [[introducing-gpt-55-dfe7e0c6]] claims GPT-5.5 was released "April 24, 2026"; [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]] claims "April 23, 2026". Status: unresolved — one-day discrepancy may reflect announcement vs. API availability dates. Confidence: high. Sweep: 2026-05-21.
 - [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]] claims GPT-5.5 (xhigh) is "#1 on the Artificial Analysis Intelligence Index at 60" and "#1 on GDPval-AA at 1769 Elo"; [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]] shows Claude Opus 4.8 (released May 28, 2026) now leads at AA Intelligence Index 61.4 and GDPval-AA 1890 Elo. Status: unresolved (confidence: high; sweep: 2026-05-31)
+- [[openais-gpt-55-is-the-new-leading-ai-model-097f1222]] claims GPT-5.5 (xhigh) is "#1 on the Artificial Analysis Intelligence Index at 60"; since GPT-5.5's April 23 release, Claude Fable 5 (June 9, 2026) leads at AA Index v4.1 = 60 and Claude Opus 4.8 (May 28) leads among publicly-available models at 56 on v4.1. GPT-5.5 (xhigh) scores 55 on v4.1 per [[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]. Status: unresolved (confidence: high; sweep: 2026-07-05) — GPT-5.5's #1 claim was true at its April launch but is now superseded by Fable 5 and Opus 4.8.
 
 ## Open questions
 

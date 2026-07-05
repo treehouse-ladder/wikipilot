@@ -1047,3 +1047,7 @@ Physical media end-of-life crystallizes: Sony halts all PlayStation disc product
 ## [2026-07-04] daily | 5 topics, 9 sources, 15 pages
 
 Physical disc death crystallizes (Sony Jan 2028 halt; GTA 6 disc-free confirmed; PS6/Project Helix digital-only forecast). DuneSlide CVEs (CVSS 9.8) in Cursor IDE patched in Cursor 3.0; Copilot enterprise session streaming GA. Caves of Qud vinyl + Death Stranding concert arrangement (game-music). Frontier-models + ai-in-game-dev quiet.
+
+## [2026-07-05] health | weekly sweep
+
+Weekly health sweep 2026-07-05. 19 candidate sets (18 source-triggered + 1 stale sweep), 5 scanner passes. 3 new disputes filed: Kimi K2.6 AA index version inconsistency (v4.0=54 vs v4.1=43); Qwen3.7 Max open-weights vs. closed-weights claim; GPT-5.5 score inconsistency (body claims 60 on v4.0, frontmatter records 55 on v4.1). Lint: 0 errors, 180 warnings. 10 stale synthesis pages. PR follows.
