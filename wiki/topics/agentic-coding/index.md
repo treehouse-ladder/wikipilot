@@ -190,7 +190,9 @@ sources:
   - "[[changelog-codex-openai-developers-afbd4293]]"
   - "[[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]"
   - "[[copilot-agent-session-streaming-is-now-in-public-preview-9f657521]]"
-last_updated: 2026-07-04
+  - "[[claude-code-v2-1-200-manual-permission-default-and-askuserquestion-no-auto-continue-f9a18706]]"
+  - "[[fable-s-judgement-e36be334]]"
+last_updated: 2026-07-05
 last_verified: 2026-06-28
 freshness_window_days: 30
 ---
@@ -259,6 +261,20 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-05
+
+**Claude Code flips its default permission mode to "Manual" (v2.1.200).** Anthropic changed the "default" permission mode to "Manual" across the CLI, `--help`, VS Code, and JetBrains, and made `AskUserQuestion` dialogs no longer auto-continue by default (idle-timeout is now opt-in via `/config`) [[claude-code-v2-1-200-manual-permission-default-and-askuserquestion-no-auto-continue-f9a18706]]. The same release cut `/code-review` token usage ~25% (five cleanup finders merged into one) and hardened background-session survival — long-running commands now survive process stop/restart/update, including on Windows, where background shells are handed off instead of being killed. The permission-default flip is a more conservative posture for the category's leading agentic CLI and sits in mild tension with the autonomy push tracked here (`enabling-claude-code-to-work-more-autonomously`, dynamic workflows): it raises the human-in-the-loop floor rather than lowering it, trading throughput for control.
+
+> Changed the "default" permission mode to "Manual" across the CLI, --help, VS Code, and JetBrains; --permission-mode manual and "defaultMode": "manual" are accepted alongside default. [[claude-code-v2-1-200-manual-permission-default-and-askuserquestion-no-auto-continue-f9a18706]]
+
+> Improved background session reliability: long-running commands and workflows now survive the session's process being stopped, restarted, or updated — including on Windows, where background shells are handed off instead of being killed. [[claude-code-v2-1-200-manual-permission-default-and-askuserquestion-no-auto-continue-f9a18706]]
+
+**Simon Willison formalizes a subagent model-override cost lever.** For coding tasks, Willison recommends dispatching implementation work to a *lower-power model running in a subagent* — Sonnet for substantive implementation, Haiku for trivial/mechanical edits — with a self-contained prompt, then reviewing the result back in the main loop before committing; judgment, review, and synthesis stay on the top-tier main-loop model [[fable-s-judgement-e36be334]]. This sharpens the parallel-subagent framing already on this page (where the dominant payoff was context preservation, not raw parallelism) with an explicit *cost* dimension: model-tier routing inside the fan-out, not just isolation. It is a workflow-level counterpart to the per-model efficiency levers (Opus 4.8 Fast Mode, Codex-Spark) already tracked under the cost frontier.
+
+> For all coding tasks use your judgement to decide an appropriate lower power model and run that in a subagent. [[fable-s-judgement-e36be334]]
+
+_Divergence: the model-override lever shifts load onto the main-loop review step, which prior findings here say scales poorly (post-flight verification is 60–70% of oversight effort); whether the token savings survive that added review burden on non-trivial tasks is filed as an open question below._
 
 ### Updates 2026-07-04
 
@@ -1329,6 +1345,8 @@ lint stays quiet until each page actually exists:
 
 ## Open questions
 
+- [ ] Does routing implementation to lower-power subagent models (Sonnet/Haiku per [[fable-s-judgement-e36be334]]) net-save cost once the added main-loop review/verification burden is counted, or does it just move effort from generation to the post-flight review that already scales poorly? Need published break-even data.
+- [ ] Does Claude Code's new "Manual" default permission mode (v2.1.200 [[claude-code-v2-1-200-manual-permission-default-and-askuserquestion-no-auto-continue-f9a18706]]) measurably reduce prompt-injection/sandbox-escape blast radius in practice, or does it mainly add friction that users disable — i.e., is the conservative default retained or overridden in real fleets?
 - [ ] What is the cache-invalidation behavior of multi-agent setups when one agent edits a file mid-run that another agent has cached? Cursor's worktree-per-agent design [[cursor-2-0-multi-agents-and-composer-changelog-4665f068]] avoids file-level conflicts but the prompt-cache implications across worktrees aren't documented in the changelog.
 - [ ] Does Claude Code Routines' "Anthropic-managed cloud infrastructure" [[automate-work-with-routines-claude-code-routines-docs-d09f612e]] use the same prompt-caching tier as interactive sessions, and if not, what does that imply for cost-per-routine-run vs cost-per-interactive-session?
 - [ ] Among the seven vendors documented to support subagents [[use-subagents-and-custom-agents-in-codex-simon-willison-march-2026-7be24bde]], do they share a common interchange format (e.g. is a Codex custom-agent TOML portable to Claude Code), or is the convergence purely in concept?
