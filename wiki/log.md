@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-06] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#319 requeued: wiki(ai-in-game-dev) daily 2026-07-06 was CLEAN with green CI but auto-merge not set; enabled squash auto-merge via MCP.
+
 ## [2026-06-30] manual | conflict-resolver — 0 rebased, 3 requeued, 0 lint-fixed, 0 failed
 
 pr#287 (ai-in-game-dev) requeued; pr#288 (game-music) requeued; pr#289 (agentic-coding) requeued (ci pending at dispatch time)
