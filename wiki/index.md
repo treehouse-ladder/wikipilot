@@ -790,6 +790,14 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[marvel-s-blade-isn-t-dead-despite-recent-rumblings-report-c3ad8896]]
 - [[contracts-are-already-being-cut-at-xbox-on-the-eve-of-mass-layoffs-82f58907]]
 - [[ubisoft-barcelona-strikes-over-proposed-layoffs-7587a471]]
+- [[xbox-to-lay-off-up-to-3-200-staffers-in-most-significant-restructure-in-company-history-257e9572]]
+- [[xbox-will-lay-off-3200-workers-and-cut-four-studios-loose-20e5ef59]]
+- [[largest-lay-off-event-in-gaming-duke-nukem-creator-shares-insight-into-xbox-demise-9abad5b9]]
+- [[io-interactive-facing-layoffs-as-it-cuts-ties-with-project-fantasy-partner-believed-to-be-xbox-830869aa]]
+- [[io-interactive-fantasy-ip-loses-external-partner-amid-xbox-cuts-e27f40c3]]
+- [[wuthering-waves-concert-tour-to-the-new-world-los-angeles-performance-tickets-are-now-available-4a16d8e9]]
+- [[preorders-open-for-rain-world-the-watcher-vinyl-soundtrack-9bcbdd96]]
+- [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]
 
 ## Reports
 
@@ -834,3 +842,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-02]]
 - [[2026-07-03]]
 - [[2026-07-04]]
+- [[2026-07-06]]
