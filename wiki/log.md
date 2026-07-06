@@ -1051,3 +1051,27 @@ Physical disc death crystallizes (Sony Jan 2028 halt; GTA 6 disc-free confirmed;
 ## [2026-07-05] health | weekly sweep
 
 Weekly health sweep 2026-07-05. 19 candidate sets (18 source-triggered + 1 stale sweep), 5 scanner passes. 3 new disputes filed: Kimi K2.6 AA index version inconsistency (v4.0=54 vs v4.1=43); Qwen3.7 Max open-weights vs. closed-weights claim; GPT-5.5 score inconsistency (body claims 60 on v4.0, frontmatter records 55 on v4.1). Lint: 0 errors, 180 warnings. 10 stale synthesis pages. PR follows.
+
+## [2026-07-06] daily | games-of-note — 5 sources, 6 pages
+
+Xbox 3,200 layoffs officially confirmed (largest single layoff in gaming per George Broussard). Studio fates: Ninja Theory + Undead Labs sold; Compulsion + Double Fine returned as independents; Arkane Lyon in Works Council consultation. IO Interactive loses Xbox as Project Fantasy partner despite 007 First Light's 3M-copy launch. PR #318.
+
+## [2026-07-06] daily | ai-in-game-dev — 0 sources, 1 page
+
+Quiet day. No new in-scope sources met the quality bar. Current-state picture unchanged. PR #319.
+
+## [2026-07-06] daily | game-music — 2 sources, 3 pages
+
+Wuthering Waves Concert Tour: To the New World to Peacock Theater, LA, Oct 17, 2026 (first North American stop; all prior legs sold out). Rain World: The Watcher 54-track 2LP Pearl Dawn vinyl via Black Screen Records, 39 euro, July 2026. PR #320.
+
+## [2026-07-06] daily | agentic-coding — 1 source, 3 pages
+
+"Code Isn't Memory" (arXiv 2606.22417, SuperAGI Research): structural codebase index yields statistically-separated resolve-rate gain at no cost penalty (lower $/solve than agentic grep), creating direct tension with ContextBench's Bitter Lesson framing. 1 dispute filed; 2 open questions. PR #321.
+
+## [2026-07-06] daily | frontier-models — 0 sources, 1 page
+
+Quiet day. No new notable sources met the quality bar. July 3 leader picture holds: Fable 5 (AA v4.1 = 60) leads; GLM-5.2 (51) holds open-weights #1. 2 open questions filed: Sakana Fugu Ultra SWE-bench Pro claim; White House voluntary frontier-model-release standards. PR #322.
+
+## [2026-07-06] daily | 5 topics, 8 sources, 14 pages
+
+Xbox 3,200 layoffs confirmed — studio fates clearer (sales/independence, not closures for most). "Code Isn't Memory" — structural codebase index beats agentic grep at no cost penalty. Wuthering Waves NA concert + Rain World vinyl. Frontier-models + ai-in-game-dev quiet.
