@@ -31,7 +31,8 @@ sources:
   - "[[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]]"
   - "[[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]]"
   - "[[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]]"
-last_updated: 2026-07-03
+  - "[[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]"
+last_updated: 2026-07-06
 last_verified: 2026-06-11
 freshness_window_days: 30
 ---
@@ -65,6 +66,10 @@ This dovetails with [[towards-direct-evaluation-of-harness-optimizers-via-priori
 **The "Bitter Lesson" of coding agents: marginal scaffolding gains on retrieval (2026-06-29).** ContextBench introduces a process-oriented context-retrieval evaluation measuring recall, precision, and efficiency across agent trajectories [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]. Tested across four frontier LLMs and five coding agents on 1,136 issue-resolution tasks, the headline finding is a "Bitter Lesson": sophisticated agent scaffolding yields only marginal gains in context retrieval, and LLMs consistently favor recall over precision. This is process-level evidence on the model-vs-harness debate that lands on the model-dominates side for the retrieval sub-task specifically, complementing the Binding Constraint Thesis's end-to-end finding. The scaffolding gain may surface at the downstream repair stage rather than retrieval, suggesting harness engineering impact is task-phase-dependent.
 
 > Results show that sophisticated agent scaffolding yields only marginal gains in context retrieval (The Bitter Lesson of coding agents), and LLMs consistently favor recall over precision. [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]]
+
+**A structural codebase index gives measurable retrieval gains at no cost penalty (2026-07-06).** A leak-audited within-harness ablation on SWE-PolyBench Verified and SWE-bench Pro finds that adding a structural codebase index to a coding-agent harness produces a large localization gain and a statistically separated resolve gain with no cost penalty per cell and lower cost per solve than agentic grep [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]. The deployment question is not cost but workload: the index pays off specifically when tasks involve multi-file changes where structural ranking helps. This is a concrete, configuration-controlled result on the retrieval sub-task that lands on the scaffolding-can-help side, in direct tension with ContextBench's "Bitter Lesson" — possibly reconciled if the structural-index gain is concentrated in the multi-file-change regime ContextBench's process-oriented retrieval eval does not isolate.
+
+> The within-harness ablation produced a large localization gain and a statistically separated resolve gain, with no cost penalty per cell and lower cost per solve. [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]
 
 ## Harness adaptation without retraining
 

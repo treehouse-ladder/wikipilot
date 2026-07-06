@@ -190,7 +190,8 @@ sources:
   - "[[changelog-codex-openai-developers-afbd4293]]"
   - "[[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]"
   - "[[copilot-agent-session-streaming-is-now-in-public-preview-9f657521]]"
-last_updated: 2026-07-04
+  - "[[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]"
+last_updated: 2026-07-06
 last_verified: 2026-06-28
 freshness_window_days: 30
 ---
@@ -259,6 +260,16 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-06
+
+Quiet day: no new agentic-IDE/CLI vendor releases surfaced (Anthropic/Codex/Cursor/Simon Willison blog queries were intermittently unavailable, and the arXiv sweep returned mostly June benchmarks already tracked here). One notable, not-yet-ingested research pickup is filed below.
+
+**A structural codebase index gives a real resolve gain at no cost penalty — a quantified counterpoint to ContextBench's "Bitter Lesson."** "Code Isn't Memory" (arXiv 2606.22417, SuperAGI Research) runs a leak-audited within-harness ablation — three arms (harness+index, harness-without-index, agentic-grep comparator) on SWE-PolyBench Verified and SWE-bench Pro with Claude Opus 4.7 held fixed across three seeds inside a per-task sandbox — and reports that adding a structural codebase index produces a large localization gain and a *statistically separated* resolve gain with no cost penalty, landing at a lower $/solve than agentic grep [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]. The authors frame the deployment decision not as a cost question but as a workload question: the index pays off specifically when tasks involve multi-file changes where structural ranking helps. This is a concrete, configuration-controlled result on the retrieval sub-task that lands on the *scaffolding-can-help* side, in direct tension with the process-oriented ContextBench finding already tracked here that "sophisticated agent scaffolding yields only marginal gains in context retrieval" [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]] — the two are reconcilable if the structural-index gain is concentrated in the multi-file regime ContextBench does not isolate. Filed as a dispute and an open question below.
+
+> The within-harness ablation produced a large localization gain and a statistically separated resolve gain, with no cost penalty per cell and lower cost per solve. [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]
+
+> The deployment question for a structural codebase index is not whether it is too expensive to run (across seeds, the index lands at a lower $/solved than agentic grep) but whether the workload includes multi-file changes where structural ranking pays off. [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]
 
 ### Updates 2026-07-04
 
@@ -1326,6 +1337,7 @@ lint stays quiet until each page actually exists:
 - [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]] finds, across four frontier LLMs and five coding agents on a process-oriented context-retrieval eval, that sophisticated agent scaffolding yields only marginal gains in context retrieval (a "Bitter Lesson") and LLMs favor recall over precision; [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]] argues the harness is now a stronger determinant of agent performance than the model. The two disagree on whether harness/scaffolding sophistication materially moves the retrieval sub-task, with ContextBench landing on the model-dominates side (consistent with [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]]). Status: unresolved — ContextBench measures the retrieval sub-task specifically, not end-to-end resolution, so the scaffolding gain may surface at the repair stage rather than retrieval.
 - [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]] and [[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]] find that strong single-turn SWE performance does not reliably transfer to multi-turn, user-driven interactive sessions; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents single-turn autonomous test-patch resolve rate as the human-filtered gold standard for coding-agent capability. Status: unresolved — same overestimation direction as FeatureBench/SWE-EVO but on an interactive-collaboration axis rather than autonomous resolution.
 - [[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]] claims a capped-randomized-test dataset design (CapCode) yields a reliable, scalable cheating detector; [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]] argues no single reward signal is both reliable and scalable across modern benchmark difficulty. Status: unresolved.
+- [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]] finds a structural codebase index produces a large localization gain and a statistically separated resolve gain at no cost penalty (lower $/solve than agentic grep) within a fixed harness and fixed base model (Claude Opus 4.7) on SWE-PolyBench Verified and SWE-bench Pro; [[contextbench-a-benchmark-for-context-retrieval-in-coding-agents-ae658e81]] finds across four frontier LLMs and five coding agents that sophisticated agent scaffolding yields only marginal gains in context retrieval ("The Bitter Lesson of coding agents"). Status: unresolved — possibly reconciled by the structural-index gain being concentrated in the multi-file-change regime ContextBench's process-oriented retrieval eval does not isolate.
 
 ## Open questions
 
@@ -1478,6 +1490,8 @@ lint stays quiet until each page actually exists:
 - [ ] Do SWE-INTERACT [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]] and SWE-Together [[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]] agree on model rankings and on which models require the fewest corrective feedback turns?
 - [ ] Does CapReward's capped-training penalty [[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]] measurably reduce the reward-hacking rates observed on ultra-long-horizon and cross-suite corpora?
 - [ ] Do other shell-using coding agents (Claude Code, Codex, Aider) expose an LLM-controlled working-directory / cwd parameter that could be steered by prompt injection the way Cursor's run_terminal_cmd working_directory was in CVE-2026-50548? Is the working-directory-as-write-allowlist pattern unique to Cursor's pre-3.0 sandbox?
+- [ ] Does the structural-codebase-index resolve gain in [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]] hold once the base model is varied (it is measured only with Claude Opus 4.7 held fixed), given [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] finds the base LLM is the primary driver of outcome?
+- [ ] The index in [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]] is claimed to pay off specifically on multi-file changes — does its localization/resolve advantage vanish or invert on the single-file-localization tasks where text-only explorers are 'already strong' ([[swe-explore-benchmarking-how-coding-agents-explore-repositories-a0f69e17]]), and is the multi-file condition the boundary that reconciles it with ContextBench's Bitter Lesson?
 
 ## See also
 
