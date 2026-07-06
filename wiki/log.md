@@ -1051,3 +1051,7 @@ Physical disc death crystallizes (Sony Jan 2028 halt; GTA 6 disc-free confirmed;
 ## [2026-07-05] health | weekly sweep
 
 Weekly health sweep 2026-07-05. 19 candidate sets (18 source-triggered + 1 stale sweep), 5 scanner passes. 3 new disputes filed: Kimi K2.6 AA index version inconsistency (v4.0=54 vs v4.1=43); Qwen3.7 Max open-weights vs. closed-weights claim; GPT-5.5 score inconsistency (body claims 60 on v4.0, frontmatter records 55 on v4.1). Lint: 0 errors, 180 warnings. 10 stale synthesis pages. PR follows.
+
+## [2026-07-06] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#321 requeued (claude/daily-2026-07-06/agentic-coding): CLEAN + CI green, auto-merge re-enabled via squash
