@@ -1079,3 +1079,27 @@ Quiet day. No new notable sources met the quality bar. July 3 leader picture hol
 ## [2026-07-06] daily | 5 topics, 8 sources, 14 pages
 
 Xbox 3,200 layoffs confirmed — studio fates clearer (sales/independence, not closures for most). "Code Isn't Memory" — structural codebase index beats agentic grep at no cost penalty. Wuthering Waves NA concert + Rain World vinyl. Frontier-models + ai-in-game-dev quiet.
+
+## [2026-07-07] daily | frontier-models — 0 sources, 1 page
+
+Quiet day. No new sources met the quality bar. July 6 leader picture holds: Fable 5 (AA v4.1 = 60) leads; GLM-5.2 (51) holds open-weights #1. PR #324.
+
+## [2026-07-07] daily | agentic-coding — 2 sources, 4 pages
+
+"Better Models: Worse Tools" (Simon Willison / Armin Ronacher): newer Anthropic models regress on third-party edit-tool schemas, theorized as RL co-adaptation to Claude Code's native tools. sqlite-utils 4.0rc2 cost data point: ~$149.25 via Claude Fable 5, five release blockers surfaced. 1 dispute filed; 2 open questions. PR #325.
+
+## [2026-07-07] daily | ai-in-game-dev — 1 source, 1 page
+
+NVIDIA developer Q&A: first detailed engineering breakdown of PUBG Ally's CPC pipeline (on-device ASR + 2B-parameter SLM + TTS, behavior-tree for fast actions, structured cross-session memory). 2 open questions. PR #326.
+
+## [2026-07-07] daily | game-music — 1 source, 1 page
+
+Frostpunk 2 Full Original Soundtrack 2xLP announced: Black Screen Records + 11 bit studios, gold and black vinyl, gold embossed gatefold, shipping July 2026. First complete LP release of Piotr Musial's TGA 2024 Best Strategy/Sim Game score. PR #327.
+
+## [2026-07-07] daily | games-of-note — 6 sources, 7 pages
+
+Xbox Reset studio-level figures confirmed: id Software lost 95 jobs, Bethesda Game Studios 35, ZeniMax Online (ESO) ~50%, Obsidian ~60–70 (~¼ staff). Ninja Theory + Undead Labs sold to undisclosed buyers; Senua's Saga and State of Decay 3 committed. Arkane co-founder Colantonio publicly floats buyout interest. 2 disputes filed; 4 open questions. PR #328.
+
+## [2026-07-07] daily | 5 topics, 10 sources, 14 pages
+
+Xbox Reset studio-level confirmed: id Software 95, Bethesda 35, ESO ~50%, Obsidian ~60–70. Ninja Theory + Undead Labs sold (mystery buyers). RL co-adaptation regression in third-party tools. PUBG Ally engineering pipeline detail. Frostpunk 2 vinyl. Frontier-models quiet.
