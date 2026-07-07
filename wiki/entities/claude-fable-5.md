@@ -1,8 +1,8 @@
 ---
 title: "Claude Fable 5"
 kind: entity
-sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]", "[[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]", "[[redeploying-claude-fable-5-fdd9745e]]", "[[commerce-department-gives-green-light-for-anthropic-to-bring-back-fable-5-e657d00f]]", "[[more-details-on-fable-5-s-cyber-safeguards-and-our-jailbreak-framework-aaef033d]]"]
-last_updated: 2026-07-03
+sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]", "[[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]", "[[redeploying-claude-fable-5-fdd9745e]]", "[[commerce-department-gives-green-light-for-anthropic-to-bring-back-fable-5-e657d00f]]", "[[more-details-on-fable-5-s-cyber-safeguards-and-our-jailbreak-framework-aaef033d]]", "[[sqlite-utils-4-0rc2-mostly-written-by-claude-fable-for-about-149-25-e673d7b5]]"]
+last_updated: 2026-07-07
 last_verified: 2026-07-03
 freshness_window_days: 30
 input_cost_per_mtoken: 10.00
@@ -56,12 +56,17 @@ Safety routing: queries in cybersecurity and biology domains are automatically r
 
 > As of June 30, the export controls on Fable 5 and Mythos 5 have been lifted. Fable 5 will be available starting July 1 to users globally on the Claude Platform, Claude.ai, Claude Code, and Claude Cowork. [[redeploying-claude-fable-5-fdd9745e]]
 
+**Real-world agentic-coding cost data point (July 2026): ~$149.25 to mostly-write sqlite-utils 4.0rc2, surfacing five release blockers.** Simon Willison used Claude Fable 5 to drive sqlite-utils toward its 4.0 stable release, with the model authoring most of the 4.0rc2 work for about $149.25 and flagging five significant problems he had not spotted himself, categorized as release blockers [[sqlite-utils-4-0rc2-mostly-written-by-claude-fable-for-about-149-25-e673d7b5]]. This is a disclosed-cost, single-maintainer field data point on the cost/quality tradeoff for a real open-source library release — framing Fable 5's value as verification and review (finding blockers a human missed) as much as raw code generation.
+
+> Fable identified some significant problems I hadn't spotted myself — five that it categorized as release blockers. [[sqlite-utils-4-0rc2-mostly-written-by-claude-fable-for-about-149-25-e673d7b5]]
+
 ## Open questions
 
 - [ ] What is Fable 5's score on CyberGym and ARC-AGI-2 given the cyber/bio routing to Opus 4.8 — are those benchmarks even runnable on the public Fable 5 endpoint?
 - [ ] Is the AA Intelligence Index score 64.9 (article text) or 65 (model card)? Reconciliation needed for the comparison page.
 - [x] Will Fable 5 return to general availability, and on what timeline? Anthropic says it is 'working to restore access' but provides no timeline [[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]. **Resolved 2026-07-01:** Export controls fully lifted; Fable 5 restored globally on July 1 [[redeploying-claude-fable-5-fdd9745e]].
 - [ ] Does the new safety classifier's Opus 4.8 fallback affect Fable 5's published benchmark scores (AA Intelligence Index, GDPval-AA, SWE-bench Pro) — are those scores from the pre-classifier version or the now-live routed version? [[redeploying-claude-fable-5-fdd9745e]]
+- [ ] At $149.25 for a single maintainer's RC work [[sqlite-utils-4-0rc2-mostly-written-by-claude-fable-for-about-149-25-e673d7b5]], what is the cost per merged PR or per release for a solo open-source maintainer using Fable 5 at the $10/$50 per Mtoken list price — and how does that compare with Opus 4.8 ($5/$25) for the same quality of output on similarly-scoped tasks?
 
 ## See also
 
