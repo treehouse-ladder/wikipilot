@@ -798,6 +798,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[wuthering-waves-concert-tour-to-the-new-world-los-angeles-performance-tickets-are-now-available-4a16d8e9]]
 - [[preorders-open-for-rain-world-the-watcher-vinyl-soundtrack-9bcbdd96]]
 - [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]
+- [[better-models-worse-tools-df80d6a1]]
+- [[sqlite-utils-4-0rc2-mostly-written-by-claude-fable-for-about-149-25-e673d7b5]]
+- [[q-a-how-krafton-built-pubg-ally-a-co-playable-character-powered-by-nvidia-ace-4eb073e7]]
+- [[frostpunk-2-full-original-soundtrack-2xlp-9f17a322]]
+- [[xbox-layoffs-hit-id-software-and-zenimax-as-focus-shifts-to-bigger-franchises-01022887]]
+- [[report-obsidian-losing-around-1-4-of-its-staff-in-xbox-reset-4ed90369]]
+- [[the-elder-scrolls-online-team-seemingly-gutted-by-xbox-layoffs-83154866]]
+- [[no-announced-xbox-games-are-getting-axed-in-microsoft-layoffs-company-says-bde5adba]]
+- [[state-of-decay-and-hellblade-devs-are-being-sold-but-buyers-remain-mysterious-for-now-4af5ee43]]
+- [[founder-asks-how-much-as-xbox-looks-to-cut-arkane-loose-c8f45a2c]]
 
 ## Reports
 
@@ -843,3 +853,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-03]]
 - [[2026-07-04]]
 - [[2026-07-06]]
+- [[2026-07-07]]
