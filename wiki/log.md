@@ -1075,3 +1075,7 @@ Quiet day. No new notable sources met the quality bar. July 3 leader picture hol
 ## [2026-07-06] daily | 5 topics, 8 sources, 14 pages
 
 Xbox 3,200 layoffs confirmed — studio fates clearer (sales/independence, not closures for most). "Code Isn't Memory" — structural codebase index beats agentic grep at no cost penalty. Wuthering Waves NA concert + Rain World vinyl. Frontier-models + ai-in-game-dev quiet.
+
+## [2026-07-07] manual | conflict-resolver — 2 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#326 (ai-in-game-dev) and pr#327 (game-music) rebased onto main after PR #325 (agentic-coding) merged; both force-pushed and auto-merge queued. Conflict in each: frontmatter sources union + last_updated bump; ## Recent updates 2026-07-07 entry inserted at top (newest-first).
