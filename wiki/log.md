@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-07] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#328 kind=rebase resolved=true sha=cdd3b0e — rebased claude/daily-2026-07-07/games-of-note onto main; resolved 4 conflicts in wiki/topics/games-of-note/index.md (frontmatter merge, Summary paragraphs, Labor/genAI section superset from HEAD, Recent Updates append-at-top with 2026-07-07 first); force-pushed and re-queued auto-merge.
+
 ## [2026-06-30] manual | conflict-resolver — 0 rebased, 3 requeued, 0 lint-fixed, 0 failed
 
 pr#287 (ai-in-game-dev) requeued; pr#288 (game-music) requeued; pr#289 (agentic-coding) requeued (ci pending at dispatch time)
