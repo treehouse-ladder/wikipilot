@@ -2,8 +2,8 @@
 title: "Claude Fable 5"
 kind: entity
 sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]", "[[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]", "[[redeploying-claude-fable-5-fdd9745e]]", "[[commerce-department-gives-green-light-for-anthropic-to-bring-back-fable-5-e657d00f]]", "[[more-details-on-fable-5-s-cyber-safeguards-and-our-jailbreak-framework-aaef033d]]", "[[sqlite-utils-4-0rc2-mostly-written-by-claude-fable-for-about-149-25-e673d7b5]]"]
-last_updated: 2026-07-07
-last_verified: 2026-07-03
+last_updated: 2026-07-08
+last_verified: 2026-07-08
 freshness_window_days: 30
 input_cost_per_mtoken: 10.00
 output_cost_per_mtoken: 50.00
@@ -59,6 +59,10 @@ Safety routing: queries in cybersecurity and biology domains are automatically r
 **Real-world agentic-coding cost data point (July 2026): ~$149.25 to mostly-write sqlite-utils 4.0rc2, surfacing five release blockers.** Simon Willison used Claude Fable 5 to drive sqlite-utils toward its 4.0 stable release, with the model authoring most of the 4.0rc2 work for about $149.25 and flagging five significant problems he had not spotted himself, categorized as release blockers [[sqlite-utils-4-0rc2-mostly-written-by-claude-fable-for-about-149-25-e673d7b5]]. This is a disclosed-cost, single-maintainer field data point on the cost/quality tradeoff for a real open-source library release — framing Fable 5's value as verification and review (finding blockers a human missed) as much as raw code generation.
 
 > Fable identified some significant problems I hadn't spotted myself — five that it categorized as release blockers. [[sqlite-utils-4-0rc2-mostly-written-by-claude-fable-for-about-149-25-e673d7b5]]
+
+> Claude Opus 4.8 (max, 56) is the most intelligent available model according to the Artificial Analysis Intelligence Index v4.1. Claude Fable 5 (with fallback) leads at 60 but is currently unavailable; GPT-5.5 (xhigh) scores 55. [[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]
+
+> GDPval-AA v2 is the highest weighted evaluation in the Intelligence Index v4.1. Claude Opus 4.8 scored 1638 on GDPval-AA v2, the highest among available models (Claude Fable 5 with fallback scored 1818 but is currently unavailable; GPT-5.5 xhigh scored 1531). [[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]
 
 ## Open questions
 
