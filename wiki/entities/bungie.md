@@ -2,9 +2,9 @@
 title: "Bungie"
 kind: entity
 aliases: []
-sources: ["[[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]", "[[marathon-review-incredible-highs-painful-lows-4d8a2d55]]", "[[sony-records-766-million-impairment-loss-against-bungie-in-2025-e8b6b853]]", "[[bungie-reportedly-plans-significant-layoffs-as-no-destiny-3-greenlit-3c028ea3]]", "[[destiny-2-s-active-development-will-end-in-june-30b55a1f]]", "[[bungie-officially-ends-active-development-for-destiny-2-with-the-release-of-a-final-content-update-on-june-9-2026-5982e288]]", "[[xbox-in-talks-to-close-double-fine-and-ninja-theory-which-just-revealed-its-new-game-80f033c4]]", "[[sony-lays-off-most-of-the-destiny-team-and-some-marathon-devs-ce93e0a4]]"]
-last_updated: 2026-06-27
-last_verified: 2026-06-05
+sources: ["[[bungie-plans-layoffs-after-ending-destiny-2-development-40fe16c3]]", "[[marathon-review-incredible-highs-painful-lows-4d8a2d55]]", "[[sony-records-766-million-impairment-loss-against-bungie-in-2025-e8b6b853]]", "[[bungie-reportedly-plans-significant-layoffs-as-no-destiny-3-greenlit-3c028ea3]]", "[[destiny-2-s-active-development-will-end-in-june-30b55a1f]]", "[[bungie-officially-ends-active-development-for-destiny-2-with-the-release-of-a-final-content-update-on-june-9-2026-5982e288]]", "[[xbox-in-talks-to-close-double-fine-and-ninja-theory-which-just-revealed-its-new-game-80f033c4]]", "[[sony-lays-off-most-of-the-destiny-team-and-some-marathon-devs-ce93e0a4]]", "[[xbox-spins-off-compulsion-games-double-fine-productions-undead-labs-and-ninja-theory-while-blade-maker-arkane-reviews-potential-strategic-options-a6f44600]]", "[[xbox-to-cut-20-of-workforce-plans-to-divest-of-five-studios-df966a4a]]"]
+last_updated: 2026-07-08
+last_verified: 2026-07-08
 freshness_window_days: 60
 ---
 
@@ -30,9 +30,11 @@ Destiny 2's active development ended June 9, 2026 with a final content update ti
 
 > Sony says Marathon remains an important part of its portfolio and that it will continue to support the team.
 
-**Platform-holder studio retrenchment pattern (2026).** Bungie's cycle (acquisition → underperformance → writedown → layoff waves → franchise shutdown) echoes the broader platform-holder studio contraction visible across both Sony and Microsoft in mid-2026. Xbox simultaneously faces negotiations with Double Fine, Compulsion Games, and Ninja Theory to spin off those studios from Xbox Game Studios — structurally unusual for first-party acquisitions since 2018, when the industry norm has been absorption rather than partial divestiture [[xbox-in-talks-to-close-double-fine-and-ninja-theory-which-just-revealed-its-new-game-80f033c4]]. The Bungie and Xbox trajectories both reflect platform holders under financial pressure unwinding their acquisition sprees.
+**Platform-holder studio retrenchment pattern (2026).** Bungie's cycle (acquisition → underperformance → writedown → layoff waves → franchise shutdown) echoes the broader platform-holder studio contraction visible across both Sony and Microsoft in mid-2026. Xbox's July 6 announcement confirmed the outcomes of those negotiations: **Double Fine and Compulsion Games return to independence retaining all IP plus Microsoft runway funding**; **Ninja Theory and Undead Labs have signed contracts to join new ownership** (buyers to be revealed later in 2026), with funding committed to complete Senua and State of Decay 3; and **Arkane Lyon entered Works Council consultation** reviewing potential strategic options for Marvel's Blade (delayed to late 2027) [[xbox-spins-off-compulsion-games-double-fine-productions-undead-labs-and-ninja-theory-while-blade-maker-arkane-reviews-potential-strategic-options-a6f44600]] [[xbox-to-cut-20-of-workforce-plans-to-divest-of-five-studios-df966a4a]]. The spin-off and sale model is structurally unusual for first-party acquisitions since 2018, when the industry norm has been absorption rather than partial divestiture. The Bungie and Xbox trajectories both reflect platform holders under financial pressure unwinding their acquisition sprees.
 
-> Three Xbox studios—Double Fine, Compulsion Games, and Ninja Theory—are currently in danger of closure, with Ninja Theory's situation being notable since the company just revealed a new game for release next year. Bloomberg reports that Compulsion, Double Fine, Ninja Theory, and several other studios have started negotiations with Microsoft to spin off their companies from Xbox Studios and avert full studio closures.
+> Ninja Theory and Undead Labs have signed contracts to 'join new ownership,' and both studios will receive funding to complete and 'grow' their respective in-development games, Senua and State of Decay 3. Microsoft isn't revealing what companies have purchased the studios yet. [[xbox-spins-off-compulsion-games-double-fine-productions-undead-labs-and-ninja-theory-while-blade-maker-arkane-reviews-potential-strategic-options-a6f44600]]
+
+> Xbox CEO Asha Sharma stated that the business today is 'not healthy' and that Xbox is operating at margins three to 10 times lower than comparable businesses. [[xbox-to-cut-20-of-workforce-plans-to-divest-of-five-studios-df966a4a]]
 
 ## Open questions
 
