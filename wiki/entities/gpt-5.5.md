@@ -2,8 +2,8 @@
 title: "GPT-5.5"
 kind: entity
 sources: ["[[introducing-gpt-55-dfe7e0c6]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[openai-api-pricing-fa525e16]]", "[[gdpval-aa-leaderboard-artificial-analysis-5d24e844]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[previewing-gpt-5-6-sol-a-next-generation-model-30f48121]]"]
-last_updated: 2026-07-05
-last_verified: 2026-06-18
+last_updated: 2026-07-08
+last_verified: 2026-07-08
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
 output_cost_per_mtoken: 30.00
