@@ -11,7 +11,9 @@ sources:
   - "[[claude-code-releases-v2-1-197-sonnet-5-default-and-v2-1-198-autonomous-background-agents-july-2026-867f64ca]]"
   - "[[build-from-anywhere-with-cursor-for-ios-097d5a19]]"
   - "[[changelog-codex-openai-developers-afbd4293]]"
-last_updated: 2026-07-03
+  - "[[fable-s-judgement-e36be334]]"
+  - "[[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]]"
+last_updated: 2026-07-08
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
@@ -51,6 +53,10 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 **Codex closes a silent subagent-failure hole (July 2026).** OpenAI's Codex changelog reports that parent agents now receive terminal subagent errors instead of seeing failed subagent work as an empty successful completion [[changelog-codex-openai-developers-afbd4293]]. This reliability fix is directly relevant to parallel-subagent orchestration harnesses where a masked subagent failure would corrupt the parent's synthesis step — the merge-step cost tax that Parallel-Synthesis targets is worse when the parent merges empty/failed output without knowing it failed.
 
 > Parent agents now receive terminal subagent errors instead of seeing failed work as an empty successful completion. [[changelog-codex-openai-developers-afbd4293]]
+
+**Per-task model downgrade as a default subagent operating pattern (Simon Willison, July 2026).** Willison escalates the subagent model-routing lever from a manual per-call choice into a standing instruction: "For all coding tasks use your judgement to decide an appropriate lower power model and run that in a subagent" — the agent itself picks the tier (Sonnet for substantive implementation, Haiku for trivial/mechanical edits), runs the implementation in a subagent with a self-contained prompt, and returns to the top-tier main loop for review before committing [[fable-s-judgement-e36be334]]. He reports a concrete cost outcome (throughput up, Fable allowance depleting more slowly). The open caveat is that [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] finds the base LLM is the primary driver of outcome, so a self-selected cheaper implementation model may trade more resolve-rate than the token savings suggest — the value depends on the main-loop review step actually catching the resulting regressions.
+
+> For all coding tasks use your judgement to decide an appropriate lower power model and run that in a subagent. [[fable-s-judgement-e36be334]]
 
 ## Disputes
 
