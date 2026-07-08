@@ -1,8 +1,8 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: []
-last_updated: 2026-07-07
+sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]"]
+last_updated: 2026-07-08
 last_verified: 2026-06-30
 freshness_window_days: 60
 ---
@@ -69,6 +69,14 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 Open caveats and unresolved contradictions are tracked in `## Disputes` and `## Open questions` below.
 
 ## Recent updates
+
+### Updates 2026-07-08
+
+**Square Enix shares soundtrack samples from FINAL FANTASY RESONANCE — Elements Garden (Noriyasu Agematsu) scores the HD-2D Brave Exvius revival with 33 new tracks.** Ahead of the game's October 22, 2026 launch, Square Enix released multiple soundtrack samples for *FINAL FANTASY RESONANCE*, confirming the BGM is composed and arranged by **Elements Garden**, led by **Noriyasu Agematsu** [[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]. Beyond music carried over from the mobile gacha title *FINAL FANTASY Brave EXVIUS*, 33 tracks were newly recorded for Resonance, and the special collector's edition bundles a comprehensive soundtrack CD album of 120 tracks [[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]. This adds Elements Garden — the Agematsu-led collective best known for anime and mobile-game scoring — as a new composer entity in this topic's news cycle, and continues the strand of Square Enix leveraging its back-catalog (here Brave Exvius) while commissioning a substantial block of fresh material for a franchise-adjacent release. It is a reveal of samples plus a physical-media OST bundle rather than a reviewed release; no standalone or vinyl edition has been announced beyond the collector's-edition CD, and no critical review of the score exists yet.
+
+> The BGM for FINAL FANTASY RESONANCE is composed and arranged by Elements Garden, led by Noriyasu Agematsu. In addition to music from FINAL FANTASY BRAVE EXVIUS, 33 new tracks have been recorded for the game. [[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]
+
+> A comprehensive soundtrack CD album featuring a total of 120 tracks from the game is included with the special collector's edition. FINAL FANTASY RESONANCE launches for PlayStation 5, Xbox Series X|S, Nintendo Switch 2, Nintendo Switch, and PC (Steam) on October 22nd, 2026. [[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]
 
 ### Updates 2026-07-07
 
@@ -773,8 +781,10 @@ until the underlying entity pages exist:
 - [ ] Does NieR:Orchestra Concert 12026's narrated Pearl Harbor Descent Operation story segments constitute a meaningful new lore release, or function as concert filler — does critical coverage after the August 7 Seattle opener evaluate the storytelling integration? [[nier-orchestra-concert-12026-yorha-announced-with-performances-from-august-2026-through-march-2027-38c11783]]
 - [ ] Does iam8bit's consistent domination of game vinyl preorders (Blue Prince, ARC Raiders, Dead by Daylight, LittleBigPlanet, Stellar Blade all released in the same window) represent a durable business model or concentration risk if preorder demand softens? [[blue-prince-vinyl-soundtrack-now-up-for-preorder-via-iam8bit-b4c41f87]] [[arc-raiders-vinyl-soundtrack-now-up-for-preorder-via-iam8bit-ab36bb88]]
 - [ ] Does Piotr Musial's Frostpunk 2 award-winning score receive any concert or live-performance treatment — given the pattern of TGA-winning indie scores (Clair-Obscur, Blue Prince) moving from vinyl to live-concert circuit — and does Black Screen Records plan to expand the release beyond the initial 2xLP? [[frostpunk-2-full-original-soundtrack-2xlp-9f17a322]]
+- [ ] Will the FINAL FANTASY RESONANCE 120-track soundtrack receive a standalone release (digital/streaming or vinyl) beyond the collector's-edition CD, following the 2026 Square Enix catalog-vinyl cadence (Chrono Trigger 4xLP, FFX 'Eternal Calm' 2xLP)?
+- [ ] How does the balance between reused Brave Exvius music and the 33 new tracks read once the game ships on 2026-10-22 — does Elements Garden's mobile-scoring lineage carry a distinct identity into an HD-2D console title, and does a music review surface post-launch?
 
-_no contradictions or gaps known yet beyond open questions above (last reviewed: 2026-07-07)_
+_no contradictions or gaps known yet beyond open questions above (last reviewed: 2026-07-08)_
 
 ## See also
 
