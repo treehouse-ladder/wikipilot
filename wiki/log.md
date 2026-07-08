@@ -554,7 +554,7 @@ Daily research run complete: 5 topics, 21 new sources, 28 pages touched (5 topic
 
 ## [2026-06-04] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
-pr#124 (games-of-note) lint_fix dispatch: lint already green at dispatch time (broken-wikilink [[round-up-...-647b3fa5]] resolved after PR #125 merged); auto-merge re-enabled via MCP. pr#126 (ai-in-game-dev): already merged when CI completed.
+pr#124 (games-of-note) lint_fix dispatch: lint already green at dispatch time (broken-wikilink [[round-up-the-reviews-are-in-for-final-fantasy-vii-rebirth-on-switch-2-647b3fa5]] resolved after PR #125 merged); auto-merge re-enabled via MCP. pr#126 (ai-in-game-dev): already merged when CI completed.
 
 ## [2026-06-04] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
