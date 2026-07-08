@@ -808,6 +808,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[no-announced-xbox-games-are-getting-axed-in-microsoft-layoffs-company-says-bde5adba]]
 - [[state-of-decay-and-hellblade-devs-are-being-sold-but-buyers-remain-mysterious-for-now-4af5ee43]]
 - [[founder-asks-how-much-as-xbox-looks-to-cut-arkane-loose-c8f45a2c]]
+- [[xbox-to-cut-20-of-workforce-plans-to-divest-of-five-studios-df966a4a]]
+- [[xbox-spins-off-compulsion-games-double-fine-productions-undead-labs-and-ninja-theory-while-blade-maker-arkane-reviews-potential-strategic-options-a6f44600]]
+- [[xbox-layoffs-cut-id-software-in-half-as-doom-the-dark-ages-dlc-launches-01f6ebe4]]
+- [[latent-programming-horizons-in-coding-agents-296b0235]]
+- [[fable-s-judgement-e36be334]]
+- [[testevo-bench-an-executable-and-live-benchmark-for-test-and-code-co-evolution-98861175]]
+- [[sakana-fugu-technical-report-a92f171d]]
+- [[ai-native-games-a-survey-and-roadmap-572a7d2d]]
+- [[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]
 
 ## Reports
 
@@ -854,3 +863,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-04]]
 - [[2026-07-06]]
 - [[2026-07-07]]
+- [[2026-07-08]]

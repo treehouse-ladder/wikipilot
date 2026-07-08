@@ -1103,3 +1103,27 @@ Xbox Reset studio-level figures confirmed: id Software lost 95 jobs, Bethesda Ga
 ## [2026-07-07] daily | 5 topics, 10 sources, 14 pages
 
 Xbox Reset studio-level confirmed: id Software 95, Bethesda 35, ESO ~50%, Obsidian ~60–70. Ninja Theory + Undead Labs sold (mystery buyers). RL co-adaptation regression in third-party tools. PUBG Ally engineering pipeline detail. Frostpunk 2 vinyl. Frontier-models quiet.
+
+## [2026-07-08] daily | games-of-note — 3 sources, 5 pages
+
+Xbox Reset studio-fate firmed: Double Fine + Compulsion independent (full IP + team runway); Ninja Theory + Undead Labs signed to new mystery owners; Arkane Lyon in Works Council consultation (possible closure). DOOM: Dark Ages — Revelations DLC launches same day id Software lost ~half its staff.
+
+## [2026-07-08] daily | agentic-coding — 3 sources, 6 pages
+
+Latent Programming Horizons (KTH/Monperrus): residual-stream probe predicts coding-agent correctness at AUC 0.83 before execution. Willison's "Fable's judgement": route implementation tasks to cheaper subagent as default; reserve frontier model for judgment. TestEvo-Bench: live leakage-gated Java benchmark, SOTA 77.5%.
+
+## [2026-07-08] daily | frontier-models — 1 source, 8 pages
+
+Sakana Fugu/Fugu-Ultra ingested (vendor-reported SWE-bench Pro SOTA, multi-agent orchestrator architecture); leader picture re-confirmed: Fable 5 (AA=60), Opus 4.8 (56), GPT-5.5 (55); cost and benchmark comparison pages regenerated. Claims not yet independently verified.
+
+## [2026-07-08] daily | ai-in-game-dev — 1 source, 2 pages
+
+AI Native Games survey (arXiv:2607.00527): counterfactual definition of AI-native games (runtime AI constitutive of core loop), G/N taxonomy over 53 prototypes; corpus gap in companion-play and multi-agent-simulation quadrants identified.
+
+## [2026-07-08] daily | game-music — 1 source, 2 pages
+
+FINAL FANTASY RESONANCE (Oct 22, 2026): Elements Garden/Noriyasu Agematsu scoring, 33 new tracks plus Brave Exvius carry-overs, 120-track CD in collector's edition; Square Enix released multiple soundtrack samples.
+
+## [2026-07-08] daily | 5 topics, 9 sources, 23 pages
+
+Daily Research 2026-07-08 complete. PRs #331–#335. Key stories: Xbox Reset studio fate firmed (games-of-note); latent-horizon probe AUC 0.83 + Willison's subagent-routing pattern (agentic-coding); Sakana Fugu orchestrator ingested, leaders re-confirmed (frontier-models); AI Native Games counterfactual taxonomy (ai-in-game-dev); FF Resonance Elements Garden score (game-music). Report: wiki/reports/2026-07-08.md.
