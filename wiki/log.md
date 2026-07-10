@@ -16,6 +16,26 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-10] daily | game-music — 2 sources, 1 page
+
+Nintendo Music adds F-Zero SNES + F-Zero X Expansion Kit (64DD) for Switch Online subscribers; July vinyl picks from Black Screen Records (BPM: Bullets Per Minute), Mana Wave (Chrono Trigger EP), and Death's Gambit: Afterlife. Report: wiki/reports/2026-07-10.md.
+
+## [2026-07-10] daily | games-of-note — 5 sources, 1 page
+
+136 id Software layoffs confirmed via WARN Act (~50% of studio); 165/185 id Software employees form wall-to-wall CWA union with AI guardrails named as contract target; Palworld 1.0 launches today with 40M players milestone; Rockstar labor report (opt-out crunch in employment contracts, widened gender pay gap); AC Black Flag Resynced earns "high bar for legacy revival" from Game Informer. Report: wiki/reports/2026-07-10.md.
+
+## [2026-07-10] daily | ai-in-game-dev — 1 source, 1 page
+
+Fortnite UEFN Conversations (Experimental) enables AI-driven NPC voice dialogue via Gemini 3.1 Flash-Lite + ElevenLabs; developers define persona via prompts, not yet publishable on public islands. Report: wiki/reports/2026-07-10.md.
+
+## [2026-07-10] daily | frontier-models — 4 sources, 10 pages
+
+GPT-5.6 Sol (AA Intelligence Index 59, Coding Agent Index 80, $5/$30/Mtoken) and Grok 4.5 (AA Index 54, Grok Build $2.49/task) both launch; new entity pages created; comparison tables updated; Claude Fable 5 (AA Index 60) re-verified as overall leader. Report: wiki/reports/2026-07-10.md.
+
+## [2026-07-10] daily | agentic-coding — 2 sources, 7 pages
+
+GPT-5.6 API-native Multi-agent (parallel subagent tool calls) and Programmatic Tool Calling (V8 sandbox, structured JSON function-calling) expand the harness-vs-model boundary debate; 4 concept pages updated (parallel-subagents, agent-harnesses, harness-engineering, agent-sandboxing). Report: wiki/reports/2026-07-10.md.
+
 ## [2026-07-07] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#328 kind=rebase resolved=true sha=cdd3b0e — rebased claude/daily-2026-07-07/games-of-note onto main; resolved 4 conflicts in wiki/topics/games-of-note/index.md (frontmatter merge, Summary paragraphs, Labor/genAI section superset from HEAD, Recent Updates append-at-top with 2026-07-07 first); force-pushed and re-queued auto-merge.
