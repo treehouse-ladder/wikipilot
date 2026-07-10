@@ -9,8 +9,10 @@ comparison_of:
 - claude-fable-5
 - claude-opus-4.8
 - claude-sonnet-4.6
+- gpt-5.6-sol
 - gpt-5.5
 - gemini-3.1-pro
+- grok-4.5
 - grok-4.3
 - deepseek-v4
 - glm-5
@@ -19,7 +21,7 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-07-08
+last_updated: 2026-07-10
 last_verified: '2026-05-22'
 show_glosses: true
 sources:
@@ -32,7 +34,7 @@ title: Frontier model benchmark leaders
 
 ## Summary
 
-This comparison aggregates `aa_intelligence_index, gdpval_aa_elo, swe_bench_verified, cybergym, arc_agi_2` across 10 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-benchmark-leaders` to refresh.
+This comparison aggregates `aa_intelligence_index, gdpval_aa_elo, swe_bench_verified, cybergym, arc_agi_2` across 12 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-benchmark-leaders` to refresh.
 
 ## What each column means for me
 
@@ -45,12 +47,14 @@ This comparison aggregates `aa_intelligence_index, gdpval_aa_elo, swe_bench_veri
 | Entity | aa_intelligence_index | gdpval_aa_elo | swe_bench_verified | cybergym | arc_agi_2 |
 | --- | --- | --- | --- | --- | --- |
 | [[claude-fable-5]] | **60** | **1818** | _unknown_ | _unknown_ | _unknown_ |
+| [[gpt-5.6-sol]] | _59_ | _unknown_ | _unknown_ | _unknown_ | _unknown_ |
 | [[claude-opus-4.8]] | 56 | 1638 | _0.886_ | _0.788_ | _unknown_ |
-| [[claude-sonnet-4.6]] | 51 | _1683_ | _unknown_ | _unknown_ | 0.604 |
 | [[gpt-5.5]] | 55 | 1531 | **0.887** | **0.818** | **0.85** |
+| [[grok-4.5]] | _54_ | _unknown_ | _unknown_ | _unknown_ | _unknown_ |
+| [[kimi-k2.6]] | 54 | 1520 | 0.802 | 0.413 | _unknown_ |
+| [[deepseek-v4]] | 52 | _unknown_ | 0.806 | _unknown_ | _unknown_ |
+| [[claude-sonnet-4.6]] | 51 | _1683_ | _unknown_ | _unknown_ | 0.604 |
+| [[glm-5]] | 50 | 1524 | _unknown_ | _unknown_ | _unknown_ |
 | [[gemini-3.1-pro]] | 46 | _unknown_ | 0.806 | _unknown_ | _0.771_ |
 | [[grok-4.3]] | 38 | 1500 | _unknown_ | _unknown_ | _unknown_ |
-| [[deepseek-v4]] | 52 | _unknown_ | 0.806 | _unknown_ | _unknown_ |
-| [[glm-5]] | 50 | 1524 | _unknown_ | _unknown_ | _unknown_ |
-| [[kimi-k2.6]] | 54 | 1520 | 0.802 | 0.413 | _unknown_ |
 | [[qwen3.7-max]] | _57_ | _unknown_ | _unknown_ | _unknown_ | _unknown_ |

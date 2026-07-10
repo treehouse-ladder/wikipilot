@@ -6,8 +6,10 @@ comparison_of:
 - claude-fable-5
 - claude-opus-4.8
 - claude-sonnet-4.6
+- gpt-5.6-sol
 - gpt-5.5
 - gemini-3.1-pro
+- grok-4.5
 - grok-4.3
 - deepseek-v4
 - glm-5
@@ -18,7 +20,7 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-07-08
+last_updated: 2026-07-10
 last_verified: '2026-05-22'
 show_glosses: true
 sources:
@@ -33,7 +35,7 @@ title: Frontier model cost comparison
 
 ## Summary
 
-This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` across 12 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-cost-comparison` to refresh.
+This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` across 14 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-cost-comparison` to refresh.
 
 ## What each column means for me
 
@@ -44,13 +46,15 @@ This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` acros
 | --- | --- | --- |
 | [[claude-fable-5]] | 10.0 | 50.0 |
 | [[claude-opus-4.8]] | 5.0 | 25.0 |
+| [[gpt-5.6-sol]] | _5.0_ | 30.0 |
 | [[claude-sonnet-4.6]] | 3.0 | 15.0 |
 | [[gpt-5.5]] | 5.0 | 30.0 |
+| [[grok-4.5]] | **2.0** | **6.0** |
 | [[gemini-3.1-pro]] | 2.0 | 12.0 |
-| [[grok-4.3]] | 1.25 | _2.5_ |
+| [[grok-4.3]] | 1.25 | 2.5 |
 | [[deepseek-v4]] | 1.74 | 3.48 |
 | [[glm-5]] | 1.0 | 3.2 |
 | [[kimi-k2.6]] | 0.95 | 4.0 |
 | [[qwen3.7-max]] | 2.5 | 7.5 |
-| [[mai-code-1-flash]] | _0.75_ | 4.5 |
-| [[minimax-m3]] | **0.6** | **2.4** |
+| [[mai-code-1-flash]] | 0.75 | 4.5 |
+| [[minimax-m3]] | 0.6 | 2.4 |
