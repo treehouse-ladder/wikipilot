@@ -45,6 +45,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[kimi-k2.7-code]]
 - [[claude-fable-5]]
 - [[claude-sonnet-5]]
+- [[gpt-5.6-sol]]
+- [[grok-4.5]]
 
 ## Comparisons
 
@@ -817,6 +819,20 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[sakana-fugu-technical-report-a92f171d]]
 - [[ai-native-games-a-survey-and-roadmap-572a7d2d]]
 - [[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]
+- [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]
+- [[programmatic-tool-calling-c21acdb9]]
+- [[gpt-5-6-frontier-intelligence-that-scales-with-your-ambition-e19fbb75]]
+- [[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]]
+- [[introducing-grok-4-5-c5fe4e15]]
+- [[grok-4-5-brings-spacexai-to-the-intelligence-frontier-20480383]]
+- [[bring-npcs-to-life-with-ai-powered-conversations-b6eafc01]]
+- [[update-136-workers-have-been-laid-off-at-id-software-98ba024d]]
+- [[id-software-workers-unionize-in-response-to-mass-xbox-layoffs-b771735b]]
+- [[palworld-celebrates-40m-players-since-early-access-as-it-heads-toward-its-july-10-1-0-launch-d703a98d]]
+- [[rockstar-accused-of-ignoring-pay-inequity-and-mandating-crunch-5baa22b1]]
+- [[assassin-s-creed-black-flag-resynced-review-more-of-everything-is-permitted-ac122c4a]]
+- [[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]
+- [[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]
 
 ## Reports
 
@@ -864,3 +880,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-06]]
 - [[2026-07-07]]
 - [[2026-07-08]]
+- [[2026-07-10]]
