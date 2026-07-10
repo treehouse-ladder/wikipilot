@@ -1,8 +1,8 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]"]
-last_updated: 2026-07-08
+sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]"]
+last_updated: 2026-07-10
 last_verified: 2026-06-30
 freshness_window_days: 60
 ---
@@ -69,6 +69,21 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 Open caveats and unresolved contradictions are tracked in `## Disputes` and `## Open questions` below.
 
 ## Recent updates
+
+### Updates 2026-07-10
+
+**Nintendo Music adds F-Zero SNES and F-Zero X Expansion Kit (64DD) — continuing weekly catalog builds.** Nintendo's weekly Nintendo Music app update this week added two F-Zero albums: the original SNES F-Zero soundtrack and the 64DD F-Zero X Expansion Kit album, both now available to Switch Online subscribers [[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]. This is the latest in the steady Nintendo Music weekly update cadence tracked on this page — the platform added Rhythm Heaven Groove as a same-week launch companion [[nintendo-music-special-release-update-adds-songs-from-the-new-rhythm-heaven-game-451f92b9]] and Star Fox tracks [[nintendo-music-special-release-adds-tracks-from-star-fox-s-switch-2-game-930581c4]] — and extends the Nintendo Music back-catalog sweep into the racing/F-Zero library, a franchise long overdue for a new entry. The 64DD F-Zero X Expansion Kit is notable as a Japan-exclusive original soundtrack that many players outside Japan never heard in its original context; its addition to the streaming catalog is a small archival preservation win.
+
+> Nintendo's weekly album update has arrived for the Nintendo Music app and this time it's loaded with high-speed beats from the F-Zero series. Included this week is the SNES soundtrack for F-Zero and along with this is the album for the 64DD F-Zero X Expansion Kit. Nintendo has this week added an F-Zero soundtrack to its mobile music app for Switch Online subscribers. [[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]
+
+**GameMusic's July vinyl highlights: BPM: Bullets Per Minute (Black Screen Records), Mana Wave Chrono Trigger EP, Death's Gambit: Afterlife.** GameMusic.net's monthly vinyl roundup for July foregrounds three releases [[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]:
+- **BPM: Bullets Per Minute** (Black Screen Records) — two marbled LPs (red/black and orange/black colorway), including a bonus track "Yggdrasil's Roots" by Reuben Hawthorn.
+- **Mana Wave Chrono Trigger arrangement EP** — limited pressing of fan-favorite arrangements including "Corridors of Time" and "Schala's Theme."
+- **Death's Gambit: Afterlife** (Mana Wave) — two-piece pressing in light blue and sea blue translucent vinyl with black splatter, featuring "The End of Immortality," "Gaian's Cradle," and "The Bulwark."
+
+> BPM: Bullets Per Minute by Black Screen Records was highlighted, featuring two marbled LPs (one red/black, another orange/black) and an additional bonus track called 'Yggdrasil's Roots' by Reuben Hawthorn. Mana Wave's limited-EP of Chrono Trigger arrangements was also featured, including fan favorites 'Corridors of Time' and 'Schala's Theme'. Another Mana Wave release for Death's Gambit: Afterlife was highlighted, featuring songs including 'The End of Immortality,' 'Gaian's Cradle' and 'The Bulwark,' released on two vinyl pieces—one in light blue and another in sea blue translucent colors with black splatter. [[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]
+
+Black Screen Records appears here for the second time this month after the Frostpunk 2 2xLP tracked on July 7 [[frostpunk-2-full-original-soundtrack-2xlp-9f17a322]], continuing to establish itself as one of the dominant labels in the 2026 game-music vinyl cycle. The Chrono Trigger arrangement EP from Mana Wave connects to the Chrono Trigger 30th-anniversary 4xLP box tracked in the Summary [[chrono-trigger-original-soundtrack-vinyl-box-to-release-in-april-2026-f0889eea]]; this is a separate unofficial-arrangement pressing rather than the official OST box. These are monthly editorial picks, not comprehensive market data.
 
 ### Updates 2026-07-08
 
