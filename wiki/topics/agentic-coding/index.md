@@ -196,7 +196,9 @@ sources:
   - "[[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]"
   - "[[better-models-worse-tools-df80d6a1]]"
   - "[[sqlite-utils-4-0rc2-mostly-written-by-claude-fable-for-about-149-25-e673d7b5]]"
-last_updated: 2026-07-08
+  - "[[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]"
+  - "[[programmatic-tool-calling-c21acdb9]]"
+last_updated: 2026-07-10
 last_verified: 2026-06-28
 freshness_window_days: 30
 ---
@@ -265,6 +267,16 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-10
+
+**OpenAI's GPT-5.6 launch pulls two agentic-coding primitives — parallel subagents and code-driven tool orchestration — into the core Responses API, not just the harness.** Simon Willison's notes on the new GPT-5.6 family (Luna, Terra, Sol) single out two additions of direct interest to this topic: *Programmatic Tool Calling*, which lets the model "compose and run JavaScript that orchestrates tool calls," and *Multi-agent*, which lets the model "spin up subagents for parallel, focused work" — the sub-agent pattern "now baked into the core API" [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]. Willison frames Programmatic Tool Calling as reminiscent of Anthropic's dynamic-filtering web-search tool (code execution against tool results inside a single model turn), placing it in the same lineage as the code-execution-with-MCP thread already tracked here [[code-execution-with-mcp-building-more-efficient-ai-agents-9b88bfec]]. The significance for agentic coding is architectural: subagent dispatch (`CLAUDE_CODE_FORK_SUBAGENT`, Codex custom-agents, Cursor multi-agents) and load-on-demand tool composition have to date been *harness*-level features layered on top of a tool-calling model; GPT-5.6 relocates both into the model's own API surface, which is a new data point on the harness-vs-model boundary.
+
+> Programmatic Tool Calling allows the models to compose and run JavaScript that orchestrates tool calls. Multi-agent lets the model spin up subagents for parallel, focused work — the sub-agent pattern now baked into the core API. [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]
+
+**OpenAI's first-party Programmatic Tool Calling guide specifies a hosted-runtime tool-composition primitive whose sandbox is markedly narrower than the code-execution-with-MCP model.** The guide describes the model writing and running JavaScript that "coordinates the tools in a Responses API request," able to "call tools in parallel, use loops and conditions, and keep intermediate results in the hosted runtime." Crucially, each generated program runs in "a fresh, isolated V8 runtime" that supports top-level `await` but provides "no Node.js, package installation, direct network access, a general-purpose filesystem, subprocess execution, a console, or persistent JavaScript state" [[programmatic-tool-calling-c21acdb9]]. That restriction is the interesting sandboxing detail: unlike Claude Code's bubblewrap/seatbelt shell sandbox [[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]] or Anthropic's code-execution-with-MCP filesystem approach [[code-execution-with-mcp-building-more-efficient-ai-agents-9b88bfec]], the tool-orchestration code here has no filesystem or network of its own — it can only call the tools the application whitelists.
+
+> Programmatic Tool Calling lets a model write and run JavaScript that coordinates the tools in a Responses API request. [...] OpenAI runs each generated program in a fresh, isolated V8 runtime. The runtime supports JavaScript with top-level await, but it does not provide Node.js, package installation, direct network access, a general-purpose filesystem, subprocess execution, a console, or persistent JavaScript state. [[programmatic-tool-calling-c21acdb9]]
 
 ### Updates 2026-07-08
 
@@ -1528,6 +1540,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does the structural-codebase-index resolve gain in [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]] hold once the base model is varied (it is measured only with Claude Opus 4.7 held fixed), given [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] finds the base LLM is the primary driver of outcome?
 - [ ] The index in [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]] is claimed to pay off specifically on multi-file changes — does its localization/resolve advantage vanish or invert on the single-file-localization tasks where text-only explorers are 'already strong' ([[swe-explore-benchmarking-how-coding-agents-explore-repositories-a0f69e17]]), and is the multi-file condition the boundary that reconciles it with ContextBench's Bitter Lesson?
 - [ ] If frontier Anthropic models (Opus 4.8, Sonnet 5) are RL co-adapted to Claude Code's built-in edit-tool schema [[better-models-worse-tools-df80d6a1]], does this reduce SWE-bench Verified scores — measured under the bash-only mini-SWE-agent harness [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] that uses neither Claude Code's native tools nor Pi's — and what fraction of measured capability gains since Opus 4.6 are attributable to Claude-Code-specific tool-RL rather than general reasoning improvements?
+- [ ] Does GPT-5.6's Programmatic Tool Calling V8 sandbox [[programmatic-tool-calling-c21acdb9]] — no Node.js, no filesystem, no network, no persistent state — subsume the code-execution-with-MCP "tools as code on a filesystem" load-on-demand pattern [[code-execution-with-mcp-building-more-efficient-ai-agents-9b88bfec]], or are the two complementary?
+- [ ] Does relocating subagent dispatch into the model's core API [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]] shift the harness-vs-model attribution debate — if parallel-subagent orchestration becomes a model capability rather than a harness capability, does the harness's measured contribution to SWE-bench/Terminal-Bench scores shrink?
 
 ## See also
 

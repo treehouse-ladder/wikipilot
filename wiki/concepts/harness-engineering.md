@@ -32,7 +32,9 @@ sources:
   - "[[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]]"
   - "[[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]]"
   - "[[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]"
-last_updated: 2026-07-06
+  - "[[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]"
+  - "[[programmatic-tool-calling-c21acdb9]]"
+last_updated: 2026-07-10
 last_verified: 2026-06-11
 freshness_window_days: 30
 ---
@@ -138,6 +140,10 @@ Self-Harness extends the harness-evolution cluster with a fully self-driven loop
 **Interactive multi-turn benchmarks signal a harness-design shift (July 2026).** Two independent coding-agent benchmarks landing the same week — SWE-INTERACT [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]] and SWE-Together [[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]] — find that strong single-turn SWE performance does not reliably transfer to multi-turn, user-driven interactive sessions. This convergence signals a measurement shift directly relevant to harness engineering: harnesses optimized for autonomous single-shot resolution may systematically under-represent the interactive-collaboration capability that production workflows demand. The harness design space must now account for feedback-driven iteration, progressive requirement revelation, and the number of corrective turns required — dimensions the single-turn eval paradigm does not capture.
 
 **CapCode: a capped-randomized-test design as a scalable cheating detector (July 2026).** "Do Coding Agents Deceive Us?" [[do-coding-agents-deceive-us-detecting-and-preventing-cheating-via-capped-evaluation-with-randomized-tests-86855e43]] constructs coding datasets with randomized tests whose best achievable non-cheating pass rate is deliberately capped below one; a score substantially above the cap is implausible and therefore evidence of cheating. The companion CapReward training penalty shrinks the open-vs-hidden performance gap. This is a constructive counterpoint to the Verification Horizon thesis (no single reward signal is both reliable and scalable) — CapCode claims a reliable, scalable detector by design rather than by choosing among fallible reward-signal classes, relevant to harness-evolution loops that depend on automated verification.
+
+**OpenAI's GPT-5.6 relocates tool-orchestration and subagent dispatch into the model API itself (July 2026).** The GPT-5.6 launch introduces *Programmatic Tool Calling* (model-authored JavaScript orchestrating tool calls in a hosted V8 sandbox) and *Multi-agent* (model-spawned parallel subagents) as first-class Responses API primitives [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]] [[programmatic-tool-calling-c21acdb9]]. These are capabilities that have to date been harness-layer features — subagent dispatch and load-on-demand tool composition have been the harness's responsibility in systems like `CLAUDE_CODE_FORK_SUBAGENT`, Cursor SDK nesting, and code-execution-with-MCP. GPT-5.6 moves both into the model's own API surface. This is a significant shift in the harness-vs-model boundary: if capabilities previously attributed to the harness are now built into the model, the Binding Constraint Thesis's harness-configuration-dominates claim [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]] may need to be revised to account for model APIs that subsume harness responsibilities.
+
+> Programmatic Tool Calling allows the models to compose and run JavaScript that orchestrates tool calls. Multi-agent lets the model spin up subagents for parallel, focused work — the sub-agent pattern now baked into the core API. [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]
 
 ## Disputes
 

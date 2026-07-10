@@ -13,7 +13,8 @@ sources:
   - "[[changelog-codex-openai-developers-afbd4293]]"
   - "[[fable-s-judgement-e36be334]]"
   - "[[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]]"
-last_updated: 2026-07-08
+  - "[[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]"
+last_updated: 2026-07-10
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
@@ -57,6 +58,10 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 **Per-task model downgrade as a default subagent operating pattern (Simon Willison, July 2026).** Willison escalates the subagent model-routing lever from a manual per-call choice into a standing instruction: "For all coding tasks use your judgement to decide an appropriate lower power model and run that in a subagent" — the agent itself picks the tier (Sonnet for substantive implementation, Haiku for trivial/mechanical edits), runs the implementation in a subagent with a self-contained prompt, and returns to the top-tier main loop for review before committing [[fable-s-judgement-e36be334]]. He reports a concrete cost outcome (throughput up, Fable allowance depleting more slowly). The open caveat is that [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] finds the base LLM is the primary driver of outcome, so a self-selected cheaper implementation model may trade more resolve-rate than the token savings suggest — the value depends on the main-loop review step actually catching the resulting regressions.
 
 > For all coding tasks use your judgement to decide an appropriate lower power model and run that in a subagent. [[fable-s-judgement-e36be334]]
+
+**OpenAI's GPT-5.6 moves subagent dispatch into the model API itself (July 2026).** The GPT-5.6 launch introduces *Multi-agent* as a first-class Responses API primitive: the model can "spin up subagents for parallel, focused work" — the sub-agent pattern "now baked into the core API" rather than being a harness-level orchestration layer [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]. This is a significant architectural boundary shift — parallel subagents have to date been harness features (`CLAUDE_CODE_FORK_SUBAGENT`, Cursor SDK recursive nesting, Codex custom-agents) layered on top of a tool-calling model; GPT-5.6 relocates dispatch into the model's own surface, making subagent orchestration a model capability rather than purely a harness capability. The implications for harness-vs-model attribution are open: if subagent fan-out becomes a built-in model feature, does the harness's measured contribution to SWE-bench/Terminal-Bench scores shrink?
+
+> Multi-agent lets the model spin up subagents for parallel, focused work — the sub-agent pattern now baked into the core API. [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]
 
 ## Disputes
 
