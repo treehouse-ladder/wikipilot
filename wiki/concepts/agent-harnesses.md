@@ -17,7 +17,9 @@ sources:
   - "[[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]]"
   - "[[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]]"
   - "[[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]"
-last_updated: 2026-07-06
+  - "[[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]"
+  - "[[programmatic-tool-calling-c21acdb9]]"
+last_updated: 2026-07-10
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -77,6 +79,12 @@ A June 2026 paper supplies the first constitutive definition of "agent harness,"
 > Strong performance on single-turn SWE tasks does not reliably transfer to multi-turn, user-driven workflows. [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]]
 
 > To evaluate agents as collaborators, we measure both final repository correctness and the number of corrective feedback turns required during the interaction. [[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]]
+
+**OpenAI's GPT-5.6 relocates tool-composition and subagent orchestration into the model API (July 2026).** The GPT-5.6 launch introduces *Programmatic Tool Calling* (model-authored JavaScript orchestrating tool calls in a hosted V8 sandbox) and *Multi-agent* (model-spawned parallel subagents) as first-class Responses API primitives [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]] [[programmatic-tool-calling-c21acdb9]]. These are capabilities that have to date been harness-level features — subagent dispatch (`CLAUDE_CODE_FORK_SUBAGENT`, Cursor SDK nesting, Codex custom-agents) and load-on-demand tool composition (code-execution-with-MCP) have been layered on top of a tool-calling model by the harness. GPT-5.6 moves both into the model's own API surface, shifting the harness-vs-model boundary. The implications for the harness-choice-rivals-model-choice finding [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]] are open: if capabilities previously attributed to the harness are now built into the model, does the measured harness contribution to SWE-bench scores shrink?
+
+> Programmatic Tool Calling allows the models to compose and run JavaScript that orchestrates tool calls. Multi-agent lets the model spin up subagents for parallel, focused work — the sub-agent pattern now baked into the core API. [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]
+
+> OpenAI runs each generated program in a fresh, isolated V8 runtime. The runtime supports JavaScript with top-level await, but it does not provide Node.js, package installation, direct network access, a general-purpose filesystem, subprocess execution, a console, or persistent JavaScript state. [[programmatic-tool-calling-c21acdb9]]
 
 ## Disputes
 

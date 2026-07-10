@@ -10,7 +10,8 @@ sources:
   - "[[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]]"
   - "[[aura-15-0-releases-with-new-features-and-unlimited-usage-for-unreal-engine-and-unity-34445073]]"
   - "[[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]"
-last_updated: 2026-07-04
+  - "[[programmatic-tool-calling-c21acdb9]]"
+last_updated: 2026-07-10
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -44,6 +45,10 @@ The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-hum
 **Cursor sandbox escape via LLM-controlled working directory (DuneSlide, CVE-2026-50548).** Cato Networks disclosed a zero-click prompt-injection exploit that escaped Cursor's terminal sandbox by abusing the `working_directory` parameter of the `run_terminal_cmd` tool [[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]. When the LLM set a non-default path via this optional parameter, Cursor added that path to the sandbox's allowed-write list without validation. An attacker could inject a prompt that steered the agent to set `working_directory` to a system path, then write over the `cursorsandbox` helper binary, converting sandboxed commands into unsandboxed RCE. Fixed in Cursor 3.0 (April 2026), but the exploit primitive generalizes: any LLM-controlled sandbox parameter (working directory, environment variables, mount points) is itself an injection sink if the sandbox trusts the agent's choice without validation. This is a concrete demonstration that sandboxing must treat every agent-supplied parameter as untrusted input.
 
 > CVE-2026-50548 abuses a setting where the sandbox permits writes into a command's working folder, and that folder is an optional parameter, working_directory, on Cursor's run_terminal_cmd tool. When the agent sets it to a non-default path, Cursor adds that path to the allowed-write list without question. [[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]
+
+**OpenAI's GPT-5.6 Programmatic Tool Calling uses a minimal V8 sandbox for tool-orchestration code (July 2026).** The GPT-5.6 Programmatic Tool Calling feature runs model-authored JavaScript in a hosted V8 runtime with "no Node.js, package installation, direct network access, a general-purpose filesystem, subprocess execution, a console, or persistent JavaScript state" [[programmatic-tool-calling-c21acdb9]]. This is a markedly narrower sandbox than the OS-level shell sandboxes the wiki tracks (Claude Code's bubblewrap/seatbelt, Sandlock's unprivileged-process model, Cursor's terminal sandbox) — the tool-orchestration code here has no filesystem or network of its own and can only call the tools the application whitelists. That restriction is the interesting sandboxing detail: unlike code-execution-with-MCP's filesystem-based tool loading, the V8 sandbox is purely for orchestrating pre-registered tools rather than dynamically loading new ones. This is a lighter-weight, less-powerful isolation boundary than the other sandboxes on this page, but potentially safer for hosted-API contexts where giving the model a filesystem would introduce too much attack surface.
+
+> OpenAI runs each generated program in a fresh, isolated V8 runtime. The runtime supports JavaScript with top-level await, but it does not provide Node.js, package installation, direct network access, a general-purpose filesystem, subprocess execution, a console, or persistent JavaScript state. [[programmatic-tool-calling-c21acdb9]]
 
 ## Disputes
 
