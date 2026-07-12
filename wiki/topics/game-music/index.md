@@ -2,7 +2,7 @@
 title: Game composers and audio
 kind: topic
 sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]"]
-last_updated: 2026-07-10
+last_updated: 2026-07-12
 last_verified: 2026-06-30
 freshness_window_days: 60
 ---
@@ -69,6 +69,10 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 Open caveats and unresolved contradictions are tracked in `## Disputes` and `## Open questions` below.
 
 ## Recent updates
+
+### Updates 2026-07-12
+
+Quiet day for game-music — researcher verified that the Sakimoto 40th-anniversary "Colours of Harmony" concert coverage [[london-mozart-players-the-colours-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d3196284]] and the Ivors Composers Awards Video Games category announcement [[the-new-ivors-composers-awards-will-honor-video-game-composers-b633147b]] are already in the wiki and fully written up in prior entries (see June 2026 updates). No new sources ingested this run.
 
 ### Updates 2026-07-10
 
