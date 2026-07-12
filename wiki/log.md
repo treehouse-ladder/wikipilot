@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-12] health | weekly sweep — 3 disputes filed
+
+Weekly health sweep 2026-07-12. 12 candidate sets (11 source-triggered + 1 stale sweep), 6 scanner passes. 3 new disputes filed: claude-fable-5 AA Index version discrepancy (64.9 v4.0 vs 60 v4.1); claude-fable-5 GDPval-AA version discrepancy (1932 original vs 1818 v2); deepseek-v4 AA Index version discrepancy (52 v4.0 vs 44 v4.1). Lint: 0 errors, 202 warnings. 10 stale synthesis pages. PR #345.
+
 ## [2026-07-10] daily | game-music — 2 sources, 1 page
 
 Nintendo Music adds F-Zero SNES + F-Zero X Expansion Kit (64DD) for Switch Online subscribers; July vinyl picks from Black Screen Records (BPM: Bullets Per Minute), Mana Wave (Chrono Trigger EP), and Death's Gambit: Afterlife. Report: wiki/reports/2026-07-10.md.
