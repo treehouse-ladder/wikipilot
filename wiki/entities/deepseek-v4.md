@@ -2,7 +2,7 @@
 title: "DeepSeek V4"
 kind: entity
 sources: ["[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[deepseek-api-models-and-pricing-8eb12065]]", "[[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]", "[[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[deepseek-is-back-among-the-leading-open-weights-models-with-v4-pro-and-v4-flash-d16dda28]]", "[[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]]"]
-last_updated: 2026-05-31
+last_updated: 2026-07-12
 last_verified: "2026-05-24"
 freshness_window_days: 30
 input_cost_per_mtoken: 1.74
@@ -50,6 +50,7 @@ Artificial Analysis published a dedicated launch analysis confirming the V4 fami
 
 - [[deepseek-v4-pro-on-hugging-face-a0d5aaf3]] claims V4-Pro-Max's 80.6% SWE-bench Verified is a frontier-leading score, but OpenAI has stopped reporting SWE-bench Verified after finding contamination across all frontier models. On SWE-bench Pro (the contamination-controlled successor) DeepSeek V4-Pro's ranking is not yet published. Status: unresolved.
 - [[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]] claims that even on isolated tasks, traditional deterministic pass/fail script evaluation (the methodology behind SWE-bench Verified) "produces severe misjudgments and false signals" and proposes SWE-Judge (LLM-based, human-validated) as a corrective — raising the question of whether V4-Pro-Max's 80.6% SWE-bench Verified score [[deepseek-v4-pro-on-hugging-face-a0d5aaf3]] is reliably measuring what it claims to measure. Status: unresolved.
+- [[deepseek-is-back-among-the-leading-open-weights-models-with-v4-pro-and-v4-flash-d16dda28]] places DeepSeek V4 Pro (Reasoning, Max Effort) at AA Intelligence Index score 52 (May 2026, v4.0); [[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]] reports DeepSeek V4 Pro (max) at 44 on AA Intelligence Index v4.1 (the June 2026 agentic-reweighted version). The frontmatter records `aa_intelligence_index: 52` without specifying which index version it reflects. Status: unresolved — the two scores reflect different index versions (v4.0 vs v4.1); the frontmatter should clarify which version it tracks (confidence: high; sweep: 2026-07-12).
 
 ## Open questions
 
