@@ -1148,6 +1148,10 @@ AI Native Games survey (arXiv:2607.00527): counterfactual definition of AI-nativ
 
 FINAL FANTASY RESONANCE (Oct 22, 2026): Elements Garden/Noriyasu Agematsu scoring, 33 new tracks plus Brave Exvius carry-overs, 120-track CD in collector's edition; Square Enix released multiple soundtrack samples.
 
+## [2026-07-12] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#350 requeued (claude/daily-2026-07-12/games-of-note): CI was green but auto-merge had not been queued; squash --auto re-enabled via enable_pr_auto_merge.
+
 ## [2026-07-08] daily | 5 topics, 9 sources, 23 pages
 
 Daily Research 2026-07-08 complete. PRs #331–#335. Key stories: Xbox Reset studio fate firmed (games-of-note); latent-horizon probe AUC 0.83 + Willison's subagent-routing pattern (agentic-coding); Sakana Fugu orchestrator ingested, leaders re-confirmed (frontier-models); AI Native Games counterfactual taxonomy (ai-in-game-dev); FF Resonance Elements Garden score (game-music). Report: wiki/reports/2026-07-08.md.
