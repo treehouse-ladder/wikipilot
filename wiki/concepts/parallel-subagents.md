@@ -14,7 +14,8 @@ sources:
   - "[[fable-s-judgement-e36be334]]"
   - "[[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]]"
   - "[[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]"
-last_updated: 2026-07-10
+  - "[[rewriting-bun-in-rust-15a50b3d]]"
+last_updated: 2026-07-12
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
