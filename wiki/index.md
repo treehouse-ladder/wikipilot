@@ -833,6 +833,14 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[assassin-s-creed-black-flag-resynced-review-more-of-everything-is-permitted-ac122c4a]]
 - [[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]
 - [[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]
+- [[rewriting-bun-in-rust-15a50b3d]]
+- [[side-chats-and-conversation-search-8df90ad3]]
+- [[the-balkanization-of-execution-security-research-for-ai-coding-agents-isolation-access-control-and-time-of-check-to-time-of-use-vulnerabilities-df4a38f9]]
+- [[gamedev-mcp-server-engine-agnostic-mcp-server-shared-by-unity-mcp-godot-mcp-and-unreal-mcp-c584eb9b]]
+- [[godot-mcp-model-context-protocol-integration-for-the-godot-engine-d39b33d3]]
+- [[palworld-s-massive-1-0-patch-notes-detail-new-sunreach-area-mutations-and-72-more-pals-42fdc1d5]]
+- [[palworld-looks-way-less-like-pokemon-in-massive-1-0-update-7877aa8b]]
+- [[xbox-layoffs-heavily-impact-the-accessibility-team-too-aeaef034]]
 
 ## Reports
 
@@ -881,3 +889,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-07]]
 - [[2026-07-08]]
 - [[2026-07-10]]
+- [[2026-07-12]]

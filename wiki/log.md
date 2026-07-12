@@ -20,6 +20,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 Weekly health sweep 2026-07-12. 12 candidate sets (11 source-triggered + 1 stale sweep), 6 scanner passes. 3 new disputes filed: claude-fable-5 AA Index version discrepancy (64.9 v4.0 vs 60 v4.1); claude-fable-5 GDPval-AA version discrepancy (1932 original vs 1818 v2); deepseek-v4 AA Index version discrepancy (52 v4.0 vs 44 v4.1). Lint: 0 errors, 202 warnings. 10 stale synthesis pages. PR #345.
 
+## [2026-07-12] daily | 5 topics, 8 sources, 18 pages
+
+Daily Research 2026-07-12 complete. PRs #346–#350 merged. Key stories: Bun-in-Rust LLM port at ~$165k API cost + Cursor 3.11 cloud-agent lifecycle hooks + arXiv SoK on 39 execution-security failure papers (agentic-coding); IvanMurzak engine-agnostic GameDev-MCP-Server unifying Unity/Godot/Unreal via SignalR + Godot-MCP C# addon submitted to Asset Library (ai-in-game-dev); Palworld 1.0 ~500k concurrent Steam + 72 new Pals + visual reworks + Xbox accessibility team decimated in Reset (games-of-note). Report: wiki/reports/2026-07-12.md.
+
+## [2026-07-12] daily | agentic-coding — 3 sources, 9 pages
+
+Simon Willison: Bun-in-Rust LLM port ~$165k at API prices (5.9B uncached + 690M output + 72B cached-read tokens, 11 days, human monitors). Cursor 3.11: cloud-agent lifecycle hooks (beforeSubmitPrompt, afterAgentResponse, afterAgentThought, stop, subagentStart). arXiv 2607.05743 SoK: 39 papers, 17 execution-security failure categories (TOCTOU races, identity delegation, execution provenance). 1 new dispute, 3 new open questions. Report: wiki/reports/2026-07-12.md.
+
+## [2026-07-12] daily | frontier-models — 0 sources, 1 page
+
+Quiet day — no new frontier-model sources. Topic index bumped. Report: wiki/reports/2026-07-12.md.
+
+## [2026-07-12] daily | ai-in-game-dev — 2 sources, 3 pages
+
+IvanMurzak engine-agnostic GameDev-MCP-Server unifies Unity-MCP, Godot-MCP, Unreal-MCP via single SignalR backend; requires C#/.NET Godot 4.3+ (excludes GDScript-only projects); Unreal plugin at v0.1.x unvalidated. Godot-MCP C# editor addon submitted to Godot Asset Library. 2 new open questions. Report: wiki/reports/2026-07-12.md.
+
+## [2026-07-12] daily | games-of-note — 3 sources, 4 pages
+
+Palworld 1.0 launches with ~500k concurrent Steam (96% positive), 72 new Pals (287 total), Sunreach region, Mutations mechanic, player cap 65→80; Pal visual reworks hedge design-litigation risk vs Nintendo. Xbox Reset: Bethesda User Research Team decimated, Zach Clothier (accessibility test lead) departed. 2 new open questions. Report: wiki/reports/2026-07-12.md.
+
+## [2026-07-12] daily | game-music — 0 sources, 1 page
+
+Quiet day — Sakimoto 40th-anniversary concert + Ivors Awards already written up in June 2026 entries; no new sources. Topic index bumped. Report: wiki/reports/2026-07-12.md.
+
 ## [2026-07-10] daily | game-music — 2 sources, 1 page
 
 Nintendo Music adds F-Zero SNES + F-Zero X Expansion Kit (64DD) for Switch Online subscribers; July vinyl picks from Black Screen Records (BPM: Bullets Per Minute), Mana Wave (Chrono Trigger EP), and Death's Gambit: Afterlife. Report: wiki/reports/2026-07-10.md.
