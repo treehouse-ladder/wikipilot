@@ -86,6 +86,20 @@ Unresolved disagreements and open threads are tracked in `## Disputes` and `## O
 
 ## Recent updates
 
+### Updates 2026-07-12
+
+**One MCP backend for three engines: IvanMurzak (Unity-MCP author) ships Godot-MCP + a unified engine-agnostic GameDev-MCP-Server.** IvanMurzak — author of Unity-MCP, the most widely adopted game-dev MCP (~9,200 GitHub stars) — released a Godot-MCP (submitted to the Godot Asset Library July 11) alongside a shared, engine-agnostic `GameDev-MCP-Server` that consolidates one MCP backend across Unity, Godot, and Unreal. Godot-MCP is a C# editor addon that mirrors Unity-MCP's design, connecting Claude/Cursor/Copilot/any MCP client to a live Godot editor to drive nodes, scenes, scripts, UI, and screenshots [[godot-mcp-model-context-protocol-integration-for-the-godot-engine-d39b33d3]].
+
+> Godot-MCP is the Godot counterpart of Unity-MCP: a C# editor addon that exposes Godot Editor operations as AI Tools and connects them to an MCP server through the same hosted cloud backend (ai-game.dev) that powers Unity-MCP — or your own self-hosted server. [[godot-mcp-model-context-protocol-integration-for-the-godot-engine-d39b33d3]]
+
+The architecturally novel piece is the backend: rather than maintaining three separate per-engine MCP servers, `GameDev-MCP-Server` is a single host with no engine-specific code, bridging MCP clients and whichever engine plugin connects over SignalR, with each engine plugin providing its own tools/resources/prompts dynamically [[gamedev-mcp-server-engine-agnostic-mcp-server-shared-by-unity-mcp-godot-mcp-and-unreal-mcp-c584eb9b]]. Its first release de-triplicates the previously independent per-engine servers into one binary.
+
+> Engine-agnostic Model Context Protocol server shared by game-engine MCP plugins: Unity-MCP, Godot-MCP, and Unreal-MCP... one server binary serves all three engine plugins. Tools, resources and prompts are provided dynamically by whichever engine plugin connects. [[gamedev-mcp-server-engine-agnostic-mcp-server-shared-by-unity-mcp-godot-mcp-and-unreal-mcp-c584eb9b]]
+
+**Why it matters for an agentic game-dev workflow.** This is the first time the community/third-party MCP route offers a single MCP stack spanning all three major engines from one vendor — a developer can standardize one agent harness and reuse it whether the target is Unity, Godot, or Unreal, rather than adopting a different community server per engine (CoplayDev Unity MCP [[unity-mcp-coplaydev-7a6a3631]], StraySpark Unreal MCP, hi-godot's production-grade Godot AI [[godot-ai-production-grade-mcp-server-and-ai-tools-for-the-godot-engine-02e08d34]]).
+
+**Caveats (this is additive, not a leader change).** The suite is early: the Unreal plugin is at `unreal-mcp-server 0.1.x` with no shipped-studio validation yet [[gamedev-mcp-server-engine-agnostic-mcp-server-shared-by-unity-mcp-godot-mcp-and-unreal-mcp-c584eb9b]]. The Godot addon also requires the C#/.NET (mono) edition of Godot 4.3+ and the .NET 8 SDK — excluding the large share of GDScript-only projects [[godot-mcp-model-context-protocol-integration-for-the-godot-engine-d39b33d3]].
+
 ### Updates 2026-07-10
 
 **Fortnite UEFN adds experimental runtime NPC Conversations via Gemini 3.1 Flash-Lite + ElevenLabs.** Epic's Unreal Editor for Fortnite (UEFN) has rolled out "Conversations", an Experimental feature that gives island developers a runtime generative-AI NPC voice pipeline directly inside Fortnite: developers define a character's persona, knowledge, and behavior with simple prompts, pick a voice, and the system routes audio input through Google's Gemini 3.1 Flash-Lite for text generation and ElevenLabs for TTS output [[bring-npcs-to-life-with-ai-powered-conversations-b6eafc01]].
@@ -1157,6 +1171,8 @@ until the underlying entity pages exist:
 - [ ] What is the exact corporate/product relationship among Aura, Coplay, and Flopperam (shared vendor, acquisition, or marketed bundle)? [[aura-15-0-releases-with-new-features-and-unlimited-usage-for-unreal-engine-and-unity-34445073]]
 - [ ] When Fortnite Conversations graduates from Experimental to Beta, will Epic allow third-party LLM backends or only Gemini?
 - [ ] Does the Gemini 3.1 Flash-Lite latency (cloud round-trip) clear the sub-200ms first-chunk bar required for natural in-engine NPC conversation?
+- [ ] Godot now has two production MCP servers ([[godot-ai-production-grade-mcp-server-and-ai-tools-for-the-godot-engine-02e08d34]] hi-godot GDScript-friendly vs [[godot-mcp-model-context-protocol-integration-for-the-godot-engine-d39b33d3]] IvanMurzak C#/.NET-only) — which is preferable for a GDScript-primary project, and does the cross-engine backend reduce per-engine tool-quality vs a dedicated server?
+- [ ] Does the engine-agnostic [[gamedev-mcp-server-engine-agnostic-mcp-server-shared-by-unity-mcp-godot-mcp-and-unreal-mcp-c584eb9b]] have any shipped-studio production validation, or is it still a v1 (unreal-mcp-server 0.1.x) hobby-tier release?
 
 ## See also
 
