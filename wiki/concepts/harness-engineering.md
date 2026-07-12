@@ -34,7 +34,8 @@ sources:
   - "[[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]"
   - "[[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]"
   - "[[programmatic-tool-calling-c21acdb9]]"
-last_updated: 2026-07-10
+  - "[[side-chats-and-conversation-search-8df90ad3]]"
+last_updated: 2026-07-12
 last_verified: 2026-06-11
 freshness_window_days: 30
 ---

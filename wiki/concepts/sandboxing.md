@@ -12,7 +12,8 @@ sources:
   - "[[sandlock-confining-ai-agent-code-with-unprivileged-linux-primitives-6c9c9e93]]"
   - "[[auditing-agent-harness-safety-e2a88ca4]]"
   - "[[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]"
-last_updated: 2026-06-09
+  - "[[the-balkanization-of-execution-security-research-for-ai-coding-agents-isolation-access-control-and-time-of-check-to-time-of-use-vulnerabilities-df4a38f9]]"
+last_updated: 2026-07-12
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---

@@ -11,7 +11,8 @@ sources:
   - "[[aura-15-0-releases-with-new-features-and-unlimited-usage-for-unreal-engine-and-unity-34445073]]"
   - "[[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]"
   - "[[programmatic-tool-calling-c21acdb9]]"
-last_updated: 2026-07-10
+  - "[[the-balkanization-of-execution-security-research-for-ai-coding-agents-isolation-access-control-and-time-of-check-to-time-of-use-vulnerabilities-df4a38f9]]"
+last_updated: 2026-07-12
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
