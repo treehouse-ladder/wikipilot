@@ -1,8 +1,8 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]"]
-last_updated: 2026-07-12
+sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]"]
+last_updated: 2026-07-13
 last_verified: 2026-06-30
 freshness_window_days: 60
 ---
@@ -69,6 +69,14 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 Open caveats and unresolved contradictions are tracked in `## Disputes` and `## Open questions` below.
 
 ## Recent updates
+
+### Updates 2026-07-13
+
+RPGFan published a first-hand recap of Hitoshi Sakimoto's 40th-anniversary **"The Colors of Harmony"** concert (13 June 2026, Fairfield Halls, Croydon). The London Mozart Players performance was split into two 45-minute halves centred on *Final Fantasy XII* and *Final Fantasy Tactics*, with vocalists in the first half covering *13 Sentinels* and *Odin Sphere* selections [[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]. The full day included a *Final Fantasy Tactics: The Ivalice Chronicles* voice-cast Q&A (Joe Pitts / Ramza, Gregg Lowe / Delita, Eleanor Bennett / Ovelia), a 45-minute Sakimoto interview hosted by Alex Moukala, and a closing standing ovation as Sakimoto joined the orchestra on stage [[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]. This is a first-hand review of an event already tracked from its announcement side; it adds concert-structure detail but does not change the current-state view.
+
+> On Saturday, 13 June, 2026, RPGFan attended The Colors of Harmony: Hitoshi Sakimoto 40th Anniversary Celebration, a day of events at Fairfield Halls in Croydon, London, celebrating both the Final Fantasy series and Sakimoto's contribution to video game music. [[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]
+
+> The main event was the Colors of Harmony concert, featuring the London Mozart Players. The concert focused primarily on Final Fantasy XII and Final Fantasy Tactics, split into two 45-minute halves, with the first half including vocalists who performed tracks from 13 Sentinels and Odin Sphere selections. [[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]
 
 ### Updates 2026-07-12
 
@@ -762,6 +770,7 @@ until the underlying entity pages exist:
 - [ ] What is the relationship between Game Music Festival 2026 (hosting the Sakimoto 40th-anniversary concert at Fairfield Halls in Croydon) and BAFTA Games in Concert — are these separate events, overlapping programmes, or part of the same umbrella? [[london-mozart-players-the-colours-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d3196284]]
 - [ ] Will the Ivors Composers Awards' UK-resident eligibility rule materially narrow the field of recognized game composers versus the Grammy video-game category?
 - [ ] Does the Game Music Festival's 30th-anniversary Diablo focus signal a broader trend toward franchise-anniversary concert programming, or is it a one-off tied to the Diablo IV release cycle?
+- [ ] Will Sakimoto's 40th-anniversary "Colors of Harmony" program travel beyond the single 13 June 2026 London date, or was it a one-off? The RPGFan recap and the London Mozart Players listing both cover only the Croydon event. [[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]
 - [ ] Does the Mewgenics 3LP's seven-colorway split correspond to thematic groupings, or are the colorways purely cosmetic across identical pressings? [[mewgenics-soundtrack-is-coming-to-vinyl-2e9ffcd5]]
 - [ ] Will the LittleBigPlanet vinyl 2LP's 15-track curation include Daniel Pemberton's bespoke compositions alongside the licensed tracks (Go! Team, etc.)? [[littlebigplanet-and-sackboy-a-big-adventure-vinyl-soundtracks-up-for-preorder-via-iam8bit-890918f1]]
 - [ ] Will The Infernal Symphony and Ballads of the Underworld get official live-recording releases, or will they remain attendance-only? [[the-infernal-symphony-diablo-30th-anniversary-concert-game-music-festival-2026-8d094ebf]] [[ballads-of-the-underworld-concert-featuring-music-from-hades-hades-ii-3da356ea]]
