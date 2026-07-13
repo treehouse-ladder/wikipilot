@@ -1175,3 +1175,27 @@ FINAL FANTASY RESONANCE (Oct 22, 2026): Elements Garden/Noriyasu Agematsu scorin
 ## [2026-07-08] daily | 5 topics, 9 sources, 23 pages
 
 Daily Research 2026-07-08 complete. PRs #331–#335. Key stories: Xbox Reset studio fate firmed (games-of-note); latent-horizon probe AUC 0.83 + Willison's subagent-routing pattern (agentic-coding); Sakana Fugu orchestrator ingested, leaders re-confirmed (frontier-models); AI Native Games counterfactual taxonomy (ai-in-game-dev); FF Resonance Elements Garden score (game-music). Report: wiki/reports/2026-07-08.md.
+
+## [2026-07-13] daily | agentic-coding — 2 sources, 5 pages
+
+Claude Code Artifacts: session-native live web page (private claude.ai URL) as async oversight surface. Auto mode v2.1.205: transcript-write block + unresolved-variable rm -rf guard — closes one poisoning vector but classifier remains subject to tool-output injection.
+
+## [2026-07-13] daily | frontier-models — 2 sources, 4 pages
+
+Meta Muse Spark 1.1: first paid-API frontier model, 1M-token context, $1.25/$4.25 per Mtoken; AA Index v4.1 = 51 (tied with GLM-5.2, GPT-5.4, GPT-5.6 Luna, 3 pts behind Grok 4.5). Leader picture unchanged at top: Fable 5 (60) > GPT-5.6 Sol (59) > Opus 4.8 (56). Summary regenerated.
+
+## [2026-07-13] daily | ai-in-game-dev — 1 source, 2 pages
+
+DreamCharacter-1 (arXiv:2607.07817): post-adaptation framework (geometry + texture + acceleration) on pretrained 3D foundation models for production-ready character generation; no open-weight release confirmed, engine-ready rig validation pending.
+
+## [2026-07-13] daily | games-of-note — 2 sources, 3 pages
+
+Obsidian cancels Avowed sequel, pivots to Josh Sawyer-led Fallout game (Bethesda co-developing; CA WARN: 52 layoffs) — first named Xbox Reset cancellation, in tension with Microsoft's "no publicly announced games cancelled" line. AC Black Flag Resynced: 2M day-one copies, 99,451 Steam concurrent AC record, ~84 MC. Summary regenerated.
+
+## [2026-07-13] daily | game-music — 1 source, 1 page
+
+RPGFan first-hand recap: Sakimoto 40th-anniversary Colors of Harmony concert (13 June 2026, Fairfield Halls, Croydon) — London Mozart Players, FF XII + FFT halves, voice-cast Q&A, 45-min interview.
+
+## [2026-07-13] daily | 5 topics, 8 sources, 14 pages
+
+Daily Research 2026-07-13 complete. PRs #352–#356. Key stories: Meta Muse Spark 1.1 API launch at AA Index 51 (frontier-models); Obsidian cancels Avowed sequel, pivots to Sawyer-led Fallout (games-of-note); AC Black Flag Resynced 2M day-one + AC Steam record (games-of-note); auto mode transcript-write block / Artifacts observability surface (agentic-coding); DreamCharacter-1 character-refinement post-adapter (ai-in-game-dev); Sakimoto concert recap (game-music). Report: wiki/reports/2026-07-13.md.
