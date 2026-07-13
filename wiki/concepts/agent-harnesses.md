@@ -21,7 +21,8 @@ sources:
   - "[[programmatic-tool-calling-c21acdb9]]"
   - "[[rewriting-bun-in-rust-15a50b3d]]"
   - "[[side-chats-and-conversation-search-8df90ad3]]"
-last_updated: 2026-07-12
+  - "[[share-session-output-as-artifacts-8d4cebdf]]"
+last_updated: 2026-07-13
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -77,6 +78,8 @@ A June 2026 paper supplies the first constitutive definition of "agent harness,"
 > Claude Sonnet 5 is a hybrid reasoning model with fast, capable intelligence for real-time agents and high-volume work, featuring a 1M context window. [[introducing-claude-sonnet-5-4307222b]]
 
 **The eval frontier pivots from single-turn autonomous resolution to multi-turn interactive collaboration (July 2026).** Two independent benchmarks landing the same week — SWE-INTERACT [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]] and SWE-Together [[swe-together-evaluating-coding-agents-in-interactive-user-sessions-aa55f80b]] — both find that strong single-turn SWE performance does not reliably transfer to multi-turn, user-driven interactive sessions. This convergence signals a measurement shift: harnesses optimized for autonomous single-shot resolution (SWE-bench Verified's bash-only mini-SWE-agent) may systematically under-represent the interactive-collaboration capability that production agentic-coding workflows demand. The harness design space must now account for feedback-driven iteration, progressive requirement revelation, and the number of corrective turns required — dimensions the single-turn eval paradigm does not capture.
+
+**Session-native artifact output as a new harness-layer observability surface (July 2026).** Claude Code sessions can now publish a live, in-place-updating web page ("Artifacts") to a private claude.ai URL, shareable on Team/Enterprise plans [[share-session-output-as-artifacts-8d4cebdf]]. This is a session-native output channel distinct from the transcript streams Copilot's agent-session streaming provides: the agent publishes an output artifact (PR walkthrough, dashboard, checklist) that persists as the session continues, extending the async-oversight surface for post-flight review. It fits the harness-level observability thread this page tracks — verification is the bottleneck, and an agent-published artifact is a new candidate signal for that layer.
 
 > Strong performance on single-turn SWE tasks does not reliably transfer to multi-turn, user-driven workflows. [[swe-interact-reimagining-swe-benchmarks-as-user-driven-long-horizon-coding-sessions-db9da92b]]
 
