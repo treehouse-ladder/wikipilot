@@ -55,6 +55,14 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[share-session-output-as-artifacts-8d4cebdf]]
+- [[configure-auto-mode-6d12b9ff]]
+- [[introducing-muse-spark-1-1-f8a95609]]
+- [[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]
+- [[dreamcharacter-1-from-3d-generative-foundation-models-to-product-ready-character-generation-cc2f86ec]]
+- [[report-obsidian-cancels-avowed-sequel-to-begin-work-on-a-new-fallout-game-2d7ec4f3]]
+- [[assassin-s-creed-black-flag-resynced-launches-with-2-million-copies-sold-10326ffc]]
+- [[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]
 - [[the-witcher-3-anniversary-tour-confirms-2026-dates-a5127647]]
 - [[preorders-open-for-final-fantasy-x-lp-vinyl-set-eternal-calm-a69e0f99]]
 - [[saint-slayer-spear-of-sacrilege-official-vinyl-soundtrack-coming-july-2026-pre-orders-live-42d85040]]
@@ -890,3 +898,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-08]]
 - [[2026-07-10]]
 - [[2026-07-12]]
+- [[2026-07-13]]
