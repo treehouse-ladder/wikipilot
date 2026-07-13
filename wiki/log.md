@@ -1175,3 +1175,7 @@ FINAL FANTASY RESONANCE (Oct 22, 2026): Elements Garden/Noriyasu Agematsu scorin
 ## [2026-07-08] daily | 5 topics, 9 sources, 23 pages
 
 Daily Research 2026-07-08 complete. PRs #331–#335. Key stories: Xbox Reset studio fate firmed (games-of-note); latent-horizon probe AUC 0.83 + Willison's subagent-routing pattern (agentic-coding); Sakana Fugu orchestrator ingested, leaders re-confirmed (frontier-models); AI Native Games counterfactual taxonomy (ai-in-game-dev); FF Resonance Elements Garden score (game-music). Report: wiki/reports/2026-07-08.md.
+
+## [2026-07-13] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#356 requeued: wiki(game-music)/daily-2026-07-13 was CLEAN+green but auto-merge was never queued; squash --auto re-enabled via MCP.
