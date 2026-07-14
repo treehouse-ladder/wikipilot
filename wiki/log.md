@@ -1199,3 +1199,27 @@ RPGFan first-hand recap: Sakimoto 40th-anniversary Colors of Harmony concert (13
 ## [2026-07-13] daily | 5 topics, 8 sources, 14 pages
 
 Daily Research 2026-07-13 complete. PRs #352–#356. Key stories: Meta Muse Spark 1.1 API launch at AA Index 51 (frontier-models); Obsidian cancels Avowed sequel, pivots to Sawyer-led Fallout (games-of-note); AC Black Flag Resynced 2M day-one + AC Steam record (games-of-note); auto mode transcript-write block / Artifacts observability surface (agentic-coding); DreamCharacter-1 character-refinement post-adapter (ai-in-game-dev); Sakimoto concert recap (game-music). Report: wiki/reports/2026-07-13.md.
+
+## [2026-07-14] daily | agentic-coding — 2 sources, 4 pages
+
+TRACEPROBE (arXiv 2607.06184): deterministic nine-type trajectory diagnostics + INSIGHT anti-patterns + CONVERGE pairwise divergence, applied to 2,500 SWE-Bench Verified trajectories — resolve-rate monoculture critique. ChainSWE (arXiv 2607.02606): first no-reset sequential-dependent bug benchmark (304 issues, 54 projects), up to 70% performance degradation as chain grows.
+
+## [2026-07-14] daily | frontier-models — 1 source, 4 pages
+
+SWE-1.7 (Cognition, July 8): RL on Kimi K2.7 Code open-weight base; vendor-reported Terminal-Bench 2.1 81.5% / SWE-Bench Multilingual 77.8% / FrontierCode 1.1 Main 42.3%; ~$1.97/task via Cerebras. Leaders unchanged: Fable 5 (60) > GPT-5.6 Sol (59) > Opus 4.8 (56). Fable 5 + Opus 4.8 freshness bumped.
+
+## [2026-07-14] daily | ai-in-game-dev — 1 source, 2 pages
+
+GameEngineBench (arXiv 2607.03525): scoped C++ implementation tasks in 9 real Unreal Engine 5 game repos (110 tasks); strongest of 12 configurations reaches 55.5% pass@1; 31 tasks unsolved by all; engine-native Play-in-Editor automation + behavior-judge harness.
+
+## [2026-07-14] daily | game-music — 1 source, 2 pages
+
+Nintendo Music July 13 update: additional Mario Kart World 'Free Roam' songs added (Mario Paint, NSMB, NSMB Wii, NSMB U, Super Mario Maker) — continues weekly rollout since early June 2026 when album was first added.
+
+## [2026-07-14] daily | games-of-note — 4 sources, 5 pages
+
+Meccha Chameleon: 15M copies in <1 month, $5.99 two-person indie, 2026 fastest- and best-selling game (supersedes ~3M earlier). Palworld 1.0: free update, 855K concurrent Steam peak, all-time top-15 spot (first title with two top-15 entries; 40M lifetime). Save Our Devs rally July 15: Bethesda/ZeniMax OneBGS union (Rockville, Austin, Dallas, Montreal; 440 positions eliminated). Summary regenerated.
+
+## [2026-07-14] daily | 5 topics, 9 sources, 17 pages
+
+Daily Research 2026-07-14 complete. PRs #358–#362. Key stories: Meccha Chameleon 15M copies in <1 month (games-of-note commercial leader); Palworld 1.0 855K Steam concurrent peak / all-time top-15 (games-of-note); Save Our Devs rally July 15 — Bethesda/ZeniMax union action (games-of-note); TRACEPROBE trajectory diagnostics + ChainSWE chain-degradation benchmark (agentic-coding); SWE-1.7 RL-on-Kimi-K2.7 Code at $1.97/task (frontier-models); GameEngineBench 55.5% pass@1 in UE5 (ai-in-game-dev); Nintendo Music MKW Free Roam update (game-music). Report: wiki/reports/2026-07-14.md.
