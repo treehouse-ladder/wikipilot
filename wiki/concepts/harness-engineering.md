@@ -35,8 +35,9 @@ sources:
   - "[[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]"
   - "[[programmatic-tool-calling-c21acdb9]]"
   - "[[side-chats-and-conversation-search-8df90ad3]]"
-last_updated: 2026-07-12
-last_verified: 2026-06-11
+  - "[[what-resolve-rate-hides-trajectory-structure-diagnostics-for-coding-agents-3704621c]]"
+last_updated: 2026-07-14
+last_verified: 2026-07-14
 freshness_window_days: 30
 ---
 
@@ -145,6 +146,10 @@ Self-Harness extends the harness-evolution cluster with a fully self-driven loop
 **OpenAI's GPT-5.6 relocates tool-orchestration and subagent dispatch into the model API itself (July 2026).** The GPT-5.6 launch introduces *Programmatic Tool Calling* (model-authored JavaScript orchestrating tool calls in a hosted V8 sandbox) and *Multi-agent* (model-spawned parallel subagents) as first-class Responses API primitives [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]] [[programmatic-tool-calling-c21acdb9]]. These are capabilities that have to date been harness-layer features — subagent dispatch and load-on-demand tool composition have been the harness's responsibility in systems like `CLAUDE_CODE_FORK_SUBAGENT`, Cursor SDK nesting, and code-execution-with-MCP. GPT-5.6 moves both into the model's own API surface. This is a significant shift in the harness-vs-model boundary: if capabilities previously attributed to the harness are now built into the model, the Binding Constraint Thesis's harness-configuration-dominates claim [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]] may need to be revised to account for model APIs that subsume harness responsibilities.
 
 > Programmatic Tool Calling allows the models to compose and run JavaScript that orchestrates tool calls. Multi-agent lets the model spin up subagents for parallel, focused work — the sub-agent pattern now baked into the core API. [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]
+
+**TRACEPROBE: deterministic trajectory diagnostics as a harness-observability primitive (July 2026).** A July 2026 paper argues that resolve rate (pass/fail) hides the process by which an agent succeeded or failed, and proposes TRACEPROBE — a trajectory-diagnostic framework that normalizes raw runs into a canonical nine-type action taxonomy, then applies deterministic rule-based diagnostics (INSIGHT for single-trajectory anti-patterns like search loops; CONVERGE for pairwise divergence) [[what-resolve-rate-hides-trajectory-structure-diagnostics-for-coding-agents-3704621c]]. Across 2,500 trajectories from five production settings on SWE-Bench Verified, the authors find function-selection and completion behavior localize success/failure, while file-level choice is too coarse. This is a deterministic harness-observability tool complementary to the LLM-judge scoring approach (SWE-Judge), offering an auditable mid-trajectory review signal for harness engineers diagnosing agent behavior at scale.
+
+> Coding agents are ranked almost entirely by resolve rate (whether their final patch passes tests), yet two agents can reach the same outcome through very different processes, and a single pass/fail label says nothing about why a run failed or why an accepted run spent extra steps, time, or tokens. [[what-resolve-rate-hides-trajectory-structure-diagnostics-for-coding-agents-3704621c]]
 
 ## Disputes
 
