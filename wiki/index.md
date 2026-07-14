@@ -849,6 +849,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[palworld-s-massive-1-0-patch-notes-detail-new-sunreach-area-mutations-and-72-more-pals-42fdc1d5]]
 - [[palworld-looks-way-less-like-pokemon-in-massive-1-0-update-7877aa8b]]
 - [[xbox-layoffs-heavily-impact-the-accessibility-team-too-aeaef034]]
+- [[what-resolve-rate-hides-trajectory-structure-diagnostics-for-coding-agents-3704621c]]
+- [[chainswe-benchmarking-coding-agents-on-multi-bug-software-maintenance-50ac361b]]
+- [[swe-1-7-frontier-intelligence-at-a-fraction-of-the-cost-0d1dcf4a]]
+- [[gameenginebench-evaluating-coding-agents-on-real-c-runtime-environments-9038596b]]
+- [[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]
+- [[we-mean-business-xbox-union-workers-fighting-back-with-save-our-devs-rally-on-july-15-80020d3b]]
+- [[bethesda-union-workers-to-protest-mass-layoffs-next-week-eb4a5694]]
+- [[palworld-devs-had-high-expectations-for-1-0-but-with-over-855-000-concurrent-steam-players-lead-says-this-is-staggering-f7c778a0]]
+- [[viral-indie-hit-meccha-chameleon-sells-a-massive-15-million-copies-in-less-than-a-month-becomes-the-fastest-and-best-selling-game-of-the-year-21790e00]]
 
 ## Reports
 
@@ -899,3 +908,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-10]]
 - [[2026-07-12]]
 - [[2026-07-13]]
+- [[2026-07-14]]
