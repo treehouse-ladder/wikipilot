@@ -1,9 +1,9 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]"]
-last_updated: 2026-07-13
-last_verified: 2026-06-30
+sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]"]
+last_updated: 2026-07-14
+last_verified: 2026-07-14
 freshness_window_days: 60
 ---
 
@@ -69,6 +69,16 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 Open caveats and unresolved contradictions are tracked in `## Disputes` and `## Open questions` below.
 
 ## Recent updates
+
+### Updates 2026-07-14
+
+**Nintendo Music adds more Mario Kart World 'Free Roam' tracks — the weekly catalog rollout continues.** Nintendo's July 13, 2026 Nintendo Music update added another batch of Mario Kart World 'Free Roam' selections, this week drawing tracks from *Mario Paint*, *New Super Mario Bros.*, *New Super Mario Bros. Wii*, *New Super Mario Bros. U*, and *Super Mario Maker* [[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]. This is part of the ongoing weekly rollout that has been filling out the Mario Kart World soundtrack's 'Free Roam' playlists since the album was added to Nintendo Music in early June 2026 [[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]].
+
+> Nintendo Music Updated With More Mario Kart World 'Free Roam' Songs. As of July 13th, 2026, free roam tracks from the Mario Kart World soundtrack — specifically from Mario Paint, New Super Mario Bros., New Super Mario Bros. Wii, New Super Mario Bros. U, and Super Mario Maker — have been added to Nintendo Music, continuing a weekly rollout of 'Free Roam' tracks since the Mario Kart World soundtrack was added in early June 2026. [[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]
+
+The rest of today's allowlist sweep (RPGFan, VGM Online, gamemusic.net, Game Developer) and general web search returned only already-tracked items: the Halo trilogy vinyl and O'Donnell dispute, the Assassin's Creed: Black Flag 5LP, Saint Slayer, the FFX 'Eternal Calm' 2xLP, Stellar Blade, the Grammy/Wintory story, NME's AI-and-vinyl feature, the David Wise interview, and the Wwise/FMOD/MetaSounds middleware comparison.
+
+_no contradictions or gaps known yet (last reviewed: 2026-07-14)_
 
 ### Updates 2026-07-13
 
@@ -811,8 +821,9 @@ until the underlying entity pages exist:
 - [ ] Does Piotr Musial's Frostpunk 2 award-winning score receive any concert or live-performance treatment — given the pattern of TGA-winning indie scores (Clair-Obscur, Blue Prince) moving from vinyl to live-concert circuit — and does Black Screen Records plan to expand the release beyond the initial 2xLP? [[frostpunk-2-full-original-soundtrack-2xlp-9f17a322]]
 - [ ] Will the FINAL FANTASY RESONANCE 120-track soundtrack receive a standalone release (digital/streaming or vinyl) beyond the collector's-edition CD, following the 2026 Square Enix catalog-vinyl cadence (Chrono Trigger 4xLP, FFX 'Eternal Calm' 2xLP)?
 - [ ] How does the balance between reused Brave Exvius music and the 33 new tracks read once the game ships on 2026-10-22 — does Elements Garden's mobile-scoring lineage carry a distinct identity into an HD-2D console title, and does a music review surface post-launch?
+- [ ] Will Nintendo's weekly Mario Kart World 'Free Roam' rollout eventually surface the full in-game catalog (~323 songs), and does it complete as discrete weekly drops or via a one-time full-album addition? [[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]
 
-_no contradictions or gaps known yet beyond open questions above (last reviewed: 2026-07-08)_
+_no contradictions or gaps known yet beyond open questions above (last reviewed: 2026-07-14)_
 
 ## See also
 
