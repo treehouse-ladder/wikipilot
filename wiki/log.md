@@ -1199,3 +1199,7 @@ RPGFan first-hand recap: Sakimoto 40th-anniversary Colors of Harmony concert (13
 ## [2026-07-13] daily | 5 topics, 8 sources, 14 pages
 
 Daily Research 2026-07-13 complete. PRs #352–#356. Key stories: Meta Muse Spark 1.1 API launch at AA Index 51 (frontier-models); Obsidian cancels Avowed sequel, pivots to Sawyer-led Fallout (games-of-note); AC Black Flag Resynced 2M day-one + AC Steam record (games-of-note); auto mode transcript-write block / Artifacts observability surface (agentic-coding); DreamCharacter-1 character-refinement post-adapter (ai-in-game-dev); Sakimoto concert recap (game-music). Report: wiki/reports/2026-07-13.md.
+
+## [2026-07-14] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#360 requeued (wiki(game-music): daily 2026-07-14; was CLEAN with all checks green but auto-merge not set; squash auto-merge enabled via MCP).
