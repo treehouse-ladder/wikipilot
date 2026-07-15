@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-15] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#370 rebased onto main; resolved 1 conflict on wiki/log.md (chronological union); auto-merge re-queued
+
 ## [2026-07-15] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 1 failed
 
 pr#366 (agentic-coding): rebase dispatch failed — force-push rejected (concurrent update 662b3ed→62183b6; --force-with-lease refused). Rebase resolved 4 conflicts locally (lint 0 errors) but not pushed. Requeued via MCP enable_pr_auto_merge; PR merged as 566709d.
