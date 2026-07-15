@@ -1227,3 +1227,7 @@ Meccha Chameleon: 15M copies in <1 month, $5.99 two-person indie, 2026 fastest- 
 ## [2026-07-14] daily | 5 topics, 9 sources, 17 pages
 
 Daily Research 2026-07-14 complete. PRs #358–#362. Key stories: Meccha Chameleon 15M copies in <1 month (games-of-note commercial leader); Palworld 1.0 855K Steam concurrent peak / all-time top-15 (games-of-note); Save Our Devs rally July 15 — Bethesda/ZeniMax union action (games-of-note); TRACEPROBE trajectory diagnostics + ChainSWE chain-degradation benchmark (agentic-coding); SWE-1.7 RL-on-Kimi-K2.7 Code at $1.97/task (frontier-models); GameEngineBench 55.5% pass@1 in UE5 (ai-in-game-dev); Nintendo Music MKW Free Roam update (game-music). Report: wiki/reports/2026-07-14.md.
+
+## [2026-07-15] manual | conflict-resolver — 0 rebased, 0 requeued, 0 lint-fixed, 1 no-action
+
+pr#366 (agentic-coding daily 2026-07-15) rebase dispatched: agent rebased cleanly (0 lint errors, 727 tests passed) but force-push refused — PR merged concurrently while agent ran; content already in origin/main. End state clean, no open PRs remain.
