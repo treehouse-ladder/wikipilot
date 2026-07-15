@@ -20,6 +20,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 pr#366 (agentic-coding): rebase dispatch failed — force-push rejected (concurrent update 662b3ed→62183b6; --force-with-lease refused). Rebase resolved 4 conflicts locally (lint 0 errors) but not pushed. Requeued via MCP enable_pr_auto_merge; PR merged as 566709d.
 
+## [2026-07-15] daily | 5 topics, 10 sources, 18 pages
+
+Daily Research 2026-07-15 complete. PRs #364–#368 merged. Report: wiki/reports/2026-07-15.md.
+
+## [2026-07-15] daily | frontier-models — 0 sources, 4 pages
+
+Quiet window July 13–15: no new sources met the quality bar. Leader picture re-confirmed unchanged: Fable 5 (AA Index 60) > GPT-5.6 Sol (59) > Opus 4.8 (56) > GPT-5.5 (55) > Grok 4.5 (54); GLM-5.2 (51) open-weights #1. Bumped last_verified on claude-fable-5, claude-opus-4.8, gpt-5.5 (was stale since July 8). PR #364.
+
+## [2026-07-15] daily | ai-in-game-dev — 2 sources, 3 pages
+
+RigEL3D (arXiv): rig-aware latents enable animation-ready 3D asset generation preserving semantic rig structure. Unity survey: 79% of developers positive on generative AI (up from prior surveys). PR #365.
+
+## [2026-07-15] daily | agentic-coding — 3 sources, 4 pages
+
+PERFOPT-Bench: first benchmark evaluating coding agents on software performance optimization (algorithmic + hardware efficiency tasks). Cheap Code Costly Judgment: governable agentic software engineering — identifies governance vs. no-code-review tension as a structural risk. Datasette code-frequency chart on GitHub. PR #366.
+
+## [2026-07-15] daily | game-music — 1 source, 2 pages
+
+Persona 3 Reload Original Soundtrack music review (RPGFan): praised for emotional depth and faithfulness to Persona 3's themes, though rock-direction departure noted. PR #367.
+
+## [2026-07-15] daily | games-of-note — 4 sources, 5 pages
+
+Xbox Positron disc-to-digital teaser; AC Black Flag Remake launch-day layoffs at Ubisoft Barcelona; Save Our Devs march at Xbox HQ on July 15; Zeverland (DayZ rival) pivoting to PvE before launch. PR #368.
+
 ## [2026-07-12] health | weekly sweep — 3 disputes filed
 
 Weekly health sweep 2026-07-12. 12 candidate sets (11 source-triggered + 1 stale sweep), 6 scanner passes. 3 new disputes filed: claude-fable-5 AA Index version discrepancy (64.9 v4.0 vs 60 v4.1); claude-fable-5 GDPval-AA version discrepancy (1932 original vs 1818 v2); deepseek-v4 AA Index version discrepancy (52 v4.0 vs 44 v4.1). Lint: 0 errors, 202 warnings. 10 stale synthesis pages. PR #345.
