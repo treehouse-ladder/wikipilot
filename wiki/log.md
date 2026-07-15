@@ -20,6 +20,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 pr#366 (agentic-coding): rebase dispatch failed — force-push rejected (concurrent update 662b3ed→62183b6; --force-with-lease refused). Rebase resolved 4 conflicts locally (lint 0 errors) but not pushed. Requeued via MCP enable_pr_auto_merge; PR merged as 566709d.
 
+## [2026-07-15] manual | conflict-resolver — 0 rebased, 0 requeued, 0 lint-fixed
+
+2 DIRTY claude/daily-2026-07-15/* PRs (#366 agentic-coding, #367 game-music) went DIRTY after #368 (games-of-note) merged; dispatched conflict-resolver for #366 but both PRs were already squash-merged to main via a parallel requeue run (#369) before the rebase landed.
+
 ## [2026-07-12] health | weekly sweep — 3 disputes filed
 
 Weekly health sweep 2026-07-12. 12 candidate sets (11 source-triggered + 1 stale sweep), 6 scanner passes. 3 new disputes filed: claude-fable-5 AA Index version discrepancy (64.9 v4.0 vs 60 v4.1); claude-fable-5 GDPval-AA version discrepancy (1932 original vs 1818 v2); deepseek-v4 AA Index version discrepancy (52 v4.0 vs 44 v4.1). Lint: 0 errors, 202 warnings. 10 stale synthesis pages. PR #345.
