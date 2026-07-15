@@ -1,9 +1,9 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]"]
-last_updated: 2026-07-14
-last_verified: 2026-07-14
+sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]", "[[persona-3-reload-original-soundtrack-music-review-7bde2768]]"]
+last_updated: 2026-07-15
+last_verified: 2026-07-15
 freshness_window_days: 60
 ---
 
@@ -69,6 +69,20 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 Open caveats and unresolved contradictions are tracked in `## Disputes` and `## Open questions` below.
 
 ## Recent updates
+
+### Updates 2026-07-15
+
+**RPGFan reviews the Persona 3 Reload Original Soundtrack — a clean remaster that plays it safe.** RPGFan's mid-July review (July 14, 2026) frames the *Persona 3 Reload* OST as "plucking the low-hanging fruit" — remastering and slightly updating an all-timer 2006 score rather than reinventing it, a choice that "may leave long-time listeners wanting more" [[persona-3-reload-original-soundtrack-music-review-7bde2768]]. The production upgrade is real: the review credits the Reload versions with "cleaner, better-balanced instrumentals" over the compressed electronic elements of the PS2 original, while the vocal exploration tracks remain "fantastically catchy" [[persona-3-reload-original-soundtrack-music-review-7bde2768]]. The standout new cut is 'Color Your Night', a Persona 5-inspired nighttime exploration theme for Port Island pairing a piano melody with a groovy bassline and Lotus Juice's vocals — called "the best addition to Persona 3 Reload" [[persona-3-reload-original-soundtrack-music-review-7bde2768]]. The reviewer's built-in caveat is that the album "sticks so closely to the one that's been available for twenty years" that it reads as a mild misfire, tempered only by how well the original holds up [[persona-3-reload-original-soundtrack-music-review-7bde2768]]. This is a craft-side OST review that complements — without shifting — the topic's existing Persona thread: the U.S. *Persona Live 2026: Awakenings* tour [[review-persona-live-2026-awakenings-brought-the-vibes-in-first-batch-of-u-s-concerts-63f4bb81]] and Game Music Festival's Shoji Meguro-attended *Persona Grooves* concert [[persona-grooves-concert-featuring-music-from-persona-3-4-5-e05bec72]].
+
+> Persona 3 Reload, the 2024 remake of the beloved PS2 JRPG, plucks the low-hanging fruit by remastering and slightly updating an all-timer soundtrack, though it may leave long-time listeners wanting more. [[persona-3-reload-original-soundtrack-music-review-7bde2768]]
+
+> 'Color Your Night' is a very Persona 5-inspired nighttime exploration theme for Port Island, featuring a piano melody interplaying with a groovy bassline and Lotus Juice's singing, making it a fun time and the best addition to Persona 3 Reload. [[persona-3-reload-original-soundtrack-music-review-7bde2768]]
+
+> It's a bit of a misfire that the soundtrack sticks so closely to the one that's been available for twenty years, though it speaks to the original's high bar of quality that it holds up so well. [[persona-3-reload-original-soundtrack-music-review-7bde2768]]
+
+The rest of today's allowlist sweep (VGM Online, gamemusic.tools, Game Developer, Materia Collective) and general web search returned only already-tracked or out-of-window items: the early-2026 Infinity (Game Boy Color) OST/arranged reviews (Eric Hache, Yuzo Koshiro guest), the Clair Obscur / Ivors Awards stories, and Materia Collective's late-June 'Video Games Unplugged' piano-trio album — none newly published since the last run.
+
+_no contradictions or gaps known yet (last reviewed: 2026-07-15)_
 
 ### Updates 2026-07-14
 
