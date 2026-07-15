@@ -858,6 +858,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[bethesda-union-workers-to-protest-mass-layoffs-next-week-eb4a5694]]
 - [[palworld-devs-had-high-expectations-for-1-0-but-with-over-855-000-concurrent-steam-players-lead-says-this-is-staggering-f7c778a0]]
 - [[viral-indie-hit-meccha-chameleon-sells-a-massive-15-million-copies-in-less-than-a-month-becomes-the-fastest-and-best-selling-game-of-the-year-21790e00]]
+- [[rigel3d-rig-aware-latents-for-animation-ready-3d-asset-generation-855a6af7]]
+- [[unity-claims-79-percent-of-developers-are-feeling-positive-about-generative-ai-1dd720eb]]
+- [[perfopt-bench-evaluating-coding-agents-on-software-performance-optimization-0c17f7ce]]
+- [[cheap-code-costly-judgment-a-case-study-on-governable-agentic-software-engineering-7c0872b9]]
+- [[datasette-code-frequency-chart-on-github-669accad]]
+- [[persona-3-reload-original-soundtrack-music-review-7bde2768]]
+- [[xbox-is-teasing-something-big-for-next-week-amid-disc-to-digital-rumors-6ef919a5]]
+- [[assassin-s-creed-devs-celebrate-black-flag-remake-launch-with-layoffs-this-is-not-how-i-imagined-it-would-end-45fb3f59]]
+- [[a-call-for-xbox-to-end-cycle-of-layoffs-is-trending-on-fan-portal-190b54e8]]
+- [[this-promising-dayz-rival-is-thankfully-pivoting-to-pve-before-launch-625ae731]]
 
 ## Reports
 
@@ -909,3 +919,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-12]]
 - [[2026-07-13]]
 - [[2026-07-14]]
+- [[2026-07-15]]
