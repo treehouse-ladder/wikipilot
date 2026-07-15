@@ -1,21 +1,19 @@
 ---
-title: "This promising DayZ rival is thankfully pivoting to PvE before launch"
-kind: source
-url: "https://www.gamespot.com/articles/this-promising-dayz-rival-is-thankfully-pivoting-to-pve-before-launch/"
-sha256: "625ae731"
-fetched_at: 2026-07-15
-topic: games-of-note
-image_count: 0
-sources: []
-last_updated: 2026-07-15
-last_verified: 2026-07-15
+fetched_at: &id001 2026-07-15
 freshness_window_days: 365
+image_count: 0
+kind: source
+last_updated: *id001
+last_verified: *id001
+sha256: 625ae73102acb22e136349177bb630c2c4d6141e25b14cca2d5d54b1d0039ad7
+sources: []
+title: This Promising DayZ Rival Is Thankfully Pivoting To PvE Before Launch
+topic: games-of-note
+url: https://www.gamespot.com/articles/this-promising-dayz-rival-is-thankfully-pivoting-to-pve-before-launch/
 ---
 
 ## Excerpts
 
-> The studio decided to shift Zeverland from a pure MMO into a buy-to-play, survival-crafting, co-op PvE game and confirmed that Zeverland is doubling down on cooperative PvE.
+> Zeverland, the upcoming open-world zombie survival sim for PC by Quantum Quirks, announced a major shift in the game's design following a closed alpha test, with players requesting that the PvPvE game become an entirely cooperative PvE experience instead.
 
-> Quantum Quirks' open-world zombie sim Zeverland shifted from a pure PvPvE MMO into a buy-to-play, survival-crafting, co-op PvE game after its closed alpha, with the studio saying players wanted an entirely cooperative experience.
-
-> The pivot cuts against the saturated PvP-survival field, with the studio choosing a buy-to-play co-op model over the more common forced-PvP live-service approach after alpha feedback showed players wanted cooperation over competition.
+> The studio decided to shift Zeverland from a pure MMO into a buy-to-play, survival-crafting, co-op PvE game, doubling down on cooperative PvE after hearing from their community. The team is working on adding a solo mode as well as the possibility to self-host coop servers, while official servers will still exist.
