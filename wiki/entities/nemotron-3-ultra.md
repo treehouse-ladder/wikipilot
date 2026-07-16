@@ -2,8 +2,8 @@
 title: "NVIDIA Nemotron 3 Ultra"
 kind: entity
 aliases: ["Nemotron 3 Ultra", "nemotron-3-ultra", "NVIDIA Nemotron Ultra 550B"]
-sources: ["[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[nemotron-3-ultra-launches-june-4-the-first-open-frontier-model-built-for-agents-302459f4]]"]
-last_updated: 2026-06-04
+sources: ["[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[nemotron-3-ultra-launches-june-4-the-first-open-frontier-model-built-for-agents-302459f4]]", "[[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]"]
+last_updated: 2026-07-16
 last_verified: 2026-06-04
 freshness_window_days: 30
 aa_intelligence_index: 48
@@ -12,7 +12,7 @@ aa_intelligence_index_source: "[[nemotron-3-ultra-announced-high-speed-leading-u
 
 ## Summary
 
-NVIDIA Nemotron 3 Ultra is a 550B-parameter mixture-of-experts model (55B active per token) announced June 1, 2026 at Jensen Huang's Computex keynote [[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]. It is the top-scoring US open-weights model on the Artificial Analysis Intelligence Index v4.0 at 48 — ahead of Gemma 4 31B (39) and Nemotron 3 Super (36), but trailing the Chinese-led open-weights frontier (Kimi K2.6 at 54).
+NVIDIA Nemotron 3 Ultra is a 550B-parameter mixture-of-experts model (55B active per token) announced June 1, 2026 at Jensen Huang's Computex keynote [[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]. As of July 16, 2026, it is superseded as the top-scoring US open-weights model by Thinking Machines' Inkling (v4.1 AA Index = 41 vs Nemotron 3 Ultra's v4.1 = 38), though Nemotron's v4.0 score of 48 was higher before the v4.1 re-scaling [[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]. Both trail the Chinese-led open-weights frontier (GLM-5.2 at v4.1 = 51).
 
 > NVIDIA just announced the release of Nemotron 3 Ultra in Jensen Huang's Computex keynote: at 550B parameters (55B active), this is the largest Nemotron 3 model to date, and it is the most intelligent US open weights model.
 
