@@ -47,6 +47,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[claude-sonnet-5]]
 - [[gpt-5.6-sol]]
 - [[grok-4.5]]
+- [[inkling]]
 
 ## Comparisons
 
@@ -610,6 +611,19 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[playstation-6-project-helix-will-almost-certainly-be-digital-only-launch-in-2028-analysts-say-6f1c335b]]
 - [[gta-6-reportedly-won-t-get-disc-copy-even-months-after-launch-eb46ee46]]
 - [[ex-xbox-workers-warn-of-potential-retaliation-in-rumored-layoffs-beb6ed0e]]
+- [[inkling-our-open-weights-model-06531d4a]]
+- [[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]
+- [[deepswe-measuring-frontier-coding-agents-on-original-long-horizon-engineering-tasks-492fbfd8]]
+- [[mosaic-knowledge-guided-cli-command-composition-attack-in-llm-coding-agents-92fab58e]]
+- [[adoption-and-impact-of-command-line-ai-coding-agents-a-study-of-microsoft-s-early-2026-rollout-of-claude-code-and-github-copilot-cli-0ecd5741]]
+- [[isolation-as-a-first-class-principle-for-llm-agent-system-safety-concepts-taxonomy-challenges-and-future-directions-71335571]]
+- [[roundup-rave-reviews-for-denshattack-make-it-a-must-play-on-xbox-game-pass-d1ceb894]]
+- [[game-workers-march-at-six-xbox-studios-over-440-union-cuts-and-stalled-contracts-ad076cea]]
+- [[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]
+- [[about-time-indeed-the-crash-bandicoot-4-soundtrack-finally-hits-spotify-6b64122f]]
+- [[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]
+- [[gui-agents-for-continual-game-generation-00020038]]
+- [[playcoder-making-llm-generated-gui-code-playable-a86fc2af]]
 
 ## Answers
 
@@ -920,3 +934,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-13]]
 - [[2026-07-14]]
 - [[2026-07-15]]
+- [[2026-07-16]]

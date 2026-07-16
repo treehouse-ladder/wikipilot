@@ -1255,3 +1255,27 @@ Meccha Chameleon: 15M copies in <1 month, $5.99 two-person indie, 2026 fastest- 
 ## [2026-07-14] daily | 5 topics, 9 sources, 17 pages
 
 Daily Research 2026-07-14 complete. PRs #358–#362. Key stories: Meccha Chameleon 15M copies in <1 month (games-of-note commercial leader); Palworld 1.0 855K Steam concurrent peak / all-time top-15 (games-of-note); Save Our Devs rally July 15 — Bethesda/ZeniMax union action (games-of-note); TRACEPROBE trajectory diagnostics + ChainSWE chain-degradation benchmark (agentic-coding); SWE-1.7 RL-on-Kimi-K2.7 Code at $1.97/task (frontier-models); GameEngineBench 55.5% pass@1 in UE5 (ai-in-game-dev); Nintendo Music MKW Free Roam update (game-music). Report: wiki/reports/2026-07-14.md.
+
+## [2026-07-16] daily | frontier-models — 2 sources, 5 pages
+
+Thinking Machines Inkling (975B total / 41B active MoE, 1M context, AA Intelligence Index v4.1 = 41) displaces Nemotron Ultra as US-hosted open-weights leader. New entity page: wiki/entities/inkling.md. PRs: #372.
+
+## [2026-07-16] daily | agentic-coding — 4 sources, 8 pages
+
+DeepSWE contamination-free benchmark: 1.4% LLM-judge disagreement vs 32.4% for SWE-Bench Pro; MOSAIC CLI command-composition attack at 96.6% success rate across 5 agents; Microsoft enterprise study +24% PR-merge lift; Isolation SoK frames isolation as unifying safety principle. 4 concept pages updated (agent-sandboxing, harness-engineering, agent-harnesses). Summary regenerated. PRs: #373.
+
+## [2026-07-16] daily | games-of-note — 2 sources, 3 pages
+
+Denshattack! (MC 88 / OpenCritic Mighty 87, day-one Game Pass); July 15 'Save Our Devs' multi-city march materializes — first coordinated multi-studio labor action in gaming history (6 Xbox locations, 4 cities). PRs: #374.
+
+## [2026-07-16] daily | game-music — 3 sources, 4 pages
+
+Denshattack! OST: Tee Lopes + all-star VGM guest bench (Meguro, Jacques, Mitsuyoshi, Fujita, 2 Mello, Ironmouse), 80+ tracks via Kid Katana Records; Crash Bandicoot 4 Walter Mair score finally hits streaming 6 years post-launch; Outer Worlds 2 faction-structured 3LP via Laced Records (Lozowchuk/Gradanti/Bonney), $62. PRs: #375.
+
+## [2026-07-16] daily | ai-in-game-dev — 2 sources, 3 pages
+
+GUI Agents for Continual Game Generation: PlaytestArena (200 browser-based tasks, GUI-agent adjudicator) + Play2Code achieving 66.8% rubric pass-rate via play-driven iteration loop; PlayCoder: near-zero Play@3 across 10 SOTA LLMs despite high compile rates. PRs: #376.
+
+## [2026-07-16] daily | 5 topics, 13 sources, 23 pages
+
+Daily Research 2026-07-16 complete. PRs #372–#376. Key stories: Inkling displaces Nemotron Ultra as US open-weights leader (frontier-models); DeepSWE contamination-free eval + MOSAIC 96.6% CLI attack + Microsoft +24% PR-merge lift (agentic-coding); 'Save Our Devs' multi-city march + Denshattack! MC 88 (games-of-note); Denshattack! all-star VGM OST + Outer Worlds 2 3LP (game-music); Play2Code 66.8% play-driven game-gen + PlayCoder near-zero Play@3 (ai-in-game-dev). Report: wiki/reports/2026-07-16.md.
