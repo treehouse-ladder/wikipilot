@@ -1,8 +1,8 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]", "[[persona-3-reload-original-soundtrack-music-review-7bde2768]]"]
-last_updated: 2026-07-15
+sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]", "[[persona-3-reload-original-soundtrack-music-review-7bde2768]]", "[[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]", "[[about-time-indeed-the-crash-bandicoot-4-soundtrack-finally-hits-spotify-6b64122f]]", "[[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]"]
+last_updated: 2026-07-16
 last_verified: 2026-07-15
 freshness_window_days: 60
 ---
@@ -69,6 +69,22 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 Open caveats and unresolved contradictions are tracked in `## Disputes` and `## Open questions` below.
 
 ## Recent updates
+
+### Updates 2026-07-16
+
+**Denshattack! OST drops with all-star VGM guest lineup — 80+ tracks via Kid Katana Records.** Undercoders' train-flipping platformer launched July 15, 2026 with its full OST released the same day through Kid Katana Records [[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]. Main composer **Tee Lopes** (Sonic Mania, TMNT: Shredder's Revenge) is joined by core composers Sean Bialo and Andrew One, plus guest bench: **Richard Jacques** (Jet Set Radio), **Shoji Meguro** (Persona), Takenobu Mitsuyoshi (SEGA / Daytona USA), Harumi Fujita (Capcom), 2 Mello, and VTuber Ironmouse. At 80+ tracks in a Y2K / Dreamcast-era idiom (breakbeat, hip-hop, punk, funk), this is a rare guest-composer-compilation release for an indie title.
+
+> The Denshattack! soundtrack features an all-star cast made up of main composer Tee Lopes, core composers Sean Bialo and Andrew One, and guest composers including Takenobu Mitsuyoshi (SEGA), Richard Jacques (Jet Set Radio), Shoji Meguro (Persona), Harumi Fujita (Capcom), MIYACHI and Ironmouse. [[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]
+
+**Crash Bandicoot 4 (Walter Mair) finally hits streaming — six years late.** The soundtrack to *Crash Bandicoot 4: It's About Time* reached streaming platforms on July 15, 2026, six years after the 2020 game's launch [[about-time-indeed-the-crash-bandicoot-4-soundtrack-finally-hits-spotify-6b64122f]]. Composer **Walter Mair** (Killzone: Mercenary, Call of Duty: Modern Warfare III). A catalog-preservation win and a data point on how long publisher-controlled scores can sit un-released before rights/logistics clear.
+
+> Six years after the game's release, the soundtrack to Crash Bandicoot 4: It's About Time has finally been released on July 15, 2026. The composer is Walter Mair, an Austrian composer known for his work on Killzone: Mercenary, Total War Battles: KINGDOM, and Call of Duty: Modern Warfare III. [[about-time-indeed-the-crash-bandicoot-4-soundtrack-finally-hits-spotify-6b64122f]]
+
+**The Outer Worlds 2 gets a faction-structured 3LP via Laced Records — shipping July 2026.** Laced Records is pressing the Obsidian score as a 3LP set, 44 tracks, $62, shipping July 2026 [[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]. Composers: **Oleksa Lozowchuk** (principal/music director), Antonio Gradanti, and Jim Bonney. Packaging concept: each disc is themed to a game faction — Vol. 001 Earth Directorate (orchestral), Vol. 002 Auntie's Choice (big-band swing), Vol. 003 Protectorate/Order (ceremonial/abstract). Adds another AAA-RPG entry to the year's dominant vinyl-revival pattern.
+
+> Laced Records announced a 3LP vinyl set for Obsidian Entertainment's The Outer Worlds 2 (Official Game Soundtrack) release, set to ship in July 2026 and running at $62 USD. The release features 44 songs across 3 vinyl records with each disc covering one of the major factions. [[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]
+
+_no contradictions or gaps known yet (last reviewed: 2026-07-16)_
 
 ### Updates 2026-07-15
 
@@ -836,8 +852,9 @@ until the underlying entity pages exist:
 - [ ] Will the FINAL FANTASY RESONANCE 120-track soundtrack receive a standalone release (digital/streaming or vinyl) beyond the collector's-edition CD, following the 2026 Square Enix catalog-vinyl cadence (Chrono Trigger 4xLP, FFX 'Eternal Calm' 2xLP)?
 - [ ] How does the balance between reused Brave Exvius music and the 33 new tracks read once the game ships on 2026-10-22 — does Elements Garden's mobile-scoring lineage carry a distinct identity into an HD-2D console title, and does a music review surface post-launch?
 - [ ] Will Nintendo's weekly Mario Kart World 'Free Roam' rollout eventually surface the full in-game catalog (~323 songs), and does it complete as discrete weekly drops or via a one-time full-album addition? [[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]
+- [ ] Will the Denshattack! OST (Kid Katana Records) receive a physical vinyl/CD pressing, or is it digital-only? [[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]
 
-_no contradictions or gaps known yet beyond open questions above (last reviewed: 2026-07-14)_
+_no contradictions or gaps known yet beyond open questions above (last reviewed: 2026-07-16)_
 
 ## See also
 
