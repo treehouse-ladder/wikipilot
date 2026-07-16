@@ -4,6 +4,8 @@ kind: concept
 sources:
   - "[[sandlock-confining-ai-agent-code-with-unprivileged-linux-primitives-6c9c9e93]]"
   - "[[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]]"
+  - "[[mosaic-knowledge-guided-cli-command-composition-attack-in-llm-coding-agents-92fab58e]]"
+  - "[[isolation-as-a-first-class-principle-for-llm-agent-system-safety-concepts-taxonomy-challenges-and-future-directions-71335571]]"
   - "[[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]"
   - "[[cloud-environment-setup-and-cloud-subagents-in-agents-window-ac3775dd]]"
   - "[[how-we-built-claude-code-auto-mode-a-safer-way-to-skip-permissions-d5f9dbd6]]"
@@ -13,7 +15,7 @@ sources:
   - "[[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]"
   - "[[programmatic-tool-calling-c21acdb9]]"
   - "[[the-balkanization-of-execution-security-research-for-ai-coding-agents-isolation-access-control-and-time-of-check-to-time-of-use-vulnerabilities-df4a38f9]]"
-last_updated: 2026-07-13
+last_updated: 2026-07-16
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -52,6 +54,14 @@ The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-hum
 
 > OpenAI runs each generated program in a fresh, isolated V8 runtime. The runtime supports JavaScript with top-level await, but it does not provide Node.js, package installation, direct network access, a general-purpose filesystem, subprocess execution, a console, or persistent JavaScript state. [[programmatic-tool-calling-c21acdb9]]
 
+**MOSAIC: CLI command-composition risk attacks sandbox boundaries (2026-07-16).** MOSAIC [[mosaic-knowledge-guided-cli-command-composition-attack-in-llm-coding-agents-92fab58e]] shows that individually benign CLI commands can form dangerous producer-consumer chains through shared OS state — bypassing sandbox rules that evaluate commands in isolation. 96.59% attack success rate across 5 real agents and 2,525 trials means that per-command allow-listing is insufficient; sandboxes must reason about cross-command data flows.
+
+> Individually benign commands can form a dangerous producer-consumer state relation across the command trace, exposing what we call CLI command-composition risk (CCR). Following Unix design, these commands cooperate through shared operating-system state where one command may write state that a later command reads. [[mosaic-knowledge-guided-cli-command-composition-attack-in-llm-coding-agents-92fab58e]]
+
+**Isolation SoK: isolation as the unifying structural safety principle (2026-07-16).** A SoK survey [[isolation-as-a-first-class-principle-for-llm-agent-system-safety-concepts-taxonomy-challenges-and-future-directions-71335571]] frames prompt injection, tool misuse, and memory poisoning as variants of the same structural failure: insufficient isolation across user inputs, tool access, execution channels, inter-agent communication, and environment-originated context.
+
+> By isolation, we refer to the separation of user inputs, tool access, execution channels, inter-agent communication, and environment-originated context. [[isolation-as-a-first-class-principle-for-llm-agent-system-safety-concepts-taxonomy-challenges-and-future-directions-71335571]]
+
 ## Disputes
 
 - [[how-we-built-claude-code-auto-mode-a-safer-way-to-skip-permissions-d5f9dbd6]] presents an LLM transcript classifier as a viable substitute for human approval that lets Claude run autonomously while staying safe; [[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]] argues prompt-injection/contextual-manipulation defense is subject to a fundamental data-instruction-separation trade-off, and [[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]] finds even human reviewers fail to detect 94% of AI agent sabotage — so an LLM classifier inheriting the same instruction-following surface may be a weaker approver than the human it replaces. Status: unresolved
@@ -60,6 +70,7 @@ The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-hum
 
 - [ ] What's the overhead of Sandlock's seccomp-notification supervisor for high-throughput agent workloads (compilation, test suites) vs. Docker-runtime sandboxing?
 - [ ] How does `micropython-wasm`'s startup/teardown overhead compare to Pyodide and to native subprocess sandboxes at the per-exec call latency level relevant to agentic loops?
+- [ ] Do current sandboxing designs (Sandlock, Claude Code auto-mode, Cursor cloud-VM) explicitly model cross-command data-flow dependencies that MOSAIC exploits?
 
 ## See also
 

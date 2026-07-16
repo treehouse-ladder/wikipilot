@@ -4,6 +4,7 @@ kind: concept
 sources:
   - "[[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]]"
   - "[[towards-direct-evaluation-of-harness-optimizers-via-priority-ranking-b643bf3f]]"
+  - "[[deepswe-measuring-frontier-coding-agents-on-original-long-horizon-engineering-tasks-492fbfd8]]"
   - "[[towards-evaluation-engineering-an-empirical-study-of-ml-evaluation-harnesses-in-the-wild-9be30311]]"
   - "[[adapting-the-interface-not-the-model-runtime-harness-adaptation-for-deterministic-llm-agents-0cefc3d8]]"
   - "[[continual-harness-online-adaptation-for-self-improving-foundation-agents-f68f2119]]"
@@ -36,7 +37,7 @@ sources:
   - "[[programmatic-tool-calling-c21acdb9]]"
   - "[[side-chats-and-conversation-search-8df90ad3]]"
   - "[[what-resolve-rate-hides-trajectory-structure-diagnostics-for-coding-agents-3704621c]]"
-last_updated: 2026-07-14
+last_updated: 2026-07-16
 last_verified: 2026-07-14
 freshness_window_days: 30
 ---
@@ -74,6 +75,10 @@ This dovetails with [[towards-direct-evaluation-of-harness-optimizers-via-priori
 **A structural codebase index gives measurable retrieval gains at no cost penalty (2026-07-06).** A leak-audited within-harness ablation on SWE-PolyBench Verified and SWE-bench Pro finds that adding a structural codebase index to a coding-agent harness produces a large localization gain and a statistically separated resolve gain with no cost penalty per cell and lower cost per solve than agentic grep [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]. The deployment question is not cost but workload: the index pays off specifically when tasks involve multi-file changes where structural ranking helps. This is a concrete, configuration-controlled result on the retrieval sub-task that lands on the scaffolding-can-help side, in direct tension with ContextBench's "Bitter Lesson" — possibly reconciled if the structural-index gain is concentrated in the multi-file-change regime ContextBench's process-oriented retrieval eval does not isolate.
 
 > The within-harness ablation produced a large localization gain and a statistically separated resolve gain, with no cost penalty per cell and lower cost per solve. [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]]
+
+**DeepSWE: a contamination-free long-horizon eval that separates frontier agents more cleanly than SWE-Bench Pro (2026-07-16).** DeepSWE [[deepswe-measuring-frontier-coding-agents-on-original-long-horizon-engineering-tasks-492fbfd8]] addresses the benchmark-contamination problem that has degraded SWE-Bench scores — tasks are written from scratch across 91 active open-source repositories and never contributed back upstream, graded by hand-written verifiers that accept any implementation providing the requested functionality. Independent LLM judge disagreement with DeepSWE's verifiers is 1.4% vs. 32.4% for SWE-Bench Pro's inherited tests. DeepSWE's reference solutions touch 5.5× more code than SWE-Bench Pro prompts despite being half the length, and the benchmark separates frontier agents across a wider score band. This is directly relevant to the harness-disclosure thesis: a clean benchmark that actually separates frontier models restores interpretability to model comparisons, provided harness configuration is still disclosed.
+
+> Its tasks are written from scratch across 91 active open-source repositories and five languages and are never contributed back upstream, so their reference solutions stay out of the public record that model training scrapes; and each task is graded by a hand-written verifier that checks the requested functionality and accepts any implementation that provides it. [[deepswe-measuring-frontier-coding-agents-on-original-long-horizon-engineering-tasks-492fbfd8]]
 
 ## Harness adaptation without retraining
 
