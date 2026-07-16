@@ -4,6 +4,7 @@ kind: concept
 sources:
   - "[[adk-arena-evaluating-agent-development-kits-via-llm-as-a-developer-cf33d068]]"
   - "[[lessons-from-building-claude-code-how-we-use-skills-0270e620]]"
+  - "[[adoption-and-impact-of-command-line-ai-coding-agents-a-study-of-microsoft-s-early-2026-rollout-of-claude-code-and-github-copilot-cli-0ecd5741]]"
   - "[[human-oversight-of-agentic-systems-in-practice-ab5cc8f1]]"
   - "[[copilot-sdk-is-now-generally-available-f3907ed0]]"
   - "[[shape-copilot-code-review-around-your-team-1a940a72]]"
@@ -22,7 +23,7 @@ sources:
   - "[[rewriting-bun-in-rust-15a50b3d]]"
   - "[[side-chats-and-conversation-search-8df90ad3]]"
   - "[[share-session-output-as-artifacts-8d4cebdf]]"
-last_updated: 2026-07-13
+last_updated: 2026-07-16
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -90,6 +91,10 @@ A June 2026 paper supplies the first constitutive definition of "agent harness,"
 > Programmatic Tool Calling allows the models to compose and run JavaScript that orchestrates tool calls. Multi-agent lets the model spin up subagents for parallel, focused work — the sub-agent pattern now baked into the core API. [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]
 
 > OpenAI runs each generated program in a fresh, isolated V8 runtime. The runtime supports JavaScript with top-level await, but it does not provide Node.js, package installation, direct network access, a general-purpose filesystem, subprocess execution, a console, or persistent JavaScript state. [[programmatic-tool-calling-c21acdb9]]
+
+**Microsoft enterprise rollout: +24% PR-merge lift, adoption spread socially (July 2026).** A large-scale field study of Microsoft's early-2026 rollout of Claude Code and GitHub Copilot CLI to enterprise developers finds adopters merged ~24% more pull requests than they would have otherwise, with first use spreading primarily through social networks rather than demographics and retention correlating with engineers' coding activity levels [[adoption-and-impact-of-command-line-ai-coding-agents-a-study-of-microsoft-s-early-2026-rollout-of-claude-code-and-github-copilot-cli-0ecd5741]]. At organizational scale token spend can reach millions of dollars annually, so accurate measurement of adoption, retention, and impact is essential. This is the first published large-scale enterprise-adoption data on CLI-based agentic coding harnesses, and the 24% merge-rate lift persists across the four-month study window.
+
+> First use spread primarily through social networks, retention was associated more with engineers' coding activity than with demographics, and adopters merged roughly 24% more pull requests than they would have otherwise. [[adoption-and-impact-of-command-line-ai-coding-agents-a-study-of-microsoft-s-early-2026-rollout-of-claude-code-and-github-copilot-cli-0ecd5741]]
 
 ## Disputes
 
