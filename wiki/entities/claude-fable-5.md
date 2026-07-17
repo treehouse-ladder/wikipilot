@@ -2,8 +2,8 @@
 title: "Claude Fable 5"
 kind: entity
 sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]", "[[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]", "[[redeploying-claude-fable-5-fdd9745e]]", "[[commerce-department-gives-green-light-for-anthropic-to-bring-back-fable-5-e657d00f]]", "[[more-details-on-fable-5-s-cyber-safeguards-and-our-jailbreak-framework-aaef033d]]", "[[sqlite-utils-4-0rc2-mostly-written-by-claude-fable-for-about-149-25-e673d7b5]]", "[[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]]", "[[swe-1-7-frontier-intelligence-at-a-fraction-of-the-cost-0d1dcf4a]]"]
-last_updated: 2026-07-15
-last_verified: 2026-07-15
+last_updated: 2026-07-17
+last_verified: 2026-07-17
 freshness_window_days: 30
 input_cost_per_mtoken: 10.00
 output_cost_per_mtoken: 50.00
