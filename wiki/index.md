@@ -48,6 +48,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gpt-5.6-sol]]
 - [[grok-4.5]]
 - [[inkling]]
+- [[kimi-k3]]
 
 ## Comparisons
 
@@ -882,6 +883,13 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[assassin-s-creed-devs-celebrate-black-flag-remake-launch-with-layoffs-this-is-not-how-i-imagined-it-would-end-45fb3f59]]
 - [[a-call-for-xbox-to-end-cycle-of-layoffs-is-trending-on-fan-portal-190b54e8]]
 - [[this-promising-dayz-rival-is-thankfully-pivoting-to-pve-before-launch-625ae731]]
+- [[grok-build-is-now-open-source-9efc9cea]]
+- [[xai-org-grok-build-now-open-source-e8b567c5]]
+- [[a-quote-from-thibault-sottiaux-6bcf21fe]]
+- [[build-without-limits-on-roblox-449046e1]]
+- [[kimi-k3-intelligence-performance-price-analysis-5d65f998]]
+- [[a-kick-in-the-teeth-game-workers-protest-alleged-misconduct-at-mindseye-developer-build-a-rocket-boy-1423e0ae]]
+- [[video-game-companies-can-no-longer-do-layoffs-quietly-13752cf8]]
 
 ## Reports
 
@@ -935,3 +943,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-14]]
 - [[2026-07-15]]
 - [[2026-07-16]]
+- [[2026-07-17]]

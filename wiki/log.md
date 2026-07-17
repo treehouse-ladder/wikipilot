@@ -1260,6 +1260,26 @@ Daily Research 2026-07-14 complete. PRs #358–#362. Key stories: Meccha Chamele
 
 Thinking Machines Inkling (975B total / 41B active MoE, 1M context, AA Intelligence Index v4.1 = 41) displaces Nemotron Ultra as US-hosted open-weights leader. New entity page: wiki/entities/inkling.md. PRs: #372.
 
+## [2026-07-17] daily | 4 topics, 7 sources, 7 pages
+
+Daily Research 2026-07-17 complete. PRs #379–#382 (game-music: no new sources). Key stories: Grok Build open-sourced under Apache 2 with upload/gcs.rs path still present (unresolved privacy dispute) + Codex $HOME-deletion case study (agentic-coding, PR #379); Kimi K3 enters closed-frontier cluster at AA v4.1 = 57 (rank 4, above Opus 4.8) — $3/$15 pricing, 130M tokens/task verbosity caveat (frontier-models, PR #381); Roblox Build public alpha scene-generation model launching New Zealand July 28 (ai-in-game-dev, PR #380); IWGB protest at Build a Rocket Boy + Kotaku labor-visibility analysis — coordinated public action pattern generalizing beyond Xbox (games-of-note, PR #382). Report: wiki/reports/2026-07-17.md.
+
+## [2026-07-17] daily | games-of-note — 2 sources, 1 page
+
+IWGB protesters picket Build a Rocket Boy's Leith HQ during all-expenses-paid fan playtest (400+ laid off since MindsEye launch); Kotaku: ZeniMax/Bethesda rallies signal studios can no longer quietly conduct mass layoffs — coordinated public-protest pattern generalizing beyond Xbox union footprint. PRs: #382.
+
+## [2026-07-17] daily | frontier-models — 1 source, 4 pages
+
+Kimi K3 (Moonshot AI, proprietary closed, 2.8T params) enters AA Intelligence Index v4.1 at 57 — ranked 4th (behind Fable 5 at 60, GPT-5.6 Sol max at 59, Sol xhigh at 58), one point above Opus 4.8; $3/$15 per Mtoken; 130M output tokens/task (2× avg), 62 tok/sec (slower than 70 avg). New entity page kimi-k3.md; Summary regenerated. PRs: #381.
+
+## [2026-07-17] daily | ai-in-game-dev — 1 source, 1 page
+
+Roblox Build: new scene-generation model builds entire editable and playable 3D scenes from a single prompt (gameplay mechanics, environment, characters, visual style, sound). Public alpha New Zealand July 28 for age-checked users 9+; extends Cube/CubePart thread already on page. PRs: #380.
+
+## [2026-07-17] daily | agentic-coding — 3 sources, 1 page
+
+Grok Build open-sourced (Apache 2) with upload/gcs.rs working-directory-upload path still present (disabled, not removed) — unresolved privacy dispute; Codex full-access run deleted $HOME contents (data point for mandatory-sandboxing debate). PRs: #379.
+
 ## [2026-07-16] daily | agentic-coding — 4 sources, 8 pages
 
 DeepSWE contamination-free benchmark: 1.4% LLM-judge disagreement vs 32.4% for SWE-Bench Pro; MOSAIC CLI command-composition attack at 96.6% success rate across 5 agents; Microsoft enterprise study +24% PR-merge lift; Isolation SoK frames isolation as unifying safety principle. 4 concept pages updated (agent-sandboxing, harness-engineering, agent-harnesses). Summary regenerated. PRs: #373.
