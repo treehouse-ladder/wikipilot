@@ -212,8 +212,11 @@ sources:
   - "[[perfopt-bench-evaluating-coding-agents-on-software-performance-optimization-0c17f7ce]]"
   - "[[cheap-code-costly-judgment-a-case-study-on-governable-agentic-software-engineering-7c0872b9]]"
   - "[[datasette-code-frequency-chart-on-github-669accad]]"
-last_updated: 2026-07-16
-last_verified: 2026-07-15
+  - "[[grok-build-is-now-open-source-9efc9cea]]"
+  - "[[xai-org-grok-build-now-open-source-e8b567c5]]"
+  - "[[a-quote-from-thibault-sottiaux-6bcf21fe]]"
+last_updated: 2026-07-17
+last_verified: 2026-07-17
 freshness_window_days: 30
 ---
 
@@ -289,6 +292,20 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-17
+
+**xAI open-sources its full Grok Build coding-agent harness — a frontier lab exposes the whole agent loop + tool layer, Apache 2.0.** SpaceXAI released the complete source for Grok Build, its terminal coding agent and TUI, under Apache 2.0 [[grok-build-is-now-open-source-9efc9cea]]. Unlike the earlier API-only Grok Build 0.1 already tracked here [[grok-build-0-1-on-api-c60c4a6b]], this drop is the *harness itself* — the agent loop (context assembly, response parsing, tool-call dispatch), the read/edit/search/exec tool layer, and Agent Client Protocol (ACP) editor embedding — and it can now run fully local-first against self-hosted inference. This is a rare artifact for the harness-engineering line the wiki tracks ([[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]], [[inside-the-scaffold-a-source-code-taxonomy-of-coding-agent-architectures-7e37a967]]): the full production scaffold of a frontier-lab CLI, not a reconstruction.
+
+> SpaceXAI open-sourced Grok Build under Apache 2.0. Grok Build can now run fully local-first: compile it yourself, point it at your own local inference, and drive everything from your config.toml. The published repository breaks Grok Build into components including the agent loop which shows how context is assembled, model responses are parsed, and tool calls are dispatched, plus the tools component which covers how the agent reads, edits, and searches code, and how it runs commands. [[grok-build-is-now-open-source-9efc9cea]]
+
+**Simon Willison's teardown: 844K lines of Rust, a single commit, and disabled-but-present GCS upload remnants.** Willison measured the repo at 844,530 lines of Rust (SLOCCount, ~3% vendored) landing in a single commit that erases any development history, and — more importantly for the security cluster — found the code that previously uploaded working directories to Google Cloud is still present, merely disabled [[xai-org-grok-build-now-open-source-e8b567c5]]. The open-sourcing was itself a response to backlash over that silent-upload behavior; xAI now claims retention-off-by-default and 'complete user privacy'. The residual `upload/gcs.rs` and stubbed `upload_session_state()` are a concrete reminder that an open harness is auditable but not automatically safe — the exfiltration path is code that can be re-enabled.
+
+> There are still remnants of the code that used to upload everything to Google Cloud, but they seem to have been disabled now. xai-grok-shell/src/upload/gcs.rs has code for uploading to a GCS bucket, and upload/trace.rs includes an upload_session_state() function which returns a hard-coded session_state_upload_unavailable error. [[xai-org-grok-build-now-open-source-e8b567c5]]
+
+**A live Codex failure grounds the sandboxing case: full-access mode + a $HOME-override bug = deleted home directory.** Thibault Sottiaux reported GPT-5.6/Codex deleting files when full access mode was enabled without sandboxing, triggered when the model overrode the `$HOME` env var for a temp directory and deleted `$HOME` instead [[a-quote-from-thibault-sottiaux-6bcf21fe]]. This is a real-world data point on the same axis as the MOSAIC command-composition surface [[mosaic-knowledge-guided-cli-command-composition-attack-in-llm-coding-agents-92fab58e]] and the isolation-as-safety-principle argument [[isolation-as-a-first-class-principle-for-llm-agent-system-safety-concepts-taxonomy-challenges-and-future-directions-71335571]]: not an adversarial attack but a benign-intent destructive action that only sandboxing (or auto-review) would have contained.
+
+> GPT-5.6 unexpectedly deleted files in cases where full access mode was enabled. The bug most commonly occurs when full access mode is enabled and Codex is run without sandboxing protections, including without auto review being enabled, and when the model attempts to override the $HOME env var to define a temporary directory, mistakenly deleting $HOME instead. [[a-quote-from-thibault-sottiaux-6bcf21fe]]
 
 ### Updates 2026-07-16
 
@@ -1478,6 +1495,7 @@ lint stays quiet until each page actually exists:
 - [[rewriting-bun-in-rust-15a50b3d]] discloses the Bun Zig-to-Rust dynamic-workflows port cost at ~$165,000 API-equivalent over 11 days (5.9B uncached input / 690M output / 72B cached-read tokens); [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]] presented the same ~750k-LOC port as a flagship dynamic-workflows result without disclosing cost, and the parallel-Claudes C-compiler [[building-a-c-compiler-with-a-team-of-parallel-claudes-1eba12a4]] (~$20k) and Antigravity 2.0 OS demo (<$1k) [[google-launches-antigravity-2-0-with-an-updated-desktop-app-and-cli-tool-at-i-o-2026-94069342]] are ~1-3 orders of magnitude cheaper. The disclosed $165k number resolves the missing-cost gap for the Bun case but leaves the ~3-order-of-magnitude cross-case cost spread unexplained by task size, and it shows the run required continuous human monitoring rather than autonomous fan-out. Status: unresolved
 - [[what-resolve-rate-hides-trajectory-structure-diagnostics-for-coding-agents-3704621c]] argues resolve rate hides process quality and proposes deterministic, rule-based trajectory diagnostics (TRACEPROBE's nine-type action taxonomy + INSIGHT/CONVERGE) as the auditable complement; [[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]] agrees deterministic pass/fail scripts "produce severe misjudgments and false signals" but proposes an LLM-based corrective (SWE-Judge). The two agree resolve rate is insufficient yet disagree on whether the remedy is deterministic rule-based diagnostics or LLM-based judging — with opposite susceptibility profiles (rule-based diagnostics are brittle to unseen action patterns; LLM judges risk model-family bias). Status: unresolved
 - [[chainswe-benchmarking-coding-agents-on-multi-bug-software-maintenance-50ac361b]] reports a consistent performance drop of up to 70% as the bug-fix chain length increases when the repository is NOT reset between dependent issues; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents single-bug, repository-reset test-patch resolution as the human-filtered, annotator-reviewed gold standard. Status: unresolved — same overestimation direction as [[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]] and [[swe-evo-benchmarking-coding-agents-in-long-horizon-software-evolution-scenarios-21a62ebd]] but on a cumulative-dependency, no-reset maintenance axis single-issue leaderboards structurally cannot observe.
+- [[grok-build-is-now-open-source-9efc9cea]] and xAI's messaging frame open-sourcing the Grok Build harness as delivering 'complete user privacy'; [[xai-org-grok-build-now-open-source-e8b567c5]] shows the working-directory-upload code (upload/gcs.rs, upload_session_state()) is still present in the repo, merely disabled — open-sourcing made the exfiltration path auditable but not removed. Status: unresolved
 
 ## Open questions
 
@@ -1651,6 +1669,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does PERFOPT-Bench's finding that "changing the agent framework can materially change the same LLM's per-task speedup profile" [[perfopt-bench-evaluating-coding-agents-on-software-performance-optimization-0c17f7ce]] survive once resource/infrastructure configuration is pinned, given that [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] showed several-percent swings from config alone — i.e. is the framework effect real or partly a benchmarking artifact of the kind PERFOPT-Bench's "reproducible rather than measurement artifacts" guard is meant to exclude?
 - [ ] Does the "governance conversion" process model from a single expert engineer [[cheap-code-costly-judgment-a-case-study-on-governable-agentic-software-engineering-7c0872b9]] generalize to teams and to non-expert operators, or is the ability to convert agent failures into durable governance mechanisms itself a function of the individual's prior expertise (mirroring the persistent-returns-to-expertise finding [[agentic-coding-and-persistent-returns-to-expertise-a6ebb163]])?
 - [ ] Is GitHub commit/code-frequency a valid productivity proxy for agentic-coding impact [[datasette-code-frequency-chart-on-github-669accad]], or does the volume signal decouple from durability — i.e. does the same period that shows a code-frequency spike also show the structural erosion [[slopcodebench-benchmarking-how-coding-agents-degrade-over-long-horizon-iterative-tasks-dafbe4d6]] measures across iterative agent output?
+- [ ] Does open-sourcing a coding-agent harness (Grok Build) measurably reduce data-exfiltration risk, or does it only make an existing exfiltration path auditable while leaving it re-enableable? [[xai-org-grok-build-now-open-source-e8b567c5]]
+- [ ] How often do benign full-access coding-agent runs cause destructive filesystem actions like the Codex $HOME-deletion bug, and does mandatory sandboxing/auto-review eliminate the class rather than mitigate instances? [[a-quote-from-thibault-sottiaux-6bcf21fe]]
 
 ## See also
 
