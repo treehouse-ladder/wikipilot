@@ -1303,3 +1303,23 @@ Daily Research 2026-07-16 complete. PRs #372–#376. Key stories: Inkling displa
 ## [2026-07-19] health | weekly sweep — 1 dispute filed
 
 Weekly health sweep 2026-07-19. 13 candidate sets (12 source-triggered + 1 stale sweep). 1 new dispute filed: Muse Spark 1.0 AA Index version ambiguity (52 on v4.0 vs 43 on v4.1). Lint: 0 errors, 212 warnings. 6 stale synthesis pages. PR #386.
+
+## [2026-07-19] daily | frontier-models — 1 source, 2 pages
+
+Kimi K3 GDPval-AA v2 Elo backfilled (1668, $0.94/task, native multimodal, 21% fewer tokens than K2.6). Opus 4.8 Elo discrepancy filed (1638 vs 1600). PR #388.
+
+## [2026-07-19] daily | game-music — 1 source, 1 page
+
+Lineage II 22nd anniversary 2LP vinyl collector's edition (40 tracks, Bill Brown/Jamie Christopherson/Inon Zur/NCSOUND, Black Screen Records, November 2026). PR #389.
+
+## [2026-07-19] daily | games-of-note — 4 sources, 1 page
+
+ZA/UM 32 layoffs 2 months after Zero Parades MC 83 launch (critical-vs-commercial disconnect). ZeniMax Online WARN Act: 379 workers, leadership stripped (studio head + ESO exec producer/game director), ESO at 60%+ staff loss in 12 months. CWA ULP charges against Microsoft/Xbox subsidiaries for decisional-bargaining failure. Summary regenerated. PR #390.
+
+## [2026-07-19] daily | agentic-coding — 2 sources, 1 page
+
+SwarmResearch: Shepherd-Agent/Search-Agent harness with git-branch-per-agent isolation + adaptive-depth parallelism beats fixed scaling on 13/15 open-ended optimization tasks. RL for orchestration traces: orchestration decisions (spawn/delegate/communicate/aggregate/stop) as RL optimization target, grounded in Kimi Agent Swarm/Codex/Claude Code. 2 new disputes, 4 new open questions. PR #391.
+
+## [2026-07-19] daily | 4 topics, 8 sources, 5 pages
+
+Daily Research 2026-07-19 complete. PRs #388–#391 merged. ai-in-game-dev: empty proposal. Report: wiki/reports/2026-07-19.md.

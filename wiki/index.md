@@ -890,6 +890,14 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[kimi-k3-intelligence-performance-price-analysis-5d65f998]]
 - [[a-kick-in-the-teeth-game-workers-protest-alleged-misconduct-at-mindseye-developer-build-a-rocket-boy-1423e0ae]]
 - [[video-game-companies-can-no-longer-do-layoffs-quietly-13752cf8]]
+- [[kimi-k3-achieves-3-in-the-artificial-analysis-intelligence-index-comparable-to-opus-4-8-and-gpt-5-5-bce8423e]]
+- [[lineage-ii-celebrates-its-22nd-anniversary-with-the-launch-of-a-special-collector-s-edition-soundtrack-vinyl-8b7f3ea6]]
+- [[za-um-studios-to-lay-off-up-to-32-workers-two-months-after-releasing-zero-parades-for-dead-spies-1b55152f]]
+- [[zero-parades-dev-announces-layoffs-despite-game-s-critical-acclaim-af413b99]]
+- [[zenimax-online-studios-leadership-is-part-of-the-379-laid-off-workers-9588dc4d]]
+- [[unions-take-legal-action-against-microsoft-for-allegedly-mishandling-xbox-layoffs-3cf8b6e5]]
+- [[swarmresearch-orchestrating-coding-agents-for-open-ended-discovery-1803ced8]]
+- [[reinforcement-learning-for-llm-based-multi-agent-systems-through-orchestration-traces-1ca4ec6f]]
 
 ## Reports
 
@@ -944,3 +952,5 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-15]]
 - [[2026-07-16]]
 - [[2026-07-17]]
+- [[health-2026-07-19]]
+- [[2026-07-19]]
