@@ -1,9 +1,9 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]", "[[persona-3-reload-original-soundtrack-music-review-7bde2768]]", "[[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]", "[[about-time-indeed-the-crash-bandicoot-4-soundtrack-finally-hits-spotify-6b64122f]]", "[[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]"]
-last_updated: 2026-07-16
-last_verified: 2026-07-15
+sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]", "[[persona-3-reload-original-soundtrack-music-review-7bde2768]]", "[[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]", "[[about-time-indeed-the-crash-bandicoot-4-soundtrack-finally-hits-spotify-6b64122f]]", "[[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]", "[[lineage-ii-celebrates-its-22nd-anniversary-with-the-launch-of-a-special-collector-s-edition-soundtrack-vinyl-8b7f3ea6]]"]
+last_updated: 2026-07-19
+last_verified: 2026-07-19
 freshness_window_days: 60
 ---
 
@@ -69,6 +69,12 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 Open caveats and unresolved contradictions are tracked in `## Disputes` and `## Open questions` below.
 
 ## Recent updates
+
+### Updates 2026-07-19
+
+**Lineage II 22nd-anniversary vinyl: 40-track 2LP via Black Screen Records, shipping November 2026.** NC America announced a first-ever Lineage II collector's edition vinyl titled *Lineage II - 22 Years* as part of the MMORPG's 22nd anniversary celebration [[lineage-ii-celebrates-its-22nd-anniversary-with-the-launch-of-a-special-collector-s-edition-soundtrack-vinyl-8b7f3ea6]]. The 2LP includes **40 tracks** curated from the original soundtrack for cohesive listening (not a completist collection), arranged across two records to recreate a journey through the continent of Aden. Composers represented: **Bill Brown** (Tom Clancy's Rainbow Six), **Jamie Christopherson** (Metal Gear Rising: Revengeance), **Inon Zur** (Fallout 4, Dragon Age), and NCSOUND; available for pre-order now, shipping worldwide in November via **Black Screen Records** [[lineage-ii-celebrates-its-22nd-anniversary-with-the-launch-of-a-special-collector-s-edition-soundtrack-vinyl-8b7f3ea6]]. Another data point for the year's vinyl-revival pattern — this time for a 22-year-old MMORPG score that hasn't previously had a vinyl release, with curation editorially shaped around the journey arc rather than completism.
+
+> As part of Lineage II's 22nd anniversary celebration, NC America announced the first-ever Lineage II collector's edition vinyl titled Lineage II - 22 Years, featuring 40 of the most recognized pieces from the original soundtrack, carefully selected to create a cohesive listening experience instead of trying to be a completist collection. [[lineage-ii-celebrates-its-22nd-anniversary-with-the-launch-of-a-special-collector-s-edition-soundtrack-vinyl-8b7f3ea6]]
 
 ### Updates 2026-07-16
 
