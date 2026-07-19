@@ -2,7 +2,7 @@
 title: "Muse Spark"
 kind: entity
 sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[introducing-muse-spark-1-1-f8a95609]]", "[[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]"]
-last_updated: "2026-07-13"
+last_updated: "2026-07-19"
 last_verified: "2026-07-13"
 freshness_window_days: 30
 ---
@@ -28,6 +28,7 @@ Muse Spark is a multimodal reasoning model that can process text, image, and spe
 ## Disputes
 
 - [[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]] claims Muse Spark (AA Index 52) sits "within the top 5 models benchmarked" and "behind Gemini 3.1 Pro Preview, GPT-5.4 and Claude Opus 4.6"; however, since this source's publication, Anthropic released Claude Opus 4.7 (AA Index 57, April 16 2026), Claude Opus 4.8 (AA Index 61.4, May 28 2026), and Claude Fable 5 (AA Index 64.9, June 9 2026), all of which rank above Muse Spark's 52. Status: unresolved (confidence: high; sweep: 2026-06-14)
+- [[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]] reports Muse Spark 1.0 scored 52 on the Artificial Analysis Intelligence Index (v4.0, April 2026); [[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]] reports Muse Spark 1.0 scored 43 on AA Intelligence Index v4.1. The Summary's 52 is the v4.0 score while the body's "1.0 (43)" is the v4.1 re-score. Both are valid measurements but without explicit version labels in the Summary, readers may interpret them as conflicting scores for the same model version. Status: unresolved (confidence: medium; sweep: 2026-07-19) — the Summary should clarify the AA Index version for the 52 score.
 
 ## Open questions
 
