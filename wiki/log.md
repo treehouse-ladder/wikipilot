@@ -1299,3 +1299,7 @@ GUI Agents for Continual Game Generation: PlaytestArena (200 browser-based tasks
 ## [2026-07-16] daily | 5 topics, 13 sources, 23 pages
 
 Daily Research 2026-07-16 complete. PRs #372–#376. Key stories: Inkling displaces Nemotron Ultra as US open-weights leader (frontier-models); DeepSWE contamination-free eval + MOSAIC 96.6% CLI attack + Microsoft +24% PR-merge lift (agentic-coding); 'Save Our Devs' multi-city march + Denshattack! MC 88 (games-of-note); Denshattack! all-star VGM OST + Outer Worlds 2 3LP (game-music); Play2Code 66.8% play-driven game-gen + PlayCoder near-zero Play@3 (ai-in-game-dev). Report: wiki/reports/2026-07-16.md.
+
+## [2026-07-19] health | weekly sweep — 1 dispute filed
+
+Weekly health sweep 2026-07-19. 13 candidate sets (12 source-triggered + 1 stale sweep). 1 new dispute filed: Muse Spark 1.0 AA Index version ambiguity (52 on v4.0 vs 43 on v4.1). Lint: 0 errors, 212 warnings. 6 stale synthesis pages. PR #386.
