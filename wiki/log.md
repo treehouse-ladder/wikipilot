@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-20] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#396 (claude/daily-2026-07-20/_report): CI in progress at scan time, auto-merge proactively enabled via MCP to prevent orphan-CLEAN state on CI pass.
+
 ## [2026-07-15] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#370 rebased onto main; resolved 1 conflict on wiki/log.md (chronological union); auto-merge re-queued
