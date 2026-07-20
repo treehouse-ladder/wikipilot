@@ -1323,3 +1323,15 @@ SwarmResearch: Shepherd-Agent/Search-Agent harness with git-branch-per-agent iso
 ## [2026-07-19] daily | 4 topics, 8 sources, 5 pages
 
 Daily Research 2026-07-19 complete. PRs #388–#391 merged. ai-in-game-dev: empty proposal. Report: wiki/reports/2026-07-19.md.
+
+## [2026-07-20] daily | games-of-note — 1 source, 2 pages
+
+Bethesda reaffirms Starfield long-term support: "remains an important part of our future," new Starborn content coming 2027, 17M players, nearly a billion hours played, >40% using fan Creations — counter-signal to the ZeniMax reset layoffs at id/BGS/ZeniMax Online. 1 new open question. PR #394.
+
+## [2026-07-20] daily | frontier-models — 1 source, 3 pages
+
+Artificial Analysis market-structure consolidation: six labs now field a model above AA Intelligence Index v4.1 = 50 (up from two in early June). Key new data: per-task cost normalization — GPT-5.6 Sol max ($1.04/task), Kimi K3 ($0.94), Luna/Muse Spark/Grok 4.5 all ≤$0.32 vs Fable 5 ($2.75). No leader moved; Fable 5 = 60 re-verified. claude-fable-5 entity `last_verified` bumped. 1 new open question. PR #395.
+
+## [2026-07-20] daily | 2 topics, 2 sources, 5 pages
+
+Daily Research 2026-07-20 complete. PRs #394–#395 merged. agentic-coding, ai-in-game-dev, game-music: empty proposals. Report: wiki/reports/2026-07-20.md.

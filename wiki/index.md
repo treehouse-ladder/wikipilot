@@ -898,6 +898,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[unions-take-legal-action-against-microsoft-for-allegedly-mishandling-xbox-layoffs-3cf8b6e5]]
 - [[swarmresearch-orchestrating-coding-agents-for-open-ended-discovery-1803ced8]]
 - [[reinforcement-learning-for-llm-based-multi-agent-systems-through-orchestration-traces-1ca4ec6f]]
+- [[starfield-remains-important-to-bethesda-new-content-coming-in-2027-96ffa43d]]
+- [[four-frontier-launches-in-eight-days-six-labs-now-field-a-model-above-50-on-the-artificial-analysis-intelligence-index-951b658c]]
 
 ## Reports
 
@@ -954,3 +956,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-17]]
 - [[health-2026-07-19]]
 - [[2026-07-19]]
+- [[2026-07-20]]
