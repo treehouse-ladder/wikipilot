@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-21] daily | 5 topics, 5 sources, 13 pages
+
+Daily Research 2026-07-21 complete. PRs #399–#403 queued for auto-merge. Report: wiki/reports/2026-07-21.md.
+
+## [2026-07-21] daily | frontier-models — 0 sources, 4 pages
+
+Quiet day: no new sources met the bar. Leader picture re-confirmed: Fable 5 (AA Index 60) > Opus 4.8 (56) > GPT-5.5 (55). Bumped last_verified on claude-fable-5, claude-opus-4.8, gpt-5.5. PR #399.
+
+## [2026-07-21] daily | game-music — 0 sources, 1 page
+
+Quiet day: no new sources crossed the ingestion bar. Vinyl-revival, AI-composer debate, and live-concert circuit threads remain current as of the 2026-07-19 entry. PR #400.
+
+## [2026-07-21] daily | games-of-note — 3 sources, 4 pages
+
+id Software: two-thirds of remaining Doom 2016 devs laid off (Hugo Martin "minimal impact" claim disputed by sources); Todd Howard confirms Bethesda-Obsidian Fallout collaboration; Netflix FIFA World Cup cloud game was a top-tier debut despite critical panning. PR #401.
+
+## [2026-07-21] daily | ai-in-game-dev — 1 source, 2 pages
+
+SimWorlds (CMU/Harvard/UC Merced, arXiv 2607.01766): multi-agent planner-coder-reviewer framework for dynamic 4D scene generation from text with deterministic verifier; introduces 4DBuildBench. PR #402.
+
+## [2026-07-21] daily | agentic-coding — 1 source, 2 pages
+
+The Harness Effect (arXiv 2607.06906): orchestration design cut cost 41%, wall-clock 44%, tokens 38% vs. model-invariant baseline across 22 enterprise tasks × 6 models × 5 vendors — harness effect dominates the full model-menu spread. PR #403.
+
 ## [2026-07-20] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#396 (claude/daily-2026-07-20/_report): CI in progress at scan time, auto-merge proactively enabled via MCP to prevent orphan-CLEAN state on CI pass.

@@ -57,6 +57,11 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[netflix-says-its-critically-panned-fifa-world-cup-video-game-was-a-top-tier-performer-78aca96b]]
+- [[todd-howard-says-the-timing-is-right-for-a-collaboration-with-obsidian-f1fb056b]]
+- [[two-thirds-of-remaining-doom-2016-devs-laid-off-during-latest-round-of-xbox-cuts-d7c0076d]]
+- [[simworlds-a-multi-agent-system-for-dynamic-3d-scene-creation-7a25d0ca]]
+- [[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]]
 - [[share-session-output-as-artifacts-8d4cebdf]]
 - [[configure-auto-mode-6d12b9ff]]
 - [[introducing-muse-spark-1-1-f8a95609]]
@@ -956,4 +961,5 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-17]]
 - [[health-2026-07-19]]
 - [[2026-07-19]]
+- [[2026-07-21]]
 - [[2026-07-20]]
