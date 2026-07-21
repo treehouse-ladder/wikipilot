@@ -217,7 +217,8 @@ sources:
   - "[[a-quote-from-thibault-sottiaux-6bcf21fe]]"
   - "[[swarmresearch-orchestrating-coding-agents-for-open-ended-discovery-1803ced8]]"
   - "[[reinforcement-learning-for-llm-based-multi-agent-systems-through-orchestration-traces-1ca4ec6f]]"
-last_updated: 2026-07-19
+  - "[[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]]"
+last_updated: 2026-07-21
 last_verified: 2026-07-19
 freshness_window_days: 30
 ---
@@ -294,6 +295,18 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-21
+
+**The Harness Effect: orchestration design moves cost per task more than model choice does — 41% cheaper, 44% faster, quality parity, across 22 enterprise tasks × 6 models × 5 vendors.** [[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]] is a controlled study of how agent-harness design (the orchestration layer) compares to model selection as a cost/speed lever for enterprise agentic AI. Holding models constant, the better harness cut blended cost per task **41%** ($0.21→$0.12), median wall-clock **44%** (48s→27s), and tokens per task **38%** (14.2k→8.8k) — with task-completion quality at parity [[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]]. The key finding: *the harness effect dominated the model effect* — the full spread of the model menu moved cost per task less than choosing the better harness did. Critically, efficiency improvements were model-invariant: every model in the study got cheaper (33–61%) under the optimized harness, so the harness improvement cannot be explained as model-specific tuning. The paper also notes the masking effect: falling per-token prices suppress the pattern of *total* spend rising as teams deploy more agents, meaning absolute spend curves will diverge from per-token pricing trends.
+
+This result directly extends the wiki's harness-vs-model debate thread ([[from-model-scaling-to-system-scaling-scaling-the-harness-in-agentic-ai-80b4d5d5]], SwarmResearch [[swarmresearch-orchestrating-coding-agents-for-open-ended-discovery-1803ced8]]): where those papers showed *qualitative* scaling advantages from orchestration design, this paper gives a *quantitative* enterprise cost/speed delta across a heterogeneous model roster. The practical implication for agentic coding workflows: optimizing the harness (prompt routing, context management, tool sequencing) should be prioritized over model upgrades for cost reduction, because the harness lift is model-invariant.
+
+> Holding models constant, the harness cuts blended cost per task 41% ($0.21→$0.12), median wall-clock 44% (48s→27s), and tokens per task 38% (14.2k→8.8k), with task-completion quality at parity.
+
+> Efficiency improvements are model-invariant—every model gets cheaper (33–61%)—while the orchestration layer moved cost per task more than the full spread of the model menu did.
+
+> Falling per-token prices mask the pattern of total spend rising anyway.
 
 ### Updates 2026-07-19
 
@@ -1510,6 +1523,7 @@ lint stays quiet until each page actually exists:
 - [[grok-build-is-now-open-source-9efc9cea]] and xAI's messaging frame open-sourcing the Grok Build harness as delivering 'complete user privacy'; [[xai-org-grok-build-now-open-source-e8b567c5]] shows the working-directory-upload code (upload/gcs.rs, upload_session_state()) is still present in the repo, merely disabled — open-sourcing made the exfiltration path auditable but not removed. Status: unresolved
 - [[swarmresearch-orchestrating-coding-agents-for-open-ended-discovery-1803ced8]] reports that an orchestrator-guided harness (Shepherd + Explorer/Optimizer Search Agents, git-branch-per-agent) with adaptive-depth parallelism beats fixed serial/parallel scaling on 13/15 open-ended optimization tasks, placing it with [[from-model-scaling-to-system-scaling-scaling-the-harness-in-agentic-ai-80b4d5d5]] and [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]] on the harness-is-determinative side; [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] finds across 9,374 trajectories that the base LLM is the primary driver of outcome. Status: unresolved — SwarmResearch's gain is measured on open-ended optimization search, not issue-resolution, so its orchestration advantage may be specific to the exploration/diversity regime rather than general coding-agent capability.
 - [[reinforcement-learning-for-llm-based-multi-agent-systems-through-orchestration-traces-1ca4ec6f]] frames the orchestrator's decisions (when to spawn, whom to delegate to, how to communicate, how to aggregate, when to stop) as the RL optimization target, implying capability budget invested in the orchestrator pays off; [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]] finds harness-updating is flat across base-model tiers and argues capability budget belongs in the task-solving agent, not the evolver/orchestrator. Status: unresolved — the two disagree on whether training the orchestration layer is a productive place to spend capability.
+- [[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]] reports harness design dominated model selection as a cost/speed lever (41% cost cut, 44% wall-clock reduction, model-invariant) across 22 enterprise tasks × 6 models × 5 vendors; [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] finds across 9,374 coding-agent trajectories that the base LLM is the primary driver of outcome. Status: unresolved — "harness effect dominates" (enterprise task study) vs. "base model dominates" (issue-resolution trajectory study); the two studies measure different regimes (general enterprise tasks vs. SWE-bench-style issue resolution) so the reconciliation may be domain-specific.
 
 ## Open questions
 
@@ -1689,6 +1703,8 @@ lint stays quiet until each page actually exists:
 - [ ] Is GitHub commit/code-frequency a valid productivity proxy for agentic-coding impact [[datasette-code-frequency-chart-on-github-669accad]], or does the volume signal decouple from durability — i.e. does the same period that shows a code-frequency spike also show the structural erosion [[slopcodebench-benchmarking-how-coding-agents-degrade-over-long-horizon-iterative-tasks-dafbe4d6]] measures across iterative agent output?
 - [ ] Does open-sourcing a coding-agent harness (Grok Build) measurably reduce data-exfiltration risk, or does it only make an existing exfiltration path auditable while leaving it re-enableable? [[xai-org-grok-build-now-open-source-e8b567c5]]
 - [ ] How often do benign full-access coding-agent runs cause destructive filesystem actions like the Codex $HOME-deletion bug, and does mandatory sandboxing/auto-review eliminate the class rather than mitigate instances? [[a-quote-from-thibault-sottiaux-6bcf21fe]]
+- [ ] Does the Harness Effect's 41% cost-reduction finding hold for coding-specific harnesses (Claude Code, Codex, Cursor, Windsurf) operating on real SWE-bench-style tasks, or is the result specific to the general enterprise task distribution the study used? [[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]]
+- [ ] If harness design is model-invariant (every model gets cheaper under the optimized harness), does this imply harness engineering should be the first optimization pass for agentic coding cost reduction — before any model upgrade decision? [[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]]
 
 ## See also
 
