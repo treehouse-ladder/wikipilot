@@ -1,8 +1,8 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]", "[[persona-3-reload-original-soundtrack-music-review-7bde2768]]", "[[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]", "[[about-time-indeed-the-crash-bandicoot-4-soundtrack-finally-hits-spotify-6b64122f]]", "[[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]", "[[lineage-ii-celebrates-its-22nd-anniversary-with-the-launch-of-a-special-collector-s-edition-soundtrack-vinyl-8b7f3ea6]]"]
-last_updated: 2026-07-21
+sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]", "[[persona-3-reload-original-soundtrack-music-review-7bde2768]]", "[[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]", "[[about-time-indeed-the-crash-bandicoot-4-soundtrack-finally-hits-spotify-6b64122f]]", "[[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]", "[[lineage-ii-celebrates-its-22nd-anniversary-with-the-launch-of-a-special-collector-s-edition-soundtrack-vinyl-8b7f3ea6]]", "[[donkey-kong-bananza-s-229-tracks-added-to-nintendo-music-fd489531]]"]
+last_updated: 2026-07-22
 last_verified: 2026-07-19
 freshness_window_days: 60
 ---
@@ -69,6 +69,12 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 Open caveats and unresolved contradictions are tracked in `## Disputes` and `## Open questions` below.
 
 ## Recent updates
+
+### Updates 2026-07-22
+
+**Donkey Kong Bananza's 229-track soundtrack lands on Nintendo Music.** The full Donkey Kong Bananza OST was added to Nintendo Music with 229 tracks and a total runtime of 8 hours 36 minutes [[donkey-kong-bananza-s-229-tracks-added-to-nintendo-music-fd489531]]. The library spans all Bananza transformation themes, tunes from the DK Island & Emerald Rush DLC, and base-game tracks, with 159 entries qualifying for the **Extended-Playback Collection** (up to 60-minute runtime per track). A spoiler block is available for players who haven't finished the game. A Switch Online subscription is required. The release continues Nintendo's pattern — established with Mario Kart World and earlier entries — of adding major Nintendo first-party soundtrack libraries to the service close to or shortly after a game's launch window.
+
+> Donkey Kong Bananza's full soundtrack has been added to Nintendo Music, bringing 229 tracks with a total runtime of 8 hours and 36 minutes. [[donkey-kong-bananza-s-229-tracks-added-to-nintendo-music-fd489531]]
 
 ### Updates 2026-07-21
 
@@ -865,8 +871,9 @@ until the underlying entity pages exist:
 - [ ] How does the balance between reused Brave Exvius music and the 33 new tracks read once the game ships on 2026-10-22 — does Elements Garden's mobile-scoring lineage carry a distinct identity into an HD-2D console title, and does a music review surface post-launch?
 - [ ] Will Nintendo's weekly Mario Kart World 'Free Roam' rollout eventually surface the full in-game catalog (~323 songs), and does it complete as discrete weekly drops or via a one-time full-album addition? [[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]
 - [ ] Will the Denshattack! OST (Kid Katana Records) receive a physical vinyl/CD pressing, or is it digital-only? [[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]
+- [ ] Does Nintendo Music's Extended-Playback Collection (159 of 229 Donkey Kong Bananza tracks playable up to 60 min each) reflect a deliberate curation of ambient/loop-friendly tracks, or is the threshold mechanical? [[donkey-kong-bananza-s-229-tracks-added-to-nintendo-music-fd489531]]
 
-_no contradictions or gaps known yet beyond open questions above (last reviewed: 2026-07-16)_
+_no contradictions or gaps known yet beyond open questions above (last reviewed: 2026-07-22)_
 
 ## See also
 
