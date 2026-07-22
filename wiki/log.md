@@ -1363,3 +1363,27 @@ Artificial Analysis market-structure consolidation: six labs now field a model a
 ## [2026-07-20] daily | 2 topics, 2 sources, 5 pages
 
 Daily Research 2026-07-20 complete. PRs #394–#395 merged. agentic-coding, ai-in-game-dev, game-music: empty proposals. Report: wiki/reports/2026-07-20.md.
+
+## [2026-07-22] daily | agentic-coding — 1 source, 2 pages
+
+Claude Code Week 29 changelog (July 13–17, 2026): /fork = background-session context isolation; /subtask = context-inherit child task with explicit scope handoff. Both primitives solidify the fork/subtask harness pattern for long-horizon agentic runs. 1 new open question. PR #405.
+
+## [2026-07-22] daily | games-of-note — 1 source, 2 pages
+
+~90% of id Software's design team cut in Xbox reset layoffs; ZeniMax branded a "slow, tortuous death" by workers. Ex-Xbox devs condemn Microsoft layoff culture — "good work will not save your job." New open question on ZeniMax Online's ESO path. PR #406.
+
+## [2026-07-22] daily | ai-in-game-dev — 3 sources, 4 pages
+
+Unity 7 free MCP server + AI tools announced at Unite Seoul (UGS, mesh tools, code advisor — all free tier). First multiplayer interactive world model demo: 20fps on B200, 4-player real-time at 512×288, using Representation Autoencoders. 1 new dispute (MCP vs built-in AI assistant strategy). 2 new open questions. Summary regenerated (Unity 7 MCP + world models shift best-practice). PR #407.
+
+## [2026-07-22] daily | frontier-models — 3 sources, 4 pages
+
+Gemini 3.6 Flash ($1.50/$7.50 per Mtoken) positioned as speed/intelligence trade-off leader; Gemini 3.5 Flash Lite halves time-per-task vs prior budget tier. Kimi K3 debuts at #2 on AA-Briefcase knowledge-work benchmark (after Fable 5). Entity updates: gemini-3.6-flash added, kimi-k3 cost + AA-Briefcase fields updated. Summary regenerated (new Flash leader, Kimi K3 benchmark position). PR #408.
+
+## [2026-07-22] daily | game-music — 1 source, 2 pages
+
+Donkey Kong Bananza's full OST (229 tracks, 8h36m, 159 Extended-Playback Collection) added to Nintendo Music with Switch Online requirement. DK Island & Emerald Rush DLC tracks included. 1 new open question on Extended-Playback curation criteria. PR #409.
+
+## [2026-07-22] daily | 5 topics, 9 sources, 14 pages
+
+Daily Research 2026-07-22 complete. PRs #405–#409 merged. All 5 topics active. Report: wiki/reports/2026-07-22.md.

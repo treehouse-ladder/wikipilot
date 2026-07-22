@@ -905,6 +905,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[reinforcement-learning-for-llm-based-multi-agent-systems-through-orchestration-traces-1ca4ec6f]]
 - [[starfield-remains-important-to-bethesda-new-content-coming-in-2027-96ffa43d]]
 - [[four-frontier-launches-in-eight-days-six-labs-now-field-a-model-above-50-on-the-artificial-analysis-intelligence-index-951b658c]]
+- [[claude-code-what-s-new-week-29-july-1317-2026-0a54e162]]
+- [[good-work-is-not-going-to-save-your-job-at-this-company-laid-off-xbox-devs-condemn-microsoft-5e50dfeb]]
+- [[unity-7-roadmap-revealed-at-unite-seoul-ce198bca]]
+- [[unity-unveils-unity-7-roadmap-with-update-path-that-won-t-break-your-build-3e91c1c4]]
+- [[multiplayer-interactive-world-models-with-representation-autoencoders-a71af8bf]]
+- [[introducing-gemini-3-6-flash-3-5-flash-lite-and-3-5-flash-cyber-268e6f2a]]
+- [[gemini-3-6-flash-and-gemini-3-5-flash-lite-halving-time-per-task-e581ad77]]
+- [[kimi-k3-second-only-to-fable-5-on-aa-briefcase-a126a86d]]
+- [[donkey-kong-bananza-s-229-tracks-added-to-nintendo-music-fd489531]]
 
 ## Reports
 
@@ -963,3 +972,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-19]]
 - [[2026-07-21]]
 - [[2026-07-20]]
+- [[2026-07-22]]
