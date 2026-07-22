@@ -218,7 +218,8 @@ sources:
   - "[[swarmresearch-orchestrating-coding-agents-for-open-ended-discovery-1803ced8]]"
   - "[[reinforcement-learning-for-llm-based-multi-agent-systems-through-orchestration-traces-1ca4ec6f]]"
   - "[[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]]"
-last_updated: 2026-07-21
+  - "[[claude-code-what-s-new-week-29-july-1317-2026-0a54e162]]"
+last_updated: 2026-07-22
 last_verified: 2026-07-19
 freshness_window_days: 30
 ---
@@ -295,6 +296,18 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-22
+
+**Claude Code splits `/fork` and `/subtask` into two distinct context-sharing primitives, and auto-backgrounds long MCP calls — a concrete best-practice shift for the parallel-subagent / orchestration thread.** In the Week 29 changelog, `/fork` now clones the current conversation into a *new independent background session* (its own row in the agents view) carrying the full transcript plus working directory, model, permission mode, effort level, and session-granted "don't ask again" permissions — while the original session keeps running [[claude-code-what-s-new-week-29-july-1317-2026-0a54e162]]. The in-session forked subagent that `/fork` previously launched is renamed `/subtask`, and its defining property is that it *inherits the full parent conversation context instead of starting fresh* (requires v2.1.212+) [[claude-code-what-s-new-week-29-july-1317-2026-0a54e162]]. This sharpens a design axis the wiki already tracks: context-inheriting delegation (`/subtask`) vs. the fresh-context subagents Claude Code spawns by default, echoing SwarmResearch's deliberate split between fresh-context Explorer agents (to force high-level exploration) and history-forking Optimizer agents [[swarmresearch-orchestrating-coding-agents-for-open-ended-discovery-1803ced8]]. Two adjacent ops changes: MCP tool calls running longer than two minutes now auto-move to the background (tunable via `CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS`) so a slow tool no longer blocks the session, and Auto mode is now default-on across Amazon Bedrock, Google Cloud's Agent Platform, and Microsoft Foundry (no more `CLAUDE_CODE_ENABLE_AUTO_MODE` opt-in; admins disable via `disableAutoMode`) [[claude-code-what-s-new-week-29-july-1317-2026-0a54e162]].
+
+> /fork now copies your conversation into a new background session (its own row in claude agents) while you keep working. The copy starts with everything in the conversation up to that point, plus the working directory, model, permission mode, effort level, and any directories or "don't ask again" permission grants you added during the session. The in-session forked subagent it used to launch is now /subtask. [[claude-code-what-s-new-week-29-july-1317-2026-0a54e162]]
+
+> A forked subagent, started with /subtask, is a subagent that inherits your full conversation context instead of starting fresh. /subtask requires Claude Code v2.1.212 or later. [[claude-code-what-s-new-week-29-july-1317-2026-0a54e162]]
+
+> MCP tool calls that run longer than two minutes now move to the background automatically so the session stays usable, with the threshold configurable via CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS. [[claude-code-what-s-new-week-29-july-1317-2026-0a54e162]]
+
+> Auto mode no longer needs the CLAUDE_CODE_ENABLE_AUTO_MODE opt-in on Amazon Bedrock, Google Cloud's Agent Platform, and Microsoft Foundry; administrators can turn it off with disableAutoMode. [[claude-code-what-s-new-week-29-july-1317-2026-0a54e162]]
 
 ### Updates 2026-07-21
 
@@ -1530,6 +1543,7 @@ lint stays quiet until each page actually exists:
 - [ ] What is the cache-invalidation behavior of multi-agent setups when one agent edits a file mid-run that another agent has cached? Cursor's worktree-per-agent design [[cursor-2-0-multi-agents-and-composer-changelog-4665f068]] avoids file-level conflicts but the prompt-cache implications across worktrees aren't documented in the changelog.
 - [ ] Does Claude Code Routines' "Anthropic-managed cloud infrastructure" [[automate-work-with-routines-claude-code-routines-docs-d09f612e]] use the same prompt-caching tier as interactive sessions, and if not, what does that imply for cost-per-routine-run vs cost-per-interactive-session?
 - [ ] Among the seven vendors documented to support subagents [[use-subagents-and-custom-agents-in-codex-simon-willison-march-2026-7be24bde]], do they share a common interchange format (e.g. is a Codex custom-agent TOML portable to Claude Code), or is the convergence purely in concept?
+- [ ] When is a context-inheriting `/subtask` fork the right choice vs. a fresh-context subagent for a coding delegation? SwarmResearch found fresh context deliberately improves high-level exploration [[swarmresearch-orchestrating-coding-agents-for-open-ended-discovery-1803ced8]], while Claude Code now offers full-context inheritance via `/subtask` [[claude-code-what-s-new-week-29-july-1317-2026-0a54e162]] — no head-to-head data on which wins for which task shape.
 - [ ] How do Agent Skills compose with MCP servers in practice? [[claude-skills-are-awesome-maybe-a-bigger-deal-than-mcp-simon-willison-7efc395e]] frames Skills as 'maybe a bigger deal than MCP' but does not show whether a Skill can wrap or call into an MCP server, or whether the two patterns address overlapping problems.
 - [ ] Does code-execution-with-MCP's 'tools as code on a filesystem' design [[code-execution-with-mcp-building-more-efficient-ai-agents-9b88bfec]] break prompt caching when the agent edits the tool definitions mid-session?
 - [ ] Are Codex custom-agent TOML files [[subagents-openai-codex-developers-openai-com-8334be02]] portable to Claude Code's markdown-based `.claude/agents/` definitions, or is the cross-vendor subagent convergence purely conceptual?
