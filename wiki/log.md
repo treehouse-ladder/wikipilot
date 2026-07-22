@@ -1360,6 +1360,10 @@ Bethesda reaffirms Starfield long-term support: "remains an important part of ou
 
 Artificial Analysis market-structure consolidation: six labs now field a model above AA Intelligence Index v4.1 = 50 (up from two in early June). Key new data: per-task cost normalization — GPT-5.6 Sol max ($1.04/task), Kimi K3 ($0.94), Luna/Muse Spark/Grok 4.5 all ≤$0.32 vs Fable 5 ($2.75). No leader moved; Fable 5 = 60 re-verified. claude-fable-5 entity `last_verified` bumped. 1 new open question. PR #395.
 
+## [2026-07-22] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#408 requeued (frontier-models daily 2026-07-22; CI green, auto-merge enabled). pr#407 already merged before dispatch.
+
 ## [2026-07-20] daily | 2 topics, 2 sources, 5 pages
 
 Daily Research 2026-07-20 complete. PRs #394–#395 merged. agentic-coding, ai-in-game-dev, game-music: empty proposals. Report: wiki/reports/2026-07-20.md.
