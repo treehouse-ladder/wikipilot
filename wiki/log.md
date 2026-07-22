@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-22] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#409 (claude/daily-2026-07-22/game-music): CLEAN + CI green, auto-merge was not queued — enabled squash auto-merge via MCP.
+
 ## [2026-07-21] daily | 5 topics, 5 sources, 13 pages
 
 Daily Research 2026-07-21 complete. PRs #399–#403 queued for auto-merge. Report: wiki/reports/2026-07-21.md.
