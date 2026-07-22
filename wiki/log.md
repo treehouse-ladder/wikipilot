@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-22] manual | conflict-resolver — 0 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#409 (claude/daily-2026-07-22/game-music): CI in progress at scan time, auto-merge proactively enabled via MCP to prevent orphan-CLEAN state on CI pass (gh auth unavailable in daily session).
+
 ## [2026-07-21] daily | 5 topics, 5 sources, 13 pages
 
 Daily Research 2026-07-21 complete. PRs #399–#403 queued for auto-merge. Report: wiki/reports/2026-07-21.md.
