@@ -15,7 +15,7 @@ sources:
   - "[[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]]"
   - "[[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]"
   - "[[rewriting-bun-in-rust-15a50b3d]]"
-last_updated: 2026-07-12
+last_updated: 2026-07-23
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
@@ -63,6 +63,10 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 **OpenAI's GPT-5.6 moves subagent dispatch into the model API itself (July 2026).** The GPT-5.6 launch introduces *Multi-agent* as a first-class Responses API primitive: the model can "spin up subagents for parallel, focused work" — the sub-agent pattern "now baked into the core API" rather than being a harness-level orchestration layer [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]. This is a significant architectural boundary shift — parallel subagents have to date been harness features (`CLAUDE_CODE_FORK_SUBAGENT`, Cursor SDK recursive nesting, Codex custom-agents) layered on top of a tool-calling model; GPT-5.6 relocates dispatch into the model's own surface, making subagent orchestration a model capability rather than purely a harness capability. The implications for harness-vs-model attribution are open: if subagent fan-out becomes a built-in model feature, does the harness's measured contribution to SWE-bench/Terminal-Bench scores shrink?
 
 > Multi-agent lets the model spin up subagents for parallel, focused work — the sub-agent pattern now baked into the core API. [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]
+
+**Claude Code v2.1.217 adds a session-wide concurrency cap (20 concurrent subagents by default).** Distinct from the new per-session spawn budget (200 spawns via `CLAUDE_CODE_MAX_SUBAGENTS_PER_SESSION`), a separate concurrency cap (`CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS`, default 20) prevents any single message from fanning out unbounded background agents simultaneously [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]. The two limits compose: the concurrency cap governs how many agents run at once; the spawn budget governs the total for the session. The `context: fork` skill attribute now runs in the background by default (opt-out with `background: false`), making background delegation the default posture for skill-driven fan-out.
+
+> Added a cap on concurrently-running subagents (default 20, override with `CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS`) so one message can't fan out unbounded background agents. [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]
 
 ## Disputes
 
