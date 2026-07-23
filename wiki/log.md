@@ -1387,3 +1387,27 @@ Donkey Kong Bananza's full OST (229 tracks, 8h36m, 159 Extended-Playback Collect
 ## [2026-07-22] daily | 5 topics, 9 sources, 14 pages
 
 Daily Research 2026-07-22 complete. PRs #405–#409 merged. All 5 topics active. Report: wiki/reports/2026-07-22.md.
+
+## [2026-07-23] daily | agentic-coding — 1 source, 3 pages
+
+Claude Code v2.1.212–218 (July 18–22): WebSearch cap (200), subagent spawn cap (200), concurrent cap (20, CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS), MCP auto-background after 2 min, EndConversation tool, docker daemon-redirect permission flags, context:fork background-by-default, /code-review as background subagent. Cross-page sweep: parallel-subagents.md + agent-sandboxing.md. PR #411.
+
+## [2026-07-23] daily | frontier-models — 1 source, 1 page
+
+BusinessCaseBench (arxiv 2607.16057): 238 real-world business cases, 615 questions, 18 disciplines. Cross-model oracle gap 4.5 points vs single-best; advisory tasks hardest at <7% all-fail. No leader/price changes; roster re-verified. PR #412.
+
+## [2026-07-23] daily | ai-in-game-dev — 4 sources, 1 page
+
+SIGGRAPH 2026 (July 19, LA, first-ever Games Summit): DLSS 5 revealed — 3-model neural rendering architecture (A/B/C), 4K/60fps in <16ms, per-asset model assignment, fall 2026 ship. NVIDIA MCP expanded to Adobe/Blender/Houdini (APEX Script)/Affinity/UE. Cosmos 3 Edge: 4B-param world model for Jetson/RTX. MotionBricks: 15,000 FPS real-time motion generation from 350k clips, GR00T integration. 1 new dispute (DLSS 5 "neural rendering" vs DLSS 4.x "super-resolution"). PR #413.
+
+## [2026-07-23] daily | games-of-note — 2 sources, 1 page
+
+Xbox Backward Compatibility on PC: 4 OG Xbox titles (BLiNX, Conker, Crimson Skies, Fuzion Frenzy), cross-buy license carry-over, ROG Xbox Ally/X support, Jason Ronald preservation framing. Roblox Grow a Garden: 21,963,800 concurrent users July 19 — new all-time gaming record, surpasses Fortnite 15.3M; 16-year-old creator, free-to-play farming sim. PR #414.
+
+## [2026-07-23] daily | game-music — 3 sources, 1 page
+
+Halo: Campaign Evolved remake confirms remastered O'Donnell/Salvatori score (6-hour Main Menu Theme preview); sharpens existing Halo multitrack dispute. Pokémon Legends: Z-A + Mega Dimension Super Music Complete 5CD review (RPGFan): strong DLC section, uneven overall. AV Club: Legends Z-A breaks Pokémon's linear-music convention with Lumiose city theme adaptive variations. PR #415.
+
+## [2026-07-23] daily | 5 topics, 11 sources, 7 pages
+
+Daily Research 2026-07-23 complete. PRs #411–#415 queued for auto-merge. All 5 topics active. Report: wiki/reports/2026-07-23.md.
