@@ -914,6 +914,17 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gemini-3-6-flash-and-gemini-3-5-flash-lite-halving-time-per-task-e581ad77]]
 - [[kimi-k3-second-only-to-fable-5-on-aa-briefcase-a126a86d]]
 - [[donkey-kong-bananza-s-229-tracks-added-to-nintendo-music-fd489531]]
+- [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]
+- [[frontier-ai-performance-across-the-business-disciplines-a-case-grounded-benchmark-of-knowledge-work-and-analytical-reasoning-72a97182]]
+- [[at-siggraph-nvidia-advances-graphics-and-simulation-with-agentic-and-physical-ai-70c1acaa]]
+- [[siggraph-2026-opens-in-la-first-games-summit-neural-rendering-bets-and-a-chinese-ai-keynote-4e6e5d9f]]
+- [[nvidia-shows-dlss-5-progress-and-technical-details-at-siggraph-2026-1fbeca9b]]
+- [[motionbricks-scalable-real-time-motions-with-modular-latent-generative-model-and-smart-primitives-45bc3aa9]]
+- [[play-more-of-the-games-you-love-wherever-you-play-with-xbox-backward-compatibility-on-pc-c2c50831]]
+- [[roblox-s-grow-a-garden-had-nearly-22-million-concurrent-users-in-july-5808945e]]
+- [[halo-shares-first-taste-of-remastered-campaign-evolved-soundtrack-d89cae28]]
+- [[nintendo-switch-pokemon-legends-z-a-mega-dimension-super-music-complete-music-review-d6281f55]]
+- [[the-pokemon-legends-z-a-soundtrack-breaks-a-series-ruleand-brings-lumiose-to-life-b6ef8525]]
 
 ## Reports
 
@@ -973,3 +984,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-21]]
 - [[2026-07-20]]
 - [[2026-07-22]]
+- [[2026-07-23]]
