@@ -219,8 +219,9 @@ sources:
   - "[[reinforcement-learning-for-llm-based-multi-agent-systems-through-orchestration-traces-1ca4ec6f]]"
   - "[[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]]"
   - "[[claude-code-what-s-new-week-29-july-1317-2026-0a54e162]]"
-last_updated: 2026-07-22
-last_verified: 2026-07-19
+  - "[[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]"
+last_updated: 2026-07-23
+last_verified: 2026-07-23
 freshness_window_days: 30
 ---
 
@@ -296,6 +297,32 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-23 — Claude Code v2.1.212–218: runaway-loop caps, concurrency limit, background-by-default forks, sandboxing hardening
+
+The Claude Code changelog for v2.1.212–v2.1.218 (July 18–22, 2026) adds explicit **budget guards** to the fork/subtask harness pattern tracked here since Week 29. Two session-wide caps stop runaway loops: WebSearch calls and subagent spawns each default to 200, both env-tunable [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]].
+
+> Added a session-wide limit on WebSearch tool calls (default 200, tunable via `CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION`) to stop runaway search loops
+
+> Added a per-session cap on subagent spawns (default 200, override with `CLAUDE_CODE_MAX_SUBAGENTS_PER_SESSION`) to stop runaway delegation loops; `/clear` resets the budget
+
+v2.1.217 adds a **concurrency** cap distinct from the spawn budget — no single message can fan out unbounded background agents (default 20) [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]].
+
+> Added a cap on concurrently-running subagents (default 20, override with `CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS`) so one message can't fan out unbounded background agents
+
+Background execution becomes the default in two more places: skills declared `context: fork` now run in the background unless opted out, and long-running MCP tool calls auto-background after 2 minutes so the main loop stays interactive [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]].
+
+> Changed skills with `context: fork` to run in the background by default; opt out per skill with `background: false`
+
+> MCP tool calls running longer than 2 minutes now move to the background automatically so the session stays usable; configure the threshold or disable with `CLAUDE_CODE_MCP_AUTO_BACKGROUND_MS`
+
+On the sandboxing/security side, `docker` commands carrying daemon-redirect flags now prompt for permission instead of running silently, and a new `EndConversation` tool lets Claude terminate abusive/jailbreak sessions [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]].
+
+> Added permission prompts for `docker` commands (including the Podman `docker` shim) carrying daemon-redirect flags (`--url`, `--connection`, `--identity`, and Podman's remote mode) that previously ran without one
+
+> Added the EndConversation tool: Claude can end sessions with highly abusive users or jailbreak attempts, as on claude.ai since 2025
+
+Net: the parallel-subagent harness that SwarmResearch (2026-07-19) and the Week 29 /fork+/subtask primitives (2026-07-22) built up now ships with first-class runaway-loop and concurrency guardrails, and `/code-review` itself was moved to a background subagent so review no longer pollutes the main context.
 
 ### Updates 2026-07-22
 
@@ -1719,6 +1746,10 @@ lint stays quiet until each page actually exists:
 - [ ] How often do benign full-access coding-agent runs cause destructive filesystem actions like the Codex $HOME-deletion bug, and does mandatory sandboxing/auto-review eliminate the class rather than mitigate instances? [[a-quote-from-thibault-sottiaux-6bcf21fe]]
 - [ ] Does the Harness Effect's 41% cost-reduction finding hold for coding-specific harnesses (Claude Code, Codex, Cursor, Windsurf) operating on real SWE-bench-style tasks, or is the result specific to the general enterprise task distribution the study used? [[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]]
 - [ ] If harness design is model-invariant (every model gets cheaper under the optimized harness), does this imply harness engineering should be the first optimization pass for agentic coding cost reduction — before any model upgrade decision? [[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]]
+
+- [ ] Does Claude Code's default cap of 20 concurrently-running subagents [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]] bottleneck the adaptive-depth parallelism SwarmResearch reported beating fixed scaling on 13/15 tasks, or is 20-wide fan-out already beyond the point of diminishing returns for open-ended optimization?
+- [ ] OpenAI Codex CLI v0.145.0 (reportedly July 21, 2026) allegedly added sub-agent support in paginated thread history, persisted memories, and an /import path that migrates Cursor and Claude Code settings/MCP servers/commands — needs a fetchable-verbatim source before ingestion. Does /import establish the first cross-vendor subagent/config interchange the wiki's existing open questions ask for?
+- [ ] Does the new per-session subagent-spawn budget (200) interact with MCP Tasks-based long-horizon dispatch [[the-2026-07-28-mcp-specification-release-candidate-1a1752b8]] — i.e. do out-of-process MCP Tasks bypass the in-process spawn cap, giving an uncapped delegation path around the guardrail?
 
 ## See also
 
