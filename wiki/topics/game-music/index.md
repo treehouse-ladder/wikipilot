@@ -1,8 +1,8 @@
 ---
 title: Game composers and audio
 kind: topic
-sources: ["[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]", "[[persona-3-reload-original-soundtrack-music-review-7bde2768]]", "[[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]", "[[about-time-indeed-the-crash-bandicoot-4-soundtrack-finally-hits-spotify-6b64122f]]", "[[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]", "[[lineage-ii-celebrates-its-22nd-anniversary-with-the-launch-of-a-special-collector-s-edition-soundtrack-vinyl-8b7f3ea6]]", "[[donkey-kong-bananza-s-229-tracks-added-to-nintendo-music-fd489531]]"]
-last_updated: 2026-07-22
+sources: ["[[halo-shares-first-taste-of-remastered-campaign-evolved-soundtrack-d89cae28]]", "[[nintendo-switch-pokemon-legends-z-a-mega-dimension-super-music-complete-music-review-d6281f55]]", "[[the-pokemon-legends-z-a-soundtrack-breaks-a-series-ruleand-brings-lumiose-to-life-b6ef8525]]", "[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]", "[[persona-3-reload-original-soundtrack-music-review-7bde2768]]", "[[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]", "[[about-time-indeed-the-crash-bandicoot-4-soundtrack-finally-hits-spotify-6b64122f]]", "[[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]", "[[lineage-ii-celebrates-its-22nd-anniversary-with-the-launch-of-a-special-collector-s-edition-soundtrack-vinyl-8b7f3ea6]]", "[[donkey-kong-bananza-s-229-tracks-added-to-nintendo-music-fd489531]]"]
+last_updated: 2026-07-23
 last_verified: 2026-07-19
 freshness_window_days: 60
 ---
@@ -69,6 +69,26 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 Open caveats and unresolved contradictions are tracked in `## Disputes` and `## Open questions` below.
 
 ## Recent updates
+
+### Updates 2026-07-23
+
+**Halo: Campaign Evolved remake confirms remastered O'Donnell/Salvatori score.** Halo Studios released an extended six-hour version of Halo: Campaign Evolved's 'Main Menu Theme' ahead of the game's August 2026 launch [[halo-shares-first-taste-of-remastered-campaign-evolved-soundtrack-d89cae28]]. The 2026 remake will feature a remastered version of the 2001 original score composed by **Martin O'Donnell and Michael Salvatori** — preserving the sweeping orchestral cues, marching military snares, prog-rock percussion, and Gregorian Monk chants from the original rather than commissioning new music [[halo-shares-first-taste-of-remastered-campaign-evolved-soundtrack-d89cae28]]. This sits in direct tension with O'Donnell's June 2026 public statement that Microsoft does not hold the original multitrack recordings (making a true remaster impossible despite the "remastered" label) [[halo-composer-hits-out-at-vinyl-release-none-of-the-performers-will-see-a-dime-6a0e1792]] — the same claim filed in the Disputes section below. Whether the game's score uses newly recorded stems or reconstructed/upsampled sources remains unaddressed in the announcement.
+
+> Halo Studios has released an extended six-hour version of Halo: Campaign Evolved's 'Main Menu Theme' ahead of the game's launch next month. [[halo-shares-first-taste-of-remastered-campaign-evolved-soundtrack-d89cae28]]
+
+> Rather than creating an entirely new soundtrack for the 2026 remake, Halo Studios is remastering the 2001 choirs, sweeping orchestral arrangements, synthetic ambience, and marching beats. [[halo-shares-first-taste-of-remastered-campaign-evolved-soundtrack-d89cae28]]
+
+**Pokémon Legends: Z-A + Mega Dimension Super Music Complete reviewed — 5CD set with strong DLC section.** RPGFan reviewed the *Pokémon Legends: Z-A + Mega Dimension Super Music Complete*, a 5 CD compilation released only four months after the Mega Dimension DLC rollout [[nintendo-switch-pokemon-legends-z-a-mega-dimension-super-music-complete-music-review-d6281f55]]. Verdict: "not the strongest Pokémon soundtrack of the past decade" overall, but with standout moments in the key cutscene music, reworks of classic **Junichi Masuda** themes, the tournament themes, the finale, and the entire Mega Dimension DLC scenario — highlighted as the set's strongest extended section [[nintendo-switch-pokemon-legends-z-a-mega-dimension-super-music-complete-music-review-d6281f55]].
+
+> While Pokémon Legends: Z-A + Mega Dimension Super Music Complete is not the strongest Pokémon soundtrack of the past decade, it sports a handful of truly impressive musical numbers. [[nintendo-switch-pokemon-legends-z-a-mega-dimension-super-music-complete-music-review-d6281f55]]
+
+> The Game Freak musicians did a great job with the key cutscene music, the reworks of classic Junichi Masuda themes, the tournament themes, the finale, and the entire Mega Dimension DLC scenario. [[nintendo-switch-pokemon-legends-z-a-mega-dimension-super-music-complete-music-review-d6281f55]]
+
+**AV Club: Legends Z-A breaks Pokémon's linear-music rule with its Lumiose theme.** The AV Club's craft analysis argues that Pokémon Legends: Z-A's score breaks the series' defining structural convention — in classic Pokémon, music accompanies a preset linear path; Legends Z-A designs its score around the city of Lumiose, whose theme undergoes multiple variations as the player explores, culminating in a grand orchestral third variation in the penultimate boss battle [[the-pokemon-legends-z-a-soundtrack-breaks-a-series-ruleand-brings-lumiose-to-life-b6ef8525]]. The Lumiose theme is framed as designed to "imprint on the player," consistent with adaptive/environmental design principles rather than linear cue-driven scoring — which connects to the topic's Wwise/FMOD/MetaSounds and adaptive-music threads [[the-pokemon-legends-z-a-soundtrack-breaks-a-series-ruleand-brings-lumiose-to-life-b6ef8525]].
+
+> In utility terms, music in the classic Pokémon games is linear, accompanying the player's preset path across regions, which is the series rule that Legends Z-A's soundtrack breaks. [[the-pokemon-legends-z-a-soundtrack-breaks-a-series-ruleand-brings-lumiose-to-life-b6ef8525]]
+
+> A penultimate battle against the game's final boss features a third variation on the Lumiose theme, which is grand—the sort of big, bright orchestral composition typically associated with the series. The Lumiose theme is meant to imprint on the player—to be something they never forget, and always associate with their time in the city. [[the-pokemon-legends-z-a-soundtrack-breaks-a-series-ruleand-brings-lumiose-to-life-b6ef8525]]
 
 ### Updates 2026-07-22
 
@@ -872,8 +892,11 @@ until the underlying entity pages exist:
 - [ ] Will Nintendo's weekly Mario Kart World 'Free Roam' rollout eventually surface the full in-game catalog (~323 songs), and does it complete as discrete weekly drops or via a one-time full-album addition? [[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]
 - [ ] Will the Denshattack! OST (Kid Katana Records) receive a physical vinyl/CD pressing, or is it digital-only? [[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]
 - [ ] Does Nintendo Music's Extended-Playback Collection (159 of 229 Donkey Kong Bananza tracks playable up to 60 min each) reflect a deliberate curation of ambient/loop-friendly tracks, or is the threshold mechanical? [[donkey-kong-bananza-s-229-tracks-added-to-nintendo-music-fd489531]]
+- [ ] Does Halo Studios' "remastered" score for Campaign Evolved use newly recorded stems or upsampled/reconstructed sources, given O'Donnell's claim that Microsoft no longer holds the original multitracks — and will O'Donnell or Salvatori comment on the game's audio treatment separately from the vinyl reissue dispute? [[halo-shares-first-taste-of-remastered-campaign-evolved-soundtrack-d89cae28]] [[halo-composer-hits-out-at-vinyl-release-none-of-the-performers-will-see-a-dime-6a0e1792]]
+- [ ] Does the Pokémon Legends: Z-A Lumiose adaptive-variation approach use real-time adaptive middleware (Wwise/FMOD/Nintendo proprietary) to trigger theme variations by location and event, or are the variations implemented as discrete linear cues? [[the-pokemon-legends-z-a-soundtrack-breaks-a-series-ruleand-brings-lumiose-to-life-b6ef8525]]
+- [ ] Will the Pokémon Legends: Z-A + Mega Dimension Super Music Complete 5CD physical set receive a vinyl edition, following the 2026 game-music vinyl-revival pattern for major franchise OSTs? [[nintendo-switch-pokemon-legends-z-a-mega-dimension-super-music-complete-music-review-d6281f55]]
 
-_no contradictions or gaps known yet beyond open questions above (last reviewed: 2026-07-22)_
+_no contradictions or gaps known yet beyond open questions above (last reviewed: 2026-07-23)_
 
 ## See also
 
