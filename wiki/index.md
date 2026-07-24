@@ -925,6 +925,20 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[halo-shares-first-taste-of-remastered-campaign-evolved-soundtrack-d89cae28]]
 - [[nintendo-switch-pokemon-legends-z-a-mega-dimension-super-music-complete-music-review-d6281f55]]
 - [[the-pokemon-legends-z-a-soundtrack-breaks-a-series-ruleand-brings-lumiose-to-life-b6ef8525]]
+- [[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]
+- [[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]
+- [[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]
+- [[kimi-k3-tech-blog-open-frontier-intelligence-0d83e2aa]]
+- [[kimi-k3-s-open-weights-arrive-july-27-the-catch-is-1-4tb-56e05201]]
+- [[kimi-k3-the-open-weights-escalation-be621fe3]]
+- [[alayaworld-long-horizon-and-playable-video-world-generation-6519a8c6]]
+- [[omnigamearena-a-unified-ue5-benchmark-for-vlm-game-agents-with-improvement-dynamics-bba003f4]]
+- [[resonance-a-plague-tale-legacy-shares-first-taste-of-soundtrack-d3b5f094]]
+- [[unbeatable-album-3xlp-vinyl-soundtrack-180-gram-edition-58e3f9df]]
+- [[dolphin-park-lp-music-from-wave-race-64-a84d037a]]
+- [[fromsoftware-s-the-duskbloods-confirms-network-test-dates-65b24735]]
+- [[games-industry-m-a-reaches-2-3bn-in-q2-2026-e36c8115]]
+- [[vermila-studios-lays-off-staff-studio-closure-a-feasible-possibility-in-coming-months-eea51a99]]
 
 ## Reports
 
@@ -985,3 +999,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-20]]
 - [[2026-07-22]]
 - [[2026-07-23]]
+- [[2026-07-24]]

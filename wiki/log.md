@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-24] daily | 5 topics, 14 sources, 16 pages
+
+Daily Research 2026-07-24 complete. PRs #417–#421 merged. Report: wiki/reports/2026-07-24.md.
+
+## [2026-07-24] daily | agentic-coding — 3 sources, 6 pages
+
+AgentLens (arXiv 2607.06624): trajectory-level evaluation pairing formal verification + LLM narrative reviews for coding agents; useful for nightly regression pipelines. Benchmark-reliability audit (arXiv 2607.01211): GSO/SWE-Perf/SWE-fficiency fail cross-machine replay (39/102, 11/140, 411/498 tasks pass) and disagree on 9/28 pairwise submission rankings. Failure as a Process (arXiv 2607.09510): first large-scale anatomy of CLI coding-agent failures across 3,843 trajectories from 7 frontier models × 3 scaffolds (OpenHands, MiniSWE, Terminus2). PR #417.
+
+## [2026-07-24] daily | frontier-models — 3 sources, 5 pages
+
+Kimi K3: first open 3T-class MoE (896 experts, 16 active, Kimi Delta Attention + AttnRes), ~2.5× scaling efficiency vs K2, 1M context, native multimodal — new open-weights frontier leader. Open weights drop July 27; full-precision 1.4 TB (BF16 ~594 GB; Q4 quant ~310 GB). Modified MIT license. PR #418.
+
+## [2026-07-24] daily | ai-in-game-dev — 2 sources, 3 pages
+
+AlayaWorld (arXiv 2607.06291): first Apache 2.0 player-interactive world model (15B params, DMD 4-step distillation, 100-step horizon); enables real-time player control of generated video environments. OmniGameArena (arXiv 2606.09826): 12-game UE5 VLM benchmark with Improvement Dynamics Curve (IDC) metric; commercial models lead, reflection capability peaks mid-training. PR #419.
+
+## [2026-07-24] daily | game-music — 3 sources, 1 page
+
+Resonance: A Plague Tale Legacy (Olivier Derivière, Amalgamation choir + Yaylı tambur, Aug 27 2026); UNBEATABLE 3xLP vinyl (iam8bit, D-CELL Sound Team, $60, Q4 2026); Dolphin Park LP — Wave Race 64 jazz-fusion rework (Mana Wave, 500 copies ocean-blue vinyl, $30). PR #420.
+
+## [2026-07-24] daily | games-of-note — 3 sources, 1 page
+
+The Duskbloods Network Test (FromSoftware, Switch 2 PvPvE, 5 sessions Aug 21–23, 8 players/session); Q2 2026 M&A $2.3 bn across 54 transactions — post-pandemic high; Scopely $1 bn Loom Games. Vermila Studios (Crisol) lays off 19 staff 5 months after positive-reviewed PS5/PC/XSX launch — full closure "feasible". PR #421.
+
 ## [2026-07-21] daily | 5 topics, 5 sources, 13 pages
 
 Daily Research 2026-07-21 complete. PRs #399–#403 queued for auto-merge. Report: wiki/reports/2026-07-21.md.
