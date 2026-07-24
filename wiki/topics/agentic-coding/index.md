@@ -98,6 +98,9 @@ sources:
   - "[[higher-usage-limits-for-claude-and-a-compute-deal-with-spacex-f53c308c]]"
   - "[[inside-anthropic-2026-developer-conference-6fa21d8d]]"
   - "[[scaling-long-running-autonomous-coding-8b8b74bd]]"
+  - "[[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]"
+  - "[[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]"
+  - "[[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]"
   - "[[openhands-product-update-may-2026-d5c547b5]]"
   - "[[agentic-coding-needs-proactivity-not-just-autonomy-26d5c2fb]]"
   - "[[sandboxed-coding-agents-are-competitive-omni-modal-task-solvers-6d32a133]]"
@@ -220,7 +223,7 @@ sources:
   - "[[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]]"
   - "[[claude-code-what-s-new-week-29-july-1317-2026-0a54e162]]"
   - "[[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]"
-last_updated: 2026-07-23
+last_updated: 2026-07-24
 last_verified: 2026-07-23
 freshness_window_days: 30
 ---
@@ -297,6 +300,28 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-24 — Trajectory-level evaluation and benchmark-reliability audits deepen the "resolve rate hides too much" thread
+
+Three new coding-agent evaluation papers land on the same axis the wiki already tracks ([[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]], [[what-resolve-rate-hides-trajectory-structure-diagnostics-for-coding-agents-3704621c]], [[position-coding-benchmarks-are-misaligned-with-agentic-software-engineering-0019f733]]): a single pass/fail bit is too coarse, and the leaderboards behind it are less stable than they look.
+
+**AgentLens** reframes evaluation around the *whole trajectory* rather than the terminal outcome, pairing formal verification (where an objective check exists) with LLM-written trajectory reviews and side-by-side comparisons so each run yields a readable explanation of its score [[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]. Notably it is positioned as a *production* tool — the authors run it as a nightly pipeline to catch their own agent's regressions, not just to rank third-party models.
+
+> AgentLens is a production-assessed benchmark for interactive code agents. While most code-agent benchmarks reduce a run to a single bit—did the task pass?—the people who actually use these agents experience the entire trajectory: how the agent follows instructions, uses its tools, verifies its own work, recovers from mistakes, and talks to them along the way. AgentLens evaluates that whole trajectory. [[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]
+
+> It pairs formal verification, where an objective check exists, with LLM-written trajectory reviews and side-by-side comparisons... the authors use it to diagnose model behavior, compare successive versions of their own agent, and catch product regressions in a nightly evaluation pipeline. [[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]
+
+**"Are Performance-Optimization Benchmarks Reliably Measuring Coding Agents?"** audits GSO, SWE-Perf, and SWE-fficiency and finds their reference patches are fragile under environment change: replayed across four common Google Cloud machine types, the official validity rules held in every cross-machine replay for only 39/102 GSO, 11/140 SWE-Perf, and 411/498 SWE-fficiency tasks, and the leaderboards disagreed on 9 of 28 pairwise submission comparisons [[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]. This is the perf-optimization analogue of the infrastructure-noise concern already tracked here ([[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]]).
+
+> When official reference patches were replayed across four common types of Google Cloud machines, they satisfied the original benchmark validity rules in every cross-machine replay for only 39/102 GSO tasks, 11/140 SWE-Perf tasks, and 411/498 SWE-fficiency tasks; SWE-Perf was especially fragile because many reference patches produce close-to-zero runtime changes. [[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]
+
+**"Failure as a Process"** contributes the first large-scale empirical study of *how* CLI coding-agent runs fail — treating failure as a temporal process (onset → evolution → recovery) rather than a final outcome — over 3,843 trajectories from seven frontier models across three scaffolds (OpenHands, MiniSWE, Terminus2) on Terminal-Bench [[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]. The cross-scaffold design directly reinforces the harness-matters line ([[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]]).
+
+> We present the first large-scale empirical study of CLI coding-agent failure trajectories, introducing a process-oriented framework that analyzes failure through its onset, evolution, and recovery across execution trajectories. [[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]
+
+> We collected 3,843 execution trajectories generated by seven frontier models across three coding-agent scaffolds (OpenHands, MiniSWE, and Terminus2) on Terminal-Bench. [[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]
+
+Net: this is incremental depth on the evaluation-methodology cluster, not a leader change — but AgentLens's LLM-written trajectory reviews reintroduce judge-reliability risk (the very concern that motivated contamination-free verifier-graded benchmarks like [[deepswe-measuring-frontier-coding-agents-on-original-long-horizon-engineering-tasks-492fbfd8]]), and the perf-benchmark audit's cross-machine replay is GCP-only. Open questions filed below.
 
 ### Updates 2026-07-23 — Claude Code v2.1.212–218: runaway-loop caps, concurrency limit, background-by-default forks, sandboxing hardening
 
@@ -1672,6 +1697,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does [[harnessforge-joint-harness-and-policy-evolution-for-adaptive-agent-systems-0a4762a0]]'s harness-policy co-evolution generalize to frontier models given that [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]] finds harness-benefit is non-monotonic and strong-tier models hit a ceiling?
 - [ ] Would running [[harness-bench-measuring-harness-effects-across-models-in-realistic-agent-workflows-5abc49c8]]'s configuration-controlled diagnostic against the existing Cursor/Claude Code/Codex stack actually settle the model-vs-harness dominance dispute?
 - [ ] Does [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]]'s 'invest capability in the task-solving agent, not the evolver' recommendation flip the optimal model-routing decision for Claude Code Routines — should the cheap subagent that authors skills be Haiku-class rather than Opus-class?
+- [ ] AgentLens grades trajectories partly via LLM-written reviews; how does its judge agreement compare to the hand-written verifier disagreement rates DeepSWE reports (1.4% vs 32.4% for inherited tests)?
+- [ ] The performance-optimization benchmark audit replayed reference patches only across four Google Cloud machine types — do the same validity failures hold on non-GCP / bare-metal hardware, or is GSO/SWE-Perf/SWE-fficiency fragility partly a cloud-specific artifact?
+- [ ] Failure-as-a-Process finds failure modes across OpenHands/MiniSWE/Terminus2 on Terminal-Bench; do the onset/evolution/recovery patterns transfer to production agentic-IDE harnesses (Claude Code, Cursor, Codex) or are they scaffold-specific?
 - [ ] Do [[auditing-agent-harness-safety-e2a88ca4]]'s 'hidden audit channels' for boundary compliance compose with unprivileged Linux sandbox approaches and Anthropic's security model, or does the inter-subagent message bus sit above all three?
 - [ ] Given [[auditing-agent-harness-safety-e2a88ca4]]'s finding that 'many violations occur mid-trajectory rather than at termination', do any existing reward-hacking benchmarks actually score mid-trajectory access patterns?
 - [ ] Does the new Copilot Medium analysis tier use the same Claude/Codex model selection surface as the assignable-agent flow, or a separate higher-reasoning model selection?
