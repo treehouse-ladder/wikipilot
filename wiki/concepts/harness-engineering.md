@@ -37,7 +37,10 @@ sources:
   - "[[programmatic-tool-calling-c21acdb9]]"
   - "[[side-chats-and-conversation-search-8df90ad3]]"
   - "[[what-resolve-rate-hides-trajectory-structure-diagnostics-for-coding-agents-3704621c]]"
-last_updated: 2026-07-16
+  - "[[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]"
+  - "[[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]"
+  - "[[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]"
+last_updated: 2026-07-24
 last_verified: 2026-07-14
 freshness_window_days: 30
 ---
@@ -155,6 +158,18 @@ Self-Harness extends the harness-evolution cluster with a fully self-driven loop
 **TRACEPROBE: deterministic trajectory diagnostics as a harness-observability primitive (July 2026).** A July 2026 paper argues that resolve rate (pass/fail) hides the process by which an agent succeeded or failed, and proposes TRACEPROBE — a trajectory-diagnostic framework that normalizes raw runs into a canonical nine-type action taxonomy, then applies deterministic rule-based diagnostics (INSIGHT for single-trajectory anti-patterns like search loops; CONVERGE for pairwise divergence) [[what-resolve-rate-hides-trajectory-structure-diagnostics-for-coding-agents-3704621c]]. Across 2,500 trajectories from five production settings on SWE-Bench Verified, the authors find function-selection and completion behavior localize success/failure, while file-level choice is too coarse. This is a deterministic harness-observability tool complementary to the LLM-judge scoring approach (SWE-Judge), offering an auditable mid-trajectory review signal for harness engineers diagnosing agent behavior at scale.
 
 > Coding agents are ranked almost entirely by resolve rate (whether their final patch passes tests), yet two agents can reach the same outcome through very different processes, and a single pass/fail label says nothing about why a run failed or why an accepted run spent extra steps, time, or tokens. [[what-resolve-rate-hides-trajectory-structure-diagnostics-for-coding-agents-3704621c]]
+
+**AgentLens: production-grade trajectory scoring with LLM-written reviews (July 2026).** AgentLens is a coding-agent evaluation framework that reframes measurement around the *whole trajectory* (tool use, error recovery, verification, user communication) rather than just the terminal outcome [[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]. It pairs formal verification (where an objective check exists) with LLM-written trajectory reviews and side-by-side comparisons so each run yields a readable explanation of its score. Notably it is positioned as a *production* tool — the authors run it as a nightly pipeline to catch their own agent's regressions, not just to rank third-party models. This reinforces the trajectory-observability thread: harness engineers need diagnostic signals finer-grained than pass/fail, and AgentLens adds a judge-based review layer to the deterministic TRACEPROBE diagnostics above.
+
+> AgentLens is a production-assessed benchmark for interactive code agents. While most code-agent benchmarks reduce a run to a single bit—did the task pass?—the people who actually use these agents experience the entire trajectory: how the agent follows instructions, uses its tools, verifies its own work, recovers from mistakes, and talks to them along the way. [[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]
+
+**Performance-optimization benchmark instability under environment change (July 2026).** An audit of three performance-optimization coding-agent benchmarks (GSO, SWE-Perf, SWE-fficiency) finds their reference patches are fragile when replayed across machine types: only 39/102 GSO, 11/140 SWE-Perf, and 411/498 SWE-fficiency tasks satisfied the original validity rules in every cross-machine replay on four common Google Cloud types, and leaderboards disagreed on 9 of 28 pairwise submission comparisons [[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]. This is the performance-optimization analogue of the infrastructure-noise concern in SWE-bench-style benchmarks, directly relevant to the harness-disclosure thesis: leaderboard scores may be confounded by environment choice as much as harness choice, so cross-platform reproducibility is a prerequisite for interpreting model-vs-harness comparisons.
+
+> When official reference patches were replayed across four common types of Google Cloud machines, they satisfied the original benchmark validity rules in every cross-machine replay for only 39/102 GSO tasks, 11/140 SWE-Perf tasks, and 411/498 SWE-fficiency tasks. [[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]
+
+**Failure-as-a-Process: empirical study of CLI coding-agent failure trajectories (July 2026).** "Failure as a Process" is the first large-scale study of *how* CLI coding-agent runs fail, treating failure as a temporal process (onset → evolution → recovery) rather than a final outcome [[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]. Across 3,843 trajectories from seven frontier models × three scaffolds (OpenHands, MiniSWE, Terminus2) on Terminal-Bench, the authors categorize failure modes and their evolution over the trajectory. This cross-scaffold design reinforces the harness-disclosure thesis: the same model exhibits different failure modes under different scaffolds, so scaffold choice is a first-order determinant of observable agent behavior.
+
+> We present the first large-scale empirical study of CLI coding-agent failure trajectories, introducing a process-oriented framework that analyzes failure through its onset, evolution, and recovery across execution trajectories. [[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]
 
 ## Disputes
 

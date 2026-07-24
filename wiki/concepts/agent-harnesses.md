@@ -23,7 +23,10 @@ sources:
   - "[[rewriting-bun-in-rust-15a50b3d]]"
   - "[[side-chats-and-conversation-search-8df90ad3]]"
   - "[[share-session-output-as-artifacts-8d4cebdf]]"
-last_updated: 2026-07-16
+  - "[[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]"
+  - "[[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]"
+  - "[[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]"
+last_updated: 2026-07-24
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -95,6 +98,12 @@ A June 2026 paper supplies the first constitutive definition of "agent harness,"
 **Microsoft enterprise rollout: +24% PR-merge lift, adoption spread socially (July 2026).** A large-scale field study of Microsoft's early-2026 rollout of Claude Code and GitHub Copilot CLI to enterprise developers finds adopters merged ~24% more pull requests than they would have otherwise, with first use spreading primarily through social networks rather than demographics and retention correlating with engineers' coding activity levels [[adoption-and-impact-of-command-line-ai-coding-agents-a-study-of-microsoft-s-early-2026-rollout-of-claude-code-and-github-copilot-cli-0ecd5741]]. At organizational scale token spend can reach millions of dollars annually, so accurate measurement of adoption, retention, and impact is essential. This is the first published large-scale enterprise-adoption data on CLI-based agentic coding harnesses, and the 24% merge-rate lift persists across the four-month study window.
 
 > First use spread primarily through social networks, retention was associated more with engineers' coding activity than with demographics, and adopters merged roughly 24% more pull requests than they would have otherwise. [[adoption-and-impact-of-command-line-ai-coding-agents-a-study-of-microsoft-s-early-2026-rollout-of-claude-code-and-github-copilot-cli-0ecd5741]]
+
+**Trajectory-level harness evaluation and benchmark-reliability concerns (July 2026).** Three recent evaluations deepen the measurement methodology critique around harness testing. AgentLens reframes coding-agent evaluation by scoring the *whole trajectory* (tool use, error recovery, verification) rather than just the terminal outcome, pairing formal verification with LLM-written trajectory reviews for production-grade nightly regression testing [[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]. A performance-optimization benchmark audit finds reference-patch validity rules break across common machine types (39/102 GSO, 11/140 SWE-Perf, 411/498 SWE-fficiency tasks stayed valid cross-platform), questioning leaderboard stability [[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]. "Failure as a Process" conducts the first large-scale study of *how* CLI coding-agent runs fail (onset→evolution→recovery), across 3,843 trajectories from seven models × three scaffolds (OpenHands, MiniSWE, Terminus2) [[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]. Together these reinforce the harness-matters thread: evaluation must account for the whole interaction trajectory, and cross-scaffold/cross-platform reproducibility is less stable than single-metric leaderboards suggest.
+
+> AgentLens is a production-assessed benchmark for interactive code agents. While most code-agent benchmarks reduce a run to a single bit—did the task pass?—the people who actually use these agents experience the entire trajectory. [[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]
+
+> When official reference patches were replayed across four common types of Google Cloud machines, they satisfied the original benchmark validity rules in every cross-machine replay for only 39/102 GSO tasks, 11/140 SWE-Perf tasks, and 411/498 SWE-fficiency tasks. [[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]
 
 ## Disputes
 
