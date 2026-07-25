@@ -223,7 +223,9 @@ sources:
   - "[[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]]"
   - "[[claude-code-what-s-new-week-29-july-1317-2026-0a54e162]]"
   - "[[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]"
-last_updated: 2026-07-24
+  - "[[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]"
+  - "[[introducing-cursor-router-cabbd7e3]]"
+last_updated: 2026-07-25
 last_verified: 2026-07-23
 freshness_window_days: 30
 ---
@@ -300,6 +302,26 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-25 — Claude Code Week 30 makes Opus 5 the default; Cursor ships request-level model routing (Cursor Router)
+
+**Claude Code Week 30 (July 20–24, 2026) makes Claude Opus 5 the default Opus model and hardens the sandbox/MCP surface tracked here.** The changelog ships Opus 5 as the new default and rewires fast mode so `/fast` now applies to Opus 5 and Opus 4.8, with Opus 4.7 dropped from fast mode entirely [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]] — superseding the Opus 4.8-as-default assumption baked into most of this page's Claude Code coverage.
+
+> Claude Code ships Claude Opus 5 as the new default Opus model and expands dynamic workflows, nested subagents, MCP handling, runner reliability, and accessibility. [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]
+
+> The claude-api skill was updated to default to Claude Opus 5, with a migration path from Opus 4.8, and Opus 4.7 was removed from fast mode, with /fast now applying to Opus 5 and Opus 4.8. [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]
+
+On the sandboxing/security axis this page tracks, Week 30 adds a `sandbox.network.strictAllowlist` setting that denies non-allowlisted hosts for sandboxed commands *without prompting* — tightening the default-deny network posture [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]. A separate capability expands the MCP surface: published artifacts can now call MCP connectors on every view, running through each viewer's own connections with per-viewer approval [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]].
+
+> Added sandbox.network.strictAllowlist setting to deny non-allowlisted hosts for sandboxed commands without prompting. [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]
+
+> A published artifact can now call MCP connectors each time someone views it, so a dashboard shows live data and can take actions on demand rather than a snapshot from the session that built it. Each call runs through the viewing account's own connections, and viewers approve access before the page's first connector call. [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]
+
+**Cursor ships Cursor Router — a shipped, request-level automatic model-routing primitive — as a first-class cost/latency lever.** Cursor Router is a classifier that inspects each request before a model runs and dispatches it to the model best suited to that task, analyzing four inputs (query, context, task complexity, domain) plus learned per-model behavior [[introducing-cursor-router-cabbd7e3]]. It exposes three modes — Intelligence, Balance, Cost — and Cursor reports 60% cost savings in its own online A/B test (30–50% for early-access enterprise accounts) versus routing everything to Opus 4.8, with the router trained on 600k+ live requests [[introducing-cursor-router-cabbd7e3]].
+
+> Cursor Router is a classifier that inspects each request before a model runs, then dispatches it to the model best suited to that specific task. Simple work goes to the most price-efficient models, UI updates go to the model with the best taste, and complex, long-horizon problems go to frontier reasoning models. [[introducing-cursor-router-cabbd7e3]]
+
+> The cursor team reports frontier-quality performance at 60% savings in online A/B tests, and 30-50% savings for early-access enterprise accounts, versus routing everything to Opus 4.8. [[introducing-cursor-router-cabbd7e3]]
 
 ### Updates 2026-07-24 — Trajectory-level evaluation and benchmark-reliability audits deepen the "resolve rate hides too much" thread
 
@@ -1589,6 +1611,7 @@ lint stays quiet until each page actually exists:
 - [[swarmresearch-orchestrating-coding-agents-for-open-ended-discovery-1803ced8]] reports that an orchestrator-guided harness (Shepherd + Explorer/Optimizer Search Agents, git-branch-per-agent) with adaptive-depth parallelism beats fixed serial/parallel scaling on 13/15 open-ended optimization tasks, placing it with [[from-model-scaling-to-system-scaling-scaling-the-harness-in-agentic-ai-80b4d5d5]] and [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]] on the harness-is-determinative side; [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] finds across 9,374 trajectories that the base LLM is the primary driver of outcome. Status: unresolved — SwarmResearch's gain is measured on open-ended optimization search, not issue-resolution, so its orchestration advantage may be specific to the exploration/diversity regime rather than general coding-agent capability.
 - [[reinforcement-learning-for-llm-based-multi-agent-systems-through-orchestration-traces-1ca4ec6f]] frames the orchestrator's decisions (when to spawn, whom to delegate to, how to communicate, how to aggregate, when to stop) as the RL optimization target, implying capability budget invested in the orchestrator pays off; [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]] finds harness-updating is flat across base-model tiers and argues capability budget belongs in the task-solving agent, not the evolver/orchestrator. Status: unresolved — the two disagree on whether training the orchestration layer is a productive place to spend capability.
 - [[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]] reports harness design dominated model selection as a cost/speed lever (41% cost cut, 44% wall-clock reduction, model-invariant) across 22 enterprise tasks × 6 models × 5 vendors; [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] finds across 9,374 coding-agent trajectories that the base LLM is the primary driver of outcome. Status: unresolved — "harness effect dominates" (enterprise task study) vs. "base model dominates" (issue-resolution trajectory study); the two studies measure different regimes (general enterprise tasks vs. SWE-bench-style issue resolution) so the reconciliation may be domain-specific.
+- [[introducing-cursor-router-cabbd7e3]] claims 60% lower cost with no quality drop from routing each request to the cheapest capable model, optimizing the router for user-satisfaction (AFC / accept-rate) as reward; [[specbench-measuring-reward-hacking-in-long-horizon-coding-agents-16a403b2]] cautions that optimizing to a visible/acceptance signal systematically hides regressions that only surface on held-out correctness. Whether Router's AFC-optimized 'no measured quality drop' transfers to held-out code correctness is unverified. Status: unresolved
 
 ## Open questions
 
@@ -1778,6 +1801,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does Claude Code's default cap of 20 concurrently-running subagents [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]] bottleneck the adaptive-depth parallelism SwarmResearch reported beating fixed scaling on 13/15 tasks, or is 20-wide fan-out already beyond the point of diminishing returns for open-ended optimization?
 - [ ] OpenAI Codex CLI v0.145.0 (reportedly July 21, 2026) allegedly added sub-agent support in paginated thread history, persisted memories, and an /import path that migrates Cursor and Claude Code settings/MCP servers/commands — needs a fetchable-verbatim source before ingestion. Does /import establish the first cross-vendor subagent/config interchange the wiki's existing open questions ask for?
 - [ ] Does the new per-session subagent-spawn budget (200) interact with MCP Tasks-based long-horizon dispatch [[the-2026-07-28-mcp-specification-release-candidate-1a1752b8]] — i.e. do out-of-process MCP Tasks bypass the in-process spawn cap, giving an uncapped delegation path around the guardrail?
+- [ ] Does Cursor Router's per-request model switching bust the prompt cache mid-session? Routing consecutive turns of one conversation to different base models [[introducing-cursor-router-cabbd7e3]] would appear to reset session-stable prompt-cache prefixes; no cache hit-rate delta is disclosed.
+- [ ] Does Claude Code Week 30's sandbox.network.strictAllowlist (deny non-allowlisted hosts without prompting) [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]] close the exfiltration-via-tool-call gap the prompt-injection SoK identifies, or does it only bound network blast radius?
+- [ ] Published artifacts that call MCP connectors on every view under each viewer's own credentials [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]] create a new persistent injection surface: can an artifact authored in a poisoned session encode a connector call that acts under a later viewer's approved connections?
 
 ## See also
 

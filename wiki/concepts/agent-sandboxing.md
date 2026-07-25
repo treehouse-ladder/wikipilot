@@ -16,7 +16,8 @@ sources:
   - "[[programmatic-tool-calling-c21acdb9]]"
   - "[[the-balkanization-of-execution-security-research-for-ai-coding-agents-isolation-access-control-and-time-of-check-to-time-of-use-vulnerabilities-df4a38f9]]"
   - "[[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]"
-last_updated: 2026-07-23
+  - "[[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]"
+last_updated: 2026-07-25
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -66,6 +67,10 @@ The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-hum
 **Claude Code v2.1.214 adds permission prompts for docker daemon-redirect flags (July 2026).** Claude Code's CHANGELOG v2.1.212–218 reports that `docker` commands carrying daemon-redirect flags (`--url`, `--connection`, `--identity`, and Podman's remote mode) now surface a permission prompt rather than running silently [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]. This closes a sandboxing gap: an agent-generated `docker` command using these flags could redirect Docker daemon traffic to an attacker-controlled socket, routing subsequent container operations through an adversarial daemon. The fix is a targeted extension of the classifier-mediated permission model already in place for shell commands — the sandbox now recognizes this class of daemon-redirect flags as requiring explicit approval even in otherwise-unattended (auto-mode) sessions. The fix is also structurally consistent with the DuneSlide finding [[duneslide-two-critical-rce-vulnerabilities-via-zero-click-prompt-injection-in-cursor-ide-358490a4]]: any agent-controlled parameter that changes where privileged operations land (working directory, daemon socket, remote mode) is a sandbox-bypass surface if not explicitly gated.
 
 > Added permission prompts for `docker` commands (including the Podman `docker` shim) carrying daemon-redirect flags (`--url`, `--connection`, `--identity`, and Podman's remote mode) that previously ran without one. [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]
+
+**Claude Code Week 30 tightens the network sandbox with `sandbox.network.strictAllowlist` (July 2026).** Week 30's changelog adds a `sandbox.network.strictAllowlist` setting that denies non-allowlisted hosts for sandboxed commands *without prompting* — moving from prompt-gated to hard-deny for network egress that isn't on the allowlist [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]. This hardens the default-deny network posture beyond the existing network proxy: previously a sandboxed command could be prompted for arbitrary network access; the new strict mode removes the prompt surface entirely for unlisted hosts. This is a structural defense against the exfiltration-via-tool-call attack vector the prompt-injection SoK identifies as a root cause of >85% adaptive-attack success — denying network egress at the sandbox layer means a prompt-injected tool call cannot exfiltrate even if the classifier is bypassed.
+
+> Added sandbox.network.strictAllowlist setting to deny non-allowlisted hosts for sandboxed commands without prompting. [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]
 
 ## Disputes
 
