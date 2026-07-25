@@ -49,6 +49,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[grok-4.5]]
 - [[inkling]]
 - [[kimi-k3]]
+- [[claude-opus-5]]
 
 ## Comparisons
 
@@ -939,6 +940,19 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[fromsoftware-s-the-duskbloods-confirms-network-test-dates-65b24735]]
 - [[games-industry-m-a-reaches-2-3bn-in-q2-2026-e36c8115]]
 - [[vermila-studios-lays-off-staff-studio-closure-a-feasible-possibility-in-coming-months-eea51a99]]
+- [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]
+- [[introducing-cursor-router-cabbd7e3]]
+- [[introducing-claude-opus-5-c34a3276]]
+- [[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]
+- [[anthropic-launches-claude-opus-5-its-fourth-model-in-two-months-and-it-tops-fable-5-on-most-benchmarks-7253a489]]
+- [[godot-ai-assistant-hub-embed-local-llm-ai-assistants-in-the-godot-editor-f31f58f3]]
+- [[halo-campaign-evolved-is-tracking-as-the-lowest-rated-halo-yet-aa1fce8c]]
+- [[saudi-arabia-s-polarising-ea-buyout-approved-under-eu-merger-rules-efddaf75]]
+- [[rockstar-games-employees-request-voluntary-recognition-of-union-34382f6f]]
+- [[ubisoft-reports-first-quarter-2026-27-sales-3c15efd2]]
+- [[palworld-1-0-pushes-the-hit-over-30m-copies-sold-18cd9f1f]]
+- [[splatoon-raiders-added-to-nintendo-music-as-a-special-release-9eb6c24f]]
+- [[forza-horizon-6-s-drum-n-bass-hospital-records-soundtrack-is-coming-to-vinyl-01a125b4]]
 
 ## Reports
 
@@ -1000,3 +1014,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-22]]
 - [[2026-07-23]]
 - [[2026-07-24]]
+- [[2026-07-25]]
