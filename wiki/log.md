@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-25] daily | 5 topics, 13 sources, 13 pages
+
+Daily Research 2026-07-25 complete. PRs #423–#427 merged. Report: wiki/reports/2026-07-25.md.
+
+## [2026-07-25] daily | agentic-coding — 2 sources, 4 pages
+
+Claude Code What's New Week 30 (July 21–25): custom MCP server cert authorities, AI review in Pull Requests, per-file token budgets; Cursor Router v1.0: dynamic model routing per file/region with user-definable cost–quality profiles, supports Claude Code + Cursor SDK. PR #423.
+
+## [2026-07-25] daily | frontier-models — 3 sources, 6 pages
+
+Claude Opus 5 ships July 24: new Anthropic standard flagship ($5/$25 per Mtoken), tops Fable 5 on most benchmarks at half the token price; AA Intelligence Index 58, SWE-bench verified 0.939, CyberGym 0.831. Entity [[claude-opus-5]] created. Summary regenerated. PR #424.
+
+## [2026-07-25] daily | ai-in-game-dev — 1 source, 1 page
+
+Godot AI Assistant Hub (v1.0): open-source engine-native gateway embedding local LLMs (Ollama/llama.cpp) directly in Godot editor; supports in-scene NPC script generation, asset naming, and shader assist with zero-cloud option. PR #425.
+
+## [2026-07-25] daily | games-of-note — 5 sources, 1 page
+
+Halo: CE Campaign Evolved tracking at 81 Metacritic (lowest-rated Halo, PC bugs, always-online, first PlayStation appearance); EA $55B acquisition EU approved July 23 (FSR pending July 30); Rockstar RGWU voluntary recognition request 4 months before GTA 6; Ubisoft Q1 FY2026-27 €255.8M net bookings (−9.2% YoY); Palworld 1.0 launched with ~30.5M copies sold. PR #426.
+
+## [2026-07-25] daily | game-music — 2 sources, 1 page
+
+Splatoon Raiders (9-track) added to Nintendo Music as special release (NSO required, July 23); Forza Horizon 6 × Hospital Records DnB 3LP pink gatefold vinyl (24 tracks, £26.99, August 7). PR #427.
+
 ## [2026-07-24] daily | 5 topics, 14 sources, 16 pages
 
 Daily Research 2026-07-24 complete. PRs #417–#421 merged. Report: wiki/reports/2026-07-24.md.
