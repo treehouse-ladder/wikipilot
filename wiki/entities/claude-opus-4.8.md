@@ -2,9 +2,9 @@
 title: "Claude Opus 4.8"
 kind: entity
 aliases: ["Opus 4.8", "claude-opus-4-8", "Claude Opus 4.8"]
-sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]", "[[claude-sonnet-5-strong-agentic-performance-at-a-higher-cost-per-task-c4346bb2]]", "[[swe-1-7-frontier-intelligence-at-a-fraction-of-the-cost-0d1dcf4a]]"]
-last_updated: 2026-07-21
-last_verified: 2026-07-21
+sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]", "[[claude-sonnet-5-strong-agentic-performance-at-a-higher-cost-per-task-c4346bb2]]", "[[swe-1-7-frontier-intelligence-at-a-fraction-of-the-cost-0d1dcf4a]]", "[[introducing-claude-opus-5-c34a3276]]", "[[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]"]
+last_updated: 2026-07-25
+last_verified: 2026-07-25
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
 output_cost_per_mtoken: 25.00
@@ -56,6 +56,10 @@ Independent placement detail (post-launch): Opus 4.8 scores 78.8% on CyberGym vu
 **Distribution milestone (2026-06-30)**: Claude Opus 4.8 and Claude Haiku 4.5 are now generally available in Microsoft Azure Foundry [[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]. Azure-native deployment with existing Azure identity, networking, and governance controls.
 
 > Claude in Microsoft Foundry is generally available today. Claude Opus 4.8 and Claude Haiku 4.5 are available in the Messages API, with core capabilities like prompt caching and extended thinking to support use cases ranging from coding and agentic work to complex reasoning. [[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]
+
+**Superseded (2026-07-24)**: Claude Opus 4.8 is superseded as Anthropic's standard flagship by [[claude-opus-5]], released July 24, 2026 at the same $5/$25 per Mtoken pricing. Opus 5 posts large agentic gains — OSWorld 2.0 70.57% (vs 55.7%) and Zapier AutomationBench 26.0% (vs 17.0%) — and turns thinking on by default via a new effort dial [[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]] [[introducing-claude-opus-5-c34a3276]].
+
+> Opus 5 reached 70.57% on OSWorld 2.0 against 55.7% for Opus 4.8. On Zapier AutomationBench it scored 26.0%, against 17.0% for Opus 4.8. [[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]
 
 ## Disputes
 
