@@ -225,8 +225,9 @@ sources:
   - "[[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]"
   - "[[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]"
   - "[[introducing-cursor-router-cabbd7e3]]"
-last_updated: 2026-07-25
-last_verified: 2026-07-23
+  - "[[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]"
+last_updated: 2026-07-26
+last_verified: 2026-07-26
 freshness_window_days: 30
 ---
 
@@ -302,6 +303,20 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-26 — IssueTrojanBench: 66.5% of malicious issues bypass all guardrails of as-deployed coding agents
+
+**A new benchmark measures prompt-injection resistance of *as-deployed* coding agents end-to-end, not just their model backbones — and the result is grim.** IssueTrojanBench evaluates malicious GitHub-issue requests against Cursor, Claude Code, and Codex Desktop as shipped, backed by GPT-5.3-Codex/GPT-5.4 and Sonnet 4.6, and finds that 66.5% of malicious issues penetrate *every* guardrail — both the agent-harness layer and the LLM layer [[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]. This is the as-deployed-product analogue of the model- and skill-level injection work the wiki already tracks ([[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]], [[mosaic-knowledge-guided-cli-command-composition-attack-in-llm-coding-agents-92fab58e]]): the attack surface is the product's full guardrail stack, not the raw model.
+
+> IssueTrojanBench evaluate malicious issue requests against state-of-the-art coding agents (Cursor, Claude Code, and Codex Desktop), powered by OpenAI GPT-5.3 Codex/GPT-5.4 and Anthropic Sonnet 4.6. [[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]
+
+> The results reveal critical vulnerabilities in the as-deployed modern coding agents, with 66.5% of the malicious issues from IssueTrojanBench penetrating all the guardrails (agent- and LLM-level) of coding agents. [[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]
+
+The threat model is a coding-specific taxonomy: four novel attack categories embedded as malicious instructions inside issues, six delivery vectors (e.g. PDF attachments, issue comments), plus perturbation augmentation [[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]. The framing matters for the agentic-workflow lens — feeding an agent an untrusted issue tracker is now a first-class RCE/exfiltration path, reinforcing the default-deny sandbox posture (Claude Code's `sandbox.network.strictAllowlist`, EndConversation) the wiki logged for Week 30.
+
+> The novel benchmark IssueTrojanBench contains malicious issues that are constructed based on four novel attack categories (embedded as malicious instructions in issues), six delivery vectors (e.g., PDF, or issue comment), and further augmented by perturbations. [[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]
+
+Net: incremental depth on the agent-security cluster, not a leader change — but it's the first as-deployed, cross-product guardrail-penetration number, and 66.5% is a striking baseline. Caveats and gaps filed below.
 
 ### Updates 2026-07-25 — Claude Code Week 30 makes Opus 5 the default; Cursor ships request-level model routing (Cursor Router)
 
@@ -1804,6 +1819,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does Cursor Router's per-request model switching bust the prompt cache mid-session? Routing consecutive turns of one conversation to different base models [[introducing-cursor-router-cabbd7e3]] would appear to reset session-stable prompt-cache prefixes; no cache hit-rate delta is disclosed.
 - [ ] Does Claude Code Week 30's sandbox.network.strictAllowlist (deny non-allowlisted hosts without prompting) [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]] close the exfiltration-via-tool-call gap the prompt-injection SoK identifies, or does it only bound network blast radius?
 - [ ] Published artifacts that call MCP connectors on every view under each viewer's own credentials [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]] create a new persistent injection surface: can an artifact authored in a poisoned session encode a connector call that acts under a later viewer's approved connections?
+- [ ] IssueTrojanBench's 66.5% guardrail-penetration figure is measured against a fixed snapshot of Cursor/Claude Code/Codex Desktop on GPT-5.3-Codex/GPT-5.4/Sonnet 4.6 — does the number move under the Week 30 hardening (sandbox.network.strictAllowlist default-deny, EndConversation) logged 2026-07-25, which the benchmark predates?
+- [ ] The 66.5% penetration rate is over constructed adversarial issues (four attack categories x six delivery vectors + perturbations); what is the base rate of such malicious issues in real-world public issue trackers, i.e. how does attack success translate to actual exposure risk?
 
 ## See also
 

@@ -13,8 +13,9 @@ sources:
   - "[[auditing-agent-harness-safety-e2a88ca4]]"
   - "[[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]"
   - "[[the-balkanization-of-execution-security-research-for-ai-coding-agents-isolation-access-control-and-time-of-check-to-time-of-use-vulnerabilities-df4a38f9]]"
-last_updated: 2026-07-12
-last_verified: 2026-06-09
+  - "[[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]"
+last_updated: 2026-07-26
+last_verified: 2026-07-26
 freshness_window_days: 30
 ---
 
@@ -53,6 +54,12 @@ A theoretical analysis argues this is not merely an engineering gap but a fundam
 > We argue that the prevailing defense paradigm of data-instruction separation both fails to detect attacks that operate through contextual manipulation and degrades contextually appropriate behavior. An adversary can always construct a context under which a blocked flow appears legitimate, or a defender who tightens norms will block genuinely legitimate flows.
 
 This means OS-level sandboxing is best understood as blast-radius containment rather than a complete security solution — it prevents exfiltration and limits filesystem damage, but it does not prevent an agent from being induced to run a malicious local payload that respects the sandbox boundary.
+
+## IssueTrojanBench: as-deployed guardrail penetration (2026-07-26)
+
+IssueTrojanBench provides empirical validation of the limitations argument above: it measures prompt-injection resistance of *as-deployed* coding agents end-to-end, not just their model backbones, evaluating malicious GitHub-issue requests against Cursor, Claude Code, and Codex Desktop as shipped (backed by GPT-5.3-Codex/GPT-5.4 and Sonnet 4.6) [[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]. **66.5% of malicious issues penetrate *every* guardrail** — both the agent-harness layer and the LLM layer. The threat model is a coding-specific taxonomy: four novel attack categories embedded as malicious instructions inside issues, six delivery vectors (e.g. PDF attachments, issue comments), plus perturbation augmentation. This is the as-deployed-product analogue of the skill-level injection work tracked above — the attack surface is the product's full guardrail stack, not the raw model. The benchmark demonstrates that feeding an agent an untrusted issue tracker is a first-class RCE/exfiltration path, reinforcing the blast-radius containment framing: sandboxing can limit the damage, but it cannot prevent the agent from being manipulated into executing the attack.
+
+> The results reveal critical vulnerabilities in the as-deployed modern coding agents, with 66.5% of the malicious issues from IssueTrojanBench penetrating all the guardrails (agent- and LLM-level) of coding agents. [[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]
 
 ## OS-level agent principals and kernel-enforced containment (Build 2026)
 
