@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-26] daily | 5 topics, 7 sources, 12 pages
+
+Daily Research 2026-07-26 complete. PRs #430–#434 merged. All 5 topics active. Report: wiki/reports/2026-07-26.md.
+
+## [2026-07-26] daily | game-music — 1 source, 1 page
+
+Wall of Sound AU review of Halo: Campaign Evolved remake: O'Donnell/Salvatori score "faithfully remastered" — craft-reception data point engaging existing Halo multitrack dispute. PR #434.
+
+## [2026-07-26] daily | games-of-note — 1 source, 2 pages
+
+Marathon game director Joe Ziegler departs July 17 (3rd director exit in 2 years); Del Chafe III takes over. Steam concurrents: 88,337 peak → ~6,775 current, below 1,000 on multiple days — approaching matchmaking-degradation threshold. Bungie entity updated. PR #433.
+
+## [2026-07-26] daily | ai-in-game-dev — 2 sources, 1 page
+
+DLSS 5 announced: pixel-deterministic AI supersampling (SIGGRAPH reveal). Developers learned about DLSS 5 at the same time as the public — partner communication failure. PR #432.
+
+## [2026-07-26] daily | frontier-models — 2 sources, 5 pages
+
+Opus 5 AA Intelligence Index confirmed 61 (up from 58) and gdpval_aa_elo 1861 — now #1 aggregate leader, overtaking Fable 5 (60). Summary regenerated. 1 new dispute (61 vs prior 60 claim). PR #431.
+
+## [2026-07-26] daily | agentic-coding — 1 source, 3 pages
+
+IssueTrojanBench: 66.5% of malicious GitHub issues bypass all guardrails (LLM + harness) across Cursor, Claude Code, and Codex Desktop as shipped. First cross-product as-deployed penetration benchmark. Cross-page sweep: agent-sandboxing.md, sandboxing.md. PR #430.
+
 ## [2026-07-25] daily | 5 topics, 13 sources, 13 pages
 
 Daily Research 2026-07-25 complete. PRs #423–#427 merged. Report: wiki/reports/2026-07-25.md.
