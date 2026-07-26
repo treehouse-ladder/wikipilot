@@ -2,7 +2,7 @@
 title: "Kimi K3"
 kind: entity
 sources: ["[[kimi-k3-intelligence-performance-price-analysis-5d65f998]]", "[[kimi-k3-achieves-3-in-the-artificial-analysis-intelligence-index-comparable-to-opus-4-8-and-gpt-5-5-bce8423e]]", "[[kimi-k3-tech-blog-open-frontier-intelligence-0d83e2aa]]", "[[kimi-k3-s-open-weights-arrive-july-27-the-catch-is-1-4tb-56e05201]]"]
-last_updated: 2026-07-24
+last_updated: 2026-07-26
 last_verified: 2026-07-24
 freshness_window_days: 30
 input_cost_per_mtoken: 3.00
@@ -57,6 +57,7 @@ On the highest-weighted GDPval-AA v4.1 sub-evaluation, Kimi K3's **GDPval-AA v2 
 ## Disputes
 
 - [[kimi-k3-tech-blog-open-frontier-intelligence-0d83e2aa]] and [[kimi-k3-s-open-weights-arrive-july-27-the-catch-is-1-4tb-56e05201]] establish Kimi K3 as an open-weights model with full 2.8T weights scheduled for Hugging Face on July 27, 2026 under a Modified MIT license, whereas this page's Summary states Kimi K3 is Moonshot AI's proprietary closed frontier model whose weights are not publicly available. Status: unresolved — the open-weights commitment is firm but the weights had not physically landed as of 2026-07-24; the "closed" framing is superseded on the July 27 drop.
+- [[kimi-k3-intelligence-performance-price-analysis-5d65f998]] ranks Kimi K3 **4th** on AA Intelligence Index v4.1 (behind Fable 5/60, GPT-5.6 Sol max/59, GPT-5.6 Sol xhigh/58); [[kimi-k3-achieves-3-in-the-artificial-analysis-intelligence-index-comparable-to-opus-4-8-and-gpt-5-5-bce8423e]] titles its report "Kimi K3 achieves #3" and states it "remains behind Fable 5 and GPT-5.6 Sol" (implying only two models ahead). Status: unresolved — the disagreement turns on whether GPT-5.6 Sol (xhigh, 58) and (max, 59) count as one or two distinct rank entries; the entity currently records rank 4 from the more detailed source (confidence: high; sweep: 2026-07-26).
 
 ## Open questions
 
