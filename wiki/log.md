@@ -1459,3 +1459,7 @@ Halo: Campaign Evolved remake confirms remastered O'Donnell/Salvatori score (6-h
 ## [2026-07-23] daily | 5 topics, 11 sources, 7 pages
 
 Daily Research 2026-07-23 complete. PRs #411–#415 queued for auto-merge. All 5 topics active. Report: wiki/reports/2026-07-23.md.
+
+## [2026-07-26] health | weekly sweep — 2 disputes filed
+
+Weekly health sweep 2026-07-26. 12 candidate sets (11 source-triggered + 1 stale sweep). 2 new disputes filed: Kimi K3 AA index rank #3 vs #4; Fable 5 SWE-bench Pro 80.3% vs 80.0%. Lint: 0 errors, 225 warnings. 22 stale synthesis pages. PR #429.
