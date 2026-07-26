@@ -1,17 +1,17 @@
 ---
 title: "Claude Opus 5"
 kind: entity
-sources: ["[[introducing-claude-opus-5-c34a3276]]", "[[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]", "[[anthropic-launches-claude-opus-5-its-fourth-model-in-two-months-and-it-tops-fable-5-on-most-benchmarks-7253a489]]"]
-last_updated: 2026-07-25
-last_verified: 2026-07-25
+sources: ["[[introducing-claude-opus-5-c34a3276]]", "[[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]", "[[anthropic-launches-claude-opus-5-its-fourth-model-in-two-months-and-it-tops-fable-5-on-most-benchmarks-7253a489]]", "[[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]", "[[claude-opus-5-the-new-leader-in-agentic-knowledge-work-92cf92da]]"]
+last_updated: 2026-07-26
+last_verified: 2026-07-26
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
 output_cost_per_mtoken: 25.00
 cost_source: "[[introducing-claude-opus-5-c34a3276]]"
-aa_intelligence_index: null
-aa_intelligence_index_source: null
-gdpval_aa_elo: null
-gdpval_aa_elo_source: null
+aa_intelligence_index: 61
+aa_intelligence_index_source: "[[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]"
+gdpval_aa_elo: 1861
+gdpval_aa_elo_source: "[[claude-opus-5-the-new-leader-in-agentic-knowledge-work-92cf92da]]"
 swe_bench_verified: null
 swe_bench_verified_source: null
 cybergym: null
@@ -36,13 +36,18 @@ On benchmarks, Opus 5 **tops Fable 5 on most axes at half the price** [[anthropi
 
 > Claude Opus 5 tops Fable 5 on most benchmarks at half the token price and is Anthropic's most aligned model to date. [[anthropic-launches-claude-opus-5-its-fourth-model-in-two-months-and-it-tops-fable-5-on-most-benchmarks-7253a489]]
 
+Artificial Analysis's primary evaluation (published 2026-07-26) confirms **Claude Opus 5 (max) at 61 on the AA Intelligence Index v4.1 — narrowly the most intelligent model in the world**, ahead of Fable 5 (max, 60), GPT-5.6 Sol (max, 59) and Kimi K3 (57) [[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]. It reaches Fable-5-class intelligence at **~26% lower cost per Intelligence Index task ($2.03 vs $2.75)** [[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]], and leads agentic knowledge work with the highest recorded **GDPval-AA v2 (1861 Elo)** and **AA-Briefcase (1720 Elo, +146 over Fable 5)** [[claude-opus-5-the-new-leader-in-agentic-knowledge-work-92cf92da]].
+
+> Claude Opus 5 (max) scores 61 on the Artificial Analysis Intelligence Index, effectively tied with Claude Fable 5 (max, 60), and ahead of GPT-5.6 Sol (max, 59), Kimi K3 (57). [[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]
+
+> On GDPval-AA v2, Claude Opus 5 (max) scores 1861 Elo, more than 100 points ahead of Claude Fable 5 and GPT-5.6 Sol (max), making it a leader in agentic knowledge work tasks. [[claude-opus-5-the-new-leader-in-agentic-knowledge-work-92cf92da]]
+
 ## Disputes
 
 - [[anthropic-launches-claude-opus-5-its-fourth-model-in-two-months-and-it-tops-fable-5-on-most-benchmarks-7253a489]] claims Opus 5 tops Fable 5 on most benchmarks at half the price; [[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]] notes Fable 5 still edges Opus 5 on SWE-bench Pro (80.0%) and remains the recommendation for multi-day autonomous agent work. Status: unresolved — Opus 5 is the value default; Fable 5 keeps the top-end long-horizon coding crown.
 
 ## Open questions
 
-- [ ] What is Claude Opus 5's AA Intelligence Index v4.1 placement? Reported ~61 by re-aggregators but no artificialanalysis.ai primary confirmation as of 2026-07-25.
 - [ ] What is Claude Opus 5's ARC-AGI-2 score? Only ARC-AGI-3 (30.16%) was published.
 
 ## See also
