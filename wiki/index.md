@@ -58,6 +58,13 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[halo-campaign-evolved-game-review-03acbaa2]]
+- [[marathon-game-director-leaves-as-player-counts-dwindle-fdfad812]]
+- [[game-developers-found-out-at-the-same-time-as-the-public-about-nvidia-dlss-5-2cf1a5a5]]
+- [[nvidia-dlss-5-delivers-ai-powered-breakthrough-in-visual-fidelity-for-games-b2041c3f]]
+- [[claude-opus-5-the-new-leader-in-agentic-knowledge-work-92cf92da]]
+- [[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]
+- [[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]
 - [[netflix-says-its-critically-panned-fifa-world-cup-video-game-was-a-top-tier-performer-78aca96b]]
 - [[todd-howard-says-the-timing-is-right-for-a-collaboration-with-obsidian-f1fb056b]]
 - [[two-thirds-of-remaining-doom-2016-devs-laid-off-during-latest-round-of-xbox-cuts-d7c0076d]]
