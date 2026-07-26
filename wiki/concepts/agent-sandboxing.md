@@ -17,8 +17,9 @@ sources:
   - "[[the-balkanization-of-execution-security-research-for-ai-coding-agents-isolation-access-control-and-time-of-check-to-time-of-use-vulnerabilities-df4a38f9]]"
   - "[[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]"
   - "[[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]"
-last_updated: 2026-07-25
-last_verified: 2026-06-09
+  - "[[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]"
+last_updated: 2026-07-26
+last_verified: 2026-07-26
 freshness_window_days: 30
 ---
 
@@ -71,6 +72,10 @@ The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-hum
 **Claude Code Week 30 tightens the network sandbox with `sandbox.network.strictAllowlist` (July 2026).** Week 30's changelog adds a `sandbox.network.strictAllowlist` setting that denies non-allowlisted hosts for sandboxed commands *without prompting* — moving from prompt-gated to hard-deny for network egress that isn't on the allowlist [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]. This hardens the default-deny network posture beyond the existing network proxy: previously a sandboxed command could be prompted for arbitrary network access; the new strict mode removes the prompt surface entirely for unlisted hosts. This is a structural defense against the exfiltration-via-tool-call attack vector the prompt-injection SoK identifies as a root cause of >85% adaptive-attack success — denying network egress at the sandbox layer means a prompt-injected tool call cannot exfiltrate even if the classifier is bypassed.
 
 > Added sandbox.network.strictAllowlist setting to deny non-allowlisted hosts for sandboxed commands without prompting. [[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]
+
+**IssueTrojanBench: 66.5% of malicious issues bypass all guardrails of as-deployed coding agents (2026-07-26).** IssueTrojanBench measures prompt-injection resistance of *as-deployed* coding agents end-to-end, not just their model backbones, evaluating malicious GitHub-issue requests against Cursor, Claude Code, and Codex Desktop as shipped (backed by GPT-5.3-Codex/GPT-5.4 and Sonnet 4.6) [[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]. The result is grim: 66.5% of malicious issues penetrate *every* guardrail — both the agent-harness layer and the LLM layer. The threat model is a coding-specific taxonomy: four novel attack categories embedded as malicious instructions inside issues, six delivery vectors (e.g. PDF attachments, issue comments), plus perturbation augmentation. This is the as-deployed-product analogue of the model- and skill-level injection work the wiki already tracks — the attack surface is the product's full guardrail stack, not the raw model. The framing matters: feeding an agent an untrusted issue tracker is now a first-class RCE/exfiltration path, reinforcing the default-deny sandbox posture (Claude Code's `sandbox.network.strictAllowlist`, the EndConversation pattern) logged above.
+
+> The results reveal critical vulnerabilities in the as-deployed modern coding agents, with 66.5% of the malicious issues from IssueTrojanBench penetrating all the guardrails (agent- and LLM-level) of coding agents. [[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]
 
 ## Disputes
 
