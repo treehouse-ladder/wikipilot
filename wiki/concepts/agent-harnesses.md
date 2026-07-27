@@ -26,7 +26,10 @@ sources:
   - "[[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]"
   - "[[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]"
   - "[[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]"
-last_updated: 2026-07-24
+  - "[[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]]"
+  - "[[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]]"
+  - "[[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]"
+last_updated: 2026-07-27
 last_verified: 2026-06-09
 freshness_window_days: 30
 ---
@@ -105,14 +108,27 @@ A June 2026 paper supplies the first constitutive definition of "agent harness,"
 
 > When official reference patches were replayed across four common types of Google Cloud machines, they satisfied the original benchmark validity rules in every cross-machine replay for only 39/102 GSO tasks, 11/140 SWE-Perf tasks, and 411/498 SWE-fficiency tasks. [[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]
 
+**Harness-evolution null result and methodological critique (July 2026).** Three papers published in rapid succession challenge the framing that iterating on the harness reliably produces capability gains. "Don't Blame the LLM" [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]] studies 35 sequential harness releases for SWE-bench (model held fixed) and finds **no statistically significant quality improvement** — later versions use ~2× tokens without measurable gains, and failure attribution is systematically displaced to the model. "Rethinking the Evaluation of Harness Evolution" [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]] raises the structural point that harness evolution is a **search procedure** that risks overfitting when evaluated on its own training benchmark, and demonstrates empirically that it does not consistently beat TTS on a held-out Terminal-Bench 2.1 evaluation. "Self-Evolving Agent Harnesses via Gated Semantic Quality-Diversity" [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]] proposes a constructive resolution: separate LLM-driven proposal from **deterministic crediting** (no LLM in the measurement loop), producing +9 to +15.5 pp sealed-test gains retaining 86–147% of training gain across 7 domains.
+
+> We study 35 sequential harness releases and find no statistically significant improvement in coding agent quality as harnesses evolve. Later harness versions use approximately 2x more tokens without quality gains. When agents fail, users blame the model rather than the harness. [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]]
+
+> Harness evolution is itself a search procedure; evaluating it on the same shared benchmark risks overfitting. Harness evolution does not consistently outperform simple test-time scaling on Terminal-Bench 2.1 with GPT-5.4 and Claude Opus 4.6. [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]]
+
+> We separate LLM-driven proposal from deterministic crediting via sampling, measurement, and significance testing. On sealed-test sets, the gated QD framework yields +9 to +15.5 pp gains, retaining 86–147% of training gain across 7 domains and 3 benchmarks. [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]
+
+These three papers together narrow the conditions under which harness evolution is claimed to work: the constructive case requires deterministic (not LLM-judged) crediting and held-out (not in-distribution) evaluation. The Claw-SWE-Bench harness≈model finding [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]] — "harness choice matters as much as model choice" — is now in tension with the "Don't Blame" null result; the reconciliation may hinge on whether that study's harnesses were varied in controlled ways or sequentially iterated like the ones in the null-result paper.
+
 ## Disputes
 
-[[lessons-from-building-claude-code-how-we-use-skills]] presents SKILL.md token-efficiency benefits as a uniform property of the skills format; [[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]] finds token-efficiency 'depends on the agent harness and tool setting' — suggesting the benefit is harness-mediated rather than format-intrinsic. Status: unresolved
+- [[lessons-from-building-claude-code-how-we-use-skills]] presents SKILL.md token-efficiency benefits as a uniform property of the skills format; [[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]] finds token-efficiency 'depends on the agent harness and tool setting' — suggesting the benefit is harness-mediated rather than format-intrinsic. Status: unresolved
+- [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]] reports "harness choice matters as much as model choice"; [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]] finds no statistically significant improvement across 35 sequential harness releases on SWE-bench with model held fixed. Status: unresolved — the Claw result compares harnesses from different design families (not sequential iterations of one harness), which may explain why that comparison found variance where sequential iteration did not.
 
 ## Open questions
 
 - [ ] Does LLM-as-a-Developer SDK ranking generalize across LLM developer choice (does Claude Opus 4.8-as-developer rank ADKs the same as GPT-5.5-as-developer)?
 - [ ] Is there a measurable production-grade taxonomy of verification skill *primitives* (record-and-replay, programmatic state assertions, end-to-end Playwright, etc.) and their per-task-class effectiveness, or is current practice still bespoke per codebase?
+- [ ] The "Don't Blame the LLM" null result [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]] is measured on SWE-bench with uncontrolled sequential iteration — does the same null result hold for Terminal-Bench-style execution-heavy tasks, or for harnesses varied systematically (as in Claw-SWE-Bench [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]])?
+- [ ] Does the gated-QD framework's deterministic crediting requirement [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]] limit its applicability to harnesses with fully observable, scriptable execution — ruling out closed proprietary harnesses like Claude Code and Cursor?
 
 ## See also
 
