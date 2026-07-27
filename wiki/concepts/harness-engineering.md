@@ -40,7 +40,10 @@ sources:
   - "[[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]"
   - "[[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]"
   - "[[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]"
-last_updated: 2026-07-24
+  - "[[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]]"
+  - "[[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]]"
+  - "[[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]"
+last_updated: 2026-07-27
 last_verified: 2026-07-14
 freshness_window_days: 30
 ---
@@ -171,9 +174,27 @@ Self-Harness extends the harness-evolution cluster with a fully self-driven loop
 
 > We present the first large-scale empirical study of CLI coding-agent failure trajectories, introducing a process-oriented framework that analyzes failure through its onset, evolution, and recovery across execution trajectories. [[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]
 
+**Harness evolution under empirical fire: three papers converge on a methodological critique (July 2026).** Three papers published in close succession in late July 2026 form the most coherent challenge to date against the self-evolving-harness narrative and expose a three-regime taxonomy for what "harness evolution" actually means in practice.
+
+The first, "Don't Blame the LLM" [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]], applies a controlled longitudinal design: 35 sequential harness releases for SWE-bench, model held fixed, find **no statistically significant improvement in coding-agent quality** over the release timeline. Later harness versions use approximately **2× the tokens** without measurable quality gains. Critically, the study also documents a systematic perception bias: when agents fail, users attribute the failure to the model rather than the harness — a mismatch that has structurally concealed the harness as a causal driver.
+
+> We study 35 sequential harness releases and find no statistically significant improvement in coding agent quality as harnesses evolve. Later harness versions use approximately 2x more tokens without quality gains. When agents fail, users blame the model rather than the harness. [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]]
+
+The second, "Rethinking the Evaluation of Harness Evolution" [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]], raises a structural methodological point: harness evolution is itself a **search procedure**, so evaluating evolution gains on the same benchmark used as the fitness signal risks **overfitting to the benchmark**. Testing on Terminal-Bench 2.1 with GPT-5.4 and Claude Opus 4.6, the paper finds harness evolution **does not consistently outperform simple test-time scaling** under a proper held-out evaluation. This is a direct methodological challenge to every major AHE/HarnessForge/Self-Evolving claim that uses in-distribution evaluation.
+
+> Harness evolution is itself a search procedure; evaluating it on the same shared benchmark risks overfitting. Harness evolution does not consistently outperform simple test-time scaling on Terminal-Bench 2.1 with GPT-5.4 and Claude Opus 4.6. [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]]
+
+The third, "Self-Evolving Agent Harnesses via Gated Semantic Quality-Diversity" [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]], is constructive: it proposes **separating LLM-driven proposal from deterministic crediting** — using deterministic code (sampling, measurement, significance testing) for the crediting step so the LLM's Goodhart-mode is structurally blocked. On sealed-test sets, the gated QD framework produces **+9 to +15.5 pp gains**, retaining **86–147% of training gain** across 7 domains and 3 benchmarks (Terminal-Bench 2, EvoAgentBench, AppWorld).
+
+> We separate LLM-driven proposal from deterministic crediting via sampling, measurement, and significance testing. On sealed-test sets, the gated QD framework yields +9 to +15.5 pp gains, retaining 86–147% of training gain across 7 domains and 3 benchmarks. [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]
+
+**Three-regime taxonomy.** The harness-evolution literature now has three distinct empirical regimes: (a) **uncontrolled sequential iteration** — the null-result, 2× token bloat case; (b) **LLM-driven search with in-distribution evaluation** — structurally over-fit, inconsistently beats TTS; (c) **gated proposal/crediting with held-out evaluation** — the constructive case with demonstrated sealed-test gains. Any claim of harness-evolution gains should specify which regime it belongs to.
+
 ## Disputes
 
 - [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]] claims the agent harness is "often a stronger determinant of agent performance than the model it wraps" (Binding Constraint Thesis); [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] directly contradicts this with trajectory-scale empirical evidence showing "the LLM is the primary driver of both outcome and behavior: agents sharing the same LLM agree on far more tasks than agents sharing the same framework." Status: unresolved — the dispute may be task-horizon-dependent; the Binding Constraint Thesis holds at long horizons where context management dominates, while the LLM-primacy finding may reflect shorter-horizon or per-task comparisons.
+- [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]] and [[harnessforge-joint-harness-and-policy-evolution-for-adaptive-agent-systems-0a4762a0]] report significant gains from structured harness evolution (AHE: 69.7%→77.0% Terminal-Bench; HarnessForge: joint policy co-evolution); [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]] finds no statistically significant improvement across 35 sequential harness releases on SWE-bench with model held fixed. Status: unresolved — the gap may be explained by uncontrolled iteration (null result) vs. structured LLM-driven evolution loops (claimed gains), but [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]] argues even structured evolution doesn't consistently beat TTS when evaluated out-of-distribution.
+- [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]] argues that evaluating harness evolution on the same benchmark used for fitness selection is methodologically flawed (search procedure over its own training distribution); the major AHE/HarnessForge papers report gains on their training benchmark distributions. Status: unresolved — most existing evolution gains may be in-distribution artifacts; only the gated-QD work ([[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]) specifically addresses this with sealed-test evaluation.
 
 ## Open questions
 
@@ -183,6 +204,8 @@ Self-Harness extends the harness-evolution cluster with a fully self-driven loop
 - [ ] Does Cursor 3.7's context explorer instrumentation enable users to operationalize the harness-design framework from [[architectural-design-decisions-in-ai-agent-harnesses-523b6fa0]], or is it purely diagnostic?
 - [ ] Can [[retrospective-harness-optimization-improving-llm-agents-via-self-preference-over-trajectory-rollouts-5f71be82]]'s self-supervised RHO loop run prospectively on a single user's Claude Code session log without centralized trajectory analysis?
 - [ ] Does [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]]'s flatness finding change the optimal model tier for harness-evolution subagents in production systems?
+- [ ] "Don't Blame the LLM" [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]] studied uncontrolled sequential iteration — does the null result also hold for LLM-driven evolution loops (AHE, RHO) when evaluated out-of-distribution on held-out test sets?
+- [ ] Does the gated-QD approach's sealed-test gains [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]] require the harness to be fully scriptable (open-source, modifiable), or can it be applied to proprietary production harnesses via a black-box proposal + external evaluation loop?
 
 ## See also
 
