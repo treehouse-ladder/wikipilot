@@ -21,7 +21,7 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-07-26
+last_updated: 2026-07-27
 last_verified: '2026-05-22'
 show_glosses: true
 sources:
@@ -60,8 +60,3 @@ This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` acros
 | [[qwen3.7-max]] | 2.5 | 7.5 |
 | [[mai-code-1-flash]] | _0.75_ | 4.5 |
 | [[minimax-m3]] | **0.6** | **2.4** |
-
-## Leader changes since last regen
-
-- **`input_cost_per_mtoken`**: [[minimax-m3]] took #1 from [[grok-4.5]].
-- **`output_cost_per_mtoken`**: [[minimax-m3]] took #1 from [[grok-4.5]].

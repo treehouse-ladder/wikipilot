@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-27] daily | 5 topics, 7 sources, 8 pages
+
+Daily Research 2026-07-27 complete. PRs #436–#440 merged. All 5 topics active. Report: wiki/reports/2026-07-27.md.
+
+## [2026-07-27] daily | games-of-note — 0 sources, 1 page
+
+No new articles in scope today. Bumped last_updated; added open question on Halo Campaign Evolved July 28 launch and whether lowest-rated-Halo tracking changes the Xbox reset narrative. PR #440.
+
+## [2026-07-27] daily | agentic-coding — 3 sources, 3 pages
+
+Three harness-evolution papers converge on a methodological critique: (a) 35 sequential harness releases show no statistically significant quality gain with model fixed ("Don't Blame the LLM"); (b) in-distribution evaluation overfits and doesn't consistently beat TTS ("Rethinking"); (c) gated QD framework (proposal separated from deterministic crediting) achieves +9–15.5 pp sealed-test gains across 7 domains. Cross-page sweep: harness-engineering.md, agent-harnesses.md. PR #439.
+
+## [2026-07-27] daily | frontier-models — 1 source, 2 pages
+
+Kimi K3 open weights confirmed landed July 27 as scheduled. MXFP4 QAT release: 2.8T parameters, ~1.4 TB, native Blackwell/MI400 support, leads SWE Marathon + Program Bench. GDPval ELO 1,668–1,687 (source discrepancy filed). kimi-k3 entity updated. PR #438.
+
+## [2026-07-27] daily | ai-in-game-dev — 1 source, 1 page
+
+Roblox Build (mobile AI game creation) entering New Zealand public alpha July 28, sharing back end with Roblox Studio. Open question on mobile-vs-desktop capability parity filed. PR #437.
+
+## [2026-07-27] daily | game-music — 2 sources, 1 page
+
+For Honor 10th-anniversary 2xLP vinyl (Kid Katana × Ubisoft, August 2026 estimate) and Akira Yamaoka confirmed at Heroes: A Video Game Symphony Toronto. PR #436.
+
 ## [2026-07-26] daily | 5 topics, 7 sources, 12 pages
 
 Daily Research 2026-07-26 complete. PRs #430–#434 merged. All 5 topics active. Report: wiki/reports/2026-07-26.md.

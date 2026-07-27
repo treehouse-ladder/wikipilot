@@ -58,6 +58,13 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]
+- [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]]
+- [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]]
+- [[kimi-k3-model-overview-2-8t-parameters-mxfp4-quantization-and-what-the-open-weights-mean-for-the-community-67bfe96b]]
+- [[roblox-launches-an-ai-powered-game-creation-feature-in-its-mobile-app-fffdda4c]]
+- [[akira-yamaoka-to-attend-heroes-a-video-game-symphony-in-toronto-dc724948]]
+- [[for-honor-a-decade-of-battle-and-music-2xlp-vinyl-1f57433f]]
 - [[halo-campaign-evolved-game-review-03acbaa2]]
 - [[marathon-game-director-leaves-as-player-counts-dwindle-fdfad812]]
 - [[game-developers-found-out-at-the-same-time-as-the-public-about-nvidia-dlss-5-2cf1a5a5]]
