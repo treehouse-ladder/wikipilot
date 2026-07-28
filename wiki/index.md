@@ -967,6 +967,18 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[palworld-1-0-pushes-the-hit-over-30m-copies-sold-18cd9f1f]]
 - [[splatoon-raiders-added-to-nintendo-music-as-a-special-release-9eb6c24f]]
 - [[forza-horizon-6-s-drum-n-bass-hospital-records-soundtrack-is-coming-to-vinyl-01a125b4]]
+- [[beta-sdks-for-the-2026-07-28-mcp-spec-release-candidate-are-here-dd539390]]
+- [[github-mcp-server-supports-the-next-mcp-specification-f3762d25]]
+- [[moonshot-ai-releases-kimi-k3-s-weights-sees-fastest-release-growth-ever-on-hugging-face-4bcc3667]]
+- [[alibaba-previews-qwen3-8-max-a-2-4-trillion-parameter-multimodal-model-days-after-moonshot-s-kimi-k3-open-weight-launch-7cb772fb]]
+- [[from-pixels-to-states-rethinking-interactive-world-models-as-game-engines-852d1104]]
+- [[ai-game-testing-startup-manamind-lands-1-2-million-to-automate-quality-assurance-b4371432]]
+- [[top-7-u-s-smes-specializing-in-ai-powered-playtesting-dda7b4b3]]
+- [[halo-campaign-evolved-review-still-iconic-but-with-several-caveats-4ed5c8f4]]
+- [[halo-campaign-evolved-xbox-and-steam-player-counts-raise-concerns-before-release-date-f9edbe47]]
+- [[review-halo-campaign-evolved-ps5-xbox-icon-returns-to-glory-in-this-heroic-remake-51ddb1f5]]
+- [[siggraph-2026-opens-in-la-first-games-summit-neural-rendering-bets-and-a-chinese-ai-keynote-4e6e5d9f]]
+- [[gg-orchestra-announces-august-30-concert-in-san-francisco-7da70d5d]]
 
 ## Reports
 
@@ -1029,3 +1041,5 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-23]]
 - [[2026-07-24]]
 - [[2026-07-25]]
+- [[2026-07-27]]
+- [[2026-07-28]]
