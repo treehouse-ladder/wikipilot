@@ -229,7 +229,9 @@ sources:
   - "[[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]]"
   - "[[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]]"
   - "[[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]"
-last_updated: 2026-07-27
+  - "[[beta-sdks-for-the-2026-07-28-mcp-spec-release-candidate-are-here-dd539390]]"
+  - "[[github-mcp-server-supports-the-next-mcp-specification-f3762d25]]"
+last_updated: 2026-07-28
 last_verified: 2026-07-26
 freshness_window_days: 30
 ---
@@ -306,6 +308,24 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-28
+
+**MCP goes stateless today.** The MCP 2026-07-28 specification — the largest protocol revision since launch — finalizes today, taking the core stateless and setting a new baseline for how coding agents talk to tool servers. Tier-1 SDK betas are already shipping against the release candidate [[beta-sdks-for-the-2026-07-28-mcp-spec-release-candidate-are-here-dd539390]]:
+
+> Beta releases of the Python, TypeScript, Go, and C# SDKs are now available with support for the 2026-07-28 MCP specification release candidate.
+
+The revision removes the `initialize` handshake and protocol-level session, so any request can hit any server instance; per-request `_meta` now carries protocol version, client info, and capabilities. Backward compatibility is preserved via handshake fallback against older servers [[beta-sdks-for-the-2026-07-28-mcp-spec-release-candidate-are-here-dd539390]]:
+
+> The new protocol revision goes stateless, removing the initialize handshake and the protocol-level session... Clients that speak 2026-07-28 fall back to the initialize handshake when they reach a server on 2025-11-25 or earlier, so old servers and new clients keep interoperating.
+
+GitHub's MCP Server already implements the new spec ahead of the official cutover, citing statelessness, parallel handshakes, and official conformance tests as the operational wins for scaling coding-agent MCP deployments [[github-mcp-server-supports-the-next-mcp-specification-f3762d25]]:
+
+> The new stateless core means MCP deployments are now easy to scale. Database writes on initialize are gone, and database reads are gone from every call, which makes things snappier without users losing anything. Clients can also complete the handshake in parallel. MCP added official conformance tests. Strict validation helps agents to verify their work.
+
+Why it matters for an agentic workflow: a remote MCP server that previously needed sticky sessions and a shared session store can now sit behind a plain round-robin load balancer, lowering the ops cost of self-hosting coding-agent tool servers — and the new conformance tests give harness authors a verifiable target rather than reverse-engineered server behavior.
+
+_Counter-signal / gap:_ the stateless model moves per-connection state (protocol version, client info, capabilities) into `_meta` on **every** request; for chatty coding agents that fire many small tool calls this trades one handshake for repeated per-call overhead, and no first-party measurement of the resulting token/latency delta vs. the stateful handshake has been published yet.
 
 ### Updates 2026-07-27 — Harness evolution under empirical fire: longitudinal null result, methodological critique, and a gated QD framework
 
@@ -1654,6 +1674,7 @@ lint stays quiet until each page actually exists:
 
 ## Open questions
 
+- [ ] Does stateless MCP's per-request `_meta` overhead (protocol version + client info + capabilities on every tool call) materially raise token/latency cost for chatty coding agents relative to the old one-time `initialize` handshake, and is there any first-party benchmark quantifying it?
 - [ ] What is the cache-invalidation behavior of multi-agent setups when one agent edits a file mid-run that another agent has cached? Cursor's worktree-per-agent design [[cursor-2-0-multi-agents-and-composer-changelog-4665f068]] avoids file-level conflicts but the prompt-cache implications across worktrees aren't documented in the changelog.
 - [ ] Does Claude Code Routines' "Anthropic-managed cloud infrastructure" [[automate-work-with-routines-claude-code-routines-docs-d09f612e]] use the same prompt-caching tier as interactive sessions, and if not, what does that imply for cost-per-routine-run vs cost-per-interactive-session?
 - [ ] Among the seven vendors documented to support subagents [[use-subagents-and-custom-agents-in-codex-simon-willison-march-2026-7be24bde]], do they share a common interchange format (e.g. is a Codex custom-agent TOML portable to Claude Code), or is the convergence purely in concept?
