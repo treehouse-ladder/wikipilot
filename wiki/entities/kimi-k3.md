@@ -1,9 +1,9 @@
 ---
 title: "Kimi K3"
 kind: entity
-sources: ["[[kimi-k3-intelligence-performance-price-analysis-5d65f998]]", "[[kimi-k3-achieves-3-in-the-artificial-analysis-intelligence-index-comparable-to-opus-4-8-and-gpt-5-5-bce8423e]]", "[[kimi-k3-tech-blog-open-frontier-intelligence-0d83e2aa]]", "[[kimi-k3-s-open-weights-arrive-july-27-the-catch-is-1-4tb-56e05201]]", "[[kimi-k3-model-overview-2-8t-parameters-mxfp4-quantization-and-what-the-open-weights-mean-for-the-community-67bfe96b]]"]
-last_updated: 2026-07-27
-last_verified: 2026-07-27
+sources: ["[[kimi-k3-intelligence-performance-price-analysis-5d65f998]]", "[[kimi-k3-achieves-3-in-the-artificial-analysis-intelligence-index-comparable-to-opus-4-8-and-gpt-5-5-bce8423e]]", "[[kimi-k3-tech-blog-open-frontier-intelligence-0d83e2aa]]", "[[kimi-k3-s-open-weights-arrive-july-27-the-catch-is-1-4tb-56e05201]]", "[[kimi-k3-model-overview-2-8t-parameters-mxfp4-quantization-and-what-the-open-weights-mean-for-the-community-67bfe96b]]", "[[moonshot-ai-releases-kimi-k3-s-weights-sees-fastest-release-growth-ever-on-hugging-face-4bcc3667]]"]
+last_updated: 2026-07-28
+last_verified: 2026-07-28
 freshness_window_days: 30
 input_cost_per_mtoken: 3.00
 output_cost_per_mtoken: 15.00
@@ -61,6 +61,10 @@ On the highest-weighted GDPval-AA v4.1 sub-evaluation, Kimi K3's **GDPval-AA v2 
 > Kimi K3 achieves a GDPval-AA v2 Elo of 1668. [[kimi-k3-achieves-3-in-the-artificial-analysis-intelligence-index-comparable-to-opus-4-8-and-gpt-5-5-bce8423e]]
 
 > When evaluating the Intelligence Index, Kimi K3 generated 130M tokens, which is very verbose in comparison to the average of 63M. At 62 tokens per second, Kimi K3 is slower than average (70). [[kimi-k3-intelligence-performance-price-analysis-5d65f998]]
+
+Following the July 27 open-weights drop, Kimi K3 climbed from #18 to #1 on LMArena's Frontend Code Arena at 1679 within hours, ahead of Anthropic's Opus 4.8 and OpenAI's GPT-5.6 Sol on blind frontend-coding preference, and Moonshot reported the fastest release growth ever for a model on Hugging Face [[moonshot-ai-releases-kimi-k3-s-weights-sees-fastest-release-growth-ever-on-hugging-face-4bcc3667]]. This is the first blind human-preference arena on which K3 (and any open-weights model) tops the closed flagships, though it remains below them on the aggregate AA Intelligence Index (57) and on SWE-bench Pro (Fable 5 leads at 80.0%).
+
+> Within hours of release, Kimi K3 jumped from #18 to #1 on the Frontend Code Arena leaderboard with a score of 1679, ahead of Anthropic's Opus 4.8 and OpenAI's GPT-5.6 Sol on frontend coding tasks. [[moonshot-ai-releases-kimi-k3-s-weights-sees-fastest-release-growth-ever-on-hugging-face-4bcc3667]]
 
 ## Disputes
 
