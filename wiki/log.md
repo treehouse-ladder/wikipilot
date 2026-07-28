@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-28] daily | 5 topics, 12 sources, 18 pages
+
+Daily Research 2026-07-28 complete. PRs #443–#447 merged. All 5 topics active. Report: wiki/reports/2026-07-28.md.
+
+## [2026-07-28] daily | game-music — 1 source, 2 pages
+
+GG Orchestra Herbst Theatre debut August 30, 2026 (SF); Sudo Choir; mixed game/anime programme (Genshin Impact, Dota 2, GTA, Zelda + anime). Open question: venue expansion signal.
+
+## [2026-07-28] daily | games-of-note — 4 sources, 5 pages
+
+Halo CE launch day: DualShockers 6.5/10 vs Push Square positive (PS5 framerate dispute, unresolved). ~20k Steam peak = 58.1% of Forza Horizon 6. SIGGRAPH 2026 Games Summit first dedicated track.
+
+## [2026-07-28] daily | ai-in-game-dev — 3 sources, 4 pages
+
+"From Pixels to States" (arXiv): pixel-prediction world models structurally inadequate as game engines (no explicit state). ManaMind €1.2M (86% bug catch rate). NodeMori Bug Hunter AI (LA).
+
+## [2026-07-28] daily | frontier-models — 2 sources, 4 pages
+
+Kimi K3 weights live: #1 LMArena Frontend Code Arena (1,679 Elo; first open-weights model beating closed flagships on blind preference axis). Qwen3.8-Max previewed (2.4T MoE, no benchmarks yet).
+
+## [2026-07-28] daily | agentic-coding — 2 sources, 3 pages
+
+MCP 2026-07-28 spec RC: stateless (removes initialize handshake, any request routable to any server). SDK betas: Python, TypeScript, Go, C#. GitHub MCP Server already implements new spec.
+
 ## [2026-07-27] daily | 5 topics, 7 sources, 8 pages
 
 Daily Research 2026-07-27 complete. PRs #436–#440 merged. All 5 topics active. Report: wiki/reports/2026-07-27.md.
