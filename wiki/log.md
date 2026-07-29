@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-29] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#453 requeued: wiki(agentic-coding) daily 2026-07-29 was CLEAN with CI green but no auto-merge queued (gh auth unavailable in routine env); enabled squash auto-merge via MCP.
+
 ## [2026-07-28] daily | 5 topics, 12 sources, 18 pages
 
 Daily Research 2026-07-28 complete. PRs #443–#447 merged. All 5 topics active. Report: wiki/reports/2026-07-28.md.
