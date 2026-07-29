@@ -979,6 +979,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[review-halo-campaign-evolved-ps5-xbox-icon-returns-to-glory-in-this-heroic-remake-51ddb1f5]]
 - [[siggraph-2026-opens-in-la-first-games-summit-neural-rendering-bets-and-a-chinese-ai-keynote-4e6e5d9f]]
 - [[gg-orchestra-announces-august-30-concert-in-san-francisco-7da70d5d]]
+- [[introducing-laguna-s-2-1-131cc339]]
+- [[poolside-drops-laguna-s-2-1-an-open-weight-coding-model-that-beats-rivals-10x-its-size-37368a6e]]
+- [[magic-transition-aware-generation-of-navigable-multi-scene-game-worlds-with-large-language-models-c396d86d]]
+- [[psychonauts-2-studio-double-fine-hit-with-layoffs-amid-divestiture-from-xbox-4da4374a]]
+- [[god-of-war-laufey-gets-february-date-as-major-releases-pile-up-c3bfe97d]]
+- [[gta-6-has-the-strongest-pre-order-campaign-on-record-is-on-track-to-sell-37-51-million-in-week-one-analytics-firm-says-4bc7e6e7]]
+- [[award-winning-gordy-haab-drops-the-first-single-for-star-wars-zero-company-427d9a90]]
+- [[the-2026-07-28-mcp-specification-1479f16f]]
+- [[enterprise-managed-settings-in-the-github-copilot-app-and-copilot-cloud-agent-beab8f92]]
 
 ## Reports
 
@@ -1042,4 +1051,5 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-24]]
 - [[2026-07-25]]
 - [[2026-07-27]]
+- [[2026-07-29]]
 - [[2026-07-28]]

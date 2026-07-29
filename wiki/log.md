@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-29] daily | 5 topics, 9 sources, 11 pages
+
+Daily Research 2026-07-29 complete. PRs #449–#453 merged. All 5 topics active. Report: wiki/reports/2026-07-29.md.
+
+## [2026-07-29] daily | frontier-models — 2 sources, 3 pages
+
+Poolside Laguna S 2.1 open-weight coding model beats rivals 10× its size on coding benchmarks; topic index updated.
+
+## [2026-07-29] daily | ai-in-game-dev — 1 source, 2 pages
+
+MAGIC: multi-agent LLM pipeline for transition-aware navigable multi-scene game world generation (Google DeepMind / KAIST).
+
+## [2026-07-29] daily | games-of-note — 3 sources, 2 pages
+
+Double Fine 23-person layoff post-Xbox divestiture; GoW Laufey dated Feb 16 2027; GTA 6 strongest pre-order campaign ever (Newzoo: 37–51M copies projected week-one).
+
+## [2026-07-29] daily | game-music — 1 source, 2 pages
+
+Gordy Haab releases first Star Wars: Zero Company track (1:17); full soundtrack due August 27.
+
+## [2026-07-29] daily | agentic-coding — 2 sources, 2 pages
+
+MCP 2026-07-28 FINAL published (stateless core, ttlMs/cacheScope required, Mcp-Session-Id removed); GitHub Copilot enterprise managed settings now govern cloud agent.
+
 ## [2026-07-28] daily | 5 topics, 12 sources, 18 pages
 
 Daily Research 2026-07-28 complete. PRs #443–#447 merged. All 5 topics active. Report: wiki/reports/2026-07-28.md.
