@@ -231,7 +231,9 @@ sources:
   - "[[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]"
   - "[[beta-sdks-for-the-2026-07-28-mcp-spec-release-candidate-are-here-dd539390]]"
   - "[[github-mcp-server-supports-the-next-mcp-specification-f3762d25]]"
-last_updated: 2026-07-28
+  - "[[the-2026-07-28-mcp-specification-1479f16f]]"
+  - "[[enterprise-managed-settings-in-the-github-copilot-app-and-copilot-cloud-agent-beab8f92]]"
+last_updated: 2026-07-29
 last_verified: 2026-07-26
 freshness_window_days: 30
 ---
@@ -308,6 +310,24 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-29
+
+**MCP 2026-07-28 is now FINAL — the RC framing on this page is superseded.** The 2026-07-28 MCP specification published as a **final** release today, replacing 2025-11-25 [[the-2026-07-28-mcp-specification-1479f16f]]. The functional changes are the same as the RC (already tracked on this page from July 28), but the status shift from release-candidate to published-final matters operationally: any coding-agent harness still targeting 2025-11-25 or treating the July 28 spec as provisional should now treat migration as non-optional. Key changes for agentic-coding harness authors, now canonical:
+
+- **Stateless core**: `Mcp-Session-Id` header and protocol-level session removed — any request can land on any server instance, no sticky routing or shared session store required [[the-2026-07-28-mcp-specification-1479f16f]]
+- **Required routing headers**: `Mcp-Method` and `Mcp-Name` are required on Streamable HTTP POST requests so load balancers, gateways, and rate-limiters can route without body inspection [[the-2026-07-28-mcp-specification-1479f16f]]
+- **List-result caching required**: `ttlMs` and `cacheScope` are required on results from list endpoints [[the-2026-07-28-mcp-specification-1479f16f]]
+- **Enterprise-Managed Authorization stable**: organizations can now centrally manage authorization for MCP servers [[the-2026-07-28-mcp-specification-1479f16f]]
+- **Deprecations**: Roots, Sampling, and Logging features deprecated but remain functional during the deprecation window [[the-2026-07-28-mcp-specification-1479f16f]]
+
+> The 2026-07-28 specification is published as final, replacing 2025-11-25. The Mcp-Session-Id header and the protocol-level session are removed, meaning any MCP request can land on any server instance, and sticky routing and shared session stores are no longer required. ttlMs and cacheScope fields are required on results from list endpoints. The Enterprise-Managed Authorization extension is now stable. Roots, Sampling, and Logging features are deprecated but remain functional during the deprecation window. [[the-2026-07-28-mcp-specification-1479f16f]]
+
+**GitHub Copilot gets enterprise-level governance for the app and cloud agent — a centralized allowlist plane on top of the tool ecosystem.** GitHub announced that enterprise managed settings now cover both the **GitHub Copilot app** (the Copilot-powered agentic desktop/IDE experience) and the **Copilot cloud agent** (an async autonomous background agent that analyzes issues and opens draft PRs), using the same `managed-settings.json` file already used for enterprise Copilot policy [[enterprise-managed-settings-in-the-github-copilot-app-and-copilot-cloud-agent-beab8f92]]. Enterprise owners can define guardrails such as which plugins and marketplaces developers can use, centralizing supply-chain control for the agentic coding surface.
+
+> Enterprise owners can now govern the GitHub Copilot app and Copilot cloud agent with enterprise managed settings, the same centrally managed policies used to control Copilot across enterprises. Enterprise owners can define guardrails such as which plugins and marketplaces developers can use through a managed-settings.json file. Copilot cloud agent is an asynchronous, autonomous background agent that analyzes issue contents and opens a draft pull request. [[enterprise-managed-settings-in-the-github-copilot-app-and-copilot-cloud-agent-beab8f92]]
+
+This is notable against this page's prompt-injection thread: centralized allowlists control which *tools* can be invoked, but per the injection literature ([[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]]), the attack surface lies at *runtime* (the content the model processes), not at the supply-chain level — meaning managed-settings.json governance answers a different threat model than the injection attacks being studied against agentic harnesses.
 
 ### Updates 2026-07-28
 
@@ -1671,6 +1691,7 @@ lint stays quiet until each page actually exists:
 - [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]] finds no statistically significant quality improvement across 35 sequential harness releases (with model held fixed) and that later harness versions use ~2x tokens without gains; [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]] and [[harnessforge-joint-harness-and-policy-evolution-for-adaptive-agent-systems-0a4762a0]] both claim structured harness evolution produces significant SWE-bench/Terminal-Bench improvements. The "Don't Blame" study examines unstructured sequential iteration rather than an LLM-driven evolution loop, which may explain the gap — or the evolution-loop gains may also be methodology artifacts. Status: unresolved
 - [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]] argues harness evolution is a search procedure over the benchmark it uses for fitness, so evaluating evolution gains on the same benchmark risks overfitting — and finds harness evolution does not consistently outperform TTS on a held-out Terminal-Bench 2.1 evaluation; [[harnessforge-joint-harness-and-policy-evolution-for-adaptive-agent-systems-0a4762a0]], [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]], and the broader AHE research line report positive harness-evolution gains but typically on the same benchmark family used during evolution. Status: unresolved — the core methodological question (in-distribution vs held-out evaluation) is unresolved for every major harness-evolution result on the wiki.
 - [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]] proposes separating LLM-driven proposal from deterministic crediting (to avoid Goodhart overfitting) and reports +9–+15.5 pp sealed-test gains retaining 86–147% of training gain; [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]] argues even structured harness evolution does not consistently beat simple TTS on a properly-held-out evaluation. The gated-crediting design is intended to close the overfitting gap the "Rethinking" paper identifies; whether it actually does so on a third, independently-held-out benchmark is not yet demonstrated. Status: unresolved
+- [[enterprise-managed-settings-in-the-github-copilot-app-and-copilot-cloud-agent-beab8f92]] positions enterprise managed settings (managed-settings.json plugin allowlists) as a centralized governance layer for the agentic coding surface — controlling which tool-servers and marketplaces agents can reach; [[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]] argues that runtime prompt-injection attacks cannot be blocked by supply-chain allowlists because the attack arrives via content the model processes (issue text, file contents, tool outputs), not via the tool identity. Status: unresolved — the two sources address different layers of the same threat model (supply-chain access control vs. runtime content injection) rather than being directly contradictory, but together they leave the question of whether enterprise managed settings materially reduces agentic-coding attack surface open.
 
 ## Open questions
 
@@ -1869,6 +1890,8 @@ lint stays quiet until each page actually exists:
 - [ ] "Don't Blame the LLM" [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]] studied 35 sequential harness releases for SWE-bench — does the null result replicate on Terminal-Bench (different task distribution, execution-heavy) or on harnesses built via LLM-driven evolution loops rather than manual iteration?
 - [ ] What structurally separates the "35 sequential releases, no measurable quality gain" scenario from the gated-QD "+9–+15.5 pp sealed-test gains" scenario [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]] — is it entirely the crediting mechanism (deterministic vs LLM-judged), or do task distribution, base-model tier, or starting-harness quality also explain the divergence?
 - [ ] Does the gated-QD framework [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]] work on real agentic-IDE harnesses (Claude Code, Cursor, Codex) where the harness is a complex proprietary closed system, or is it limited to open, scriptable harnesses the LLM can fully inspect and edit?
+- [ ] The MCP 2026-07-28 final spec requires `ttlMs` and `cacheScope` on all list-endpoint results [[the-2026-07-28-mcp-specification-1479f16f]] — does this mandatory caching annotation materially reduce the per-call overhead of the stateless model (where every request previously needed a fresh list-tools call without cached results), and has any harness author published latency/token-cost measurements comparing the stateful-initialize baseline against the stateless-plus-cached-list-results design?
+- [ ] The MCP Enterprise-Managed Authorization extension is now stable [[the-2026-07-28-mcp-specification-1479f16f]] and GitHub Copilot enterprise managed settings governs which MCP plugins/marketplaces can be reached [[enterprise-managed-settings-in-the-github-copilot-app-and-copilot-cloud-agent-beab8f92]] — do these represent two separate, parallel governance planes (one at the MCP protocol level, one at the Copilot app level) that must be configured independently, or does GitHub's managed-settings.json integrate with MCP Enterprise-Managed Authorization as a single unified policy surface?
 
 ## See also
 
