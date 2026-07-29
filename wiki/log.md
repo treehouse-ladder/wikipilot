@@ -1536,6 +1536,10 @@ Daily Research 2026-07-23 complete. PRs #411–#415 queued for auto-merge. All 5
 
 Weekly health sweep 2026-07-26. 12 candidate sets (11 source-triggered + 1 stale sweep). 2 new disputes filed: Kimi K3 AA index rank #3 vs #4; Fable 5 SWE-bench Pro 80.3% vs 80.0%. Lint: 0 errors, 225 warnings. 22 stale synthesis pages. PR #429.
 
+## [2026-07-29] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#453 kind=requeue resolved=true — wiki(agentic-coding): daily 2026-07-29 was orphan-CLEAN (mergeable_state=clean, CI green, auto-merge not set); enabled auto-merge via GitHub MCP (gh CLI token invalid; MCP used as fallback).
+
 ## [2026-07-27] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#440 kind=requeue resolved=true — wiki(games-of-note): daily 2026-07-27 was orphan-CLEAN (mergeable_state=clean, CI green, auto-merge not set); enabled auto-merge via GitHub MCP (gh CLI token invalid; MCP used as fallback). Triggered by PR #439 merge.
