@@ -1567,3 +1567,7 @@ pr#440 kind=requeue resolved=true — wiki(games-of-note): daily 2026-07-27 was 
 ## [2026-07-30] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#458 kind=requeue resolved=true — wiki(games-of-note): daily 2026-07-30 was orphan-CLEAN (mergeable_state=clean, CI green, auto-merge not set); enabled auto-merge via GitHub MCP (gh CLI token invalid; MCP used as fallback).
+
+## [2026-07-31] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#464 kind=requeue resolved=true — wiki(games-of-note): daily 2026-07-31 was orphan-CLEAN (mergeable_state=clean, CI green, auto-merge not set); enabled auto-merge via GitHub MCP (gh CLI token invalid; MCP used as fallback). pr#465 (ai-in-game-dev) skipped: CI in_progress, not a lint failure.
