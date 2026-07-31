@@ -988,6 +988,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[award-winning-gordy-haab-drops-the-first-single-for-star-wars-zero-company-427d9a90]]
 - [[the-2026-07-28-mcp-specification-1479f16f]]
 - [[enterprise-managed-settings-in-the-github-copilot-app-and-copilot-cloud-agent-beab8f92]]
+- [[inkling-small-lands-within-a-point-of-inkling-on-the-artificial-analysis-intelligence-index-with-less-than-a-third-of-the-parameters-805cabb6]]
+- [[introducing-inkling-small-5c51c45f]]
+- [[iam8bit-announces-ico-vinyl-soundtrack-and-team-ico-trilogy-restocks-9596e666]]
+- [[halo-campaign-evolved-peaks-at-25-000-steam-players-on-launch-day-16958142]]
+- [[new-data-suggests-layoffs-will-affect-14-259-people-by-the-end-of-2026-up-78-from-first-forecast-of-the-year-0c2c242a]]
+- [[still-the-master-chief-halo-campaign-evolved-hits-no-3-on-steam-sales-cd36f3e9]]
+- [[abot-world-0-infinite-interactive-world-rollout-on-a-single-desktop-gpu-89303d54]]
+- [[meshy-raises-nearly-400-million-at-a-1-5-billion-valuation-the-largest-round-to-date-in-ai-3d-629b40da]]
+- [[copilot-code-review-agent-skills-and-mcp-now-generally-available-05746085]]
+- [[visual-studio-july-update-meet-the-new-agent-powered-by-the-github-copilot-sdk-6520c27a]]
 
 ## Reports
 
@@ -1053,3 +1063,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-27]]
 - [[2026-07-29]]
 - [[2026-07-28]]
+- [[2026-07-31]]

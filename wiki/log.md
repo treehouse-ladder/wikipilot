@@ -1567,3 +1567,27 @@ pr#440 kind=requeue resolved=true — wiki(games-of-note): daily 2026-07-27 was 
 ## [2026-07-30] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#458 kind=requeue resolved=true — wiki(games-of-note): daily 2026-07-30 was orphan-CLEAN (mergeable_state=clean, CI green, auto-merge not set); enabled auto-merge via GitHub MCP (gh CLI token invalid; MCP used as fallback).
+
+## [2026-07-31] daily | frontier-models — 2 sources, 2 pages
+
+Inkling-Small (3B open-weights reasoning model by Thinking Machines) launches. AA Intelligence Index places it within 1 point of full Inkling at <1/3 the parameters. Context window dispute filed: launch post claims 1M tokens; AA article shows 256K. PR #462.
+
+## [2026-07-31] daily | game-music — 1 source, 1 page
+
+iam8bit announces ICO vinyl soundtrack + Team ICO trilogy restocks (Shadow of the Colossus, ICO, The Last Guardian). Open question: ICO track listing (straight port vs unreleased). PR #463.
+
+## [2026-07-31] daily | games-of-note — 3 sources, 1 page
+
+Halo: Campaign Evolved posts weakest-ever Steam peak (25k concurrent, below Halo Wars 2's 30k in 2017). ASGC layoffs tracker revised to 14,259 by end 2026 (up 78% from January forecast; 9,781 already confirmed by July 26). PR #464.
+
+## [2026-07-31] daily | ai-in-game-dev — 2 sources, 1 page
+
+ABot-World-0 (arXiv 2607.19191): real-time interactive world model on single RTX 5090 at 720P/16FPS. Meshy closes $400M Series B at $1.5B — largest AI 3D funding round ever; 12M users, 100M models, 12× ARR YoY. PR #465.
+
+## [2026-07-31] daily | agentic-coding — 2 sources, 1 page
+
+GitHub Copilot code review agent skills + MCP now generally available (Jul 29). Visual Studio July 2026 update: new Agent mode powered by Copilot SDK with built-in skills. PR #466.
+
+## [2026-07-31] daily | 5 topics, 10 sources, 6 pages
+
+Daily Research 2026-07-31 complete. PRs #462–#466 all merged. All 5 topics active. Report: wiki/reports/2026-07-31.md.
