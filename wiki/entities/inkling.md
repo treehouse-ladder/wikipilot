@@ -2,9 +2,9 @@
 title: "Inkling"
 kind: entity
 aliases: ["Thinking Machines Inkling", "Inkling MoE"]
-sources: ["[[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]", "[[inkling-our-open-weights-model-06531d4a]]"]
-last_updated: 2026-07-16
-last_verified: 2026-07-16
+sources: ["[[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]", "[[inkling-our-open-weights-model-06531d4a]]", "[[introducing-inkling-small-5c51c45f]]", "[[inkling-small-lands-within-a-point-of-inkling-on-the-artificial-analysis-intelligence-index-with-less-than-a-third-of-the-parameters-805cabb6]]"]
+last_updated: 2026-07-31
+last_verified: 2026-07-31
 freshness_window_days: 30
 aa_intelligence_index: 41
 aa_intelligence_index_source: "[[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]"
@@ -39,6 +39,12 @@ Thinking Machines explicitly positions Inkling as a customization base rather th
 
 > Inkling is not the strongest overall model available today, open or closed. [[inkling-our-open-weights-model-06531d4a]]
 
+Thinking Machines fully released **Inkling-Small** on July 31, 2026 (previously shipped as a Tinker preview): a **276B-total / 12B-active** multimodal Mixture-of-Experts reasoning model with controllable reasoning effort, released under an **Apache 2.0** license with weights on Hugging Face [[introducing-inkling-small-5c51c45f]]. Thinking Machines positions it as "matching Inkling at a quarter of the size," with native reasoning over audio and images and a context window of up to 1M tokens [[introducing-inkling-small-5c51c45f]]. Artificial Analysis independently places Inkling-Small at **AA Intelligence Index v4.1 = 40** — one point behind the 975B Inkling (41) at less than a third of the total and active parameters — and notes **no open-weights model at its size or smaller scores higher** on the Intelligence Index; it ties Inkling on Terminal-Bench 2.1 (55%) and edges it on Humanity's Last Exam (32% vs 30%), GPQA Diamond (89% vs 87%), CritPt (8% vs 5%) and SciCode (49% vs 46%) while being more token-efficient per task [[inkling-small-lands-within-a-point-of-inkling-on-the-artificial-analysis-intelligence-index-with-less-than-a-third-of-the-parameters-805cabb6]]. This makes Inkling-Small a compact, cheaply self-hostable, permissively-licensed open-weights option for cost-sensitive agentic and game-dev tooling loops.
+
+> Inkling Small scores 40 on the Artificial Analysis Intelligence Index, within a point of its flagship sibling Inkling with less than a third of the total and active parameters. No open weights model at its size or smaller scores higher on the Intelligence Index. [[inkling-small-lands-within-a-point-of-inkling-on-the-artificial-analysis-intelligence-index-with-less-than-a-third-of-the-parameters-805cabb6]]
+
+> Inkling-Small is a multimodal, Mixture-of-Experts model with controllable reasoning effort that matches Inkling at a quarter of the size. [[introducing-inkling-small-5c51c45f]]
+
 ## Disputes
 
 _none yet_
@@ -46,7 +52,7 @@ _none yet_
 ## Open questions
 
 - [ ] No independent contamination-resistant coding placement (SWE-bench Pro / SWE-bench Verified) yet published for Inkling; the model card reports SWE-bench Verified via a bash-only harness with a 256K trajectory cap.
-- [ ] Inkling-Small (12B active) has no independent AA Intelligence Index placement yet — only a first-party preview claim.
+- [ ] What is Inkling-Small's contamination-resistant coding (SWE-bench Pro) and GDPval-AA placement? Only Terminal-Bench 2.1 (55%), HLE, GPQA Diamond, CritPt and SciCode were published. [[inkling-small-lands-within-a-point-of-inkling-on-the-artificial-analysis-intelligence-index-with-less-than-a-third-of-the-parameters-805cabb6]]
 
 ## See also
 
