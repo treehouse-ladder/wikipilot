@@ -235,8 +235,10 @@ sources:
   - "[[enterprise-managed-settings-in-the-github-copilot-app-and-copilot-cloud-agent-beab8f92]]"
   - "[[claude-code-on-the-web-79c12990]]"
   - "[[swe-review-closing-the-loop-on-issue-resolution-with-agentic-code-review-d23bee88]]"
-last_updated: 2026-07-30
-last_verified: 2026-07-26
+  - "[[copilot-code-review-agent-skills-and-mcp-now-generally-available-05746085]]"
+  - "[[visual-studio-july-update-meet-the-new-agent-powered-by-the-github-copilot-sdk-6520c27a]]"
+last_updated: 2026-07-31
+last_verified: 2026-07-31
 freshness_window_days: 30
 ---
 
@@ -312,6 +314,16 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-07-31
+
+**Copilot code review: agent skills and MCP reach GA (July 29, 2026).** GitHub shipped agent skills and MCP server support for Copilot code review as generally available for all Copilot Pro, Pro+, Business, and Enterprise users [[copilot-code-review-agent-skills-and-mcp-now-generally-available-05746085]]. Agent skills let the reviewer invoke repo-specific tooling and coding standards by adding a `SKILL.md` under `.github/skills/` — the same SKILL.md pattern that Claude Code's own skills framework uses, now flowing into GitHub's hosted review path. MCP server connections pull read-only context from issue trackers, documentation systems, and service catalogs directly into the review loop [[copilot-code-review-agent-skills-and-mcp-now-generally-available-05746085]]. This GA step follows the March 2026 launch of Copilot code review's agentic tool-calling architecture (already tracked at [[shape-copilot-code-review-around-your-team-1a940a72]]); the March launch established the architecture, the July 29 release opens the extensibility surface to all paying tiers. Counter-argument: MCP connections are constrained to read-only tool calls, so the agentic code review cannot write to external systems or auto-remediate issues — it remains a context-enrichment layer rather than a full agentic repair loop.
+
+> Copilot code review support for agent skills and MCP servers is now generally available for all Copilot Pro, Pro+, Business, and Enterprise users. Agent skills let Copilot code review invoke your team's internal tools and coding standards during a review. Add a SKILL.md file under a skill subdirectory in .github/skills to extend Copilot's analysis with context and instructions specific to your repository or organization. [[copilot-code-review-agent-skills-and-mcp-now-generally-available-05746085]]
+
+**Visual Studio July update ships new Agent mode built on the Copilot SDK, plus built-in .NET/Azure skills (July 30, 2026).** Microsoft's July Visual Studio update introduces a new **Agent (Preview)** mode in Copilot Chat built on the same GitHub Copilot SDK that powers the Copilot CLI [[visual-studio-july-update-meet-the-new-agent-powered-by-the-github-copilot-sdk-6520c27a]]. The framing — "get more tasks right the first time, with less back-and-forth" — positions the agent picker as a graduated-autonomy control surface rather than a single toggle. The update also ships **built-in .NET and Azure skills**, organization-level custom instructions, and **Git branch context** (right-click any branch in the Git Repository window to add it to Copilot Chat as context) [[visual-studio-july-update-meet-the-new-agent-powered-by-the-github-copilot-sdk-6520c27a]]. The Copilot SDK alignment is architecturally significant: VS agent mode, the CLI agent, and GitHub Copilot Workspace are now all backed by the same SDK, giving Microsoft one harness surface to evolve rather than three diverging implementations. Counter-argument: the agent is still Preview — no SLA, no enterprise GA commitment — and "built-in skills" for .NET/Azure are narrow compared to the full MCP/SKILL.md extensibility available on GitHub.com code review.
+
+> Copilot Chat has a new Agent (Preview) option in the agent picker, built on the same GitHub Copilot SDK that powers the GitHub Copilot CLI. The idea is simple: get more tasks right the first time, with less back-and-forth to keep the agent on track. The release also introduces built-in .NET and Azure skills, organization-level custom instructions, Git branch context for chat. [[visual-studio-july-update-meet-the-new-agent-powered-by-the-github-copilot-sdk-6520c27a]]
 
 ### Updates 2026-07-30
 
