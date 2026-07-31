@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-07-31] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#463 kind=requeue resolved=true — wiki(game-music): daily 2026-07-31 was orphan-CLEAN (mergeable_state=clean, CI green, auto-merge not set); enabled auto-merge via GitHub MCP (gh CLI token invalid; MCP used as fallback).
+
 ## [2026-07-29] daily | 5 topics, 9 sources, 11 pages
 
 Daily Research 2026-07-29 complete. PRs #449–#453 merged. All 5 topics active. Report: wiki/reports/2026-07-29.md.
