@@ -237,8 +237,10 @@ sources:
   - "[[swe-review-closing-the-loop-on-issue-resolution-with-agentic-code-review-d23bee88]]"
   - "[[copilot-code-review-agent-skills-and-mcp-now-generally-available-05746085]]"
   - "[[visual-studio-july-update-meet-the-new-agent-powered-by-the-github-copilot-sdk-6520c27a]]"
-last_updated: 2026-07-31
-last_verified: 2026-07-31
+  - "[[cursor-now-on-ipad-6894e69d]]"
+  - "[[github-copilot-in-visual-studio-code-july-2026-releases-b302f2ba]]"
+last_updated: 2026-08-01
+last_verified: 2026-08-01
 freshness_window_days: 30
 ---
 
@@ -314,6 +316,16 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-01
+
+**Cursor ships agent-conversation hooks and a rebuilt iPad layout.** The Cursor changelog (August 2026) introduces a new hooks API that exposes the full agent conversation lifecycle — prompts, responses, thinking, subagents, compaction, and turn completion — as programmatically observable and controllable events [[cursor-now-on-ipad-6894e69d]]. Specific new hook points include `beforeSubmitPrompt`, `afterAgentResponse`, `afterAgentThought`, `stop`, and `subagentStart`, enabling harness engineers to build **self-correcting loops** that intercept, inspect, and redirect agent reasoning mid-flight without model access [[cursor-now-on-ipad-6894e69d]]. The iPad release is architecturally significant beyond the platform: sidebar chats are pinned to watch several agents run in parallel, split-screen keeps a review pane next to an active chat, and file diffs render at full fidelity — the iPad becomes a legitimate multi-agent supervision surface rather than a stripped-down companion app. Counter-argument: hook-based self-correction adds latency on every agent turn; whether the correction quality justifies the overhead at production scale is unestablished.
+
+> New hooks have been added that let you observe and control the agent conversation itself: prompts, responses, thinking, subagents, compaction, and turn completion. New hooks like beforeSubmitPrompt, afterAgentResponse, afterAgentThought, stop, subagentStart, and more allow you to better observe output and reasoning, control subagents, and build self-correcting loops with cloud agents. The iPad layout is rebuilt around the extra space. Sidebar chats stay pinned so you can watch several agents run at once. Split screen keeps a review open next to a chat, and file diffs render in full. [[cursor-now-on-ipad-6894e69d]]
+
+**GitHub Copilot for VS Code July 2026: vision GA, Agents window public preview, BYOK in agents.** The July 2026 VS Code Copilot release moves Copilot vision to **general availability** — file paste, drag-and-drop, and context-menu attachment all reach GA — while the Agents window enters public preview with a redesigned layout, keyboard-driven session management, and faster review workflows [[github-copilot-in-visual-studio-code-july-2026-releases-b302f2ba]]. An experimental **Markdown-in-agent editing** feature lets developers open `.md` files directly in the Agents window and annotate them with comments the agent acts on — a notable step toward using agentic coding assistants for documentation and prompt engineering tasks, not just code. BYOK (bring-your-own-key) models, previously limited to the standard editor since March 2025, now work inside the Agents window too, enabling cost-controlled enterprise deployments [[github-copilot-in-visual-studio-code-july-2026-releases-b302f2ba]]. Counter-argument: the Agents window is still public preview, not GA; enterprise readiness (SLA, audit logging, compliance controls) is unconfirmed at this stage.
+
+> The Agents window, currently in public preview, adds a redesigned layout, faster review workflows, and improvements for managing multiple sessions. Keyboard-driven navigation allows you to create, switch, reopen, and close chats without leaving the keyboard. Copilot vision is now generally available, allowing you to paste files, drag them into chat, or add them from the context menu. Edit Markdown with agents: This experimental feature lets you view and edit Markdown files in place in the Agents window, and add comments that an agent can act on. BYOK models, available in the VS Code editor since March 2025, can now also be used with the Copilot agent in the Agents window. [[github-copilot-in-visual-studio-code-july-2026-releases-b302f2ba]]
 
 ### Updates 2026-07-31
 
@@ -1922,6 +1934,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does the gated-QD framework [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]] work on real agentic-IDE harnesses (Claude Code, Cursor, Codex) where the harness is a complex proprietary closed system, or is it limited to open, scriptable harnesses the LLM can fully inspect and edit?
 - [ ] The MCP 2026-07-28 final spec requires `ttlMs` and `cacheScope` on all list-endpoint results [[the-2026-07-28-mcp-specification-1479f16f]] — does this mandatory caching annotation materially reduce the per-call overhead of the stateless model (where every request previously needed a fresh list-tools call without cached results), and has any harness author published latency/token-cost measurements comparing the stateful-initialize baseline against the stateless-plus-cached-list-results design?
 - [ ] The MCP Enterprise-Managed Authorization extension is now stable [[the-2026-07-28-mcp-specification-1479f16f]] and GitHub Copilot enterprise managed settings governs which MCP plugins/marketplaces can be reached [[enterprise-managed-settings-in-the-github-copilot-app-and-copilot-cloud-agent-beab8f92]] — do these represent two separate, parallel governance planes (one at the MCP protocol level, one at the Copilot app level) that must be configured independently, or does GitHub's managed-settings.json integrate with MCP Enterprise-Managed Authorization as a single unified policy surface?
+- [ ] Cursor hooks self-correction: do `beforeSubmitPrompt` / `afterAgentThought` hook-based loops improve task success rates on realistic multi-step coding tasks, or does the added latency + loop overhead negate the benefit? No published eval yet. [[cursor-now-on-ipad-6894e69d]]
+- [ ] Copilot vision GA — Markdown-in-agent editing: does treating documentation files as first-class agent task inputs (with inline human comments as steering signals) improve prompt-injection surface or reduce it? The threat model for agentic Markdown editing is not yet analyzed. [[github-copilot-in-visual-studio-code-july-2026-releases-b302f2ba]]
+- [ ] Copilot BYOK in Agents window: does running non-Copilot models inside the Agents window affect the harness safety properties (sandboxing, secret filtering) that apply to native Copilot agents, or does BYOK bypass them? Enterprise security posture is unclear. [[github-copilot-in-visual-studio-code-july-2026-releases-b302f2ba]]
 
 ## See also
 
