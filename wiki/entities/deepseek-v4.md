@@ -1,9 +1,9 @@
 ---
 title: "DeepSeek V4"
 kind: entity
-sources: ["[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[deepseek-api-models-and-pricing-8eb12065]]", "[[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]", "[[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[deepseek-is-back-among-the-leading-open-weights-models-with-v4-pro-and-v4-flash-d16dda28]]", "[[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]]"]
-last_updated: 2026-07-12
-last_verified: "2026-05-24"
+sources: ["[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[deepseek-api-models-and-pricing-8eb12065]]", "[[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]", "[[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[deepseek-is-back-among-the-leading-open-weights-models-with-v4-pro-and-v4-flash-d16dda28]]", "[[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]]", "[[deepseek-v4-flash-0731-scores-50-on-the-artificial-analysis-intelligence-index-10-points-above-previous-deepseek-v4-flash-108621d0]]", "[[deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains-159beea4]]", "[[deepseek-ai-deepseek-v4-flash-0731-a1a747f4]]"]
+last_updated: 2026-08-01
+last_verified: 2026-08-01
 freshness_window_days: 30
 input_cost_per_mtoken: 1.74
 output_cost_per_mtoken: 3.48
@@ -46,6 +46,12 @@ Artificial Analysis published a dedicated launch analysis confirming the V4 fami
 
 > GLM-5.1 (Reasoning) leads open weights models at 40%, with DeepSeek V4 Pro (Reasoning, Max Effort) at 38%, and Gemma 4 31B (Reasoning) at 37%.
 
+**DeepSeek-V4-Flash-0731 (official release, July 31, 2026)** supersedes the preview and achieves a major agentic performance leap via re-post-training on the same architecture [[deepseek-ai-deepseek-v4-flash-0731-a1a747f4]]. Terminal-Bench 2.1 jumps from 61.8 (preview) to **82.7** and DeepSWE from 7.3 to **54.4**, while the AA Intelligence Index moves from 40 to **50** — 10 points, placing it above the prior open-weights cluster (GLM-5.2 = 51 is close; Kimi K3 = 57 remains well ahead) [[deepseek-v4-flash-0731-scores-50-on-the-artificial-analysis-intelligence-index-10-points-above-previous-deepseek-v4-flash-108621d0]]. The V4-Flash-0731 pricing is **$0.14/MTok cache-miss input, $0.0028/MTok cache-hit input, $0.28/MTok output**; the cache-hit pricing makes it exceptionally cheap for agentic loops with shared system prompts [[deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains-159beea4]]. MIT-licensed, ungated, ships with the DSpark speculative decoding module.
+
+> DeepSeek-V4-Flash-0731 is the official release of DeepSeek-V4-Flash, superseding the preview version, with substantially enhanced agentic capabilities. DeepSeek-V4-Flash-0731 outperforms DeepSeek-V4-Pro (Preview) on benchmarks listed below despite its far smaller activated parameter count, and is broadly competitive with the strongest proprietary models available. [[deepseek-ai-deepseek-v4-flash-0731-a1a747f4]]
+
+> DeepSeek V4 Flash 0731 scores 50 on the Artificial Analysis Intelligence Index, 10 points above the previous DeepSeek V4 Flash. DeepSeek-V4-Flash-0731 outperforms DeepSeek-V4-Pro (Preview) on the published benchmarks despite its far smaller activated parameter count. [[deepseek-v4-flash-0731-scores-50-on-the-artificial-analysis-intelligence-index-10-points-above-previous-deepseek-v4-flash-108621d0]]
+
 ## Disputes
 
 - [[deepseek-v4-pro-on-hugging-face-a0d5aaf3]] claims V4-Pro-Max's 80.6% SWE-bench Verified is a frontier-leading score, but OpenAI has stopped reporting SWE-bench Verified after finding contamination across all frontier models. On SWE-bench Pro (the contamination-controlled successor) DeepSeek V4-Pro's ranking is not yet published. Status: unresolved.
@@ -59,6 +65,7 @@ Artificial Analysis published a dedicated launch analysis confirming the V4 fami
 - [ ] Does DeepSeek V4 include DeepSeek Sparse Attention (now documented in GLM-5 [[glm-5-everything-you-need-to-know-a53ff5c1]]), or is that a technique Z.AI integrated independently?
 - [ ] GLM-5.1 now ranks #2 on GDPval-AA among open-weights models (1535 Elo) per [[glm-5-1-intelligence-performance-price-analysis-fb6f086c]], implying DeepSeek V4-Pro leads at #1 — what is V4-Pro's actual GDPval-AA Elo score, and does it hold the open-weights #1 spot consistently across the April-May 2026 time window?
 - [ ] On ITBench-AA SRE, DeepSeek V4 Pro at 38% is behind GLM-5.1 at 40% [[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]] — is this a methodology-driven inversion (K8s-incident-RCA-specific) or does GLM-5.1 genuinely outpace V4 Pro on long-horizon agentic infrastructure tasks?
+- [ ] V4-Flash-0731's DeepSWE score (54.4) is compared to Kimi K3's 67.4 in the same source's comparison set — does this gap reflect a meaningful capability difference, or do the two benchmark runs use different harnesses? [[deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains-159beea4]]
 
 ## See also
 
