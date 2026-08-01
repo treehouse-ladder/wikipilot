@@ -1591,3 +1591,27 @@ GitHub Copilot code review agent skills + MCP now generally available (Jul 29). 
 ## [2026-07-31] daily | 5 topics, 10 sources, 6 pages
 
 Daily Research 2026-07-31 complete. PRs #462–#466 all merged. All 5 topics active. Report: wiki/reports/2026-07-31.md.
+
+## [2026-08-01] daily | ai-in-game-dev — 1 source, 1 page
+
+Tencent Hunyuan3D-PolyGen: AI model for art-grade 3D assets claiming 70% asset-time reduction and production-quality retopology. PR #468.
+
+## [2026-08-01] daily | games-of-note — 2 sources, 1 page
+
+EA officially goes private August 4, 2026 ($210/share, PIF/Silver Lake/Affinity Partners). August 2026 release slate: Star Wars Zero Company, Beast of Reincarnation, MARVEL Tokon, MGS Master Collection Vol. 2. PR #469.
+
+## [2026-08-01] daily | game-music — 1 source, 1 page
+
+Blue Reflection Official Soundtrack review (RPGFan): Hayato Asano's artcore subgenre blending game audio with classical piano composition. PR #470.
+
+## [2026-08-01] daily | agentic-coding — 2 sources, 3 pages
+
+Cursor ships agent-conversation hooks (beforeSubmitPrompt/afterAgentResponse/stop) and rebuilt iPad multi-agent layout. GitHub Copilot vision GA in VS Code; Agents window in public preview; BYOK in agents. PR #471.
+
+## [2026-08-01] daily | frontier-models — 4 sources, 6 pages
+
+DeepSeek-V4-Flash-0731 official release: Terminal-Bench 61.8→82.7, DeepSWE 7.3→54.4, AA Intelligence Index 40→50 via re-post-training; MIT-licensed, $0.14/$0.0028/$0.28/MTok. MiniMax H3: unified omni-modal 15s 2K video with stereo audio at <1/3 mainstream cost. PR #472.
+
+## [2026-08-01] daily | 5 topics, 10 sources, 17 pages
+
+Daily Research 2026-08-01 complete. PRs #468–#472 all merged. All 5 topics active. Report: wiki/reports/2026-08-01.md.
