@@ -998,6 +998,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[meshy-raises-nearly-400-million-at-a-1-5-billion-valuation-the-largest-round-to-date-in-ai-3d-629b40da]]
 - [[copilot-code-review-agent-skills-and-mcp-now-generally-available-05746085]]
 - [[visual-studio-july-update-meet-the-new-agent-powered-by-the-github-copilot-sdk-6520c27a]]
+- [[tencent-hunyuan3d-polygen-a-model-for-art-grade-3d-assets-1d7dc610]]
+- [[electronic-arts-says-it-will-be-a-private-company-next-week-635750ea]]
+- [[the-biggest-new-game-releases-of-august-2026-0f47e862]]
+- [[blue-reflection-official-soundtrack-music-review-154b4718]]
+- [[cursor-now-on-ipad-6894e69d]]
+- [[github-copilot-in-visual-studio-code-july-2026-releases-b302f2ba]]
+- [[deepseek-v4-flash-0731-scores-50-on-the-artificial-analysis-intelligence-index-10-points-above-previous-deepseek-v4-flash-108621d0]]
+- [[deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains-159beea4]]
+- [[deepseek-ai-deepseek-v4-flash-0731-a1a747f4]]
+- [[minimax-releases-minimax-h3-an-omni-modal-video-model-that-generates-15-second-2k-clips-with-native-stereo-audio-53db5121]]
 
 ## Reports
 
@@ -1064,3 +1074,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-29]]
 - [[2026-07-28]]
 - [[2026-07-31]]
+- [[2026-08-01]]
