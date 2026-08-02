@@ -2,7 +2,7 @@
 title: Game composers and audio
 kind: topic
 sources: ["[[for-honor-a-decade-of-battle-and-music-2xlp-vinyl-1f57433f]]", "[[akira-yamaoka-to-attend-heroes-a-video-game-symphony-in-toronto-dc724948]]", "[[halo-shares-first-taste-of-remastered-campaign-evolved-soundtrack-d89cae28]]", "[[nintendo-switch-pokemon-legends-z-a-mega-dimension-super-music-complete-music-review-d6281f55]]", "[[the-pokemon-legends-z-a-soundtrack-breaks-a-series-ruleand-brings-lumiose-to-life-b6ef8525]]", "[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]", "[[persona-3-reload-original-soundtrack-music-review-7bde2768]]", "[[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]", "[[about-time-indeed-the-crash-bandicoot-4-soundtrack-finally-hits-spotify-6b64122f]]", "[[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]", "[[lineage-ii-celebrates-its-22nd-anniversary-with-the-launch-of-a-special-collector-s-edition-soundtrack-vinyl-8b7f3ea6]]", "[[donkey-kong-bananza-s-229-tracks-added-to-nintendo-music-fd489531]]", "[[resonance-a-plague-tale-legacy-shares-first-taste-of-soundtrack-d3b5f094]]", "[[unbeatable-album-3xlp-vinyl-soundtrack-180-gram-edition-58e3f9df]]", "[[dolphin-park-lp-music-from-wave-race-64-a84d037a]]", "[[splatoon-raiders-added-to-nintendo-music-as-a-special-release-9eb6c24f]]", "[[forza-horizon-6-s-drum-n-bass-hospital-records-soundtrack-is-coming-to-vinyl-01a125b4]]", "[[halo-campaign-evolved-game-review-03acbaa2]]", "[[gg-orchestra-announces-august-30-concert-in-san-francisco-7da70d5d]]", "[[award-winning-gordy-haab-drops-the-first-single-for-star-wars-zero-company-427d9a90]]", "[[rpgfan-game-music-festival-persona-grooves-concert-review-f6799278]]", "[[deltarune-chapter-5-original-game-soundtrack-materia-collective-aec2c961]]", "[[iam8bit-announces-ico-vinyl-soundtrack-and-team-ico-trilogy-restocks-9596e666]]", "[[blue-reflection-official-soundtrack-music-review-154b4718]]"]
-last_updated: 2026-08-01
+last_updated: 2026-08-02
 last_verified: 2026-08-01
 freshness_window_days: 60
 ---
@@ -69,6 +69,12 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 Open caveats and unresolved contradictions are tracked in `## Disputes` and `## Open questions` below.
 
 ## Recent updates
+
+### Updates 2026-08-02
+
+No new sources crossed the ingestion bar today. The allowlist sweep (RPGFan, VGM Online, gamemusic.net, Materia Collective) plus general web search returned only already-tracked items — the Blue Reflection OST review, the ICO / Team ICO vinyl drop, the Infinity (Game Boy Color) OST/arranged reviews, Persona Grooves, the Gordy Haab Star Wars: Zero Company first-single drop, Sakimoto's 40th-anniversary coverage, and the Clair Obscur / Grammy story — or out-of-window material (the Star Wars: Zero Company full 25-track list reveal is from the late-July SDCC cycle, covered by general Star Wars fan outlets rather than a specialist game-music source; the full score still ships August 27). The vinyl-revival, AI-composer debate, live-concert circuit, and adaptive-middleware threads all remain as captured in the 2026-08-01 (Blue Reflection artcore) and prior entries. One general-outlet impressions piece on Game Freak's *Beast of Reincarnation* flagged its "NieR-like" ethereal score but named no composer and covered the music shallowly, so it did not meet the source-quality bar; it is logged as an open question below for a future specialist-outlet capture.
+
+_no contradictions or gaps known yet (last reviewed: 2026-08-02)_
 
 ### Updates 2026-08-01
 
@@ -1005,8 +1011,9 @@ until the underlying entity pages exist:
 - [ ] Does Gordy Haab's back-to-back scoring of multiple flagship Star Wars game entries (*Battlefront II*, *Jedi: Survivor*, *Indiana Jones and the Great Circle*, *Zero Company*) represent a new publisher model for franchise-composer continuity in licensed IP — analogous to Nobuo Uematsu's role in Final Fantasy — or is it contingent on Haab's Grammy profile and individual deal-making rather than a structural policy shift at the licensing level? [[award-winning-gordy-haab-drops-the-first-single-for-star-wars-zero-company-427d9a90]]
 - [ ] Is the ICO vinyl's 40+-track listing the complete ICO OST or a curated selection, and does the 'pentagon and Michiru Oshima' credit reflect the original 2001 game score in full, or does it draw partly from the reissue/arranged material? [[iam8bit-announces-ico-vinyl-soundtrack-and-team-ico-trilogy-restocks-9596e666]]
 - [ ] Does iam8bit's Team ICO trilogy bundle (ICO first-press + Shadow of the Colossus / Last Guardian re-press) signal a broader label strategy of packaging catalog reissues as director-auteur box sets (Ueda), and will similar single-creator anthology pressings follow for other marquee catalogs? [[iam8bit-announces-ico-vinyl-soundtrack-and-team-ico-trilogy-restocks-9596e666]]
+- [ ] Who composed the "NieR-like" ethereal score for Game Freak's Beast of Reincarnation, and will it receive a standalone OST / vinyl release — capture once a specialist game-music outlet covers the score with composer credits rather than gameplay-impressions framing.
 
-_no contradictions or gaps known yet beyond open questions above (last reviewed: 2026-07-29)_
+_no contradictions or gaps known yet beyond open questions above (last reviewed: 2026-08-02)_
 
 ## See also
 
