@@ -239,7 +239,7 @@ sources:
   - "[[visual-studio-july-update-meet-the-new-agent-powered-by-the-github-copilot-sdk-6520c27a]]"
   - "[[cursor-now-on-ipad-6894e69d]]"
   - "[[github-copilot-in-visual-studio-code-july-2026-releases-b302f2ba]]"
-last_updated: 2026-08-01
+last_updated: 2026-08-02
 last_verified: 2026-08-01
 freshness_window_days: 30
 ---
@@ -1937,6 +1937,8 @@ lint stays quiet until each page actually exists:
 - [ ] Cursor hooks self-correction: do `beforeSubmitPrompt` / `afterAgentThought` hook-based loops improve task success rates on realistic multi-step coding tasks, or does the added latency + loop overhead negate the benefit? No published eval yet. [[cursor-now-on-ipad-6894e69d]]
 - [ ] Copilot vision GA — Markdown-in-agent editing: does treating documentation files as first-class agent task inputs (with inline human comments as steering signals) improve prompt-injection surface or reduce it? The threat model for agentic Markdown editing is not yet analyzed. [[github-copilot-in-visual-studio-code-july-2026-releases-b302f2ba]]
 - [ ] Copilot BYOK in Agents window: does running non-Copilot models inside the Agents window affect the harness safety properties (sandboxing, secret filtering) that apply to native Copilot agents, or does BYOK bypass them? Enterprise security posture is unclear. [[github-copilot-in-visual-studio-code-july-2026-releases-b302f2ba]]
+- [ ] The live Codex changelog (developers.openai.com/codex/changelog, Aug 2026) adds three harness/security-relevant capabilities not yet captured in the wiki: Codex reading the integrated terminal for the current thread (dev-server status / failed-build output as in-loop context), a DigitalOcean plugin that provisions a Droplet + SSH and connects it as a remote Codex workspace, and improved dangerous-command detection (more forced-rm forms, clearer rejection reasons). The changelog URL is already pinned to a July 3 2026 snapshot in the wiki (`changelog-codex-openai-developers-afbd4293`), so URL-dedupe blocks re-ingest — these need a distinct dated primary source (blog post or anchored changelog entry) before they can be cited.
+- [ ] Codex schedules deprecation of GPT-5.4 and GPT-5.4-mini for ChatGPT-signed-in users on Aug 31 2026 (API-key sessions retain them), with recommended migration to GPT-5.6 Terra and GPT-5.6 Luna respectively. Confirm whether this model-tier swap changes the Terminal-Bench / SWE-bench Codex-CLI leaderboard numbers already tracked on this page (currently pinned to GPT-5.3-Codex at 77.3% Terminal-Bench 2.0), and find a citable primary source for the deprecation notice.
 
 ## See also
 
