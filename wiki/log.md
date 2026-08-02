@@ -1615,3 +1615,7 @@ DeepSeek-V4-Flash-0731 official release: Terminal-Bench 61.8→82.7, DeepSWE 7.3
 ## [2026-08-01] daily | 5 topics, 10 sources, 17 pages
 
 Daily Research 2026-08-01 complete. PRs #468–#472 all merged. All 5 topics active. Report: wiki/reports/2026-08-01.md.
+
+## [2026-08-02] health | weekly sweep — 2 disputes filed
+
+Weekly health sweep 2026-08-02 complete. 16 candidate sets scanned (15 source-triggered + 1 stale sweep). 2 disputes filed on wiki/topics/frontier-models/index.md (DeepSeek V4 Pro AA Index v4.0/v4.1 version mismatch; Inkling-Small AA independence contradiction). 20 stale pages noted. PR #474.
