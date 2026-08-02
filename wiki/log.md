@@ -1619,3 +1619,7 @@ Daily Research 2026-08-01 complete. PRs #468–#472 all merged. All 5 topics act
 ## [2026-08-02] health | weekly sweep — 2 disputes filed
 
 Weekly health sweep 2026-08-02 complete. 16 candidate sets scanned (15 source-triggered + 1 stale sweep). 2 disputes filed on wiki/topics/frontier-models/index.md (DeepSeek V4 Pro AA Index v4.0/v4.1 version mismatch; Inkling-Small AA independence contradiction). 20 stale pages noted. PR #474.
+
+## [2026-08-02] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#479 (claude/daily-2026-08-02/_report) requeued: auto-merge enabled via MCP after CI passed clean.
