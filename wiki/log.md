@@ -1619,3 +1619,23 @@ Daily Research 2026-08-01 complete. PRs #468–#472 all merged. All 5 topics act
 ## [2026-08-02] health | weekly sweep — 2 disputes filed
 
 Weekly health sweep 2026-08-02 complete. 16 candidate sets scanned (15 source-triggered + 1 stale sweep). 2 disputes filed on wiki/topics/frontier-models/index.md (DeepSeek V4 Pro AA Index v4.0/v4.1 version mismatch; Inkling-Small AA independence contradiction). 20 stale pages noted. PR #474.
+
+## [2026-08-02] daily | games-of-note — 2 sources, 3 pages
+
+Game Freak's Beast of Reincarnation launches Aug 3 on PS5/Xbox/PC day-one Game Pass; game was leaked three days early by pirates. PR #475.
+
+## [2026-08-02] daily | frontier-models — 0 sources, 1 page
+
+Quiet day: leader picture unchanged (Opus 5 #1 AA II 61, Fable 5 #2, GPT-5.6 Sol #3). MiniMax H3 open-weights release logged as open question. PR #476.
+
+## [2026-08-02] daily | agentic-coding — 0 sources, 1 page
+
+Quiet day: Codex Aug changelog changes (integrated terminal reading, DigitalOcean plugin, GPT-5.4 deprecation) logged as open questions pending citable primary source. PR #477.
+
+## [2026-08-02] daily | game-music — 0 sources, 1 page
+
+Quiet day: Beast of Reincarnation score noted as data gap (no specialist-outlet composer coverage). PR #478.
+
+## [2026-08-02] daily | 4 topics, 2 sources, 6 pages
+
+Daily Research 2026-08-02 complete. PRs #475–#478 created (auto-merge enabled; all CI green). ai-in-game-dev skipped (empty page_diffs). Report: wiki/reports/2026-08-02.md.

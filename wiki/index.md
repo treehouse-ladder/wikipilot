@@ -58,6 +58,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[beast-of-reincarnation-release-date-and-everything-we-know-about-game-freak-s-ambitious-rpg-718a1bb8]]
+- [[game-freak-s-beast-of-reincarnation-reportedly-leaked-by-pirates-three-days-before-official-release-557270e0]]
 - [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]
 - [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]]
 - [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]]
