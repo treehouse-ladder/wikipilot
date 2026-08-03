@@ -1010,6 +1010,13 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains-159beea4]]
 - [[deepseek-ai-deepseek-v4-flash-0731-a1a747f4]]
 - [[minimax-releases-minimax-h3-an-omni-modal-video-model-that-generates-15-second-2k-clips-with-native-stereo-audio-53db5121]]
+- [[sites-codex-c237d9dc]]
+- [[claude-code-release-notes-98ffc52d]]
+- [[minimaxai-minimax-h3-hugging-face-1f0e60fd]]
+- [[beast-of-reincarnation-director-says-game-freak-s-priority-is-delivering-a-quality-gameplay-experience-rather-than-graphical-fidelity-214c56c4]]
+- [[proposed-acquisition-of-warner-bros-discovery-by-paramount-skydance-a93b9ab3]]
+- [[paramount-agrees-to-delay-warner-bros-merger-into-2027-f9614bb2]]
+- [[culdcept-the-first-launches-on-steam-e04dccb6]]
 
 ## Reports
 
@@ -1077,3 +1084,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-28]]
 - [[2026-07-31]]
 - [[2026-08-01]]
+- [[2026-08-03]]
