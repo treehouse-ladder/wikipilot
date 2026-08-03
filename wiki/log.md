@@ -1639,3 +1639,7 @@ Quiet day: Beast of Reincarnation score noted as data gap (no specialist-outlet 
 ## [2026-08-02] daily | 4 topics, 2 sources, 6 pages
 
 Daily Research 2026-08-02 complete. PRs #475–#478 created (auto-merge enabled; all CI green). ai-in-game-dev skipped (empty page_diffs). Report: wiki/reports/2026-08-02.md.
+
+## [2026-08-03] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#482 requeued (claude/daily-2026-08-03/frontier-models): mergeable_state=clean, CI green, auto-merge was not enabled — re-queued via MCP enable_pr_auto_merge. Note: gh CLI auth unavailable (GH_TOKEN invalid); scan executed via MCP GitHub tools instead of conflict_resolver_scan.py.
