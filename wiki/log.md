@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-03] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#482 (wiki(frontier-models): daily 2026-08-03) rebased onto main; resolved sources: frontmatter conflict on wiki/topics/ai-in-game-dev/index.md (took .their superset list adding [[minimaxai-minimax-h3-hugging-face-1f0e60fd]]); SHA 015272fa; CI green; auto-merged 10:28 UTC.
+
 ## [2026-07-29] daily | 5 topics, 9 sources, 11 pages
 
 Daily Research 2026-07-29 complete. PRs #449–#453 merged. All 5 topics active. Report: wiki/reports/2026-07-29.md.
