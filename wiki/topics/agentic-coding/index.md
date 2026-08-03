@@ -239,7 +239,9 @@ sources:
   - "[[visual-studio-july-update-meet-the-new-agent-powered-by-the-github-copilot-sdk-6520c27a]]"
   - "[[cursor-now-on-ipad-6894e69d]]"
   - "[[github-copilot-in-visual-studio-code-july-2026-releases-b302f2ba]]"
-last_updated: 2026-08-02
+  - "[[sites-codex-c237d9dc]]"
+  - "[[claude-code-release-notes-98ffc52d]]"
+last_updated: 2026-08-03
 last_verified: 2026-08-01
 freshness_window_days: 30
 ---
@@ -316,6 +318,18 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-03
+
+**Codex ships Sites: agent-built web apps and games deployed on OpenAI-hosted infrastructure.** OpenAI's Codex app added a **Sites** plugin (public beta) that lets the agent create, save, deploy, and inspect websites, dashboards, internal tools, web apps, and **games** hosted directly by OpenAI [[sites-codex-c237d9dc]]. This closes the loop from agentic code generation to a live, hosted deployment target inside the Codex app itself — a coding agent no longer needs an external host/CI to ship a running artifact, and hosted environment variables and secrets are managed from the app sidebar. Governance is enterprise-aware: ChatGPT Business workspaces include Sites by default and ChatGPT Enterprise admins gate it via RBAC [[sites-codex-c237d9dc]]. The explicit inclusion of *games* as a first-class deploy target makes this cross-cutting into the game-dev pipeline (rapid agent-built playable prototypes with zero-config hosting). Counter-signal: the sandbox/isolation model and cost basis for OpenAI-hosted deployed apps are undisclosed, so the prompt-injection blast-radius question the wiki tracks for coding-agent sandboxes now extends to a vendor-hosted runtime the developer does not control.
+
+> Sites is now available in preview in the Codex app. You can use the Sites plugin to create, save, deploy, and inspect websites, dashboards, internal tools, web apps, and games hosted by OpenAI. ChatGPT Business workspaces include Sites by default, and ChatGPT Enterprise admins can enable Sites for the appropriate roles through role-based access control (RBAC). Sites is in public beta. [[sites-codex-c237d9dc]]
+
+**Claude Code walks back dynamic-workflows fan-out to a "fewer than 15 agents" default, and retires Opus 4.7 from fast mode.** The Claude Code release notes now set dynamic workflows to **default to a medium-size guideline aiming for fewer than 15 agents**, and remove Opus 4.7 from fast mode so `/fast` applies only to Opus 5 and Opus 4.8 [[claude-code-release-notes-98ffc52d]]. The sizing default is a notable tempering of the dynamic-workflows research-preview framing tracked on this page; a shipped conservative default suggests the unbounded-fan-out story carries real cost/coordination penalties in practice rather than being the recommended path. The CLI (v1.16.0) also migrated its memory-store header to `agent-memory-2026-07-22` [[claude-code-release-notes-98ffc52d]]. Counter-argument: the release notes present <15 as a default guideline, not a measured optimum — no accompanying data ties agent count to dynamic-workflow success rate, so whether 15 is a cost ceiling or a quality knee is unstated.
+
+> Changed dynamic workflows to default to a medium size guideline (aim for fewer than 15 agents), and removed Opus 4.7 from fast mode so /fast now applies to Opus 5 and Opus 4.8. The CLI (version 1.16.0) now sends agent-memory-2026-07-22 on all memory store calls instead of managed-agents-2026-04-01. [[claude-code-release-notes-98ffc52d]]
+
+_Divergence: see the two open questions filed this run below (Codex Sites hosted-runtime sandbox/cost model; whether Claude Code's <15-agent default is an empirical sweet spot or a cost ceiling)._
 
 ### Updates 2026-08-01
 
@@ -1872,6 +1886,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does Bayesian-Agent's posterior-guided skill evolution [[bayesian-agent-posterior-guided-skill-evolution-for-llm-agent-harnesses-06be4ecd]] reduce to the same flat-capability ceiling [[harness-updating-is-not-harness-benefit-disentangling-evolution-capabilities-in-self-evolving-llm-agents-69573e1c]] reports — i.e. would a cheap Haiku-class agent maintaining the posterior match an Opus-class one, making the belief-tracking the value rather than the evolver?
 - [ ] Cursor's new pre-push `/review` de-duplication (skip re-reviewing a matching PR diff) [[bugbot-is-now-over-3x-faster-22-cheaper-and-finds-10-more-bugs-551056fa]] saves cost when the diff is byte-identical — what is the cache-hit / dedup rate in practice given agents commonly rebase or amend between local `/review` and PR open, busting the exact-diff match?
 - [ ] Does HarnessX's AEGIS trace-driven evolution generalize beyond its five evaluation benchmarks to real-world coding agent workloads with noisier traces and irreproducible environments [[harnessx-a-composable-adaptive-and-evolvable-agent-harness-foundry-b7dba9d4]]?
+- [ ] Codex Sites deploys agent-built web apps and games onto OpenAI-hosted infrastructure [[sites-codex-c237d9dc]] — what is the sandbox/isolation and cost model for the hosted runtime, and does the prompt-injection blast-radius containment the wiki tracks for local coding-agent sandboxes (bubblewrap/seatbelt) extend to a vendor-hosted deploy target the developer does not control?
+- [ ] Claude Code now defaults dynamic workflows to fewer than 15 agents [[claude-code-release-notes-98ffc52d]], tempering the earlier 'hundreds of parallel subagents in a single session' framing [[introducing-claude-opus-4-8-5348a7d2]] — is <15 an empirically-derived success/cost sweet spot or a pure cost-control ceiling, and is there any published measurement of dynamic-workflow resolve rate as a function of agent count?
 - [ ] Does CoDA-Bench's data-intensive sandbox expose failure modes absent in SWE-bench Verified — i.e., do top SWE-bench models fail at CoDA-Bench file-hierarchy exploration, or do the same models lead both leaderboards [[coda-bench-can-code-agents-handle-data-intensive-tasks-6c2259df]]?
 - [ ] Does per-subagent cloud-VM isolation (Cursor `/in-cloud`) change the parallel-subagent cost economics already flagged on this page, or just relocate the same fan-out cost to rented VMs?
 - [ ] Is APEX's three-axis co-evolution gain (+90% on a bespoke health score) reproducible on a standard agentic-coding benchmark, or is it specific to the single NVIDIA Agent Challenge deployment it was measured on?

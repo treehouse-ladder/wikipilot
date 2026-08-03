@@ -15,7 +15,8 @@ sources:
   - "[[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]]"
   - "[[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]"
   - "[[rewriting-bun-in-rust-15a50b3d]]"
-last_updated: 2026-07-23
+  - "[[claude-code-release-notes-98ffc52d]]"
+last_updated: 2026-08-03
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
@@ -67,6 +68,10 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 **Claude Code v2.1.217 adds a session-wide concurrency cap (20 concurrent subagents by default).** Distinct from the new per-session spawn budget (200 spawns via `CLAUDE_CODE_MAX_SUBAGENTS_PER_SESSION`), a separate concurrency cap (`CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS`, default 20) prevents any single message from fanning out unbounded background agents simultaneously [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]. The two limits compose: the concurrency cap governs how many agents run at once; the spawn budget governs the total for the session. The `context: fork` skill attribute now runs in the background by default (opt-out with `background: false`), making background delegation the default posture for skill-driven fan-out.
 
 > Added a cap on concurrently-running subagents (default 20, override with `CLAUDE_CODE_MAX_CONCURRENT_SUBAGENTS`) so one message can't fan out unbounded background agents. [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]
+
+**Claude Code dynamic workflows now default to fewer than 15 agents (August 2026).** The release notes walk back the unbounded-fan-out framing tracked on [[agentic-coding]], setting dynamic workflows to "default to a medium size guideline (aim for fewer than 15 agents)" and removing Opus 4.7 from fast mode [[claude-code-release-notes-98ffc52d]]. This is a notable tempering of the earlier "hundreds of parallel subagents in a single session" research-preview positioning — a shipped conservative default suggests the unbounded-fan-out story carries real cost/coordination penalties in practice rather than being the recommended path. The absence of published data tying agent count to dynamic-workflow success rate leaves the question of whether 15 is a measured optimum or a pure cost ceiling open.
+
+> Changed dynamic workflows to default to a medium size guideline (aim for fewer than 15 agents), and removed Opus 4.7 from fast mode so /fast now applies to Opus 5 and Opus 4.8. [[claude-code-release-notes-98ffc52d]]
 
 ## Disputes
 
