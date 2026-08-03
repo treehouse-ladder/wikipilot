@@ -1643,3 +1643,27 @@ Quiet day: Beast of Reincarnation score noted as data gap (no specialist-outlet 
 ## [2026-08-02] daily | 4 topics, 2 sources, 6 pages
 
 Daily Research 2026-08-02 complete. PRs #475–#478 created (auto-merge enabled; all CI green). ai-in-game-dev skipped (empty page_diffs). Report: wiki/reports/2026-08-02.md.
+
+## [2026-08-03] daily | agentic-coding — 2 sources, 2 pages
+
+OpenAI Codex Sites public beta (agent-built apps on hosted infra) and Claude Code release notes (built-in harness caps parallel subagents at <15 by default). PR #481.
+
+## [2026-08-03] daily | frontier-models — 1 source, 2 pages
+
+MiniMax H3 open weights (288 GB) on Hugging Face: omni-modal video, 15s 2K clips with native stereo audio. Cross-page sweep to ai-in-game-dev. PR #482.
+
+## [2026-08-03] daily | games-of-note — 3 sources, 1 page
+
+Beast of Reincarnation (not a soulslike), WBD/Paramount $110.9B acquisition (DOJ-approved, federally paused), Paramount freeze deal into 2027. Dispute filed on hearing cancellation. PR #483.
+
+## [2026-08-03] daily | ai-in-game-dev — 0 sources, 1 page
+
+Quiet day: cross-page sweeps from agentic-coding and frontier-models added Codex Sites + MiniMax H3 references. Null-sweep audit note filed. PR #484.
+
+## [2026-08-03] daily | game-music — 1 source, 1 page
+
+Culdcept the First Steam launch (July 30); Cepter Edition bundles 2-CD Yuzo Koshiro OST; consoles Sept 8. PR #485.
+
+## [2026-08-03] daily | 5 topics, 7 sources, ~10 pages
+
+Daily Research 2026-08-03 complete. PRs #481–#485 created (auto-merge enabled; all CI green). Report: wiki/reports/2026-08-03.md.
