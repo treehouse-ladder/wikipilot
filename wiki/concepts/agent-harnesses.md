@@ -29,8 +29,10 @@ sources:
   - "[[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]]"
   - "[[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]]"
   - "[[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]"
-last_updated: 2026-07-27
-last_verified: 2026-06-09
+  - "[[why-swe-bench-verified-no-longer-measures-frontier-coding-capabilities-33e5e5bc]]"
+  - "[[separating-signal-from-noise-in-coding-evaluations-e9167e65]]"
+last_updated: 2026-08-04
+last_verified: 2026-08-04
 freshness_window_days: 30
 ---
 
@@ -107,6 +109,12 @@ A June 2026 paper supplies the first constitutive definition of "agent harness,"
 > AgentLens is a production-assessed benchmark for interactive code agents. While most code-agent benchmarks reduce a run to a single bit—did the task pass?—the people who actually use these agents experience the entire trajectory. [[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]
 
 > When official reference patches were replayed across four common types of Google Cloud machines, they satisfied the original benchmark validity rules in every cross-machine replay for only 39/102 GSO tasks, 11/140 SWE-Perf tasks, and 411/498 SWE-fficiency tasks. [[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]
+
+**OpenAI retires SWE-bench Verified — benchmark reliability crisis escalates (August 2026).** OpenAI officially stopped reporting SWE-bench Verified scores, citing fundamental quality problems revealed by an audit of 138 problems o3 failed to consistently solve: ≥59.4% have flawed test cases that reject functionally correct submissions, and 35.5% enforce specific implementation details not specified in the prompt [[why-swe-bench-verified-no-longer-measures-frontier-coding-capabilities-33e5e5bc]]. A follow-up audit of SWE-Bench Pro — marketed as the higher-quality replacement — found a similar ~30% broken-task rate [[separating-signal-from-noise-in-coding-evaluations-e9167e65]]. This escalates the benchmark-reliability critique from "cross-platform reproducibility is unstable" (above) to "the test cases themselves systematically reject correct code." The harness-measurement consequence: any harness-choice-vs-model-choice comparison that uses SWE-bench Verified or SWE-Bench Pro as ground truth inherits at least 30–60% systematic error from the benchmark itself, not the harness or model being measured.
+
+> At least 59.4% of the audited problems have flawed test cases that reject functionally correct submissions. We audited 138 SWE-bench Verified problems that OpenAI o3 did not consistently solve over 64 independent runs, with each case independently reviewed by at least six experienced software engineers. [[why-swe-bench-verified-no-longer-measures-frontier-coding-capabilities-33e5e5bc]]
+
+> We estimate that approximately 30% of the [SWE-Bench Pro] tasks are broken. The datapoint analysis pipeline flagged 200 (27.4%) broken tasks, while the human annotation campaign identified 249 (34.1%). [[separating-signal-from-noise-in-coding-evaluations-e9167e65]]
 
 **Harness-evolution null result and methodological critique (July 2026).** Three papers published in rapid succession challenge the framing that iterating on the harness reliably produces capability gains. "Don't Blame the LLM" [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]] studies 35 sequential harness releases for SWE-bench (model held fixed) and finds **no statistically significant quality improvement** — later versions use ~2× tokens without measurable gains, and failure attribution is systematically displaced to the model. "Rethinking the Evaluation of Harness Evolution" [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]] raises the structural point that harness evolution is a **search procedure** that risks overfitting when evaluated on its own training benchmark, and demonstrates empirically that it does not consistently beat TTS on a held-out Terminal-Bench 2.1 evaluation. "Self-Evolving Agent Harnesses via Gated Semantic Quality-Diversity" [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]] proposes a constructive resolution: separate LLM-driven proposal from **deterministic crediting** (no LLM in the measurement loop), producing +9 to +15.5 pp sealed-test gains retaining 86–147% of training gain across 7 domains.
 
