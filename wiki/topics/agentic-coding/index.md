@@ -244,7 +244,8 @@ sources:
   - "[[why-swe-bench-verified-no-longer-measures-frontier-coding-capabilities-33e5e5bc]]"
   - "[[separating-signal-from-noise-in-coding-evaluations-e9167e65]]"
   - "[[appshots-attach-an-app-window-to-a-codex-thread-5d1f830a]]"
-last_updated: 2026-08-04
+  - "[[google-workspace-plugins-525f131e]]"
+last_updated: 2026-08-05
 last_verified: 2026-08-04
 freshness_window_days: 30
 ---
@@ -327,6 +328,12 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-05
+
+**Cursor ships Google Workspace plugins — the coding agent's tool surface extends into Gmail, Drive, and Calendar via Google's remote MCP servers.** Cursor's changelog adds first-party plugins that connect the agent directly to Gmail, Google Drive, and Google Calendar so it can pull context, draft and update files, and manage inbox/calendar without leaving the IDE [[google-workspace-plugins-525f131e]]. Architecturally the notable detail is the transport: each plugin is a wrapper over **Google's remote MCP server** for that product, so this is a concrete production deployment of the remote-MCP tool pattern the wiki tracks. The plugins grant **write** scopes, not just read — the Gmail plugin can "draft, label, and manage email," Drive can "create, share, and manage files," and Calendar can "create or update meetings" [[google-workspace-plugins-525f131e]] — so the agent's action surface now reaches personal-productivity data outside the repo sandbox.
+
+> New plugins give coding agents direct access to Gmail, Google Drive, and Calendar, so you can pull context, draft and update files, and manage your inbox and calendar without leaving Cursor. Connect Cursor to Gmail via Google's remote MCP server — search, read, draft, label, and manage email. [[google-workspace-plugins-525f131e]]
 
 ### Updates 2026-08-04
 
@@ -1986,6 +1993,8 @@ lint stays quiet until each page actually exists:
 - [ ] What benchmark(s) will emerge as the new frontier differentiator for agentic coding now that SWE-bench Verified is retired?
 - [ ] Does Codex Goal mode's hours-to-days autonomy require new evaluation frameworks (long-horizon tasks, resource usage, intermediate-state recovery)?
 - [ ] How does Appshots' multimodal context injection compare to Claude Code's visual input or Cursor's screenshot features for practical agentic workflows?
+- [ ] Cursor's Google Workspace plugins wrap Google's remote MCP servers with write scopes (draft/label email, create/share files, create/update meetings) [[google-workspace-plugins-525f131e]] — what containment does Cursor apply against a prompt-injection payload delivered via an incoming email or calendar invite the agent reads? No per-action confirmation or egress model is disclosed in the changelog.
+- [ ] Are Cursor's Gmail/Drive/Calendar plugins built on the final 2026-07-28 stateless MCP spec or an earlier session-bound revision, and does routing a coding agent's tool calls through Google's external remote MCP servers introduce measurable latency/token overhead relative to in-process repo tools?
 
 ## See also
 
