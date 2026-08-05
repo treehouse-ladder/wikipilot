@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-05] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#500 (wiki(reports): daily 2026-08-05) rebased onto main; resolved wiki/log.md append conflict (daily research entries merged with conflict-resolver entry); SHA da7a214; auto-merge re-enabled.
+
 ## [2026-08-05] daily | 5 topics, 6 sources, ~14 pages
 
 Daily Research 2026-08-05 complete. PRs #494–#498 created (auto-merge enabled; all CI green). Report: wiki/reports/2026-08-05.md.
