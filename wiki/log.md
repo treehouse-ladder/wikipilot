@@ -16,9 +16,57 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-05] daily | 5 topics, 6 sources, ~14 pages
+
+Daily Research 2026-08-05 complete. PRs #494–#498 created (auto-merge enabled; all CI green). Report: wiki/reports/2026-08-05.md.
+
+## [2026-08-05] daily | games-of-note — 4 sources, 5 pages
+
+Marathon Vault Breaker PvE triples player count; Quantic Dream strike over 115 layoffs; Paramount–WBD antitrust trial set March 2027. PR #498.
+
+## [2026-08-05] daily | game-music — 1 source, 2 pages
+
+Fire Emblem: Fortune's Weave 10-track Special Release on Nintendo Music; Sept 17 Switch 2 launch. PR #497.
+
+## [2026-08-05] daily | agentic-coding — 1 source, 2 pages
+
+Cursor Google Workspace Plugins: coding agents get Gmail, Drive, Calendar access. PR #496.
+
+## [2026-08-05] daily | ai-in-game-dev — 0 sources, 1 pages
+
+Null-sweep; no qualifying sources today. PR #495.
+
+## [2026-08-05] daily | frontier-models — 0 sources, 0 pages
+
+Null-sweep; leader picture unchanged (Opus 5 #1 AA II 61). PR #494.
+
 ## [2026-08-05] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#497 (wiki(game-music): daily 2026-08-05) requeued: CI passed (success at 09:42:52Z), auto-merge enabled via squash.
+
+## [2026-08-04] daily | 5 topics, 7 sources, ~12 pages
+
+Daily Research 2026-08-04 complete. PRs #488–#492 created (auto-merge enabled; all CI green). Report: wiki/reports/2026-08-04.md.
+
+## [2026-08-04] daily | agentic-coding — 3 sources, 2 pages
+
+Coding evaluation signal vs. noise (SWE-bench degraded); Codex AI Sites attach-app feature. PR #492.
+
+## [2026-08-04] daily | game-music — 1 source, 1 page
+
+Starbound 10th-anniversary 2xLP (Lost In Cult × Chucklefish × Schweitzer). PR #491.
+
+## [2026-08-04] daily | games-of-note — 2 sources, 1 page
+
+Beast of Reincarnation ships to mixed reception (73 Metacritic); Paramount–WBD deal frozen to June 2027. PR #490.
+
+## [2026-08-04] daily | ai-in-game-dev — 0 sources, 1 pages
+
+Null-sweep; no qualifying sources today. PR #489.
+
+## [2026-08-04] daily | frontier-models — 1 source, 3 pages
+
+Qwen3-8-Max analyzed; MiniMax H3 cross-referenced; leader picture stable. PR #488.
 
 ## [2026-08-03] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
