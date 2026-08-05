@@ -1667,3 +1667,7 @@ Culdcept the First Steam launch (July 30); Cepter Edition bundles 2-CD Yuzo Kosh
 ## [2026-08-03] daily | 5 topics, 7 sources, ~10 pages
 
 Daily Research 2026-08-03 complete. PRs #481–#485 created (auto-merge enabled; all CI green). Report: wiki/reports/2026-08-03.md.
+
+## [2026-08-05] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#496 (wiki(agentic-coding): daily 2026-08-05) requeued — mergeable_state=clean, CI green, auto-merge re-enabled via squash.
