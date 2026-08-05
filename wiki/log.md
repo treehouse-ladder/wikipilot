@@ -18,6 +18,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## [2026-08-05] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
+pr#503 (wiki(log): conflict-resolver 2026-08-05) rebased onto main; resolved wiki/log.md append conflict (pr#501+pr#502 conflict-resolver entries vs pr#503 entry); auto-merge re-enabled.
+
+## [2026-08-05] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
 pr#502 rebased onto main; resolved wiki/log.md append conflict (pr#501 conflict-resolver entry vs pr#502 conflict-resolver entry); auto-merge re-enabled (sha d7ca56f).
 
 pr#501 (wiki(log): conflict-resolver 2026-08-05) rebased onto main; resolved wiki/log.md append conflict (daily research entries from PR #500 conflicting with prior conflict-resolver entry); SHA fc3d996; auto-merge confirmed active.
