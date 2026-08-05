@@ -58,6 +58,19 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[marathon-mid-season-update-introduces-new-vault-breaker-pve-mode-026c3837]]
+- [[marathon-experimental-pve-mode-is-live-immediately-tripling-its-daily-player-count-03f8ee92]]
+- [[union-calls-for-strike-as-quantic-dream-layoff-negotiations-drag-3acc911b]]
+- [[judge-sets-paramount-warner-bros-antitrust-trial-for-march-2027-6d2e9b5e]]
+- [[fire-emblem-fortune-s-weave-special-release-album-now-available-to-stream-on-nintendo-music-5d755d98]]
+- [[google-workspace-plugins-525f131e]]
+- [[qwen3-8-max-intelligence-performance-price-analysis-0ad85146]]
+- [[appshots-attach-an-app-window-to-a-codex-thread-5d1f830a]]
+- [[separating-signal-from-noise-in-coding-evaluations-e9167e65]]
+- [[why-swe-bench-verified-no-longer-measures-frontier-coding-capabilities-33e5e5bc]]
+- [[beast-of-reincarnation-review-cinematic-focus-fails-its-flashy-action-b49c07ac]]
+- [[beast-of-reincarnation-reviews-metacritic-fc853aed]]
+- [[starbound-10th-anniversary-7169acbb]]
 - [[beast-of-reincarnation-release-date-and-everything-we-know-about-game-freak-s-ambitious-rpg-718a1bb8]]
 - [[game-freak-s-beast-of-reincarnation-reportedly-leaked-by-pirates-three-days-before-official-release-557270e0]]
 - [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]
@@ -1085,3 +1098,5 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-07-31]]
 - [[2026-08-01]]
 - [[2026-08-03]]
+- [[2026-08-04]]
+- [[2026-08-05]]
