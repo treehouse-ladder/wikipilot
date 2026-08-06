@@ -1,7 +1,7 @@
 ---
 title: "Muse Spark"
 kind: entity
-sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[introducing-muse-spark-1-1-f8a95609]]", "[[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]", "[[muse-spark-1-2-3d7d1796]]"]
+sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[introducing-muse-spark-1-1-f8a95609]]", "[[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]", "[[muse-spark-1-2-3d7d1796]]", "[[introducing-muse-code-and-muse-spark-1-2-a73147b0]]"]
 last_updated: "2026-08-06"
 last_verified: "2026-08-06"
 freshness_window_days: 30
@@ -25,9 +25,11 @@ Muse Spark is a multimodal reasoning model that can process text, image, and spe
 
 > Meta's Muse Spark 1.1 (xhigh) scores 51 on the Artificial Analysis Intelligence Index and gains 8 points over Muse Spark 1.0 (43) in three months... three points behind Grok 4.5 (high, 54). [[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]
 
-**Update 2026-08-06 — Muse Spark 1.2.** Meta released Muse Spark 1.2 on August 5, 2026 via the Meta Model API; Artificial Analysis independently scores Muse Spark 1.2 (xhigh) at **AA Intelligence Index v4.1 = 54**, up 3 points from Muse Spark 1.1 (51) and 11 from Muse Spark 1.0 (43, April) [[muse-spark-1-2-3d7d1796]]. It enters effectively **tied with Grok 4.5 (high, 54)** and **one point behind GPT-5.5 (xhigh, 55)**, narrowly behind the unchanged top cluster (Claude Opus 5 max 61, Fable 5 60, GPT-5.6 Sol 59, Kimi K3 57), so it does **not** displace any frontier leader [[muse-spark-1-2-3d7d1796]]. Pricing is unchanged at **$1.25 input / $4.25 output per Mtoken** [[muse-spark-1-2-3d7d1796]]. Muse Spark 1.2 is now Meta's current per-lab flagship, superseding Muse Spark 1.1 (51).
+**Update 2026-08-06 — Muse Spark 1.2 + Muse Code.** Meta released Muse Spark 1.2 on August 5, 2026 via the Meta Model API; Artificial Analysis independently scores Muse Spark 1.2 (xhigh) at **AA Intelligence Index v4.1 = 54**, up 3 points from Muse Spark 1.1 (51) and 11 from Muse Spark 1.0 (43, April) [[muse-spark-1-2-3d7d1796]]. It enters effectively **tied with Grok 4.5 (high, 54)** and **one point behind GPT-5.5 (xhigh, 55)**, narrowly behind the unchanged top cluster (Claude Opus 5 max 61, Fable 5 60, GPT-5.6 Sol 59, Kimi K3 57), so it does **not** displace any frontier leader [[muse-spark-1-2-3d7d1796]]. Pricing is unchanged at **$1.25 input / $4.25 output per Mtoken**, with an additional data-sharing contributor tier at $0.10/$0.20 [[introducing-muse-code-and-muse-spark-1-2-a73147b0]]. Muse Spark 1.2 was **co-trained with Muse Code**, Meta's terminal coding agent, using rejection-sampled harness trajectories — the first production instance of a model co-trained with its own agentic harness [[introducing-muse-code-and-muse-spark-1-2-a73147b0]]. Muse Spark 1.2 is now Meta's current per-lab flagship, superseding Muse Spark 1.1 (51).
 
 > Muse Spark 1.2 (xhigh) scores 54 on the Artificial Analysis Intelligence Index, up 3 points from Muse Spark 1.1 (51) and 11 points from Muse Spark 1.0 (43, April). It enters effectively tied with GPT-5.5 (xhigh, 55) and Grok 4.5 (high, 54). Muse Spark 1.2 (xhigh) costs $1.25 per 1M input tokens and $4.25 per 1M output tokens. [[muse-spark-1-2-3d7d1796]]
+
+> Muse Spark 1.2 was co-trained with Muse Code ... training that included rejection sampled harness trajectories and recipe optimizations alongside the integration of the Muse Code toolset. [[introducing-muse-code-and-muse-spark-1-2-a73147b0]]
 
 ## Disputes
 
@@ -46,6 +48,7 @@ Muse Spark is a multimodal reasoning model that can process text, image, and spe
 
 ## See also
 
+- [[muse-code]]
 - [[frontier-models]]
 - [[claude-opus-4.7]]
 - [[gpt-5.5]]
