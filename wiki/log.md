@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-06] daily | 5 topics, 6 sources, ~14 pages
+
+Daily Research 2026-08-06 complete. 5 topics processed (frontier-models, agentic-coding, games-of-note, ai-in-game-dev, game-music); 6 new sources ingested; ~14 pages touched. PRs #506–#510 created and merged (auto-merge). Report: wiki/reports/2026-08-06.md.
+
+## [2026-08-06] daily | frontier-models — 1 source, 3 pages
+
+Muse Spark 1.2 (AA Index v4.1 = 54): tied with Grok 4.5, one point behind GPT-5.5; no frontier leader displaced. PR #506.
+
+## [2026-08-06] daily | agentic-coding — 3 sources, 5 pages
+
+Meta enters agentic CLI with Muse Code + Muse Spark 1.2 (co-trained with harness); Claude Fable 5 one-shots raccoon-heist game via Playwright loop; LLM CLI 0.32 adds content-addressable log. PR #507.
+
+## [2026-08-06] daily | games-of-note — 2 sources, 3 pages
+
+Halo CE PS5 slow start: 452K copies, ~$28M first month (~1/6 of Xbox); Halo Studios post-launch layoffs amid troubled UE5 migration. PR #508.
+
+## [2026-08-06] daily | ai-in-game-dev — quiet day, 0 sources, 1 page
+
+No qualifying sources today; AI playtesting open question carried forward. PR #509.
+
+## [2026-08-06] daily | game-music — quiet day, 0 sources, 1 page
+
+No qualifying sources today; Beast of Reincarnation composer gap open question carried forward. PR #510.
+
 ## [2026-08-05] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#504 rebased onto main (sha 838e538); resolved wiki/log.md append-order conflict (4th-fire detail vs pr#502 detail already in main); auto-merge re-enabled.

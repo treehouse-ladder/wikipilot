@@ -50,6 +50,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[inkling]]
 - [[kimi-k3]]
 - [[claude-opus-5]]
+- [[muse-code]]
 
 ## Comparisons
 
@@ -660,6 +661,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]
 - [[gui-agents-for-continual-game-generation-00020038]]
 - [[playcoder-making-llm-generated-gui-code-playable-a86fc2af]]
+- [[muse-spark-1-2-3d7d1796]]
+- [[halo-on-ps5-is-off-to-a-slow-start-expert-says-5c7bdec6]]
+- [[halo-studios-hit-by-layoffs-after-campaign-evolved-launch-amid-troubled-development-ac4e334f]]
+- [[introducing-muse-code-and-muse-spark-1-2-a73147b0]]
+- [[one-shotting-a-raccoon-heist-game-using-claude-fable-5-b023d4b3]]
+- [[new-release-of-llm-adds-support-for-reasoning-traces-openai-responses-server-side-tools-and-smarter-logging-98a2deac]]
 
 ## Answers
 
@@ -1100,3 +1107,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-03]]
 - [[2026-08-04]]
 - [[2026-08-05]]
+- [[2026-08-06]]
