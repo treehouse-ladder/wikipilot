@@ -1,9 +1,9 @@
 ---
 title: "Muse Spark"
 kind: entity
-sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[introducing-muse-spark-1-1-f8a95609]]", "[[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]"]
-last_updated: "2026-07-19"
-last_verified: "2026-07-13"
+sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[introducing-muse-spark-1-1-f8a95609]]", "[[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]", "[[muse-spark-1-2-3d7d1796]]"]
+last_updated: "2026-08-06"
+last_verified: "2026-08-06"
 freshness_window_days: 30
 ---
 
@@ -25,6 +25,10 @@ Muse Spark is a multimodal reasoning model that can process text, image, and spe
 
 > Meta's Muse Spark 1.1 (xhigh) scores 51 on the Artificial Analysis Intelligence Index and gains 8 points over Muse Spark 1.0 (43) in three months... three points behind Grok 4.5 (high, 54). [[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]
 
+**Update 2026-08-06 — Muse Spark 1.2.** Meta released Muse Spark 1.2 on August 5, 2026 via the Meta Model API; Artificial Analysis independently scores Muse Spark 1.2 (xhigh) at **AA Intelligence Index v4.1 = 54**, up 3 points from Muse Spark 1.1 (51) and 11 from Muse Spark 1.0 (43, April) [[muse-spark-1-2-3d7d1796]]. It enters effectively **tied with Grok 4.5 (high, 54)** and **one point behind GPT-5.5 (xhigh, 55)**, narrowly behind the unchanged top cluster (Claude Opus 5 max 61, Fable 5 60, GPT-5.6 Sol 59, Kimi K3 57), so it does **not** displace any frontier leader [[muse-spark-1-2-3d7d1796]]. Pricing is unchanged at **$1.25 input / $4.25 output per Mtoken** [[muse-spark-1-2-3d7d1796]]. Muse Spark 1.2 is now Meta's current per-lab flagship, superseding Muse Spark 1.1 (51).
+
+> Muse Spark 1.2 (xhigh) scores 54 on the Artificial Analysis Intelligence Index, up 3 points from Muse Spark 1.1 (51) and 11 points from Muse Spark 1.0 (43, April). It enters effectively tied with GPT-5.5 (xhigh, 55) and Grok 4.5 (high, 54). Muse Spark 1.2 (xhigh) costs $1.25 per 1M input tokens and $4.25 per 1M output tokens. [[muse-spark-1-2-3d7d1796]]
+
 ## Disputes
 
 - [[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]] claims Muse Spark (AA Index 52) sits "within the top 5 models benchmarked" and "behind Gemini 3.1 Pro Preview, GPT-5.4 and Claude Opus 4.6"; however, since this source's publication, Anthropic released Claude Opus 4.7 (AA Index 57, April 16 2026), Claude Opus 4.8 (AA Index 61.4, May 28 2026), and Claude Fable 5 (AA Index 64.9, June 9 2026), all of which rank above Muse Spark's 52. Status: unresolved (confidence: high; sweep: 2026-06-14)
@@ -38,6 +42,7 @@ Muse Spark is a multimodal reasoning model that can process text, image, and spe
 - [ ] When will API access become available, and what will the pricing structure be relative to other frontier models?
 - [ ] Where does Muse Spark now rank on the AA Intelligence Index relative to the post-May releases (Opus 4.7, Opus 4.8, Fable 5)?
 - [ ] Does Muse Spark 1.1's Meta-reported tool-use leadership (MCP Atlas, JobBench) reproduce on the independent AA Coding Agent Index, or is it a vendor-eval artifact given the mid-cluster AA Intelligence Index of 51? [[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]
+- [ ] Does Muse Spark 1.2 (AA Index v4.1 = 54) improve on Muse Spark 1.1's contamination-resistant coding (SWE-Bench Pro 61.5) and Meta-reported tool-use leadership, or is the +3 aggregate gain concentrated in non-coding evals? [[muse-spark-1-2-3d7d1796]]
 
 ## See also
 
