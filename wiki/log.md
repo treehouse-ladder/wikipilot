@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-08] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#516 (wiki(games-of-note): daily 2026-08-08, CI green) requeued auto-merge via enable_pr_auto_merge.
+
 ## [2026-08-06] daily | 5 topics, 6 sources, ~14 pages
 
 Daily Research 2026-08-06 complete. 5 topics processed (frontier-models, agentic-coding, games-of-note, ai-in-game-dev, game-music); 6 new sources ingested; ~14 pages touched. PRs #506–#510 created and merged (auto-merge). Report: wiki/reports/2026-08-06.md.
