@@ -20,6 +20,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 pr#516 (wiki(games-of-note): daily 2026-08-08, CI green) requeued auto-merge via enable_pr_auto_merge.
 
+## [2026-08-08] daily | 5 topics, 0 new sources, 5 pages
+
+Daily Research 2026-08-08 complete. 5 topics processed (agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music); 0 new source pages created; 5 topic index pages touched; 5 new open questions filed. PRs #513–#517 created and merged (auto-merge). Report: wiki/reports/2026-08-08.md.
+
+## [2026-08-08] daily | agentic-coding — 2 sources (existing), 1 page
+
+GPT-5.4/5.4-mini retirement for signed-in ChatGPT users on Aug 31 (Codex changelog); Claude Code auto-compact enforcement for unrecognized model IDs. Both sources already ingested from prior runs. PR #513.
+
+## [2026-08-08] daily | frontier-models — 0 sources, 1 page
+
+Quiet day. Leader picture unchanged: Opus 5=61, Fable 5=60, GPT-5.6 Sol=59, Kimi K3=57. DeepSeek-V4-Flash-0731 baseline gap filed as open question. PR #514.
+
+## [2026-08-08] daily | ai-in-game-dev — 0 sources, 1 page
+
+Quiet day. All sub-areas unchanged from last logged positions. PR #515.
+
+## [2026-08-08] daily | games-of-note — 0 sources, 1 page
+
+Quiet day. Two non-allowlist items (Marvel Tokon via gamereactor.eu; EA privatization follow-up via abcnews.com) filed as open questions. PR #516.
+
+## [2026-08-08] daily | game-music — 0 sources, 1 page
+
+Quiet day. Beast of Reincarnation composer-credit gap still unresolved; all primary threads (vinyl-revival, Halo/O'Donnell dispute, AI-vs-human-composer, Nintendo Music cadence) unchanged. PR #517.
+
 ## [2026-08-06] daily | 5 topics, 6 sources, ~14 pages
 
 Daily Research 2026-08-06 complete. 5 topics processed (frontier-models, agentic-coding, games-of-note, ai-in-game-dev, game-music); 6 new sources ingested; ~14 pages touched. PRs #506–#510 created and merged (auto-merge). Report: wiki/reports/2026-08-06.md.
