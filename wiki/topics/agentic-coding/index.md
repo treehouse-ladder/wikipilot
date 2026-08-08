@@ -248,7 +248,7 @@ sources:
   - "[[separating-signal-from-noise-in-coding-evaluations-e9167e65]]"
   - "[[appshots-attach-an-app-window-to-a-codex-thread-5d1f830a]]"
   - "[[google-workspace-plugins-525f131e]]"
-last_updated: 2026-08-06
+last_updated: 2026-08-08
 last_verified: 2026-08-04
 freshness_window_days: 30
 ---
@@ -331,6 +331,20 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-08
+
+**Quiet day for new allowlist sources — the week's Codex and Claude Code movement all landed on rolling changelog URLs already captured in the wiki.**
+
+OpenAI's Codex rolling changelog [[changelog-codex-openai-developers-afbd4293]] signals that GPT-5.4 and GPT-5.4-mini will be retired for ChatGPT signed-in users on 2026-08-31, with bundled defaults migrating to GPT-5.6 Terra / Luna. API-key-authenticated sessions are explicitly exempted until the models are fully deprecated. This is a downstream consequence of the GPT-5.6 family consolidation already tracked in this wiki — the changelog URL was already ingested; no new distinct-URL source appeared today.
+
+> On August 31, 2026, GPT-5.4 and GPT-5.4-mini will be retired for ChatGPT signed-in users. The bundled default will migrate to GPT-5.6 Terra / Luna. API-key-authenticated sessions are exempt from this transition until the models are fully deprecated. [[changelog-codex-openai-developers-afbd4293]]
+
+Claude Code's `auto-compact` feature now enforces the assumed context window for unrecognized model IDs, per the July rolling CHANGELOG [[claude-code-changelog-background-session-reliability-and-code-review-token-cuts-july-2026-79752d66]]. Operators can opt out via `CLAUDE_CODE_DISABLE_UNKNOWN_MODEL_WINDOW_ENFORCEMENT=1`. The signal matters for teams experimenting with non-listed models: the harness will now conservatively compact rather than allow unbounded context growth on unknown model identifiers.
+
+> auto-compact now enforces the assumed context window for unrecognized model IDs. Set CLAUDE_CODE_DISABLE_UNKNOWN_MODEL_WINDOW_ENFORCEMENT=1 to disable. [[claude-code-changelog-background-session-reliability-and-code-review-token-cuts-july-2026-79752d66]]
+
+_no contradictions or gaps known yet (last reviewed: 2026-08-08)_
 
 ### Updates 2026-08-06
 
@@ -2016,6 +2030,8 @@ lint stays quiet until each page actually exists:
 - [ ] Are Cursor's Gmail/Drive/Calendar plugins built on the final 2026-07-28 stateless MCP spec or an earlier session-bound revision, and does routing a coding agent's tool calls through Google's external remote MCP servers introduce measurable latency/token overhead relative to in-process repo tools?
 - [ ] Does co-training a model with its harness (Meta's Muse Spark 1.2 + Muse Code, via rejection-sampled harness trajectories) actually outperform a general frontier model driving Claude Code / Codex on an independent, contamination-controlled coding benchmark? No third-party eval exists yet [[introducing-muse-code-and-muse-spark-1-2-a73147b0]].
 - [ ] What is the real cost/quality/privacy tradeoff of Muse Code's 'contributor' pricing tier ($0.10/$0.20 vs $1.25/$4.25) that trades training-data rights for a ~10x discount — is the underlying model identical, and what code-confidentiality blast radius does it create for enterprise repos? [[introducing-muse-code-and-muse-spark-1-2-a73147b0]]
+- [ ] OpenAI's Codex changelog [[changelog-codex-openai-developers-afbd4293]] confirms GPT-5.4 / GPT-5.4-mini retirement for ChatGPT-signed-in users on 2026-08-31 with bundled-default migration to GPT-5.6 Terra / Luna — does swapping the default Codex driver model move Terminal-Bench / SWE-bench scores independent of the harness, and does the API-key-authenticated-session exemption actually keep CI harnesses pinned to gpt-5.4 working past the cutoff?
+- [ ] Claude Code's auto-compact now enforces the assumed context window for unrecognized model IDs (opt out via CLAUDE_CODE_DISABLE_UNKNOWN_MODEL_WINDOW_ENFORCEMENT=1), per [[claude-code-changelog-background-session-reliability-and-code-review-token-cuts-july-2026-79752d66]] — does holding a native-1M-window model to a conservative default via compaction degrade long-horizon (SWE-EVO / RoadmapBench) performance vs. running at full 1M, or is the compaction loss immaterial below a 200K working set?
 
 ## See also
 
