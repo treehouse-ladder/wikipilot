@@ -2,7 +2,7 @@
 title: Game composers and audio
 kind: topic
 sources: ["[[for-honor-a-decade-of-battle-and-music-2xlp-vinyl-1f57433f]]", "[[akira-yamaoka-to-attend-heroes-a-video-game-symphony-in-toronto-dc724948]]", "[[halo-shares-first-taste-of-remastered-campaign-evolved-soundtrack-d89cae28]]", "[[nintendo-switch-pokemon-legends-z-a-mega-dimension-super-music-complete-music-review-d6281f55]]", "[[the-pokemon-legends-z-a-soundtrack-breaks-a-series-ruleand-brings-lumiose-to-life-b6ef8525]]", "[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]", "[[persona-3-reload-original-soundtrack-music-review-7bde2768]]", "[[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]", "[[about-time-indeed-the-crash-bandicoot-4-soundtrack-finally-hits-spotify-6b64122f]]", "[[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]", "[[lineage-ii-celebrates-its-22nd-anniversary-with-the-launch-of-a-special-collector-s-edition-soundtrack-vinyl-8b7f3ea6]]", "[[donkey-kong-bananza-s-229-tracks-added-to-nintendo-music-fd489531]]", "[[resonance-a-plague-tale-legacy-shares-first-taste-of-soundtrack-d3b5f094]]", "[[unbeatable-album-3xlp-vinyl-soundtrack-180-gram-edition-58e3f9df]]", "[[dolphin-park-lp-music-from-wave-race-64-a84d037a]]", "[[splatoon-raiders-added-to-nintendo-music-as-a-special-release-9eb6c24f]]", "[[forza-horizon-6-s-drum-n-bass-hospital-records-soundtrack-is-coming-to-vinyl-01a125b4]]", "[[halo-campaign-evolved-game-review-03acbaa2]]", "[[gg-orchestra-announces-august-30-concert-in-san-francisco-7da70d5d]]", "[[award-winning-gordy-haab-drops-the-first-single-for-star-wars-zero-company-427d9a90]]", "[[rpgfan-game-music-festival-persona-grooves-concert-review-f6799278]]", "[[deltarune-chapter-5-original-game-soundtrack-materia-collective-aec2c961]]", "[[iam8bit-announces-ico-vinyl-soundtrack-and-team-ico-trilogy-restocks-9596e666]]", "[[blue-reflection-official-soundtrack-music-review-154b4718]]", "[[culdcept-the-first-launches-on-steam-e04dccb6]]", "[[starbound-10th-anniversary-7169acbb]]", "[[fire-emblem-fortune-s-weave-special-release-album-now-available-to-stream-on-nintendo-music-5d755d98]]"]
-last_updated: 2026-08-06
+last_updated: 2026-08-08
 last_verified: 2026-08-01
 freshness_window_days: 60
 ---
@@ -69,6 +69,12 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 Open caveats and unresolved contradictions are tracked in `## Disputes` and `## Open questions` below.
 
 ## Recent updates
+
+### Updates 2026-08-08
+
+**Daily sweep (2026-08-08) — quiet day, no qualifying new sources.** A full sweep across the charter's sub-areas (vinyl-revival/boutique labels, live concerts, AI-vs-human-composer, adaptive-audio middleware, franchise-composer handoffs, awards) returned only already-tracked items or out-of-scope content. The *Beast of Reincarnation* composer credit gap (added 2026-08-04) remains unresolved — no specialist outlet has yet published a dedicated score credit or composer interview for Game Freak's August 4 action-RPG, despite the game now having shipped to mixed critical reception (73 Metacritic, logged in games-of-note). All primary threads — vinyl-revival, composer-consent controversy (Halo / Marty O'Donnell [[halo-composer-hits-out-at-vinyl-release-none-of-the-performers-will-see-a-dime-6a0e1792]]), AI-vs-human-composer tension, Nintendo Music cadence — hold at their most-recently logged positions.
+
+_no contradictions or gaps known yet (last reviewed: 2026-08-08)_
 
 ### Updates 2026-08-06
 
