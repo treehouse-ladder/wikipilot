@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-08] manual | conflict-resolver — 0 rebased, 0 requeued, 0 lint-fixed, 1 failed
+
+pr#519 kind=rebase resolved=false — concurrent push landed during rebase (48cdc21→7f67d64); --force-with-lease correctly refused; PR merged via concurrent fix (sha 30f6029) at 09:51 UTC
+
 ## [2026-08-08] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#519 (wiki(reports): daily 2026-08-08, mergeable_state=clean, CI green) requeued auto-merge via enable_pr_auto_merge.
