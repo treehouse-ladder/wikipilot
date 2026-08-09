@@ -1803,3 +1803,27 @@ Culdcept the First Steam launch (July 30); Cepter Edition bundles 2-CD Yuzo Kosh
 ## [2026-08-03] daily | 5 topics, 7 sources, ~10 pages
 
 Daily Research 2026-08-03 complete. PRs #481–#485 created (auto-merge enabled; all CI green). Report: wiki/reports/2026-08-03.md.
+
+## [2026-08-09] daily | games-of-note — 1 source, 2 pages
+
+EA $700M cost-cutting plan including $170M in "organizational efficiencies" (layoffs at Respawn + others). Dispute filed vs "gaming is the new oil" thesis. PR #524.
+
+## [2026-08-09] daily | frontier-models — 1 source, 4 pages
+
+AA Intelligence Index v4.1.1: Claude Opus 5 #1 at 63 (was 61), Fable 5 at 62 (was 60), Sol at 61 (was 59). Grading-robustness fixes via GPT-5.6 Luna medium grader. Entity frontmatter updated for Fable 5. Summary regenerated. PR #525.
+
+## [2026-08-09] daily | agentic-coding — 3 sources, 4 pages
+
+Auto mode now default for Claude Code Pro/Max/Team; Trajectory Labs 0/720 red-team eval. Codex: GPT-5.6 Terra/Luna GA, Goal mode GA, visual-feedback gap. Two disputes filed. Summary regenerated (separate commit, post-merge-queue). PR #526.
+
+## [2026-08-09] daily | ai-in-game-dev — 2 sources, 3 pages
+
+EU AI Act Article 50 disclosure obligations effective 2026-08-02 — market-follows scope, EUR 15M/3% fines, artistic/creative-works carve-out. EC "no obligation" counter-position. Dispute + 2 open questions filed. Summary updated. PR #527.
+
+## [2026-08-09] daily | game-music — 2 sources, 3 pages
+
+Guild Wars 3 composer team: Kazuma Jinnouchi (Halo/Metal Gear/Star Wars) lead, City of Prague Philharmonic. Rust OST first vinyl: Laced Records 3xLP, $62, Jan 2027. PR #528.
+
+## [2026-08-09] daily | 5 topics, 9 sources, ~16 pages
+
+Daily Research 2026-08-09 complete. PRs #524–#528 created (auto-merge enabled). Report: wiki/reports/2026-08-09.md.
