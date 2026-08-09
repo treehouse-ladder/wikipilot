@@ -667,6 +667,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[introducing-muse-code-and-muse-spark-1-2-a73147b0]]
 - [[one-shotting-a-raccoon-heist-game-using-claude-fable-5-b023d4b3]]
 - [[new-release-of-llm-adds-support-for-reasoning-traces-openai-responses-server-side-tools-and-smarter-logging-98a2deac]]
+- [[fans-fear-ea-bloodbath-amid-700-million-in-reported-cost-cutting-b8d5d9ad]]
+- [[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]]
+- [[auto-mode-is-now-the-default-in-claude-code-for-pro-max-and-team-plans-756be989]]
+- [[chatgpt-codex-changelog-afbd4293]]
+- [[moonlight-mayhem-raccoon-heist-by-codex-gpt-5-6-sol-ultra-eee2b82f]]
+- [[the-ai-deadline-nobody-in-games-is-talking-about-lands-on-2-august-with-real-fines-attached-98f6c59d]]
+- [[what-does-the-eu-s-ai-transparency-rules-mean-for-games-1ed3de5c]]
+- [[guild-wars-3-behind-the-scenes-video-discusses-music-ce0a702a]]
+- [[rust-game-soundtrack-is-coming-to-vinyl-for-the-first-time-7b17cd5d]]
 
 ## Answers
 
@@ -1109,3 +1118,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-05]]
 - [[2026-08-06]]
 - [[2026-08-08]]
+- [[2026-08-09]]
