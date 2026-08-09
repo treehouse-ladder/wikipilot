@@ -1,9 +1,9 @@
 ---
 title: "Claude Opus 5"
 kind: entity
-sources: ["[[introducing-claude-opus-5-c34a3276]]", "[[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]", "[[anthropic-launches-claude-opus-5-its-fourth-model-in-two-months-and-it-tops-fable-5-on-most-benchmarks-7253a489]]", "[[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]", "[[claude-opus-5-the-new-leader-in-agentic-knowledge-work-92cf92da]]"]
-last_updated: 2026-07-26
-last_verified: 2026-07-26
+sources: ["[[introducing-claude-opus-5-c34a3276]]", "[[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]", "[[anthropic-launches-claude-opus-5-its-fourth-model-in-two-months-and-it-tops-fable-5-on-most-benchmarks-7253a489]]", "[[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]", "[[claude-opus-5-the-new-leader-in-agentic-knowledge-work-92cf92da]]", "[[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]]"]
+last_updated: 2026-08-09
+last_verified: 2026-08-09
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
 output_cost_per_mtoken: 25.00
@@ -41,6 +41,10 @@ Artificial Analysis's primary evaluation (published 2026-07-26) confirms **Claud
 > Claude Opus 5 (max) scores 61 on the Artificial Analysis Intelligence Index, effectively tied with Claude Fable 5 (max, 60), and ahead of GPT-5.6 Sol (max, 59), Kimi K3 (57). [[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]
 
 > On GDPval-AA v2, Claude Opus 5 (max) scores 1861 Elo, more than 100 points ahead of Claude Fable 5 and GPT-5.6 Sol (max), making it a leader in agentic knowledge work tasks. [[claude-opus-5-the-new-leader-in-agentic-knowledge-work-92cf92da]]
+
+Under the Artificial Analysis Intelligence Index **v4.1.1** patch (2026-08-06 — grader upgrade to GPT-5.6 Luna medium for HLE/AA-LCR/AA-Omniscience, τ³-Banking → v1.0.1), Opus 5 (max) **remains #1 and re-scales up from v4.1 = 61 to 63** as a grading-robustness effect rather than a capability change [[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]]. (Entity frontmatter still records the v4.1 = 61 figure; Opus 5 is outside [frontier_models].roster, so the 63 value is filed for backfill under the topic's Open questions.)
+
+> Claude Opus 5 remains in the #1 position with an Index of 63. Overall model rankings remain largely consistent, with a slight increase in scores due to improved grading robustness. [[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]]
 
 ## Disputes
 
