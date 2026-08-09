@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-09] health | weekly sweep — 2 disputes filed
+
+Scanned 9 candidate sets (8 source-trigger + 1 stale sweep). Filed 2 disputes: agentic-coding dynamic-workflows default cap vs Summary framing; nemotron-3-ultra AA Intelligence Index v4.0/v4.1 version mismatch. 22 stale synthesis pages flagged. 0 lint errors.
+
 ## [2026-08-08] manual | conflict-resolver — 0 rebased, 0 requeued, 0 lint-fixed, 1 failed
 
 pr#519 kind=rebase resolved=false — concurrent push landed during rebase (48cdc21→7f67d64); --force-with-lease correctly refused; PR merged via concurrent fix (sha 30f6029) at 09:51 UTC

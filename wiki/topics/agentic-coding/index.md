@@ -248,7 +248,7 @@ sources:
   - "[[separating-signal-from-noise-in-coding-evaluations-e9167e65]]"
   - "[[appshots-attach-an-app-window-to-a-codex-thread-5d1f830a]]"
   - "[[google-workspace-plugins-525f131e]]"
-last_updated: 2026-08-08
+last_updated: 2026-08-09
 last_verified: 2026-08-04
 freshness_window_days: 30
 ---
@@ -1815,6 +1815,7 @@ lint stays quiet until each page actually exists:
 - [[enterprise-managed-settings-in-the-github-copilot-app-and-copilot-cloud-agent-beab8f92]] positions enterprise managed settings (managed-settings.json plugin allowlists) as a centralized governance layer for the agentic coding surface — controlling which tool-servers and marketplaces agents can reach; [[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]] argues that runtime prompt-injection attacks cannot be blocked by supply-chain allowlists because the attack arrives via content the model processes (issue text, file contents, tool outputs), not via the tool identity. Status: unresolved — the two sources address different layers of the same threat model (supply-chain access control vs. runtime content injection) rather than being directly contradictory, but together they leave the question of whether enterprise managed settings materially reduces agentic-coding attack surface open.
 - [[why-swe-bench-verified-no-longer-measures-frontier-coding-capabilities-33e5e5bc]] reports OpenAI retired SWE-bench Verified because ≥59.4% of tasks are flawed; the broader community (Anthropic, Google, etc.) continues to publish SWE-bench Verified scores as meaningful differentiators. Status: unresolved — whether the community follows OpenAI's lead in retiring the benchmark is unknown.
 - [[separating-signal-from-noise-in-coding-evaluations-e9167e65]] puts SWE-Bench Pro broken-task rate at ~30% (human annotation: 34.1%); the benchmark was marketed as a higher-quality replacement for SWE-bench Verified. Status: unresolved — whether SWE-Bench Pro is meaningfully more reliable after correction is not established.
+- [[parallel-subagents]] reports August 2026 Claude Code release notes changed the dynamic-workflows default to 'aim for fewer than 15 agents' [[claude-code-release-notes-98ffc52d]], explicitly tempering the prior 'hundreds of parallel subagents' positioning; the ## Summary of this page still states Claude Code 'ships dynamic workflows that plan and dispatch hundreds of parallel subagents in one session'. Status: unresolved — the default cap does not remove the hundreds-of-agents capability but does contradict the Summary's present-tense framing of it as the shipped default.
 
 ## Open questions
 

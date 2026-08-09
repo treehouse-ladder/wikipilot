@@ -3,7 +3,7 @@ title: "NVIDIA Nemotron 3 Ultra"
 kind: entity
 aliases: ["Nemotron 3 Ultra", "nemotron-3-ultra", "NVIDIA Nemotron Ultra 550B"]
 sources: ["[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[nemotron-3-ultra-launches-june-4-the-first-open-frontier-model-built-for-agents-302459f4]]", "[[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]"]
-last_updated: 2026-07-16
+last_updated: 2026-08-09
 last_verified: 2026-06-04
 freshness_window_days: 30
 aa_intelligence_index: 48
@@ -23,6 +23,10 @@ The model's headline differentiator is throughput: 300+ tokens/second on a pre-r
 The GA launch is now confirmed on schedule [[nemotron-3-ultra-launches-june-4-the-first-open-frontier-model-built-for-agents-302459f4]]. The model is positioned as the first open frontier model purpose-built for agents, with up to 5x faster inference and up to 30% lower cost than open frontier models in its class.
 
 > Nemotron 3 Ultra became available on June 4, 2026 on Hugging Face, ModelScope, OpenRouter, and build.nvidia.com.
+
+## Disputes
+
+- Frontmatter `aa_intelligence_index: 48` (sourced from the v4.0 AA Index via [[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]) conflicts with the body's v4.1 figure of 38 [[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]. The v4.0→v4.1 AA Intelligence Index rescale is the known cause, but the frontmatter field is not version-tagged, creating an implicit version mismatch between the structured entity data and the prose. Status: unresolved — a human reviewer should decide whether to update the frontmatter to 38 (v4.1) or add a `aa_intelligence_index_version` annotation.
 
 ## Open questions
 
