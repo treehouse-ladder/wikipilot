@@ -1,15 +1,15 @@
 ---
 title: "Claude Fable 5"
 kind: entity
-sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]", "[[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]", "[[redeploying-claude-fable-5-fdd9745e]]", "[[commerce-department-gives-green-light-for-anthropic-to-bring-back-fable-5-e657d00f]]", "[[more-details-on-fable-5-s-cyber-safeguards-and-our-jailbreak-framework-aaef033d]]", "[[sqlite-utils-4-0rc2-mostly-written-by-claude-fable-for-about-149-25-e673d7b5]]", "[[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]]", "[[swe-1-7-frontier-intelligence-at-a-fraction-of-the-cost-0d1dcf4a]]", "[[four-frontier-launches-in-eight-days-six-labs-now-field-a-model-above-50-on-the-artificial-analysis-intelligence-index-951b658c]]", "[[introducing-claude-opus-5-c34a3276]]", "[[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]", "[[anthropic-launches-claude-opus-5-its-fourth-model-in-two-months-and-it-tops-fable-5-on-most-benchmarks-7253a489]]", "[[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]"]
-last_updated: 2026-07-26
-last_verified: 2026-07-26
+sources: ["[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[claude-fable-5-the-first-public-mythos-class-model-672c92f6]]", "[[claude-fable-5-intelligence-performance-price-analysis-ceeaabf7]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[announcing-aa-briefcase-a-frontier-knowledge-work-evaluation-9a51826e]]", "[[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]", "[[redeploying-claude-fable-5-fdd9745e]]", "[[commerce-department-gives-green-light-for-anthropic-to-bring-back-fable-5-e657d00f]]", "[[more-details-on-fable-5-s-cyber-safeguards-and-our-jailbreak-framework-aaef033d]]", "[[sqlite-utils-4-0rc2-mostly-written-by-claude-fable-for-about-149-25-e673d7b5]]", "[[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]]", "[[swe-1-7-frontier-intelligence-at-a-fraction-of-the-cost-0d1dcf4a]]", "[[four-frontier-launches-in-eight-days-six-labs-now-field-a-model-above-50-on-the-artificial-analysis-intelligence-index-951b658c]]", "[[introducing-claude-opus-5-c34a3276]]", "[[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]", "[[anthropic-launches-claude-opus-5-its-fourth-model-in-two-months-and-it-tops-fable-5-on-most-benchmarks-7253a489]]", "[[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]", "[[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]]"]
+last_updated: 2026-08-09
+last_verified: 2026-08-09
 freshness_window_days: 30
 input_cost_per_mtoken: 10.00
 output_cost_per_mtoken: 50.00
 cost_source: "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]"
-aa_intelligence_index: 60
-aa_intelligence_index_source: "[[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]"
+aa_intelligence_index: 62
+aa_intelligence_index_source: "[[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]]"
 gdpval_aa_elo: 1818
 gdpval_aa_elo_source: "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]"
 swe_bench_verified: null
@@ -67,6 +67,10 @@ Safety routing: queries in cybersecurity and biology domains are automatically r
 > Claude Opus 4.8 (max, 56) is the most intelligent available model according to the Artificial Analysis Intelligence Index v4.1. Claude Fable 5 (with fallback) leads at 60 but is currently unavailable; GPT-5.5 (xhigh) scores 55. [[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]
 
 > GDPval-AA v2 is the highest weighted evaluation in the Intelligence Index v4.1. Claude Opus 4.8 scored 1638 on GDPval-AA v2, the highest among available models (Claude Fable 5 with fallback scored 1818 but is currently unavailable; GPT-5.5 xhigh scored 1531). [[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]
+
+Under the Artificial Analysis Intelligence Index **v4.1.1** patch (2026-08-06 — grader upgrade to GPT-5.6 Luna medium for HLE/AA-LCR/AA-Omniscience, τ³-Banking → v1.0.1), Fable 5 (max, Opus 4.8 fallback) **re-scales from v4.1 = 60 to 62** as a grading-robustness effect rather than a capability change — ordering unchanged (#2 overall behind Opus 5 at 63) [[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]].
+
+> Claude Opus 5 remains in the #1 position with an Index of 63. Overall model rankings remain largely consistent, with a slight increase in scores due to improved grading robustness. [[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]]
 
 ## Disputes
 
