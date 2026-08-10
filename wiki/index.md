@@ -59,6 +59,11 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]
+- [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]
+- [[ea-lays-off-unknown-number-of-individuals-in-fan-care-and-recruitment-2beac2cc]]
+- [[gta-6-trailer-being-paywalled-behind-netflix-is-upsetting-a-lot-of-people-but-it-s-a-sign-of-the-times-a8c12ce6]]
+- [[why-gta-6-doesn-t-have-early-access-according-to-take-two-ac70a37e]]
 - [[marathon-mid-season-update-introduces-new-vault-breaker-pve-mode-026c3837]]
 - [[marathon-experimental-pve-mode-is-live-immediately-tripling-its-daily-player-count-03f8ee92]]
 - [[union-calls-for-strike-as-quantic-dream-layoff-negotiations-drag-3acc911b]]

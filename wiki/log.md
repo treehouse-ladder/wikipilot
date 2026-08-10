@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-10] daily | agentic-coding — 2 sources, 3 pages
+
+HarnessOpt-Bench (arXiv 2608.06301): first benchmark for automated harness optimization. LoopsBench (arXiv 2608.00267): long-horizon coding agent eval, 112 tasks, 8 languages; Opus-4.7 + Claude Code = 25% resolution. 1 dispute + 3 open questions filed. PR #530.
+
+## [2026-08-10] daily | games-of-note — 3 sources, 2 pages
+
+EA post-acquisition layoffs breach October no-changes pledge (fan-care + recruitment, Hyderabad). GTA 6 Netflix 6-hour trailer exclusive Aug 27; $80 price confirmed; no early access by design. Summary regenerated. PR #531.
+
+## [2026-08-10] daily | frontier-models — 0 sources, 1 page
+
+Quiet day. Leader picture unchanged (Opus 5 = 63, Fable 5 = 62, GPT-5.6 Sol = 61). GPT-5 Lite launch with no public benchmarks filed as open question. PR #532.
+
+## [2026-08-10] daily | ai-in-game-dev — 0 sources, 1 page
+
+Quiet day. EU AI Act Article 50 (effective 2026-08-02) remains most recent binding regulatory event. PR #533.
+
+## [2026-08-10] daily | game-music — 0 sources, 1 page
+
+Quiet day. GW3/Jinnouchi reveal and Rust vinyl (2026-08-09) remain most recent events. PR #534.
+
+## [2026-08-10] daily | 5 topics, 5 sources, ~7 pages
+
+Daily Research 2026-08-10 complete. 5 topics processed (agentic-coding, games-of-note, frontier-models, ai-in-game-dev, game-music); 5 new source pages created; ~7 pages touched. PRs #530–#534 created (auto-merge enabled). Report: wiki/reports/2026-08-10.md.
+
 ## [2026-08-09] health | weekly sweep — 2 disputes filed
 
 Scanned 9 candidate sets (8 source-trigger + 1 stale sweep). Filed 2 disputes: agentic-coding dynamic-workflows default cap vs Summary framing; nemotron-3-ultra AA Intelligence Index v4.0/v4.1 version mismatch. 22 stale synthesis pages flagged. 0 lint errors.
