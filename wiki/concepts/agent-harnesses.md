@@ -31,8 +31,10 @@ sources:
   - "[[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]"
   - "[[why-swe-bench-verified-no-longer-measures-frontier-coding-capabilities-33e5e5bc]]"
   - "[[separating-signal-from-noise-in-coding-evaluations-e9167e65]]"
-last_updated: 2026-08-04
-last_verified: 2026-08-04
+  - "[[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]"
+  - "[[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]"
+last_updated: 2026-08-10
+last_verified: 2026-08-10
 freshness_window_days: 30
 ---
 
@@ -125,6 +127,12 @@ A June 2026 paper supplies the first constitutive definition of "agent harness,"
 > We separate LLM-driven proposal from deterministic crediting via sampling, measurement, and significance testing. On sealed-test sets, the gated QD framework yields +9 to +15.5 pp gains, retaining 86–147% of training gain across 7 domains and 3 benchmarks. [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]
 
 These three papers together narrow the conditions under which harness evolution is claimed to work: the constructive case requires deterministic (not LLM-judged) crediting and held-out (not in-distribution) evaluation. The Claw-SWE-Bench harness≈model finding [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]] — "harness choice matters as much as model choice" — is now in tension with the "Don't Blame" null result; the reconciliation may hinge on whether that study's harnesses were varied in controlled ways or sequentially iterated like the ones in the null-result paper.
+
+**HarnessOpt-Bench and LoopsBench extend measurement taxonomy (August 2026).** Two arXiv benchmarks extend the harness-measurement landscape in orthogonal directions. HarnessOpt-Bench treats automated harness optimization as a measurable LLM capability distinct from downstream task performance, scoring the optimizer itself under expensive, stochastic evaluation with a fixed target-evaluation budget [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]. LoopsBench frames the infrastructure frontier as shifting from harness engineering to "loop engineering" for sustained long-horizon development, modeling each task as a dependency DAG over separately testable units with source-evidenced prerequisite edges [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]. The strongest configuration on LoopsBench (Opus 4.7 + Claude Code + outer continuation) resolves only 25.00%, reproducing the ~25% long-horizon ceiling observed on SWE-EVO and similar multi-file-evolution suites.
+
+> As LLMs are increasingly deployed within agentic systems, their capabilities depend not only on the model weights but also on the harness: the prompts, tools, control flow, memory, and orchestration code surrounding them. This makes automated harness optimization -- the iterative and evaluation-guided improvement of a harness by an AI system -- both an important route to improving AI systems and a demanding capability for AI systems themselves. Yet the community lacks a common protocol for measuring how well frontier LLMs perform at this task. [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]
+
+> LOOPSBENCH is a long-horizon benchmark for loop engineering in coding agent evaluation. Each task is a dependency DAG over separately testable development units with source-evidenced prerequisite edges. LOOPSBENCH comprises 112 tasks from authentic sources spanning 8 programming languages and 9 domains. The strongest configuration, Opus-4.7 with Claude Code and outer continuation, resolves 25.00% of tasks. [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]
 
 ## Disputes
 

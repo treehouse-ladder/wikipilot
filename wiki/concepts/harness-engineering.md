@@ -43,8 +43,10 @@ sources:
   - "[[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]]"
   - "[[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]]"
   - "[[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]"
-last_updated: 2026-07-27
-last_verified: 2026-07-14
+  - "[[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]"
+  - "[[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]"
+last_updated: 2026-08-10
+last_verified: 2026-08-10
 freshness_window_days: 30
 ---
 
@@ -189,6 +191,12 @@ The third, "Self-Evolving Agent Harnesses via Gated Semantic Quality-Diversity" 
 > We separate LLM-driven proposal from deterministic crediting via sampling, measurement, and significance testing. On sealed-test sets, the gated QD framework yields +9 to +15.5 pp gains, retaining 86–147% of training gain across 7 domains and 3 benchmarks. [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]
 
 **Three-regime taxonomy.** The harness-evolution literature now has three distinct empirical regimes: (a) **uncontrolled sequential iteration** — the null-result, 2× token bloat case; (b) **LLM-driven search with in-distribution evaluation** — structurally over-fit, inconsistently beats TTS; (c) **gated proposal/crediting with held-out evaluation** — the constructive case with demonstrated sealed-test gains. Any claim of harness-evolution gains should specify which regime it belongs to.
+
+**HarnessOpt-Bench and LoopsBench: separate harness-optimizer capability and loop-engineering infrastructure (2026-08-10).** Two August 2026 arXiv benchmarks extend the harness-evolution measurement taxonomy in orthogonal directions. HarnessOpt-Bench (Scale AI) frames automated harness optimization as a measurable LLM capability distinct from the evolved harness's downstream task performance, treating the optimizer — an LLM paired with a coding harness — as the scored object [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]. This is a conceptual shift from prior harness-evolution benchmarks that measure the evolved harness's task score: HarnessOpt-Bench measures the optimizer's ability to improve a target agent's seed harness under expensive, stochastic evaluation with a fixed target-evaluation budget. LoopsBench (Microsoft / Nanjing University) argues that the infrastructure frontier is shifting from harness engineering to "loop engineering" as agents move to sustained long-horizon development, modeling each task as a dependency DAG over separately testable development units with source-evidenced prerequisite edges [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]. The strongest configuration (Opus 4.7 + Claude Code + outer continuation) resolves only 25.00% of LoopsBench tasks, reproducing the ~25% long-horizon ceiling observed on SWE-EVO and similar multi-file-evolution suites — framing the loop-engineering axis as the next frontier beyond harness-layer optimization for long-horizon agent workflows.
+
+> As LLMs are increasingly deployed within agentic systems, their capabilities depend not only on the model weights but also on the harness: the prompts, tools, control flow, memory, and orchestration code surrounding them. This makes automated harness optimization -- the iterative and evaluation-guided improvement of a harness by an AI system -- both an important route to improving AI systems and a demanding capability for AI systems themselves. Yet the community lacks a common protocol for measuring how well frontier LLMs perform at this task. [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]
+
+> LOOPSBENCH is a long-horizon benchmark for loop engineering in coding agent evaluation. Each task is a dependency DAG over separately testable development units with source-evidenced prerequisite edges. LOOPSBENCH comprises 112 tasks from authentic sources spanning 8 programming languages and 9 domains. The strongest configuration, Opus-4.7 with Claude Code and outer continuation, resolves 25.00% of tasks. [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]
 
 ## Disputes
 
