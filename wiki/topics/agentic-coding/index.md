@@ -98,6 +98,8 @@ sources:
   - "[[higher-usage-limits-for-claude-and-a-compute-deal-with-spacex-f53c308c]]"
   - "[[inside-anthropic-2026-developer-conference-6fa21d8d]]"
   - "[[scaling-long-running-autonomous-coding-8b8b74bd]]"
+  - "[[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]"
+  - "[[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]"
   - "[[agentlens-production-assessed-trajectory-reviews-for-coding-agent-evaluation-08e820bc]]"
   - "[[introducing-muse-code-and-muse-spark-1-2-a73147b0]]"
   - "[[one-shotting-a-raccoon-heist-game-using-claude-fable-5-b023d4b3]]"
@@ -251,8 +253,8 @@ sources:
   - "[[auto-mode-is-now-the-default-in-claude-code-for-pro-max-and-team-plans-756be989]]"
   - "[[chatgpt-codex-changelog-afbd4293]]"
   - "[[moonlight-mayhem-raccoon-heist-by-codex-gpt-5-6-sol-ultra-eee2b82f]]"
-last_updated: 2026-08-09
-last_verified: 2026-08-09
+last_updated: 2026-08-10
+last_verified: 2026-08-10
 freshness_window_days: 30
 ---
 
@@ -334,6 +336,18 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-10
+
+Two new arXiv benchmarks landed on the harness-evolution and long-horizon eval fronts.
+
+**HarnessOpt-Bench** (Scale AI) treats automated harness optimization as a first-class, measurable LLM capability and supplies the protocol the field was missing for it [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]. An optimizer — an LLM paired with a coding harness — is handed a target agent's seed harness, graded evaluation feedback, and a fixed target-evaluation budget, and is scored on end-to-end harness improvement under expensive, stochastic evaluation. This sits alongside the wiki's existing harness-optimizer-evaluation line ([[towards-direct-evaluation-of-harness-optimizers-via-priority-ranking-b643bf3f]], [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]]) but frames the optimizer capability itself, rather than the evolved harness, as the measured object.
+
+> As LLMs are increasingly deployed within agentic systems, their capabilities depend not only on the model weights but also on the harness: the prompts, tools, control flow, memory, and orchestration code surrounding them. This makes automated harness optimization -- the iterative and evaluation-guided improvement of a harness by an AI system -- both an important route to improving AI systems and a demanding capability for AI systems themselves. Yet the community lacks a common protocol for measuring how well frontier LLMs perform at this task. [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]
+
+**LoopsBench** (Microsoft / Nanjing University) argues coding-agent infrastructure is shifting from harness engineering to "loop engineering" as agents move to sustained long-horizon development, and models each task as a dependency DAG over separately testable development units with source-evidenced prerequisite edges [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]. Across 112 tasks (8 languages, 9 domains), the strongest configuration — Opus 4.7 with Claude Code and outer continuation — resolves only 25.00%, reproducing the ~25% long-horizon ceiling the wiki already tracks on multi-file-evolution suites like [[swe-evo-benchmarking-coding-agents-in-long-horizon-software-evolution-scenarios-21a62ebd]].
+
+> LOOPSBENCH is a long-horizon benchmark for loop engineering in coding agent evaluation. Each task is a dependency DAG over separately testable development units with source-evidenced prerequisite edges. LOOPSBENCH comprises 112 tasks from authentic sources spanning 8 programming languages and 9 domains. The strongest configuration, Opus-4.7 with Claude Code and outer continuation, resolves 25.00% of tasks. [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]
 
 ### Updates 2026-08-09
 
@@ -1835,6 +1849,7 @@ lint stays quiet until each page actually exists:
 - [[why-swe-bench-verified-no-longer-measures-frontier-coding-capabilities-33e5e5bc]] reports OpenAI retired SWE-bench Verified because ≥59.4% of tasks are flawed; the broader community (Anthropic, Google, etc.) continues to publish SWE-bench Verified scores as meaningful differentiators. Status: unresolved — whether the community follows OpenAI's lead in retiring the benchmark is unknown.
 - [[separating-signal-from-noise-in-coding-evaluations-e9167e65]] puts SWE-Bench Pro broken-task rate at ~30% (human annotation: 34.1%); the benchmark was marketed as a higher-quality replacement for SWE-bench Verified. Status: unresolved — whether SWE-Bench Pro is meaningfully more reliable after correction is not established.
 - [[parallel-subagents]] reports August 2026 Claude Code release notes changed the dynamic-workflows default to 'aim for fewer than 15 agents' [[claude-code-release-notes-98ffc52d]], explicitly tempering the prior 'hundreds of parallel subagents' positioning; the ## Summary of this page still states Claude Code 'ships dynamic workflows that plan and dispatch hundreds of parallel subagents in one session'. Status: unresolved — the default cap does not remove the hundreds-of-agents capability but does contradict the Summary's present-tense framing of it as the shipped default.
+- [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]] reports the strongest configuration (Opus 4.7 + Claude Code + outer continuation) resolves only 25.00% of long-horizon loop-engineering tasks structured as dependency DAGs; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents single-issue, repository-reset test-patch resolution as the human-filtered gold standard for coding-agent capability. Status: unresolved — same overestimation direction as [[swe-evo-benchmarking-coding-agents-in-long-horizon-software-evolution-scenarios-21a62ebd]] and [[chainswe-benchmarking-coding-agents-on-multi-bug-software-maintenance-50ac361b]] but on a loop-engineering / prerequisite-DAG axis single-issue leaderboards cannot observe.
 
 ## Open questions
 
@@ -2026,7 +2041,9 @@ lint stays quiet until each page actually exists:
 - [ ] How often do benign full-access coding-agent runs cause destructive filesystem actions like the Codex $HOME-deletion bug, and does mandatory sandboxing/auto-review eliminate the class rather than mitigate instances? [[a-quote-from-thibault-sottiaux-6bcf21fe]]
 - [ ] Does the Harness Effect's 41% cost-reduction finding hold for coding-specific harnesses (Claude Code, Codex, Cursor, Windsurf) operating on real SWE-bench-style tasks, or is the result specific to the general enterprise task distribution the study used? [[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]]
 - [ ] If harness design is model-invariant (every model gets cheaper under the optimized harness), does this imply harness engineering should be the first optimization pass for agentic coding cost reduction — before any model upgrade decision? [[the-harness-effect-how-orchestration-design-sets-the-token-economics-of-enterprise-agentic-ai-be93a25e]]
-
+- [ ] Does HarnessOpt-Bench's optimizer-capability score [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]] correlate with end-to-end SWE-bench/Terminal-Bench gains, and does its held-out target-evaluation protocol avoid the same-benchmark overfitting that [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]] found afflicts harness-evolution results?
+- [ ] LoopsBench frames "loop engineering" as a distinct axis from harness engineering [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]] — does its outer-continuation loop primitive map onto the loop-primitive taxonomy that [[inside-the-scaffold-a-source-code-taxonomy-of-coding-agent-architectures-7e37a967]] found 11 of 13 scaffolds combine, or is it a separate design point?
+- [ ] LoopsBench's 25.00% ceiling is on Opus 4.7 + Claude Code with outer continuation [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]] — does the harness-evolution / loop-optimization gain measured by [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]] actually lift the long-horizon ceiling, or does the model-dominates finding of [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] cap it?
 - [ ] Does Claude Code's default cap of 20 concurrently-running subagents [[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]] bottleneck the adaptive-depth parallelism SwarmResearch reported beating fixed scaling on 13/15 tasks, or is 20-wide fan-out already beyond the point of diminishing returns for open-ended optimization?
 - [ ] OpenAI Codex CLI v0.145.0 (reportedly July 21, 2026) allegedly added sub-agent support in paginated thread history, persisted memories, and an /import path that migrates Cursor and Claude Code settings/MCP servers/commands — needs a fetchable-verbatim source before ingestion. Does /import establish the first cross-vendor subagent/config interchange the wiki's existing open questions ask for?
 - [ ] Does the new per-session subagent-spawn budget (200) interact with MCP Tasks-based long-horizon dispatch [[the-2026-07-28-mcp-specification-release-candidate-1a1752b8]] — i.e. do out-of-process MCP Tasks bypass the in-process spawn cap, giving an uncapped delegation path around the guardrail?
