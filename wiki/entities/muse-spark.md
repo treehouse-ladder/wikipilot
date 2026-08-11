@@ -1,8 +1,8 @@
 ---
 title: "Muse Spark"
 kind: entity
-sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[introducing-muse-spark-1-1-f8a95609]]", "[[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]", "[[muse-spark-1-2-3d7d1796]]", "[[introducing-muse-code-and-muse-spark-1-2-a73147b0]]"]
-last_updated: "2026-08-06"
+sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[introducing-muse-spark-1-1-f8a95609]]", "[[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]", "[[muse-spark-1-2-3d7d1796]]", "[[introducing-muse-code-and-muse-spark-1-2-a73147b0]]", "[[introducing-muse-glimmer-c60b75d4]]"]
+last_updated: "2026-08-11"
 last_verified: "2026-08-06"
 freshness_window_days: 30
 ---
@@ -30,6 +30,10 @@ Muse Spark is a multimodal reasoning model that can process text, image, and spe
 > Muse Spark 1.2 (xhigh) scores 54 on the Artificial Analysis Intelligence Index, up 3 points from Muse Spark 1.1 (51) and 11 points from Muse Spark 1.0 (43, April). It enters effectively tied with GPT-5.5 (xhigh, 55) and Grok 4.5 (high, 54). Muse Spark 1.2 (xhigh) costs $1.25 per 1M input tokens and $4.25 per 1M output tokens. [[muse-spark-1-2-3d7d1796]]
 
 > Muse Spark 1.2 was co-trained with Muse Code ... training that included rejection sampled harness trajectories and recipe optimizations alongside the integration of the Muse Code toolset. [[introducing-muse-code-and-muse-spark-1-2-a73147b0]]
+
+Five days after Muse Spark 1.2, Meta released **Muse Glimmer**, a 30B Apache-2.0 open-weights model optimized for agentic coding [[introducing-muse-glimmer-c60b75d4]]. Unlike the API-only Muse Spark line, Muse Glimmer is open-weights, letting users run it in their own harness rather than via the Meta Model API. Meta reports strong full-task benchmark scores (SWE-Bench, MCP-Atlas, τ-Bench, DeepSearch QA), but these are Meta's own numbers — no independent third-party verification yet [[introducing-muse-glimmer-c60b75d4]].
+
+> Muse Glimmer is a new 30B model from Meta released under a clean Apache 2.0 license, optimized for end-to-end agentic task completion. It achieves strong success rates on full-task benchmarks including DeepSearch QA, MCP-Atlas, tau-Bench and SWE-Bench, measuring its ability to work within scaffolds, write and debug code, and resolve multi-turn requests from start to finish. [[introducing-muse-glimmer-c60b75d4]]
 
 ## Disputes
 
