@@ -1,7 +1,7 @@
 ---
 title: "Muse Spark"
 kind: entity
-sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[introducing-muse-spark-1-1-f8a95609]]", "[[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]", "[[muse-spark-1-2-3d7d1796]]", "[[introducing-muse-code-and-muse-spark-1-2-a73147b0]]", "[[introducing-muse-glimmer-c60b75d4]]"]
+sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[introducing-muse-spark-1-1-f8a95609]]", "[[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]", "[[muse-spark-1-2-3d7d1796]]", "[[introducing-muse-code-and-muse-spark-1-2-a73147b0]]", "[[introducing-muse-glimmer-c60b75d4]]", "[[muse-glimmer-benchmarks-and-analysis-e12a4eb2]]"]
 last_updated: "2026-08-11"
 last_verified: "2026-08-06"
 freshness_window_days: 30
@@ -34,6 +34,10 @@ Muse Spark is a multimodal reasoning model that can process text, image, and spe
 Five days after Muse Spark 1.2, Meta released **Muse Glimmer**, a 30B Apache-2.0 open-weights model optimized for agentic coding [[introducing-muse-glimmer-c60b75d4]]. Unlike the API-only Muse Spark line, Muse Glimmer is open-weights, letting users run it in their own harness rather than via the Meta Model API. Meta reports strong full-task benchmark scores (SWE-Bench, MCP-Atlas, τ-Bench, DeepSearch QA), but these are Meta's own numbers — no independent third-party verification yet [[introducing-muse-glimmer-c60b75d4]].
 
 > Muse Glimmer is a new 30B model from Meta released under a clean Apache 2.0 license, optimized for end-to-end agentic task completion. It achieves strong success rates on full-task benchmarks including DeepSearch QA, MCP-Atlas, tau-Bench and SWE-Bench, measuring its ability to work within scaffolds, write and debug code, and resolve multi-turn requests from start to finish. [[introducing-muse-glimmer-c60b75d4]]
+
+**Update 2026-08-10 — Muse Glimmer (distilled variant).** Meta released **Muse Glimmer** on August 10, 2026, a 30B-parameter distilled variant of Muse Spark 1.2 optimized for local deployment on consumer hardware [[muse-glimmer-benchmarks-and-analysis-e12a4eb2]]. It scores 35 on the Artificial Analysis Intelligence Index — far below the Muse Spark 1.2 parent model (54) but strong for its size class — and is designed to run on a single H100 at BF16 or an RTX 5090 / higher-spec MacBook at 4-bit (~18 GB) [[muse-glimmer-benchmarks-and-analysis-e12a4eb2]]. Released under Apache 2.0, it is aimed at local coding agents rather than raw-intelligence competition, trained for end-to-end agentic task completion, multi-step reasoning, and LLM-as-judge use.
+
+> Muse Glimmer is a 30B-parameter model released under Apache 2.0. It's small enough to self-host on a single GPU, with weights at ~60 GB in BF16 and ~18 GB in 4-bit precision. [[muse-glimmer-benchmarks-and-analysis-e12a4eb2]]
 
 ## Disputes
 
