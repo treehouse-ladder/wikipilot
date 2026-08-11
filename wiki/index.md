@@ -681,6 +681,9 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[what-does-the-eu-s-ai-transparency-rules-mean-for-games-1ed3de5c]]
 - [[guild-wars-3-behind-the-scenes-video-discusses-music-ce0a702a]]
 - [[rust-game-soundtrack-is-coming-to-vinyl-for-the-first-time-7b17cd5d]]
+- [[introducing-muse-glimmer-c60b75d4]]
+- [[muse-glimmer-benchmarks-and-analysis-e12a4eb2]]
+- [[one-of-the-year-s-best-indie-games-sold-over-1-million-copies-in-less-than-a-week-663103c9]]
 
 ## Answers
 
@@ -1124,3 +1127,5 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-06]]
 - [[2026-08-08]]
 - [[2026-08-09]]
+- [[2026-08-10]]
+- [[2026-08-11]]

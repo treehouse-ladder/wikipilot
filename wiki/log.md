@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-11] daily | 5 topics, 3 sources, ~9 pages
+
+Daily Research 2026-08-11 complete. 5 topics processed (agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music); 3 new source pages; ~9 pages touched. PRs #536–#540 created and merged (auto-merge). Report: wiki/reports/2026-08-11.md.
+
+## [2026-08-11] daily | game-music — 0 sources, 1 page
+
+Quiet day. Big Walk (94 Metacritic, new 2026 critical leader) has no established composer credits yet; GW3/Jinnouchi reveal and Rust vinyl (2026-08-09) remain most recent events. PR #540.
+
+## [2026-08-11] daily | games-of-note — 1 source, 2 pages
+
+Big Walk (Tummy Games, launched Aug 5) takes 2026 critical crown with 94 Metacritic, surpassing Mina the Hollower (93); 1M copies sold in 6 days. Summary updated. PR #539.
+
+## [2026-08-11] daily | ai-in-game-dev — 0 sources, 1 page
+
+Quiet day. EU AI Act Article 50 enforcement regime (effective 2026-08-02) unchanged; no qualifying new sources across engine-native AI, 3D-gen, NPC/voice, or disclosure/workforce. PR #538.
+
+## [2026-08-11] daily | frontier-models — 1 source, 3 pages
+
+Meta releases Muse Glimmer (30B, Apache 2.0, Aug 10): AA index 35, distilled from Muse Spark 1.2, deployable on single H100 or RTX 5090. Does not displace leader (Claude Opus 5, 63). PR #537.
+
+## [2026-08-11] daily | agentic-coding — 1 source, 1 page
+
+Muse Glimmer launch: Meta's local 30B model targeting agentic coding workflows; AA intelligence index 35 vs frontier 63. PR #536.
+
 ## [2026-08-10] daily | agentic-coding — 2 sources, 3 pages
 
 HarnessOpt-Bench (arXiv 2608.06301): first benchmark for automated harness optimization. LoopsBench (arXiv 2608.00267): long-horizon coding agent eval, 112 tasks, 8 languages; Opus-4.7 + Claude Code = 25% resolution. 1 dispute + 3 open questions filed. PR #530.
