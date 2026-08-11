@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-11] manual | conflict-resolver — 0 rebased, 0 requeued, 0 lint-fixed, 1 failed
+
+pr#537 kind=rebase resolved=false — branch deleted mid-run; PR was merged concurrently by operator while agent ran (no-op outcome, content now in main)
+
 ## [2026-08-10] daily | agentic-coding — 2 sources, 3 pages
 
 HarnessOpt-Bench (arXiv 2608.06301): first benchmark for automated harness optimization. LoopsBench (arXiv 2608.00267): long-horizon coding agent eval, 112 tasks, 8 languages; Opus-4.7 + Claude Code = 25% resolution. 1 dispute + 3 open questions filed. PR #530.
