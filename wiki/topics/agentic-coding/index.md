@@ -253,7 +253,8 @@ sources:
   - "[[auto-mode-is-now-the-default-in-claude-code-for-pro-max-and-team-plans-756be989]]"
   - "[[chatgpt-codex-changelog-afbd4293]]"
   - "[[moonlight-mayhem-raccoon-heist-by-codex-gpt-5-6-sol-ultra-eee2b82f]]"
-last_updated: 2026-08-10
+  - "[[introducing-muse-glimmer-c60b75d4]]"
+last_updated: 2026-08-11
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -336,6 +337,12 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-11
+
+**Meta extends the Muse line into open weights with Muse Glimmer, a 30B Apache-2.0 model tuned for agentic task completion.** Five days after Muse Code + Muse Spark 1.2 (the harness-co-trained pay-as-you-go pair already tracked on this page), Meta released Muse Glimmer, a 30B model under a clean Apache 2.0 license optimized for end-to-end agentic task completion — i.e. an open-weights model you can drop into your own coding harness rather than a hosted CLI [[introducing-muse-glimmer-c60b75d4]]. Meta reports strong success rates on full-task suites including SWE-Bench, MCP-Atlas, τ-Bench and DeepSearch QA, framed around reliable schema-precise tool use, long-horizon multi-step reasoning, and vision input [[introducing-muse-glimmer-c60b75d4]]. Counter-signal: every number here is Meta's own; there is no independent third-party benchmark yet, so whether a 30B open-weights model driving a harness competes with a frontier general model in Claude Code / Codex remains unverified — the same caveat this page already attached to the Muse Code / Muse Spark 1.2 co-training claims.
+
+> Muse Glimmer is a new 30B model from Meta released under a clean Apache 2.0 license, optimized for end-to-end agentic task completion. It achieves strong success rates on full-task benchmarks including DeepSearch QA, MCP-Atlas, tau-Bench and SWE-Bench, measuring its ability to work within scaffolds, write and debug code, and resolve multi-turn requests from start to finish. [[introducing-muse-glimmer-c60b75d4]]
 
 ### Updates 2026-08-10
 
@@ -2072,6 +2079,7 @@ lint stays quiet until each page actually exists:
 - [ ] What is the real cost/quality/privacy tradeoff of Muse Code's 'contributor' pricing tier ($0.10/$0.20 vs $1.25/$4.25) that trades training-data rights for a ~10x discount — is the underlying model identical, and what code-confidentiality blast radius does it create for enterprise repos? [[introducing-muse-code-and-muse-spark-1-2-a73147b0]]
 - [ ] OpenAI's Codex changelog [[changelog-codex-openai-developers-afbd4293]] confirms GPT-5.4 / GPT-5.4-mini retirement for ChatGPT-signed-in users on 2026-08-31 with bundled-default migration to GPT-5.6 Terra / Luna — does swapping the default Codex driver model move Terminal-Bench / SWE-bench scores independent of the harness, and does the API-key-authenticated-session exemption actually keep CI harnesses pinned to gpt-5.4 working past the cutoff?
 - [ ] Claude Code's auto-compact now enforces the assumed context window for unrecognized model IDs (opt out via CLAUDE_CODE_DISABLE_UNKNOWN_MODEL_WINDOW_ENFORCEMENT=1), per [[claude-code-changelog-background-session-reliability-and-code-review-token-cuts-july-2026-79752d66]] — does holding a native-1M-window model to a conservative default via compaction degrade long-horizon (SWE-EVO / RoadmapBench) performance vs. running at full 1M, or is the compaction loss immaterial below a 200K working set?
+- [ ] Does Meta's Muse Glimmer (30B, Apache 2.0) hold up on an independent, harness-disclosed SWE-bench Verified run against a frontier general model driving Claude Code / Codex, or are the reported SWE-Bench / MCP-Atlas / τ-Bench numbers vendor-optimistic?
 
 ## See also
 
