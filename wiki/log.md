@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-11] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#542 (wiki(reports): daily 2026-08-11, mergeable_state=clean, CI green) merged via MCP merge_pull_request (gh GraphQL unavailable in this environment).
+
 ## [2026-08-11] daily | 5 topics, 3 sources, ~9 pages
 
 Daily Research 2026-08-11 complete. 5 topics processed (agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music); 3 new source pages; ~9 pages touched. PRs #536–#540 created and merged (auto-merge). Report: wiki/reports/2026-08-11.md.
