@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-12] daily | 5 topics, 6 sources, ~15 pages
+
+Daily Research 2026-08-12 complete. 5 topics processed (agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music); 6 new source pages; ~15 pages touched. PRs #544–#548 created and merged (auto-merge). Report: wiki/reports/2026-08-12.md.
+
+## [2026-08-12] daily | games-of-note — 1 source, 3 pages
+
+Supermassive Games begins third round of layoffs in three years (up to 75 roles, post-Directive 8020 underperformance). New entity page supermassive-games.md created. PR #548.
+
+## [2026-08-12] daily | ai-in-game-dev — 1 source, 2 pages
+
+EA SEED's Script to Scene pipeline (text → playable mission) showcased at Advancing AI in Games Summit 2026; publisher AI bullishness vs developer-floor skepticism polarization noted. Summary updated. PR #547.
+
+## [2026-08-12] daily | game-music — 0 sources, 1 page
+
+Quiet day. Planet of Lana II announced but composer credits not yet established; no qualifying game-audio sources found. PR #546.
+
+## [2026-08-12] daily | frontier-models — 1 source, 3 pages
+
+OpenAI launches GPT-5.6-Cyber (95% cybersecurity task completion rate) and expands Daybreak initiative for authorized offensive-security workflows. Entity gpt-5.6-sol updated with cyber variant. PR #545.
+
+## [2026-08-12] daily | agentic-coding — 3 sources, 6 pages
+
+Three arXiv papers on agent harness self-evolution: One Recipe Many Harnesses (2608.10178), EvO-Bench (2608.09096), and Ouroboros (2608.08311). Concept pages agent-harnesses and harness-engineering updated. PR #544.
+
 ## [2026-08-11] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#542 (wiki(reports): daily 2026-08-11, mergeable_state=clean, CI green) merged via MCP merge_pull_request (gh GraphQL unavailable in this environment).
