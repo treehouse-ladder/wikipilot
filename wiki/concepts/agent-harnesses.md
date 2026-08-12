@@ -33,7 +33,10 @@ sources:
   - "[[separating-signal-from-noise-in-coding-evaluations-e9167e65]]"
   - "[[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]"
   - "[[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]"
-last_updated: 2026-08-10
+  - "[[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]]"
+  - "[[evo-bench-can-language-models-improve-agent-harness-c2121d1b]]"
+  - "[[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]"
+last_updated: 2026-08-12
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -133,6 +136,8 @@ These three papers together narrow the conditions under which harness evolution 
 > As LLMs are increasingly deployed within agentic systems, their capabilities depend not only on the model weights but also on the harness: the prompts, tools, control flow, memory, and orchestration code surrounding them. This makes automated harness optimization -- the iterative and evaluation-guided improvement of a harness by an AI system -- both an important route to improving AI systems and a demanding capability for AI systems themselves. Yet the community lacks a common protocol for measuring how well frontier LLMs perform at this task. [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]
 
 > LOOPSBENCH is a long-horizon benchmark for loop engineering in coding agent evaluation. Each task is a dependency DAG over separately testable development units with source-evidenced prerequisite edges. LOOPSBENCH comprises 112 tasks from authentic sources spanning 8 programming languages and 9 domains. The strongest configuration, Opus-4.7 with Claude Code and outer continuation, resolves 25.00% of tasks. [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]
+
+**Harness-evolution methodology advances and counter-positions (August 2026).** Three fresh arXiv papers deepen the evaluation debate around self-evolving harnesses. "One Recipe, Many Harnesses" supplies the attribution methodology the field lacked — holding a self-evolution recipe fixed across 8 languages × 3 base models and routing every harness edit through a typed failure signal recorded as a falsifiable contract, making each modification attributable to benchmark-specific adaptation vs. language knowledge vs. base-model compensation [[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]]. Evo-Bench frames harness-evolving capability as an intrinsic model property and indicts prior evaluations for failing to isolate harness improvements from base-model strength or prevent task-specific overfitting [[evo-bench-can-language-models-improve-agent-harness-c2121d1b]]. Ouroboros proposes a self-developing coding agent whose tools/prompts/context/core evolve through reviewed commits, claiming SOTA via a review step between proposal and adoption [[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]. These sit alongside the null-result and methodological-critique line this page tracks — the reviewed-commit gate may or may not escape the flat-capability ceiling and 2× token cost without quality gain prior studies found.
 
 ## Disputes
 

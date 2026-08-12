@@ -254,7 +254,10 @@ sources:
   - "[[chatgpt-codex-changelog-afbd4293]]"
   - "[[moonlight-mayhem-raccoon-heist-by-codex-gpt-5-6-sol-ultra-eee2b82f]]"
   - "[[introducing-muse-glimmer-c60b75d4]]"
-last_updated: 2026-08-11
+  - "[[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]]"
+  - "[[evo-bench-can-language-models-improve-agent-harness-c2121d1b]]"
+  - "[[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]"
+last_updated: 2026-08-12
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -337,6 +340,22 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-12
+
+**Three fresh arXiv papers push on the harness-evolution line the wiki already tracks heavily — two attack the *evaluation* of self-evolution, one claims a self-developing SOTA coding agent.**
+
+**One Recipe, Many Harnesses** (UIUC / IBM) supplies the attribution methodology the harness-evolution debate has lacked: it holds a single self-evolution recipe fixed across a grid of eight programming languages (Multi-SWE-Bench) and three base models, routing every harness edit through a typed failure signal recorded as a *falsifiable contract*, so each modification is attributable after the fact to benchmark-specific adaptation vs. language-specific engineering knowledge vs. base-model compensation [[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]]. This is the first design on the wiki that lets you ask *what* a self-evolved harness actually encoded, rather than only *how much* it lifted a single leaderboard — directly relevant to the wiki's open in-distribution-vs-held-out critique from [[rethinking-the-evaluation-of-harness-evolution-for-agents-30f62a6e]].
+
+> Self-evolving harnesses are closed-loop systems in which an agent inspects its own rollouts and edits its prompts, tools, and memory. Prior work shows they reliably improve coding agents, but it remains unclear whether they encode benchmark-specific adaptations, language-specific engineering knowledge, or compensation for limitations of the underlying model. We hold an evolution recipe fixed across a grid of eight programming languages (Multi-SWE-Bench) and three base models. [[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]]
+
+**Evo-Bench** frames harness-evolving capability as an intrinsic, measurable model property and explicitly indicts prior evaluations for failing to isolate harness improvements from base-model strength, prevent task-specific overfitting, or capture long-horizon iterative research — the same three confounds the wiki flags against positive harness-evolution results [[evo-bench-can-language-models-improve-agent-harness-c2121d1b]]. Caveat: Evo-Bench measures Search/Office/General agent domains, not coding specifically, so its transfer to the Multi-SWE-Bench coding regime is asserted-by-analogy rather than measured.
+
+> We study harness evolution -- the agent's capacity to autonomously optimize its own operating harness. Systematically benchmarking this capability remains challenging, as existing evaluations fail to isolate harness improvements from base model strength, prevent task-specific overfitting, or capture long-horizon iterative research. [[evo-bench-can-language-models-improve-agent-harness-c2121d1b]]
+
+**Ouroboros** is the counter-position: a self-developing *coding* agent whose tools, prompts, context assembly, and core implementation improve through *reviewed commits* that become the runtime for later work, claiming SOTA via two evolution modes (recursive free evolution and experience-driven core evolution) [[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]. The reviewed-commit gate is the architecturally novel bit — it inserts a review step between proposal and adoption, distinct from the unstructured sequential iteration that prior wiki sources found produced no significant quality gain.
+
+> Ouroboros is a self-developing agent harness whose tools, prompts, context assembly, and core implementation improve through reviewed commits that become the runtime for later work. [[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]
 
 ### Updates 2026-08-11
 
@@ -1857,6 +1876,9 @@ lint stays quiet until each page actually exists:
 - [[separating-signal-from-noise-in-coding-evaluations-e9167e65]] puts SWE-Bench Pro broken-task rate at ~30% (human annotation: 34.1%); the benchmark was marketed as a higher-quality replacement for SWE-bench Verified. Status: unresolved — whether SWE-Bench Pro is meaningfully more reliable after correction is not established.
 - [[parallel-subagents]] reports August 2026 Claude Code release notes changed the dynamic-workflows default to 'aim for fewer than 15 agents' [[claude-code-release-notes-98ffc52d]], explicitly tempering the prior 'hundreds of parallel subagents' positioning; the ## Summary of this page still states Claude Code 'ships dynamic workflows that plan and dispatch hundreds of parallel subagents in one session'. Status: unresolved — the default cap does not remove the hundreds-of-agents capability but does contradict the Summary's present-tense framing of it as the shipped default.
 - [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]] reports the strongest configuration (Opus 4.7 + Claude Code + outer continuation) resolves only 25.00% of long-horizon loop-engineering tasks structured as dependency DAGs; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents single-issue, repository-reset test-patch resolution as the human-filtered gold standard for coding-agent capability. Status: unresolved — same overestimation direction as [[swe-evo-benchmarking-coding-agents-in-long-horizon-software-evolution-scenarios-21a62ebd]] and [[chainswe-benchmarking-coding-agents-on-multi-bug-software-maintenance-50ac361b]] but on a loop-engineering / prerequisite-DAG axis single-issue leaderboards cannot observe.
+- [[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]] claims a self-developing coding agent that reaches SOTA by evolving its own tools/prompts/context/core through reviewed commits; prior wiki sources find harness-updating is flat in base capability and harness-benefit is non-monotonic (strong models hit a ceiling), and find no statistically significant quality gain across sequential harness releases at ~2x token cost. Ouroboros's reviewed-commit gate may or may not escape that ceiling. Status: unresolved
+- [[evo-bench-can-language-models-improve-agent-harness-c2121d1b]] argues existing harness-evolution evaluations 'fail to isolate harness improvements from base model strength [and] prevent task-specific overfitting'; positive harness-evolution results in the wiki (e.g. [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]], [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]) report gains typically without isolating the base-model contribution. Status: unresolved — Evo-Bench also measures Search/Office/General domains, not coding, so its indictment's transfer to the SWE-bench regime is itself unverified.
+- [[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]] holds one self-evolution recipe fixed across 8 languages × 3 base models to attribute each harness edit to benchmark-specific adaptation vs. language-specific engineering knowledge vs. base-model compensation, implying much self-evolution 'benefit' may be non-transferable; [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]] reports +9–+15.5pp sealed-test gains retaining 86–147% of training gain (transferable). Status: unresolved
 
 ## Open questions
 
@@ -2080,6 +2102,9 @@ lint stays quiet until each page actually exists:
 - [ ] OpenAI's Codex changelog [[changelog-codex-openai-developers-afbd4293]] confirms GPT-5.4 / GPT-5.4-mini retirement for ChatGPT-signed-in users on 2026-08-31 with bundled-default migration to GPT-5.6 Terra / Luna — does swapping the default Codex driver model move Terminal-Bench / SWE-bench scores independent of the harness, and does the API-key-authenticated-session exemption actually keep CI harnesses pinned to gpt-5.4 working past the cutoff?
 - [ ] Claude Code's auto-compact now enforces the assumed context window for unrecognized model IDs (opt out via CLAUDE_CODE_DISABLE_UNKNOWN_MODEL_WINDOW_ENFORCEMENT=1), per [[claude-code-changelog-background-session-reliability-and-code-review-token-cuts-july-2026-79752d66]] — does holding a native-1M-window model to a conservative default via compaction degrade long-horizon (SWE-EVO / RoadmapBench) performance vs. running at full 1M, or is the compaction loss immaterial below a 200K working set?
 - [ ] Does Meta's Muse Glimmer (30B, Apache 2.0) hold up on an independent, harness-disclosed SWE-bench Verified run against a frontier general model driving Claude Code / Codex, or are the reported SWE-Bench / MCP-Atlas / τ-Bench numbers vendor-optimistic?
+- [ ] Does [[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]]'s typed-failure-signal attribution find that self-evolution gains are dominated by language-specific engineering knowledge (non-portable) or by base-model compensation (would vanish as the base model improves)?
+- [ ] Does [[evo-bench-can-language-models-improve-agent-harness-c2121d1b]]'s intrinsic harness-evolving-capability ranking on Search/Office/General domains correlate with coding-domain harness-evolution results on Multi-SWE-Bench, or is harness-evolving skill domain-specific?
+- [ ] Does [[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]'s reviewed-commit gate avoid the flat harness-updating-capability ceiling reported in prior wiki sources, and does it hold infrastructure/resource configuration fixed?
 
 ## See also
 

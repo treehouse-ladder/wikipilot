@@ -45,7 +45,10 @@ sources:
   - "[[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]"
   - "[[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]"
   - "[[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]"
-last_updated: 2026-08-10
+  - "[[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]]"
+  - "[[evo-bench-can-language-models-improve-agent-harness-c2121d1b]]"
+  - "[[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]"
+last_updated: 2026-08-12
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
