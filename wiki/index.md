@@ -51,6 +51,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[kimi-k3]]
 - [[claude-opus-5]]
 - [[muse-code]]
+- [[supermassive-games]]
 
 ## Comparisons
 
@@ -684,6 +685,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[introducing-muse-glimmer-c60b75d4]]
 - [[muse-glimmer-benchmarks-and-analysis-e12a4eb2]]
 - [[one-of-the-year-s-best-indie-games-sold-over-1-million-copies-in-less-than-a-week-663103c9]]
+- [[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]]
+- [[evo-bench-can-language-models-improve-agent-harness-c2121d1b]]
+- [[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]
+- [[expanding-daybreak-as-the-cyber-defense-window-narrows-081601c2]]
+- [[ea-desperately-wants-investors-to-know-it-s-on-the-generative-ai-bandwagon-3613b843]]
+- [[supermassive-games-begins-third-round-of-layoffs-in-three-years-9bc14ff3]]
 
 ## Answers
 
@@ -1129,3 +1136,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-09]]
 - [[2026-08-10]]
 - [[2026-08-11]]
+- [[2026-08-12]]
