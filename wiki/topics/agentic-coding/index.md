@@ -257,7 +257,9 @@ sources:
   - "[[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]]"
   - "[[evo-bench-can-language-models-improve-agent-harness-c2121d1b]]"
   - "[[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]"
-last_updated: 2026-08-12
+  - "[[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]"
+  - "[[harnesscompass-guiding-automatic-harness-evolution-toward-generalizable-and-effective-agent-harnesses-fbd31af0]]"
+last_updated: 2026-08-13
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -340,6 +342,20 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-13
+
+**SWE-Bench ProMax raises the bar on refactoring evaluation — and audits the audit.** A new expert-curated benchmark (170 instances, 7 languages: Python, Java, TypeScript, Go, C, C++, Rust) specifically targets large-scale code refactoring — tasks averaging 11.4 modified files and 261.6 LOC per instance — a class of work substantially underserved by SWE-bench Verified, where single-file patches dominate [[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]. The best frontier model under two agent scaffolds achieves only **41.2% resolve rate**, indicating the refactoring frontier is far from saturated even as SWE-bench Verified approaches ceiling. The paper also contains an explicit audit finding: **nearly 60% of unsolved SWE-bench Verified instances contain flawed tests** — a benchmark-validity indictment filed under Disputes below.
+
+> Code refactoring, which requires coordinated, behavior-preserving changes across many files, offers a substantially harder and more realistic test of agent capability, yet remains underserved by current benchmarks. [[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]
+
+> Existing benchmarks are rapidly saturating and their evaluation quality has come under serious scrutiny, with a recent audit finding that nearly 60% of unsolved SWE-bench Verified instances contain flawed tests. [[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]
+
+**HarnessCompass: three-axis fix for self-evolving harness overfitting.** Existing automatic harness evolution overfits to evolution tasks, relies only on trajectory signals, and optimizes harness components jointly (causing interference). HarnessCompass addresses all three: (1) **global constraints** restricting evolution edits to task-agnostic changes that generalize beyond the evolution set; (2) **proactive first-person agent feedback** augmenting trajectory evidence with the agent's own harness-usage assessment; (3) **decoupled component optimization** before consolidation to prevent cross-component interference [[harnesscompass-guiding-automatic-harness-evolution-toward-generalizable-and-effective-agent-harnesses-fbd31af0]]. This directly engages the wiki's standing open question about whether self-evolved harnesses encode task-specific vs. generalizable knowledge — HarnessCompass is the first design that structurally enforces generalization at the evolution-constraint level rather than measuring it post-hoc.
+
+> Existing methods often overfit to the evolution tasks, rely exclusively on trajectory-derived signals, and optimize harness components jointly, causing interference across components. [[harnesscompass-guiding-automatic-harness-evolution-toward-generalizable-and-effective-agent-harnesses-fbd31af0]]
+
+> It enforces global constraints on evolution, restricting modifications to task-agnostic harness changes that generalize beyond the evolution tasks. [[harnesscompass-guiding-automatic-harness-evolution-toward-generalizable-and-effective-agent-harnesses-fbd31af0]]
 
 ### Updates 2026-08-12
 
@@ -1879,6 +1895,7 @@ lint stays quiet until each page actually exists:
 - [[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]] claims a self-developing coding agent that reaches SOTA by evolving its own tools/prompts/context/core through reviewed commits; prior wiki sources find harness-updating is flat in base capability and harness-benefit is non-monotonic (strong models hit a ceiling), and find no statistically significant quality gain across sequential harness releases at ~2x token cost. Ouroboros's reviewed-commit gate may or may not escape that ceiling. Status: unresolved
 - [[evo-bench-can-language-models-improve-agent-harness-c2121d1b]] argues existing harness-evolution evaluations 'fail to isolate harness improvements from base model strength [and] prevent task-specific overfitting'; positive harness-evolution results in the wiki (e.g. [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]], [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]) report gains typically without isolating the base-model contribution. Status: unresolved — Evo-Bench also measures Search/Office/General domains, not coding, so its indictment's transfer to the SWE-bench regime is itself unverified.
 - [[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]] holds one self-evolution recipe fixed across 8 languages × 3 base models to attribute each harness edit to benchmark-specific adaptation vs. language-specific engineering knowledge vs. base-model compensation, implying much self-evolution 'benefit' may be non-transferable; [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]] reports +9–+15.5pp sealed-test gains retaining 86–147% of training gain (transferable). Status: unresolved
+- [[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]] audits SWE-bench Verified and finds nearly 60% of unsolved instances contain flawed tests, calling into question the validity of SWE-bench Verified as a benchmark; existing wiki pages treat SWE-bench Verified as the canonical coding-agent leaderboard. Status: unresolved — the audit methodology is not yet independently replicated.
 
 ## Open questions
 
@@ -2105,6 +2122,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does [[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]]'s typed-failure-signal attribution find that self-evolution gains are dominated by language-specific engineering knowledge (non-portable) or by base-model compensation (would vanish as the base model improves)?
 - [ ] Does [[evo-bench-can-language-models-improve-agent-harness-c2121d1b]]'s intrinsic harness-evolving-capability ranking on Search/Office/General domains correlate with coding-domain harness-evolution results on Multi-SWE-Bench, or is harness-evolving skill domain-specific?
 - [ ] Does [[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]'s reviewed-commit gate avoid the flat harness-updating-capability ceiling reported in prior wiki sources, and does it hold infrastructure/resource configuration fixed?
+- [ ] Does SWE-Bench ProMax's 41.2% best resolve rate argue for reporting multi-file refactoring scores alongside (or instead of) SWE-bench Verified for frontier-model comparisons, given that single-file patch resolution is near-ceiling on Verified? [[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]
+- [ ] Does HarnessCompass's 'proactive first-person agent feedback' mechanism compose with trajectory-derived signals from Evo-Bench and AHE, or does it replace them — and does the decoupled-optimization design supersede One-Recipe-Many-Harnesses' post-hoc attribution approach? [[harnesscompass-guiding-automatic-harness-evolution-toward-generalizable-and-effective-agent-harnesses-fbd31af0]]
+- [ ] The SWE-Bench ProMax audit claims 60% of unsolved SWE-bench Verified instances have flawed tests — what audit methodology produced this number, and does it apply equally to the new ProMax evaluation suite itself? [[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]
 
 ## See also
 
