@@ -47,6 +47,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[claude-sonnet-5]]
 - [[gpt-5.6-sol]]
 - [[grok-4.5]]
+- [[grok-4.6]]
 - [[inkling]]
 - [[kimi-k3]]
 - [[claude-opus-5]]
@@ -60,6 +61,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[harnesscompass-guiding-automatic-harness-evolution-toward-generalizable-and-effective-agent-harnesses-fbd31af0]]
+- [[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]
+- [[jake-solomon-led-midsummer-studios-shuts-down-63e8cbfb]]
+- [[remedy-entertainment-touts-pricing-control-resonant-attractively-for-an-aaa-title-08cbf98d]]
+- [[report-crossfire-dev-that-s-no-moon-lays-off-14-staff-f33a04d6]]
+- [[developers-expect-generative-ai-to-impact-roles-and-team-sizes-in-the-next-three-years-caa210de]]
+- [[veritas-tales-witch-of-the-dark-castle-original-soundtrack-from-basiscape-is-now-available-3e839919]]
+- [[grok-4-6-returns-spacexai-to-the-intelligence-frontier-and-leads-on-cost-efficiency-bdc6284a]]
+- [[introducing-grok-4-6-66321e57]]
 - [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]
 - [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]
 - [[ea-lays-off-unknown-number-of-individuals-in-fan-care-and-recruitment-2beac2cc]]
@@ -1137,3 +1147,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-10]]
 - [[2026-08-11]]
 - [[2026-08-12]]
+- [[2026-08-13]]

@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-13] daily | 5 topics, 9 sources, ~19 pages
+
+Daily Research 2026-08-13 complete. 5 topics processed (frontier-models, ai-in-game-dev, games-of-note, agentic-coding, game-music); 9 new source pages; ~19 pages touched. PRs #551–#555 created and merged (auto-merge). Report: wiki/reports/2026-08-13.md.
+
+## [2026-08-13] daily | game-music — 1 source, 2 pages
+
+Hitoshi Sakimoto / Basiscape releases 13-track Veritas Tales: Witch of the Dark Castle OST on streaming (Spotify, Apple Music) and Steam. PR #555.
+
+## [2026-08-13] daily | agentic-coding — 2 sources, 4 pages
+
+SWE-Bench ProMax (170 instances, 7 languages, 41.2% best resolve rate) and HarnessCompass (3-axis harness fix: global constraints + first-person agent feedback + decoupled optimization); harness-engineering.md updated; 1 dispute, 3 open questions. PR #554.
+
+## [2026-08-13] daily | games-of-note — 3 sources, 4 pages
+
+Midsummer Studios (Jake Solomon, $6M raised) shuts down without shipping a game; That's No Moon lays off 14 staff; Remedy sets Control Resonant at $60 AAA for Sept 24 launch. 2 open questions. PR #553.
+
+## [2026-08-13] daily | ai-in-game-dev — 1 source, 2 pages
+
+Developer survey: two-thirds expect generative AI to impact team sizes in three years; publishers more bullish than developers on AI impact. PR #552.
+
+## [2026-08-13] daily | frontier-models — 2 sources, 7 pages
+
+Grok 4.6 launches at AA Intelligence Index 61 (tied GPT-5.6 Sol), co-trained with Cursor; grok-4.6.md entity created; cost-comparison + benchmark-leaders regenerated. PR #551.
+
 ## [2026-08-12] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#549 (wiki(reports): daily 2026-08-12, mergeable_state=clean, CI green) queued via MCP enable_pr_auto_merge (gh CLI unavailable); merged immediately.
