@@ -13,6 +13,7 @@ comparison_of:
 - gpt-5.6-sol
 - gpt-5.5
 - gemini-3.1-pro
+- grok-4.6
 - grok-4.5
 - grok-4.3
 - deepseek-v4
@@ -22,7 +23,7 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-07-27
+last_updated: 2026-08-13
 last_verified: '2026-05-22'
 show_glosses: true
 sources:
