@@ -259,7 +259,10 @@ sources:
   - "[[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]"
   - "[[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]"
   - "[[harnesscompass-guiding-automatic-harness-evolution-toward-generalizable-and-effective-agent-harnesses-fbd31af0]]"
-last_updated: 2026-08-13
+  - "[[message-your-other-claude-code-sessions-90ee76df]]"
+  - "[[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]"
+  - "[[how-cursor-router-chooses-the-right-model-for-the-task-a0e29203]]"
+last_updated: 2026-08-14
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -342,6 +345,20 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-14
+
+**Claude Code ships agent-to-agent cross-session messaging as a default primitive.** Cross-session messaging is now on by default (v2.1.224+, macOS/Linux): one Claude Code session can deliver a message to another that it discovers via `ListAgents` and reaches via `SendMessage`, with the user never calling either tool directly — you tell Claude what a peer session should know and Claude writes and routes the message [[message-your-other-claude-code-sessions-90ee76df]]. Messages are deliberately thin (text addressed by name, never conversation history or files), so the coordination channel is cheap but peers share no cached context across the wire. This is a genuinely new orchestration surface distinct from in-session subagent fan-out: it coordinates *independent* long-running sessions (same or different machines) rather than parent-spawned children — the agent-to-agent analogue of the human 'switch terminals and paste context' workflow.
+
+> A message is a piece of text one Claude writes to another, never conversation history or files. Claude discovers the target with ListAgents and sends with SendMessage, so you never call either tool yourself. [[message-your-other-claude-code-sessions-90ee76df]]
+
+**Subagent forking becomes the default, inheriting the full conversation and prompt cache.** Claude Code v2.1.230–232 makes `subagent_type: "fork"` the default: a forked subagent inherits the full conversation and the prompt cache, `@`-mentioning another session by name is now a first-class prompt affordance, and non-teammate agent spawns in interactive sessions run in the background by default [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]. Fork-by-default with cache inheritance is a cost-relevant shift — it makes the cheap-to-spawn, context-preserving fork the standard delegation rather than a fresh-context child, operationalizing the context-preservation-over-parallelism framing this wiki already tracks (Simon Willison) — but it also concentrates the cache-invalidation risk the wiki flags: an inherited prompt cache is a win only while the parent hasn't busted it with a mid-run file edit.
+
+> Subagent forking is now on by default: a subagent_type: "fork" subagent inherits the full conversation and prompt cache, and non-teammate agent spawns in interactive sessions now run in the background by default. [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]
+
+**Cursor Router adds Auto Intelligence / Auto Balance modes and folds in Opus 5.** Cursor's per-request router now exposes three points on the cost-intelligence Pareto frontier (Intelligence / Balance / Cost); Cursor reports Auto Intelligence reaching above-Fable user satisfaction at 68% lower cost and Auto Balance outperforming Opus 4.8 at 41% lower cost, having added Opus 5 to the routing mix since launch [[how-cursor-router-chooses-the-right-model-for-the-task-a0e29203]]. This extends the cost-engineering line already tracked under [[introducing-cursor-router-cabbd7e3]] with fresher numbers, but inherits its unresolved caveat: the router is optimized to a user-satisfaction/accept signal, so a reported 'lower cost, no quality drop' is not the same as no held-out correctness regression.
+
+> Auto Intelligence delivers above Fable-level user satisfaction at 68% lower cost, a further 18% reduction since its launch. Auto Balance outperforms Opus 4.8 at 41% lower cost, a further 8% reduction over the same period, while further increasing user satisfaction by 3%. [[how-cursor-router-chooses-the-right-model-for-the-task-a0e29203]]
 
 ### Updates 2026-08-13
 
@@ -2125,6 +2142,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does SWE-Bench ProMax's 41.2% best resolve rate argue for reporting multi-file refactoring scores alongside (or instead of) SWE-bench Verified for frontier-model comparisons, given that single-file patch resolution is near-ceiling on Verified? [[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]
 - [ ] Does HarnessCompass's 'proactive first-person agent feedback' mechanism compose with trajectory-derived signals from Evo-Bench and AHE, or does it replace them — and does the decoupled-optimization design supersede One-Recipe-Many-Harnesses' post-hoc attribution approach? [[harnesscompass-guiding-automatic-harness-evolution-toward-generalizable-and-effective-agent-harnesses-fbd31af0]]
 - [ ] The SWE-Bench ProMax audit claims 60% of unsolved SWE-bench Verified instances have flawed tests — what audit methodology produced this number, and does it apply equally to the new ProMax evaluation suite itself? [[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]
+- [ ] With subagent forking now the default and inheriting the prompt cache [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]], is there any first-party measurement of how fork-default changes per-session token cost vs fresh-context children — i.e. does inherited-cache delegation actually pay off net of the cache-invalidation cliff when the parent edits files mid-run?
+- [ ] Cross-session SendMessage delivers only thin text and shares no context between sessions [[message-your-other-claude-code-sessions-90ee76df]]; does this impose a coordination-cost floor (each peer must re-derive shared context from scratch) that makes agent-to-agent messaging cheaper than but strictly weaker than in-session subagent fan-out for tightly-coupled tasks?
 
 ## See also
 
