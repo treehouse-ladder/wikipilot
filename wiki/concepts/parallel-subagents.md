@@ -16,7 +16,9 @@ sources:
   - "[[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]]"
   - "[[rewriting-bun-in-rust-15a50b3d]]"
   - "[[claude-code-release-notes-98ffc52d]]"
-last_updated: 2026-08-03
+  - "[[message-your-other-claude-code-sessions-90ee76df]]"
+  - "[[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]"
+last_updated: 2026-08-14
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
@@ -73,11 +75,19 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 
 > Changed dynamic workflows to default to a medium size guideline (aim for fewer than 15 agents), and removed Opus 4.7 from fast mode so /fast now applies to Opus 5 and Opus 4.8. [[claude-code-release-notes-98ffc52d]]
 
+**Claude Code makes subagent forking the default and adds cross-session agent-to-agent messaging (August 2026).** Two shifts land together. First, `subagent_type: "fork"` is now the default subagent type: a forked subagent inherits the full conversation and prompt cache, `@`-mentioning another session by name becomes a prompt affordance, and non-teammate spawns in interactive sessions run in the background by default [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]. Fork-by-default makes the cheap, context-preserving fork — rather than a fresh-context child — the standard delegation, operationalizing the context-preservation-over-parallelism framing noted above (Willison) while concentrating the inherited-cache-invalidation risk. Second, cross-session messaging (v2.1.224+, macOS/Linux) is on by default: a session discovers reachable peers via `ListAgents` and delivers a thin text message via `SendMessage`, never sharing conversation history or files [[message-your-other-claude-code-sessions-90ee76df]]. This is a distinct coordination surface from in-session fan-out — it links independent long-running sessions across machines rather than parent-spawned children, extending the parallel-subagent mental model from a spawn tree to a peer mesh.
+
+> Subagent forking is now on by default: a subagent_type: "fork" subagent inherits the full conversation and prompt cache, and non-teammate agent spawns in interactive sessions now run in the background by default. [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]
+
+> A message is a piece of text one Claude writes to another, never conversation history or files. Claude discovers the target with ListAgents and sends with SendMessage, so you never call either tool yourself. [[message-your-other-claude-code-sessions-90ee76df]]
+
 ## Disputes
 
 ## Open questions
 
 - [ ] Does direct KV-cache synthesis (Parallel-Synthesis) hold up when worker branches used different system prompts or models, or does it require homogeneous workers to share a cacheable prefix?
+- [ ] Does a fork-default subagent's inherited prompt cache [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]] survive the parent editing a file mid-run, or does fork-by-default simply make the cache-invalidation cliff the default failure mode for delegated work?
+- [ ] Cross-session SendMessage shares only thin text, never context [[message-your-other-claude-code-sessions-90ee76df]] — is there any prompt-cache or context sharing between independent peer sessions, or must each peer re-derive shared context from scratch, setting a coordination-cost floor for multi-session (as opposed to spawn-tree) workflows?
 
 ## See also
 
