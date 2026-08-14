@@ -22,7 +22,7 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-08-13
+last_updated: 2026-08-14
 last_verified: '2026-05-22'
 show_glosses: true
 sources:
@@ -37,7 +37,7 @@ title: Frontier model cost comparison
 
 ## Summary
 
-This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` across 15 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-cost-comparison` to refresh.
+This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` across 16 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-cost-comparison` to refresh.
 
 ## What each column means for me
 
@@ -53,6 +53,7 @@ This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` acros
 | [[gpt-5.6-sol]] | _unknown_ | _unknown_ |
 | [[gpt-5.5]] | 5.0 | 30.0 |
 | [[gemini-3.1-pro]] | 2.0 | 12.0 |
+| [[grok-4.6]] | 2.0 | 6.0 |
 | [[grok-4.5]] | _unknown_ | _unknown_ |
 | [[grok-4.3]] | 1.25 | _2.5_ |
 | [[deepseek-v4]] | 1.74 | 3.48 |

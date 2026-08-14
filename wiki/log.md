@@ -1947,3 +1947,27 @@ pr#559 (game-music daily 2026-08-14) requeued: mergeable_state=clean, CI green, 
 ## [2026-08-14] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#561 (frontier-models daily 2026-08-14) requeued: mergeable_state=clean, CI green, all gate criteria passed. gh CLI token invalid in session; squash-merged directly via MCP merge tool as equivalent to --auto (immediate effect). Merged SHA: b15af9aa.
+
+## [2026-08-14] daily | games-of-note — 2 sources, 4 pages
+
+2K announces new Vancouver AAA studio Small Axe Studios (led by EA veteran Luc Shelton); Tencent launches Hunyuan 3D creator tool globally. Entity small-axe-studios.md created. 1 dispute (Tencent "empower creators" vs. hollow genAI critique), 2 open questions. PR #558.
+
+## [2026-08-14] daily | game-music — 2 sources, 4 pages
+
+Mick Gordon (DOOM composer) announces first live DOOM performance at RADAR Festival 2027 (Manchester); Warframe vinyl soundtrack 2XLP reissue via iam8bit. Entity mick-gordon.md created. 1 open question. PR #559.
+
+## [2026-08-14] daily | frontier-models — 2 sources, 5 pages
+
+DeepSeek-V4-Pro GA (v4.1.1 basis, aa_intelligence_index 52→53); Upstage Solar Pro 4 benchmarks (+27pts on agentic/long-context tasks). deepseek-v4 entity updated (field + GA build details). 3 open questions. PR #561.
+
+## [2026-08-14] daily | agentic-coding — 3 sources, 5 pages
+
+Claude Code cross-session messaging (SendMessage tool) + fork-as-default sub-agent model (v2.1.232); Cursor Router Auto/Intelligence/Balance mode cost logic. parallel-subagents.md updated (fork-as-default + cross-session surface). 4 open questions. PR #562.
+
+## [2026-08-14] daily | ai-in-game-dev — 3 sources, 4 pages
+
+Meshy 7 launches with higher-fidelity geometry + ultra_mode parameter; Saber Interactive Rideshare uses AI for infinite-passenger dialogue in free-ride mode; Saber CEO vs. ex-lead-writer factual dispute on AI writer replacement. 2 disputes, 3 open questions. PR #564.
+
+## [2026-08-14] daily | 5 topics, 12 sources, ~22 pages
+
+Daily Research 2026-08-14 complete. 5 topics processed (games-of-note, game-music, frontier-models, agentic-coding, ai-in-game-dev); 12 new source pages; ~22 pages touched. PRs #558, #559, #561, #562, #564 created and merged (auto-merge). Report: wiki/reports/2026-08-14.md.

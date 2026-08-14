@@ -53,6 +53,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[claude-opus-5]]
 - [[muse-code]]
 - [[supermassive-games]]
+- [[small-axe-studios]]
+- [[mick-gordon]]
 
 ## Comparisons
 
@@ -61,6 +63,18 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[2k-announces-new-vancouver-based-aaa-studio-led-by-ea-veteran-2511af2e]]
+- [[tencent-launches-ai-3d-asset-tool-to-empower-creators-4cb1b6d2]]
+- [[dooms-mick-gordon-to-perform-iconic-soundtrack-live-with-orchestra-a76d163c]]
+- [[warframe-vinyl-soundtrack-2xlp-reissue-be440a58]]
+- [[deepseek-v4-pro-ga-release-fe54be56]]
+- [[upstage-solar-pro-4-benchmarks-and-analysis-9cbec43b]]
+- [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]
+- [[how-cursor-router-chooses-the-right-model-for-the-task-a0e29203]]
+- [[message-your-other-claude-code-sessions-90ee76df]]
+- [[meshy-7-is-live-higher-fidelity-image-to-3d-generation-with-ultra-mode-f27c1d9b]]
+- [[saber-interactive-will-disclose-ai-use-on-rideshare-stimulator-1f7bb41a]]
+- [[saber-will-use-ai-for-dialog-as-the-number-of-passengers-is-infinite-9332586f]]
 - [[harnesscompass-guiding-automatic-harness-evolution-toward-generalizable-and-effective-agent-harnesses-fbd31af0]]
 - [[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]
 - [[jake-solomon-led-midsummer-studios-shuts-down-63e8cbfb]]
@@ -1147,4 +1161,5 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-10]]
 - [[2026-08-11]]
 - [[2026-08-12]]
+- [[2026-08-14]]
 - [[2026-08-13]]
