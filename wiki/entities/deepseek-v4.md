@@ -1,14 +1,14 @@
 ---
 title: "DeepSeek V4"
 kind: entity
-sources: ["[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[deepseek-api-models-and-pricing-8eb12065]]", "[[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]", "[[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[deepseek-is-back-among-the-leading-open-weights-models-with-v4-pro-and-v4-flash-d16dda28]]", "[[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]]", "[[deepseek-v4-flash-0731-scores-50-on-the-artificial-analysis-intelligence-index-10-points-above-previous-deepseek-v4-flash-108621d0]]", "[[deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains-159beea4]]", "[[deepseek-ai-deepseek-v4-flash-0731-a1a747f4]]"]
-last_updated: 2026-08-01
-last_verified: 2026-08-01
+sources: ["[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[deepseek-api-models-and-pricing-8eb12065]]", "[[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]", "[[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[deepseek-is-back-among-the-leading-open-weights-models-with-v4-pro-and-v4-flash-d16dda28]]", "[[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]]", "[[deepseek-v4-flash-0731-scores-50-on-the-artificial-analysis-intelligence-index-10-points-above-previous-deepseek-v4-flash-108621d0]]", "[[deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains-159beea4]]", "[[deepseek-ai-deepseek-v4-flash-0731-a1a747f4]]", "[[deepseek-v4-pro-ga-release-fe54be56]]"]
+last_updated: 2026-08-14
+last_verified: 2026-08-14
 freshness_window_days: 30
 input_cost_per_mtoken: 1.74
 output_cost_per_mtoken: 3.48
 cost_source: "[[deepseek-api-models-and-pricing-8eb12065]]"
-aa_intelligence_index: 52
+aa_intelligence_index: 53
 aa_intelligence_index_source: "[[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]"
 gdpval_aa_elo: null
 gdpval_aa_elo_source: null
@@ -52,6 +52,10 @@ Artificial Analysis published a dedicated launch analysis confirming the V4 fami
 
 > DeepSeek V4 Flash 0731 scores 50 on the Artificial Analysis Intelligence Index, 10 points above the previous DeepSeek V4 Flash. DeepSeek-V4-Flash-0731 outperforms DeepSeek-V4-Pro (Preview) on the published benchmarks despite its far smaller activated parameter count. [[deepseek-v4-flash-0731-scores-50-on-the-artificial-analysis-intelligence-index-10-points-above-previous-deepseek-v4-flash-108621d0]]
 
+DeepSeek shipped the GA build **DeepSeek-V4-Pro-0813** on 2026-08-13, superseding the April preview [[deepseek-v4-pro-ga-release-fe54be56]]. It is a **1.57T-total / 48B-active MoE** built on the V4-Pro preview structure with a **DSpark speculative-decoding module** attached; the GA build "greatly enhances agent capabilities" especially in production, and V4-Pro/V4-Flash thinking now expose three effort levels (low/high/max) [[deepseek-v4-pro-ga-release-fe54be56]]. Artificial Analysis re-places the 0813 build at **53 on the Intelligence Index v4.1.1** (up from the preview's 52 on v4.0) [[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]. New API pricing takes effect 16:00 UTC 2026-08-16; the specific rates were not published in the GA note, so the current cost fields are pending re-verification [[deepseek-v4-pro-ga-release-fe54be56]].
+
+> Compared with the preview version, the GA version greatly enhances agent capabilities, with particularly significant performance improvements in production environments. [[deepseek-v4-pro-ga-release-fe54be56]]
+
 ## Disputes
 
 - [[deepseek-v4-pro-on-hugging-face-a0d5aaf3]] claims V4-Pro-Max's 80.6% SWE-bench Verified is a frontier-leading score, but OpenAI has stopped reporting SWE-bench Verified after finding contamination across all frontier models. On SWE-bench Pro (the contamination-controlled successor) DeepSeek V4-Pro's ranking is not yet published. Status: unresolved.
@@ -60,6 +64,8 @@ Artificial Analysis published a dedicated launch analysis confirming the V4 fami
 
 ## Open questions
 
+- [ ] What is the 0813 build's contamination-resistant coding (SWE-bench Pro) placement, and is the 52→53 move capability or index-version (v4.0→v4.1.1) artifact? [[deepseek-v4-pro-ga-release-fe54be56]]
+- [ ] DeepSeek's new API pricing effective 2026-08-16 16:00 UTC — per-Mtoken rates unpublished in the GA note; cost fields may move. [[deepseek-v4-pro-ga-release-fe54be56]]
 - [ ] Now that DeepSeek R2 has shipped as a 32B dense model [[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]], does it share V4's architecture lineage or DeepSeek Sparse Attention, and where does it land on the AA Intelligence Index relative to V4-Pro?
 - [ ] What is DeepSeek V4-Pro's SWE-bench Pro score?
 - [ ] Does DeepSeek V4 include DeepSeek Sparse Attention (now documented in GLM-5 [[glm-5-everything-you-need-to-know-a53ff5c1]]), or is that a technique Z.AI integrated independently?
