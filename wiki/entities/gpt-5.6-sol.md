@@ -2,7 +2,7 @@
 title: "GPT-5.6 Sol"
 kind: entity
 sources: ["[[gpt-5-6-frontier-intelligence-that-scales-with-your-ambition-e19fbb75]]", "[[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]]", "[[expanding-daybreak-as-the-cyber-defense-window-narrows-081601c2]]"]
-last_updated: 2026-08-12
+last_updated: 2026-08-16
 last_verified: 2026-07-10
 freshness_window_days: 30
 ---
@@ -21,7 +21,8 @@ On 2026-08-10 OpenAI introduced **GPT-5.6-Cyber**, a cyber-specialized variant *
 
 ## Disputes
 
-_none_
+- [[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]] asserts GPT-5.6 Sol (max) is "the new publicly-accessible #2 aggregate model (ahead of Opus 4.8 at 56 and GPT-5.5 at 55)" on AA Intelligence Index at launch (July 2026); [[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]] and [[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]] show Claude Opus 5 launched at 61 (v4.1)/63 (v4.1.1), placing it #1 and making GPT-5.6 Sol #3 at best as of August 2026. Status: unresolved — entity page still describes Sol as #2; needs refresh to reflect post-Opus-5 ranking.
+- [[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]] cites AA Intelligence Index **59** for GPT-5.6 Sol (max) at v4.1; [[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]] rescaled all models under v4.1.1, placing Sol at **61**; the entity frontmatter (`aa_intelligence_index: 59`) has not been updated. Status: unresolved — frontmatter and Summary cite the pre-rescale value.
 
 ## Open questions
 
