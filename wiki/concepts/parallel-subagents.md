@@ -18,7 +18,7 @@ sources:
   - "[[claude-code-release-notes-98ffc52d]]"
   - "[[message-your-other-claude-code-sessions-90ee76df]]"
   - "[[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]"
-last_updated: 2026-08-14
+last_updated: 2026-08-16
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
@@ -82,6 +82,8 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 > A message is a piece of text one Claude writes to another, never conversation history or files. Claude discovers the target with ListAgents and sends with SendMessage, so you never call either tool yourself. [[message-your-other-claude-code-sessions-90ee76df]]
 
 ## Disputes
+
+- [[build-programmatic-agents-with-the-cursor-sdk-fe66773e]] (cited on this page) attributes nested subagent nesting to the **2026-06-04** Cursor SDK release; [[custom-stores-custom-tools-and-auto-review-for-the-cursor-sdk-7da739cc]] (cited on the agentic-coding topic page) attributes the same Cursor SDK nested subagent feature to **2026-06-10**, framing both Claude Code and Cursor SDK as shipping "within 24 hours of each other on 2026-06-10." Status: unresolved — both sources are primary-source Cursor/Anthropic documentation; the date discrepancy is either a staging/preview vs GA distinction, or a documentation error on one source. (Confidence: medium; sweep: 2026-08-16)
 
 ## Open questions
 

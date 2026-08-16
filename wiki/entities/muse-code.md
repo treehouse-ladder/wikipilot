@@ -2,7 +2,7 @@
 title: "Muse Code"
 kind: entity
 sources: ["[[introducing-muse-code-and-muse-spark-1-2-a73147b0]]", "[[introducing-muse-glimmer-c60b75d4]]"]
-last_updated: 2026-08-11
+last_updated: 2026-08-16
 last_verified: 2026-08-06
 freshness_window_days: 30
 ---
@@ -20,6 +20,8 @@ Five days after the Muse Code + Muse Spark 1.2 launch, Meta also released **Muse
 _no contradictions or gaps known yet (last reviewed: 2026-08-11)_
 
 ## Disputes
+
+- This page states Muse Glimmer's benchmark figures are "all Meta's own — no independent third-party verification yet" [[introducing-muse-glimmer-c60b75d4]]; the [[muse-spark]] entity page cites an independent Artificial Analysis Intelligence Index score of **35** for Muse Glimmer [[muse-glimmer-benchmarks-and-analysis-e12a4eb2]], constituting third-party verification that contradicts the "no independent verification" claim. Status: unresolved — this page has not been updated to reflect the AA independent placement. (Confidence: high; sweep: 2026-08-16)
 
 ## Open questions
 
