@@ -1971,3 +1971,7 @@ Meshy 7 launches with higher-fidelity geometry + ultra_mode parameter; Saber Int
 ## [2026-08-14] daily | 5 topics, 12 sources, ~22 pages
 
 Daily Research 2026-08-14 complete. 5 topics processed (games-of-note, game-music, frontier-models, agentic-coding, ai-in-game-dev); 12 new source pages; ~22 pages touched. PRs #558, #559, #561, #562, #564 created and merged (auto-merge). Report: wiki/reports/2026-08-14.md.
+
+## [2026-08-16] health | weekly sweep — 5 disputes filed
+
+20 candidate sets scanned (19 source-triggered + 1 stale sweep). 5 disputes filed across 4 pages: gpt-5.6-sol (×2), frontier-models, parallel-subagents, muse-code. 24 stale pages, 0 lint errors. PR #567.
