@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-17] daily | 5 topics, 10 sources, ~7 pages
+
+Daily Research 2026-08-17 complete. 5 topics processed (game-music, agentic-coding, frontier-models, ai-in-game-dev, games-of-note); 10 new source pages; ~7 pages touched. PRs #569–#573 created and merged (auto-merge). Report: wiki/reports/2026-08-17.md.
+
+## [2026-08-17] daily | game-music — 0 sources, 1 page
+
+Quiet day. No qualifying new sources found across the charter's sub-areas. Sentinel and Recent updates entry logged for 2026-08-17. PR #569.
+
+## [2026-08-17] daily | agentic-coding — 3 sources, 2 pages
+
+OpenAI Ultrafast tier (GPT-5.6 Sol Cerebras-served, up to 750 tok/s); Cursor prebuilt "builds" cut cold-start ~3x; Harness-IF benchmark (642 rules × 5 instruction surfaces; 3.6–7.4pt against-prior penalty across 12 frontier models). agent-harnesses.md updated. Summary regenerated (topic-summarizer). 3 open questions. PR #570.
+
+## [2026-08-17] daily | frontier-models — 1 source, 1 page
+
+Qwen3.8-27B: 27B dense VLM (Apache 2.0), 262K native context, Terminal-Bench 73.0%, SWE-bench Pro 61.7%. OSWorld benchmark-variant dispute filed. Frontier leader picture unchanged (Opus 5 max #1, 63). 4 open questions. PR #571.
+
+## [2026-08-17] daily | ai-in-game-dev — 1 source, 1 page
+
+Unity Neural: neural inference via URP, Neural Texture Compression (>50% runtime memory / ~70% disk reduction, rolling out in Unity 6.7). Unity Vector entering creatives + agentic phase. 1 open question. PR #572.
+
+## [2026-08-17] daily | games-of-note — 5 sources, 1 page
+
+Netflix closes Night School Studio (Oxenfree) and Moonloot Games — completing ~5yr gaming retreat. Double Loop Games closes (hostile mobile environment). Hello Games / Sean Murray: craft-first genAI abstention. Take-Two CEO: commercial streaming in 3 years, 10x install base. 1 dispute, 4 open questions. PR #573.
+
 ## [2026-08-13] daily | 5 topics, 9 sources, ~19 pages
 
 Daily Research 2026-08-13 complete. 5 topics processed (frontier-models, ai-in-game-dev, games-of-note, agentic-coding, game-music); 9 new source pages; ~19 pages touched. PRs #551–#555 created and merged (auto-merge). Report: wiki/reports/2026-08-13.md.
