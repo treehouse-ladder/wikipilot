@@ -262,7 +262,10 @@ sources:
   - "[[message-your-other-claude-code-sessions-90ee76df]]"
   - "[[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]"
   - "[[how-cursor-router-chooses-the-right-model-for-the-task-a0e29203]]"
-last_updated: 2026-08-14
+  - "[[previewing-ultrafast-mode-gpt-5-6-sol-at-up-to-14x-the-speed-c0986f66]]"
+  - "[[cloud-agents-start-3x-faster-with-builds-6513f392]]"
+  - "[[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]"
+last_updated: 2026-08-17
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -345,6 +348,26 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-17
+
+**OpenAI previews an Ultrafast serving tier: GPT-5.6 Sol at up to 14x speed / 750 tok/s via Cerebras.** OpenAI is previewing a new API service tier that runs GPT-5.6 Sol — the model behind Codex — up to 14x faster, delivering up to 750 output tokens per second on Cerebras hardware [[previewing-ultrafast-mode-gpt-5-6-sol-at-up-to-14x-the-speed-c0986f66]]. This is the first-party productization of the real-time-coding-via-Cerebras thread the wiki has tracked since June, and it directly bears on the standing open question about whether a session-bound Cerebras latency tier composes with subagent fan-out. It is limited-preview only, and OpenAI frames the value as intelligence-preserving speed rather than a speed/quality tradeoff — but the announcement cites no held-out coding-benchmark parity against Standard-tier GPT-5.6 Sol, so 'no intelligence given up' is a vendor claim, not a measured result (filed under Open questions).
+
+> Ultrafast is a new API service tier that runs GPT-5.6 Sol up to 14x faster, powered by Cerebras, delivering up to 750 output tokens per second. [[previewing-ultrafast-mode-gpt-5-6-sol-at-up-to-14x-the-speed-c0986f66]]
+
+> When speed no longer requires giving up intelligence, AI can move into the most time-sensitive parts of a business and new kinds of work become possible. [[previewing-ultrafast-mode-gpt-5-6-sol-at-up-to-14x-the-speed-c0986f66]]
+
+**Cursor eliminates cloud-agent cold starts with prebuilt background 'builds'.** Cursor now prepares ready-to-use copies of a repo's development environment in the background so cloud agents boot into a warm environment instead of setting up from scratch each session; Cursor reports environments boot 10x faster with 3x faster time-to-first-token, at no additional cost [[cloud-agents-start-3x-faster-with-builds-6513f392]]. Operationally this moves environment setup off the agent's critical path (install-time work is pre-baked; only fresh-state services run at prompt time) and adds a resilience story — a broken commit or dependency update leaves agents on the last successful build. The tradeoff worth flagging: a prebuilt environment is stale-by-construction between builds, so an agent can start against a snapshot that lags the branch it was dispatched on (filed under Open questions).
+
+> Internally, environments now boot 10x faster, with 3x faster time to first token. Builds are included with Cloud Agents at no additional cost. [[cloud-agents-start-3x-faster-with-builds-6513f392]]
+
+> If a bad commit or dependency update breaks an environment, agents keep using the last successful build, and you are notified of the issue while your agents keep working. [[cloud-agents-start-3x-faster-with-builds-6513f392]]
+
+**Harness-IF: instruction-following, measured per-rule across the five surfaces a deployed coding agent reads.** A new eval argues that existing instruction-following benchmarks concentrate rules in the user turn and coding benchmarks only measure final task success, so neither can tell obedience from coincidence; Harness-IF instead scores operational rules one at a time from execution evidence — 60 multi-turn coding items, 256 verdicts drawn from a 642-rule library, placed on the five configurable instruction surfaces (system prompt, agent-config files like CLAUDE.md/AGENTS.md, tool descriptions, user turn, etc.) a deployed agent reads [[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]. Its key metric, Against-Prior Accuracy, scores only rules that oppose the model's unprompted defaults (verified by re-running each task with the rule withheld). The headline finding is a systematic gap: across 12 frontier models, accuracy is 72.1–85.9% but every model is worse on against-prior rules by 3.6–7.4 points — i.e. agents are least reliable exactly when your harness rule is trying to override what they'd do anyway.
+
+> When a coding agent obeys a rule, it may simply have been going to do that anyway. Existing instruction-following benchmarks cannot tell the difference: they concentrate rules in the user turn, while coding-agent benchmarks emphasize final task success. [[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]
+
+> Across 12 frontier models, accuracy spans 72.1-85.9% and AP-Acc 66.1-78.6%; every model is worse on against-prior rules, by 3.6 to 7.4 points (mean 5.81). [[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]
 
 ### Updates 2026-08-14
 
@@ -2144,6 +2167,9 @@ lint stays quiet until each page actually exists:
 - [ ] The SWE-Bench ProMax audit claims 60% of unsolved SWE-bench Verified instances have flawed tests — what audit methodology produced this number, and does it apply equally to the new ProMax evaluation suite itself? [[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]
 - [ ] With subagent forking now the default and inheriting the prompt cache [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]], is there any first-party measurement of how fork-default changes per-session token cost vs fresh-context children — i.e. does inherited-cache delegation actually pay off net of the cache-invalidation cliff when the parent edits files mid-run?
 - [ ] Cross-session SendMessage delivers only thin text and shares no context between sessions [[message-your-other-claude-code-sessions-90ee76df]]; does this impose a coordination-cost floor (each peer must re-derive shared context from scratch) that makes agent-to-agent messaging cheaper than but strictly weaker than in-session subagent fan-out for tightly-coupled tasks?
+- [ ] OpenAI's Ultrafast tier for GPT-5.6 Sol claims speed 'without giving up intelligence' [[previewing-ultrafast-mode-gpt-5-6-sol-at-up-to-14x-the-speed-c0986f66]], but publishes no held-out coding-benchmark (SWE-bench / Terminal-Bench) parity vs Standard-tier GPT-5.6 Sol. Does the Cerebras-served tier hold coding-agent resolve rate, or trade correctness for the 750 tok/s?
+- [ ] Cursor's prebuilt 'builds' are stale-by-construction between rebuilds and fall back to the last successful build on breakage [[cloud-agents-start-3x-faster-with-builds-6513f392]]. Under what branch-drift conditions does an agent boot against a snapshot that lags its target branch, and does the resilience fallback silently mask dependency updates the agent should have picked up?
+- [ ] Harness-IF's against-prior gap is measured on 12 frontier models over a curated 642-rule library [[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]. Does the 3.6–7.4pt against-prior penalty transfer to real deployed CLAUDE.md/AGENTS.md rulesets, and which of the five instruction surfaces is most reliably obeyed?
 
 ## See also
 
