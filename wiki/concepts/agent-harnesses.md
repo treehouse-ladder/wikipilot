@@ -36,8 +36,9 @@ sources:
   - "[[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]]"
   - "[[evo-bench-can-language-models-improve-agent-harness-c2121d1b]]"
   - "[[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]"
-last_updated: 2026-08-12
-last_verified: 2026-08-10
+  - "[[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]"
+last_updated: 2026-08-17
+last_verified: 2026-08-17
 freshness_window_days: 30
 ---
 
@@ -130,6 +131,10 @@ A June 2026 paper supplies the first constitutive definition of "agent harness,"
 > We separate LLM-driven proposal from deterministic crediting via sampling, measurement, and significance testing. On sealed-test sets, the gated QD framework yields +9 to +15.5 pp gains, retaining 86–147% of training gain across 7 domains and 3 benchmarks. [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]]
 
 These three papers together narrow the conditions under which harness evolution is claimed to work: the constructive case requires deterministic (not LLM-judged) crediting and held-out (not in-distribution) evaluation. The Claw-SWE-Bench harness≈model finding [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]] — "harness choice matters as much as model choice" — is now in tension with the "Don't Blame" null result; the reconciliation may hinge on whether that study's harnesses were varied in controlled ways or sequentially iterated like the ones in the null-result paper.
+
+**Harness-IF: instruction surfaces as the new harness-evaluation unit (August 2026).** Harness-IF reframes the harness as a set of distinct **instruction surfaces** — the system prompt, agent-config files (CLAUDE.md/AGENTS.md), tool descriptions, and the user turn — and evaluates whether operational rules placed on each surface are actually obeyed, scoring rules one at a time from execution evidence rather than from final task success [[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]. Its Against-Prior Accuracy metric isolates rules that oppose the model's unprompted defaults, and finds every one of 12 frontier models is measurably worse (by 3.6–7.4 points) at following exactly those override rules — a concrete harness-design caution that a rule contradicting a model's prior is the least reliable thing you can put in a harness.
+
+> We introduce Harness-IF, which scores operational rules one at a time from execution evidence: 60 realistic multi-turn coding items drawn from a 642-rule library, 256 rules receiving verdicts, placed on the five configurable surfaces a deployed agent reads. [[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]
 
 **HarnessOpt-Bench and LoopsBench extend measurement taxonomy (August 2026).** Two arXiv benchmarks extend the harness-measurement landscape in orthogonal directions. HarnessOpt-Bench treats automated harness optimization as a measurable LLM capability distinct from downstream task performance, scoring the optimizer itself under expensive, stochastic evaluation with a fixed target-evaluation budget [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]. LoopsBench frames the infrastructure frontier as shifting from harness engineering to "loop engineering" for sustained long-horizon development, modeling each task as a dependency DAG over separately testable units with source-evidenced prerequisite edges [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]. The strongest configuration on LoopsBench (Opus 4.7 + Claude Code + outer continuation) resolves only 25.00%, reproducing the ~25% long-horizon ceiling observed on SWE-EVO and similar multi-file-evolution suites.
 
