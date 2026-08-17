@@ -63,6 +63,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[netflix-closing-night-school-studio-and-moonloot-games-b944f06a]]
+- [[netflix-shuts-down-two-more-studios-as-it-divests-from-internal-dev-1dd12436]]
+- [[no-man-s-sky-studio-boss-says-he-s-content-to-wait-on-genai-208e79f6]]
+- [[double-loop-games-is-closing-its-doors-after-four-years-20f93c44]]
+- [[take-two-ceo-says-streaming-could-soon-make-expensive-consoles-matter-less-9752f6ca]]
+- [[unite-seoul-2026-keynote-recap-announcing-unity-7-79adb98e]]
+- [[qwen3-8-27b-compact-open-weight-dense-vlm-hugging-face-ca26bca1]]
+- [[previewing-ultrafast-mode-gpt-5-6-sol-at-up-to-14x-the-speed-c0986f66]]
+- [[cloud-agents-start-3x-faster-with-builds-6513f392]]
+- [[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]
 - [[2k-announces-new-vancouver-based-aaa-studio-led-by-ea-veteran-2511af2e]]
 - [[tencent-launches-ai-3d-asset-tool-to-empower-creators-4cb1b6d2]]
 - [[dooms-mick-gordon-to-perform-iconic-soundtrack-live-with-orchestra-a76d163c]]
