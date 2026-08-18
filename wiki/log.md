@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-18] daily | 5 topics, 8 sources, ~14 pages
+
+Daily research run 2026-08-18: agentic-coding (1 source, 2 pages), frontier-models (2 sources, 3 pages), ai-in-game-dev (3 sources, 4 pages), games-of-note (3 sources, 4 pages), game-music (1 source, 2 pages). PRs #575–#579.
+
+## [2026-08-18] daily | game-music — 1 source, 2 pages
+
+Wwise 2026.1 Beta now installable from Audiokinetic Launcher; Wwise Motion adds Meta Quest/OpenXR support and Haptic Clip Player. Summary regenerated (summary_affecting). PR #579.
+
+## [2026-08-18] daily | games-of-note — 3 sources, 4 pages
+
+Marvel Tōkon: Fighting Souls — strong reviews, ~485K first-week sales (PS5-led), disastrous PC/Steam launch. PR #578.
+
+## [2026-08-18] daily | ai-in-game-dev — 3 sources, 4 pages
+
+WorldGen (Meta) and WorldClaw (Tencent) emit editable engine-importable 3D scenes (offline generators, not interactive world models). StatePlay directly addresses 'From Pixels to States' critique with MoT architecture jointly predicting visual content + game states. Summary regenerated (summary_affecting). PR #577.
+
+## [2026-08-18] daily | frontier-models — 2 sources, 3 pages
+
+Z.AI announced GLM-5.3 with CyberGym score 84.5% (overtaking Claude Mythos 80.3%) and AA Intelligence Index 58; weights release delayed from July 30 to August. PR #576.
+
+## [2026-08-18] daily | agentic-coding — 1 source, 2 pages
+
+Cursor's Origin: free cloud coding environment with 2-hour runtime, 80 GB storage, GitHub integration. PR #575.
+
 ## [2026-08-17] daily | 5 topics, 10 sources, ~7 pages
 
 Daily Research 2026-08-17 complete. 5 topics processed (game-music, agentic-coding, frontier-models, ai-in-game-dev, games-of-note); 10 new source pages; ~7 pages touched. PRs #569–#573 created and merged (auto-merge). Report: wiki/reports/2026-08-17.md.
