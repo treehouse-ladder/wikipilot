@@ -265,7 +265,8 @@ sources:
   - "[[previewing-ultrafast-mode-gpt-5-6-sol-at-up-to-14x-the-speed-c0986f66]]"
   - "[[cloud-agents-start-3x-faster-with-builds-6513f392]]"
   - "[[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]"
-last_updated: 2026-08-17
+  - "[[origin-code-hosting-807cadab]]"
+last_updated: 2026-08-18
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -348,6 +349,14 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-18
+
+**Cursor ships Origin, an agent-native git forge that puts code, PRs, and agents on one control plane.** Cursor released Origin (early beta, all paid plans): its own git forge for hosting repos, syncing from GitHub, and browsing code in the browser — but the agentic-coding-relevant part is that Origin is wired directly into Cursor Automations and cloud agents [[origin-code-hosting-807cadab]]. Agents are first-class actors on the forge: they can review, change, and push code on Origin repos, and a browsing user can ask Cursor to answer questions, make changes, update PRs, or push a branch inline. Pull requests on GitHub-synced repos mirror two-way (comments/reactions propagate in seconds), so the forge becomes a shared substrate an agent and a human edit concurrently. This extends the orchestration-surface the wiki already tracks from 'agents run in an environment' toward 'agents operate the code-hosting/review layer itself.'
+
+> Origin works with Cursor Automations and cloud agents so agents can review, change, and push code on your Origin repos. [[origin-code-hosting-807cadab]]
+
+> Your code, PRs, and agents are now in the same place. Ask Cursor questions about code you're browsing. It can answer, make changes, update PRs, or push a branch. [[origin-code-hosting-807cadab]]
 
 ### Updates 2026-08-17
 
@@ -2170,6 +2179,8 @@ lint stays quiet until each page actually exists:
 - [ ] OpenAI's Ultrafast tier for GPT-5.6 Sol claims speed 'without giving up intelligence' [[previewing-ultrafast-mode-gpt-5-6-sol-at-up-to-14x-the-speed-c0986f66]], but publishes no held-out coding-benchmark (SWE-bench / Terminal-Bench) parity vs Standard-tier GPT-5.6 Sol. Does the Cerebras-served tier hold coding-agent resolve rate, or trade correctness for the 750 tok/s?
 - [ ] Cursor's prebuilt 'builds' are stale-by-construction between rebuilds and fall back to the last successful build on breakage [[cloud-agents-start-3x-faster-with-builds-6513f392]]. Under what branch-drift conditions does an agent boot against a snapshot that lags its target branch, and does the resilience fallback silently mask dependency updates the agent should have picked up?
 - [ ] Harness-IF's against-prior gap is measured on 12 frontier models over a curated 642-rule library [[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]. Does the 3.6–7.4pt against-prior penalty transfer to real deployed CLAUDE.md/AGENTS.md rulesets, and which of the five instruction surfaces is most reliably obeyed?
+- [ ] Does Cursor Origin's agent-integrated review/push flow measurably reduce the merge-failure profile that [[where-do-ai-coding-agents-fail-an-empirical-study-of-failed-agentic-pull-requests-in-github-d7b61822]] found for larger/multi-file agentic PRs, or does collapsing write+review+merge into one agent-native surface reproduce the same agent-on-agent assurance gap?
+- [ ] When Origin agents push directly to synced GitHub repos with two-way PR sync [[origin-code-hosting-807cadab]], what is the prompt-injection blast radius given the impossibility framing in [[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]] — can content in a synced PR comment steer an agent that has push access to the forge?
 
 ## See also
 
