@@ -63,6 +63,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[wwise-2026-1-what-s-new-beta-edition-4b9caa7a]]
+- [[marvel-tokon-fighting-souls-review-a-worthy-tag-fighter-successor-9ea158c3]]
+- [[marvel-tokon-nears-500k-sales-in-its-first-week-despite-fighting-games-niche-appeal-544eb091]]
+- [[marvel-tokons-steam-launch-is-off-to-a-rough-start-8de9e765]]
+- [[worldclaw-agentic-3d-open-world-generation-at-scale-a6d34f73]]
+- [[worldgen-from-text-to-traversable-and-interactive-3d-worlds-e1e216f9]]
+- [[stateplay-state-aware-game-world-models-for-mechanics-consistent-generation-03e2ee19]]
+- [[z-ai-delays-glm-5-3-weights-after-cybergym-score-tops-mythos-bca697d6]]
+- [[glm-5-3-overview-7e6c3dd9]]
+- [[origin-code-hosting-807cadab]]
 - [[netflix-closing-night-school-studio-and-moonloot-games-b944f06a]]
 - [[netflix-shuts-down-two-more-studios-as-it-divests-from-internal-dev-1dd12436]]
 - [[no-man-s-sky-studio-boss-says-he-s-content-to-wait-on-genai-208e79f6]]
