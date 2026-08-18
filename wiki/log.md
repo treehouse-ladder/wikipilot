@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-18] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+PR #581 (prior conflict-resolver session's log-only entry, claude/youthful-mayer-i4gpg5) was DIRTY after the 5 daily-research topic PRs (#575–#580) merged into main. Rebased onto main (conflict in wiki/log.md — daily entries inserted above the conflict-resolver entry), force-pushed sha=25ffdae, enabled auto-merge.
+
 ## [2026-08-18] daily | 5 topics, 8 sources, ~14 pages
 
 Daily research run 2026-08-18: agentic-coding (1 source, 2 pages), frontier-models (2 sources, 3 pages), ai-in-game-dev (3 sources, 4 pages), games-of-note (3 sources, 4 pages), game-music (1 source, 2 pages). PRs #575–#579.
