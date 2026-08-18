@@ -40,6 +40,10 @@ Z.AI announced GLM-5.3 with CyberGym score 84.5% (overtaking Claude Mythos 80.3%
 
 Cursor's Origin: free cloud coding environment with 2-hour runtime, 80 GB storage, GitHub integration. PR #575.
 
+## [2026-08-18] manual | conflict-resolver — 0 rebased, 6 requeued, 0 lint-fixed, 0 failed
+
+Daily Research PRs #575–#580 (2026-08-18, all 5 topics + report) were CLEAN/green but lacked auto-merge (gh CLI token invalid during the daily run). Requeued all 6 via enable_pr_auto_merge: pr#575 agentic-coding, pr#576 frontier-models, pr#577 ai-in-game-dev, pr#578 games-of-note, pr#579 game-music, pr#580 _report.
+
 ## [2026-08-17] daily | 5 topics, 10 sources, ~7 pages
 
 Daily Research 2026-08-17 complete. 5 topics processed (game-music, agentic-coding, frontier-models, ai-in-game-dev, games-of-note); 10 new source pages; ~7 pages touched. PRs #569–#573 created and merged (auto-merge). Report: wiki/reports/2026-08-17.md.
