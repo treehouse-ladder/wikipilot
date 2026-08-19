@@ -18,7 +18,9 @@ sources:
   - "[[claude-code-release-notes-98ffc52d]]"
   - "[[message-your-other-claude-code-sessions-90ee76df]]"
   - "[[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]"
-last_updated: 2026-08-16
+  - "[[clawarena-team-benchmarking-subagent-orchestration-and-dynamic-workflows-in-language-model-agents-3a15d772]]"
+  - "[[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]"
+last_updated: 2026-08-19
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
@@ -80,6 +82,12 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 > Subagent forking is now on by default: a subagent_type: "fork" subagent inherits the full conversation and prompt cache, and non-teammate agent spawns in interactive sessions now run in the background by default. [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]
 
 > A message is a piece of text one Claude writes to another, never conversation history or files. Claude discovers the target with ListAgents and sends with SendMessage, so you never call either tool yourself. [[message-your-other-claude-code-sessions-90ee76df]]
+
+**Orchestration-plan quality is now measurable in isolation from worker capability (August 2026).** Two new subagent-management benchmarks arrive that score the manager's coordination skill independently of raw model strength: ClawArena-Team deliberately constrains the manager (text-only perception, partial workspace access, a fixed locally-served subagent pool) so score deltas reflect management skill, not raw capability [[clawarena-team-benchmarking-subagent-orchestration-and-dynamic-workflows-in-language-model-agents-3a15d772]]; OrchBench evaluates the orchestration *plan* alone via deterministic simulation without ever invoking worker agents, measuring quality/makespan/token cost and finding that preserving task-critical information beats adding more agents [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]. Both reinforce the context-preservation-over-parallelism thread this page tracks from Willison [[fable-s-judgement-e36be334]] and fork-by-default [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]], now with execution-free benchmarks quantifying the coordination-layer payoff independently of the subagent pool's raw capability.
+
+> The main agent is deliberately constrained: it natively perceives only text and directly accesses only part of the workspace. It commands a fixed, locally served subagent pool, so score differences reflect management skill, not raw capability. [[clawarena-team-benchmarking-subagent-orchestration-and-dynamic-workflows-in-language-model-agents-3a15d772]]
+
+> We find that preserving task-critical information is more important than simply increasing the number of agents, and a systematic study of orchestration strategies across workflows containing up to 1,000 subtasks reveals previously hidden coordination failures. [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]
 
 ## Disputes
 
