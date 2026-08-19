@@ -50,7 +50,9 @@ sources:
   - "[[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]"
   - "[[harnesscompass-guiding-automatic-harness-evolution-toward-generalizable-and-effective-agent-harnesses-fbd31af0]]"
   - "[[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]"
-last_updated: 2026-08-13
+  - "[[clawarena-team-benchmarking-subagent-orchestration-and-dynamic-workflows-in-language-model-agents-3a15d772]]"
+  - "[[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]"
+last_updated: 2026-08-19
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -66,6 +68,10 @@ By late May 2026, harness engineering crystallized as a first-class research fie
 > For long-horizon tasks evaluated across models with comparable frontier capability, the agent execution harness — namely the infrastructure layer that governs context construction, tool interaction, orchestration, and verification around a language model — is often a stronger determinant of agent performance than the model it wraps.
 
 The harness encompasses several distinct responsibilities: task specification, context selection, tool access, project memory, task state, observability, failure attribution, verification, permissions, entropy auditing, and intervention recording. Prior work by Anthropic documented long-running-agent harness patterns such as session-bridging with initializer + coding agents [[effective-harnesses-for-long-running-agents-anthropic-engineering-7f7a70a6]], and autonomous three-agent planner/generator/evaluator stacks with automatic compaction [[harness-design-for-long-running-application-development-anthropic-engineering-9fa759b7]]. The production harness layer is now packaged as the Claude Agent SDK [[building-agents-with-the-claude-agent-sdk-anthropic-engineering-cf56e261]].
+
+**Orchestration-plan evaluation in isolation from worker capability (August 2026).** Two new benchmarks measure harness-level subagent-orchestration skill independently of model strength: ClawArena-Team scores manager agents whose coordination strategy (task delegation, least-privilege routing, modality matching) is isolated from raw capability via a deliberately-constrained manager and a fixed subagent pool [[clawarena-team-benchmarking-subagent-orchestration-and-dynamic-workflows-in-language-model-agents-3a15d772]], and OrchBench evaluates orchestration plans alone via deterministic simulation without invoking workers, finding that preserving task-critical information beats adding agents [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]. Both reinforce the harness-layer thesis by making orchestration quality measurable as a distinct optimization target from the model tier.
+
+> We find that preserving task-critical information is more important than simply increasing the number of agents. [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]
 
 ## Binding Constraint Thesis and direct optimizer evaluation (2026-06-01)
 
