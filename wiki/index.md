@@ -63,6 +63,18 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[ambitious-sci-fi-rival-to-gta-last-sentinel-reportedly-in-trouble-efdd2610]]
+- [[tencent-owned-lightspeed-la-is-laying-off-staff-f42f4b17]]
+- [[in-protest-of-mass-layoffs-bethesda-devs-greet-xbox-leadership-with-a-giant-inflatable-rat-f79788d5]]
+- [[xbox-boss-praises-elder-scrolls-6-as-bethesda-devs-protest-outside-a0ae34d4]]
+- [[the-video-game-symphony-returns-to-cleveland-s-severance-music-center-for-the-choose-your-character-show-on-august-23rd-2026-1081639d]]
+- [[webgamebench-requirement-to-application-evaluation-for-coding-agents-via-browser-native-games-d2cd34c5]]
+- [[artllm-generating-articulated-assets-via-3d-llm-94d90580]]
+- [[release-0-148-0-openai-codex-54686144]]
+- [[clawarena-team-benchmarking-subagent-orchestration-and-dynamic-workflows-in-language-model-agents-3a15d772]]
+- [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]
+- [[gemini-3-7-flash-model-card-2d3d2405]]
+- [[gemini-3-7-flash-on-the-intelligence-vs-time-per-task-pareto-frontier-6caec3fa]]
 - [[wwise-2026-1-what-s-new-beta-edition-4b9caa7a]]
 - [[marvel-tokon-fighting-souls-review-a-worthy-tag-fighter-successor-9ea158c3]]
 - [[marvel-tokon-nears-500k-sales-in-its-first-week-despite-fighting-games-niche-appeal-544eb091]]
@@ -1181,5 +1193,6 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-10]]
 - [[2026-08-11]]
 - [[2026-08-12]]
+- [[2026-08-19]]
 - [[2026-08-14]]
 - [[2026-08-13]]
