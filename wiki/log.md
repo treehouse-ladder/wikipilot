@@ -2031,3 +2031,27 @@ Daily Research 2026-08-14 complete. 5 topics processed (games-of-note, game-musi
 ## [2026-08-16] health | weekly sweep — 5 disputes filed
 
 20 candidate sets scanned (19 source-triggered + 1 stale sweep). 5 disputes filed across 4 pages: gpt-5.6-sol (×2), frontier-models, parallel-subagents, muse-code. 24 stale pages, 0 lint errors. PR #567.
+
+## [2026-08-19] daily | frontier-models — 2 sources, 3 pages
+
+Gemini 3.7 Flash launched (AA Index 56, competitive with GPT-4o mini / Haiku 4.5 on cost); Google's intelligence-vs-speed Pareto positioning. Summary regenerated. PR #583.
+
+## [2026-08-19] daily | agentic-coding — 3 sources, 6 pages
+
+Codex CLI 0.148.0 fork-based multi-session; ClawArena-Team SMS orchestration benchmark; OrchBench deterministic simulation evaluator. Summary regenerated; parallel-subagents + harness-engineering cross-page sweep. PR #584.
+
+## [2026-08-19] daily | ai-in-game-dev — 2 sources, 3 pages
+
+WebGameBench: browser-native game benchmark for coding agents (76.9% usable, 20.2% excellent); ArtLLM articulated 3D asset generation from text. Summary regenerated; 2 disputes, 2 open questions. PR #585.
+
+## [2026-08-19] daily | game-music — 1 source, 2 pages
+
+Video Game Symphony "Choose Your Character" show in Cleveland (Borislav Slavov BG3, Castlevania suite, Chrono Cross premiere, Aug 23 2026). Divergence sentinel added. PR #586.
+
+## [2026-08-19] daily | games-of-note — 4 sources, 5 pages
+
+Tencent cancels Last Sentinel/Lightspeed LA (~80 of ~100 staff cut, ~6yr/$100M+ AAA cancelled); Bethesda inflatable-rat protest vs. Xbox leadership; Phil Spencer praises Elder Scrolls 6. Summary regenerated; 2 disputes, 2 open questions. PR #587.
+
+## [2026-08-19] daily | 5 topics, 12 sources, ~18 pages
+
+Daily Research 2026-08-19 complete. 5 topics processed (frontier-models, agentic-coding, ai-in-game-dev, game-music, games-of-note); 12 new source pages; ~18 pages touched. PRs #583–#587 created and auto-merged. Report: wiki/reports/2026-08-19.md.
