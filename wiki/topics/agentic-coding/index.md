@@ -269,7 +269,9 @@ sources:
   - "[[release-0-148-0-openai-codex-54686144]]"
   - "[[clawarena-team-benchmarking-subagent-orchestration-and-dynamic-workflows-in-language-model-agents-3a15d772]]"
   - "[[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]"
-last_updated: 2026-08-19
+  - "[[cloud-agents-and-cursor-harness-improvements-ce4a7eb2]]"
+  - "[[conceptual-integrity-and-counting-lines-of-code-7a66fcf6]]"
+last_updated: 2026-08-20
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -362,6 +364,22 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-20
+
+**Cursor turns cloud agents into an always-on, event-driven system with per-subagent VM isolation and long-lived goals.** The Aug 19 "Cloud Agents and Cursor Harness Improvements" release reframes Cursor's cloud agents from one-shot sessions into a standing system that can "automatically pick up work in response to events, hold a goal until it's met, and stay on course through long-running sessions" [[cloud-agents-and-cursor-harness-improvements-ce4a7eb2]]. Four primitives land: (1) **Event Subscriptions** — an agent subscribes to an event source (a PR, a Slack thread, a scheduled task) and wakes when something happens; (2) **Non-interrupting follow-ups** — a steering message waits for the next tool call instead of cutting the agent off mid-action; (3) **Custom Modes** — any skill can be pinned as an "always on" mode; (4) **Subagent isolation** — subagents can now run on their own virtual machines, each with an isolated copy of the project and clean context, so they can test the parent's changes in fresh environments or swarm independent fixes without collisions. `/goal` gives an agent a long-lived objective to pursue until complete. This is Cursor's answer to the fork-a-context / parallel-subagent-isolation convergence Claude Code (fork-by-default [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]) and Codex (`codex exec fork` [[release-0-148-0-openai-codex-54686144]]) reached — but Cursor pushes isolation all the way to a per-subagent VM rather than a git worktree [[cloud-agents-and-cursor-harness-improvements-ce4a7eb2]].
+
+> With this release, cloud agents can automatically pick up work in response to events, hold a goal until it's met, and stay on course through long-running sessions. [[cloud-agents-and-cursor-harness-improvements-ce4a7eb2]]
+
+> Subagents can now run on their own virtual machines. Each gets an isolated copy of the project with clean context in its own cloud environment. [[cloud-agents-and-cursor-harness-improvements-ce4a7eb2]]
+
+**Claude Code v2.1.240 adds `notify_when_idle` to cross-session SendMessage.** Extending the cross-session messaging shipped in v2.1.232, a session can now ask another Claude Code session on the same machine to send one notice when it next goes idle — opt-in, one-shot, no polling (macOS/Linux) [[claude-code-changelog-background-session-reliability-and-code-review-token-cuts-july-2026-79752d66]]. It is a small but real async-coordination primitive: an orchestrator no longer has to poll a background subagent to learn it finished, closing a gap in the cross-session mention/messaging model.
+
+**Simon Willison: conceptual integrity, not raw throughput, is the binding constraint on agent-written code.** Reflecting on how coding agents change software development, Willison grants that LOC velocity is real — pre-agents, "200 lines of working, debugged, production-level code is an incredibly good day" — but argues the cheapness of agent-generated features erodes *conceptual integrity*, the Mythical Man-Month property that "there are no surprises in it, it covers exactly the right domain of things, everything fits together and makes sense" [[conceptual-integrity-and-counting-lines-of-code-7a66fcf6]]. His Winchester Mystery House analogy: because adding a "room" is now cheap, systems sprawl until the integrity falls apart. This sharpens the normalization-of-deviance / vibe-architecting thread the wiki already tracks [[vibe-coding-and-agentic-engineering-are-getting-closer-than-i-would-like-a811ab37]] — the constraint shifts from can-the-agent-write-it to can-a-human-keep-the-design-coherent, and rhymes with SlopCodeBench's measured structural erosion [[slopcodebench-benchmarking-how-coding-agents-degrade-over-long-horizon-iterative-tasks-dafbe4d6]].
+
+> Before coding agents, a software engineer could produce a few hundred lines of production-ready code per day; 200 lines of working, debugged, production-level code is an incredibly good day. [[conceptual-integrity-and-counting-lines-of-code-7a66fcf6]]
+
+> With coding agents it's very easy to keep adding new rooms because the cost is so much cheaper, and what you end up with is something where the conceptual integrity falls apart. [[conceptual-integrity-and-counting-lines-of-code-7a66fcf6]]
 
 ### Updates 2026-08-19
 
@@ -1974,6 +1992,7 @@ lint stays quiet until each page actually exists:
 - [[evo-bench-can-language-models-improve-agent-harness-c2121d1b]] argues existing harness-evolution evaluations 'fail to isolate harness improvements from base model strength [and] prevent task-specific overfitting'; positive harness-evolution results in the wiki (e.g. [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]], [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]) report gains typically without isolating the base-model contribution. Status: unresolved — Evo-Bench also measures Search/Office/General domains, not coding, so its indictment's transfer to the SWE-bench regime is itself unverified.
 - [[one-recipe-many-harnesses-what-self-evolution-encodes-across-languages-and-models-9c4616e5]] holds one self-evolution recipe fixed across 8 languages × 3 base models to attribute each harness edit to benchmark-specific adaptation vs. language-specific engineering knowledge vs. base-model compensation, implying much self-evolution 'benefit' may be non-transferable; [[self-evolving-agent-harnesses-via-gated-semantic-quality-diversity-d871bd54]] reports +9–+15.5pp sealed-test gains retaining 86–147% of training gain (transferable). Status: unresolved
 - [[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]] audits SWE-bench Verified and finds nearly 60% of unsolved instances contain flawed tests, calling into question the validity of SWE-bench Verified as a benchmark; existing wiki pages treat SWE-bench Verified as the canonical coding-agent leaderboard. Status: unresolved — the audit methodology is not yet independently replicated.
+- [[conceptual-integrity-and-counting-lines-of-code-7a66fcf6]] argues cheap agent-generated features cause conceptual integrity to fall apart (Winchester Mystery House), implying agent throughput trades against long-term design coherence; [[2026-agentic-coding-trends-report-27fe0474]] and [[live-blog-code-w-claude-2026-aa645a96]] frame 2026 as the orchestration era where agents reliably write production code. Status: unresolved — same direction as [[slopcodebench-benchmarking-how-coding-agents-degrade-over-long-horizon-iterative-tasks-dafbe4d6]]'s measured structural-erosion finding but on a qualitative human-design-judgment axis rather than a code-metric axis.
 
 ## Open questions
 
@@ -2212,6 +2231,9 @@ lint stays quiet until each page actually exists:
 - [ ] When Origin agents push directly to synced GitHub repos with two-way PR sync [[origin-code-hosting-807cadab]], what is the prompt-injection blast radius given the impossibility framing in [[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]] — can content in a synced PR comment steer an agent that has push access to the forge?
 - [ ] OrchBench's deterministic simulator is validated by correlation against Claude Code executions only [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]] — does the simulated ranking still track real execution quality under a different harness (Codex, Cursor cloud agents) whose worker-error and tool-reliability profile differs from Claude Code's?
 - [ ] ClawArena-Team's Subagent-Management Score isolates management skill by giving every model the same fixed subagent pool [[clawarena-team-benchmarking-subagent-orchestration-and-dynamic-workflows-in-language-model-agents-3a15d772]] — does SMS ranking predict real-world outcomes where a strong manager also spawns strong (not fixed) subagents, i.e. does management skill compose with raw capability or trade off against it?
+- [ ] Does Cursor's per-subagent VM isolation (a clean-context isolated project copy per subagent) [[cloud-agents-and-cursor-harness-improvements-ce4a7eb2]] forfeit the parent agent's prompt cache on every subagent spawn, and if so how does the isolation-vs-cache-reuse cost tradeoff compare to Claude Code's fork-inherits-prompt-cache model [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]?
+- [ ] Cursor event-subscription agents 'wake when something happens' on a subscribed source [[cloud-agents-and-cursor-harness-improvements-ce4a7eb2]] — what caps the wake/dispatch rate against a noisy source (a busy Slack thread or high-churn PR), and how does unbounded event-triggered dispatch interact with enterprise per-tool cost ceilings like Uber's $1,500/month [[uber-caps-usage-of-ai-tools-like-claude-code-to-manage-costs-d17eb873]]?
+- [ ] Is there any quantitative measurement of conceptual-integrity erosion under agent-driven feature addition [[conceptual-integrity-and-counting-lines-of-code-7a66fcf6]] analogous to SlopCodeBench's structural-erosion metric [[slopcodebench-benchmarking-how-coding-agents-degrade-over-long-horizon-iterative-tasks-dafbe4d6]], or does it remain a qualitative design-judgment claim?
 
 ## See also
 
