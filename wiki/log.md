@@ -2059,3 +2059,7 @@ Tencent cancels Last Sentinel/Lightspeed LA (~80 of ~100 staff cut, ~6yr/$100M+ 
 ## [2026-08-19] daily | 5 topics, 12 sources, ~18 pages
 
 Daily Research 2026-08-19 complete. 5 topics processed (frontier-models, agentic-coding, ai-in-game-dev, game-music, games-of-note); 12 new source pages; ~18 pages touched. PRs #583–#587 created and auto-merged. Report: wiki/reports/2026-08-19.md.
+
+## [2026-08-20] manual | conflict-resolver — 1 lint-fixed
+
+pr#592 kind=lint_fix resolved=true sha=949d9b29 — fixed 1 broken-wikilink in wiki/entities/black-pony-immersive.md ([[wiki/topics/games-of-note/index]] → [[games-of-note]]); pr#593 skipped (3 broken-wikilinks in wiki/reports/2026-08-20.md reference source pages added by #592, will auto-resolve on #592 merge)
