@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-20] manual | conflict-resolver — 0 rebased, 0 requeued, 1 lint-fixed, 0 failed
+
+pr#593 merged main into _report branch to resolve 3 broken-wikilink errors (sources from games-of-note PR #592 landed on main after _report was cut); auto-merge re-queued.
+
 ## [2026-08-20] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#590 (claude/daily-2026-08-20/frontier-models) was CLEAN with CI green and no auto-merge queued; enabled squash auto-merge via MCP tool — merged immediately.
