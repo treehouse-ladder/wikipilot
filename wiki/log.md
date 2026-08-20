@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-20] manual | conflict-resolver — 0 rebased, 0 requeued, 1 lint-fixed, 0 failed
+
+pr#593 merged main into _report branch to resolve 3 broken-wikilink errors (sources from games-of-note PR #592 landed on main after _report was cut); auto-merge re-queued.
+
 ## [2026-08-20] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#590 (claude/daily-2026-08-20/frontier-models) was CLEAN with CI green and no auto-merge queued; enabled squash auto-merge via MCP tool — merged immediately.
@@ -2055,6 +2059,22 @@ Video Game Symphony "Choose Your Character" show in Cleveland (Borislav Slavov B
 ## [2026-08-19] daily | games-of-note — 4 sources, 5 pages
 
 Tencent cancels Last Sentinel/Lightspeed LA (~80 of ~100 staff cut, ~6yr/$100M+ AAA cancelled); Bethesda inflatable-rat protest vs. Xbox leadership; Phil Spencer praises Elder Scrolls 6. Summary regenerated; 2 disputes, 2 open questions. PR #587.
+
+## [2026-08-20] daily | 3 topics, 6 sources, 11 pages
+
+Daily Research 2026-08-20 complete. 3 topics processed (agentic-coding, frontier-models, games-of-note); 6 new source pages; 11 pages touched. PRs #589, #590, #592 created. Report: wiki/reports/2026-08-20.md.
+
+## [2026-08-20] daily | games-of-note — 3 sources, 5 pages
+
+Warren Spector retirement (43 years in game dev), Black Pony Immersive announced (Harvey Smith + Arkane Austin vets), Raze & Rebuild Studio worker co-op launch. New entity: black-pony-immersive. PR #592.
+
+## [2026-08-20] daily | frontier-models — 1 source, 3 pages
+
+GLM-5.3 (max) confirmed at AA Intelligence Index 60 (+9 vs GLM-5.2); price $1.40/$4.40 per Mtoken; weights still proprietary. Updated glm-5 entity. PR #590.
+
+## [2026-08-20] daily | agentic-coding — 2 sources, 3 pages
+
+Cursor cloud agents with per-subagent VM isolation and event subscriptions; Willison's conceptual-integrity-erosion concern. 1 new dispute (erosion vs. orchestration-era framing), 3 new open questions. PR #589.
 
 ## [2026-08-19] daily | 5 topics, 12 sources, ~18 pages
 
