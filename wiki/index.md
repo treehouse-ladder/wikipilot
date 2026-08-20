@@ -55,6 +55,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[supermassive-games]]
 - [[small-axe-studios]]
 - [[mick-gordon]]
+- [[black-pony-immersive]]
 
 ## Comparisons
 
@@ -747,6 +748,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[expanding-daybreak-as-the-cyber-defense-window-narrows-081601c2]]
 - [[ea-desperately-wants-investors-to-know-it-s-on-the-generative-ai-bandwagon-3613b843]]
 - [[supermassive-games-begins-third-round-of-layoffs-in-three-years-9bc14ff3]]
+- [[cloud-agents-and-cursor-harness-improvements-ce4a7eb2]]
+- [[conceptual-integrity-and-counting-lines-of-code-7a66fcf6]]
+- [[glm-5-3-max-intelligence-performance-price-analysis-26ed0788]]
+- [[harvey-smith-and-fellow-arkane-austin-veterans-announce-a-new-studio-black-pony-immersive-1bc215a8]]
+- [[deus-ex-director-warren-spector-is-retiring-after-nearly-45-years-in-game-dev-96a74153]]
+- [[triple-a-vets-and-accessibility-experts-launch-new-game-dev-co-op-raze-and-rebuild-studio-4224e0c9]]
 
 ## Answers
 
@@ -1196,3 +1203,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-19]]
 - [[2026-08-14]]
 - [[2026-08-13]]
+- [[2026-08-20]]
