@@ -37,4 +37,4 @@ _no contradictions or gaps known yet (last reviewed: 2026-08-20)_
 
 ## See also
 
-- [[wiki/topics/games-of-note/index]]
+- [[games-of-note]]
