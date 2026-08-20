@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-20] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#590 (claude/daily-2026-08-20/frontier-models) was CLEAN with CI green and no auto-merge queued; enabled squash auto-merge via MCP tool — merged immediately.
+
 ## [2026-08-18] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 PR #581 (prior conflict-resolver session's log-only entry, claude/youthful-mayer-i4gpg5) was DIRTY after the 5 daily-research topic PRs (#575–#580) merged into main. Rebased onto main (conflict in wiki/log.md — daily entries inserted above the conflict-resolver entry), force-pushed sha=25ffdae, enabled auto-merge.
