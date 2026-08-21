@@ -2079,3 +2079,27 @@ Cursor cloud agents with per-subagent VM isolation and event subscriptions; Will
 ## [2026-08-19] daily | 5 topics, 12 sources, ~18 pages
 
 Daily Research 2026-08-19 complete. 5 topics processed (frontier-models, agentic-coding, ai-in-game-dev, game-music, games-of-note); 12 new source pages; ~18 pages touched. PRs #583–#587 created and auto-merged. Report: wiki/reports/2026-08-19.md.
+
+## [2026-08-21] daily | game-music — 1 source, 2 pages
+
+ULTRAKILL Act 2: Imperfect Hatred 3×LP vinyl soundtrack released by Materia Collective. PR #595.
+
+## [2026-08-21] daily | games-of-note — 3 sources, 1 page
+
+Riot 2XKO shut down after less than a year; Sony Horizon Hunters Gathering rebooted as smaller story-driven co-op game; Mattel Game Studios launched. 2 new disputes, 3 new open questions. PR #596.
+
+## [2026-08-21] daily | frontier-models — 1 source, 1 page
+
+Artificial Analysis Optima launched as custom-benchmark platform (find best model for your task, up to 10× cost/time savings). DeepSeek V4 peak/off-peak billing filed as Open question. PR #597.
+
+## [2026-08-21] daily | ai-in-game-dev — 1 source, 1 page
+
+Single-image → editable-engine-scene reconstruction paper (independently editable meshes + explicit lighting). 1 new dispute, 1 new open question. PR #598.
+
+## [2026-08-21] daily | agentic-coding — 2 sources, 1 page
+
+Agent Lightning v1.0 (harnessed agentic RL, +14.6pp SWE-bench Verified on Qwen3.5-9B, ~3,500-LOC open framework); LongHorizon-Harness (MEA loop, externalized verified task-state). Summary updated. 2 new open questions. PR #599.
+
+## [2026-08-21] daily | 5 topics, 8 sources, 5 pages
+
+Daily Research 2026-08-21 complete. 5 topics processed (game-music, games-of-note, frontier-models, ai-in-game-dev, agentic-coding); 8 new source pages; 5 topic pages touched. PRs #595–#599 created and auto-merged. Report: wiki/reports/2026-08-21.md.
