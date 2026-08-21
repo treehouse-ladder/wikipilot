@@ -1124,6 +1124,14 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[proposed-acquisition-of-warner-bros-discovery-by-paramount-skydance-a93b9ab3]]
 - [[paramount-agrees-to-delay-warner-bros-merger-into-2027-f9614bb2]]
 - [[culdcept-the-first-launches-on-steam-e04dccb6]]
+- [[ultrakill-act-2-imperfect-hatred-3xlp-vinyl-soundtrack-e3c8e5da]]
+- [[riot-is-already-killing-its-2xko-fighting-game-less-than-a-year-after-launching-561d2cf4]]
+- [[report-sony-rebooting-live-service-horizon-after-bad-player-tests-7cb86c32]]
+- [[barbie-and-hot-wheels-owner-mattel-launches-mattel-game-studios-feb67f7b]]
+- [[announcing-optima-create-a-custom-benchmark-for-your-use-case-6d447af0]]
+- [[engine-native-editable-3d-world-reconstruction-with-objects-and-lighting-d37c9db8]]
+- [[agent-lightning-v1-0-towards-harnessed-agentic-rl-9d6bd7a9]]
+- [[longhorizon-harness-advancing-long-horizon-agents-for-real-world-tasks-7b19f9de]]
 
 ## Reports
 
@@ -1204,3 +1212,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-14]]
 - [[2026-08-13]]
 - [[2026-08-20]]
+- [[2026-08-21]]
