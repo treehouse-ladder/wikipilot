@@ -2079,3 +2079,7 @@ Cursor cloud agents with per-subagent VM isolation and event subscriptions; Will
 ## [2026-08-19] daily | 5 topics, 12 sources, ~18 pages
 
 Daily Research 2026-08-19 complete. 5 topics processed (frontier-models, agentic-coding, ai-in-game-dev, game-music, games-of-note); 12 new source pages; ~18 pages touched. PRs #583–#587 created and auto-merged. Report: wiki/reports/2026-08-19.md.
+
+## [2026-08-21] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#598 kind=requeue resolved=true — enabled auto-merge (squash) on claude/daily-2026-08-21/ai-in-game-dev; CI green, mergeable_state=clean
