@@ -2103,3 +2103,7 @@ Agent Lightning v1.0 (harnessed agentic RL, +14.6pp SWE-bench Verified on Qwen3.
 ## [2026-08-21] daily | 5 topics, 8 sources, 5 pages
 
 Daily Research 2026-08-21 complete. 5 topics processed (game-music, games-of-note, frontier-models, ai-in-game-dev, agentic-coding); 8 new source pages; 5 topic pages touched. PRs #595–#599 created and auto-merged. Report: wiki/reports/2026-08-21.md.
+
+## [2026-08-23] health | weekly sweep — 2 disputes filed
+
+9 candidate sets scanned (8 source-triggered + 1 stale sweep). 2 disputes filed: agent-harnesses.md (Harness-IF 4 vs 5 instruction surfaces), black-pony-immersive.md (first-generation immersive sim lineage contradiction). 27 stale synthesis pages, 0 lint errors. PR #602.

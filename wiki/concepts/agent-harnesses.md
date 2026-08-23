@@ -37,7 +37,7 @@ sources:
   - "[[evo-bench-can-language-models-improve-agent-harness-c2121d1b]]"
   - "[[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]"
   - "[[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]"
-last_updated: 2026-08-17
+last_updated: 2026-08-23
 last_verified: 2026-08-17
 freshness_window_days: 30
 ---
@@ -148,6 +148,9 @@ These three papers together narrow the conditions under which harness evolution 
 
 - [[lessons-from-building-claude-code-how-we-use-skills]] presents SKILL.md token-efficiency benefits as a uniform property of the skills format; [[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]] finds token-efficiency 'depends on the agent harness and tool setting' — suggesting the benefit is harness-mediated rather than format-intrinsic. Status: unresolved
 - [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]] reports "harness choice matters as much as model choice"; [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]] finds no statistically significant improvement across 35 sequential harness releases on SWE-bench with model held fixed. Status: unresolved — the Claw result compares harnesses from different design families (not sequential iterations of one harness), which may explain why that comparison found variance where sequential iteration did not.
+- This page's Summary lists four Harness-IF instruction surfaces (system prompt, agent-config files, tool descriptions, user turn); [[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]] and [[agentic-coding]] both state five configurable surfaces — the fifth is not identified in the synthesis. Status: unresolved (confidence: high; sweep: 2026-08-23)
+
+> We introduce Harness-IF, which scores operational rules one at a time from execution evidence: 60 realistic multi-turn coding items drawn from a 642-rule library, 256 rules receiving verdicts, placed on the five configurable surfaces a deployed agent reads. [[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]
 
 ## Open questions
 
