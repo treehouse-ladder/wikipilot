@@ -1,9 +1,9 @@
 ---
 title: "GPT-5.6 Sol"
 kind: entity
-sources: ["[[gpt-5-6-frontier-intelligence-that-scales-with-your-ambition-e19fbb75]]", "[[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]]", "[[expanding-daybreak-as-the-cyber-defense-window-narrows-081601c2]]"]
-last_updated: 2026-08-16
-last_verified: 2026-07-10
+sources: ["[[gpt-5-6-frontier-intelligence-that-scales-with-your-ambition-e19fbb75]]", "[[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]]", "[[expanding-daybreak-as-the-cyber-defense-window-narrows-081601c2]]", "[[advancing-the-price-performance-frontier-with-gpt-5-6-dca7adc6]]"]
+last_updated: 2026-08-23
+last_verified: 2026-08-23
 freshness_window_days: 30
 ---
 
@@ -19,6 +19,10 @@ On 2026-08-10 OpenAI introduced **GPT-5.6-Cyber**, a cyber-specialized variant *
 
 > Built on GPT-5.6 Sol, it is trained to improve capabilities on several specialized cybersecurity tasks (e.g., finding zero-day vulnerabilities and developing exploit chains) and to reduce refusals for certain higher-risk, dual-use cyber tasks. [[expanding-daybreak-as-the-cyber-defense-window-narrows-081601c2]]
 
+On 2026-08-21 OpenAI cut GPT-5.6 Sol's price by over 20% for at least three months: **$4/$20 per Mtoken** (down from the $5/$30 launch pricing), a 20% input and 33% output reduction, promotional through at least 2026-11-21 across the API and Codex credits (token-based USD usage only; legacy metering excluded) [[advancing-the-price-performance-frontier-with-gpt-5-6-dca7adc6]]. At the promo rate Sol's cost per Intelligence-Index task falls below the ~$1.04 measured at launch pricing, tightening its cost-efficiency standing against Grok 4.6 ($2/$6) and Claude Opus 5 ($5/$25).
+
+> GPT-5.6 Sol now costs $4 per million input tokens and $20 per million output tokens, a 20% reduction in input pricing and a 33% reduction in output pricing. GPT-5.6 Sol's promotional pricing is available at least through November 21, 2026. [[advancing-the-price-performance-frontier-with-gpt-5-6-dca7adc6]]
+
 ## Disputes
 
 - [[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]] asserts GPT-5.6 Sol (max) is "the new publicly-accessible #2 aggregate model (ahead of Opus 4.8 at 56 and GPT-5.5 at 55)" on AA Intelligence Index at launch (July 2026); [[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]] and [[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]] show Claude Opus 5 launched at 61 (v4.1)/63 (v4.1.1), placing it #1 and making GPT-5.6 Sol #3 at best as of August 2026. Status: unresolved — entity page still describes Sol as #2; needs refresh to reflect post-Opus-5 ranking.
@@ -27,6 +31,7 @@ On 2026-08-10 OpenAI introduced **GPT-5.6-Cyber**, a cyber-specialized variant *
 ## Open questions
 
 - [ ] What is GPT-5.6 Sol's contamination-resistant SWE-bench Pro score vs Opus 4.8 (69.2%)? [[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]]
+- [ ] Is GPT-5.6 Sol's promotional $4/$20 per Mtoken permanent or does it revert to $5/$30 after 2026-11-21? [[advancing-the-price-performance-frontier-with-gpt-5-6-dca7adc6]]
 
 ## See also
 
