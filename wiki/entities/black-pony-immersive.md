@@ -3,7 +3,7 @@ title: "Black Pony Immersive"
 kind: entity
 aliases: ["Black Pony"]
 sources: ["[[harvey-smith-and-fellow-arkane-austin-veterans-announce-a-new-studio-black-pony-immersive-1bc215a8]]"]
-last_updated: 2026-08-20
+last_updated: 2026-08-23
 last_verified: 2026-08-20
 freshness_window_days: 60
 ---
@@ -28,7 +28,11 @@ freshness_window_days: 60
 
 ## Disputes
 
-_no contradictions or gaps known yet (last reviewed: 2026-08-20)_
+- [[games-of-note]] states "Ken Levine is now the only remaining first-generation genre luminary actively developing in the space" after Spector's retirement; this page claims Spector's exit makes Black Pony "the primary carrier of that creative lineage going forward." Status: unresolved (confidence: high; sweep: 2026-08-23)
+
+> His exit marks the close of the founding generation of the immersive sim: Ken Levine is now the only remaining first-generation genre luminary actively developing in the space. (from [[games-of-note]])
+
+> The August 2026 announcement coincides with Warren Spector's retirement, the exit of the last first-generation immersive sim founder — making Black Pony Immersive the primary carrier of that creative lineage going forward. (from this page)
 
 ## Open questions
 
