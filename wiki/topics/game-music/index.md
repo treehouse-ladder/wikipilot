@@ -2,7 +2,7 @@
 title: Game composers and audio
 kind: topic
 sources: ["[[for-honor-a-decade-of-battle-and-music-2xlp-vinyl-1f57433f]]", "[[akira-yamaoka-to-attend-heroes-a-video-game-symphony-in-toronto-dc724948]]", "[[halo-shares-first-taste-of-remastered-campaign-evolved-soundtrack-d89cae28]]", "[[nintendo-switch-pokemon-legends-z-a-mega-dimension-super-music-complete-music-review-d6281f55]]", "[[the-pokemon-legends-z-a-soundtrack-breaks-a-series-ruleand-brings-lumiose-to-life-b6ef8525]]", "[[square-enix-shares-multiple-soundtrack-samples-from-final-fantasy-resonance-2c02bd71]]", "[[another-f-zero-album-joins-the-nintendo-music-library-this-week-a86bd9a6]]", "[[gamemusic-s-favorite-vinyl-releases-of-the-month-july-4f8a24a7]]", "[[the-colors-of-harmony-hitoshi-sakimoto-40th-anniversary-celebration-d259fce0]]", "[[nintendo-music-updated-with-more-mario-kart-world-free-roam-songs-20abefca]]", "[[persona-3-reload-original-soundtrack-music-review-7bde2768]]", "[[denshattack-soundtrack-features-shoji-meguro-richard-jacques-ryo-nagamatsu-and-more-bfe0ea2a]]", "[[about-time-indeed-the-crash-bandicoot-4-soundtrack-finally-hits-spotify-6b64122f]]", "[[the-outer-worlds-2-vinyl-soundtrack-is-now-available-to-pre-order-from-laced-records-a6afe43f]]", "[[lineage-ii-celebrates-its-22nd-anniversary-with-the-launch-of-a-special-collector-s-edition-soundtrack-vinyl-8b7f3ea6]]", "[[donkey-kong-bananza-s-229-tracks-added-to-nintendo-music-fd489531]]", "[[resonance-a-plague-tale-legacy-shares-first-taste-of-soundtrack-d3b5f094]]", "[[unbeatable-album-3xlp-vinyl-soundtrack-180-gram-edition-58e3f9df]]", "[[dolphin-park-lp-music-from-wave-race-64-a84d037a]]", "[[splatoon-raiders-added-to-nintendo-music-as-a-special-release-9eb6c24f]]", "[[forza-horizon-6-s-drum-n-bass-hospital-records-soundtrack-is-coming-to-vinyl-01a125b4]]", "[[halo-campaign-evolved-game-review-03acbaa2]]", "[[gg-orchestra-announces-august-30-concert-in-san-francisco-7da70d5d]]", "[[award-winning-gordy-haab-drops-the-first-single-for-star-wars-zero-company-427d9a90]]", "[[rpgfan-game-music-festival-persona-grooves-concert-review-f6799278]]", "[[deltarune-chapter-5-original-game-soundtrack-materia-collective-aec2c961]]", "[[iam8bit-announces-ico-vinyl-soundtrack-and-team-ico-trilogy-restocks-9596e666]]", "[[blue-reflection-official-soundtrack-music-review-154b4718]]", "[[culdcept-the-first-launches-on-steam-e04dccb6]]", "[[starbound-10th-anniversary-7169acbb]]", "[[fire-emblem-fortune-s-weave-special-release-album-now-available-to-stream-on-nintendo-music-5d755d98]]", "[[guild-wars-3-behind-the-scenes-video-discusses-music-ce0a702a]]", "[[rust-game-soundtrack-is-coming-to-vinyl-for-the-first-time-7b17cd5d]]", "[[veritas-tales-witch-of-the-dark-castle-original-soundtrack-from-basiscape-is-now-available-3e839919]]", "[[dooms-mick-gordon-to-perform-iconic-soundtrack-live-with-orchestra-a76d163c]]", "[[warframe-vinyl-soundtrack-2xlp-reissue-be440a58]]", "[[wwise-2026-1-what-s-new-beta-edition-4b9caa7a]]", "[[the-video-game-symphony-returns-to-cleveland-s-severance-music-center-for-the-choose-your-character-show-on-august-23rd-2026-1081639d]]", "[[ultrakill-act-2-imperfect-hatred-3xlp-vinyl-soundtrack-e3c8e5da]]"]
-last_updated: 2026-08-21
+last_updated: 2026-08-23
 last_verified: 2026-08-09
 freshness_window_days: 60
 ---
@@ -71,6 +71,12 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 Open caveats and unresolved contradictions are tracked in `## Disputes` and `## Open questions` below.
 
 ## Recent updates
+
+### Updates 2026-08-23
+
+No new qualifying sources today. Swept all allowlist outlets (VGM Online, RPGFan, GameMusic.tools, Game Developer, Materia Collective) for releases, composer interviews, and adaptive-music/middleware news published since 2026-08-21. The freshest in-scope item — Materia Collective's ULTRAKILL Act 2: Imperfect Hatred 3×LP vinyl — was already logged on 2026-08-21 (PR #595). Low-natural-flow topic; a quiet day is the expected shape.
+
+_no contradictions or gaps known yet (last reviewed: 2026-08-23)_
 
 ### Updates 2026-08-21
 
@@ -1032,6 +1038,7 @@ until the underlying entity pages exist:
 
 - [ ] Will Mick Gordon's first-ever live DOOM performance at RADAR Festival 2027 yield an official live recording or concert album, and does it signal a broader touring plan beyond the single Manchester date? [[dooms-mick-gordon-to-perform-iconic-soundtrack-live-with-orchestra-a76d163c]]
 - [ ] Will Microsoft / Laced Records respond to Marty O'Donnell's claim that the Halo Original Trilogy vinyl reissue uses no original multitracks and pays neither composers nor performers, and does the publisher dispute his account? [[halo-composer-hits-out-at-vinyl-release-none-of-the-performers-will-see-a-dime-6a0e1792]]
+- [ ] Backfill candidate: RPGFan's SaGa Series 20th Anniversary Original Soundtrack -PREMIUM BOX- music review (Kenji Ito / Uematsu, key tracked composers) is in-scope but not yet ingested and its publication date is unconfirmed — verify recency before pulling into the wiki.
 - [ ] Does the Halo Original Trilogy vinyl box's 83-track count differ from the 73-track figure cited in earlier coverage of the same release, and what accounts for the discrepancy (bonus material, alternate edits, or a count error)? [[halo-soundtrack-getting-vinyl-release-ahead-of-campaign-evolved-remake-9240e484]] [[halo-composer-hits-out-at-vinyl-release-none-of-the-performers-will-see-a-dime-6a0e1792]]
 - [ ] Who is composing the score for Spyro: A Realm Beyond now that Stewart Copeland has confirmed he is not returning, and will the new score reinterpret Copeland's original themes or start fresh? [[the-police-stewart-copeland-won-t-be-back-for-new-spyro-soundtrack-776aefc6]]
 - [ ] What is the breakdown of AAA vs indie adoption of Wwise, FMOD, and MetaSounds as of mid-2026? The comparison source asserts industry standing but does not provide adoption numbers.
