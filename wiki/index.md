@@ -754,6 +754,13 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[harvey-smith-and-fellow-arkane-austin-veterans-announce-a-new-studio-black-pony-immersive-1bc215a8]]
 - [[deus-ex-director-warren-spector-is-retiring-after-nearly-45-years-in-game-dev-96a74153]]
 - [[triple-a-vets-and-accessibility-experts-launch-new-game-dev-co-op-raze-and-rebuild-studio-4224e0c9]]
+- [[swe-bench-science-can-coding-agents-resolve-engineering-tasks-in-science-e21716d9]]
+- [[more-than-just-code-review-3f89e94f]]
+- [[swe-touch-benchmarking-coding-agents-when-users-touch-the-code-286fad13]]
+- [[advancing-the-price-performance-frontier-with-gpt-5-6-dca7adc6]]
+- [[side-and-razer-announce-human-in-the-loop-ai-playtests-627e9ba4]]
+- [[rigmo-unifying-rig-and-motion-learning-for-generative-animation-c1b495de]]
+- [[star-wars-zero-company-is-good-but-seems-to-play-things-too-safe-141a1ef6]]
 
 ## Answers
 
@@ -1213,3 +1220,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-13]]
 - [[2026-08-20]]
 - [[2026-08-21]]
+- [[2026-08-23]]

@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-23] daily | agentic-coding — 3 sources, 4 pages
+
+SWE-bench Science benchmark (scientific repo tasks, <50% best agent); Willison instruct-and-verify framing; SWE-Touch adversarial Counter-Edit benchmark.
+
+## [2026-08-23] daily | frontier-models — 1 source, 3 pages
+
+GPT-5.6 Sol promo price cut to $4/$20 per Mtoken (from $5/$30) through 2026-11-21; summary regenerated.
+
+## [2026-08-23] daily | ai-in-game-dev — 2 sources, 3 pages
+
+Side/Razer human-in-the-loop AI playtest tool; RigMo joint rig+motion learning without annotations.
+
+## [2026-08-23] daily | games-of-note — 1 source, 2 pages
+
+Star Wars Zero Company "good but too safe" GameSpot preview (Aug 27 release).
+
+## [2026-08-23] daily | game-music — 0 sources, 1 page
+
+Quiet day; all recent in-scope items already ingested. SaGa Anniversary OST backfill candidate noted.
+
+## [2026-08-23] daily | 5 topics, 7 sources, 13 pages
+
+Daily research complete. PRs #603–#607. Topics: agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music.
+
 ## [2026-08-20] manual | conflict-resolver — 0 rebased, 0 requeued, 1 lint-fixed, 0 failed
 
 pr#593 merged main into _report branch to resolve 3 broken-wikilink errors (sources from games-of-note PR #592 landed on main after _report was cut); auto-merge re-queued.
