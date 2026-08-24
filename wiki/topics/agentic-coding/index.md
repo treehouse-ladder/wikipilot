@@ -105,6 +105,7 @@ sources:
   - "[[one-shotting-a-raccoon-heist-game-using-claude-fable-5-b023d4b3]]"
   - "[[new-release-of-llm-adds-support-for-reasoning-traces-openai-responses-server-side-tools-and-smarter-logging-98a2deac]]"
   - "[[are-performance-optimization-benchmarks-reliably-measuring-coding-agents-a8391092]]"
+  - "[[release-0-149-0-openai-codex-785d6f65]]"
   - "[[failure-as-a-process-an-anatomy-of-cli-coding-agent-trajectories-f32b733b]]"
   - "[[openhands-product-update-may-2026-d5c547b5]]"
   - "[[agentic-coding-needs-proactivity-not-just-autonomy-26d5c2fb]]"
@@ -276,7 +277,7 @@ sources:
   - "[[swe-bench-science-can-coding-agents-resolve-engineering-tasks-in-science-e21716d9]]"
   - "[[more-than-just-code-review-3f89e94f]]"
   - "[[swe-touch-benchmarking-coding-agents-when-users-touch-the-code-286fad13]]"
-last_updated: 2026-08-23
+last_updated: 2026-08-24
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -373,6 +374,20 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-24
+
+**Codex reaches cross-session async-coordination parity: `codex queue` messages existing sessions and an interactive `codex agents` dashboard manages the fleet.** Codex v0.149.0 (Aug 24) adds `codex queue` "for sending messages to existing local or remote sessions" and "an interactive codex agents dashboard for searching, starting, opening, renaming, and stopping tasks, with configurable shortcuts" [[release-0-149-0-openai-codex-785d6f65]]. The `codex queue` primitive is the direct Codex analogue of Claude Code's cross-session `SendMessage`/`ListAgents` model [[message-your-other-claude-code-sessions-90ee76df]] — a message-a-peer-session channel that coordinates *independent* long-running sessions rather than parent-spawned children. Together with the session forking Codex shipped in v0.148.0 [[release-0-148-0-openai-codex-54686144]], this is Codex closing the gap on the fork-a-context + cross-session-messaging + fleet-management surface Claude Code and Cursor already converged on, with the `codex agents` dashboard as an explicit multi-session control plane.
+
+> Added codex queue for sending messages to existing local or remote sessions. [[release-0-149-0-openai-codex-785d6f65]]
+
+> Added an interactive codex agents dashboard for searching, starting, opening, renaming, and stopping tasks, with configurable shortcuts. [[release-0-149-0-openai-codex-785d6f65]]
+
+**A sandboxing correctness fix: forked/resumed threads now restore their own permission profile instead of silently inheriting current defaults.** The same release fixes a privilege-fallback hazard: "Resumed and forked threads now restore their active permission profile instead of silently falling back to current defaults" [[release-0-149-0-openai-codex-785d6f65]]. This tightens the fork/resume path against the class of bug where a restored session runs under broader (or narrower) permissions than it was created with — a concrete instance of the agent-sandboxing correctness concerns this topic tracks, now that fork-and-resume is a default primitive across Codex and Claude Code. The release also adds `/cd`, `/pwd`, and `/cwd` working-directory commands and a `codex doctor` that "diagnoses endpoint protection, network/proxy failures, desktop app state, and update connectivity" [[release-0-149-0-openai-codex-785d6f65]].
+
+> Resumed and forked threads now restore their active permission profile instead of silently falling back to current defaults. [[release-0-149-0-openai-codex-785d6f65]]
+
+_Counter-argument / data gap: the release notes do not specify whether a `codex queue` message carries any conversation context or prompt cache, or is a thin text-only channel like Claude Code's deliberately context-free `SendMessage`; the coordination semantics (and therefore the caching/cost implications of cross-session Codex messaging) are unestablished from the changelog alone. See new open question below._
 
 ### Updates 2026-08-23
 
@@ -2053,6 +2068,7 @@ lint stays quiet until each page actually exists:
 - [ ] Does the Trajectory Labs 0/720 auto-mode result [[auto-mode-is-now-the-default-in-claude-code-for-pro-max-and-team-plans-756be989]] survive an adaptive attacker, or only the 72 held-out static scenarios frozen as of 2026-07-17?
 - [ ] Now that GPT-5.4/mini are deprecated in Codex in favor of GPT-5.6 Terra/Luna [[chatgpt-codex-changelog-afbd4293]], do any published SWE-bench Verified / Terminal-Bench 2.x Codex-CLI standings move, and is the Luna 80% price cut accompanied by an accuracy regression?
 - [ ] Why did Codex's screenshot-review during development fail to catch the giant-eyeball bug [[moonlight-mayhem-raccoon-heist-by-codex-gpt-5-6-sol-ultra-eee2b82f]] when Fable 5's Playwright visual loop succeeded on the same task [[one-shotting-a-raccoon-heist-game-using-claude-fable-5-b023d4b3]]?
+- [ ] Does a `codex queue` cross-session message carry conversation context or prompt cache, or is it a thin text-only channel like Claude Code's `SendMessage`? The v0.149.0 changelog does not say, so the caching/cost profile of cross-session Codex coordination is unknown. [[release-0-149-0-openai-codex-785d6f65]]
 - [ ] What is the cost-per-completed-app on Opus 4.5/4.6/4.7 in the three-agent planner/generator/evaluator harness [[harness-design-for-long-running-application-development-anthropic-engineering-9fa759b7]] vs single-agent baselines?
 - [ ] Does the Claude Agent SDK rename [[building-agents-with-the-claude-agent-sdk-anthropic-engineering-cf56e261]] change the surface API in a backward-incompatible way, or is it purely a brand change?
 - [ ] Does Agentic Harness Engineering [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]] hold the resource/infrastructure configuration fixed across human-designed and evolved harnesses, given that [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] showed several-percent swings from config alone?
