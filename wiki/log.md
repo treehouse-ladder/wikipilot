@@ -2131,3 +2131,7 @@ Daily Research 2026-08-21 complete. 5 topics processed (game-music, games-of-not
 ## [2026-08-23] health | weekly sweep — 2 disputes filed
 
 9 candidate sets scanned (8 source-triggered + 1 stale sweep). 2 disputes filed: agent-harnesses.md (Harness-IF 4 vs 5 instruction surfaces), black-pony-immersive.md (first-generation immersive sim lineage contradiction). 27 stale synthesis pages, 0 lint errors. PR #602.
+
+## [2026-08-24] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#611 (ai-in-game-dev) and pr#612 (game-music) already merged; pr#613 (games-of-note) auto-merge re-enabled (was blocked with green CI).
