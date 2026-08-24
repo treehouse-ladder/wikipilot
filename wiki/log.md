@@ -2131,3 +2131,27 @@ Daily Research 2026-08-21 complete. 5 topics processed (game-music, games-of-not
 ## [2026-08-23] health | weekly sweep — 2 disputes filed
 
 9 candidate sets scanned (8 source-triggered + 1 stale sweep). 2 disputes filed: agent-harnesses.md (Harness-IF 4 vs 5 instruction surfaces), black-pony-immersive.md (first-generation immersive sim lineage contradiction). 27 stale synthesis pages, 0 lint errors. PR #602.
+
+## [2026-08-24] daily | agentic-coding — 1 source, 1 page
+
+Codex v0.149.0 changelog: cross-session messaging via `codex queue`, fleet dashboard, permission-profile fix. 1 new source page; open question filed on cross-session context/caching profile. PR #609.
+
+## [2026-08-24] daily | frontier-models — 1 source, 1 page
+
+DeepSeek-V4-Flash-Vision-Exp (Aug 21): experimental multimodal variant of V4-Flash with vendor-reported multimodal agent performance approaching Opus 4.8; API-only, no AA Index placement. 2 open questions filed. PR #610.
+
+## [2026-08-24] daily | ai-in-game-dev — 1 source, 1 page
+
+Unreal MCP now built natively into UEFN (Fortnite's editor), no plugin install required; agents can write/compile Verse, place devices, build UMG UI, and run play sessions. 1 open question filed. PR #611.
+
+## [2026-08-24] daily | game-music — 1 source, 1 page
+
+Brigandine Abyss (Aug 26) features "lovely, bombastic" score by Rei Kondoh. 1 open question filed on standalone release and composer pattern. PR #612.
+
+## [2026-08-24] daily | games-of-note — 3 sources, 1 page
+
+Compulsion Games MBO complete (IP transferred, seeking financial backer); 007 First Light at 4M copies in three months + Year One roadmap; Take-Two DMCA §512(h) subpoenas to Microsoft/Discord/X/YouTube over GTA 6 leaks. 2 open questions filed. PR #613.
+
+## [2026-08-24] daily | 5 topics, 7 sources, 5 pages
+
+Daily Research 2026-08-24 complete. 5 topics processed (agentic-coding, frontier-models, ai-in-game-dev, game-music, games-of-note); 7 new source pages; 5 topic pages touched. PRs #609–#613 created and auto-merged. Report: wiki/reports/2026-08-24.md.
