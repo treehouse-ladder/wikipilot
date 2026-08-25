@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-25] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#618 (ai-in-game-dev) requeued via enable_pr_auto_merge (CI green, mergeable_state=clean, auto-merge was missing); pr#619 (games-of-note) CI still in_progress — not dispatched
+
 ## [2026-08-23] daily | agentic-coding — 3 sources, 4 pages
 
 SWE-bench Science benchmark (scientific repo tasks, <50% best agent); Willison instruct-and-verify framing; SWE-Touch adversarial Counter-Edit benchmark.
