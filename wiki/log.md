@@ -2152,6 +2152,10 @@ Brigandine Abyss (Aug 26) features "lovely, bombastic" score by Rei Kondoh. 1 op
 
 Compulsion Games MBO complete (IP transferred, seeking financial backer); 007 First Light at 4M copies in three months + Year One roadmap; Take-Two DMCA §512(h) subpoenas to Microsoft/Discord/X/YouTube over GTA 6 leaks. 2 open questions filed. PR #613.
 
+## [2026-08-25] daily | 5 topics, 10 sources, 15 pages
+
+Daily Research 2026-08-25 complete. 5 topics processed (game-music, agentic-coding, frontier-models, ai-in-game-dev, games-of-note); 10 new source pages; 5 topic pages touched. Key findings: prompt-wording inflates reasoning cost 2.4–7.4× (agentic-coding); Qwen3.8 2.4T ties Kimi K3 at open-weights intelligence lead (frontier-models); Sony Mockingbird, Tencent LAP, 90% AI adoption survey (ai-in-game-dev); PS6 launch date unfixed due to AI-driven chip shortage, Witcher 4 at 500+ devs targeting 2028 (games-of-note). PRs #615–#619 auto-merge queued. Report: wiki/reports/2026-08-25.md.
+
 ## [2026-08-24] daily | 5 topics, 7 sources, 5 pages
 
 Daily Research 2026-08-24 complete. 5 topics processed (agentic-coding, frontier-models, ai-in-game-dev, game-music, games-of-note); 7 new source pages; 5 topic pages touched. PRs #609–#613 created and auto-merged. Report: wiki/reports/2026-08-24.md.
