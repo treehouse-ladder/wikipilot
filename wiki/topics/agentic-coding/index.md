@@ -277,7 +277,8 @@ sources:
   - "[[swe-bench-science-can-coding-agents-resolve-engineering-tasks-in-science-e21716d9]]"
   - "[[more-than-just-code-review-3f89e94f]]"
   - "[[swe-touch-benchmarking-coding-agents-when-users-touch-the-code-286fad13]]"
-last_updated: 2026-08-24
+  - "[[prompt-induced-waste-in-large-reasoning-models-a-preregistered-two-harness-benchmark-of-coding-agents-528d0029]]"
+last_updated: 2026-08-25
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -374,6 +375,14 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-25
+
+**Preregistered study quantifies prompt-wording impact on reasoning token spend in coding agents: "develop and compare several approaches" inflates tokens by 2.4–7.4×.** A preregistered two-harness benchmark spanning six large reasoning models, 24 deterministic coding tasks, and 4,644 valid runs finds that prompt formulation can multiply reasoning cost without improving correctness [[prompt-induced-waste-in-large-reasoning-models-a-preregistered-two-harness-benchmark-of-coding-agents-528d0029]]. "Asking the model to develop and compare several approaches is the most consistently wasteful instruction, increasing reasoning tokens by 2.4-7.4x across all models. Generic 'think deeply' cues also increase deliberation by 1.6-2.2x." A bounded-efficiency template specifying scope, acceptance criteria, and a stop condition can halve reasoning cost while remaining correctness-neutral — a directly actionable harness-design implication: prompt wording, not just model selection or tool counts, is a first-class cost lever for agentic coding workflows.
+
+> Asking the model to develop and compare several approaches is the most consistently wasteful instruction, increasing reasoning tokens by 2.4-7.4x across all models. Generic 'think deeply' cues also increase deliberation by 1.6-2.2x. [[prompt-induced-waste-in-large-reasoning-models-a-preregistered-two-harness-benchmark-of-coding-agents-528d0029]]
+
+> A bounded-efficiency template specifying scope, acceptance criteria, and a stop condition is cost-neutral and can halve reasoning. [[prompt-induced-waste-in-large-reasoning-models-a-preregistered-two-harness-benchmark-of-coding-agents-528d0029]]
 
 ### Updates 2026-08-24
 
