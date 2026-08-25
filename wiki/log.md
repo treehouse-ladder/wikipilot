@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-25] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#617 (claude/daily-2026-08-25/frontier-models) was CLEAN with CI green and no auto-merge queued; enabled squash auto-merge via MCP tool. pr#616 (claude/daily-2026-08-25/agentic-coding) already merged.
+
 ## [2026-08-23] daily | agentic-coding — 3 sources, 4 pages
 
 SWE-bench Science benchmark (scientific repo tasks, <50% best agent); Willison instruct-and-verify framing; SWE-Touch adversarial Counter-Edit benchmark.
