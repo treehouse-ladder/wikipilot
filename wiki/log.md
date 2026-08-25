@@ -2160,6 +2160,10 @@ Daily Research 2026-08-25 complete. 5 topics processed (game-music, agentic-codi
 
 Daily Research 2026-08-24 complete. 5 topics processed (agentic-coding, frontier-models, ai-in-game-dev, game-music, games-of-note); 7 new source pages; 5 topic pages touched. PRs #609–#613 created and auto-merged. Report: wiki/reports/2026-08-24.md.
 
+## [2026-08-25] manual | conflict-resolver — 0 rebased, 2 requeued, 0 lint-fixed, 0 failed
+
+pr#620 (claude/youthful-mayer-3tag21) requeued — CI green, auto-merge enabled; pr#621 (claude/daily-2026-08-25/_report) requeued — CI green, auto-merge enabled. (gh CLI unavailable; requeued via MCP enable_pr_auto_merge.)
+
 ## [2026-08-25] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#618 (claude/daily-2026-08-25/ai-in-game-dev): clean + CI green, auto-merge re-queued via enable_pr_auto_merge. pr#619 (claude/daily-2026-08-25/games-of-note): CI in_progress at scan time, no action taken.
