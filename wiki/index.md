@@ -64,6 +64,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[apidya-special-heads-to-switch-aug-25th-2026-physical-editions-detailed-5c38928f]]
+- [[prompt-induced-waste-in-large-reasoning-models-a-preregistered-two-harness-benchmark-of-coding-agents-528d0029]]
+- [[intelligence-at-pocket-scale-benchmarking-small-models-and-mobile-phones-5f79db7b]]
+- [[speech-to-speech-benchmarking-methodology-a4490bba]]
+- [[qwen3-8-2-4t-a95b-intelligence-performance-price-analysis-5b1f0ee0]]
+- [[google-cloud-s-vision-for-ai-in-the-game-industry-ee1aa319]]
+- [[sony-lays-out-its-ai-plan-for-playstation-we-believe-ai-will-unleash-the-creativity-of-our-studios-004ba527]]
+- [[tencent-games-lights-up-gamescom-2026-with-massive-title-lineup-featuring-expanded-player-experiences-fdd53f6b]]
+- [[memory-crisis-is-driving-uncertainty-over-playstation-6-s-launch-date-3e0252a0]]
+- [[witcher-4-release-window-narrowed-down-as-dev-teases-a-surprise-or-two-at-gamescom-about-other-things-24c15152]]
 - [[ambitious-sci-fi-rival-to-gta-last-sentinel-reportedly-in-trouble-efdd2610]]
 - [[tencent-owned-lightspeed-la-is-laying-off-staff-f42f4b17]]
 - [[in-protest-of-mass-layoffs-bethesda-devs-greet-xbox-leadership-with-a-giant-inflatable-rat-f79788d5]]
@@ -1229,3 +1239,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-21]]
 - [[2026-08-23]]
 - [[2026-08-24]]
+- [[2026-08-25]]
