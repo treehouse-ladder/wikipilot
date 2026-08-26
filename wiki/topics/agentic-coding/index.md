@@ -278,7 +278,7 @@ sources:
   - "[[more-than-just-code-review-3f89e94f]]"
   - "[[swe-touch-benchmarking-coding-agents-when-users-touch-the-code-286fad13]]"
   - "[[prompt-induced-waste-in-large-reasoning-models-a-preregistered-two-harness-benchmark-of-coding-agents-528d0029]]"
-last_updated: 2026-08-25
+last_updated: 2026-08-26
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -375,6 +375,12 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-26
+
+No new in-scope sources ingested today. The daily sweep (Anthropic/Claude Code, Cursor, OpenAI/Codex, arXiv cs.SE, Simon Willison) surfaced only material that is already in the wiki or predates the 2026-08-25 run: SWE-Bench ProMax (arXiv:2608.09802) was already ingested 2026-08-13; GPT-5.3-Codex dates to 2026-02-05; the Cursor "Cloud Agents and Harness Improvements" changelog is dated 2026-08-19; Simon Willison's "More than just code review" is dated 2026-08-22; and the early-August self-evolving-harness arXiv cluster is already covered by existing sources and [[harness-engineering]]. OpenCode 1.18.22 (2026-08-25) was a routine bug-fix release below the source-quality bar. Current-state view (leaders, best practices) is unchanged from the prior summary.
+
+_no contradictions or gaps known yet (last reviewed: 2026-08-26)_
 
 ### Updates 2026-08-25
 
