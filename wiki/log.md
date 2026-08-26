@@ -2167,3 +2167,27 @@ pr#620 (claude/youthful-mayer-3tag21) requeued — CI green, auto-merge enabled;
 ## [2026-08-25] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#618 (claude/daily-2026-08-25/ai-in-game-dev): clean + CI green, auto-merge re-queued via enable_pr_auto_merge. pr#619 (claude/daily-2026-08-25/games-of-note): CI in_progress at scan time, no action taken.
+
+## [2026-08-26] daily | agentic-coding — 0 sources, 1 page
+
+No new sources found meeting ingestion criteria; log entry added for continuity. PR #623.
+
+## [2026-08-26] daily | frontier-models — 0 sources, 1 page
+
+No new sources found meeting ingestion criteria; log entry added for continuity. PR #624.
+
+## [2026-08-26] daily | ai-in-game-dev — 1 source, 2 pages
+
+Combos debuts at Gamescom 2026 as an AI-powered game-creation platform for non-technical creators (prnewswire.com). PR #625.
+
+## [2026-08-26] daily | games-of-note — 3 sources, 4 pages
+
+Gamescom ONL: Witcher 3 Remastered announced (free upgrade for existing owners, dozens of visual/QoL improvements); CD Projekt Red clarifies Songs of the Past is an expansion not DLC; Rainbow Six Tactics announced (Siege × XCOM hybrid). 1 dispute filed. PR #626.
+
+## [2026-08-26] daily | game-music — 1 source, 2 pages
+
+Square Enix Jazz Vol.2 review (RPGFan): cross-catalog compilation spanning 11 franchises; standout 15/8 Dancing Mad arrangement by Ken Higeshiro; Nakagawa/Kawamura duo flagged as recommended entry point for the series. PR #627.
+
+## [2026-08-26] daily | 5 topics, 5 sources, 10 pages
+
+Daily Research 2026-08-26 complete. 5 topics processed (agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music); 5 new source pages; 5 topic pages touched. Key findings: Combos AI game-creation platform at Gamescom (ai-in-game-dev); Witcher 3 Remastered + Songs of the Past expansion + Rainbow Six Tactics (games-of-note); Square Enix Jazz Vol.2 cross-catalog review (game-music). PRs #623–#627 merged. Report: wiki/reports/2026-08-26.md.

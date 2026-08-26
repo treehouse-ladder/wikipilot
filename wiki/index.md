@@ -1156,6 +1156,11 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[engine-native-editable-3d-world-reconstruction-with-objects-and-lighting-d37c9db8]]
 - [[agent-lightning-v1-0-towards-harnessed-agentic-rl-9d6bd7a9]]
 - [[longhorizon-harness-advancing-long-horizon-agents-for-real-world-tasks-7b19f9de]]
+- [[combos-makes-its-global-debut-at-gamescom-bringing-ai-created-games-by-everyday-creators-433178da]]
+- [[the-witcher-3-remastered-is-adding-dozens-of-upgrades-and-it-might-be-free-for-you-291cebc9]]
+- [[witcher-3-s-songs-of-the-past-is-an-expansion-not-dlc-cd-projekt-red-insists-300cb423]]
+- [[rainbow-6-tactics-looks-like-if-siege-and-xcom-chimera-squad-had-a-baby-17226ba2]]
+- [[square-enix-jazz-vol-2-music-review-3cb509f5]]
 
 ## Reports
 
@@ -1240,3 +1245,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-23]]
 - [[2026-08-24]]
 - [[2026-08-25]]
+- [[2026-08-26]]
