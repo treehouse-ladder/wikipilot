@@ -52,7 +52,8 @@ sources:
   - "[[swe-bench-promax-benchmarking-agents-on-large-scale-multilingual-code-refactoring-021f3bef]]"
   - "[[clawarena-team-benchmarking-subagent-orchestration-and-dynamic-workflows-in-language-model-agents-3a15d772]]"
   - "[[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]"
-last_updated: 2026-08-19
+  - "[[prime-agent-a-self-improving-rlm-harness-7e7af2b7]]"
+last_updated: 2026-08-27
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -105,7 +106,7 @@ Two distinct approaches emerged for improving agent performance by adapting the 
 
 > Life-Harness evolves from training trajectories by converting recurring interaction failures into reusable interventions across environment contracts, procedural skills, action realization, and trajectory regulation, and remains fixed for evaluation on unseen tasks.
 
-**Continual Harness** [[continual-harness-online-adaptation-for-self-improving-foundation-agents-f68f2119]] extends this principle to embodied agents in long-horizon partial-observability environments. It is a reset-free self-improving harness where the agent alternates between acting and refining its own prompt, sub-agents, skills, and memory, drawing on any past trajectory data. The approach removed the human from the refinement loop and achieved a notable milestone in the gaming domain: the Gemini Plays Pokemon system became the first AI to complete Pokemon Blue, Yellow Legacy on hard mode, and Crystal without a lost battle, with the agent itself beginning to iterate on its strategy through long-context memory.
+**Continual Harness** [[continual-harness-online-adaptation-for-self-improving-foundation-agents-f68f2119]] extends this principle to embodied agents in long-horizon partial-observability environments. It is a reset-free self-improving harness where the agent alternates between acting and refining its own prompt, sub-agents, skills, and memory, drawing on any past trajectory data. The approach removed the human from the refinement loop and achieved a notable milestone in the gaming domain: the Gemini Plays Pokemon system became the first AI to complete Pokemon Blue, Yellow Legacy on hard mode, and Crystal without a lost battle, with the agent itself beginning to iterate on its strategy through long-context memory. **Prime Agent** (August 2026) builds on Continual Harness as its trajectory-preserving layer, adding a persistent IPython REPL following the Recursive Language Model abstraction, direct agent-to-agent communication, and a human-facing "Agents View" management surface — positioning the harness as "a low-friction, expressive membrane preventing harness failures from becoming model failures" [[prime-agent-a-self-improving-rlm-harness-7e7af2b7]].
 
 > Continual Harness is a reset-free self-improving harness for embodied agents that removes the human from the refinement loop, where the agent alternates between acting and refining its own prompt, sub-agents, skills, and memory.
 
