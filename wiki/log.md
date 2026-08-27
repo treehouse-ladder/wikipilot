@@ -2191,3 +2191,27 @@ Square Enix Jazz Vol.2 review (RPGFan): cross-catalog compilation spanning 11 fr
 ## [2026-08-26] daily | 5 topics, 5 sources, 10 pages
 
 Daily Research 2026-08-26 complete. 5 topics processed (agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music); 5 new source pages; 5 topic pages touched. Key findings: Combos AI game-creation platform at Gamescom (ai-in-game-dev); Witcher 3 Remastered + Songs of the Past expansion + Rainbow Six Tactics (games-of-note); Square Enix Jazz Vol.2 cross-catalog review (game-music). PRs #623–#627 merged. Report: wiki/reports/2026-08-26.md.
+
+## [2026-08-27] daily | agentic-coding — 3 sources, 5 pages
+
+Prime Agent: self-improving RLHF harness with co-evolving verifier (code edits via RL rather than SFT); multi-agent coordination study finds role specialization + selective communication beats unstructured parallel agents; OpenAI Codex 0.150.0 (o4-preview default, 200 concurrent agent slots).
+
+## [2026-08-27] daily | frontier-models — 1 source, 5 pages
+
+GLM-5.3-Flash: open-weights efficient model (AA Intelligence Index 58, ties Kimi K3 / Qwen3.8 2.4T at efficient tier); summary regenerated (GLM-5.3-Flash as new efficient open-weights leader).
+
+## [2026-08-27] daily | ai-in-game-dev — 3 sources, 4 pages
+
+WorldMind (decoupled world-model for state-aware NPC behavior, natural-language state tracking); GameXpert-Bench (coding-agent benchmark for expert game-dev tasks); Tencent Games Gamescom 2026 (Motus animation AI, GameGuide gameplay AI, AI playtesting suite). 2 disputes filed.
+
+## [2026-08-27] daily | games-of-note — 3 sources, 4 pages
+
+Star Wars Zero Company reviews 8–9/10 ("best Star Wars game in years"); A Plague Tale Legacy review 9.5/10 ("fantastic evolution of action-stealth"); Ubisoft announces Heroes of Might and Magic III Remake at Gamescom 2026. 1 dispute resolved.
+
+## [2026-08-27] daily | game-music — 1 source, 2 pages
+
+Infinity (GBC RPG) OST review (RPGFan): Yuzo Koshiro guest track in rock/metal style; rated above average for 8-bit era.
+
+## [2026-08-27] daily | 5 topics, 11 sources, 20 pages
+
+Daily Research 2026-08-27 complete. 5 topics processed (agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music); 11 new source pages; 20 pages touched. Key findings: Prime Agent self-improving RLHF harness (agentic-coding); GLM-5.3-Flash new efficient open-weights leader (frontier-models); WorldMind NPC world-model + Tencent Gamescom AI suite (ai-in-game-dev); Star Wars Zero Company critical hit (games-of-note); Infinity OST with Koshiro guest track (game-music). PRs #629–#633 merged. Report: wiki/reports/2026-08-27.md.

@@ -1161,6 +1161,17 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[witcher-3-s-songs-of-the-past-is-an-expansion-not-dlc-cd-projekt-red-insists-300cb423]]
 - [[rainbow-6-tactics-looks-like-if-siege-and-xcom-chimera-squad-had-a-baby-17226ba2]]
 - [[square-enix-jazz-vol-2-music-review-3cb509f5]]
+- [[prime-agent-a-self-improving-rlm-harness-7e7af2b7]]
+- [[when-agents-coordinate-measuring-coordination-in-multi-agent-ai-coding-ca6518fb]]
+- [[release-0-150-0-openai-codex-9ba6f418]]
+- [[glm-5-3-flash-intelligence-performance-price-analysis-b02205ef]]
+- [[worldmind-decoupled-game-world-model-for-state-aware-npc-behavior-7310bfce]]
+- [[gamexpert-bench-how-far-are-coding-agents-from-expert-game-development-ba0a3c1c]]
+- [[tencent-games-central-tech-debuts-at-gamescom-2026-with-ai-tools-spanning-animation-gameplay-and-testing-79a48158]]
+- [[roundup-the-first-reviews-have-dropped-for-star-wars-zero-company-and-they-re-very-good-51709743]]
+- [[review-resonance-a-plague-tale-legacy-a-fantastic-evolution-of-action-stealth-exploration-8a38d740]]
+- [[ubisoft-reveals-heroes-of-might-and-magic-iii-remake-at-gamescom-29da1b22]]
+- [[infinity-original-soundtrack-music-review-4f103c92]]
 
 ## Reports
 
@@ -1246,3 +1257,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-24]]
 - [[2026-08-25]]
 - [[2026-08-26]]
+- [[2026-08-27]]
