@@ -1,8 +1,8 @@
 ---
 title: "GLM-5"
 kind: entity
-sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]", "[[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]", "[[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]", "[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]", "[[glm-5-2-built-for-long-horizon-tasks-9e3636b0]]", "[[glm-5-3-overview-7e6c3dd9]]", "[[z-ai-delays-glm-5-3-weights-after-cybergym-score-tops-mythos-bca697d6]]", "[[glm-5-3-max-intelligence-performance-price-analysis-26ed0788]]"]
-last_updated: 2026-08-20
+sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]", "[[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]", "[[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]", "[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]", "[[glm-5-2-built-for-long-horizon-tasks-9e3636b0]]", "[[glm-5-3-overview-7e6c3dd9]]", "[[z-ai-delays-glm-5-3-weights-after-cybergym-score-tops-mythos-bca697d6]]", "[[glm-5-3-max-intelligence-performance-price-analysis-26ed0788]]", "[[glm-5-3-flash-intelligence-performance-price-analysis-b02205ef]]"]
+last_updated: 2026-08-27
 last_verified: 2026-08-20
 freshness_window_days: 30
 input_cost_per_mtoken: 1.40
@@ -79,6 +79,20 @@ Artificial Analysis independently places **GLM-5.3 (max) at 60 on the AA Intelli
 > GLM-5.3 (max) scores 60 on the Artificial Analysis Intelligence Index, placing it well above average among comparable models (median: 35). [[glm-5-3-max-intelligence-performance-price-analysis-26ed0788]]
 
 > Pricing for GLM-5.3 (max) is $1.40 per 1M input tokens (moderately priced, median: $1.75) and $4.40 per 1M output tokens (moderately priced, median: $10.00). [[glm-5-3-max-intelligence-performance-price-analysis-26ed0788]]
+
+**GLM-5.3-Flash** was released 2026-08-26 as a cost-efficient variant within the GLM-5.3 line, using a **320B-total / 18B-active Mixture-of-Experts** architecture — dramatically smaller than the GLM-5.2/5.3 base (744B / 40B active) — while reaching **AA Intelligence Index 57**, matching Kimi K3's open-weights aggregate lead at a fraction of the parameter count and establishing a new intelligence-density benchmark in the efficient/small open-weights segment [[glm-5-3-flash-intelligence-performance-price-analysis-b02205ef]]. This makes GLM-5.3-Flash the highest-intelligence model per active parameter in Z.AI's product line.
+
+> GLM-5.3-Flash scores 57 on the Artificial Analysis Intelligence Index, placing it well above average among comparable models (median: 35).
+
+> GLM-5.3-Flash is a Mixture of Experts (MoE) model with 320 billion total parameters, but only 18 billion active parameters are used during inference.
+
+Pricing is **$0.15 per 1M input tokens** and **$0.50 per 1M output tokens**, dramatically cheaper than GLM-5.3 (max)'s $1.40/$4.40 (~9× cheaper on input, ~9× cheaper on output), with a **1M-token context window** and text+image input support [[glm-5-3-flash-intelligence-performance-price-analysis-b02205ef]]. This positions it for high-volume agentic and game-dev content pipelines where intelligence-per-dollar dominates top-end reasoning.
+
+> Pricing for GLM-5.3-Flash is $0.15 per 1M input tokens (moderately priced, median: $0.30) and $0.50 per 1M output tokens (moderately priced, median: $1.20).
+
+The key caveat is verbosity: Artificial Analysis flags GLM-5.3-Flash as "**notably slow and very verbose**", so the cheap per-token headline understates per-task cost on long agentic loops — the same pattern seen with GLM-5.2 and GLM-5.3 (max) [[glm-5-3-flash-intelligence-performance-price-analysis-b02205ef]].
+
+> GLM-5.3-Flash is amongst the leading models in intelligence and reasonably priced when comparing to other open weight models of similar size. It is also notably slow and very verbose.
 
 ## Disputes
 
