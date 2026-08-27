@@ -278,7 +278,7 @@ sources:
   - "[[more-than-just-code-review-3f89e94f]]"
   - "[[swe-touch-benchmarking-coding-agents-when-users-touch-the-code-286fad13]]"
   - "[[prompt-induced-waste-in-large-reasoning-models-a-preregistered-two-harness-benchmark-of-coding-agents-528d0029]]"
-last_updated: 2026-08-26
+last_updated: 2026-08-27
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -375,6 +375,22 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-27
+
+**Prime Agent open-sources a self-improving RLM harness in which recursive subagents talk peer-to-peer and a human-facing "Agents View" manages daemon-backed sessions.** A Princeton/MIT group (submitted Aug 24) releases Prime Agent as "an open-source harness for long-horizon evaluation and coding-agent workflows" built on a persistent IPython REPL that follows the Recursive Language Model abstraction, with the previously-ingested Continual Harness [[continual-harness-online-adaptation-for-self-improving-foundation-agents-f68f2119]] as the layer that "preserves histories, memories, skills, prompts, and subagent specifications across trajectories" [[prime-agent-a-self-improving-rlm-harness-7e7af2b7]]. Two design points connect it to the products the wiki tracks: subagent coordination is direct agent-to-agent (the pattern Claude Code's cross-session `SendMessage` and Codex's `codex queue` [[release-0-149-0-openai-codex-785d6f65]] converged on), and it ships a management surface — the "Agents View" — that rhymes with Cursor 3's Agents Window [[meet-the-new-cursor-cursor-3-the-agents-window-e13bb5f7]] and the `codex agents` dashboard [[release-0-149-0-openai-codex-785d6f65]]. The stated goal is to keep harness bugs from being scored as model failures — the same measurement-hygiene thesis behind [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]].
+
+> Prime Agent standardizes execution, recovery, verification, and resource accounting while leaving strategy construction to the model. This low-friction, expressive membrane prevents harness failures from becoming model failures and pushes measurement toward the model's true maximal underlying capability. [[prime-agent-a-self-improving-rlm-harness-7e7af2b7]]
+
+**A coordination-measurement instrument reframes multi-agent coding evaluation as a temporal graph, not just a pass/cost number.** "When Agents Coordinate" (submitted Aug 17) argues current evals report only task completion and run cost, "leaving the coordination inside the team largely unmeasured," and instruments each run as "a temporal network in which agents and files are nodes, and messages, file writes, and file reads are timestamped directed edges with an associated cost," applied to 1902 runs varying team size, team structure, and file policy [[when-agents-coordinate-measuring-coordination-in-multi-agent-ai-coding-ca6518fb]]. This is a distinct axis from the orchestration-benchmark cluster the wiki already has: rather than scoring the orchestration outcome, it measures the internal communication/file-contention structure.
+
+> Each run is represented as a temporal network in which agents and files are nodes, and messages, file writes, and file reads are timestamped directed edges with an associated cost. [[when-agents-coordinate-measuring-coordination-in-multi-agent-ai-coding-ca6518fb]]
+
+**Codex v0.150.0 closes an AGENTS.md prompt-injection surface by default and adds `@`-mention task references + interrupt-time hooks.** The Aug 26 feature release makes a security default change: "Untrusted projects no longer supply project-level AGENTS.md instructions, and managed deny-read rules remain enforced after permission changes" [[release-0-150-0-openai-codex-9ba6f418]]. This is a concrete mitigation for the poisoned-guidance-file attack class. The release also extends cross-session coordination: "Reference other Codex tasks with @ mentions, and ask agents to read, create, or message tasks from the terminal" [[release-0-150-0-openai-codex-9ba6f418]], and adds "new Interrupt hooks can run commands or MCP handlers when an active top-level turn is interrupted" [[release-0-150-0-openai-codex-9ba6f418]].
+
+> Untrusted projects no longer supply project-level AGENTS.md instructions, and managed deny-read rules remain enforced after permission changes. [[release-0-150-0-openai-codex-9ba6f418]]
+
+> Reference other Codex tasks with @ mentions, and ask agents to read, create, or message tasks from the terminal. [[release-0-150-0-openai-codex-9ba6f418]]
 
 ### Updates 2026-08-26
 
@@ -2314,6 +2330,10 @@ lint stays quiet until each page actually exists:
 - [ ] Does SWE-bench Science's sub-50% ceiling [[swe-bench-science-can-coding-agents-resolve-engineering-tasks-in-science-e21716d9]] reflect genuine scientific-domain difficulty, or under-audited test suites analogous to the ~60%-flawed-instance problem that retired SWE-bench Verified — i.e. has anyone human-audited the SWE-bench Science test quality?
 - [ ] Do SWE-Touch's Counter-Edit failures [[swe-touch-benchmarking-coding-agents-when-users-touch-the-code-286fad13]] shrink under externalized, environment-verified task-state (LongHorizon-Harness's Manage-Execute-Audit loop [[longhorizon-harness-advancing-long-horizon-agents-for-real-world-tasks-7b19f9de]]), since a read-only auditor re-reading the environment could in principle catch a user's mid-task edit the agent otherwise trusts from stale context?
 - [ ] Willison frames instruct-and-verify as the binding skill [[more-than-just-code-review-3f89e94f]] — is there any published measurement of which verification modality (tests, spec-conformance checks, targeted diff review) actually catches the failure classes empirical studies attribute to unreviewed agentic PRs, or is 'verify' still an unquantified catch-all?
+- [ ] Does Prime Agent's RLM/persistent-IPython harness [[prime-agent-a-self-improving-rlm-harness-7e7af2b7]] report a measured resolve-rate delta over a fixed-baseline harness on a contamination-free set, or is the 'true maximal capability' claim purely architectural?
+- [ ] Does the coordination-as-temporal-graph metric in [[when-agents-coordinate-measuring-coordination-in-multi-agent-ai-coding-ca6518fb]] correlate with final task success across its 1902 runs?
+- [ ] Now that Codex v0.150.0 stops untrusted projects from supplying project-level AGENTS.md by default [[release-0-150-0-openai-codex-9ba6f418]], does Claude Code's `.claude/` guidance-file loader apply an equivalent untrusted-repo gate?
+- [ ] Do the new Codex Interrupt hooks (commands/MCP handlers fired when a top-level turn is interrupted) [[release-0-150-0-openai-codex-9ba6f418]] introduce an injection surface distinct from tool-call hooks?
 
 ## See also
 
