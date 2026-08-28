@@ -56,6 +56,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[small-axe-studios]]
 - [[mick-gordon]]
 - [[black-pony-immersive]]
+- [[qwen3.8-flash-next]]
 
 ## Comparisons
 
@@ -185,6 +186,19 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[preorders-open-for-final-fantasy-x-lp-vinyl-set-eternal-calm-a69e0f99]]
 - [[saint-slayer-spear-of-sacrilege-official-vinyl-soundtrack-coming-july-2026-pre-orders-live-42d85040]]
 - [[how-we-contain-claude-across-products-64af1d1a]]
+- [[start-from-scratch-without-a-repo-13d1b5da]]
+- [[swe-refactor-bench-can-coding-agents-complete-a-long-horizon-whole-repository-stack-migration-26f52ec1]]
+- [[agentroom-concurrent-multi-agent-coding-in-a-crdt-backed-shared-workspace-4f6448bf]]
+- [[qwen3-8-flash-next-intelligence-performance-price-analysis-0ab95401]]
+- [[qwen-qwen3-8-flash-next-eb79656c]]
+- [[geforce-at-gamescom-2026-dlss-4-5-ray-reconstruction-ace-ai-companions-in-aniimo-and-more-219ecace]]
+- [[24-of-gamescom-reveals-officially-used-ai-d87a0eba]]
+- [[2k-is-reducing-the-size-of-bioshock-4-developer-cloud-chamber-5607c10d]]
+- [[report-among-us-3d-co-dev-schell-games-lays-off-staff-a4a50ba3]]
+- [[genshin-impact-maker-nodusfall-sure-looks-like-multiplayer-elden-ring-5dbb5575]]
+- [[final-fantasy-7-revelation-is-out-this-spring-b0fdd274]]
+- [[here-are-the-opening-night-live-games-you-can-ignore-because-of-genai-slop-54c49797]]
+- [[fired-rockstar-union-workers-denied-interim-relief-at-employment-tribunal-77edceb2]]
 - [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]]
 - [[towards-direct-evaluation-of-harness-optimizers-via-priority-ranking-b643bf3f]]
 - [[towards-evaluation-engineering-an-empirical-study-of-ml-evaluation-harnesses-in-the-wild-9be30311]]
@@ -1257,4 +1271,5 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-24]]
 - [[2026-08-25]]
 - [[2026-08-26]]
+- [[2026-08-28]]
 - [[2026-08-27]]

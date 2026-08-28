@@ -16,6 +16,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-28] daily | agentic-coding — 3 sources, 3 pages
+
+Start-from-scratch repo pattern; SWE-Refactor-Bench (whole-repo stack migration, <15% best agent); AgentRoom CRDT-backed concurrent multi-agent workspace.
+
+## [2026-08-28] daily | frontier-models — 2 sources, 2 pages
+
+Alibaba Qwen3.8-Flash-Next (2026-08-26): 180B-total/6B-active MoE with QSA architecture (Qwen4 preview), AA-Index 56, new efficient open-weights intelligence leader.
+
+## [2026-08-28] daily | ai-in-game-dev — 2 sources, 1 page
+
+NVIDIA ACE AI companions in Aniimo (early 2027, on-device RTX); 24% of Gamescom 2026 reveals officially used AI (13/55 games at ONL).
+
+## [2026-08-28] daily | games-of-note — 6 sources, 1 page
+
+BioShock 4/Cloud Chamber ~80 layoffs; Schell Games first-ever layoffs; Hoyoverse Nodusfall surprise soulslike; FF7 Revelation spring 2027; Gamescom GenAI backlash; Rockstar union interim relief denied.
+
+## [2026-08-28] daily | game-music — 0 sources, 1 page
+
+Quiet day; no new in-scope sources found. Dated placeholder inserted per routine procedure.
+
+## [2026-08-28] daily | 5 topics, 13 sources, 14 pages
+
+Daily research complete. PRs #635–#639. Topics: agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music.
+
 ## [2026-08-23] daily | agentic-coding — 3 sources, 4 pages
 
 SWE-bench Science benchmark (scientific repo tasks, <50% best agent); Willison instruct-and-verify framing; SWE-Touch adversarial Counter-Edit benchmark.
