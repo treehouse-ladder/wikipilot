@@ -2243,3 +2243,27 @@ Daily Research 2026-08-27 complete. 5 topics processed (agentic-coding, frontier
 ## [2026-08-30] health | weekly sweep — 1 dispute filed
 
 6 candidate sets scanned (5 source-triggered + 1 stale sweep). 1 dispute filed: glm-5.md (GLM-5.2 open-weights #1 claim superseded by GLM-5.3-Flash and Kimi K3 at AA Index 57). 25 stale synthesis pages, 9 orphan pages, 0 lint errors. PR #642.
+
+## [2026-08-29] daily | agentic-coding — 1 source, 2 pages
+
+Harness configuration matters as much as model choice: Lewis (2026) arxiv:2608.26218 shows context truncation strategy raises SWE-bench fail-to-pass at no inference cost. PR #649.
+
+## [2026-08-29] daily | frontier-models — 1 source, 2 pages
+
+HuggingFace State of Open Models Summer 2026: Qwen leads forks (151K, 2.6× Meta); Claude Code 44.4% agent-tagged Hub traffic in July; sub-1B = 83% all-time downloads. PR #650.
+
+## [2026-08-29] daily | game-music — 1 source, 2 pages
+
+Austin Wintory wins 68th Grammy for Best Score Soundtrack for Video Games for Sword of the Sea (Giant Squid) — first win after nominations since Journey 2013. PR #651.
+
+## [2026-08-29] daily | games-of-note — 0 sources, 1 page
+
+Low-flow day; Gamescom 2026 analysis coverage behind closed doors. No new sources. PR #652.
+
+## [2026-08-29] daily | ai-in-game-dev — 0 sources, 1 page
+
+Low-flow day; Gamescom AI announcements reference already-ingested sources. No new sources. PR #653.
+
+## [2026-08-29] daily | 5 topics, 3 sources, 9 pages
+
+Daily Research 2026-08-29 complete. 5 topics processed; 3 new source pages; 9 pages touched. Key findings: harness-config benchmark impact (agentic-coding); HuggingFace State of Open Models Summer 2026 with Qwen fork dominance and Claude Code adoption metric (frontier-models); Austin Wintory Grammy win for Sword of the Sea (game-music). PRs #649–#653. Report: wiki/reports/2026-08-29.md.
