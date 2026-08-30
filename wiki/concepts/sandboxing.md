@@ -14,7 +14,8 @@ sources:
   - "[[running-python-code-in-a-sandbox-with-micropython-and-wasm-3865c72a]]"
   - "[[the-balkanization-of-execution-security-research-for-ai-coding-agents-isolation-access-control-and-time-of-check-to-time-of-use-vulnerabilities-df4a38f9]]"
   - "[[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]"
-last_updated: 2026-07-26
+  - "[[release-0-151-0-openai-codex-1f2ada50]]"
+last_updated: 2026-08-30
 last_verified: 2026-07-26
 freshness_window_days: 30
 ---
@@ -30,6 +31,10 @@ Anthropic's Claude Code sandboxing implementation enforces two primary boundarie
 > When building containment and defense systems, Anthropic applies defenses to the environment in which the agent runs, constraining where and how an agent can act with process sandboxes, VMs, filesystem boundaries, and egress controls.
 
 Cursor's sandboxed terminals on macOS moved from opt-in to default behavior in Cursor 2.0 (October 2025) [[cursor-2-0-multi-agents-and-composer-changelog-4665f068]], signaling industry-wide convergence on sandboxing as the baseline safety posture for agent-issued shell commands.
+
+Codex v0.151.0 (Aug 2026) closes two sandbox-scope-escape paths: it prevents `/cd` from weakening sandbox restrictions mid-session and preserves restored permission profiles across TUI turns [[release-0-151-0-openai-codex-1f2ada50]]. The release also improves remote sandbox enforcement by using the executor's actual home directory, operating system, and path conventions rather than assuming the client's environment [[release-0-151-0-openai-codex-1f2ada50]]. This continues the security-default trajectory where any agent-controlled parameter that changes where operations land (working directory, daemon socket, remote mode) is treated as a potential sandbox-bypass surface.
+
+> Preserved restored permission profiles across TUI turns and prevented /cd from weakening sandbox restrictions. Improved remote sandbox enforcement using the executor's actual home directory, operating system, and path conventions. [[release-0-151-0-openai-codex-1f2ada50]]
 
 ## Containment as the structural answer to approval fatigue (2026-06-01)
 
