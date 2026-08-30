@@ -16,6 +16,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-08-30] manual | conflict-resolver — 0 rebased, 3 requeued, 0 lint-fixed, 0 failed
+
+pr#646 kind=requeue resolved=true — auto-merge enabled (games-of-note 2026-08-30); merged at 11:31
+pr#647 kind=requeue resolved=true — auto-merge enabled (game-music 2026-08-30)
+pr#649 kind=requeue resolved=true — auto-merge enabled (agentic-coding 2026-08-29; CI failure was transient, fixed by parallel session push)
+
 ## [2026-08-28] daily | agentic-coding — 3 sources, 3 pages
 
 Start-from-scratch repo pattern; SWE-Refactor-Bench (whole-repo stack migration, <15% best agent); AgentRoom CRDT-backed concurrent multi-agent workspace.
