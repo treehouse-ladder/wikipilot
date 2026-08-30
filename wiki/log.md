@@ -2271,3 +2271,7 @@ Low-flow day; Gamescom AI announcements reference already-ingested sources. No n
 ## [2026-08-29] daily | 5 topics, 3 sources, 9 pages
 
 Daily Research 2026-08-29 complete. 5 topics processed; 3 new source pages; 9 pages touched. Key findings: harness-config benchmark impact (agentic-coding); HuggingFace State of Open Models Summer 2026 with Qwen fork dominance and Claude Code adoption metric (frontier-models); Austin Wintory Grammy win for Sword of the Sea (game-music). PRs #649–#653. Report: wiki/reports/2026-08-29.md.
+
+## [2026-08-30] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+Scan fired on PR #651 close. Open claude/* PRs found: #649 (agentic-coding 08-29, BLOCKED — broken-wikilink CI failure) and #647 (game-music 08-30, CLEAN, CI green, no auto-merge). PR #649 self-healed: merge queue re-ran CI after PR #650 (frontier-models 08-29) had already landed the referenced source file `state-of-open-models-summer-2026-bc290ba3.md` — wikilink resolved, CI passed at 11:31, merged at 11:34. PR #647: auto-merge enabled (MERGE method), pending queue.
