@@ -2271,3 +2271,7 @@ Low-flow day; Gamescom AI announcements reference already-ingested sources. No n
 ## [2026-08-29] daily | 5 topics, 3 sources, 9 pages
 
 Daily Research 2026-08-29 complete. 5 topics processed; 3 new source pages; 9 pages touched. Key findings: harness-config benchmark impact (agentic-coding); HuggingFace State of Open Models Summer 2026 with Qwen fork dominance and Claude Code adoption metric (frontier-models); Austin Wintory Grammy win for Sword of the Sea (game-music). PRs #649–#653. Report: wiki/reports/2026-08-29.md.
+
+## [2026-08-30] manual | conflict-resolver — 3 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#644 (frontier-models/08-30) rebased sha=63b84cd3 — merged; pr#645 (ai-in-game-dev/08-30) rebased sha=ce4d66d2; pr#646 (games-of-note/08-30) rebased sha=5d263afd. All three had append-at-top Recent-updates conflicts vs the 2026-08-29 report merge. Auto-merge re-queue deferred — gh auth (HTTP 403) unavailable in session; PRs await next push event.
