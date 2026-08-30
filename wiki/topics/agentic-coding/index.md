@@ -282,6 +282,7 @@ sources:
   - "[[swe-refactor-bench-can-coding-agents-complete-a-long-horizon-whole-repository-stack-migration-26f52ec1]]"
   - "[[agentroom-concurrent-multi-agent-coding-in-a-crdt-backed-shared-workspace-4f6448bf]]"
   - "[[release-0-151-0-openai-codex-1f2ada50]]"
+  - "[[same-model-different-harness-different-coding-agent-results-22e94391]]"
 last_updated: 2026-08-30
 last_verified: 2026-08-10
 freshness_window_days: 30
@@ -391,6 +392,14 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > Preserved restored permission profiles across TUI turns and prevented /cd from weakening sandbox restrictions. Improved remote sandbox enforcement using the executor's actual home directory, operating system, and path conventions. [[release-0-151-0-openai-codex-1f2ada50]]
 
 No independent benchmark accompanies these changes; they are default-hardening rather than capability moves, so they do not shift the topic's current-state picture.
+
+### Updates 2026-08-29
+
+**Harness configuration determines benchmark outcomes as much as model choice — the same model, differently harnessed, produces substantially different SWE-bench scores.** Lewis (2026) tested two harness configurations on SWE-bench Verified, SWE-bench Pro, and RE-Bench and found that aggressively truncating stale tool results raises the mean fail-to-pass fraction with no additional inference cost [[same-model-different-harness-different-coding-agent-results-22e94391]]. The immediate implication for benchmark interpretation: any lab-reported SWE-bench improvement reflects model × harness jointly, and without harness disclosure, cross-lab score comparisons are not apples-to-apples. This adds empirical weight to the wiki's existing harness-disclosure theme (see [[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]]).
+
+> Our principal finding is that harness decisions — specifically how a coding agent manages context and truncates prior tool output — matter as much as model choice on established coding-agent benchmarks. A configuration that aggressively shortens stale tool results outperforms an otherwise-identical configuration that retains them, at no additional inference cost. [[same-model-different-harness-different-coding-agent-results-22e94391]]
+
+**Cross-topic signal — Claude Code leads agent-tagged Hub traffic at 44.4% of July downloads.** HuggingFace's State of Open Models Summer 2026 report [[state-of-open-models-summer-2026-bc290ba3]] (topic: frontier-models) logs the adoption metric directly relevant to this topic's Claude Code entity tracking.
 
 ### Updates 2026-08-28
 
