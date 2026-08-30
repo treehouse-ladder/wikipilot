@@ -281,7 +281,8 @@ sources:
   - "[[start-from-scratch-without-a-repo-13d1b5da]]"
   - "[[swe-refactor-bench-can-coding-agents-complete-a-long-horizon-whole-repository-stack-migration-26f52ec1]]"
   - "[[agentroom-concurrent-multi-agent-coding-in-a-crdt-backed-shared-workspace-4f6448bf]]"
-last_updated: 2026-08-28
+  - "[[release-0-151-0-openai-codex-1f2ada50]]"
+last_updated: 2026-08-30
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -378,6 +379,18 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-30
+
+**Codex v0.151.0 hardens the MCP tool surface and locks down sandbox-scope escape, continuing the security-default trajectory of 0.150.0.** The Aug 29 release adds a new extension hook — "Extensions can now inspect or replace MCP tool results before they reach the model" [[release-0-151-0-openai-codex-1f2ada50]] — and a "configurable grace period for discovering tools from optional MCP servers" [[release-0-151-0-openai-codex-1f2ada50]]. The tool-result interception hook is a double-edged primitive relative to the wiki's prompt-injection cluster: it gives a trusted extension a chokepoint to sanitize poisoned tool outputs (the trust-level-confusion root cause flagged in [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]]) but is itself a new content-rewriting surface an attacker who controls an extension could weaponize. This builds directly on 0.150.0's default that untrusted projects no longer supply project-level AGENTS.md instructions [[release-0-150-0-openai-codex-9ba6f418]].
+
+> Added a configurable grace period for discovering tools from optional MCP servers. Extensions can now inspect or replace MCP tool results before they reach the model. [[release-0-151-0-openai-codex-1f2ada50]]
+
+**Sandbox-scope enforcement is tightened at two boundaries.** The release "prevented /cd from weakening sandbox restrictions" and preserved restored permission profiles across TUI turns [[release-0-151-0-openai-codex-1f2ada50]], closing a scope-escape path where a directory change could relax the sandbox mid-session. It also "improved remote sandbox enforcement using the executor's actual home directory, operating system, and path conventions" [[release-0-151-0-openai-codex-1f2ada50]], firming up containment for cloud/remote-host execution rather than assuming the client's environment.
+
+> Preserved restored permission profiles across TUI turns and prevented /cd from weakening sandbox restrictions. Improved remote sandbox enforcement using the executor's actual home directory, operating system, and path conventions. [[release-0-151-0-openai-codex-1f2ada50]]
+
+No independent benchmark accompanies these changes; they are default-hardening rather than capability moves, so they do not shift the topic's current-state picture.
 
 ### Updates 2026-08-28
 
@@ -2358,6 +2371,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does the coordination-as-temporal-graph metric in [[when-agents-coordinate-measuring-coordination-in-multi-agent-ai-coding-ca6518fb]] correlate with final task success across its 1902 runs?
 - [ ] Now that Codex v0.150.0 stops untrusted projects from supplying project-level AGENTS.md by default [[release-0-150-0-openai-codex-9ba6f418]], does Claude Code's `.claude/` guidance-file loader apply an equivalent untrusted-repo gate?
 - [ ] Do the new Codex Interrupt hooks (commands/MCP handlers fired when a top-level turn is interrupted) [[release-0-150-0-openai-codex-9ba6f418]] introduce an injection surface distinct from tool-call hooks?
+- [ ] Does Codex 0.151.0's new extension hook to inspect/replace MCP tool results before they reach the model [[release-0-151-0-openai-codex-1f2ada50]] function as an effective prompt-injection sanitization chokepoint, or does it merely relocate the trust-level-confusion problem [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]] into the extension layer?
+- [ ] Does preventing /cd from weakening sandbox restrictions [[release-0-151-0-openai-codex-1f2ada50]] block the specific directory/CLI-state manipulation chains that sandbox-escape attacks exploit, or only the coarse working-directory-scope escape?
 
 ## See also
 

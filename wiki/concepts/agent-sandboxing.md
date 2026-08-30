@@ -18,7 +18,8 @@ sources:
   - "[[claude-code-changelog-v2-1-212-to-v2-1-218-july-1822-2026-79752d66]]"
   - "[[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]"
   - "[[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]"
-last_updated: 2026-07-26
+  - "[[release-0-151-0-openai-codex-1f2ada50]]"
+last_updated: 2026-08-30
 last_verified: 2026-07-26
 freshness_window_days: 30
 ---
@@ -76,6 +77,10 @@ The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-hum
 **IssueTrojanBench: 66.5% of malicious issues bypass all guardrails of as-deployed coding agents (2026-07-26).** IssueTrojanBench measures prompt-injection resistance of *as-deployed* coding agents end-to-end, not just their model backbones, evaluating malicious GitHub-issue requests against Cursor, Claude Code, and Codex Desktop as shipped (backed by GPT-5.3-Codex/GPT-5.4 and Sonnet 4.6) [[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]. The result is grim: 66.5% of malicious issues penetrate *every* guardrail — both the agent-harness layer and the LLM layer. The threat model is a coding-specific taxonomy: four novel attack categories embedded as malicious instructions inside issues, six delivery vectors (e.g. PDF attachments, issue comments), plus perturbation augmentation. This is the as-deployed-product analogue of the model- and skill-level injection work the wiki already tracks — the attack surface is the product's full guardrail stack, not the raw model. The framing matters: feeding an agent an untrusted issue tracker is now a first-class RCE/exfiltration path, reinforcing the default-deny sandbox posture (Claude Code's `sandbox.network.strictAllowlist`, the EndConversation pattern) logged above.
 
 > The results reveal critical vulnerabilities in the as-deployed modern coding agents, with 66.5% of the malicious issues from IssueTrojanBench penetrating all the guardrails (agent- and LLM-level) of coding agents. [[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]
+
+**Codex v0.151.0 closes two sandbox-scope-escape boundaries (Aug 2026).** The release prevents `/cd` from weakening sandbox restrictions mid-session and preserves restored permission profiles across TUI turns, closing a path where changing directories could relax the sandbox [[release-0-151-0-openai-codex-1f2ada50]]. It also improves remote sandbox enforcement by using the executor's actual home directory, operating system, and path conventions rather than assuming the client's environment [[release-0-151-0-openai-codex-1f2ada50]]. This is structurally consistent with the DuneSlide finding above: any agent-controlled parameter that changes where operations land (working directory, daemon socket, remote mode) is a sandbox-bypass surface if not explicitly constrained.
+
+> Preserved restored permission profiles across TUI turns and prevented /cd from weakening sandbox restrictions. Improved remote sandbox enforcement using the executor's actual home directory, operating system, and path conventions. [[release-0-151-0-openai-codex-1f2ada50]]
 
 ## Disputes
 
