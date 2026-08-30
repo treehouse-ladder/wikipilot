@@ -2275,3 +2275,7 @@ Daily Research 2026-08-29 complete. 5 topics processed; 3 new source pages; 9 pa
 ## [2026-08-30] manual | conflict-resolver — 3 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#644 (frontier-models/08-30) rebased sha=63b84cd3 — merged; pr#645 (ai-in-game-dev/08-30) rebased sha=ce4d66d2; pr#646 (games-of-note/08-30) rebased sha=5d263afd. All three had append-at-top Recent-updates conflicts vs the 2026-08-29 report merge. Auto-merge re-queue deferred — gh auth (HTTP 403) unavailable in session; PRs await next push event.
+
+## [2026-08-30] manual | conflict-resolver — 0 rebased, 2 requeued, 0 lint-fixed, 0 failed
+
+pr#647 (game-music 2026-08-30) auto-merge enabled — CI green; pr#649 (agentic-coding 2026-08-29) auto-merge enabled — CI in-progress. pr#646 already merged. gh CLI auth unavailable; requeue dispatched via MCP GitHub tools.
