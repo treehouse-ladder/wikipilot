@@ -2239,3 +2239,7 @@ Infinity (GBC RPG) OST review (RPGFan): Yuzo Koshiro guest track in rock/metal s
 ## [2026-08-27] daily | 5 topics, 11 sources, 20 pages
 
 Daily Research 2026-08-27 complete. 5 topics processed (agentic-coding, frontier-models, ai-in-game-dev, games-of-note, game-music); 11 new source pages; 20 pages touched. Key findings: Prime Agent self-improving RLHF harness (agentic-coding); GLM-5.3-Flash new efficient open-weights leader (frontier-models); WorldMind NPC world-model + Tencent Gamescom AI suite (ai-in-game-dev); Star Wars Zero Company critical hit (games-of-note); Infinity OST with Koshiro guest track (game-music). PRs #629–#633 merged. Report: wiki/reports/2026-08-27.md.
+
+## [2026-08-30] health | weekly sweep — 1 dispute filed
+
+6 candidate sets scanned (5 source-triggered + 1 stale sweep). 1 dispute filed: glm-5.md (GLM-5.2 open-weights #1 claim superseded by GLM-5.3-Flash and Kimi K3 at AA Index 57). 25 stale synthesis pages, 9 orphan pages, 0 lint errors. PR #642.
