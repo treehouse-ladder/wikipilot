@@ -2279,3 +2279,7 @@ pr#644 (frontier-models/08-30) rebased sha=63b84cd3 — merged; pr#645 (ai-in-ga
 ## [2026-08-30] manual | conflict-resolver — 0 rebased, 2 requeued, 0 lint-fixed, 0 failed
 
 pr#647 (game-music 2026-08-30) auto-merge enabled — CI green; pr#649 (agentic-coding 2026-08-29) auto-merge enabled — CI in-progress. pr#646 already merged. gh CLI auth unavailable; requeue dispatched via MCP GitHub tools.
+
+## [2026-08-30] manual | conflict-resolver — 1 rebased, 4 requeued, 0 lint-fixed, 0 failed
+
+pr#649 rebased onto main (2 conflicts in agentic-coding/index.md resolved; broken-wikilink on state-of-open-models-summer-2026-bc290ba3 fixed by sibling source); force-pushed sha=12b4d6f; auto-merge enabled. pr#644,645,646,647 requeued (auto-merge enabled via MCP; gh auth unavailable in originating daily-research session).
