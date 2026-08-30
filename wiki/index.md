@@ -65,6 +65,9 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[same-model-different-harness-different-coding-agent-results-22e94391]]
+- [[state-of-open-models-summer-2026-bc290ba3]]
+- [[sword-of-the-sea-composer-austin-wintory-wins-grammy-award-9e9b44d7]]
 - [[apidya-special-heads-to-switch-aug-25th-2026-physical-editions-detailed-5c38928f]]
 - [[prompt-induced-waste-in-large-reasoning-models-a-preregistered-two-harness-benchmark-of-coding-agents-528d0029]]
 - [[intelligence-at-pocket-scale-benchmarking-small-models-and-mobile-phones-5f79db7b]]
@@ -1189,6 +1192,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-08-29]]
 - [[health-2026-05-21]]
 - [[2026-05-21]]
 - [[2026-05-22]]
