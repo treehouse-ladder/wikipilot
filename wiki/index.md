@@ -792,6 +792,9 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[side-and-razer-announce-human-in-the-loop-ai-playtests-627e9ba4]]
 - [[rigmo-unifying-rig-and-motion-learning-for-generative-animation-c1b495de]]
 - [[star-wars-zero-company-is-good-but-seems-to-play-things-too-safe-141a1ef6]]
+- [[release-0-151-0-openai-codex-1f2ada50]]
+- [[glm-5-3-zai-org-hugging-face-model-card-4424584e]]
+- [[gamescom-award-2026-the-winners-are-b91c4cac]]
 
 ## Answers
 
@@ -1271,5 +1274,6 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-24]]
 - [[2026-08-25]]
 - [[2026-08-26]]
+- [[2026-08-30]]
 - [[2026-08-28]]
 - [[2026-08-27]]
