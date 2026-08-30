@@ -1,7 +1,7 @@
 ---
 title: "GLM-5"
 kind: entity
-sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]", "[[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]", "[[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]", "[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]", "[[glm-5-2-built-for-long-horizon-tasks-9e3636b0]]", "[[glm-5-3-overview-7e6c3dd9]]", "[[z-ai-delays-glm-5-3-weights-after-cybergym-score-tops-mythos-bca697d6]]", "[[glm-5-3-max-intelligence-performance-price-analysis-26ed0788]]", "[[glm-5-3-flash-intelligence-performance-price-analysis-b02205ef]]"]
+sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]", "[[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]", "[[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]", "[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]", "[[glm-5-2-built-for-long-horizon-tasks-9e3636b0]]", "[[glm-5-3-overview-7e6c3dd9]]", "[[z-ai-delays-glm-5-3-weights-after-cybergym-score-tops-mythos-bca697d6]]", "[[glm-5-3-max-intelligence-performance-price-analysis-26ed0788]]", "[[glm-5-3-flash-intelligence-performance-price-analysis-b02205ef]]", "[[glm-5-3-zai-org-hugging-face-model-card-4424584e]]"]
 last_updated: 2026-08-30
 last_verified: 2026-08-20
 freshness_window_days: 30
@@ -94,6 +94,12 @@ The key caveat is verbosity: Artificial Analysis flags GLM-5.3-Flash as "**notab
 
 > GLM-5.3-Flash is amongst the leading models in intelligence and reasonably priced when comparing to other open weight models of similar size. It is also notably slow and very verbose.
 
+**GLM-5.3 (max) open weights are now public.** Z.AI published the full GLM-5.3 (max) weights on Hugging Face at `zai-org/GLM-5.3` (plus a `GLM-5.3-BF16` variant and community GGUF/NVFP4 quantizations) under the MIT license [[glm-5-3-zai-org-hugging-face-model-card-4424584e]]. This supersedes the earlier status that the GLM-5.3 (max) weights 'remain proprietary and not publicly available': at AA Intelligence Index 60 the model is now the downloadable open-weights intelligence leader, above Qwen3.8 2.4T A95B (58) and Kimi K3 (57). The model card documents the CyberGym evaluation methodology (single-run Pass@1 over 1,507 tasks in Claude Code 2.1.207, max reasoning, no web tools, temperature=1.0, top_p=1.0, max_new_tokens=128000, unlimited per-task timeout) behind Z.AI's 84.5% SOTA claim, but the figure stays vendor-reported pending independent verification now that the weights are testable [[glm-5-3-zai-org-hugging-face-model-card-4424584e]].
+
+> GLM-5.3 is the most capable open-weights model for coding, with a 50% improvement over GLM-5.2 on Z.ai's in-house Code Bench, and the model has been released on Hugging Face. [[glm-5-3-zai-org-hugging-face-model-card-4424584e]]
+
+> GLM-5.3 is released by Z.ai (zai-org) under the MIT license. [[glm-5-3-zai-org-hugging-face-model-card-4424584e]]
+
 ## Disputes
 
 - [[glm-5-everything-you-need-to-know-a53ff5c1]] claims GLM-5 (AA Index 50, released Feb 11 2026) is the leading open-weights model, but [[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]] reports a later open-weights leader: Moonshot's Kimi K2.6 at AA Index 54 (released Apr 20), co-tied with Xiaomi's MiMo-V2.5-Pro at 54 (released Apr 22) [[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]. Qwen3.7 Max scores 57 but is closed-weights API-only [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]. Status: resolved-toward-B — GLM-5 was the open-weights leader at its February release but has since been overtaken by the Kimi K2.6 / MiMo-V2.5-Pro co-leadership at 54; the 'new leading open weights model' framing is time-bound to early 2026.
@@ -113,6 +119,7 @@ The key caveat is verbosity: Artificial Analysis flags GLM-5.3-Flash as "**notab
 - [ ] Do GLM-5.3's vendor-reported benchmark claims (CyberGym 84.5%, GDPval-AA v2 1769) survive independent Artificial Analysis testing once the withheld weights ship ~Aug 28, 2026?
 - [ ] GLM-5.3 (max) generated 170M tokens during AA Index evaluation vs. a median of 72M [[glm-5-3-max-intelligence-performance-price-analysis-26ed0788]] — does this extreme verbosity make GLM-5.3 net-more-expensive than competitors with lower AA scores but far lower output-token usage on agentic loops?
 - [ ] Will Z.AI open-source the GLM-5.3 weights as previously planned, and does the ~Aug 28 safety-hardening timeline slip after the CyberGym score became public?
+- [ ] Now that GLM-5.3 (max) weights are public (MIT), does an independent Artificial Analysis CyberGym re-test confirm the vendor-reported 84.5% (topping Claude Mythos 83.1%), resolving the standing CyberGym dispute?
 
 ## See also
 
