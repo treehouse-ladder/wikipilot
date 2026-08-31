@@ -2283,3 +2283,7 @@ pr#647 (game-music 2026-08-30) auto-merge enabled — CI green; pr#649 (agentic-
 ## [2026-08-30] manual | conflict-resolver — 1 rebased, 4 requeued, 0 lint-fixed, 0 failed
 
 pr#649 rebased onto main (2 conflicts in agentic-coding/index.md resolved; broken-wikilink on state-of-open-models-summer-2026-bc290ba3 fixed by sibling source); force-pushed sha=12b4d6f; auto-merge enabled. pr#644,645,646,647 requeued (auto-merge enabled via MCP; gh auth unavailable in originating daily-research session).
+
+## [2026-08-31] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#662 requeued (clean + green CI, auto-merge was not set; enabled squash auto-merge via MCP).
