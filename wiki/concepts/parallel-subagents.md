@@ -20,7 +20,8 @@ sources:
   - "[[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]"
   - "[[clawarena-team-benchmarking-subagent-orchestration-and-dynamic-workflows-in-language-model-agents-3a15d772]]"
   - "[[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]"
-last_updated: 2026-08-19
+  - "[[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]]"
+last_updated: 2026-08-31
 last_verified: 2026-06-06
 freshness_window_days: 30
 ---
@@ -88,6 +89,10 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 > The main agent is deliberately constrained: it natively perceives only text and directly accesses only part of the workspace. It commands a fixed, locally served subagent pool, so score differences reflect management skill, not raw capability. [[clawarena-team-benchmarking-subagent-orchestration-and-dynamic-workflows-in-language-model-agents-3a15d772]]
 
 > We find that preserving task-critical information is more important than simply increasing the number of agents, and a systematic study of orchestration strategies across workflows containing up to 1,000 subtasks reveals previously hidden coordination failures. [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]
+
+**Claude Code v2.1.251 adds foreground subagent streaming and prompt-cache observability (August 2026).** Foreground subagent tool calls and results now live-stream to Remote Control clients — background subagents, still the default, remain status-only [[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]]. A new per-session prompt-cache line in `/cost` reports hit ratio, misses, tokens re-cached, and warm/cold state, giving concrete observability into the cache-invalidation behavior that the fork-by-default open question (below) flags as the default failure mode [[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]]. SessionStart resume hooks now receive session staleness and an estimated re-cache cost, turning the previously-invisible warm/cold decision into a hookable signal.
+
+> Added live streaming of a foreground subagent's tool calls and results to Remote Control clients (background subagents, the default, still show status only). Added a per-session prompt-cache line to /cost (hit ratio, misses, tokens re-cached, warm/cold). [[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]]
 
 ## Disputes
 

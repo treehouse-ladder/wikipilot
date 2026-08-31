@@ -283,7 +283,8 @@ sources:
   - "[[agentroom-concurrent-multi-agent-coding-in-a-crdt-backed-shared-workspace-4f6448bf]]"
   - "[[release-0-151-0-openai-codex-1f2ada50]]"
   - "[[same-model-different-harness-different-coding-agent-results-22e94391]]"
-last_updated: 2026-08-30
+  - "[[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]]"
+last_updated: 2026-08-31
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -380,6 +381,20 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-08-31
+
+Low-flow day. The strongest fresh leads were already in the wiki (the Prime Agent self-improving RLM harness, arxiv 2608.23552, and Cursor's 2026-08-27 Origin "start from scratch" cloud-agent changes), so only one new source cleared the bar.
+
+Claude Code shipped through **v2.1.251** (2026-08-28), extending the changelog past the previously-ingested v2.1.232 range [[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]]. Three items matter for agentic workflows: (1) new `PreModelSwitch`/`PostModelSwitch` hook events let a harness block, confirm, or annotate a mid-session model switch, and `SessionStart` resume hooks now surface session staleness plus an estimated re-cache cost — turning the previously-invisible prompt-cache warm/cold decision into a hookable signal; (2) foreground subagent tool calls and results now live-stream to Remote Control clients (background subagents, still the default, remain status-only); (3) a new per-session prompt-cache line in `/cost` reports hit ratio, misses, tokens re-cached, and warm/cold state, giving concrete cache-invalidation observability that the topic charter's "prompt caching saves 90%" counter-argument has wanted [[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]].
+
+> Added PreModelSwitch and PostModelSwitch hook events (block, confirm, or annotate a model switch); SessionStart resume hooks now receive session staleness and the estimated re-cache cost
+
+> Added live streaming of a foreground subagent's tool calls and results to Remote Control clients (background subagents, the default, still show status only)
+
+> Added a per-session prompt-cache line to /cost (hit ratio, misses, tokens re-cached, warm/cold)
+
+This is an incremental changelog update (observability + hooks), not a shift in the current-state leader picture, so the Summary is left untouched.
 
 ### Updates 2026-08-30
 
@@ -2382,6 +2397,7 @@ lint stays quiet until each page actually exists:
 - [ ] Do the new Codex Interrupt hooks (commands/MCP handlers fired when a top-level turn is interrupted) [[release-0-150-0-openai-codex-9ba6f418]] introduce an injection surface distinct from tool-call hooks?
 - [ ] Does Codex 0.151.0's new extension hook to inspect/replace MCP tool results before they reach the model [[release-0-151-0-openai-codex-1f2ada50]] function as an effective prompt-injection sanitization chokepoint, or does it merely relocate the trust-level-confusion problem [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]] into the extension layer?
 - [ ] Does preventing /cd from weakening sandbox restrictions [[release-0-151-0-openai-codex-1f2ada50]] block the specific directory/CLI-state manipulation chains that sandbox-escape attacks exploit, or only the coarse working-directory-scope escape?
+- [ ] Does the new SessionStart re-cache-cost estimate change resume-vs-fresh-session best practice for long agentic runs — i.e. is there a staleness threshold past which a cold restart beats paying to re-cache? [[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]] exposes the number but not the decision rule.
 
 ## See also
 
