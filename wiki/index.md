@@ -65,6 +65,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]]
+- [[gamescom-wants-responsible-expansion-after-record-breaking-year-8fec936b]]
+- [[gta-6-leaks-could-be-over-as-leaker-cashes-out-memecoin-90dedb65]]
+- [[laid-off-zenimax-developers-form-sackbird-studios-5ba7900f]]
+- [[players-think-this-is-the-biggest-leak-in-the-history-of-steam-9f9d98f8]]
+- [[spry-fox-co-founder-on-the-new-normal-after-netflix-split-56697b7f]]
 - [[same-model-different-harness-different-coding-agent-results-22e94391]]
 - [[state-of-open-models-summer-2026-bc290ba3]]
 - [[sword-of-the-sea-composer-austin-wintory-wins-grammy-award-9e9b44d7]]
@@ -1194,6 +1200,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[infinity-original-soundtrack-music-review-4f103c92]]
 
 ## Reports
+
+- [[2026-08-31]]
 
 - [[2026-08-29]]
 - [[health-2026-05-21]]

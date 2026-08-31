@@ -2283,3 +2283,23 @@ pr#647 (game-music 2026-08-30) auto-merge enabled — CI green; pr#649 (agentic-
 ## [2026-08-30] manual | conflict-resolver — 1 rebased, 4 requeued, 0 lint-fixed, 0 failed
 
 pr#649 rebased onto main (2 conflicts in agentic-coding/index.md resolved; broken-wikilink on state-of-open-models-summer-2026-bc290ba3 fixed by sibling source); force-pushed sha=12b4d6f; auto-merge enabled. pr#644,645,646,647 requeued (auto-merge enabled via MCP; gh auth unavailable in originating daily-research session).
+
+## [2026-08-31] daily | agentic-coding — 1 source, 3 pages
+
+Claude Code v2.1.251 changelog: PreModelSwitch/PostModelSwitch hooks, foreground subagent streaming, /cost prompt-cache observability. Cross-page sweep: parallel-subagents concept updated. PR #657.
+
+## [2026-08-31] daily | frontier-models — 0 sources, 1 page
+
+Quiet day. No frontier-model announcements crossed the bar. Quiet-day sentinel filed. PR #658.
+
+## [2026-08-31] daily | ai-in-game-dev — 0 sources, 1 page
+
+Quiet day. Gamescom 2026 coverage did not surface AI-in-game-dev sources. Quiet-day sentinel filed. PR #659.
+
+## [2026-08-31] daily | games-of-note — 5 sources, 6 pages
+
+Gamescom 2026 record attendance + expansion plan; Sackbird Studios (ex-ZeniMax Blackbird team); Spry Fox Netflix postmortem; 13TB Steam2 depot leak; GTA 6 Cyberleek $250K cash-out. PR #660.
+
+## [2026-08-31] daily | game-music — 0 sources, 1 page
+
+Quiet day. No game-music sources cleared the relevance bar during Gamescom week. Quiet-day sentinel filed. PR #661.
