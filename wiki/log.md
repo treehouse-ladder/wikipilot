@@ -2303,3 +2303,7 @@ Gamescom 2026 record attendance + expansion plan; Sackbird Studios (ex-ZeniMax B
 ## [2026-08-31] daily | game-music — 0 sources, 1 page
 
 Quiet day. No game-music sources cleared the relevance bar during Gamescom week. Quiet-day sentinel filed. PR #661.
+
+## [2026-09-01] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#666 (claude/daily-2026-09-01/games-of-note) requeued auto-merge; CI green, was orphan-CLEAN. gh CLI auth unavailable; auto-merge enabled via MCP GitHub tools.
