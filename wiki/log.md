@@ -2303,3 +2303,26 @@ Gamescom 2026 record attendance + expansion plan; Sackbird Studios (ex-ZeniMax B
 ## [2026-08-31] daily | game-music — 0 sources, 1 page
 
 Quiet day. No game-music sources cleared the relevance bar during Gamescom week. Quiet-day sentinel filed. PR #661.
+## [2026-09-01] daily | agentic-coding — 0 sources, 1 page
+
+Quiet day. No new agentic-coding sources cleared the relevance bar. Quiet-day sentinel filed. PR #663.
+
+## [2026-09-01] daily | frontier-models — 0 sources, 1 page
+
+Quiet day. No frontier-model announcements or independent evals crossed the ingestion bar in the Aug 31 → Sep 1 window. Mythos-class release speculation flagged as an open question. PR #664.
+
+## [2026-09-01] daily | ai-in-game-dev — 0 sources, 1 page
+
+Quiet day following Gamescom 2026 (Aug 28–31). No AI-in-game-dev tools, pipeline releases, or research papers cleared the relevance bar. PR #665.
+
+## [2026-09-01] daily | games-of-note — 4 sources, 5 pages
+
+GTA 6 extended look (27 min, Netflix, Aug 27): Vice City praised, Nov 19 release confirmed, mission design criticized. Blood of Dawnwalker launch: Metacritic 83, reviews split (Vice 10/10 vs repetitive/janky), Rebel Wolves debut. PR #666.
+
+## [2026-09-01] daily | game-music — 2 sources, 3 pages
+
+Dispatch 3LP vinyl boxset (Lost In Cult Records, Q4 2026); Best Of Video Game Music Box compilation LP (Materia Records, 180g, 6 game soundtracks). PR #667.
+
+## [2026-09-01] daily | 5 topics, 6 sources, 11 pages
+
+Daily research complete. PRs #663–#667. Topics: agentic-coding (0 src), frontier-models (0 src), ai-in-game-dev (0 src), games-of-note (4 src), game-music (2 src).

@@ -65,6 +65,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[everything-revealed-from-the-gta-6-extended-look-5cba183a]]
+- [[the-blood-of-dawnwalker-reviews-are-divided-on-whether-it-s-a-great-new-rpg-or-repetitive-and-janky-a763ec98]]
+- [[the-gta-6-reveal-has-me-wowed-by-vice-city-and-underwhelmed-by-rockstar-s-same-old-missions-0f4801af]]
+- [[the-witcher-3-director-s-new-rpg-blood-of-dawnwalker-is-a-hit-with-most-critics-and-just-behind-the-witcher-1-and-2-on-metacritic-7ee14644]]
+- [[dispatch-complete-soundtrack-coming-to-vinyl-6889de97]]
+- [[video-game-music-box-series-to-get-greatest-hits-vinyl-release-139f82bf]]
 - [[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]]
 - [[gamescom-wants-responsible-expansion-after-record-breaking-year-8fec936b]]
 - [[gta-6-leaks-could-be-over-as-leaker-cashes-out-memecoin-90dedb65]]
@@ -1201,6 +1207,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-09-01]]
 - [[2026-08-31]]
 
 - [[2026-08-29]]
