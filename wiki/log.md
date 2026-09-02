@@ -2326,3 +2326,27 @@ Dispatch 3LP vinyl boxset (Lost In Cult Records, Q4 2026); Best Of Video Game Mu
 ## [2026-09-01] daily | 5 topics, 6 sources, 11 pages
 
 Daily research complete. PRs #663–#667. Topics: agentic-coding (0 src), frontier-models (0 src), ai-in-game-dev (0 src), games-of-note (4 src), game-music (2 src).
+
+## [2026-09-02] daily | agentic-coding — 1 source, 5 pages
+
+Claude Fable 5.1 (= Mythos 5.1 with different safeguards) launches Sep 1, 2026; AA Intelligence Index #1 at 66. Agentic coding workflow updates. PR #669.
+
+## [2026-09-02] daily | frontier-models — 2 sources, 5 pages
+
+Claude Fable 5.1 entity page created; AA Intelligence Index #1 at 66 (score: 66); claude-fable-5.md and claude-mythos.md updated with superseded-by notes. PR #670.
+
+## [2026-09-02] daily | ai-in-game-dev — 0 sources, 1 page
+
+Quiet day — no new sources. Sentinel entry added to Recent updates. PR #671.
+
+## [2026-09-02] daily | games-of-note — 9 sources, 1 page
+
+Rovio Copenhagen closure (Sonic Blitz cancelled); Bit Reactor 80% furloughed post-SWZC launch; Housemarque co-founder exit; Savvy Games CEO departure; Tencent mulling Japanese studio exits (PlatinumGames/FromSoftware safe); Aggro Crab Presents publishing label; Feeble Minds studio (Coffee Stain/Paradox vets); DOOM DLC crunch; BlizzCon revival. PR #672.
+
+## [2026-09-02] daily | game-music — 0 sources, 1 page
+
+Quiet day — no new sources. Sentinel entry added to Recent updates. PR #673.
+
+## [2026-09-02] daily | 5 topics, 12 sources, 13 pages
+
+Daily research complete. PRs #669–#673. Topics: agentic-coding (1 src), frontier-models (2 src), ai-in-game-dev (0 src), games-of-note (9 src), game-music (0 src).
