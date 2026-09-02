@@ -2,8 +2,8 @@
 title: "Claude Mythos"
 kind: entity
 aliases: ["Mythos", "Claude Mythos Preview", "Anthropic Mythos", "Claude Mythos 5"]
-sources: ["[[claude-mythos-preview-d737ab91]]", "[[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[expanding-project-glasswing-fd9b87df]]", "[[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]", "[[initial-impressions-of-claude-fable-5-1a99af0c]]", "[[if-claude-fable-stops-helping-you-you-ll-never-know-1257de46]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[gemini-3-1-pro-preview-intelligence-performance-price-analysis-3a3f9933]]", "[[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]"]
-last_updated: 2026-06-29
+sources: ["[[claude-mythos-preview-d737ab91]]", "[[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[expanding-project-glasswing-fd9b87df]]", "[[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]", "[[initial-impressions-of-claude-fable-5-1a99af0c]]", "[[if-claude-fable-stops-helping-you-you-ll-never-know-1257de46]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[gemini-3-1-pro-preview-intelligence-performance-price-analysis-3a3f9933]]", "[[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]", "[[introducing-claude-fable-5-1-and-claude-mythos-5-1-e7232d52]]", "[[claude-fable-5-1-tops-the-artificial-analysis-intelligence-index-88ebeee8]]"]
+last_updated: 2026-09-02
 last_verified: 2026-06-21
 freshness_window_days: 30
 input_cost_per_mtoken: 25.00
@@ -74,6 +74,10 @@ Fable 5 introduces a new category of safeguard not previously documented: **sile
 > Commerce Secretary Howard Lutnick partially lifted the Anthropic export control on June 26, allowing Claude Mythos 5 to be deployed without an export license to a defined set of U.S. organizations operating and defending critical infrastructure, following a June 26 letter to Anthropic co-founder Tom Brown. [[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]
 
 > The version millions of developers and subscribers had been using, Claude Fable 5, remains suspended worldwide as of June 27, 2026, with all criminal and civil penalties from the original June 12 directive still in force. The key difference between the two models is that Fable 5 includes three classifier-based safety layers that redirect flagged cybersecurity, biology-chemistry, and model-distillation queries to Claude Opus 4.8, while Mythos 5 removes those classifiers, making it more capable for both offensive and defensive cyber tasks. [[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]
+
+**Claude Mythos 5.1 (September 1, 2026).** Anthropic shipped Claude Mythos 5.1 alongside [[claude-fable-5.1]] — the two are the same underlying model with different safeguard levels. Mythos 5.1 remains available only through Anthropic's trusted-access programs, with safeguards specifically designed to support cybersecurity and life-sciences work, while Fable 5.1 is generally available [[introducing-claude-fable-5-1-and-claude-mythos-5-1-e7232d52]]. On the public/GA side, Fable 5.1 (max) is the new AA Intelligence Index #1 at 66 [[claude-fable-5-1-tops-the-artificial-analysis-intelligence-index-88ebeee8]].
+
+> Claude Fable 5.1 and Claude Mythos 5.1 are the same model, but with different levels of safeguards. Fable 5.1 is generally available, while Mythos 5.1 is available only through our trusted access programs; its safeguards are specifically designed to support work in cybersecurity and the life sciences. [[introducing-claude-fable-5-1-and-claude-mythos-5-1-e7232d52]]
 
 ## Disputes
 
