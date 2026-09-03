@@ -287,7 +287,8 @@ sources:
   - "[[openjiuwen-beyond-static-harnesses-for-long-horizon-coding-agents-ae25ffa1]]"
   - "[[introducing-claude-fable-5-1-and-claude-mythos-5-1-e7232d52]]"
   - "[[a-quote-from-rick-brewster-f5a31c99]]"
-last_updated: 2026-09-02
+  - "[[release-0-153-0-openai-codex-a8d513fb]]"
+last_updated: 2026-09-03
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -384,6 +385,24 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-03
+
+**Codex 0.153.0 turns context management into a first-class, model-callable primitive: a disabled-by-default experimental mode gives the model a `new_context` tool to start a fresh window without paying compaction-summary tokens, plus per-tool MCP output caps.** The 2026-09-03 release adds "a disabled-by-default features.context_management.experimental_mode configuration [that], when enabled for eligible ChatGPT Plus, Pro, or Pro Lite sessions using the Codex backend, ... activates token-budget context, history notes, and the new_context tool" [[release-0-153-0-openai-codex-a8d513fb]]. The notable design point for context/cost engineering is that the reset is model-initiated and summary-free: "when the model decides the current window is no longer useful, it needs a way to ask Codex to start over with a fresh context window without spending tokens on a compaction summary" [[release-0-153-0-openai-codex-a8d513fb]] — i.e. an explicit alternative to the compaction/summarize step that dominates long-session token spend, extending the Codex security-and-context trajectory of 0.150.0/0.151.0 [[release-0-151-0-openai-codex-1f2ada50]].
+
+> A disabled-by-default features.context_management.experimental_mode configuration was added. When enabled for eligible ChatGPT Plus, Pro, or Pro Lite sessions using the Codex backend, it activates token-budget context, history notes, and the new_context tool. [[release-0-153-0-openai-codex-a8d513fb]]
+
+> When the model decides the current window is no longer useful, it needs a way to ask Codex to start over with a fresh context window without spending tokens on a compaction summary. [[release-0-153-0-openai-codex-a8d513fb]]
+
+**A per-tool MCP `output_token_limit` gives harness authors a knob to cap noisy tool outputs.** The release ships "individual MCP tools [that] support an output_token_limit setting, with consistent truncation across session resumes" [[release-0-153-0-openai-codex-a8d513fb]]. This operationalizes, at the tool-config layer, the finding that aggressively truncating stale tool results raises pass rates at no extra inference cost [[same-model-different-harness-different-coding-agent-results-22e94391]] — but as a static per-tool cap rather than an adaptive context policy, so its interaction with the mid-session cache/context state is not benchmarked in the changelog.
+
+> Individual MCP tools support an output_token_limit setting, with consistent truncation across session resumes. [[release-0-153-0-openai-codex-a8d513fb]]
+
+**The plugin CLI now installs from remote marketplaces**, expanding the plugin/skill supply-chain surface: "the plugin CLI can list, install, and remove plugins from remote marketplaces" [[release-0-153-0-openai-codex-a8d513fb]] — a convenience that also broadens the untrusted-install attack surface the wiki's prompt-injection/supply-chain cluster tracks [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]].
+
+> The plugin CLI can list, install, and remove plugins from remote marketplaces. [[release-0-153-0-openai-codex-a8d513fb]]
+
+This is an incremental changelog update (context-management primitives + MCP knobs behind an experimental flag), not a shift in the current-state leader picture, so the Summary is left untouched.
 
 ### Updates 2026-09-02
 
@@ -2222,6 +2241,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does augmenting MCP tool descriptions [[model-context-protocol-mcp-tool-descriptions-are-smelly-towards-improving-ai-agent-efficiency-with-augmented-mcp-tool-descriptions-47b0c29e]] improve agent efficiency more or less than the load-on-demand code-execution-with-MCP approach [[code-execution-with-mcp-building-more-efficient-ai-agents-9b88bfec]], and do the two compose?
 - [ ] Does the 'verification skills are highest-leverage' finding from Anthropic's internal practice generalize to teams that haven't already invested in a strong test/CI baseline, or is verification's measured impact partly a function of Anthropic's existing tooling maturity?
 - [ ] How well do the four oversight modalities (pre-flight / in-flight / post-flight / trajectory replay) hold up under Claude Code dynamic workflows fan-out (tens-to-hundreds of parallel subagents)? The 23-developer study predates the dynamic-workflows research preview.
+- [ ] Does Codex's `new_context` fresh-window reset [[release-0-153-0-openai-codex-a8d513fb]] preserve verified task state, or does the summary-free reset discard exactly the state that the wiki's session-bridging long-running-agent harnesses externalize to on-disk handoff artifacts [[effective-harnesses-for-long-running-agents-anthropic-engineering-7f7a70a6]]?
+- [ ] Is the per-tool MCP `output_token_limit` static cap [[release-0-153-0-openai-codex-a8d513fb]] equivalent in effect to the adaptive stale-tool-result truncation that [[same-model-different-harness-different-coding-agent-results-22e94391]] found lifts pass rates at no extra cost?
 - [ ] Cursor 3's Agents Window runs agents across local, worktree, cloud, and remote-SSH environments [[meet-the-new-cursor-cursor-3-the-agents-window-e13bb5f7]] — is the prompt-cache behavior consistent across these substrates, or does cloud/remote dispatch reset the cache the way the prior worktree open question on this page suspected?
 - [ ] Does WebMCP [[building-the-agentic-future-developer-highlights-from-google-i-o-2026-e433cac5]] compose with server-side MCP and Agent Skills, or is the browser-tool surface a parallel ecosystem that coding agents must integrate separately from the .claude/skills + MCP stack the wiki already tracks?
 - [ ] Inside the Scaffold finds 11 of 13 scaffolds compose multiple loop primitives [[inside-the-scaffold-a-source-code-taxonomy-of-coding-agent-architectures-7e37a967]] — is there any measured correlation between which primitive combination a scaffold uses and its SWE-bench/Terminal-Bench score, independent of the base model (which Beyond Resolution Rates [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] argues dominates)?
