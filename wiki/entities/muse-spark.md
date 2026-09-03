@@ -1,9 +1,9 @@
 ---
 title: "Muse Spark"
 kind: entity
-sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[introducing-muse-spark-1-1-f8a95609]]", "[[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]", "[[muse-spark-1-2-3d7d1796]]", "[[introducing-muse-code-and-muse-spark-1-2-a73147b0]]", "[[introducing-muse-glimmer-c60b75d4]]", "[[muse-glimmer-benchmarks-and-analysis-e12a4eb2]]"]
-last_updated: "2026-08-11"
-last_verified: "2026-08-06"
+sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[introducing-muse-spark-1-1-f8a95609]]", "[[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]", "[[muse-spark-1-2-3d7d1796]]", "[[introducing-muse-code-and-muse-spark-1-2-a73147b0]]", "[[introducing-muse-glimmer-c60b75d4]]", "[[muse-glimmer-benchmarks-and-analysis-e12a4eb2]]", "[[muse-spark-1-3-meta-reaches-the-frontier-90b59e4e]]"]
+last_updated: "2026-09-03"
+last_verified: "2026-09-03"
 freshness_window_days: 30
 ---
 
@@ -38,6 +38,12 @@ Five days after Muse Spark 1.2, Meta released **Muse Glimmer**, a 30B Apache-2.0
 **Update 2026-08-10 — Muse Glimmer (distilled variant).** Meta released **Muse Glimmer** on August 10, 2026, a 30B-parameter distilled variant of Muse Spark 1.2 optimized for local deployment on consumer hardware [[muse-glimmer-benchmarks-and-analysis-e12a4eb2]]. It scores 35 on the Artificial Analysis Intelligence Index — far below the Muse Spark 1.2 parent model (54) but strong for its size class — and is designed to run on a single H100 at BF16 or an RTX 5090 / higher-spec MacBook at 4-bit (~18 GB) [[muse-glimmer-benchmarks-and-analysis-e12a4eb2]]. Released under Apache 2.0, it is aimed at local coding agents rather than raw-intelligence competition, trained for end-to-end agentic task completion, multi-step reasoning, and LLM-as-judge use.
 
 > Muse Glimmer is a 30B-parameter model released under Apache 2.0. It's small enough to self-host on a single GPU, with weights at ~60 GB in BF16 and ~18 GB in 4-bit precision. [[muse-glimmer-benchmarks-and-analysis-e12a4eb2]]
+
+**Muse Spark 1.3 (released Sep 2, 2026)** takes Meta to the frontier top cluster. The generally-available Muse Spark 1.3 (xhigh) scores **61** on the Artificial Analysis Intelligence Index — tying GPT-5.6 Sol (max) and Grok 4.6 (high) — while a limited-preview (max) variant for Meta partners scores **62**, behind only Claude Fable 5.1 (66) and Claude Opus 5 (63); this is +4 over Muse Spark 1.2 and +8 over Muse Spark 1.1, with gains concentrated in agentic and scientific evaluations [[muse-spark-1-3-meta-reaches-the-frontier-90b59e4e]]. It is priced at **$1.25/$4.25 per Mtoken** and is the most cost-efficient model at its intelligence level ($0.55 per Intelligence Index task), supporting text/image/video input with a 1M-token context [[muse-spark-1-3-meta-reaches-the-frontier-90b59e4e]].
+
+> Muse Spark 1.3 (xhigh) enters the Artificial Analysis Intelligence Index at 61, up 4 points from Muse Spark 1.2 (57, August) and 8 points from Muse Spark 1.1 (53, July). Both variants' gains come primarily from improvements in agentic work and scientific capabilities. [[muse-spark-1-3-meta-reaches-the-frontier-90b59e4e]]
+
+> Muse Spark 1.3 (xhigh) supports text, image, and video input, outputs text, and has a 1M tokens context window. [[muse-spark-1-3-meta-reaches-the-frontier-90b59e4e]]
 
 ## Disputes
 

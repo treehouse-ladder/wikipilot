@@ -1,8 +1,8 @@
 ---
 title: "Gemini 3.1 Pro"
 kind: entity
-sources: ["[[gemini-31-pro-model-card-225ab705]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]", "[[gemini-3-1-pro-preview-intelligence-performance-price-analysis-3a3f9933]]"]
-last_updated: 2026-06-21
+sources: ["[[gemini-31-pro-model-card-225ab705]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]", "[[gemini-3-1-pro-preview-intelligence-performance-price-analysis-3a3f9933]]", "[[google-has-released-gemini-3-8-flash-its-fourth-flash-model-in-under-four-months-8aa591b1]]", "[[gemini-3-8-flash-model-card-1867674a]]"]
+last_updated: 2026-09-03
 last_verified: 2026-06-21
 freshness_window_days: 30
 input_cost_per_mtoken: 2.00
@@ -33,6 +33,12 @@ On [[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]], Gemini 3.1 Pr
 > Gemini 3.1 Pro at 80.6% [SWE-bench Verified]. [[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]
 
 > Gemini 3.1 Pro — Non-Reasoning — 77.1 [ARC-AGI-2]. [[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]
+
+**Gemini 3.8 Flash (released Sep 2, 2026)** is Google's new Flash-tier workhorse, superseding Gemini 3.7 Flash. Artificial Analysis independently places Gemini 3.8 Flash at **59 (high) / 57 (medium) / 52 (low)** on the Intelligence Index — **+3 over Gemini 3.7 Flash** — with the improvement driven by agentic evaluations (τ³-Banking, Terminal-Bench v2.1, GDPval-AA v2); at 59 (high) it now sits **above Claude Opus 4.8 (56) and GPT-5.5 (55)** on the aggregate index [[google-has-released-gemini-3-8-flash-its-fourth-flash-model-in-under-four-months-8aa591b1]]. Google frames it as its 'most intelligent workhorse model yet, built for long-horizon coding and autonomous agents,' with **text/image/audio/video/PDF input, text output, a 1M-token context, a 64K output ceiling, function calling, search-as-a-tool and computer use**, and it is now the **default model in Google Antigravity** [[gemini-3-8-flash-model-card-1867674a]].
+
+> Gemini 3.8 Flash (high) scores 59 on the Artificial Analysis Intelligence Index, up 3 points from Gemini 3.7 Flash. With medium reasoning it scores 57, and with low reasoning it scores 52. [[google-has-released-gemini-3-8-flash-its-fourth-flash-model-in-under-four-months-8aa591b1]]
+
+> Gemini 3.8 Flash is our most intelligent workhorse model yet, built for long-horizon coding and autonomous agents. The model takes text, image, audio, video and PDF in, gives text out, and holds a 1M token context window with a 64K output ceiling. [[gemini-3-8-flash-model-card-1867674a]]
 
 _no contradictions or gaps known yet (last reviewed: 2026-06-21)_
 
