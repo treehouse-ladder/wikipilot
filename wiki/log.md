@@ -2350,3 +2350,27 @@ Quiet day — no new sources. Sentinel entry added to Recent updates. PR #673.
 ## [2026-09-02] daily | 5 topics, 12 sources, 13 pages
 
 Daily research complete. PRs #669–#673. Topics: agentic-coding (1 src), frontier-models (2 src), ai-in-game-dev (0 src), games-of-note (9 src), game-music (0 src).
+
+## [2026-09-03] daily | agentic-coding — 1 source, 2 pages
+
+Codex 0.153.0: experimental context management (model-callable `new_context` tool for fresh window without compaction cost), per-tool MCP `output_token_limit`, plugin CLI remote marketplace installs. PR #675.
+
+## [2026-09-03] daily | frontier-models — 3 sources, 6 pages
+
+Muse Spark 1.3 (xhigh GA 61, max preview 62) enters top cluster alongside GPT-5.6 Sol and Grok 4.6; Gemini 3.8 Flash (59 high / 57 med / 52 low) supersedes Gemini 3.7 Flash (56); aggregate leaders Fable 5.1 (#1 at 66) / Opus 5 (#2 at 63) unchanged. PR #676.
+
+## [2026-09-03] daily | ai-in-game-dev — 2 sources, 3 pages
+
+UniGen: end-to-end multi-agent framework for zero-code 3D Unity game dev from natural language (~90% dev-time reduction); GDD→Unity: LLaMA-3 system parsing game design documents to Unity C# templates. PR #677.
+
+## [2026-09-03] daily | games-of-note — 0 sources, 1 page
+
+Quiet day — no new sources. Sentinel entry added to Recent updates. PR #678.
+
+## [2026-09-03] daily | game-music — 1 source, 2 pages
+
+FFXIV Dawntrail OST (66 tracks, Masayoshi Soken) streams globally across all major platforms; Square Enix Music running share campaign through September 10. PR #679.
+
+## [2026-09-03] daily | 5 topics, 7 sources, 14 pages
+
+Daily research complete. PRs #675–#679. Topics: agentic-coding (1 src), frontier-models (3 src), ai-in-game-dev (2 src), games-of-note (0 src), game-music (1 src).

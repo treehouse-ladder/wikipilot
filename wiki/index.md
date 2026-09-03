@@ -65,6 +65,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[90-faster-100-code-free-mllm-driven-zero-code-3d-game-development-5b658828]]
+- [[automated-unity-game-template-generation-from-gdds-via-nlp-and-multi-modal-llms-0accbcf0]]
+- [[release-0-153-0-openai-codex-a8d513fb]]
+- [[muse-spark-1-3-meta-reaches-the-frontier-90b59e4e]]
+- [[google-has-released-gemini-3-8-flash-its-fourth-flash-model-in-under-four-months-8aa591b1]]
+- [[gemini-3-8-flash-model-card-1867674a]]
 - [[everything-revealed-from-the-gta-6-extended-look-5cba183a]]
 - [[the-blood-of-dawnwalker-reviews-are-divided-on-whether-it-s-a-great-new-rpg-or-repetitive-and-janky-a763ec98]]
 - [[the-gta-6-reveal-has-me-wowed-by-vice-city-and-underwhelmed-by-rockstar-s-same-old-missions-0f4801af]]
