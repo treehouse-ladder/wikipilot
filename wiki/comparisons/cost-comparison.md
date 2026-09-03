@@ -22,7 +22,7 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-08-27
+last_updated: 2026-09-03
 last_verified: '2026-05-22'
 show_glosses: true
 sources:
@@ -57,7 +57,7 @@ This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` acros
 | [[grok-4.5]] | _unknown_ | _unknown_ |
 | [[grok-4.3]] | 1.25 | _2.5_ |
 | [[deepseek-v4]] | 1.74 | 3.48 |
-| [[glm-5]] | 1.0 | 3.2 |
+| [[glm-5]] | 1.4 | 4.4 |
 | [[kimi-k2.6]] | 0.95 | 4.0 |
 | [[qwen3.7-max]] | 2.5 | 7.5 |
 | [[mai-code-1-flash]] | _0.75_ | 4.5 |

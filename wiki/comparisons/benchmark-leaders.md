@@ -23,7 +23,7 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-08-27
+last_updated: 2026-09-03
 last_verified: '2026-05-22'
 show_glosses: true
 sources:
@@ -59,10 +59,6 @@ This comparison aggregates `aa_intelligence_index, gdpval_aa_elo, swe_bench_veri
 | [[grok-4.5]] | _unknown_ | _unknown_ | _unknown_ | _unknown_ | _unknown_ |
 | [[grok-4.3]] | 38 | 1500 | _unknown_ | _unknown_ | _unknown_ |
 | [[deepseek-v4]] | 53 | _unknown_ | 0.806 | _unknown_ | _unknown_ |
-| [[glm-5]] | 50 | 1524 | _unknown_ | _unknown_ | _unknown_ |
+| [[glm-5]] | 60 | 1524 | _unknown_ | _unknown_ | _unknown_ |
 | [[kimi-k2.6]] | 54 | 1520 | 0.802 | 0.413 | _unknown_ |
 | [[qwen3.7-max]] | 57 | _unknown_ | _unknown_ | _unknown_ | _unknown_ |
-
-## Leader changes since last regen
-
-- **`aa_intelligence_index`**: [[claude-fable-5]] took #1 from [[claude-opus-5]].
