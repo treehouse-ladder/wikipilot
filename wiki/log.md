@@ -2350,3 +2350,7 @@ Quiet day — no new sources. Sentinel entry added to Recent updates. PR #673.
 ## [2026-09-02] daily | 5 topics, 12 sources, 13 pages
 
 Daily research complete. PRs #669–#673. Topics: agentic-coding (1 src), frontier-models (2 src), ai-in-game-dev (0 src), games-of-note (9 src), game-music (0 src).
+
+## [2026-09-03] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#678 (games-of-note) requeued — enabled squash auto-merge; CI green, mergeable_state=clean. pr#679 (game-music) CI in-progress at scan time, no action taken.
