@@ -57,6 +57,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[mick-gordon]]
 - [[black-pony-immersive]]
 - [[qwen3.8-flash-next]]
+- [[gpt-6-astra]]
 
 ## Comparisons
 
@@ -816,6 +817,17 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[release-0-151-0-openai-codex-1f2ada50]]
 - [[glm-5-3-zai-org-hugging-face-model-card-4424584e]]
 - [[gamescom-award-2026-the-winners-are-b91c4cac]]
+- [[run-cloud-agents-on-machines-you-manage-cursor-ced5db47]]
+- [[gpt-6-astra-fc6a277c]]
+- [[claude-code-v2-1-259-managed-mcp-servers-and-headless-unattended-permissions-0e371a11]]
+- [[gpt-6-astra-a-new-generation-of-intelligence-039a4975]]
+- [[benchmarking-gpt-6-astra-b4150b17]]
+- [[openai-launches-astra-its-powerful-and-controversial-new-model-939b4e3d]]
+- [[openai-astra-and-looped-transformers-beac0586]]
+- [[double-fine-flexes-its-independence-with-price-cuts-and-a-new-ps5-release-780f6996]]
+- [[playstation-state-of-play-september-2026-all-the-biggest-announcements-games-and-trailers-2059a7f2]]
+- [[supercell-s-acquisition-of-metacore-expected-to-close-this-month-be4585ae]]
+- [[cd-projekt-red-won-t-be-abandoning-physical-releases-199ad00a]]
 
 ## Answers
 
@@ -1302,3 +1314,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-30]]
 - [[2026-08-28]]
 - [[2026-08-27]]
+- [[2026-09-04]]

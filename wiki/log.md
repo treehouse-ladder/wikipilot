@@ -2374,3 +2374,27 @@ FFXIV Dawntrail OST (66 tracks, Masayoshi Soken) streams globally across all maj
 ## [2026-09-03] daily | 5 topics, 7 sources, 14 pages
 
 Daily research complete. PRs #675–#679. Topics: agentic-coding (1 src), frontier-models (3 src), ai-in-game-dev (2 src), games-of-note (0 src), game-music (1 src).
+
+## [2026-09-04] daily | agentic-coding — 3 sources, 6 pages
+
+Cursor Self-Hosted Machines keeps tool execution in-network with computer-use on macOS/Linux; Claude Code v2.1.259 adds org-level managedMcpServers + --permission-prompts none headless mode; GPT-6 Astra enters coding-agent Pareto frontier at <half the per-task cost of Fable 5 for same Coding Agent Index score. PR #681.
+
+## [2026-09-04] daily | frontier-models — 4 sources, 9 pages
+
+GPT-6 Astra (Sep 3 2026) supersedes GPT-5.6 Sol as OpenAI flagship; AA Intelligence Index 61 ties with Sol; hallucination rate drops 92%→51% at max; looped-Transformer architecture; $10/$50/Mtoken. Aggregate leaders Fable 5.1 (#1 at 66) / Opus 5 (#2 at 63) unchanged. PR #682.
+
+## [2026-09-04] daily | game-music — 0 sources, 1 page
+
+Quiet day — no new sources. Sentinel entry added to Recent updates. PR #683.
+
+## [2026-09-04] daily | ai-in-game-dev — 0 sources, 1 page
+
+Quiet day — no new sources following Sep 3 UniGen/GDD→Unity additions. Sentinel entry added to Recent updates. PR #684.
+
+## [2026-09-04] daily | games-of-note — 4 sources, 5 pages
+
+Double Fine shadow-drops Keeper on PS5 post-Xbox independence ($30→$20); Supercell acquires Metacore (Merge Mansion); CDPR affirms physical media commitment vs Sony 2028 disc exit; FF7 Revelation dated April 8 2027. PR #685.
+
+## [2026-09-04] daily | 5 topics, 11 sources, 22 pages
+
+Daily research complete. PRs #681–#685. Topics: agentic-coding (3 src), frontier-models (4 src), game-music (0 src), ai-in-game-dev (0 src), games-of-note (4 src).
