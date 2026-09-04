@@ -19,8 +19,9 @@ sources:
   - "[[claude-code-what-s-new-week-30-july-2024-2026-9e14619c]]"
   - "[[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]"
   - "[[release-0-151-0-openai-codex-1f2ada50]]"
-last_updated: 2026-08-30
-last_verified: 2026-07-26
+  - "[[run-cloud-agents-on-machines-you-manage-cursor-ced5db47]]"
+last_updated: 2026-09-04
+last_verified: 2026-09-04
 freshness_window_days: 30
 ---
 
@@ -81,6 +82,10 @@ The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-hum
 **Codex v0.151.0 closes two sandbox-scope-escape boundaries (Aug 2026).** The release prevents `/cd` from weakening sandbox restrictions mid-session and preserves restored permission profiles across TUI turns, closing a path where changing directories could relax the sandbox [[release-0-151-0-openai-codex-1f2ada50]]. It also improves remote sandbox enforcement by using the executor's actual home directory, operating system, and path conventions rather than assuming the client's environment [[release-0-151-0-openai-codex-1f2ada50]]. This is structurally consistent with the DuneSlide finding above: any agent-controlled parameter that changes where operations land (working directory, daemon socket, remote mode) is a sandbox-bypass surface if not explicitly constrained.
 
 > Preserved restored permission profiles across TUI turns and prevented /cd from weakening sandbox restrictions. Improved remote sandbox enforcement using the executor's actual home directory, operating system, and path conventions. [[release-0-151-0-openai-codex-1f2ada50]]
+
+**Cursor Self-Hosted Machines relocates the isolation boundary to network ingress/egress rather than OS process boundary (Sep 2026).** Cursor's Self-Hosted Machines release (2026-09-02) offers a different isolation model: keep all tool execution inside the customer's own network while the agent orchestration remains hosted [[run-cloud-agents-on-machines-you-manage-cursor-ced5db47]]. The release deploys in two shapes — My Machines (single laptop or VM tied to a user account) and Team Pools (named queues of workers for an enterprise) — and extends computer-use to Linux workers as well as macOS [[run-cloud-agents-on-machines-you-manage-cursor-ced5db47]]. The sandbox boundary here is the network perimeter rather than the kernel syscall or container layer: "your codebase, build outputs, and secrets all stay on internal machines running in your infrastructure" [[run-cloud-agents-on-machines-you-manage-cursor-ced5db47]]. This trades kernel-enforced local containment for network-perimeter containment — stronger against exfiltration (no outbound egress from the worker to attacker-controlled hosts) but weaker against local-privilege-escalation or lateral-movement attacks that stay inside the network perimeter. It complements the OS-level sandboxes tracked on this page rather than replacing them: an enterprise could run both (Self-Hosted Machine workers + bubblewrap/Sandlock on each worker).
+
+> Self-hosted machines let you keep tool execution entirely in your own network. Your codebase, build outputs, and secrets all stay on internal machines running in your infrastructure, while the agent handles tool calls locally. [[run-cloud-agents-on-machines-you-manage-cursor-ced5db47]]
 
 ## Disputes
 
