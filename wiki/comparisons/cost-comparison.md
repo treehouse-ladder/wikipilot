@@ -22,7 +22,7 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-09-03
+last_updated: 2026-09-04
 last_verified: '2026-05-22'
 show_glosses: true
 sources:
@@ -30,6 +30,7 @@ sources:
 - '[[gemini-31-pro-model-card-225ab705]]'
 - '[[xai-launches-grok-43-with-improved-agentic-performance-and-lower-pricing-f1cfb522]]'
 - '[[minimax-m3-api-pricing-benchmarks-openrouter-fbc88cb0]]'
+- '[[benchmarking-gpt-6-astra-b4150b17]]'
 title: Frontier model cost comparison
 ---
 
@@ -38,6 +39,8 @@ title: Frontier model cost comparison
 ## Summary
 
 This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` across 16 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-cost-comparison` to refresh.
+
+**Note on non-roster models (2026-09-04):** [[gpt-6-astra]] (OpenAI's new flagship as of Sep 3, 2026) is not in the roster and does not appear in this comparison. It costs $10/$50 per Mtoken — matching [[claude-fable-5]] and 2.5× [[gpt-5.6-sol]]'s $4/$20 [[benchmarking-gpt-6-astra-b4150b17]].
 
 ## What each column means for me
 
