@@ -23,12 +23,13 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-09-03
+last_updated: 2026-09-04
 last_verified: '2026-05-22'
 show_glosses: true
 sources:
 - '[[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]'
 - '[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]'
+- '[[benchmarking-gpt-6-astra-b4150b17]]'
 title: Frontier model benchmark leaders
 ---
 
@@ -37,6 +38,8 @@ title: Frontier model benchmark leaders
 ## Summary
 
 This comparison aggregates `aa_intelligence_index, gdpval_aa_elo, swe_bench_verified, cybergym, arc_agi_2` across 14 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen frontier-model-benchmark-leaders` to refresh.
+
+**Note on non-roster models (2026-09-04):** [[gpt-6-astra]] (AA Index 61, OpenAI's new flagship as of Sep 3, 2026) is not in the roster and does not appear in this comparison. It ties [[gpt-5.6-sol]] at AA Index 61 but costs $10/$50 per Mtoken (2.5× Sol) [[benchmarking-gpt-6-astra-b4150b17]].
 
 ## What each column means for me
 
