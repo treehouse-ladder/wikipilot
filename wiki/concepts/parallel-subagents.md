@@ -21,8 +21,9 @@ sources:
   - "[[clawarena-team-benchmarking-subagent-orchestration-and-dynamic-workflows-in-language-model-agents-3a15d772]]"
   - "[[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]"
   - "[[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]]"
-last_updated: 2026-08-31
-last_verified: 2026-06-06
+  - "[[claude-code-v2-1-259-managed-mcp-servers-and-headless-unattended-permissions-0e371a11]]"
+last_updated: 2026-09-04
+last_verified: 2026-09-04
 freshness_window_days: 30
 ---
 
@@ -45,6 +46,10 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 **Team-wide skill/MCP distribution for parallel-subagent contexts.** Cursor 3.9's Customize page consolidates plugins, skills, MCPs, subagents, rules, commands, and hooks into one place manageable at user/team/workspace scope, with a popularity leaderboard and one-click install across a team [[customize-cursor-16819559]]. This operationalizes the configuration-distribution layer for parallel-subagent workflows: when every team member can spawn subagents with shared skills/MCPs via the leaderboard, curation becomes an organizational asset rather than per-developer config drift — the failure mode catalogued as Skill Leakage (35% prevalence) in the AGENTS.md configuration-smells study [[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]].
 
 > You can now add and manage plugins, skills, MCPs, subagents, rules, commands, and hooks at the user, team, or workspace level, and even bring your own custom MCPs. Cursor now shows you a leaderboard of the most popular plugins, skills, and MCPs across your team. [[customize-cursor-16819559]]
+
+**Claude Code v2.1.259 adds org-level managed MCP servers (Sep 2026).** The release introduces `managedMcpServers` as a managed setting, allowing organizations to provide HTTP/SSE MCP servers to every user [[claude-code-v2-1-259-managed-mcp-servers-and-headless-unattended-permissions-0e371a11]]. This is Claude Code's organizational MCP distribution mechanism — structurally parallel to Cursor's team-level MCP management but implemented via a managed-settings push rather than a popularity-leaderboard pull. When a central MCP server is managed, every forked subagent inherits it without per-user configuration, which addresses the Skill Leakage config-drift failure mode from the same centralized angle as Cursor's team-level curation, but without the leaderboard discoverability layer.
+
+> Added managedMcpServers managed setting for organizations to provide HTTP/SSE MCP servers to every user. [[claude-code-v2-1-259-managed-mcp-servers-and-headless-unattended-permissions-0e371a11]]
 
 **Claude Code background-subagent permission surfacing closes the silent-denial gap.** Claude Code Week 26 (June 22–26) added background-subagent permission prompts to the main session: when a background subagent requests a tool, the permission dialog surfaces in the main session showing which agent is asking, and Esc denies only that tool rather than halting the entire workflow [[claude-code-whats-new-week-26-june-22-26-2026-d0712d54]]. This closes a critical gap in parallel-subagent workflows: previously a background-subagent denial was silent and irrecoverable without restarting the agent, breaking the "fork-and-forget" parallelism model that makes subagents viable for fan-out tasks.
 
