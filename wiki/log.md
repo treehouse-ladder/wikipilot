@@ -2398,3 +2398,27 @@ Double Fine shadow-drops Keeper on PS5 post-Xbox independence ($30→$20); Super
 ## [2026-09-04] daily | 5 topics, 11 sources, 22 pages
 
 Daily research complete. PRs #681–#685. Topics: agentic-coding (3 src), frontier-models (4 src), game-music (0 src), ai-in-game-dev (0 src), games-of-note (4 src).
+
+## [2026-09-05] daily | agentic-coding — 2 sources, 6 pages
+
+Claude Code 2.1.260 adds fullscreen diff panel, cache diagnostics, and fixes expensive Fable 5.1 model mis-routing bug. New ArXiv survey dissects anatomy and architecture of 11 production coding-agent harnesses. PR #687.
+
+## [2026-09-05] daily | frontier-models — 2 sources, 7 pages
+
+AA Intelligence Index v4.2 (re-scaled, not comparable to v4.1.1): Fable 5.1 #1 (57), GPT-6 Astra max #2 (55) — first OpenAI model above all Claude non-Fable on independent aggregate index — Opus 5 max tied #3–4 (54). Qwen3.8-Max-0902 tops Code Arena WebDev at 1,691 pts (3 above Opus 5 Max) at unchanged price. Summary regenerated. PR #688.
+
+## [2026-09-05] daily | ai-in-game-dev — 4 sources, 5 pages
+
+DLSS 5 3D-Guided Neural Rendering ships in NBA 2K27 (first AAA). Mistral 7B + Unity PPO LLM-guided RL paper (600 episodes, no weight modification). Postal: Bullet Paradise canceled, Goonswarm Games shut down after AI art backlash. Blood of Dawnwalker: AI used only for dev placeholder voices, no AI in shipped game. PR #689.
+
+## [2026-09-05] daily | games-of-note — 1 source, 2 pages
+
+Onimusha: Way of the Sword first pre-release review: GameSpot calls combat "between DMC and soulslikes," defense key to offense, ~30h PS5, launches Sep 25. PR #690.
+
+## [2026-09-05] daily | game-music — 0 sources, 1 page
+
+Quiet day — no new sources. Sentinel entry added to Recent updates. PR #691.
+
+## [2026-09-05] daily | 5 topics, 9 sources, 21 pages
+
+Daily research complete. PRs #687–#691. Topics: agentic-coding (2 src), frontier-models (2 src), ai-in-game-dev (4 src), games-of-note (1 src), game-music (0 src).

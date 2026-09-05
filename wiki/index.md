@@ -58,6 +58,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[black-pony-immersive]]
 - [[qwen3.8-flash-next]]
 - [[gpt-6-astra]]
+- [[claude-fable-5.1]]
+- [[qwen3.7-max]]
 
 ## Comparisons
 
@@ -1222,6 +1224,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[review-resonance-a-plague-tale-legacy-a-fantastic-evolution-of-action-stealth-exploration-8a38d740]]
 - [[ubisoft-reveals-heroes-of-might-and-magic-iii-remake-at-gamescom-29da1b22]]
 - [[infinity-original-soundtrack-music-review-4f103c92]]
+- [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]
+- [[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]
+- [[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]
+- [[qwen3-8-max-0902-same-price-much-better-at-coding-and-office-work-still-behind-opus-5-528b2db1]]
+- [[dlss-5-3d-guided-neural-rendering-debuts-in-nba-2k27-772bc7b8]]
+- [[llm-guided-reinforcement-learning-for-adaptive-npc-behavior-in-multi-agent-combat-games-f3dc27e4]]
+- [[postal-ai-controversy-sparks-shutdown-of-goonswarm-games-a9ad1f81]]
+- [[the-blood-of-dawnwalker-is-using-gen-ai-in-development-but-final-game-wont-have-any-ai-7165c94f]]
+- [[onimusha-way-of-the-sword-review-312383ae]]
 
 ## Reports
 
@@ -1315,3 +1326,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-28]]
 - [[2026-08-27]]
 - [[2026-09-04]]
+- [[2026-09-05]]
