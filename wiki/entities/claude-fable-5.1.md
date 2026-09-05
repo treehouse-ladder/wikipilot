@@ -2,9 +2,9 @@
 title: "Claude Fable 5.1"
 kind: entity
 aliases: ["Fable 5.1", "fable-5.1", "Claude Fable 5.1"]
-sources: ["[[introducing-claude-fable-5-1-and-claude-mythos-5-1-e7232d52]]", "[[claude-fable-5-1-tops-the-artificial-analysis-intelligence-index-88ebeee8]]"]
-last_updated: 2026-09-02
-last_verified: 2026-09-02
+sources: ["[[introducing-claude-fable-5-1-and-claude-mythos-5-1-e7232d52]]", "[[claude-fable-5-1-tops-the-artificial-analysis-intelligence-index-88ebeee8]]", "[[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]"]
+last_updated: 2026-09-05
+last_verified: 2026-09-05
 freshness_window_days: 30
 ---
 
@@ -30,7 +30,11 @@ Claude Fable 5.1 is Anthropic's flagship Mythos-class model, shipped **September
 
 > In cybersecurity, our newest safeguards block 60% fewer false positives than before. Fable 5.1 can now be used to discover software vulnerabilities—though not to develop exploits for them. [[introducing-claude-fable-5-1-and-claude-mythos-5-1-e7232d52]]
 
-_no contradictions or gaps known yet (last reviewed: 2026-09-02)_
+**AA Intelligence Index v4.2 (Sep 5, 2026).** On the new v4.2 re-scale (not comparable to v4.1.1), Fable 5.1 (max with fallback) retains #1 at **57**, ahead of GPT-6 Astra (max) at 55 and Claude Opus 5 (max) at 54 [[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]. The v4.2 basis removes GPQA Diamond (saturated), adds GDP.pdf, and doubles private test-data weighting to 40%.
+
+> On Intelligence Index v4.2, Claude Fable 5.1 (max with fallback) tops the leaderboard with a score of 57, followed by GPT-6 Astra (max) at 55, GPT-6 Astra (xhigh) at 54, Claude Opus 5 (max) at 54 and Claude Opus 5 (xhigh) at 53. [[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]
+
+_no contradictions or gaps known yet (last reviewed: 2026-09-05)_
 
 ## Disputes
 

@@ -1,9 +1,9 @@
 ---
 title: "Claude Opus 5"
 kind: entity
-sources: ["[[introducing-claude-opus-5-c34a3276]]", "[[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]", "[[anthropic-launches-claude-opus-5-its-fourth-model-in-two-months-and-it-tops-fable-5-on-most-benchmarks-7253a489]]", "[[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]", "[[claude-opus-5-the-new-leader-in-agentic-knowledge-work-92cf92da]]", "[[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]]"]
-last_updated: 2026-08-09
-last_verified: 2026-08-09
+sources: ["[[introducing-claude-opus-5-c34a3276]]", "[[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]", "[[anthropic-launches-claude-opus-5-its-fourth-model-in-two-months-and-it-tops-fable-5-on-most-benchmarks-7253a489]]", "[[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]", "[[claude-opus-5-the-new-leader-in-agentic-knowledge-work-92cf92da]]", "[[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]]", "[[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]", "[[qwen3-8-max-0902-same-price-much-better-at-coding-and-office-work-still-behind-opus-5-528b2db1]]"]
+last_updated: 2026-09-05
+last_verified: 2026-09-05
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
 output_cost_per_mtoken: 25.00
@@ -42,9 +42,15 @@ Artificial Analysis's primary evaluation (published 2026-07-26) confirms **Claud
 
 > On GDPval-AA v2, Claude Opus 5 (max) scores 1861 Elo, more than 100 points ahead of Claude Fable 5 and GPT-5.6 Sol (max), making it a leader in agentic knowledge work tasks. [[claude-opus-5-the-new-leader-in-agentic-knowledge-work-92cf92da]]
 
-Under the Artificial Analysis Intelligence Index **v4.1.1** patch (2026-08-06 — grader upgrade to GPT-5.6 Luna medium for HLE/AA-LCR/AA-Omniscience, τ³-Banking → v1.0.1), Opus 5 (max) **remains #1 and re-scales up from v4.1 = 61 to 63** as a grading-robustness effect rather than a capability change [[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]]. (Entity frontmatter still records the v4.1 = 61 figure; Opus 5 is outside [frontier_models].roster, so the 63 value is filed for backfill under the topic's Open questions.)
+Under the Artificial Analysis Intelligence Index **v4.1.1** patch (2026-08-06 — grader upgrade to GPT-5.6 Luna medium for HLE/AA-LCR/AA-Omniscience, τ³-Banking → v1.0.1), Opus 5 (max) **remains #1 and re-scales up from v4.1 = 61 to 63** as a grading-robustness effect rather than a capability change [[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]].
 
 > Claude Opus 5 remains in the #1 position with an Index of 63. Overall model rankings remain largely consistent, with a slight increase in scores due to improved grading robustness. [[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]]
+
+**AA Intelligence Index v4.2 (Sep 5, 2026) — full re-scale; Opus 5 (max) places at 54, behind Fable 5.1 (57) and GPT-6 Astra (55 max).** v4.2 is not comparable to v4.1.1 — it removes GPQA Diamond (saturated), adds GDP.pdf, and doubles private test-data weighting to 40% [[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]. On the re-scaled v4.2 basis, **Claude Opus 5 (max) scores 54, placing #4** — below Fable 5.1 (57, #1) and GPT-6 Astra (max, 55, #2) — and Opus 5 (xhigh) scores 53 [[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]. Separately, **Qwen3.8-Max-0902 (Sep 2, 2026) tops Claude Opus 5 Max 1,687→1,691 on Code Arena WebDev** while trailing Opus 5 on TerminalBench 3.0, DeepSWE 1.1, and agent coordination benchmarks [[qwen3-8-max-0902-same-price-much-better-at-coding-and-office-work-still-behind-opus-5-528b2db1]].
+
+> On Intelligence Index v4.2, Claude Fable 5.1 (max with fallback) tops the leaderboard with a score of 57, followed by GPT-6 Astra (max) at 55, GPT-6 Astra (xhigh) at 54, Claude Opus 5 (max) at 54 and Claude Opus 5 (xhigh) at 53. [[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]
+
+> Against Claude Opus 5, the 0902 update leads on three coding benchmarks (MLS-Bench-Lite, SWE-Atlas QnA, QwenSWEBench V2); Claude still leads on TerminalBench 3.0, DeepSWE 1.1, and the agent coordination benchmarks. [[qwen3-8-max-0902-same-price-much-better-at-coding-and-office-work-still-behind-opus-5-528b2db1]]
 
 ## Disputes
 
