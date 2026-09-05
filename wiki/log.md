@@ -2398,3 +2398,7 @@ Double Fine shadow-drops Keeper on PS5 post-Xbox independence ($30→$20); Super
 ## [2026-09-04] daily | 5 topics, 11 sources, 22 pages
 
 Daily research complete. PRs #681–#685. Topics: agentic-coding (3 src), frontier-models (4 src), game-music (0 src), ai-in-game-dev (0 src), games-of-note (4 src).
+
+## [2026-09-05] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#689 (ai-in-game-dev): already merged by the time resolver fired; pr#690 (games-of-note): CI green, state unknown post-merge cascade, auto-merge enabled via MCP.
