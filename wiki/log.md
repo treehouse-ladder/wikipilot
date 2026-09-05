@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-09-05] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#691 (wiki(game-music): daily 2026-09-05) requeued auto-merge — was clean+green but autoMerge not set; enabled via MCP. pr#690 (wiki(games-of-note): daily 2026-09-05) skipped — mergeable_state=unknown at scan time.
+
 ## [2026-08-28] daily | agentic-coding — 3 sources, 3 pages
 
 Start-from-scratch repo pattern; SWE-Refactor-Bench (whole-repo stack migration, <15% best agent); AgentRoom CRDT-backed concurrent multi-agent workspace.
