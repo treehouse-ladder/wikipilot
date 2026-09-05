@@ -291,7 +291,9 @@ sources:
   - "[[introducing-claude-fable-5-1-and-claude-mythos-5-1-e7232d52]]"
   - "[[a-quote-from-rick-brewster-f5a31c99]]"
   - "[[release-0-153-0-openai-codex-a8d513fb]]"
-last_updated: 2026-09-04
+  - "[[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]"
+  - "[[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]"
+last_updated: 2026-09-05
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---
@@ -398,6 +400,22 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-05
+
+**Claude Code v2.1.260 (2026-09-03) fixes an expensive Fable 5.1 prompt-cache bug — context attached after tool results was being resent as uncached input on *every* tool call — and adds prompt-cache-miss diagnostics plus an in-conversation diff panel.** The load-bearing item for cost engineering is the cache fix: "On Claude Fable 5.1, prompt caching didn't cover the context attached after tool results—that context was resent as uncached input on every single tool call. This bug was fixed in version 2.1.260" [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]. The release also surfaces cache misses to the operator — "/cost and the prompt_cache field in the status line now name a likely cause when the prompt cache wasn't hit" [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]] — and ships a review affordance: "In fullscreen mode, a panel now opens beside the conversation and shows uncommitted changes while Claude edits. Toggle it with /diff" [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]. On the security-vs-usability axis it walks back the prior day's over-broad rule: "v2.1.260 reverts the 2.1.259 change that applied Read deny rules to Bash arguments, which had blocked common build and grep compounds even in auto mode" [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]].
+
+> On Claude Fable 5.1, prompt caching didn't cover the context attached after tool results—that context was resent as uncached input on every single tool call. This bug was fixed in version 2.1.260. [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]
+
+> /cost and the prompt_cache field in the status line now name a likely cause when the prompt cache wasn't hit. [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]
+
+> In fullscreen mode, a panel now opens beside the conversation and shows uncommitted changes while Claude edits. Toggle it with /diff. [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]
+
+**A source-code anatomy of eleven production coding harnesses gives harness engineering its most comprehensive empirical foundation to date, and names Databricks' Omnigent as "the first meta-harness."** The study frames the discipline crisply — "An agent is a model plus a harness -- the runtime that couples an LLM to the world through a loop, tools, context management, safety controls, orchestration, and extension surfaces. Harness engineering, named as a discipline in early 2026, is the design and evolution of that runtime" [[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]] — and reads the actual source of "eleven production coding harnesses: Claude Code (Anthropic), Codex CLI (OpenAI), Gemini CLI (Google), Mistral Vibe (Mistral), OpenHands, Aider, Mini-SWE-Agent, Hermes (Nous Research), Pi, OpenCode, and OpenClaw, plus Omnigent (Databricks), the first meta-harness" [[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]. Caveat: it is descriptive (source-code reading) with no head-to-head benchmark controlling for base model, so it does not adjudicate which architecture actually scores higher.
+
+> An agent is a model plus a harness -- the runtime that couples an LLM to the world through a loop, tools, context management, safety controls, orchestration, and extension surfaces. Harness engineering, named as a discipline in early 2026, is the design and evolution of that runtime. [[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]
+
+> The paper analyzes eleven production coding harnesses: Claude Code (Anthropic), Codex CLI (OpenAI), Gemini CLI (Google), Mistral Vibe (Mistral), OpenHands, Aider, Mini-SWE-Agent, Hermes (Nous Research), Pi, OpenCode, and OpenClaw, plus Omnigent (Databricks), the first meta-harness. [[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]
 
 ### Updates 2026-09-04
 
@@ -2490,6 +2508,8 @@ lint stays quiet until each page actually exists:
 - [ ] Is the ~45% highly-agentic-workload cost reduction claimed for Fable 5.1 reproducible on a disclosed, pinned harness/workload, or is it a best-case vendor estimate sensitive to cache-hit ratio and subagent fork depth?
 - [ ] Does GPT-6 Astra's Coding Agent Index cost-efficiency lead over Claude Fable 5 (< half the per-task cost for the same score) survive independent, harness-pinned field runs on real repositories, or is it an index artifact?
 - [ ] Does Cursor Self-Hosted Machines computer-use (Linux + Mac workers driving a real UI on-prem) come with a security/isolation evaluation, or does keeping execution in-network merely relocate the shell/computer-use attack surface rather than shrink it?
+- [ ] Does the Fable 5.1 post-tool-result cache gap that v2.1.260 fixed [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]] also affect fork-based parallel subagents that inherit the prompt cache, and does the fix actually restore the projected savings from Fable 5.1's 75%-cheaper cache reads?
+- [ ] How does the eleven-production-harness anatomy [[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]] reconcile with the 13-scaffold loop-primitive taxonomy [[inside-the-scaffold-a-source-code-taxonomy-of-coding-agent-architectures-7e37a967]] — do the two corpora agree on the dominant harness architecture, and what does Omnigent's 'meta-harness' category add?
 
 ## See also
 

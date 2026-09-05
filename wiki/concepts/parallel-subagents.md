@@ -22,7 +22,8 @@ sources:
   - "[[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]"
   - "[[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]]"
   - "[[claude-code-v2-1-259-managed-mcp-servers-and-headless-unattended-permissions-0e371a11]]"
-last_updated: 2026-09-04
+  - "[[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]"
+last_updated: 2026-09-05
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---
@@ -99,6 +100,12 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 
 > Added live streaming of a foreground subagent's tool calls and results to Remote Control clients (background subagents, the default, still show status only). Added a per-session prompt-cache line to /cost (hit ratio, misses, tokens re-cached, warm/cold). [[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]]
 
+**Claude Code v2.1.260 fixes an expensive Fable 5.1 prompt-cache bug affecting every tool call (September 2026).** The release fixes a cache gap where "prompt caching didn't cover the context attached after tool results—that context was resent as uncached input on every single tool call" [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]. This is load-bearing for parallel-subagent cost economics: when a forked subagent inherits the parent's prompt cache (the default since v2.1.230) but every tool call resends post-tool-result context as uncached tokens, the fork-by-default posture's projected savings from Fable 5.1's 75%-cheaper cache reads are wiped out by the uncached-input loop. The fix restores the expected cache behavior, and the release adds `/cost` and status-line diagnostics that "name a likely cause when the prompt cache wasn't hit" [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]], making cache misses visible so the fork-default invalidation risk flagged in the open questions below is now observable rather than silent.
+
+> On Claude Fable 5.1, prompt caching didn't cover the context attached after tool results—that context was resent as uncached input on every single tool call. This bug was fixed in version 2.1.260. [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]
+
+> /cost and the prompt_cache field in the status line now name a likely cause when the prompt cache wasn't hit. [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]
+
 ## Disputes
 
 - [[build-programmatic-agents-with-the-cursor-sdk-fe66773e]] (cited on this page) attributes nested subagent nesting to the **2026-06-04** Cursor SDK release; [[custom-stores-custom-tools-and-auto-review-for-the-cursor-sdk-7da739cc]] (cited on the agentic-coding topic page) attributes the same Cursor SDK nested subagent feature to **2026-06-10**, framing both Claude Code and Cursor SDK as shipping "within 24 hours of each other on 2026-06-10." Status: unresolved — both sources are primary-source Cursor/Anthropic documentation; the date discrepancy is either a staging/preview vs GA distinction, or a documentation error on one source. (Confidence: medium; sweep: 2026-08-16)
@@ -108,6 +115,7 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 - [ ] Does direct KV-cache synthesis (Parallel-Synthesis) hold up when worker branches used different system prompts or models, or does it require homogeneous workers to share a cacheable prefix?
 - [ ] Does a fork-default subagent's inherited prompt cache [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]] survive the parent editing a file mid-run, or does fork-by-default simply make the cache-invalidation cliff the default failure mode for delegated work?
 - [ ] Cross-session SendMessage shares only thin text, never context [[message-your-other-claude-code-sessions-90ee76df]] — is there any prompt-cache or context sharing between independent peer sessions, or must each peer re-derive shared context from scratch, setting a coordination-cost floor for multi-session (as opposed to spawn-tree) workflows?
+- [ ] Does the Fable 5.1 post-tool-result cache gap that v2.1.260 fixed [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]] also affect fork-based parallel subagents that inherit the prompt cache, and does the fix actually restore the projected savings from Fable 5.1's 75%-cheaper cache reads?
 
 ## See also
 
