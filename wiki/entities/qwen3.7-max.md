@@ -1,8 +1,8 @@
 ---
 title: "Qwen3.7 Max"
 kind: entity
-sources: ["[[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[qwen3-7-plus-intelligence-performance-price-analysis-ce790755]]", "[[qwen3-8-max-intelligence-performance-price-analysis-0ad85146]]"]
-last_updated: "2026-08-04"
+sources: ["[[qwen3-max-thinking-benchmarks-and-analysis-26760cd0]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[qwen3-7-plus-intelligence-performance-price-analysis-ce790755]]", "[[qwen3-8-max-intelligence-performance-price-analysis-0ad85146]]", "[[qwen3-8-max-0902-same-price-much-better-at-coding-and-office-work-still-behind-opus-5-528b2db1]]"]
+last_updated: "2026-09-05"
 last_verified: "2026-05-26"
 freshness_window_days: 30
 input_cost_per_mtoken: 2.50
@@ -31,6 +31,10 @@ Stub entity page seeded for `[frontier_models].roster` resolution. The daily `to
 Benchmark and pricing detail confirmed 2026-05-26: Qwen3.7 Max is a **closed-weights, API-only** model (not open-weights) [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]. On Alibaba Cloud DashScope it is priced at $2.50 input / $7.50 output per Mtoken. It scores 92.4 on GPQA Diamond (ahead of Claude Opus 4.6 Max 91.3, behind GPT-5.5 93.6), 60.6 on SWE-Pro, and 69.7 on Terminal-Bench 2.0, putting it ahead of DeepSeek V4-Pro and Claude Opus 4.6 on agentic coding [[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]].
 
 **Superseded 2026-08-04**: Alibaba shipped **Qwen3.8 Max** as its new flagship, scoring **53 on AA Intelligence Index v4.1** (a 2.4T-total / ~95B-active MoE with 1M context and text/image/video input at $2/$6 per Mtoken), superseding Qwen3.7 Max as the per-lab flagship [[qwen3-8-max-intelligence-performance-price-analysis-0ad85146]].
+
+**Qwen3.8-Max-0902 post-training upgrade (Sep 2, 2026)**: The successor Qwen3.8 Max received a post-training upgrade at unchanged price/architecture, placing **#1 on Code Arena WebDev at 1,691 points** — 3 above Claude Opus 5 Max (1,687) and 17 above Kimi K3 Max (1,674). All 8 coding benchmarks improved; the largest gains are TerminalBench 3.0 (11.3→29.0, >2×) and ProgramBench Almost Solved (10.5→28.0, >2×). The 0902 update leads Opus 5 on MLS-Bench-Lite, SWE-Atlas QnA and QwenSWEBench V2, but **Opus 5 still leads on TerminalBench 3.0, DeepSWE 1.1, and agent coordination benchmarks** [[qwen3-8-max-0902-same-price-much-better-at-coding-and-office-work-still-behind-opus-5-528b2db1]].
+
+> In Code Arena WebDev, Qwen3.8-Max-0902 ranks first overall with 1,691 points, 3 points above Claude Opus 5 Max (1,687), 17 above Kimi K3 Max (1,674), and 22 above the previous Qwen3.8-Max (1,669). [[qwen3-8-max-0902-same-price-much-better-at-coding-and-office-work-still-behind-opus-5-528b2db1]]
 
 The sibling **Qwen3.7 Plus** multimodal variant (text/image/video input, text output) was placed at **AA Intelligence Index v4.1 = 39** on 2026-06-27, well below Max's 57 (v4.0) — trading reasoning headroom for vision capability [[qwen3-7-plus-intelligence-performance-price-analysis-ce790755]].
 
