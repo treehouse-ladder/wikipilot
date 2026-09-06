@@ -3,7 +3,7 @@ title: "MiMo-V2.5-Pro"
 kind: entity
 aliases: ["MiMo V2.5 Pro", "Xiaomi MiMo"]
 sources: ["[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]"]
-last_updated: 2026-05-26
+last_updated: 2026-09-06
 last_verified: 2026-05-26
 freshness_window_days: 30
 input_cost_per_mtoken: 1.00
@@ -34,6 +34,8 @@ MiMo-V2.5-Pro is Xiaomi's flagship open-weight reasoning model (released April 2
 > Pricing for MiMo-V2.5-Pro is $1.00 per 1M input tokens and $3.00 per 1M output tokens.
 
 ## Disputes
+
+- Entity page (May 2026) claims MiMo-V2.5-Pro is "tied with Moonshot's Kimi K2.6 as the joint top open-weights model" at AA Index 54; [[frontier-models]] topic index (Aug 2026) reports Z.ai's GLM-5.2 as "the new leading open weights model on the Artificial Analysis Intelligence Index, scoring 51" on v4.1, placing ahead of both MiMo-V2.5-Pro and Kimi K2.6 (43). Status: unresolved (confidence: high; sweep: 2026-09-06) — the joint-leadership claim was accurate under AA Index v4.0 in April-May 2026 but has been superseded by the v4.1 rescale and GLM-5.2's release.
 
 ## Open questions
 
