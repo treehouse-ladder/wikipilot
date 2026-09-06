@@ -7,7 +7,8 @@ sources:
   - "[[zaya1-8b-frontier-intelligence-density-trained-on-amd-3012ef57]]"
   - "[[zaya1-8b-technical-report-614bf738]]"
   - "[[minimax-m3-frontier-coding-1m-context-native-multimodality-all-in-one-model-d466ccc6]]"
-last_updated: 2026-06-07
+  - "[[ifm-k2-horizon-mova-36b-a4b-600ee885]]"
+last_updated: 2026-09-06
 last_verified: 2026-06-07
 freshness_window_days: 30
 ---
@@ -35,6 +36,10 @@ An alternative approach is Compressed Convolutional Attention (CCA), shipped in 
 Another implementation is MiniMax Sparse Attention (MSA), shipped in MiniMax M3 (June 1, 2026), the first open-weight model to combine frontier-tier coding, 1M-token context, and native multimodality [[minimax-m3-frontier-coding-1m-context-native-multimodality-all-in-one-model-d466ccc6]]. MSA delivers per-token compute at 1M context that is 1/20 that of the previous-generation MiniMax M2, making M3's long-context inference feasible at frontier capability levels [[minimax-m3-frontier-coding-1m-context-native-multimodality-all-in-one-model-d466ccc6]]. See [[minimax-m3]].
 
 > M3 uses MSA (MiniMax Sparse Attention)... at a context length of 1 million, M3's per-token compute is just 1/20 that of the previous-generation model.
+
+A distinct approach is Mixture-of-Values (MoVA), introduced in MBZUAI's K2 Horizon 36B-A4B (Sep 3, 2026), which applies sparse routing *inside* the attention mechanism rather than to the feed-forward layer: the value projections are replaced by a learned pool of value experts, and only a subset activates per token (36B stored / ~4B active, 512K native context) [[ifm-k2-horizon-mova-36b-a4b-600ee885]]. MoVA complements feed-forward MoE sparsity by allowing the model to store a much richer set of representational styles in the value space without paying for all of them at inference time; IFM reports that the 36B-A4B variant outscores open-weight dense (~30B) and MoE models up to 15x its size on agentic and reasoning benchmarks, though the claim is vendor-reported pending independent verification [[ifm-k2-horizon-mova-36b-a4b-600ee885]]. See [[frontier-models]].
+
+> Mixture-of-Values (MoVA) applies the same sparse routing philosophy as MoE, but inside the attention mechanism: the value projections are replaced by a learned pool of value experts, and only a small subset is activated per token. [[ifm-k2-horizon-mova-36b-a4b-600ee885]]
 
 ## Disputes
 
