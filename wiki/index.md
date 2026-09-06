@@ -68,6 +68,11 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[claude-code-2-1-261-skill-doctor-agent-team-prompt-cache-fix-and-larger-inline-tool-output-caps-7c76a455]]
+- [[introducing-k2-horizon-frontier-performance-radically-open-2649e5d9]]
+- [[k2-horizon-375b-a23b-intelligence-performance-price-analysis-6ae03d6e]]
+- [[ifm-k2-horizon-mova-36b-a4b-600ee885]]
+- [[gdc-side-quest-inside-austin-wintory-s-collaborative-composing-process-0343e995]]
 - [[90-faster-100-code-free-mllm-driven-zero-code-3d-game-development-5b658828]]
 - [[automated-unity-game-template-generation-from-gdds-via-nlp-and-multi-modal-llms-0accbcf0]]
 - [[release-0-153-0-openai-codex-a8d513fb]]
@@ -1327,3 +1332,4 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-27]]
 - [[2026-09-04]]
 - [[2026-09-05]]
+- [[2026-09-06]]
