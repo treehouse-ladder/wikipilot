@@ -3,7 +3,7 @@ title: "Claude Mythos"
 kind: entity
 aliases: ["Mythos", "Claude Mythos Preview", "Anthropic Mythos", "Claude Mythos 5"]
 sources: ["[[claude-mythos-preview-d737ab91]]", "[[anthropic-confirms-claude-mythos-class-models-will-roll-out-to-the-public-11ba8929]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[expanding-project-glasswing-fd9b87df]]", "[[anthropic-scales-claude-mythos-to-critical-infrastructure-in-15-countries-44fd313c]]", "[[initial-impressions-of-claude-fable-5-1a99af0c]]", "[[if-claude-fable-stops-helping-you-you-ll-never-know-1257de46]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[statement-on-the-us-government-directive-to-suspend-access-to-fable-5-and-mythos-5-00131728]]", "[[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]", "[[gemini-3-1-pro-preview-intelligence-performance-price-analysis-3a3f9933]]", "[[claude-fable-5-still-offline-as-us-clears-mythos-5-for-critical-infrastructure-7a5ed327]]", "[[introducing-claude-fable-5-1-and-claude-mythos-5-1-e7232d52]]", "[[claude-fable-5-1-tops-the-artificial-analysis-intelligence-index-88ebeee8]]"]
-last_updated: 2026-09-02
+last_updated: 2026-09-06
 last_verified: 2026-06-21
 freshness_window_days: 30
 input_cost_per_mtoken: 25.00
@@ -83,6 +83,7 @@ Fable 5 introduces a new category of safeguard not previously documented: **sile
 
 - [[claude-mythos-preview-d737ab91]] reports Mythos as state-of-the-art at SWE-bench Verified (93.9%), but this was a vendor-reported single-shot benchmark on an invitation-only model — no independent third-party replication exists. Status: unresolved — independently unverifiable while access remains invitation-only.
 - [[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]] reports Mythos CyberGym at 83.1% overall but 70.8% on Firefox-exploit production specifically vs Opus 4.8's 8.8% — the aggregate vs subset gap is striking and not explained in the source. Status: unresolved — the Firefox-exploit subset gap suggests Mythos has specific high-blast-radius capabilities that the aggregate score underweights.
+- Entity frontmatter stores `aa_intelligence_index: 64.9` and `gdpval_aa_elo: 1932` (both sourced from [[claude-fable-5-launches-at-1-on-the-artificial-analysis-intelligence-index-a03d0111]]), while [[claude-fable-5]] stores 62 and 1818 for what all sources describe as "the same underlying model with different safeguard levels." The discrepancy may reflect Mythos Preview (unplaced) vs Fable 5 v4.0 scores being conflated in the frontmatter; without a dedicated independent Mythos 5 index placement, the canonical value is unclear. Status: unresolved — frontmatter requires reconciliation with claude-fable-5.md (confidence: high; sweep: 2026-09-06).
 
 ## Open questions
 
