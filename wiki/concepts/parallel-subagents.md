@@ -23,7 +23,8 @@ sources:
   - "[[claude-code-v2-1-251-model-switch-hooks-foreground-subagent-streaming-and-prompt-cache-observability-2180229d]]"
   - "[[claude-code-v2-1-259-managed-mcp-servers-and-headless-unattended-permissions-0e371a11]]"
   - "[[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]"
-last_updated: 2026-09-05
+  - "[[claude-code-2-1-261-skill-doctor-agent-team-prompt-cache-fix-and-larger-inline-tool-output-caps-7c76a455]]"
+last_updated: 2026-09-06
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---
@@ -105,6 +106,10 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 > On Claude Fable 5.1, prompt caching didn't cover the context attached after tool results—that context was resent as uncached input on every single tool call. This bug was fixed in version 2.1.260. [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]
 
 > /cost and the prompt_cache field in the status line now name a likely cause when the prompt cache wasn't hit. [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]
+
+**Claude Code v2.1.261 fixes an in-process agent-team cache-prefix regression (September 2026).** The release addresses a parallel-subagent prompt-caching bug specific to the in-process agent-team path: teammates were re-sending their opening tool and skill announcements on the second turn, silently changing the request prefix and missing the shared prompt cache [[claude-code-2-1-261-skill-doctor-agent-team-prompt-cache-fix-and-larger-inline-tool-output-caps-7c76a455]]. This is load-bearing for agent-team economics: when parallel teammates share a cacheable prefix for the first turn but then break that prefix on turn two by re-announcing, the shared-cache savings collapse, making in-process agent teams materially more expensive than the fork-based parallelism this page tracks. The fix restores the expected cache-reuse behavior for the agent-team orchestration pattern.
+
+> Fixed in-process agent-team teammates re-sending their first-turn tool and skill announcements on the second turn, which changed the request prefix and missed the prompt cache. [[claude-code-2-1-261-skill-doctor-agent-team-prompt-cache-fix-and-larger-inline-tool-output-caps-7c76a455]]
 
 ## Disputes
 

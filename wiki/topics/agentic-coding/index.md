@@ -293,6 +293,7 @@ sources:
   - "[[release-0-153-0-openai-codex-a8d513fb]]"
   - "[[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]]"
   - "[[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]"
+  - "[[claude-code-2-1-261-skill-doctor-agent-team-prompt-cache-fix-and-larger-inline-tool-output-caps-7c76a455]]"
 last_updated: 2026-09-06
 last_verified: 2026-09-04
 freshness_window_days: 30
@@ -400,6 +401,16 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-06
+
+**Claude Code 2.1.261 (2026-09-04) lands two cost-engineering items and one agent-team prompt-cache fix.** The load-bearing fix for parallel-subagent economics is a cache-prefix regression in the in-process agent-team path: teammates were resending their opening tool/skill announcements on turn two, silently busting the shared prefix — "Fixed in-process agent-team teammates re-sending their first-turn tool and skill announcements on the second turn, which changed the request prefix and missed the prompt cache" [[claude-code-2-1-261-skill-doctor-agent-team-prompt-cache-fix-and-larger-inline-tool-output-caps-7c76a455]]. The release also ships `/skill-doctor`, a context-accounting tool for the Skills surface — "Added `/skill-doctor` to show which loaded skills go unused and what they cost in context, so you can prune them" [[claude-code-2-1-261-skill-doctor-agent-team-prompt-cache-fix-and-larger-inline-tool-output-caps-7c76a455]]. Two new context knobs raise the inline tool-output ceiling: "Added `bashOutputMaxChars` and `taskOutputMaxChars` settings to raise how much command and background-task output Claude receives inline before it is saved to a file, up to 128K characters" [[claude-code-2-1-261-skill-doctor-agent-team-prompt-cache-fix-and-larger-inline-tool-output-caps-7c76a455]]. For subagents specifically, `--append-subagent-system-prompt-file` allows reading the subagent system prompt from a file, for prompts too large to pass on the command line [[claude-code-2-1-261-skill-doctor-agent-team-prompt-cache-fix-and-larger-inline-tool-output-caps-7c76a455]].
+
+> Fixed in-process agent-team teammates re-sending their first-turn tool and skill announcements on the second turn, which changed the request prefix and missed the prompt cache.
+
+> Added `/skill-doctor` to show which loaded skills go unused and what they cost in context, so you can prune them.
+
+> Added `bashOutputMaxChars` and `taskOutputMaxChars` settings to raise how much command and background-task output Claude receives inline before it is saved to a file, up to 128K characters.
 
 ### Updates 2026-09-05
 
@@ -2511,6 +2522,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does Cursor Self-Hosted Machines computer-use (Linux + Mac workers driving a real UI on-prem) come with a security/isolation evaluation, or does keeping execution in-network merely relocate the shell/computer-use attack surface rather than shrink it?
 - [ ] Does the Fable 5.1 post-tool-result cache gap that v2.1.260 fixed [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]] also affect fork-based parallel subagents that inherit the prompt cache, and does the fix actually restore the projected savings from Fable 5.1's 75%-cheaper cache reads?
 - [ ] How does the eleven-production-harness anatomy [[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]] reconcile with the 13-scaffold loop-primitive taxonomy [[inside-the-scaffold-a-source-code-taxonomy-of-coding-agent-architectures-7e37a967]] — do the two corpora agree on the dominant harness architecture, and what does Omnigent's 'meta-harness' category add?
+- [ ] Does `/skill-doctor`'s unused-skill/context-cost accounting give teams a measurable lever against Context-Bloat / Skill-Leakage smells, and does pruning unused skills actually improve pass rates?
+- [ ] Raising the inline tool-output ceiling to 128K via `bashOutputMaxChars`/`taskOutputMaxChars` admits more raw output into context — the opposite direction from adaptive stale-tool-result truncation that was found to lift pass rates at no extra cost. Is there a measured pass-rate/cost crossover where a higher inline cap helps rather than hurts?
 
 ## See also
 
