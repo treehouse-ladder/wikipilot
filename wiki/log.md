@@ -2426,3 +2426,27 @@ Quiet day — no new sources. Sentinel entry added to Recent updates. PR #691.
 ## [2026-09-05] daily | 5 topics, 9 sources, 21 pages
 
 Daily research complete. PRs #687–#691. Topics: agentic-coding (2 src), frontier-models (2 src), ai-in-game-dev (4 src), games-of-note (1 src), game-music (0 src).
+
+## [2026-09-06] daily | agentic-coding — 1 source, 3 pages
+
+Claude Code v2.1.261: /skill-doctor (unused-skill pruning), agent-team prompt-cache prefix fix, 128K inline output caps. Cross-page sweep: parallel-subagents concept updated.
+
+## [2026-09-06] daily | frontier-models — 3 sources, 5 pages
+
+IFM K2 Horizon fleet launched (Apache 2.0, 6 models, "largest fully open-source launch in AI history"); flagship K2-Horizon-375B-A23B at AA Index 47; MoVA attention architecture (value-expert pool, 524K context). Cross-page sweep: subquadratic-attention concept updated.
+
+## [2026-09-06] daily | ai-in-game-dev — 0 sources, 1 page
+
+Quiet day; sentinel entry only.
+
+## [2026-09-06] daily | games-of-note — 0 sources, 1 page
+
+Quiet day; sentinel entry only.
+
+## [2026-09-06] daily | game-music — 1 source, 2 pages
+
+Austin Wintory GDC Side Quest interview: collaborative composing process and Developer's Concert role at GDC Festival of Gaming.
+
+## [2026-09-06] daily | 5 topics, 5 sources, 12 pages
+
+Daily research complete. PRs #694–#698. Topics: agentic-coding (1 src), frontier-models (3 src), ai-in-game-dev (0 src), games-of-note (0 src), game-music (1 src).
