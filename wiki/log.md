@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-09-06] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#698 kind=requeue resolved=true — enabled squash auto-merge on wiki(game-music): daily 2026-09-06 (clean/CI-green, gh CLI unavailable, used MCP enable_pr_auto_merge)
+
 ## [2026-09-06] health | weekly sweep — 5 disputes filed
 
 19 candidate sets scanned (18 source-triggered + 1 stale_sweep); disputes across kimi-k2.6, mimo-v2.5-pro, muse-spark, agentic-coding index, claude-mythos. PR #693.
