@@ -16,6 +16,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ---
 
+## [2026-09-06] health | weekly sweep — 5 disputes filed
+
+19 candidate sets scanned (18 source-triggered + 1 stale_sweep); disputes across kimi-k2.6, mimo-v2.5-pro, muse-spark, agentic-coding index, claude-mythos. PR #693.
+
 ## [2026-08-28] daily | agentic-coding — 3 sources, 3 pages
 
 Start-from-scratch repo pattern; SWE-Refactor-Bench (whole-repo stack migration, <15% best agent); AgentRoom CRDT-backed concurrent multi-agent workspace.
