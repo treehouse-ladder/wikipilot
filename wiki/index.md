@@ -68,6 +68,14 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[animallift-reconstructing-animatable-3d-animals-from-a-single-image-by-learning-canonical-shape-texture-and-fur-maps-b149c136]]
+- [[deepseek-v4-1-flash-max-intelligence-performance-price-analysis-2034e17f]]
+- [[deepseek-ai-deepseek-v4-1-flash-5c348986]]
+- [[blizzard-union-workers-ratify-historic-contract-covering-1-900-employees-a7f73e8d]]
+- [[blizzard-workers-win-historic-union-contract-that-could-set-a-new-standard-for-game-developers-70a976d4]]
+- [[square-enix-jazz-final-fantasy-vii-at-billboard-live-tokyo-music-review-46091baa]]
+- [[release-v2-1-267-anthropics-claude-code-5ba86673]]
+- [[introducing-projects-b09bf6f2]]
 - [[claude-code-2-1-261-skill-doctor-agent-team-prompt-cache-fix-and-larger-inline-tool-output-caps-7c76a455]]
 - [[introducing-k2-horizon-frontier-performance-radically-open-2649e5d9]]
 - [[k2-horizon-375b-a23b-intelligence-performance-price-analysis-6ae03d6e]]
@@ -1358,6 +1366,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[2026-08-27]]
 - [[2026-09-04]]
 - [[2026-09-05]]
+- [[2026-09-11]]
 - [[2026-09-10]]
 - [[2026-09-08]]
 - [[2026-09-06]]

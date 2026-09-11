@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-11] daily | agentic-coding — 2 sources, 5 pages
+
+Cursor Projects coordinator-agent pattern (thousands of parallel subagents); Claude Code v2.1.267 release. New dispute: Cursor "thousands of subagents" vs workflow size guideline.
+
+## [2026-09-11] daily | game-music — 1 source, 1 page
+
+RPGFan review: Square Enix Jazz — Final Fantasy VII at Billboard Live Tokyo (Feb 2020). Arrangers Nakagawa + Kawamura; Ihara tenor sax.
+
+## [2026-09-11] daily | games-of-note — 2 sources, 1 page
+
+Blizzard/CWA union contract: 1,900 employees, industry-first AI guardrail + 14-month recall rights. New dispute: Blizzard AI guardrail vs ZeniMax ULP.
+
+## [2026-09-11] daily | frontier-models — 2 sources, 2 pages
+
+DeepSeek V4.1 Flash: 552B MoE / 8–16B active, CED architecture, AA Index 40, $0.30/$1.20 per MTok. New dispute: HuggingFace "outperforms V4-Pro" claim vs AA Index 40-vs-53 gap.
+
+## [2026-09-11] daily | ai-in-game-dev — 1 source, 1 page
+
+AnimalLift (arXiv): single-image animatable 3D animal reconstruction with UV-aligned fur maps; Blender-ready simulation assets.
+
+## [2026-09-11] daily | 5 topics, 8 sources, 10 pages
+
+Daily research complete. PRs #722–#726. Topics: agentic-coding (2 src), game-music (1 src), games-of-note (2 src), frontier-models (2 src), ai-in-game-dev (1 src).
+
 Format (every entry uses this exact prefix):
 
 ```
