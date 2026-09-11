@@ -38,7 +38,8 @@ sources:
   - "[[ouroboros-a-self-developing-frontier-coding-agent-with-reviewed-core-evolution-fa8a5563]]"
   - "[[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]"
   - "[[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]"
-last_updated: 2026-09-05
+  - "[[introducing-projects-b09bf6f2]]"
+last_updated: 2026-09-11
 last_verified: 2026-08-17
 freshness_window_days: 30
 ---
@@ -56,6 +57,10 @@ ADK Arena introduces 'LLM-as-a-Developer' as a measurement methodology for harne
 > An agent is a model plus a harness -- the runtime that couples an LLM to the world through a loop, tools, context management, safety controls, orchestration, and extension surfaces. Harness engineering, named as a discipline in early 2026, is the design and evolution of that runtime. [[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]
 
 > The paper analyzes eleven production coding harnesses: Claude Code (Anthropic), Codex CLI (OpenAI), Gemini CLI (Google), Mistral Vibe (Mistral), OpenHands, Aider, Mini-SWE-Agent, Hermes (Nous Research), Pi, OpenCode, and OpenClaw, plus Omnigent (Databricks), the first meta-harness. [[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]
+
+**Cursor Projects ships the coordinator-agent orchestration pattern (September 2026).** Cursor's Projects abstraction (2026-09-10) extends the harness definition's "orchestration" surface into a persistent, non-coding coordinator that delegates to "thousands of subagents" over months [[introducing-projects-b09bf6f2]]. The coordinator is explicitly a planner/dispatcher rather than an executor: "The coordinator doesn't write code itself; it plans the work, delegates it to agents that implement it, and brings the finished work back to you to check" [[introducing-projects-b09bf6f2]]. This deepens the productization of the plan-and-delegate orchestration pattern also seen in Claude Code dynamic workflows and Cursor's own Agents Window, extending it along two axes: month-scale persistence ("A Project runs on its own computer in the cloud, so closing your laptop doesn't stop it") and event-driven autonomy ("You can tell the coordinator agent to watch a Slack channel, run on a schedule, or follow all your PRs") [[introducing-projects-b09bf6f2]].
+
+> Projects maintain context over months of work, delegate tasks to thousands of subagents, and perform recurring work without being prompted. You oversee a Project by chatting with its coordinator agent. The coordinator doesn't write code itself; it plans the work, delegates it to agents that implement it, and brings the finished work back to you to check. [[introducing-projects-b09bf6f2]]
 
 **Verification as the primary harness lever (Anthropic, June 2026).** In an internal-practice writeup, Anthropic's Claude Code team reports that across hundreds of internal Skills clustering into nine categories, **verification** is the category with the largest measurable impact on output quality [[lessons-from-building-claude-code-how-we-use-skills-0270e620]]. This is the harness-side complement to the agentic-coding-eval shift: as raw model capability saturates SWE-bench Verified, the marginal capability gain comes from harness components that catch the 'looks finished, isn't' failure mode rather than from prompt engineering. The same finding shows up empirically in oversight studies — developers using Claude Code / Cursor / Copilot agent mode spend 60–70% of their oversight effort on post-flight verification [[human-oversight-of-agentic-systems-in-practice-ab5cc8f1]] — suggesting that verification investment pays in both autonomy (less human review needed) and quality (fewer silent regressions).
 
