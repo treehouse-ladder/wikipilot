@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-12] daily | 5 topics, 8 sources, 13 pages
+
+Daily research complete. PRs #728–#732. Topics: agentic-coding (2 src), frontier-models (0 src, sentinel), ai-in-game-dev (2 src, summary regenerated), games-of-note (4 src), game-music (0 src, sentinel).
+
+## [2026-09-12] daily | game-music — 0 sources, 1 page
+
+Sentinel only — candidate sources from non-allowlisted domains (High Score 2026 Melbourne; Laced Records Blasphemous II vinyl).
+
+## [2026-09-12] daily | games-of-note — 4 sources, 5 pages
+
+Physint publisher switch (Xbox replaces PlayStation); Rockstar IWGB tribunal opens Glasgow; Riot Games exploring premium games; Tim Schafer/Double Fine post-Xbox independence trajectory.
+
+## [2026-09-12] daily | ai-in-game-dev — 2 sources, 3 pages
+
+Unity's official Claude Code plugin (first first-party engine-vendor IDE-agent integration: 29 skills, MCP Editor); Puffin-World unified multimodal world model (Physics + Geometry + Appearance). Summary regenerated.
+
+## [2026-09-12] daily | frontier-models — 0 sources, 1 page
+
+Sentinel only — sole candidate (Sakana AI Fugu Max/Ultra v2) from sakana.ai, not in allowlist_domains.
+
+## [2026-09-12] daily | agentic-coding — 2 sources, 3 pages
+
+Claude Code v2.1.268: WebFetch 300s hard timeout prevents stuck tool calls in autonomous sessions. Simon Willison: Blender 3D asset creation driven end-to-end by frontier LLMs via coding agents.
+
 ## [2026-09-11] daily | agentic-coding — 2 sources, 5 pages
 
 Cursor Projects coordinator-agent pattern (thousands of parallel subagents); Claude Code v2.1.267 release. New dispute: Cursor "thousands of subagents" vs workflow size guideline.

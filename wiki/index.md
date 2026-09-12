@@ -68,6 +68,14 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[tim-schafer-says-double-fine-s-games-can-be-profitable-b0b5a190]]
+- [[riot-games-is-considering-making-premium-titles-says-co-founder-cacd29ae]]
+- [[fired-rockstar-devs-stage-rally-as-union-busting-tribunal-begins-f0487c6d]]
+- [[xbox-replaces-playstation-as-physint-publisher-bc0a27ad]]
+- [[puffin-world-scaling-a-unified-multimodal-model-with-native-3d-world-states-71018292]]
+- [[unity-s-official-plugin-for-claude-code-skills-cli-editor-control-0ef456c9]]
+- [[using-blender-with-coding-agents-on-macos-ae6b695c]]
+- [[release-v2-1-268-anthropics-claude-code-98ebc4a5]]
 - [[animallift-reconstructing-animatable-3d-animals-from-a-single-image-by-learning-canonical-shape-texture-and-fur-maps-b149c136]]
 - [[deepseek-v4-1-flash-max-intelligence-performance-price-analysis-2034e17f]]
 - [[deepseek-ai-deepseek-v4-1-flash-5c348986]]
