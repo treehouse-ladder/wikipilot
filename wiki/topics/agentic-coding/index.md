@@ -301,7 +301,9 @@ sources:
   - "[[claude-code-v2-1-263-v2-1-266-plugin-dir-folder-loading-and-mcp-connection-fixes-cfee660a]]"
   - "[[introducing-projects-b09bf6f2]]"
   - "[[release-v2-1-267-anthropics-claude-code-5ba86673]]"
-last_updated: 2026-09-11
+  - "[[release-v2-1-268-anthropics-claude-code-98ebc4a5]]"
+  - "[[using-blender-with-coding-agents-on-macos-ae6b695c]]"
+last_updated: 2026-09-12
 last_verified: 2026-09-09
 freshness_window_days: 30
 ---
@@ -414,6 +416,20 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-12
+
+**Claude Code v2.1.268 (2026-09-10) hardens the agent's WebFetch loop with a hard request deadline** — a fix for the "hung tool call silently stalls the whole session" failure mode — plus published-artifact polish. The WebFetch timeout: a fetch against a server that holds the connection open now fails deterministically after 300 seconds rather than stalling the process indefinitely, with an operator override (`CLAUDE_CODE_WEBFETCH_DEADLINE_MS`) for the deadline [[release-v2-1-268-anthropics-claude-code-98ebc4a5]]. The release also ships browser-tab icons for published artifacts (chosen by Claude per page) [[release-v2-1-268-anthropics-claude-code-98ebc4a5]]. The WebFetch deadline closes a real availability hole in unattended/auto-mode runs where a single hung fetch could otherwise wedge an autonomous session.
+
+> Fixed WebFetch hanging indefinitely on a server that keeps the response open without finishing; a fetch now fails after 300 seconds. Set CLAUDE_CODE_WEBFETCH_DEADLINE_MS to override the deadline (0 turns it off). [[release-v2-1-268-anthropics-claude-code-98ebc4a5]]
+
+> Added browser-tab icons for published artifacts, chosen by Claude to match each page. [[release-v2-1-268-anthropics-claude-code-98ebc4a5]]
+
+**Coding agents can now drive Blender end-to-end to author 3D assets, extending the agentic-coding loop from code into game/3D content generation.** Simon Willison reports that current frontier models operate Blender competently: "Modern frontier models have got really good at using Blender, and models can produce .blend files you can edit in Blender itself, and can also render images and even movies (by rendering a sequence of images and combining them with ffmpeg)" [[using-blender-with-coding-agents-on-macos-ae6b695c]]. The setup is thin harness plumbing — point the coding agent at an installed Blender binary — with GPT-6 Astra as the demonstrated model [[using-blender-with-coding-agents-on-macos-ae6b695c]].
+
+> Modern frontier models have got really good at using Blender, and models can produce .blend files you can edit in Blender itself, and can also render images and even movies (by rendering a sequence of images and combining them with ffmpeg). [[using-blender-with-coding-agents-on-macos-ae6b695c]]
+
+> To get started, install the Blender desktop app from blender.org and then tell the coding agent to "Use the already install /Applications/Blender to render a scene"—this worked for GPT-6 Astra. [[using-blender-with-coding-agents-on-macos-ae6b695c]]
 
 ### Updates 2026-09-11
 
@@ -2596,6 +2612,8 @@ lint stays quiet until each page actually exists:
 - [ ] What load-bearing changes (if any) did Claude Code v2.1.267 (2026-09-09) and any subsequent 2.1.26x build ship — specifically for parallel-subagent orchestration, prompt caching, or MCP — and are they material enough to move the current-state picture beyond the v2.1.263–266 plumbing fixes already logged?
 - [ ] Cursor Projects' coordinator claims "six times as many" merged PRs for Projects-primary users and "30% more" for new users [[introducing-projects-b09bf6f2]] — are these self-selected-cohort effects, and does any independent measurement corroborate the 6x figure?
 - [ ] Does Claude Code's `--system-prompt-snapshot off` [[release-v2-1-267-anthropics-claude-code-5ba86673]], which renders the system prompt fresh on every request, measurably degrade prompt-cache hit rates across a long interactive session?
+- [ ] Does v2.1.268's 300-second WebFetch deadline apply inside Claude Code Routines' Anthropic-managed cloud egress proxy, or only to local WebFetch — i.e. can an unattended cloud routine still wedge on a hung fetch that the proxy holds open? [[release-v2-1-268-anthropics-claude-code-98ebc4a5]]
+- [ ] Does the Blender-via-coding-agent pipeline [[using-blender-with-coding-agents-on-macos-ae6b695c]] generalize beyond GPT-6 Astra/Codex to Claude Code, and what is the token/wall-clock/cost profile of a multi-minute agent-driven render loop relative to the code-only trajectories the wiki's cost/latency Pareto tracks?
 
 ## See also
 
