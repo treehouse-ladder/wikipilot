@@ -303,7 +303,10 @@ sources:
   - "[[release-v2-1-267-anthropics-claude-code-5ba86673]]"
   - "[[release-v2-1-268-anthropics-claude-code-98ebc4a5]]"
   - "[[using-blender-with-coding-agents-on-macos-ae6b695c]]"
-last_updated: 2026-09-12
+  - "[[release-v2-1-269-anthropics-claude-code-861b3206]]"
+  - "[[release-v2-1-270-anthropics-claude-code-2a68cabb]]"
+  - "[[release-python-sdk-0-154-0-openai-codex-94bf6e71]]"
+last_updated: 2026-09-13
 last_verified: 2026-09-09
 freshness_window_days: 30
 ---
@@ -416,6 +419,26 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-13
+
+**Claude Code v2.1.269 (2026-09-11) ships a reproducible plugin eval harness plus headless/background-agent fixes.** The load-bearing addition is `claude plugin eval`: "Added claude plugin eval: run a plugin's eval suite against Claude Code and get scored, reproducible results (JSON + HTML report)" [[release-v2-1-269-anthropics-claude-code-861b3206]] — a first-party, in-tool eval surface for plugins. Two items matter for headless/parallel workflows: `/output-style [name]` now works over Remote Control and in cloud/headless sessions [[release-v2-1-269-anthropics-claude-code-861b3206]], and a background-agent status bug was fixed — "Fixed remote and headless sessions reporting 'waiting for your input' while background agents were still running" [[release-v2-1-269-anthropics-claude-code-861b3206]], a false-idle signal that could mislead an orchestrator polling a fan-out session. A synced-plugin MCP reconnection fix: "Fixed synced plugin MCP servers not connecting when a remote session resumes" [[release-v2-1-269-anthropics-claude-code-861b3206]].
+
+> Added claude plugin eval: run a plugin's eval suite against Claude Code and get scored, reproducible results (JSON + HTML report).
+
+> Fixed remote and headless sessions reporting "waiting for your input" while background agents were still running.
+
+**Claude Code v2.1.270 (2026-09-12) adds JSON-scriptable plugin management and fixes a third-party-endpoint regression plus a long-idle CPU busy loop.** Plugin CLI becomes machine-consumable: "Added --json to claude plugin install, uninstall, update, enable and disable, and errorDetails/noteDetails to each row of claude plugin list --json" [[release-v2-1-270-anthropics-claude-code-2a68cabb]] — relevant to programmatic agent provisioning. Endpoint regression fixed: "Fixed every turn failing with HTTP 400 on third-party Anthropic-compatible endpoints (ANTHROPIC_BASE_URL) since 2.1.265: a regex in the Artifact tool's input schema that those endpoints reject" [[release-v2-1-270-anthropics-claude-code-2a68cabb]], a lever for teams routing via gateways. Idle-resource fix: "Fixed sustained high CPU usage: a busy loop in long-running idle sessions no longer pins a CPU core" [[release-v2-1-270-anthropics-claude-code-2a68cabb]].
+
+> Fixed every turn failing with HTTP 400 on third-party Anthropic-compatible endpoints (ANTHROPIC_BASE_URL) since 2.1.265: a regex in the Artifact tool's input schema that those endpoints reject.
+
+> Fixed sustained high CPU usage: a busy loop in long-running idle sessions no longer pins a CPU core, and rapid terminal focus reports during a session recap no longer keep the CPU high.
+
+**OpenAI Codex Python SDK 0.154.0 (2026-09-11) adds `max`/`ultra` reasoning-effort tiers and an `ExternalMessage` agent-to-agent injection primitive with an explicit authority boundary.** The SDK "Adds max and ultra reasoning-effort values" [[release-python-sdk-0-154-0-openai-codex-94bf6e71]] — new top reasoning tiers above the prior ceiling. `ExternalMessage`: "can start a turn or join an active regular turn with tool-level authority; it does not grant user authorization. Consumers receive independent event streams" [[release-python-sdk-0-154-0-openai-codex-94bf6e71]] — a designed authority downgrade for externally-injected content relevant to the prompt-injection thread.
+
+> Adds max and ultra reasoning-effort values.
+
+> Adds ExternalMessage to synchronous and asynchronous run() and turn() calls. External content can start a turn or join an active regular turn with tool-level authority; it does not grant user authorization. Consumers receive independent event streams.
 
 ### Updates 2026-09-12
 
@@ -2614,6 +2637,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does Claude Code's `--system-prompt-snapshot off` [[release-v2-1-267-anthropics-claude-code-5ba86673]], which renders the system prompt fresh on every request, measurably degrade prompt-cache hit rates across a long interactive session?
 - [ ] Does v2.1.268's 300-second WebFetch deadline apply inside Claude Code Routines' Anthropic-managed cloud egress proxy, or only to local WebFetch — i.e. can an unattended cloud routine still wedge on a hung fetch that the proxy holds open? [[release-v2-1-268-anthropics-claude-code-98ebc4a5]]
 - [ ] Does the Blender-via-coding-agent pipeline [[using-blender-with-coding-agents-on-macos-ae6b695c]] generalize beyond GPT-6 Astra/Codex to Claude Code, and what is the token/wall-clock/cost profile of a multi-minute agent-driven render loop relative to the code-only trajectories the wiki's cost/latency Pareto tracks?
+- [ ] Does Codex's ExternalMessage 'tool-level authority, not user authorization' boundary [[release-python-sdk-0-154-0-openai-codex-94bf6e71]] actually constrain the prompt-injection blast radius, or can an injected external message still trigger the same high-impact tools that a user turn would?
+- [ ] Does `claude plugin eval`'s scored/reproducible plugin eval [[release-v2-1-269-anthropics-claude-code-861b3206]] pin infrastructure/resource configuration, or does it inherit the same infra-noise problem documented in [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]]?
 
 ## See also
 
