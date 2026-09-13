@@ -2578,3 +2578,7 @@ GPT-6 Astra ties Fable 5.1 on AA Coding Agent Index (62-62, rebased); Sol fourth
 ## [2026-09-10] daily | 5 topics, 4 sources, 13 pages
 
 Daily research complete. PRs #716–#720. Topics: agentic-coding (0 src), ai-in-game-dev (0 src), games-of-note (2 src), game-music (1 src), frontier-models (1 src).
+
+## [2026-09-13] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#740 kind=requeue resolved=true — enabled auto-merge (squash) for wiki(reports): daily 2026-09-13 (_report PR); mergeable_state=clean, CI green, auto_merge was null
