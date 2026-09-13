@@ -68,6 +68,9 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[release-v2-1-269-anthropics-claude-code-861b3206]]
+- [[release-v2-1-270-anthropics-claude-code-2a68cabb]]
+- [[release-python-sdk-0-154-0-openai-codex-94bf6e71]]
 - [[tim-schafer-says-double-fine-s-games-can-be-profitable-b0b5a190]]
 - [[riot-games-is-considering-making-premium-titles-says-co-founder-cacd29ae]]
 - [[fired-rockstar-devs-stage-rally-as-union-busting-tribunal-begins-f0487c6d]]
