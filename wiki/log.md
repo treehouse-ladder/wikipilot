@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-13] daily | agentic-coding — 3 sources, 4 pages
+
+Claude Code v2.1.269–270: `claude plugin eval` harness, `/output-style` in headless sessions, ANTHROPIC_BASE_URL 400 regression fix, CPU busy-loop fix. Codex SDK 0.154.0: max/ultra reasoning-effort, ExternalMessage tool-authority boundary.
+
+## [2026-09-13] daily | frontier-models — 0 sources, 1 page
+
+Sentinel run — board unchanged at v4.3 (Fable 5.1 = GPT-6 Astra tied #1, Opus 5 #3).
+
+## [2026-09-13] daily | ai-in-game-dev — 0 sources, 1 page
+
+Sentinel run — no qualifying sources across engine-native AI, 3D-gen, NPC/voice, mocap, world models.
+
+## [2026-09-13] daily | games-of-note — 0 sources, 1 page
+
+Sentinel run — slate unchanged through Sep 12 (Physint publisher swap, GTA 6 Nov 19).
+
+## [2026-09-13] daily | game-music — 0 sources, 1 page
+
+Sentinel run — no qualifying sources. Added open questions: Onimusha franchise-composer, Townfall full OST release.
+
+## [2026-09-13] daily | 5 topics, 3 sources, 6 pages
+
+Daily research complete. PRs #735–#739. Topics: agentic-coding (3 src), frontier-models (0 src), ai-in-game-dev (0 src), games-of-note (0 src), game-music (0 src).
+
 ## [2026-09-13] health | weekly sweep — 0 disputes filed
 
 Weekly health sweep complete. Scanned 10 candidate sets (9 source-overlap, 1 stale-sweep); 0 new disputes filed (all existing staleness already captured). Lint: 0 errors, 329 warnings. PR #734.
