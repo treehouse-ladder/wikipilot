@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-13] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#740 kind=requeue resolved=true — enabled squash auto-merge on claude/daily-2026-09-13/_report (mergeable_state=clean, CI green; gh CLI unavailable, used MCP GitHub tools)
+
 ## [2026-09-13] health | weekly sweep — 0 disputes filed
 
 Weekly health sweep complete. Scanned 10 candidate sets (9 source-overlap, 1 stale-sweep); 0 new disputes filed (all existing staleness already captured). Lint: 0 errors, 329 warnings. PR #734.
