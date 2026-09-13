@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-13] health | weekly sweep — 0 disputes filed
+
+Weekly health sweep complete. Scanned 10 candidate sets (9 source-overlap, 1 stale-sweep); 0 new disputes filed (all existing staleness already captured). Lint: 0 errors, 329 warnings. PR #734.
+
 ## [2026-09-12] daily | 5 topics, 8 sources, 13 pages
 
 Daily research complete. PRs #728–#732. Topics: agentic-coding (2 src), frontier-models (0 src, sentinel), ai-in-game-dev (2 src, summary regenerated), games-of-note (4 src), game-music (0 src, sentinel).
