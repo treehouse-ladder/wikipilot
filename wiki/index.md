@@ -68,6 +68,14 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[introducing-the-agents-api-b32e9b84]]
+- [[unlocking-the-codex-harness-how-we-built-the-app-server-e205ffac]]
+- [[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]]
+- [[announcing-frontiermath-erdos-4a6b3657]]
+- [[sakana-ai-launches-fugu-max-and-fugu-ultra-v2-for-cheaper-stronger-multi-agent-orchestration-ff4a091e]]
+- [[programmable-world-model-b771098d]]
+- [[marvel-s-wolverine-is-currently-sony-s-lowest-scoring-ps5-game-28151c4d]]
+- [[wolverine-only-aims-as-high-as-its-stout-hero-review-5e2382ee]]
 - [[release-v2-1-269-anthropics-claude-code-861b3206]]
 - [[release-v2-1-270-anthropics-claude-code-2a68cabb]]
 - [[release-python-sdk-0-154-0-openai-codex-94bf6e71]]

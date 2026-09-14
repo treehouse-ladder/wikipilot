@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-14] daily | 5 topics, 8 sources, 16 pages
+
+PRs: #741 (agentic-coding), #742 (frontier-models), #743 (ai-in-game-dev), #744 (games-of-note), #745 (game-music).
+
+## [2026-09-14] daily | game-music — 0 sources, 1 page
+
+Sentinel run — no qualifying sources. Vinyl, concert, and composer coverage unchanged from 2026-09-13.
+
+## [2026-09-14] daily | games-of-note — 2 sources, 3 pages
+
+Marvel's Wolverine (Insomniac, PS5 exclusive) launched Sept 15 to 77 Metacritic — the lowest-scored PlayStation Studios game of the PS5 era. Commercial performance unknown at publication.
+
+## [2026-09-14] daily | ai-in-game-dev — 1 source, 2 pages
+
+Programmable World Model (arXiv 2609.10540): decoupled symbolic-state + video-renderer architecture as a second approach to mechanics-consistent world models alongside StatePlay.
+
+## [2026-09-14] daily | frontier-models — 2 sources, 4 pages
+
+FrontierMath Erdős (68 unsolved math problems in Lean): GPT-6 Astra sole solver (2/68); Tier 4 benchmark saturation confirmed. Sakana Fugu Max/Ultra v2: self-reported 5/8-benchmark leads as multi-agent orchestration challengers.
+
+## [2026-09-14] daily | agentic-coding — 3 sources, 6 pages
+
+OpenAI Agents API (productized cloud harness, parallel to Cursor Projects); Codex App Server architecture (harness-engineering deep dive); Multi-Harness RL (4.3× harness-dominates base-LLM on in-distribution, 1.16× on out-of-distribution — negative portability caveat).
+
 ## [2026-09-13] daily | agentic-coding — 3 sources, 4 pages
 
 Claude Code v2.1.269–270: `claude plugin eval` harness, `/output-style` in headless sessions, ANTHROPIC_BASE_URL 400 regression fix, CPU busy-loop fix. Codex SDK 0.154.0: max/ultra reasoning-effort, ExternalMessage tool-authority boundary.
