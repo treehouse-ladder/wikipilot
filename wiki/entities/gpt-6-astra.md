@@ -2,8 +2,8 @@
 title: "GPT-6 Astra"
 kind: entity
 aliases: ["GPT 6 Astra", "gpt6-astra", "Astra", "OpenAI Astra"]
-sources: ["[[gpt-6-astra-a-new-generation-of-intelligence-039a4975]]", "[[benchmarking-gpt-6-astra-b4150b17]]", "[[openai-launches-astra-its-powerful-and-controversial-new-model-939b4e3d]]", "[[openai-astra-and-looped-transformers-beac0586]]", "[[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]", "[[announcing-the-artificial-analysis-intelligence-index-v4-3-58c45fc2]]", "[[announcing-automationbench-aa-83abdc0a]]", "[[gpt-6-astra-ties-leadership-with-claude-fable-5-1-in-both-flagship-indices-at-lower-cost-30caef79]]"]
-last_updated: 2026-09-10
+sources: ["[[gpt-6-astra-a-new-generation-of-intelligence-039a4975]]", "[[benchmarking-gpt-6-astra-b4150b17]]", "[[openai-launches-astra-its-powerful-and-controversial-new-model-939b4e3d]]", "[[openai-astra-and-looped-transformers-beac0586]]", "[[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]", "[[announcing-the-artificial-analysis-intelligence-index-v4-3-58c45fc2]]", "[[announcing-automationbench-aa-83abdc0a]]", "[[gpt-6-astra-ties-leadership-with-claude-fable-5-1-in-both-flagship-indices-at-lower-cost-30caef79]]", "[[announcing-frontiermath-erdos-4a6b3657]]"]
+last_updated: 2026-09-14
 last_verified: 2026-09-08
 freshness_window_days: 30
 ---
@@ -33,6 +33,12 @@ GPT-6 Astra is OpenAI's next-generation flagship, launched **2026-09-03**. OpenA
 On 2026-09-09 Artificial Analysis reported that **GPT-6 Astra now ties Claude Fable 5.1 in BOTH flagship indices, at lower cost** — not just the Intelligence Index (both 53 on v4.3) but also the AA **Coding Agent Index**, where GPT-6 Astra (in Codex) scores **62, level with Fable 5.1 in Claude Code (62)** and ahead of Claude Opus 5 (60), GPT-5.6 Sol (55) and Muse Spark 1.3 (54) [[gpt-6-astra-ties-leadership-with-claude-fable-5-1-in-both-flagship-indices-at-lower-cost-30caef79]]. Astra matches Fable 5.1 at ~40% of the cost per task on the Intelligence Index and ~60% on the Coding Agent Index, driven by the lowest token use of any agent in the index ($7.09 per coding task at max effort, ~40% below Fable 5.1 for the same score) — making it the cost-per-task leader among the co-leaders [[gpt-6-astra-ties-leadership-with-claude-fable-5-1-in-both-flagship-indices-at-lower-cost-30caef79]]. Astra's 7-point coding edge over GPT-5.6 Sol comes from Terminal-Bench v4.0 (56% vs 37%) and SWE-Atlas-QnA (62% vs 54%), but it trails Sol on DeepSWE (68% vs 72%) [[gpt-6-astra-ties-leadership-with-claude-fable-5-1-in-both-flagship-indices-at-lower-cost-30caef79]].
 
 > GPT-6 Astra ties leadership with Claude Fable 5.1 in both of our flagship Indices, at lower cost. Astra equals Fable 5.1 in the Intelligence Index at ~40% of the cost, and in the Coding Agent Index at ~60% of the cost. [[gpt-6-astra-ties-leadership-with-claude-fable-5-1-in-both-flagship-indices-at-lower-cost-30caef79]]
+
+**GPT-6 Astra is the first and only model to solve any problems on FrontierMath Erdős.** Epoch AI's FrontierMath Erdős benchmark — 68 unsolved research problems (combinatorics, number theory, graph theory) formalized in Lean and graded by machine-verified proof — tested a pre-release GPT-6 Astra, GPT-5.6 Sol, GPT-5.5, Claude Fable 5.1, and Claude Fable 5. **Only GPT-6 Astra solved any, cracking 2 of 68 (3%)** — every other model scored 0% [[announcing-frontiermath-erdos-4a6b3657]]. Each model received one attempt per problem with a $300 budget and 72 hours of working time per attempt. This gives Astra an uncontested lead on a new frontier-math-reasoning axis.
+
+> FrontierMath Erdős is a benchmark of 68 unsolved problems formalized in Lean. GPT-6 Astra is the first model to solve any of these problems, solving two. [[announcing-frontiermath-erdos-4a6b3657]]
+
+> We tested five models: a pre-release version of GPT-6 Astra, GPT-5.6 Sol, GPT-5.5, Claude Fable 5.1, and Claude Fable 5. Only GPT-6 Astra solved any problems. [[announcing-frontiermath-erdos-4a6b3657]]
 
 ## Disputes
 
