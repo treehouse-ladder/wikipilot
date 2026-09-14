@@ -54,7 +54,10 @@ sources:
   - "[[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]"
   - "[[prime-agent-a-self-improving-rlm-harness-7e7af2b7]]"
   - "[[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]"
-last_updated: 2026-09-05
+  - "[[introducing-the-agents-api-b32e9b84]]"
+  - "[[unlocking-the-codex-harness-how-we-built-the-app-server-e205ffac]]"
+  - "[[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]]"
+last_updated: 2026-09-14
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---
@@ -80,6 +83,14 @@ The harness encompasses several distinct responsibilities: task specification, c
 **Orchestration-plan evaluation in isolation from worker capability (August 2026).** Two new benchmarks measure harness-level subagent-orchestration skill independently of model strength: ClawArena-Team scores manager agents whose coordination strategy (task delegation, least-privilege routing, modality matching) is isolated from raw capability via a deliberately-constrained manager and a fixed subagent pool [[clawarena-team-benchmarking-subagent-orchestration-and-dynamic-workflows-in-language-model-agents-3a15d772]], and OrchBench evaluates orchestration plans alone via deterministic simulation without invoking workers, finding that preserving task-critical information beats adding agents [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]. Both reinforce the harness-layer thesis by making orchestration quality measurable as a distinct optimization target from the model tier.
 
 > We find that preserving task-critical information is more important than simply increasing the number of agents. [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]
+
+**Harness-as-product: OpenAI ships the Agents API as a managed Codex harness (September 2026).** OpenAI's Agents API (public beta 2026-09-10) exposes the Codex harness as an OpenAI-managed cloud service, handling "session orchestration, context compaction, and recovery" with "durable sessions to continue work across turns" [[introducing-the-agents-api-b32e9b84]]. The companion engineering writeup [[unlocking-the-codex-harness-how-we-built-the-app-server-e205ffac]] makes the harness architecture concrete as "a client-friendly, bidirectional JSON-RPC API" managing conversation state, stream execution, tools, sandbox/approval policies, and cross-turn carry. This productizes the harness layer in a parallel direction to Cursor Projects' coordinator agent — both are vendor-managed harness infrastructure that the developer consumes as a service rather than configures locally.
+
+> The Agents API was released in public beta, allowing you to build agents with a managed Codex harness while OpenAI handles session orchestration, context compaction, and recovery. [[introducing-the-agents-api-b32e9b84]]
+
+**Multi-Harness RL supplies quantitative evidence for the harness-dominates side of the Binding Constraint Thesis (September 2026).** An arXiv paper (2609.04518) reports "the harness a coding agent runs through moves its solve rate by a factor of 4.3; the recipe that trained it moves it by 1.16" [[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]] — the deploy-time harness dominates the training recipe on this measurement. However, the same paper's negative portability result tempers the multi-harness RL co-training thesis: "Multi-harness exposure and cross-harness credit assignment are distinct interventions, and the second does not by itself make the learned policy harness-independent" [[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]]. Cross-harness credit's held-out benefit is a statistical non-event, so training on diverse harnesses does not automatically yield harness-portable capability.
+
+> The harness a coding agent runs through moves its solve rate by a factor of 4.3; the recipe that trained it moves it by 1.16. [[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]]
 
 ## Binding Constraint Thesis and direct optimizer evaluation (2026-06-01)
 
