@@ -2626,3 +2626,27 @@ GPT-6 Astra ties Fable 5.1 on AA Coding Agent Index (62-62, rebased); Sol fourth
 ## [2026-09-10] daily | 5 topics, 4 sources, 13 pages
 
 Daily research complete. PRs #716–#720. Topics: agentic-coding (0 src), ai-in-game-dev (0 src), games-of-note (2 src), game-music (1 src), frontier-models (1 src).
+
+## [2026-09-15] daily | agentic-coding — 1 source, 4 pages
+
+Claude Code v2.1.271: per-command allowed_domains sandbox scoping (session→command granularity) and omitClaudeMd subagent context-hygiene primitive. PR #747.
+
+## [2026-09-15] daily | frontier-models — 0 sources, 1 page
+
+Quiet day sentinel entry. Wiki current through 2026-09-14: Fable 5.1 and GPT-6 Astra tied #1 on AA Intelligence Index v4.3 (score 53). PR #748.
+
+## [2026-09-15] daily | ai-in-game-dev — 3 sources, 4 pages
+
+Runway GWM Worlds 2: commercial real-time interactive world model (audio, multi-character speech, LiveKit multiplayer) joins Genie 3/AlayaWorld leader set. Meshy 7.1 Ultra 4K: first image-to-3D at 4096-cubed. Ramen Aura 1.0: autonomous in-engine Verification Agent for Unity/Unreal. Summary regenerated. PR #749.
+
+## [2026-09-15] daily | games-of-note — 2 sources, 3 pages
+
+BlizzCon 2026: Blizzard revealed StarCraft as open-world shooter (genre pivot, 2030 target, Dan Hay lead). GTA 6 calendar crush: Valor Mortis delayed Sept 24 → Oct 13. PR #750.
+
+## [2026-09-15] daily | game-music — 0 sources, 1 page
+
+Quiet day sentinel entry. Fourth consecutive quiet day consistent with topic's low natural source flow. PR #751.
+
+## [2026-09-15] daily | 5 topics, 6 sources, 13 pages
+
+Daily research complete. PRs #747–#751. Topics: agentic-coding (1 src), frontier-models (0 src), ai-in-game-dev (3 src), games-of-note (2 src), game-music (0 src).
