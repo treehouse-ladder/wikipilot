@@ -20,7 +20,8 @@ sources:
   - "[[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]"
   - "[[release-0-151-0-openai-codex-1f2ada50]]"
   - "[[run-cloud-agents-on-machines-you-manage-cursor-ced5db47]]"
-last_updated: 2026-09-04
+  - "[[release-v2-1-271-anthropics-claude-code-ba3341f9]]"
+last_updated: 2026-09-15
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---
@@ -86,6 +87,10 @@ The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-hum
 **Cursor Self-Hosted Machines relocates the isolation boundary to network ingress/egress rather than OS process boundary (Sep 2026).** Cursor's Self-Hosted Machines release (2026-09-02) offers a different isolation model: keep all tool execution inside the customer's own network while the agent orchestration remains hosted [[run-cloud-agents-on-machines-you-manage-cursor-ced5db47]]. The release deploys in two shapes — My Machines (single laptop or VM tied to a user account) and Team Pools (named queues of workers for an enterprise) — and extends computer-use to Linux workers as well as macOS [[run-cloud-agents-on-machines-you-manage-cursor-ced5db47]]. The sandbox boundary here is the network perimeter rather than the kernel syscall or container layer: "your codebase, build outputs, and secrets all stay on internal machines running in your infrastructure" [[run-cloud-agents-on-machines-you-manage-cursor-ced5db47]]. This trades kernel-enforced local containment for network-perimeter containment — stronger against exfiltration (no outbound egress from the worker to attacker-controlled hosts) but weaker against local-privilege-escalation or lateral-movement attacks that stay inside the network perimeter. It complements the OS-level sandboxes tracked on this page rather than replacing them: an enterprise could run both (Self-Hosted Machine workers + bubblewrap/Sandlock on each worker).
 
 > Self-hosted machines let you keep tool execution entirely in your own network. Your codebase, build outputs, and secrets all stay on internal machines running in your infrastructure, while the agent handles tool calls locally. [[run-cloud-agents-on-machines-you-manage-cursor-ced5db47]]
+
+Claude Code v2.1.271 (2026-09-14) refines auto-mode network sandboxing from session-scoped to per-command scoping: individual Bash/PowerShell/Monitor commands declare the hosts they need, those hosts are reviewed together with the command, and the allowlist "sits on the command rather than on the session, so approving one curl does not widen the network for the next one" [[release-v2-1-271-anthropics-claude-code-ba3341f9]]. This is a strictly finer-grained egress control than session-level network proxy — it bounds blast radius per tool call rather than per session, though it remains a containment mechanism and does not address injected-instruction detection.
+
+> Bash, PowerShell and Monitor commands running in auto mode with sandboxing can now declare the hosts they need, and those hosts are reviewed together with the command and opened for that command alone. [[release-v2-1-271-anthropics-claude-code-ba3341f9]]
 
 ## Disputes
 

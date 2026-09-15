@@ -309,7 +309,8 @@ sources:
   - "[[introducing-the-agents-api-b32e9b84]]"
   - "[[unlocking-the-codex-harness-how-we-built-the-app-server-e205ffac]]"
   - "[[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]]"
-last_updated: 2026-09-14
+  - "[[release-v2-1-271-anthropics-claude-code-ba3341f9]]"
+last_updated: 2026-09-15
 last_verified: 2026-09-09
 freshness_window_days: 30
 ---
@@ -430,6 +431,14 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-15
+
+**Claude Code v2.1.271 (2026-09-14) narrows auto-mode sandbox network approvals from session-scoped to per-command, and lets subagents skip CLAUDE.md.** The release moves the network-allowlist off the session and onto the individual command: "Bash, PowerShell and Monitor commands running in auto mode with sandboxing can now declare the hosts they need, and those hosts are reviewed together with the command and opened for that command alone. The domain list sits on the command rather than on the session, so approving one curl does not widen the network for the next one" [[release-v2-1-271-anthropics-claude-code-ba3341f9]]. This tightens the blast-radius story on the same network-perimeter-isolation thread the wiki already tracks — command-scoped egress is strictly finer-grained than session-scoped network proxy. On the subagent side, the release adds a context-hygiene primitive: "Added omitClaudeMd to agent frontmatter and --agents JSON, letting custom and plugin subagents run without user, project and local CLAUDE.md files; managed policy files still load" [[release-v2-1-271-anthropics-claude-code-ba3341f9]] — letting a spawned subagent start from a clean instruction surface while org-managed policy is preserved. Two smaller cost/ops levers land in the same release: fast mode is now available inside Claude Code Remote sessions, and `claude self-hosted-runner --drain-marker-file <path>` reports host-drain exits as telemetry [[release-v2-1-271-anthropics-claude-code-ba3341f9]].
+
+> Bash, PowerShell and Monitor commands running in auto mode with sandboxing can now declare the hosts they need, and those hosts are reviewed together with the command and opened for that command alone. The domain list sits on the command rather than on the session, so approving one curl does not widen the network for the next one. [[release-v2-1-271-anthropics-claude-code-ba3341f9]]
+
+> Added omitClaudeMd to agent frontmatter and --agents JSON, letting custom and plugin subagents run without user, project and local CLAUDE.md files; managed policy files still load. [[release-v2-1-271-anthropics-claude-code-ba3341f9]]
 
 ### Updates 2026-09-14
 
@@ -2420,6 +2429,7 @@ lint stays quiet until each page actually exists:
 - [ ] Does Claude Code's OS-level sandbox [[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]] compose with Claude Code Routines' Anthropic-managed cloud infra [[automate-work-with-routines-claude-code-routines-docs-d09f612e]] — i.e. is the cloud routine sandbox the same bubblewrap/proxy model, or a different containerization tier?
 - [ ] Cursor's per-model tool alignment for Codex (renaming tools to rg-style shell equivalents, Responses-API reasoning capture) [[improving-cursor-s-agent-for-openai-codex-models-cursor-blog-a876aa9c]] suggests the cross-vendor subagent/tool 'convergence' is shallow at the API surface — is there any published measurement of how much harness-level per-model tuning moves SWE-bench/Terminal-Bench scores independent of the base model?
 - [ ] Does CursorBench [[continually-improving-our-agent-harness-cursor-blog-173ad132]] pin infrastructure/resource configuration, given that [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] showed several-percent score swings from config alone?
+- [ ] Does Claude Code v2.1.271's per-command `allowed_domains` network scoping [[release-v2-1-271-anthropics-claude-code-ba3341f9]] meaningfully shrink the exfiltration blast radius against a prompt-injected agent, or does an injected instruction simply request its needed host inside the same command so the tighter scope buys containment but not injection resistance? No first-party measurement accompanies the release note.
 - [ ] Cursor's automated Split PRs flow [[cursor-changelog-pr-review-build-plan-in-parallel-and-split-prs-may-7-2026-29f64665]] proposes independent PRs from chat context — how does it detect cross-slice dependencies, and what is the false-independence rate (slices marked independent that actually conflict on merge)?
 - [ ] Does SWE-WebDevBench's frontend-backend decoupling finding [[swe-webdevbench-evaluating-coding-agent-application-platforms-as-virtual-software-agencies-c47cb7a6]] persist under the autonomous three-agent planner/generator/evaluator harness [[harness-design-for-long-running-application-development-anthropic-engineering-9fa759b7]], or is the decoupling an artifact of single-pass app-platform generation?
 - [ ] Does the domain-expertise advantage in Claude Code sessions [[agentic-coding-and-persistent-returns-to-expertise-a6ebb163]] generalize to other agentic coding tools (Cursor, Codex), or is it specific to Claude Code's interaction model?
