@@ -21,7 +21,8 @@ sources:
   - "[[release-0-151-0-openai-codex-1f2ada50]]"
   - "[[run-cloud-agents-on-machines-you-manage-cursor-ced5db47]]"
   - "[[release-v2-1-271-anthropics-claude-code-ba3341f9]]"
-last_updated: 2026-09-15
+  - "[[release-v2-1-273-anthropics-claude-code-6726c9df]]"
+last_updated: 2026-09-16
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---
@@ -91,6 +92,10 @@ The sabotage-detection result from Coding with Enemy [[coding-with-enemy-can-hum
 Claude Code v2.1.271 (2026-09-14) refines auto-mode network sandboxing from session-scoped to per-command scoping: individual Bash/PowerShell/Monitor commands declare the hosts they need, those hosts are reviewed together with the command, and the allowlist "sits on the command rather than on the session, so approving one curl does not widen the network for the next one" [[release-v2-1-271-anthropics-claude-code-ba3341f9]]. This is a strictly finer-grained egress control than session-level network proxy — it bounds blast radius per tool call rather than per session, though it remains a containment mechanism and does not address injected-instruction detection.
 
 > Bash, PowerShell and Monitor commands running in auto mode with sandboxing can now declare the hosts they need, and those hosts are reviewed together with the command and opened for that command alone. [[release-v2-1-271-anthropics-claude-code-ba3341f9]]
+
+**Claude Code v2.1.273 (2026-09-16) hardens the permission checker by closing two fail-open gaps.** The release fixes "Bash commands the permission checker cannot fully analyze skipping the prompt under permissions.blockReadsOutsideWorkingDirectories, and a subshell hiding a dangerous rm in bypass mode" [[release-v2-1-273-anthropics-claude-code-6726c9df]]. It also reverts a prior over-strict change: "Reverted a 2.1.268 change that checked Read and Edit deny rules on Bash lines the permission checker can't analyze (eval, env -C); commands like time -p make build prompt again instead of being denied" [[release-v2-1-273-anthropics-claude-code-6726c9df]]. The oscillation between fail-open (hidden rm slipping through) and fail-closed (benign make build denied) on the 'checker-can't-analyze' branch reveals a recurring tension in static analyzers that gate agent-generated shell commands: code the analyzer cannot fully parse is the design boundary where security (deny unverifiable commands) and usability (allow common benign idioms) pull in opposite directions.
+
+> Fixed Bash commands the permission checker cannot fully analyze skipping the prompt under permissions.blockReadsOutsideWorkingDirectories, and a subshell hiding a dangerous rm in bypass mode. [[release-v2-1-273-anthropics-claude-code-6726c9df]]
 
 ## Disputes
 
