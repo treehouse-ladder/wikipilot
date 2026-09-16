@@ -27,7 +27,8 @@ sources:
   - "[[claude-code-v2-1-263-background-subagent-messaging-fix-and-mid-session-auto-mode-disable-fix-254d61d6]]"
   - "[[introducing-projects-b09bf6f2]]"
   - "[[release-v2-1-271-anthropics-claude-code-ba3341f9]]"
-last_updated: 2026-09-15
+  - "[[release-v2-1-273-anthropics-claude-code-6726c9df]]"
+last_updated: 2026-09-16
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---
@@ -125,6 +126,10 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 Claude Code v2.1.271 (2026-09-14) adds a subagent context-hygiene control, `omitClaudeMd`, on agent frontmatter and the `--agents` JSON surface: custom and plugin subagents can "run without user, project and local CLAUDE.md files; managed policy files still load" [[release-v2-1-271-anthropics-claude-code-ba3341f9]]. This gives a spawned subagent a clean instruction surface — the opposite end of the spectrum from the `subagent_type: "fork"` full-context-and-cache inheritance default — while preserving org-managed policy.
 
 > Added omitClaudeMd to agent frontmatter and --agents JSON, letting custom and plugin subagents run without user, project and local CLAUDE.md files; managed policy files still load. [[release-v2-1-271-anthropics-claude-code-ba3341f9]]
+
+**Claude Code v2.1.273 (2026-09-16) fixes a false-failure bug in parallel-subagent orchestration.** The release closes a reliability hole where "sub-agents and background agents being reported as failed, with their result never delivered, when the final streamed reply omitted token usage or carried no model id" [[release-v2-1-273-anthropics-claude-code-6726c9df]]. This is load-bearing for fan-out harnesses: when a subagent's result is misclassified as a failure, the parent's merge step acts on incomplete or zero information — the cost tax Parallel-Synthesis targets is far worse when the parent merges a false-failure signal. The fix restores the expected reliability model where subagent completion is determined by the agent's actual terminal state rather than by the presence of telemetry fields in the streamed response.
+
+> Fixed sub-agents and background agents being reported as failed, with their result never delivered, when the final streamed reply omitted token usage or carried no model id. [[release-v2-1-273-anthropics-claude-code-6726c9df]]
 
 ## Disputes
 

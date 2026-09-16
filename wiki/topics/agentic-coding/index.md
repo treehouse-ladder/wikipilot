@@ -310,7 +310,8 @@ sources:
   - "[[unlocking-the-codex-harness-how-we-built-the-app-server-e205ffac]]"
   - "[[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]]"
   - "[[release-v2-1-271-anthropics-claude-code-ba3341f9]]"
-last_updated: 2026-09-15
+  - "[[release-v2-1-273-anthropics-claude-code-6726c9df]]"
+last_updated: 2026-09-16
 last_verified: 2026-09-09
 freshness_window_days: 30
 ---
@@ -431,6 +432,22 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-16
+
+**Claude Code v2.1.273 (2026-09-16) hardens the auto-mode permission checker, adds LLM-gateway hint headers and a remote-session background fork, and fixes two prompt-cache/background-agent reliability holes.** The security-load-bearing items are two fail-open gaps closed in the permission checker: "Fixed Bash commands the permission checker cannot fully analyze skipping the prompt under permissions.blockReadsOutsideWorkingDirectories, and a subshell hiding a dangerous rm in bypass mode" [[release-v2-1-273-anthropics-claude-code-6726c9df]]. The same release also walks back a prior over-strict move on unanalyzable Bash: "Reverted a 2.1.268 change that checked Read and Edit deny rules on Bash lines the permission checker can't analyze (eval, env -C); commands like time -p make build prompt again instead of being denied" [[release-v2-1-273-anthropics-claude-code-6726c9df]] — the two items together show the 'checker-can't-analyze' branch oscillating between fail-open (a hidden rm slipping through) and fail-closed (a benign make build denied), on the same auto-mode sandbox thread the wiki tracks under [[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]]. The auto-mode safety classifier also changed default on managed providers: "Changed auto mode on Bedrock, Vertex and Foundry to use the local classifier by default for now; set CLAUDE_CODE_AUTO_MODE_SERVER=1 to use the platform's server-side classifier" [[release-v2-1-273-anthropics-claude-code-6726c9df]].
+
+> Fixed Bash commands the permission checker cannot fully analyze skipping the prompt under permissions.blockReadsOutsideWorkingDirectories, and a subshell hiding a dangerous rm in bypass mode [[release-v2-1-273-anthropics-claude-code-6726c9df]]
+
+> Changed auto mode on Bedrock, Vertex and Foundry to use the local classifier by default for now; set CLAUDE_CODE_AUTO_MODE_SERVER=1 to use the platform's server-side classifier [[release-v2-1-273-anthropics-claude-code-6726c9df]]
+
+**Cost/latency-engineering and gateway-observability levers land in the same release.** New opt-in gateway headers expose per-request agent metadata to LLM gateways: "Added x-claude-code-request-class, x-claude-code-agent-type, x-claude-code-prev-tool-durations, x-claude-code-compaction and x-claude-code-context-compacted request headers for LLM gateways; opt in with CLAUDE_CODE_GATEWAY_HINT_HEADERS=1" [[release-v2-1-273-anthropics-claude-code-6726c9df]] — a routing/telemetry hook for teams fronting Claude Code with a gateway. Two prompt-cache/window-accounting fixes matter for token economics: "Fixed /login, /upgrade, and /extra-usage discarding earlier thinking from the conversation, which forced a full prompt-cache rewrite on the next request" and "Fixed the context meter and auto-compact counting advisor-tool turns at roughly twice their real context size, which made auto-compact fire at about half the real window" [[release-v2-1-273-anthropics-claude-code-6726c9df]].
+
+> Added x-claude-code-request-class, x-claude-code-agent-type, x-claude-code-prev-tool-durations, x-claude-code-compaction and x-claude-code-context-compacted request headers for LLM gateways; opt in with CLAUDE_CODE_GATEWAY_HINT_HEADERS=1 [[release-v2-1-273-anthropics-claude-code-6726c9df]]
+
+**Parallel/background-agent and MCP reliability get concrete fixes.** The release adds a local background fork of a remote session — "Added forking a session started with claude --remote-control or /remote-control from the Claude app; the fork runs as a background session on your computer" [[release-v2-1-273-anthropics-claude-code-6726c9df]] — and closes a false-failure bug in fan-out: "Fixed sub-agents and background agents being reported as failed, with their result never delivered, when the final streamed reply omitted token usage or carried no model id" [[release-v2-1-273-anthropics-claude-code-6726c9df]]. On MCP, it adds a give-up signal: "Added a notification when an MCP server disconnects mid-session and automatic reconnection gives up, pointing at /mcp" [[release-v2-1-273-anthropics-claude-code-6726c9df]]. (The intervening v2.1.272 was "Bug fixes and reliability improvements" only and is not separately cited.)
+
+> Fixed sub-agents and background agents being reported as failed, with their result never delivered, when the final streamed reply omitted token usage or carried no model id [[release-v2-1-273-anthropics-claude-code-6726c9df]]
 
 ### Updates 2026-09-15
 
@@ -2402,6 +2419,8 @@ lint stays quiet until each page actually exists:
 
 ## Open questions
 
+- [ ] Were the two permission-checker gaps fixed in v2.1.273 — Bash the checker can't fully analyze skipping the prompt under `blockReadsOutsideWorkingDirectories`, and a subshell hiding a dangerous `rm` in bypass mode [[release-v2-1-273-anthropics-claude-code-6726c9df]] — exploitable in the wild before the fix, and do they (together with the reverted 2.1.268 deny-rule change on unanalyzable `eval`/`env -C` lines) represent a recurring 'checker-can't-analyze → fail-open/fail-closed oscillation' class that a prompt-injected agent could steer through?
+- [ ] Does the switch to the local auto-mode classifier by default on Bedrock/Vertex/Foundry [[release-v2-1-273-anthropics-claude-code-6726c9df]] weaken the auto-mode safety story on those providers relative to the server-side classifier, given the 0/720 Trajectory Labs result was not stated to be run against the local classifier variant?
 - [ ] Does stateless MCP's per-request `_meta` overhead (protocol version + client info + capabilities on every tool call) materially raise token/latency cost for chatty coding agents relative to the old one-time `initialize` handshake, and is there any first-party benchmark quantifying it?
 - [ ] What is the cache-invalidation behavior of multi-agent setups when one agent edits a file mid-run that another agent has cached? Cursor's worktree-per-agent design [[cursor-2-0-multi-agents-and-composer-changelog-4665f068]] avoids file-level conflicts but the prompt-cache implications across worktrees aren't documented in the changelog.
 - [ ] Does Claude Code Routines' "Anthropic-managed cloud infrastructure" [[automate-work-with-routines-claude-code-routines-docs-d09f612e]] use the same prompt-caching tier as interactive sessions, and if not, what does that imply for cost-per-routine-run vs cost-per-interactive-session?
