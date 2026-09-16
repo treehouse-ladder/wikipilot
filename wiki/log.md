@@ -2647,6 +2647,30 @@ BlizzCon 2026: Blizzard revealed StarCraft as open-world shooter (genre pivot, 2
 
 Quiet day sentinel entry. Fourth consecutive quiet day consistent with topic's low natural source flow. PR #751.
 
+## [2026-09-16] daily | frontier-models — 0 sources, 1 page
+
+Quiet day sentinel. No new frontier model releases, benchmark updates, or pricing changes found. PR #753.
+
+## [2026-09-16] daily | agentic-coding — 1 source, 4 pages
+
+Claude Code v2.1.273: permission-checker hardening (2 fail-open gaps fixed), parallel-subagent false-failure fix, auto-mode local classifier on Bedrock/Vertex/Foundry. Cross-page sweep to agent-sandboxing and parallel-subagents concept pages. PR #754.
+
+## [2026-09-16] daily | ai-in-game-dev — 2 sources, 3 pages
+
+AWoMo (arXiv 2608.25518): RLHEV agentic game development using game engine as verifier. Roblox RDC 2026: Build natural-language game creation + Scene Generator + standalone cross-platform release. PR #755.
+
+## [2026-09-16] daily | games-of-note — 2 sources, 3 pages
+
+Marathon ends seasonal updates, Symbiosis delayed to Dec 8 (PvE pivot; 96% below launch peak). KO_OP worker-run studio confirms 13 layoffs — financing drought. 1 dispute filed; summary_affecting=true (regeneration deferred). PR #756.
+
+## [2026-09-16] daily | game-music — 2 sources, 3 pages
+
+Zelda 40th anniversary orchestral world tour announced (Jan 2027 Japan, Feb NA, Apr Europe/AU; local orchestras). Clair Obscur + Zelda both add dates after backlash — franchise concert demand outrunning supply. PR #757.
+
+## [2026-09-16] daily | 5 topics, 7 sources, 14 pages
+
+Daily research complete. PRs #753–#757. Topics: frontier-models (0 src), agentic-coding (1 src), ai-in-game-dev (2 src), games-of-note (2 src), game-music (2 src).
+
 ## [2026-09-15] daily | 5 topics, 6 sources, 13 pages
 
 Daily research complete. PRs #747–#751. Topics: agentic-coding (1 src), frontier-models (0 src), ai-in-game-dev (3 src), games-of-note (2 src), game-music (0 src).
