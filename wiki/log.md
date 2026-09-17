@@ -2678,3 +2678,27 @@ Daily research complete. PRs #747–#751. Topics: agentic-coding (1 src), fronti
 ## [2026-09-17] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#762 kind=requeue resolved=true — enabled auto-merge for game-music daily 2026-09-17 (CI had passed, PR was clean but auto-merge not queued); merged immediately.
+
+## [2026-09-17] daily | frontier-models — 0 sources, 1 page
+
+Quiet day. Prepended quiet-day sentinel to ## Recent updates. PR #759.
+
+## [2026-09-17] daily | ai-in-game-dev — 1 source, 3 pages
+
+NUS/NTU survey "AI for Games in the Foundation Model Era" (arxiv 2409.02962): 6-role FM taxonomy for game pipelines; transfer-gap critique. Cross-page sweep: agentic-coding index. PR #760.
+
+## [2026-09-17] daily | games-of-note — 2 sources, 1 page
+
+Build a Rocket Boy / MindsEye studio closure (Kotaku); Heart Machine / Hyper Light Drifter closure risk (Kotaku). Both announced 2026-09-16. PR #761.
+
+## [2026-09-17] daily | game-music — 1 source, 1 page
+
+Onimusha: Way of the Sword 82-track OST on streaming (Spotify/Apple Music/Tidal/Qobuz); 4 composers. PR #762.
+
+## [2026-09-17] daily | agentic-coding — 3 sources, 4 pages
+
+CC v2.1.274 release; SWE-bench convergence audit (arxiv 2609.17394, top-10 at 79.2%, 164 distinguishing instances); harness-neutrality study (arxiv 2609.11987, ≤±1.25 pp harness effect). Summary regenerated. Cross-page sweep: frontier-models, agent-harnesses. PR #764.
+
+## [2026-09-17] daily | 5 topics, 7 sources, 10 pages
+
+Daily research complete. PRs #759–#762, #764. Topics: frontier-models (0 src), ai-in-game-dev (1 src), games-of-note (2 src), game-music (1 src), agentic-coding (3 src).

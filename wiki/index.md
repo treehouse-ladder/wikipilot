@@ -68,6 +68,13 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[ai-for-games-in-the-foundation-model-era-91bdf897]]
+- [[the-studio-behind-mindseye-is-closing-following-latest-round-of-layoffs-824d19a7]]
+- [[nearly-everyone-laid-off-as-hyper-light-drifter-studio-risks-closing-db57ba5b]]
+- [[onimusha-way-of-the-sword-original-soundtrack-featuring-82-tracks-is-now-on-spotify-and-apple-music-0a4bc076]]
+- [[release-v2-1-274-anthropics-claude-code-5744b97e]]
+- [[coding-agents-have-converged-why-the-swe-bench-leaderboard-can-no-longer-order-its-top-entries-and-what-to-measure-instead-467da1ec]]
+- [[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]]
 - [[introducing-the-agents-api-b32e9b84]]
 - [[unlocking-the-codex-harness-how-we-built-the-app-server-e205ffac]]
 - [[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]]
@@ -1293,6 +1300,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-09-17]]
 - [[2026-09-09]]
 - [[2026-09-01]]
 - [[2026-08-31]]
