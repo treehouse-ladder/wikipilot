@@ -311,7 +311,8 @@ sources:
   - "[[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]]"
   - "[[release-v2-1-271-anthropics-claude-code-ba3341f9]]"
   - "[[release-v2-1-273-anthropics-claude-code-6726c9df]]"
-last_updated: 2026-09-16
+  - "[[ai-for-games-in-the-foundation-model-era-91bdf897]]"
+last_updated: 2026-09-17
 last_verified: 2026-09-09
 freshness_window_days: 30
 ---
@@ -2705,4 +2706,5 @@ lint stays quiet until each page actually exists:
 
 ## See also
 
+- [[ai-for-games-in-the-foundation-model-era-91bdf897]] — comprehensive survey organizing AI in games into six lifecycle roles, including "building and maintaining games" (code generation/repair)
 - [purpose](purpose.md)
