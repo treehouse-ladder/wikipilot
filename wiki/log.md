@@ -2674,3 +2674,7 @@ Daily research complete. PRs #753–#757. Topics: frontier-models (0 src), agent
 ## [2026-09-15] daily | 5 topics, 6 sources, 13 pages
 
 Daily research complete. PRs #747–#751. Topics: agentic-coding (1 src), frontier-models (0 src), ai-in-game-dev (3 src), games-of-note (2 src), game-music (0 src).
+
+## [2026-09-17] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#762 kind=requeue resolved=true — enabled auto-merge for game-music daily 2026-09-17 (CI had passed, PR was clean but auto-merge not queued); merged immediately.
