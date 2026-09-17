@@ -1865,3 +1865,4 @@ The practical implication for agentic workflows: a model competitive on SWE-Benc
 - [[gemini-3.1-pro]]
 - [[deepseek-v4]]
 - [[claude-mythos]]
+- [[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]] — paired same-model study finds no reliable harness advantage, implying observed performance differences between top agents are model-driven, not harness-driven
