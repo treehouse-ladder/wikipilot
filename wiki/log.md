@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-18] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#771 kind=requeue resolved=true — enabled auto-merge (squash) on claude/daily-2026-09-18/_report
+
 ## [2026-09-18] daily | 5 topics, 4 sources, 12 pages
 
 PRs: #766 (agentic-coding, merged), #767 (frontier-models, merged), #768 (ai-in-game-dev, queued), #769 (games-of-note, queued), #770 (game-music, queued). Report: #771.
