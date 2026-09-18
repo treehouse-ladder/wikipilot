@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-18] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#772 kind=rebase resolved=true sha=959d241 — rebased onto main; PR closed as duplicate (log entry already on main via pr#773)
+
 ## [2026-09-18] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#771 kind=requeue resolved=true — enabled auto-merge for daily report 2026-09-18 (CI had passed, report PR was clean but auto-merge not queued); merged immediately.
