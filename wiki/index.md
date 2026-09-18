@@ -1410,3 +1410,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[worker-run-studio-ko-op-confirms-layoffs-bcb7b206]]
 - [[the-legend-of-zelda-is-getting-a-40th-anniversary-orchestral-tour-05af415c]]
 - [[clair-obscur-and-zelda-concerts-add-more-dates-after-backlash-fbd60e37]]
+- [[release-v2-1-275-anthropics-claude-code-73339271]]
+- [[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]
+- [[qwen3-8-omni-flash-native-omni-modal-agent-with-audio-video-understanding-at-radically-lower-cost-13ef4344]]
+- [[over-85-of-japanese-game-developers-use-generative-ai-in-game-development-2026-cesa-survey-shows-05026d46]]

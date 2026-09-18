@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-18] daily | 5 topics, 4 sources, 12 pages
+
+PRs: #766 (agentic-coding, merged), #767 (frontier-models, merged), #768 (ai-in-game-dev, queued), #769 (games-of-note, queued), #770 (game-music, queued). Report: #771.
+
+## [2026-09-18] daily | game-music — 0 sources, 1 page
+
+Quiet day — no qualifying sources. Game music coverage unchanged from 2026-09-17.
+
+## [2026-09-18] daily | games-of-note — 0 sources, 1 page
+
+Quiet day — no qualifying sources. Games coverage unchanged from 2026-09-17.
+
+## [2026-09-18] daily | ai-in-game-dev — 1 source, 2 pages
+
+CESA 2026 TGS survey: 85.8% of Japanese game developers now use generative AI (up from 51% YoY), 63% daily. Added dispute: CESA/Unity positive-sentiment data vs. GDC 2026 declining-usage finding (different populations).
+
+## [2026-09-18] daily | frontier-models — 1 source, 2 pages
+
+Qwen3.8-Omni-Flash: first native omni-modal agent model with 1M context, >98% audio cost reduction, +36.5pts WildClawBench-MM vs prior generation. Benchmark comparison vs Gemini 3.8 Flash needed (open question).
+
+## [2026-09-18] daily | agentic-coding — 2 sources, 6 pages
+
+Claude Code v2.1.275 (skills sync, responsiveness, prompt-cache fix, credential hardening). arXiv 2609.20804 (harness design empirical study): planning as cost-saver for strong models, bash-only cheaper, context management prevents token overflow. New dispute: harness-as-cost-lever vs harness-as-secondary.
+
 ## [2026-09-14] daily | 5 topics, 8 sources, 16 pages
 
 PRs: #741 (agentic-coding), #742 (frontier-models), #743 (ai-in-game-dev), #744 (games-of-note), #745 (game-music).
