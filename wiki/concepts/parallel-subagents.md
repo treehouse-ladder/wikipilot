@@ -28,7 +28,8 @@ sources:
   - "[[introducing-projects-b09bf6f2]]"
   - "[[release-v2-1-271-anthropics-claude-code-ba3341f9]]"
   - "[[release-v2-1-273-anthropics-claude-code-6726c9df]]"
-last_updated: 2026-09-16
+  - "[[release-v2-1-275-anthropics-claude-code-73339271]]"
+last_updated: 2026-09-18
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---
