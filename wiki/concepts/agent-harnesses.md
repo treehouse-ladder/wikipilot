@@ -44,7 +44,8 @@ sources:
   - "[[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]]"
   - "[[coding-agents-have-converged-why-the-swe-bench-leaderboard-can-no-longer-order-its-top-entries-and-what-to-measure-instead-467da1ec]]"
   - "[[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]]"
-last_updated: 2026-09-17
+  - "[[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]"
+last_updated: 2026-09-18
 last_verified: 2026-08-17
 freshness_window_days: 30
 ---

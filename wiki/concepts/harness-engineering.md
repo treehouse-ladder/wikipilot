@@ -57,7 +57,8 @@ sources:
   - "[[introducing-the-agents-api-b32e9b84]]"
   - "[[unlocking-the-codex-harness-how-we-built-the-app-server-e205ffac]]"
   - "[[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]]"
-last_updated: 2026-09-14
+  - "[[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]"
+last_updated: 2026-09-18
 last_verified: 2026-08-10
 freshness_window_days: 30
 ---

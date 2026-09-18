@@ -315,8 +315,10 @@ sources:
   - "[[release-v2-1-274-anthropics-claude-code-5744b97e]]"
   - "[[coding-agents-have-converged-why-the-swe-bench-leaderboard-can-no-longer-order-its-top-entries-and-what-to-measure-instead-467da1ec]]"
   - "[[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]]"
-last_updated: 2026-09-17
-last_verified: 2026-09-09
+  - "[[release-v2-1-275-anthropics-claude-code-73339271]]"
+  - "[[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]"
+last_updated: 2026-09-18
+last_verified: 2026-09-18
 freshness_window_days: 30
 ---
 
@@ -440,6 +442,30 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-18
+
+**Claude Code v2.1.275 syncs claude.ai skills/plugins into terminal sessions, cuts fan-out re-processing overhead, and closes a prompt-cache-miss bug.** The release wires the claude.ai account's enabled skills/plugins into signed-in terminal sessions, extending the Skills surface the wiki tracks under [[introducing-agent-skills-anthropic-5fb2ccf0]] to a cross-surface auto-provisioned channel [[release-v2-1-275-anthropics-claude-code-73339271]]. Two directly cost/latency-relevant items land in the same release: a responsiveness fix that stops re-scanning the whole conversation on every hook/sub-agent update (a per-update overhead that grows with fan-out), and a prompt-cache fix for a restored-memory-file age note that was busting the cache across compaction/resume [[release-v2-1-275-anthropics-claude-code-73339271]].
+
+> Added syncing of the skills and plugins enabled on your claude.ai account to terminal sessions signed in with it; opt out with syncClaudeAiSkills: false or syncClaudeAiPlugins: false. [[release-v2-1-275-anthropics-claude-code-73339271]]
+
+> Improved responsiveness in long sessions: hook progress and sub-agent activity no longer re-process the whole conversation on every update. [[release-v2-1-275-anthropics-claude-code-73339271]]
+
+> Fixed a restored memory file's age note changing between requests after a compaction or resume, which caused prompt cache misses. [[release-v2-1-275-anthropics-claude-code-73339271]]
+
+The same release also hardens plugin supply-chain hygiene and adds a marketplace-scoped install path [[release-v2-1-275-anthropics-claude-code-73339271]].
+
+> Plugin and marketplace outputs strip secrets from git/ssh/marketplace URLs to prevent credential leaks. [[release-v2-1-275-anthropics-claude-code-73339271]]
+
+**An Empirical Study of Harness Design decomposes the harness into planning / action-space / context-management and reframes it as a cost lever, not an accuracy lever, for strong models.** Holding the execution loop fixed and varying three components across 176 matched settings on SWE-Bench Verified and Terminal-Bench 2.1, the study finds each component moves cost far more than accuracy at the strong-model end [[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]. This sits directly alongside the 2026-09-17 harness-neutrality result [[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]] and [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]]: all three agree accuracy is model-driven, but the empirical study sharpens the picture by showing the harness is where the token/dollar economics live even when it barely moves the resolve rate — a concrete best-practice nuance (prefer a bash-only action space for capable models; treat planning as a cost saver, not an accuracy scaffold, once the model is strong).
+
+> Planning shifts from an accuracy scaffold for weaker models to a cost saver for stronger models, with little change in accuracy. [[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]
+
+> Bash-capable models can operate effectively with a bash-only interface and achieve substantially lower cost, especially on command-line-centric tasks. [[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]
+
+> Context management becomes increasingly valuable as the context-window budget tightens, with most of its benefit coming from preventing context-overflow failures. [[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]
+
+Divergence: the accuracy-null findings rest on SWE-Bench Verified, which the wiki's 2026-09-17 convergence audit [[coding-agents-have-converged-why-the-swe-bench-leaderboard-can-no-longer-order-its-top-entries-and-what-to-measure-instead-467da1ec]] shows is saturated at the frontier, so "little change in accuracy" from harness variation at the strong-model end may be partly a saturation artifact rather than genuine harness neutrality.
 
 ### Updates 2026-09-17
 
@@ -2439,6 +2465,7 @@ lint stays quiet until each page actually exists:
 - [[introducing-projects-b09bf6f2]] positions the Cursor Projects coordinator as delegating to "thousands of subagents" over months of persistent context; the wiki's existing parallel-subagents record shows Claude Code walked its comparable positioning back from "hundreds of parallel subagents" to a "fewer than 15 agents" default guideline, and OrchBench found that "preserving task-critical information is more important than simply increasing the number of agents" [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]. Cursor's "thousands" figure is a vendor claim with no disclosed per-task fan-out distribution or independent benchmark. Status: unresolved
 - [[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]] claims the deploy-time harness dominates coding-agent solve rate (4.3x swing) far more than the training recipe (1.16x swing), supporting the Binding-Constraint Thesis; earlier work [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] claims trajectory-scale evidence that the base LLM dominates. The two are not strictly contradictory (harness-vs-recipe is distinct from harness-vs-base-model) but pull in opposite directions. Status: unresolved
 - [[coding-agents-have-converged-why-the-swe-bench-leaderboard-can-no-longer-order-its-top-entries-and-what-to-measure-instead-467da1ec]] argues SWE-bench Verified is saturated and cannot rank frontier agents; incumbent leaderboard operators and benchmark-tracking outlets continue to cite SWE-bench scores as differentiating signals. Status: unresolved — the methodological critique is published but benchmark operators have not acknowledged or deprecated the leaderboard.
+- [[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]] finds harness components (planning, action space, context management) move cost substantially while leaving accuracy largely unchanged for strong models — reframing the harness as a first-class cost lever; [[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]] found no reliable harness advantage on solve rate and concluded harness selection is secondary to model selection. The two agree accuracy is model-driven but disagree on whether the harness is therefore 'secondary' (solve-rate view) or 'primary' (cost/economics view). Status: unresolved
 
 ## Open questions
 
@@ -2727,6 +2754,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does Multi-Harness RL's negative portability result [[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]] hold on contamination-free benchmarks like DeepSWE, or is the flat held-out result partly an artifact of training/eval harnesses sharing the SWE-bench-family task distribution?
 - [ ] What evaluation suite design (task refresh cadence, domain mix, contamination controls) should replace SWE-bench Verified as the community-standard agentic-coding benchmark?
 - [ ] Does harness-neutrality hold across smaller models where scaffolding improvements might overcome weaker base capability?
+- [ ] Do the Empirical Harness Design study's cost-lever findings (bash-only substantially cheaper for capable models; planning as a cost saver for strong models) [[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]] survive on a contamination-controlled private suite [[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]], or is the accuracy-null / cost-differential split itself an artifact of SWE-Bench Verified frontier saturation [[coding-agents-have-converged-why-the-swe-bench-leaderboard-can-no-longer-order-its-top-entries-and-what-to-measure-instead-467da1ec]]?
+- [ ] Does Claude Code v2.1.275's auto-sync of claude.ai-enabled skills/plugins into terminal sessions [[release-v2-1-275-anthropics-claude-code-73339271]] widen the SKILL.md prompt-injection attack surface the wiki tracks [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]], by provisioning skills a terminal user did not explicitly install locally?
 
 ## See also
 
