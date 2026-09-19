@@ -317,8 +317,10 @@ sources:
   - "[[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]]"
   - "[[release-v2-1-275-anthropics-claude-code-73339271]]"
   - "[[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]"
-last_updated: 2026-09-18
-last_verified: 2026-09-18
+  - "[[release-v2-1-277-anthropics-claude-code-01cd6a49]]"
+  - "[[release-v2-1-278-anthropics-claude-code-369721da]]"
+last_updated: 2026-09-19
+last_verified: 2026-09-19
 freshness_window_days: 30
 ---
 
@@ -442,6 +444,22 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-19
+
+**Claude Code v2.1.277 adds AGENTS.md support and closes three more prompt-cache-miss regressions plus a compound-command sandbox-escape hole.** In a project with no CLAUDE.md, Claude Code now reads AGENTS.md instead (configurable under "Project instructions" in /config; not yet on Bedrock/Vertex/Foundry), bringing Claude Code onto the same cross-vendor instruction-file standard the wiki already tracks for Codex and the AGENTS.md configuration-smells literature [[release-v2-1-277-anthropics-claude-code-01cd6a49]] [[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]]. The same release continues the cost/latency prompt-cache theme from v2.1.275 [[release-v2-1-275-anthropics-claude-code-73339271]] with three distinct cache-miss fixes — a SessionStart hook printing output that truncated the first message after /clear, resumed subagents/teammates re-rendering their loaded MCP tool definitions, and earlier attachments being re-rendered after resume — each of which busted the prompt cache mid-session [[release-v2-1-277-anthropics-claude-code-01cd6a49]]. A security-relevant sandbox fix closes a hole where a `sandbox.excludedCommands` glob matching one part of a compound Bash command exempted the entire command from the sandbox [[release-v2-1-277-anthropics-claude-code-01cd6a49]].
+
+> Added AGENTS.md support: in a project with no CLAUDE.md, Claude Code reads AGENTS.md instead; change it under "Project instructions" in /config (not yet on Bedrock, Vertex or Foundry) [[release-v2-1-277-anthropics-claude-code-01cd6a49]]
+
+> Fixed resumed subagents and teammates re-rendering the MCP tool definitions they had loaded, which broke prompt caching for that agent [[release-v2-1-277-anthropics-claude-code-01cd6a49]]
+
+> Fixed a sandbox.excludedCommands glob exempting an entire compound Bash command from the sandbox when only one part matched; every part must now match [[release-v2-1-277-anthropics-claude-code-01cd6a49]]
+
+**Claude Code v2.1.278 flips the auto-mode classifier default back to the server-side classifier for Claude API / Enterprise / Bedrock / Vertex / Foundry / gateways, removing classifier-overhead billing.** This reverses the v2.1.273 change that had defaulted those providers to the local classifier — the switch the wiki flagged as a possible weakening of the auto-mode safety story [[release-v2-1-278-anthropics-claude-code-369721da]] [[release-v2-1-273-anthropics-claude-code-6726c9df]]. The server-side classifier is now the default and is not billed; CLAUDE_CODE_AUTO_MODE_SERVER=0 opts out, a billed fallback warns, and a new `Auto mode server` row in /status surfaces which classifier the session runs [[release-v2-1-278-anthropics-claude-code-369721da]]. Because the 0/720 Trajectory Labs indirect-prompt-injection result was measured on the server-side classifier [[auto-mode-is-now-the-default-in-claude-code-for-pro-max-and-team-plans-756be989]], defaulting back to it re-aligns the shipped default with the eval the safety claim rests on — but the "billed fallback" path means a session can silently drop to a local classifier when the server is unreachable.
+
+> Changed auto mode for Claude API and Enterprise users, and on Bedrock, Vertex, Foundry and gateways, to default to the server-side classifier, which does not charge for classifier overhead (CLAUDE_CODE_AUTO_MODE_SERVER=0 opts out on Bedrock, Vertex, Foundry and gateways); warns on billed fallback. [[release-v2-1-278-anthropics-claude-code-369721da]]
+
+Divergence: the server-side default improves cost and re-aligns the default with the eval'd classifier, but introduces an availability dependency — the release does not state whether the billed local-classifier fallback is the same model variant the 0/720 result validated, so the safety guarantee may not hold on fallback (filed under Open questions).
 
 ### Updates 2026-09-18
 
@@ -2469,6 +2487,8 @@ lint stays quiet until each page actually exists:
 
 ## Open questions
 
+- [ ] Does the v2.1.278 server-side auto-mode classifier default [[release-v2-1-278-anthropics-claude-code-369721da]] introduce an availability/latency dependency — the release warns on "billed fallback", implying that when the server classifier is unreachable Claude Code drops to the billed local classifier; is that fallback classifier the same model variant that produced the 0/720 Trajectory Labs indirect-prompt-injection result [[auto-mode-is-now-the-default-in-claude-code-for-pro-max-and-team-plans-756be989]], or a weaker local variant whose safety is unvalidated?
+- [ ] Does Claude Code's new AGENTS.md fallback [[release-v2-1-277-anthropics-claude-code-01cd6a49]] inherit the AGENTS.md configuration smells (Context Bloat, Skill Leakage) catalogued in [[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]], and does the CLAUDE.md-over-AGENTS.md precedence create a split-brain config when a repo's Codex users and Claude Code users maintain divergent instruction files?
 - [ ] Were the two permission-checker gaps fixed in v2.1.273 — Bash the checker can't fully analyze skipping the prompt under `blockReadsOutsideWorkingDirectories`, and a subshell hiding a dangerous `rm` in bypass mode [[release-v2-1-273-anthropics-claude-code-6726c9df]] — exploitable in the wild before the fix, and do they (together with the reverted 2.1.268 deny-rule change on unanalyzable `eval`/`env -C` lines) represent a recurring 'checker-can't-analyze → fail-open/fail-closed oscillation' class that a prompt-injected agent could steer through?
 - [ ] Does the switch to the local auto-mode classifier by default on Bedrock/Vertex/Foundry [[release-v2-1-273-anthropics-claude-code-6726c9df]] weaken the auto-mode safety story on those providers relative to the server-side classifier, given the 0/720 Trajectory Labs result was not stated to be run against the local classifier variant?
 - [ ] Does stateless MCP's per-request `_meta` overhead (protocol version + client info + capabilities on every tool call) materially raise token/latency cost for chatty coding agents relative to the old one-time `initialize` handshake, and is there any first-party benchmark quantifying it?
