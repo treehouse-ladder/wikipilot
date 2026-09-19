@@ -68,6 +68,11 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[king-workers-to-strike-after-collective-agreement-talks-stall-0b25bc34]]
+- [[moss-developer-polyarc-has-shut-down-34a1497a]]
+- [[one-of-ubisoft-s-only-new-games-releasing-this-fall-just-got-a-two-month-delay-46884142]]
+- [[release-v2-1-277-anthropics-claude-code-01cd6a49]]
+- [[release-v2-1-278-anthropics-claude-code-369721da]]
 - [[ai-for-games-in-the-foundation-model-era-91bdf897]]
 - [[the-studio-behind-mindseye-is-closing-following-latest-round-of-layoffs-824d19a7]]
 - [[nearly-everyone-laid-off-as-hyper-light-drifter-studio-risks-closing-db57ba5b]]
@@ -1300,6 +1305,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-09-19]]
 - [[2026-09-17]]
 - [[2026-09-09]]
 - [[2026-09-01]]

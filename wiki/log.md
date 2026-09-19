@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-19] daily | frontier-models — 0 sources, 1 page
+
+Quiet day. Board unchanged at AA Intelligence Index v4.3 basis. New OQ: Reuters Anthropic IPO model rumor (no first-party confirmation). PR #775.
+
+## [2026-09-19] daily | ai-in-game-dev — 0 sources, 1 page
+
+Quiet day. No qualifying sources in-window. PR #776.
+
+## [2026-09-19] daily | game-music — 0 sources, 1 page
+
+Quiet day. New OQ: GTA VI original score strategy unannounced. PR #777.
+
+## [2026-09-19] daily | games-of-note — 3 sources, 1 page
+
+Polyarc (Moss developer, Seattle VR) shutdown; King Sweden strike (potentially Sep 25, pensions/insurance/hours); Rayman Legends Retold delayed ~2 months to avoid GTA 6 window. New dispute: King COO vs union claims. Summary regenerated (#780). PR #778.
+
+## [2026-09-19] daily | agentic-coding — 2 sources, 1 page
+
+CC v2.1.277 (AGENTS.md cross-vendor fallback, 3 prompt-cache-miss fixes, sandbox compound-command escape fix); CC v2.1.278 (auto-mode classifier default flipped back to server-side, reverses v2.1.273). Summary regenerated (#781). PR #779.
+
+## [2026-09-19] daily | 5 topics, 5 sources, 5 pages
+
+Daily research complete. PRs #775–#779 (core), #780–#781 (summary regen). Topics: frontier-models (0 src), ai-in-game-dev (0 src), game-music (0 src), games-of-note (3 src), agentic-coding (2 src).
+
 ## [2026-09-18] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#772 kind=rebase resolved=true sha=959d241 — rebased onto main; PR closed as duplicate (log entry already on main via pr#773)
