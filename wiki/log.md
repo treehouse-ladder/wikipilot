@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-19] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#780 rebased onto main (summary-regen commit sha 0bd3fed; 1 file: wiki/topics/games-of-note/index.md); auto-merge enabled, awaiting CI. pr#782 already merged before dispatch.
+
 ## [2026-09-19] daily | frontier-models — 0 sources, 1 page
 
 Quiet day. Board unchanged at AA Intelligence Index v4.3 basis. New OQ: Reuters Anthropic IPO model rumor (no first-party confirmation). PR #775.
