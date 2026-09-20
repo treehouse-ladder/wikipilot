@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-20] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#789 kind=requeue resolved=true — enabled auto-merge for agentic-coding daily 2026-09-20 (CI passed, PR clean, auto-merge not queued)
+
 ## [2026-09-19] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#780 rebased onto main (summary-regen commit sha 0bd3fed; 1 file: wiki/topics/games-of-note/index.md); auto-merge enabled, awaiting CI. pr#782 already merged before dispatch.
