@@ -2,6 +2,26 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-20] daily | agentic-coding — 1 source, 2 pages
+
+Codex 0.155.0: Touch ID verification for MCP requests on supported Macs; experimental /voice with live transcripts; TUI live reasoning summaries. PR #789.
+
+## [2026-09-20] daily | ai-in-game-dev — 2 sources, 3 pages
+
+TGS 2026: ZEAL Story AI scenario-coherence tool (Akatsuki); Fareidolia on-device voice recognition for player-character interaction (Nexon/Blue Archive devs). PR #788.
+
+## [2026-09-20] daily | frontier-models — 0 sources, 1 page
+
+Quiet day. Board unchanged at AA Intelligence Index v4.3 basis. New OQ: full-board v4.3 re-placement timeline. PR #787.
+
+## [2026-09-20] daily | games-of-note — 1 source, 2 pages
+
+Typhoon Dujuan forces TGS 2026 Day 4 early closure; record 1,138 exhibitors / ~300K attendees. New OQ on show-scale vs studio-contraction narrative tension. PR #786.
+
+## [2026-09-20] daily | game-music — 2 sources, 3 pages
+
+Ace Combat's The Symphony 30th anniversary album global stream (Tokyo Philharmonic, 20 tracks). CICADAMATA breakcore composer crisp interview; sample-clearance OQ flagged. PR #785.
+
 ## [2026-09-19] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#780 rebased onto main (summary-regen commit sha 0bd3fed; 1 file: wiki/topics/games-of-note/index.md); auto-merge enabled, awaiting CI. pr#782 already merged before dispatch.
