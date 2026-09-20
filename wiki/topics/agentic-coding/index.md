@@ -319,7 +319,8 @@ sources:
   - "[[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]"
   - "[[release-v2-1-277-anthropics-claude-code-01cd6a49]]"
   - "[[release-v2-1-278-anthropics-claude-code-369721da]]"
-last_updated: 2026-09-19
+  - "[[release-0-155-0-openai-codex-5f7daf35]]"
+last_updated: 2026-09-20
 last_verified: 2026-09-19
 freshness_window_days: 30
 ---
@@ -450,6 +451,18 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-20
+
+**OpenAI Codex 0.155.0 adds Touch ID verification for MCP requests and experimental voice conversations in local TUI sessions.** Touch ID verification for MCP requests in local TUI sessions on supported Macs arrives in Codex v0.155.0, adding a hardware-backed approval gate for potentially sensitive MCP tool calls — a meaningful security step given MCP's ability to authorize filesystem writes and code execution [[release-0-155-0-openai-codex-5f7daf35]]. The same release ships experimental /voice conversations (enabled through /experimental) with live transcripts and microphone controls, and real-time reasoning summaries in the TUI status row plus completion timestamps after successful turns [[release-0-155-0-openai-codex-5f7daf35]].
+
+> Added Touch ID verification for MCP requests in local TUI sessions on supported Macs. [[release-0-155-0-openai-codex-5f7daf35]]
+
+> Added experimental /voice conversations with live transcripts and microphone controls, enabled through /experimental. [[release-0-155-0-openai-codex-5f7daf35]]
+
+> The TUI now shows live reasoning summaries in the status row, and completion timestamps after successful turns. [[release-0-155-0-openai-codex-5f7daf35]]
+
+_no contradictions or gaps known yet (last reviewed: 2026-09-20)_
 
 ### Updates 2026-09-19
 
@@ -2493,6 +2506,7 @@ lint stays quiet until each page actually exists:
 
 ## Open questions
 
+- [ ] Does Codex 0.155.0's Touch ID verification for MCP requests [[release-0-155-0-openai-codex-5f7daf35]] apply to all MCP tool calls or only a subset (e.g. write/execute operations vs. read-only queries), and is it available only on Apple Silicon Macs with Secure Enclave or on all Touch ID-equipped Macs — and does Claude Code have an equivalent hardware-backed MCP approval gate on any platform?
 - [ ] Does the v2.1.278 server-side auto-mode classifier default [[release-v2-1-278-anthropics-claude-code-369721da]] introduce an availability/latency dependency — the release warns on "billed fallback", implying that when the server classifier is unreachable Claude Code drops to the billed local classifier; is that fallback classifier the same model variant that produced the 0/720 Trajectory Labs indirect-prompt-injection result [[auto-mode-is-now-the-default-in-claude-code-for-pro-max-and-team-plans-756be989]], or a weaker local variant whose safety is unvalidated?
 - [ ] Does Claude Code's new AGENTS.md fallback [[release-v2-1-277-anthropics-claude-code-01cd6a49]] inherit the AGENTS.md configuration smells (Context Bloat, Skill Leakage) catalogued in [[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]], and does the CLAUDE.md-over-AGENTS.md precedence create a split-brain config when a repo's Codex users and Claude Code users maintain divergent instruction files?
 - [ ] Were the two permission-checker gaps fixed in v2.1.273 — Bash the checker can't fully analyze skipping the prompt under `blockReadsOutsideWorkingDirectories`, and a subshell hiding a dangerous `rm` in bypass mode [[release-v2-1-273-anthropics-claude-code-6726c9df]] — exploitable in the wild before the fix, and do they (together with the reverted 2.1.268 deny-rule change on unanalyzable `eval`/`env -C` lines) represent a recurring 'checker-can't-analyze → fail-open/fail-closed oscillation' class that a prompt-injected agent could steer through?
