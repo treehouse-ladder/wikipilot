@@ -68,6 +68,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[release-0-155-0-openai-codex-5f7daf35]]
+- [[fareidolia-from-blue-archive-devs-lets-you-call-characters-by-name-and-speak-your-dialogue-choices-out-loud-34570ba8]]
+- [[ai-takes-center-stage-at-tokyo-game-show-2026-ab5a550e]]
+- [[typhoon-dujuan-forces-tokyo-game-show-2026-to-shut-down-a-day-early-4f6d382b]]
+- [[how-composer-crisp-channeled-machine-girl-and-y2k-grit-into-the-cicadamata-soundtrack-3dc8ec7e]]
+- [[featuring-20-iconic-tracks-the-ace-combat-s-symphony-celebrates-the-series-30th-anniversary-7c145f7b]]
 - [[king-workers-to-strike-after-collective-agreement-talks-stall-0b25bc34]]
 - [[moss-developer-polyarc-has-shut-down-34a1497a]]
 - [[one-of-ubisoft-s-only-new-games-releasing-this-fall-just-got-a-two-month-delay-46884142]]
