@@ -3,7 +3,7 @@ title: "Cohere Command A+"
 kind: entity
 aliases: ["Command A+", "command-a-plus", "Cohere Command A Plus"]
 sources: ["[[introducing-command-a-94d80d08]]", "[[cohere-launches-open-weights-model-command-a-more-than-a-year-since-the-command-a-release-7a929ac1]]"]
-last_updated: 2026-06-01
+last_updated: 2026-09-20
 last_verified: 2026-06-01
 freshness_window_days: 30
 ---
@@ -23,6 +23,7 @@ Command A+ scores 37 on the Artificial Analysis Intelligence Index — above the
 ## Disputes
 
 - [[cohere-launches-open-weights-model-command-a-more-than-a-year-since-the-command-a-release-7a929ac1]] places Cohere Command A+ at AA Intelligence Index 37 (above the median 30 for its size class) and frames it as the first fully Apache-2.0 200B-class open-weights frontier-adjacent model; the established Chinese open-weights frontier (Kimi K2.6 / MiMo-V2.5-Pro at 54, GLM-5.1 at 51) sits 14-17 AA-Index points higher under MIT license. Status: unresolved — 'leading open-weights model' depends on whether you weight aggregate intelligence (Chinese MIT leaders) or licensing strictness (Cohere Apache 2.0).
+- This page's Summary compares Command A+ (AA Index 37) against Kimi K2.6 / MiMo-V2.5-Pro at "54" as the Chinese open-weights frontier; however, [[kimi-k2.6]] and [[mimo-v2.5-pro]] both document in their Disputes sections that the 54 scores are AA Intelligence Index v4.0 values from April–May 2026 that were rescaled to 43 in the June 2026 v4.1 agentic-reweighting. Whether Command A+'s 37 was also measured on v4.0 or v4.1 is not stated, making the precise intelligence gap ambiguous. Status: unresolved (confidence: medium; sweep: 2026-09-20)
 
 ## Open questions
 
