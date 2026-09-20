@@ -45,7 +45,7 @@ sources:
   - "[[coding-agents-have-converged-why-the-swe-bench-leaderboard-can-no-longer-order-its-top-entries-and-what-to-measure-instead-467da1ec]]"
   - "[[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]]"
   - "[[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]"
-last_updated: 2026-09-18
+last_updated: 2026-09-20
 last_verified: 2026-08-17
 freshness_window_days: 30
 ---
@@ -177,6 +177,7 @@ These three papers together narrow the conditions under which harness evolution 
 - [[lessons-from-building-claude-code-how-we-use-skills]] presents SKILL.md token-efficiency benefits as a uniform property of the skills format; [[scivisagentskills-design-and-evaluation-of-agent-skills-for-scientific-data-analysis-and-visualization-7d613ee6]] finds token-efficiency 'depends on the agent harness and tool setting' — suggesting the benefit is harness-mediated rather than format-intrinsic. Status: unresolved
 - [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]] reports "harness choice matters as much as model choice"; [[don-t-blame-the-large-language-model-how-agent-harness-evolution-shapes-coding-agent-quality-7cbe2bc2]] finds no statistically significant improvement across 35 sequential harness releases on SWE-bench with model held fixed. Status: unresolved — the Claw result compares harnesses from different design families (not sequential iterations of one harness), which may explain why that comparison found variance where sequential iteration did not.
 - This page's Summary lists four Harness-IF instruction surfaces (system prompt, agent-config files, tool descriptions, user turn); [[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]] and [[agentic-coding]] both state five configurable surfaces — the fifth is not identified in the synthesis. Status: unresolved (confidence: high; sweep: 2026-08-23)
+- [[claw-swe-bench-a-benchmark-for-evaluating-openclaw-style-agent-harnesses-on-coding-tasks-21a190b1]] reports harness choice changes Pass@1 by 27.4 pp (nearly equal to model choice's 29.4 pp) when comparing harnesses from different design families; [[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]] uses a contamination-controlled private suite to compare different harness design families under fixed models and finds no reliable advantage (±1.25 pp, 95% CI spanning zero for both Opus 4.8 and GPT-5.5). Both measure different-design-family comparisons yet reach opposite conclusions about harness-effect magnitude, breaking the existing resolution that attributed the Claw/Don't-Blame divergence solely to sequential-vs-family comparison methodology. Status: unresolved (confidence: high; sweep: 2026-09-20)
 
 > We introduce Harness-IF, which scores operational rules one at a time from execution evidence: 60 realistic multi-turn coding items drawn from a 642-rule library, 256 rules receiving verdicts, placed on the five configurable surfaces a deployed agent reads. [[harness-if-evaluating-instruction-following-across-instruction-surfaces-in-coding-agents-666da853]]
 
