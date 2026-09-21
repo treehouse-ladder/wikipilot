@@ -22,8 +22,9 @@ sources:
   - "[[run-cloud-agents-on-machines-you-manage-cursor-ced5db47]]"
   - "[[release-v2-1-271-anthropics-claude-code-ba3341f9]]"
   - "[[release-v2-1-273-anthropics-claude-code-6726c9df]]"
-last_updated: 2026-09-16
-last_verified: 2026-09-04
+  - "[[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]]"
+last_updated: 2026-09-21
+last_verified: 2026-09-21
 freshness_window_days: 30
 ---
 
@@ -96,6 +97,12 @@ Claude Code v2.1.271 (2026-09-14) refines auto-mode network sandboxing from sess
 **Claude Code v2.1.273 (2026-09-16) hardens the permission checker by closing two fail-open gaps.** The release fixes "Bash commands the permission checker cannot fully analyze skipping the prompt under permissions.blockReadsOutsideWorkingDirectories, and a subshell hiding a dangerous rm in bypass mode" [[release-v2-1-273-anthropics-claude-code-6726c9df]]. It also reverts a prior over-strict change: "Reverted a 2.1.268 change that checked Read and Edit deny rules on Bash lines the permission checker can't analyze (eval, env -C); commands like time -p make build prompt again instead of being denied" [[release-v2-1-273-anthropics-claude-code-6726c9df]]. The oscillation between fail-open (hidden rm slipping through) and fail-closed (benign make build denied) on the 'checker-can't-analyze' branch reveals a recurring tension in static analyzers that gate agent-generated shell commands: code the analyzer cannot fully parse is the design boundary where security (deny unverifiable commands) and usability (allow common benign idioms) pull in opposite directions.
 
 > Fixed Bash commands the permission checker cannot fully analyze skipping the prompt under permissions.blockReadsOutsideWorkingDirectories, and a subshell hiding a dangerous rm in bypass mode. [[release-v2-1-273-anthropics-claude-code-6726c9df]]
+
+**The agentic-coding config layer is an unmanaged software supply chain — runtime sandboxing contains execution but not install-time defects.** A scan of 3,171 public GitHub repositories configuring Claude Code, Cursor, GitHub Copilot, and Codex finds 16.0% carry a confirmed security defect and 16.7% carry a confirmed defect of either kind (security + correctness), framing the config layer (instruction files, skills, hooks, MCP server declarations, subagents) as a privilege-inheriting dependency layer with no lockfile, no install-time check, and no vocabulary for what a component may do [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]]. This is the first at-scale field measurement of defect prevalence in the config/supply-chain layer. The finding complements the runtime sandboxing story tracked on this page — OS-level sandboxes (bubblewrap, seatbelt, MXC, Sandlock) and network-perimeter isolation bound execution-time blast radius, but none of them address install-time supply-chain defects inside the config artifacts themselves. An enterprise managed-settings allowlist (e.g. GitHub Copilot's `managedMcpServers`) governs which tool-servers and marketplaces agents can reach at runtime, but the defect-prevalence data shows that ~1-in-6 real setups already carry a defect at install time — before any runtime policy activates.
+
+> We study 3,171 public GitHub repositories, including 2,660 setups that assemble two or more component types and 511 published skill collections. 16.0% of setups carry a confirmed security defect, 0.8% have a configuration that cannot work as written, 2.4% contain a skill outside the specification, and 16.7% have a confirmed defect of either kind. [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]]
+
+> The harness is a dependency layer installed from marketplaces and public repositories, running with the developer's privileges, with no lockfile, no install-time check, and no vocabulary for what a component may do. [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]]
 
 ## Disputes
 
