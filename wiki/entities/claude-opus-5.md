@@ -2,7 +2,7 @@
 title: "Claude Opus 5"
 kind: entity
 sources: ["[[introducing-claude-opus-5-c34a3276]]", "[[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]", "[[anthropic-launches-claude-opus-5-its-fourth-model-in-two-months-and-it-tops-fable-5-on-most-benchmarks-7253a489]]", "[[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]]", "[[claude-opus-5-the-new-leader-in-agentic-knowledge-work-92cf92da]]", "[[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]]", "[[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]", "[[qwen3-8-max-0902-same-price-much-better-at-coding-and-office-work-still-behind-opus-5-528b2db1]]", "[[gpt-6-astra-ties-leadership-with-claude-fable-5-1-in-both-flagship-indices-at-lower-cost-30caef79]]"]
-last_updated: 2026-09-10
+last_updated: 2026-09-21
 last_verified: 2026-09-05
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00

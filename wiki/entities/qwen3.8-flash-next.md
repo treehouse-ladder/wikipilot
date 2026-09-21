@@ -3,7 +3,7 @@ title: "Qwen3.8-Flash-Next"
 kind: entity
 aliases: ["Qwen3.8 Flash Next", "qwen3.8-flash-next", "Qwen 3.8 Flash Next"]
 sources: ["[[qwen3-8-flash-next-intelligence-performance-price-analysis-0ab95401]]", "[[qwen-qwen3-8-flash-next-eb79656c]]"]
-last_updated: 2026-08-28
+last_updated: 2026-09-21
 last_verified: 2026-08-28
 freshness_window_days: 30
 input_cost_per_mtoken: 0.00

@@ -3,7 +3,7 @@ title: "MAI-Code-1-Flash"
 kind: entity
 aliases: ["MAI Code 1 Flash", "Microsoft MAI-Code-1-Flash"]
 sources: ["[[building-a-hill-climbing-machine-launching-seven-new-mai-models-adf5b785]]", "[[mai-code-1-flash-61ec7468]]"]
-last_updated: 2026-06-06
+last_updated: 2026-09-21
 last_verified: 2026-06-06
 freshness_window_days: 30
 input_cost_per_mtoken: 0.75

@@ -2,7 +2,7 @@
 title: "Kimi K3"
 kind: entity
 sources: ["[[kimi-k3-intelligence-performance-price-analysis-5d65f998]]", "[[kimi-k3-achieves-3-in-the-artificial-analysis-intelligence-index-comparable-to-opus-4-8-and-gpt-5-5-bce8423e]]", "[[kimi-k3-tech-blog-open-frontier-intelligence-0d83e2aa]]", "[[kimi-k3-s-open-weights-arrive-july-27-the-catch-is-1-4tb-56e05201]]", "[[kimi-k3-model-overview-2-8t-parameters-mxfp4-quantization-and-what-the-open-weights-mean-for-the-community-67bfe96b]]", "[[moonshot-ai-releases-kimi-k3-s-weights-sees-fastest-release-growth-ever-on-hugging-face-4bcc3667]]"]
-last_updated: 2026-07-28
+last_updated: 2026-09-21
 last_verified: 2026-07-28
 freshness_window_days: 30
 input_cost_per_mtoken: 3.00

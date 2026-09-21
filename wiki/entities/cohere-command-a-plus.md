@@ -3,7 +3,7 @@ title: "Cohere Command A+"
 kind: entity
 aliases: ["Command A+", "command-a-plus", "Cohere Command A Plus"]
 sources: ["[[introducing-command-a-94d80d08]]", "[[cohere-launches-open-weights-model-command-a-more-than-a-year-since-the-command-a-release-7a929ac1]]"]
-last_updated: 2026-09-20
+last_updated: 2026-09-21
 last_verified: 2026-06-01
 freshness_window_days: 30
 ---

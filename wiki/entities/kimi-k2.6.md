@@ -2,7 +2,7 @@
 title: "Kimi K2.6"
 kind: entity
 sources: ["[[kimi-k26-the-new-leading-open-weights-model-0bea9ccd]]", "[[multi-modal-model-kimi-k2-6-pricing-774b549a]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[kimi-k2-7-code-9c6b3767]]", "[[kimi-k2-7-code-intelligence-performance-and-price-analysis-b3d43ac0]]"]
-last_updated: 2026-09-06
+last_updated: 2026-09-21
 last_verified: "2026-05-21"
 freshness_window_days: 30
 input_cost_per_mtoken: 0.95

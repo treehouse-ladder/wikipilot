@@ -3,7 +3,7 @@ title: "NVIDIA Nemotron 3 Ultra"
 kind: entity
 aliases: ["Nemotron 3 Ultra", "nemotron-3-ultra", "NVIDIA Nemotron Ultra 550B"]
 sources: ["[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[nemotron-3-ultra-launches-june-4-the-first-open-frontier-model-built-for-agents-302459f4]]", "[[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]"]
-last_updated: 2026-08-09
+last_updated: 2026-09-21
 last_verified: 2026-06-04
 freshness_window_days: 30
 aa_intelligence_index: 48

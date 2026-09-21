@@ -3,7 +3,7 @@ title: "MAI-Thinking-1"
 kind: entity
 aliases: ["MAI Thinking 1", "Microsoft MAI-Thinking-1", "mai-thinking-1"]
 sources: ["[[introducing-mai-thinking-1-0e3e1662]]", "[[microsoft-build-2026-mai-keynote-transcript-77c10a37]]", "[[building-a-hill-climbing-machine-launching-seven-new-mai-models-adf5b785]]"]
-last_updated: 2026-06-06
+last_updated: 2026-09-21
 last_verified: 2026-06-05
 freshness_window_days: 30
 ---
