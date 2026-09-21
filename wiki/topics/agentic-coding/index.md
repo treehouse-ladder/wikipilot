@@ -320,8 +320,9 @@ sources:
   - "[[release-v2-1-277-anthropics-claude-code-01cd6a49]]"
   - "[[release-v2-1-278-anthropics-claude-code-369721da]]"
   - "[[release-0-155-0-openai-codex-5f7daf35]]"
-last_updated: 2026-09-20
-last_verified: 2026-09-19
+  - "[[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]]"
+last_updated: 2026-09-21
+last_verified: 2026-09-21
 freshness_window_days: 30
 ---
 
@@ -451,6 +452,16 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-21
+
+**The agentic-coding config layer is an unmanaged software supply chain — 16.7% of real-world setups carry a confirmed defect.** [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]] scans 3,171 public GitHub repositories that configure Claude Code / Cursor / GitHub Copilot / Codex via instruction files, skills, hooks, MCP server declarations, and subagents, and finds 16.0% carry a confirmed security defect (16.7% a confirmed defect of either kind), framing the harness as a privilege-inheriting dependency layer with no lockfile and no install-time check.
+
+> We study 3,171 public GitHub repositories, including 2,660 setups that assemble two or more component types and 511 published skill collections. 16.0% of setups carry a confirmed security defect, 0.8% have a configuration that cannot work as written, 2.4% contain a skill outside the specification, and 16.7% have a confirmed defect of either kind.
+
+> The harness is a dependency layer installed from marketplaces and public repositories, running with the developer's privileges, with no lockfile, no install-time check, and no vocabulary for what a component may do.
+
+This is the first at-scale field measurement of defect *prevalence* in the config/supply-chain layer. Otherwise a quiet day: no new Claude Code release since v2.1.278 (Sep 19), and no MCP spec change since the 2026-07-28 release.
 
 ### Updates 2026-09-20
 
@@ -2503,6 +2514,7 @@ lint stays quiet until each page actually exists:
 - [[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]] claims the deploy-time harness dominates coding-agent solve rate (4.3x swing) far more than the training recipe (1.16x swing), supporting the Binding-Constraint Thesis; earlier work [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] claims trajectory-scale evidence that the base LLM dominates. The two are not strictly contradictory (harness-vs-recipe is distinct from harness-vs-base-model) but pull in opposite directions. Status: unresolved
 - [[coding-agents-have-converged-why-the-swe-bench-leaderboard-can-no-longer-order-its-top-entries-and-what-to-measure-instead-467da1ec]] argues SWE-bench Verified is saturated and cannot rank frontier agents; incumbent leaderboard operators and benchmark-tracking outlets continue to cite SWE-bench scores as differentiating signals. Status: unresolved — the methodological critique is published but benchmark operators have not acknowledged or deprecated the leaderboard.
 - [[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]] finds harness components (planning, action space, context management) move cost substantially while leaving accuracy largely unchanged for strong models — reframing the harness as a first-class cost lever; [[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]] found no reliable harness advantage on solve rate and concluded harness selection is secondary to model selection. The two agree accuracy is model-driven but disagree on whether the harness is therefore 'secondary' (solve-rate view) or 'primary' (cost/economics view). Status: unresolved
+- [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]] finds 16.7% of real-world agentic-coding setups carry a confirmed defect and argues the harness config layer is an unmanaged dependency layer with 'no lockfile, no install-time check'; prior sandboxing sources present OS-level sandboxing and managed-settings allowlists as the governance story. The sandbox bounds runtime blast radius and the allowlist governs which servers agents can reach, but neither addresses install-time supply-chain defects inside the config artifacts themselves, which the field data shows are already present in ~1-in-6 real setups. Status: unresolved
 
 ## Open questions
 
@@ -2796,6 +2808,7 @@ lint stays quiet until each page actually exists:
 - [ ] Does harness-neutrality hold across smaller models where scaffolding improvements might overcome weaker base capability?
 - [ ] Do the Empirical Harness Design study's cost-lever findings (bash-only substantially cheaper for capable models; planning as a cost saver for strong models) [[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]] survive on a contamination-controlled private suite [[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]], or is the accuracy-null / cost-differential split itself an artifact of SWE-Bench Verified frontier saturation [[coding-agents-have-converged-why-the-swe-bench-leaderboard-can-no-longer-order-its-top-entries-and-what-to-measure-instead-467da1ec]]?
 - [ ] Does Claude Code v2.1.275's auto-sync of claude.ai-enabled skills/plugins into terminal sessions [[release-v2-1-275-anthropics-claude-code-73339271]] widen the SKILL.md prompt-injection attack surface the wiki tracks [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]], by provisioning skills a terminal user did not explicitly install locally?
+- [ ] Does Scanning the Harness's 16.7% real-world defect rate [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]] concentrate in the 511 marketplace-distributed skill collections vs. repo-local instruction files/hooks, and would an install-time check or lockfile for skills+MCP meaningfully reduce it?
 
 ## See also
 
