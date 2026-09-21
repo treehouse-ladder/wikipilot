@@ -3,7 +3,7 @@ title: "MiMo-V2.5-Pro"
 kind: entity
 aliases: ["MiMo V2.5 Pro", "Xiaomi MiMo"]
 sources: ["[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]"]
-last_updated: 2026-09-06
+last_updated: 2026-09-21
 last_verified: 2026-05-26
 freshness_window_days: 30
 input_cost_per_mtoken: 1.00

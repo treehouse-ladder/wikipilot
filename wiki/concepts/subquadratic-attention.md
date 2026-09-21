@@ -8,7 +8,7 @@ sources:
   - "[[zaya1-8b-technical-report-614bf738]]"
   - "[[minimax-m3-frontier-coding-1m-context-native-multimodality-all-in-one-model-d466ccc6]]"
   - "[[ifm-k2-horizon-mova-36b-a4b-600ee885]]"
-last_updated: 2026-09-06
+last_updated: 2026-09-21
 last_verified: 2026-06-07
 freshness_window_days: 30
 ---

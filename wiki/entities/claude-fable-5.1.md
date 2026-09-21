@@ -3,7 +3,7 @@ title: "Claude Fable 5.1"
 kind: entity
 aliases: ["Fable 5.1", "fable-5.1", "Claude Fable 5.1"]
 sources: ["[[introducing-claude-fable-5-1-and-claude-mythos-5-1-e7232d52]]", "[[claude-fable-5-1-tops-the-artificial-analysis-intelligence-index-88ebeee8]]", "[[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]", "[[announcing-the-artificial-analysis-intelligence-index-v4-3-58c45fc2]]", "[[announcing-automationbench-aa-83abdc0a]]", "[[gpt-6-astra-ties-leadership-with-claude-fable-5-1-in-both-flagship-indices-at-lower-cost-30caef79]]"]
-last_updated: 2026-09-10
+last_updated: 2026-09-21
 last_verified: 2026-09-05
 freshness_window_days: 30
 ---

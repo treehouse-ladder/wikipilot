@@ -3,7 +3,7 @@ title: "Inkling"
 kind: entity
 aliases: ["Thinking Machines Inkling", "Inkling MoE"]
 sources: ["[[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]", "[[inkling-our-open-weights-model-06531d4a]]", "[[introducing-inkling-small-5c51c45f]]", "[[inkling-small-lands-within-a-point-of-inkling-on-the-artificial-analysis-intelligence-index-with-less-than-a-third-of-the-parameters-805cabb6]]"]
-last_updated: 2026-07-31
+last_updated: 2026-09-21
 last_verified: 2026-07-31
 freshness_window_days: 30
 aa_intelligence_index: 41

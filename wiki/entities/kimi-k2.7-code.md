@@ -2,7 +2,7 @@
 title: "Kimi K2.7 Code"
 kind: entity
 sources: ["[[kimi-k2-7-code-9c6b3767]]", "[[kimi-k2-7-code-intelligence-performance-and-price-analysis-b3d43ac0]]"]
-last_updated: 2026-06-28
+last_updated: 2026-09-21
 last_verified: 2026-06-23
 freshness_window_days: 30
 input_cost_per_mtoken: null

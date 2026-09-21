@@ -2,7 +2,7 @@
 title: "DeepSeek V4"
 kind: entity
 sources: ["[[deepseek-ai-deepseek-v4-1-flash-5c348986]]", "[[deepseek-v4-1-flash-max-intelligence-performance-price-analysis-2034e17f]]", "[[deepseek-v4-pro-on-hugging-face-a0d5aaf3]]", "[[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]]", "[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[deepseek-api-models-and-pricing-8eb12065]]", "[[deepseek-v4-pro-intelligence-and-performance-analysis-artificial-analysis-36762786]]", "[[deepseek-r2-explained-92-7-aime-32b-open-weight-d990eab3]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[deepseek-is-back-among-the-leading-open-weights-models-with-v4-pro-and-v4-flash-d16dda28]]", "[[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]]", "[[deepseek-v4-flash-0731-scores-50-on-the-artificial-analysis-intelligence-index-10-points-above-previous-deepseek-v4-flash-108621d0]]", "[[deepseek-upgrades-deepseek-v4-flash-0731-with-major-agentic-and-coding-gains-159beea4]]", "[[deepseek-ai-deepseek-v4-flash-0731-a1a747f4]]", "[[deepseek-v4-pro-ga-release-fe54be56]]"]
-last_updated: 2026-09-11
+last_updated: 2026-09-21
 last_verified: 2026-09-11
 freshness_window_days: 30
 input_cost_per_mtoken: 1.74

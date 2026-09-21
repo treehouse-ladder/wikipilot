@@ -2,7 +2,7 @@
 title: "Claude Sonnet 5"
 kind: entity
 sources: ["[[introducing-claude-sonnet-5-4307222b]]", "[[claude-sonnet-5-strong-agentic-performance-at-a-higher-cost-per-task-c4346bb2]]"]
-last_updated: 2026-07-03
+last_updated: 2026-09-21
 last_verified: 2026-07-03
 freshness_window_days: 30
 input_cost_per_mtoken: 2.00

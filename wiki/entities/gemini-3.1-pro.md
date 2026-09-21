@@ -2,7 +2,7 @@
 title: "Gemini 3.1 Pro"
 kind: entity
 sources: ["[[gemini-31-pro-model-card-225ab705]]", "[[openais-gpt-55-is-the-new-leading-ai-model-097f1222]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[gemini-3-5-frontier-intelligence-with-action-f4ceaac7]]", "[[gemini-3-1-pro-preview-intelligence-performance-price-analysis-3a3f9933]]", "[[google-has-released-gemini-3-8-flash-its-fourth-flash-model-in-under-four-months-8aa591b1]]", "[[gemini-3-8-flash-model-card-1867674a]]"]
-last_updated: 2026-09-03
+last_updated: 2026-09-21
 last_verified: 2026-06-21
 freshness_window_days: 30
 input_cost_per_mtoken: 2.00

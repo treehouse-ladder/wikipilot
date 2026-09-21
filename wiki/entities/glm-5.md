@@ -2,7 +2,7 @@
 title: "GLM-5"
 kind: entity
 sources: ["[[glm-5-everything-you-need-to-know-a53ff5c1]]", "[[z-ai-developer-document-pricing-667e8002]]", "[[z-ai-introduces-glm-5-1-an-open-weight-754b-agentic-model-that-achieves-sota-on-swe-bench-pro-and-sustains-8-hour-autonomous-execution-27ebed2a]]", "[[mimo-v2-5-pro-intelligence-performance-price-analysis-51e3baae]]", "[[qwen3-7-max-intelligence-performance-price-analysis-61bdb800]]", "[[glm-5-1-intelligence-performance-price-analysis-fb6f086c]]", "[[glm-5-from-vibe-coding-to-agentic-engineering-43553238]]", "[[zhipu-ai-open-sources-glm-5-2-with-1-million-token-context-cbc95c1c]]", "[[artificial-analysis-intelligence-index-v4-1-a-shift-toward-agentic-workloads-e0bce552]]", "[[glm-5-2-is-the-new-leading-open-weights-model-on-the-artificial-analysis-intelligence-index-ef3ea3a0]]", "[[glm-5-2-built-for-long-horizon-tasks-9e3636b0]]", "[[glm-5-3-overview-7e6c3dd9]]", "[[z-ai-delays-glm-5-3-weights-after-cybergym-score-tops-mythos-bca697d6]]", "[[glm-5-3-max-intelligence-performance-price-analysis-26ed0788]]", "[[glm-5-3-flash-intelligence-performance-price-analysis-b02205ef]]", "[[glm-5-3-zai-org-hugging-face-model-card-4424584e]]"]
-last_updated: 2026-08-30
+last_updated: 2026-09-21
 last_verified: 2026-08-20
 freshness_window_days: 30
 input_cost_per_mtoken: 1.40
