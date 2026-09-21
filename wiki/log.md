@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-21] daily | frontier-models — 0 sources, 26 pages
+
+Quiet day. Entity-freshness sweep: 25 entity pages + subquadratic-attention + frontier-models topic index — last_updated bumped. No new entity field changes or leader shifts detected. PR #791.
+
+## [2026-09-21] daily | agentic-coding — 1 source, 3 pages
+
+"Scanning the Harness" (arxiv 2609.07360): 16.7% of 54 real-world agentic-coding setups carry confirmed supply-chain defects. New dispute: sandboxing vs supply-chain gap. agent-sandboxing concept page updated. PR #792.
+
+## [2026-09-21] daily | ai-in-game-dev — 1 source, 2 pages
+
+Level-5 CEO Akihiro Hino discloses AI use in Professor Layton and Yo-kai Watch pipelines ("technical only"). New dispute: unverifiable technical/creative distinction. PR #793.
+
+## [2026-09-21] daily | games-of-note — 2 sources, 3 pages
+
+Silent Hill: Townfall first-person perspective review (DualShockers, strongly positive). Japan Game Awards 2026: Pokémon Pokopia Grand Award; Pragmata Innovation; Meccha Chameleon! Youth/Movement. PR #794.
+
+## [2026-09-21] daily | game-music — 3 sources, 4 pages
+
+GTA VI: The Album pre-orders open (34-track 2LP, November 19 launch, licensed-talent originals). AI music now >50% of streaming uploads, 85% detected as fraudulent per Deezer; game studios publishing AI OSTs for non-existent games. Sonic 35th anniversary live-band concert (US 30+ cities, London world premiere, UK February 2027). Summary regenerated. PR #795.
+
+## [2026-09-21] daily | 5 topics, 7 sources, 38 pages
+
+Daily research complete. PRs #791–#795. Topics: frontier-models (0 src, 26 pages), agentic-coding (1 src), ai-in-game-dev (1 src), games-of-note (2 src), game-music (3 src, summary regen). game-music PR #795 pending CI.
+
 ## [2026-09-20] daily | agentic-coding — 1 source, 2 pages
 
 Codex 0.155.0: Touch ID verification for MCP requests on supported Macs; experimental /voice with live transcripts; TUI live reasoning summaries. PR #789.
