@@ -2806,3 +2806,7 @@ CC v2.1.274 release; SWE-bench convergence audit (arxiv 2609.17394, top-10 at 79
 ## [2026-09-17] daily | 5 topics, 7 sources, 10 pages
 
 Daily research complete. PRs #759–#762, #764. Topics: frontier-models (0 src), ai-in-game-dev (1 src), games-of-note (2 src), game-music (1 src), agentic-coding (3 src).
+
+## [2026-09-22] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#800 kind=requeue resolved=true — enabled squash auto-merge for wiki(games-of-note): daily 2026-09-22 (CI passed, PR was clean but auto-merge not queued); pr#801 already queued, skipped.
