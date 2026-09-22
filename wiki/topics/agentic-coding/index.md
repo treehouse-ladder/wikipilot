@@ -321,7 +321,8 @@ sources:
   - "[[release-v2-1-278-anthropics-claude-code-369721da]]"
   - "[[release-0-155-0-openai-codex-5f7daf35]]"
   - "[[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]]"
-last_updated: 2026-09-21
+  - "[[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]"
+last_updated: 2026-09-22
 last_verified: 2026-09-21
 freshness_window_days: 30
 ---
@@ -452,6 +453,20 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-22
+
+A new empirical study, [[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]], compares two ways of executing reusable knowledge in long-horizon coding-agent tasks: loading a skill's instructions inline into the main context (the default agent-skills pattern) versus invoking the skill package as a subagent that runs in a fresh, dedicated context window. It finds the inline approach grows brittle as horizons lengthen, because reasoning quality degrades as the context window fills.
+
+> Agent skills are typically executed by loading their skill instructions into an agent's context and relying on the agent to follow them. As task horizons grow, however, this approach becomes increasingly brittle, because reasoning quality degrades as more information accumulates in the context window.
+
+The paper reports that subagent execution wins when a skill exposes a clear input-output contract, and degrades more gracefully as distracting tools accumulate. On stronger models (GPT-5.3 Codex, Kimi K2.6) subagent invocation lowers peak context length on over 80% of tasks [[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]].
+
+> For stronger models, such as GPT 5.3 Codex and Kimi K2.6, subagents lower peak context length on over 80% of tasks. For weaker models, the reduction is smaller and sometimes reverses.
+
+The cost is coordination overhead — extra tokens to pass state between the main agent and its subagents — trading higher total token count for reduced peak context [[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]].
+
+_no contradictions or gaps known yet (last reviewed: 2026-09-22)_
 
 ### Updates 2026-09-21
 
@@ -2809,6 +2824,7 @@ lint stays quiet until each page actually exists:
 - [ ] Do the Empirical Harness Design study's cost-lever findings (bash-only substantially cheaper for capable models; planning as a cost saver for strong models) [[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]] survive on a contamination-controlled private suite [[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]], or is the accuracy-null / cost-differential split itself an artifact of SWE-Bench Verified frontier saturation [[coding-agents-have-converged-why-the-swe-bench-leaderboard-can-no-longer-order-its-top-entries-and-what-to-measure-instead-467da1ec]]?
 - [ ] Does Claude Code v2.1.275's auto-sync of claude.ai-enabled skills/plugins into terminal sessions [[release-v2-1-275-anthropics-claude-code-73339271]] widen the SKILL.md prompt-injection attack surface the wiki tracks [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]], by provisioning skills a terminal user did not explicitly install locally?
 - [ ] Does Scanning the Harness's 16.7% real-world defect rate [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]] concentrate in the 511 marketplace-distributed skill collections vs. repo-local instruction files/hooks, and would an install-time check or lockfile for skills+MCP meaningfully reduce it?
+- [ ] On weaker models the peak-context reduction from subagent execution shrinks and can reverse ([[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]); at what model-capability threshold does subagent-based skill execution stop paying off, and how does that interact with the added coordination-token cost?
 
 ## See also
 

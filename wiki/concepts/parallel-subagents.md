@@ -29,7 +29,8 @@ sources:
   - "[[release-v2-1-271-anthropics-claude-code-ba3341f9]]"
   - "[[release-v2-1-273-anthropics-claude-code-6726c9df]]"
   - "[[release-v2-1-275-anthropics-claude-code-73339271]]"
-last_updated: 2026-09-18
+  - "[[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]"
+last_updated: 2026-09-22
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---
@@ -131,6 +132,10 @@ Claude Code v2.1.271 (2026-09-14) adds a subagent context-hygiene control, `omit
 **Claude Code v2.1.273 (2026-09-16) fixes a false-failure bug in parallel-subagent orchestration.** The release closes a reliability hole where "sub-agents and background agents being reported as failed, with their result never delivered, when the final streamed reply omitted token usage or carried no model id" [[release-v2-1-273-anthropics-claude-code-6726c9df]]. This is load-bearing for fan-out harnesses: when a subagent's result is misclassified as a failure, the parent's merge step acts on incomplete or zero information — the cost tax Parallel-Synthesis targets is far worse when the parent merges a false-failure signal. The fix restores the expected reliability model where subagent completion is determined by the agent's actual terminal state rather than by the presence of telemetry fields in the streamed response.
 
 > Fixed sub-agents and background agents being reported as failed, with their result never delivered, when the final streamed reply omitted token usage or carried no model id. [[release-v2-1-273-anthropics-claude-code-6726c9df]]
+
+**Subagent execution vs inline skill loading (2026-09-22).** An empirical study compares two ways of executing reusable knowledge in long-horizon tasks: loading a skill's instructions inline into the main context (the default agent-skills pattern) versus spawning a fresh-context subagent [[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]. The paper finds subagent execution wins when a skill exposes a clear input-output contract and degrades more gracefully as distracting tools accumulate, with subagent invocation lowering peak context length on over 80% of tasks on stronger models (GPT-5.3 Codex, Kimi K2.6) [[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]. The cost is coordination overhead — extra tokens to pass state between the main agent and its subagents — trading higher total token count for reduced peak context. This finding operationalizes the context-preservation-over-parallelism thread this page tracks (Willison's per-task model downgrade, fork-by-default) as an explicit skill-execution architectural choice: spawn a fresh subagent rather than loading the skill inline when the horizon is long enough that inline instructions degrade reasoning quality.
+
+> Agent skills are typically executed by loading their skill instructions into an agent's context and relying on the agent to follow them. As task horizons grow, however, this approach becomes increasingly brittle, because reasoning quality degrades as more information accumulates in the context window. [[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]
 
 ## Disputes
 
