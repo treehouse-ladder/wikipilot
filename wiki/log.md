@@ -2,6 +2,26 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-22] daily | game-music — 0 sources, 1 page
+
+Quiet day. No new qualifying sources found. Sentinel entry inserted. PR #801.
+
+## [2026-09-22] daily | games-of-note — 1 source, 1 page
+
+Control Resonant earns GameSpot 9/10 — Remedy's best-playing game yet. PR #800.
+
+## [2026-09-22] daily | ai-in-game-dev — 1 source, 1 page
+
+World models survey (200 works, 2018–2026): 8 capability dimensions, 3 generation routes; gap to true simulator is architectural. PR #799.
+
+## [2026-09-22] daily | frontier-models — 4 sources, 4 pages
+
+Grok 4.7 launches (AA Index 46, AA-Briefcase Elo 1657, Terminal-Bench 26%, ~81K tokens/task). Step 5 Preview debuts (600B MoE, 27B active, DeepSWE 67.7%, weights open Oct 15). PR #798.
+
+## [2026-09-22] daily | agentic-coding — 1 source, 3 pages
+
+PR #797.
+
 ## [2026-09-21] daily | frontier-models — 0 sources, 26 pages
 
 Quiet day. Entity-freshness sweep: 25 entity pages + subquadratic-attention + frontier-models topic index — last_updated bumped. No new entity field changes or leader shifts detected. PR #791.

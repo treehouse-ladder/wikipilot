@@ -48,6 +48,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gpt-5.6-sol]]
 - [[grok-4.5]]
 - [[grok-4.6]]
+- [[grok-4.7]]
+- [[step-5]]
 - [[inkling]]
 - [[kimi-k3]]
 - [[claude-opus-5]]
@@ -209,6 +211,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[veritas-tales-witch-of-the-dark-castle-original-soundtrack-from-basiscape-is-now-available-3e839919]]
 - [[grok-4-6-returns-spacexai-to-the-intelligence-frontier-and-leads-on-cost-efficiency-bdc6284a]]
 - [[introducing-grok-4-6-66321e57]]
+- [[benchmarking-grok-4-7-653374de]]
+- [[xai-launches-grok-4-7-at-bargain-prices-but-benchmarks-reveal-a-wide-gap-to-claude-and-gpt-6-70713dc1]]
+- [[stepfun-launches-step-5-preview-600b-sparse-moe-1m-context-weights-open-oct-15-3397b6e7]]
+- [[stepfun-launches-step-5-preview-a-600b-total-27b-active-moe-model-with-1m-context-for-long-horizon-agentic-work-f4fd772d]]
+- [[from-generation-to-simulation-how-far-are-world-models-from-being-true-simulators-f5ff0c3a]]
+- [[control-resonant-review-remedy-best-playing-game-yet-bb513c3b]]
 - [[harnessopt-bench-evaluating-llms-at-harness-optimization-6f06a898]]
 - [[loopsbench-from-harness-engineering-to-loop-engineering-in-benchmarking-coding-agent-6de4623a]]
 - [[ea-lays-off-unknown-number-of-individuals-in-fan-care-and-recruitment-2beac2cc]]
@@ -1311,6 +1319,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-09-22]]
+- [[2026-09-21]]
 - [[2026-09-19]]
 - [[2026-09-17]]
 - [[2026-09-09]]
