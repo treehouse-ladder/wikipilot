@@ -1443,3 +1443,26 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[rockstar-reveals-gta-vi-soundtrack-and-opens-pre-orders-for-2lp-vinyl-fe62ba11]]
 - [[slowly-but-surely-ai-music-is-carving-out-a-place-for-itself-in-video-game-music-b6928fac]]
 - [[sonic-live-in-concert-anniversary-tour-confirms-2026-dates-6abefaf5]]
+
+## 2026-09-23
+
+### New entities
+- [[claude-opus-5-5]]
+- [[gpt-6-sol]]
+- [[gpt-6-luna]]
+- [[mimo-v2-6-pro]]
+
+### New sources
+- [[introducing-claude-opus-5-5-ec3fa700]]
+- [[claude-opus-5-5-takes-the-top-spot-on-the-artificial-analysis-intelligence-index-4950ff35]]
+- [[introducing-gpt-6-sol-and-luna-73461b3e]]
+- [[gpt-6-sol-and-luna-push-the-cost-efficiency-frontier-0c4a202e]]
+- [[mimo-v2-6-pro-intelligence-performance-and-price-analysis-528e853b]]
+- [[release-v2-1-280-anthropics-claude-code-23966244]]
+- [[gamedirector-decoupling-gameplay-logic-from-rendering-for-player-configurable-game-world-models-78a4071b]]
+- [[code-plans-diffusion-renders-open-ended-generative-world-modeling-22327f38]]
+- [[all-the-major-xbox-changes-microsoft-announced-today-layoffs-halo-goes-to-activision-and-lots-more-91e223ff]]
+- [[xbox-continues-reset-with-halo-studios-layoffs-and-undead-labs-divestment-8c165dae]]
+- [[ninja-theory-now-expected-to-close-as-deal-falls-apart-a30a8db4]]
+- [[halo-s-next-game-is-coming-from-an-unexpected-developer-activision-c6bfb30f]]
+- [[stranger-than-heaven-brings-stars-music-violence-together-this-winter-5cde8206]]

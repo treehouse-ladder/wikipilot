@@ -2826,3 +2826,27 @@ CC v2.1.274 release; SWE-bench convergence audit (arxiv 2609.17394, top-10 at 79
 ## [2026-09-17] daily | 5 topics, 7 sources, 10 pages
 
 Daily research complete. PRs #759–#762, #764. Topics: frontier-models (0 src), ai-in-game-dev (1 src), games-of-note (2 src), game-music (1 src), agentic-coding (3 src).
+
+## [2026-09-23] daily | frontier-models — 5 sources, 10 pages
+
+Claude Opus 5.5 (AA Index 58, new #1), GPT-6 Sol/Luna (50% cost cut), MiMo-V2.6-Pro open-weight. New entities: claude-opus-5-5, gpt-6-sol, gpt-6-luna, mimo-v2-6-pro. Summary regenerated. PR #803.
+
+## [2026-09-23] daily | agentic-coding — 1 source, 2 pages
+
+Claude Code v2.1.280: Opus 5.5 new default Opus model, auto-mode safety fix, CLAUDE_CODE_MAX_MCP_DESCRIPTION_LENGTH. Summary regenerated. PR #804.
+
+## [2026-09-23] daily | ai-in-game-dev — 2 sources, 3 pages
+
+GameDirector (logic/rendering decoupling), Code Plans + Diffusion Renders (LLM code plans + diffusion world gen). PR #805.
+
+## [2026-09-23] daily | games-of-note — 4 sources, 5 pages
+
+Xbox reset: 268 more layoffs, Ninja Theory facing closure (2 deals fell through), Halo to Activision, Playground+Turn 10 merged, Obsidian joins Bethesda. Summary regenerated. PR #806.
+
+## [2026-09-23] daily | game-music — 1 source, 2 pages
+
+Stranger Than Heaven: Snoop Dogg as Orpheus, Tori Kelly + Ado theme, Satoshi Fujihara (HIGE DANdism) as yakuza pianist. PR #807.
+
+## [2026-09-23] daily | 5 topics, 13 sources, 22 pages
+
+Daily research complete. PRs #803–#807. Topics: frontier-models (5 src), agentic-coding (1 src), ai-in-game-dev (2 src), games-of-note (4 src), game-music (1 src).
