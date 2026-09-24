@@ -1,9 +1,9 @@
 ---
 title: "Claude Opus 5.5"
 kind: entity
-sources: ["[[introducing-claude-opus-5-5-ec3fa700]]", "[[claude-opus-5-5-takes-the-top-spot-on-the-artificial-analysis-intelligence-index-4950ff35]]"]
-last_updated: 2026-09-23
-last_verified: 2026-09-23
+sources: ["[[introducing-claude-opus-5-5-ec3fa700]]", "[[claude-opus-5-5-takes-the-top-spot-on-the-artificial-analysis-intelligence-index-4950ff35]]", "[[system-card-claude-opus-5-5-7f5a82f9]]"]
+last_updated: 2026-09-24
+last_verified: 2026-09-24
 freshness_window_days: 30
 ---
 
@@ -17,11 +17,17 @@ Pricing is **$4/$20 per Mtoken (20% below Opus 5's $5/$25)** with **cache reads 
 
 The model launches with the **"preserved thinking" anti-distillation safeguard** (first shipped with Fable 5.1) and is live on AWS, Google Cloud and Azure [[introducing-claude-opus-5-5-ec3fa700]].
 
+The **System Card** (published 2026-09-24) confirms **the largest capability gains over Opus 5 are in agentic coding, computer use, visual reasoning, and long-horizon professional knowledge work** [[system-card-claude-opus-5-5-7f5a82f9]]. On a public benchmark of real command-line tasks, Opus 5.5 **solved more than Opus 5 while making ~40% fewer tool calls and using half the tokens** — an agentic-efficiency gain on top of the raw accuracy improvement [[system-card-claude-opus-5-5-7f5a82f9]]. Safety evaluations were conducted in collaboration with CAISI and NIST, covering harms avoidance, child safety, and cybersecurity uplift [[system-card-claude-opus-5-5-7f5a82f9]].
+
+> Claude Opus 5.5 is a broad capability upgrade over Claude Opus 5, scoring higher on every evaluation in the capability summary, with the largest gains in agentic coding, visual reasoning, computer use, and long-horizon professional knowledge work. [[system-card-claude-opus-5-5-7f5a82f9]]
+
+> On a public benchmark of real command-line tasks, Claude Opus 5.5 solved more than Opus 5 while making about 40% fewer calls and using half the tokens. [[system-card-claude-opus-5-5-7f5a82f9]]
+
 > Claude Opus 5.5 leads in agentic coding and knowledge work, and costs 40% less to run than Opus 5 on typical workloads. At max effort it scores 58 on the Artificial Analysis Intelligence Index, the highest score measured by several points. [[introducing-claude-opus-5-5-ec3fa700]]
 
 > Claude Opus 5.5 demonstrates consistent strong performance, with leading scores on six of the ten Intelligence Index evaluations. Claude Opus 5.5 leads in agentic knowledge work on AA-Briefcase, reaching an Elo of 1822, which is +143 over Fable 5.1. Opus 5.5 is level with Opus 5 on cost per task despite 1.6x the output tokens. [[claude-opus-5-5-takes-the-top-spot-on-the-artificial-analysis-intelligence-index-4950ff35]]
 
-_no contradictions or gaps known yet (last reviewed: 2026-09-23)_
+_no contradictions or gaps known yet (last reviewed: 2026-09-24)_
 
 ## See also
 
