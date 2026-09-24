@@ -323,8 +323,11 @@ sources:
   - "[[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]]"
   - "[[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]"
   - "[[release-v2-1-280-anthropics-claude-code-23966244]]"
-last_updated: 2026-09-23
-last_verified: 2026-09-23
+  - "[[release-v2-1-281-anthropics-claude-code-6eff16a1]]"
+  - "[[release-0-156-1-openai-codex-6e556c3a]]"
+  - "[[swe-serve-benchmarking-agentic-engineering-for-production-inference-serving-635b512e]]"
+last_updated: 2026-09-24
+last_verified: 2026-09-24
 freshness_window_days: 30
 ---
 
@@ -458,6 +461,26 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-24
+
+**Claude Code v2.1.281 hardens the MCP + auto-mode surface; OpenAI Codex 0.156.1 closes three sandbox-isolation gaps, adds GPT-6 Sol/Luna to the picker, and turns worktree sessions on by default.** Claude Code v2.1.281 [[release-v2-1-281-anthropics-claude-code-6eff16a1]] continues the MCP-security theme this page tracks: it adds MCP URL-mode elicitation on 2026-07-28-protocol connections (servers can request a browser-based flow), adds `.mcp.json` validation to `claude plugin validate` that flags entries silently dropped at load and insecure URLs, and adds Claude-apps-gateway support for the `blockReadsOutsideWorkingDirectories` / `disableBypassPermissionsMode` desktop policy blocks; it also surfaces an auto-mode recommendation in `/insights` estimating how many permission prompts auto mode could have handled.
+
+> Added MCP URL-mode elicitation on 2026-07-28 protocol connections, so servers can ask Claude Code to open a browser-based flow. [[release-v2-1-281-anthropics-claude-code-6eff16a1]]
+
+> Added MCP server checks to claude plugin validate that report .mcp.json entries that would be silently dropped at load and insecure URLs. [[release-v2-1-281-anthropics-claude-code-6eff16a1]]
+
+OpenAI Codex 0.156.1 [[release-0-156-1-openai-codex-6e556c3a]] closes sandbox-isolation gaps involving inbound Windows connections, privileged Linux/macOS sockets, and writes through read-only macOS file handles; preserves streamed answers/plans across turn failure, interruption, and subagent-completion events; adds GPT-6 Sol / GPT-6 Luna to the model picker (rolling out at lower token prices than their GPT-5.6 predecessors, Sol for complex agentic coding, Luna for high-volume tasks); and enables worktree sessions by default.
+
+> Closed sandbox isolation gaps involving inbound Windows connections, privileged Linux/macOS sockets, and writes through read-only macOS file handles. [[release-0-156-1-openai-codex-6e556c3a]]
+
+> Filter tasks by status and create worktree sessions from the agent command center; worktree support is now enabled by default. [[release-0-156-1-openai-codex-6e556c3a]]
+
+**SWE-Serve (NVIDIA) adds a production-inference-serving axis to the eval-realism literature.** [[swe-serve-benchmarking-agentic-engineering-for-production-inference-serving-635b512e]] builds 53 repository-grounded tasks from production changes merged into SGLang across six inference-engineering families, graded on CPU or a single H100 with hidden functional, regression, and end-to-end serving tests — testing whether agents carry a locally-working implementation through a complete production path, not just whether a patch passes unit tests.
+
+> SWE-Serve provides 53 repository-grounded tasks derived from recent production changes to SGLang, spanning six inference engineering families. [[swe-serve-benchmarking-agentic-engineering-for-production-inference-serving-635b512e]]
+
+> SWE-Serve provides an executable, production-grounded evaluation of whether agents carry locally working implementations through a complete production path. [[swe-serve-benchmarking-agentic-engineering-for-production-inference-serving-635b512e]]
 
 ### Updates 2026-09-23
 
@@ -2543,6 +2566,7 @@ lint stays quiet until each page actually exists:
 - [[coding-agents-have-converged-why-the-swe-bench-leaderboard-can-no-longer-order-its-top-entries-and-what-to-measure-instead-467da1ec]] argues SWE-bench Verified is saturated and cannot rank frontier agents; incumbent leaderboard operators and benchmark-tracking outlets continue to cite SWE-bench scores as differentiating signals. Status: unresolved — the methodological critique is published but benchmark operators have not acknowledged or deprecated the leaderboard.
 - [[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]] finds harness components (planning, action space, context management) move cost substantially while leaving accuracy largely unchanged for strong models — reframing the harness as a first-class cost lever; [[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]] found no reliable harness advantage on solve rate and concluded harness selection is secondary to model selection. The two agree accuracy is model-driven but disagree on whether the harness is therefore 'secondary' (solve-rate view) or 'primary' (cost/economics view). Status: unresolved
 - [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]] finds 16.7% of real-world agentic-coding setups carry a confirmed defect and argues the harness config layer is an unmanaged dependency layer with 'no lockfile, no install-time check'; prior sandboxing sources present OS-level sandboxing and managed-settings allowlists as the governance story. The sandbox bounds runtime blast radius and the allowlist governs which servers agents can reach, but neither addresses install-time supply-chain defects inside the config artifacts themselves, which the field data shows are already present in ~1-in-6 real setups. Status: unresolved
+- [[swe-serve-benchmarking-agentic-engineering-for-production-inference-serving-635b512e]] argues repository-level SWE benchmarks do not target inference and evaluates whether agents carry a locally-working implementation through a complete production path (hidden functional + regression + end-to-end serving tests); [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents single-turn test-patch resolution as the human-filtered, annotator-reviewed gold standard for coding-agent capability. Status: unresolved — same production-realism-gap direction as FeatureBench/SWE-EVO/SWE-Bench-Mobile but on a distributed inference-serving distribution where a locally-passing patch can still fail the end-to-end serving path.
 
 ## Open questions
 
@@ -2838,6 +2862,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does Claude Code v2.1.275's auto-sync of claude.ai-enabled skills/plugins into terminal sessions [[release-v2-1-275-anthropics-claude-code-73339271]] widen the SKILL.md prompt-injection attack surface the wiki tracks [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]], by provisioning skills a terminal user did not explicitly install locally?
 - [ ] Does Scanning the Harness's 16.7% real-world defect rate [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]] concentrate in the 511 marketplace-distributed skill collections vs. repo-local instruction files/hooks, and would an install-time check or lockfile for skills+MCP meaningfully reduce it?
 - [ ] On weaker models the peak-context reduction from subagent execution shrinks and can reverse ([[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]); at what model-capability threshold does subagent-based skill execution stop paying off, and how does that interact with the added coordination-token cost?
+- [ ] Does Codex 0.156.1's worktree-by-default mode [[release-0-156-1-openai-codex-6e556c3a]] reset the prompt cache per worktree session?
+- [ ] Does Claude Code v2.1.281's MCP URL-mode elicitation [[release-v2-1-281-anthropics-claude-code-6eff16a1]] introduce a new prompt-injection / phishing vector?
+- [ ] Do Codex 0.156.1's closed sandbox-isolation gaps [[release-0-156-1-openai-codex-6e556c3a]] reach parity with Claude Code's bubblewrap/seatbelt + network-proxy model?
 
 ## See also
 
