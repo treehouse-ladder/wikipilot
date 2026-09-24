@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-24] daily | agentic-coding — 3 sources, 4 pages
+
+OpenAI Codex CLI v0.156.1 (open-source release details), Claude Code v2.1.281 (changelog), SWE-Serve benchmark (agentic inference-serving evaluation). PR #809.
+
+## [2026-09-24] daily | frontier-models — 1 source, 3 pages
+
+Claude Opus 5.5 System Card: broad capability upgrade, ~40% fewer tool calls in agentic benchmarks, CAISI/NIST safety evals. Updated claude-opus-5-5 entity. PR #810.
+
+## [2026-09-24] daily | ai-in-game-dev — 2 sources, 3 pages
+
+CraftBench-UE (Unreal Engine deterministic coding-agent benchmark, 70 tasks, C++ beats Blueprint by 30–43pp); GameLogicBench (Godot tick-level state-assertion benchmark, 72 tasks, 52.78% best). PR #811.
+
+## [2026-09-24] daily | game-music — 1 source, 2 pages
+
+Onimusha: Way of the Sword OST streaming premiere: 82 tracks, ~4h, Capcom Sound Team (Marika Suzuki, Nozomi Ohmoto). PR #812.
+
+## [2026-09-24] daily | games-of-note — 0 sources, 1 page
+
+Quiet day. No new qualifying sources. Sentinel entry inserted. PR #813.
+
+## [2026-09-24] daily | 5 topics, 7 sources, 13 pages
+
+Daily research complete. PRs #809–#813. Topics: agentic-coding (3 src), frontier-models (1 src), ai-in-game-dev (2 src), game-music (1 src), games-of-note (0 src).
+
 ## [2026-09-22] daily | game-music — 0 sources, 1 page
 
 Quiet day. No new qualifying sources found. Sentinel entry inserted. PR #801.

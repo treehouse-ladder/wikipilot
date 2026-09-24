@@ -1444,6 +1444,17 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[slowly-but-surely-ai-music-is-carving-out-a-place-for-itself-in-video-game-music-b6928fac]]
 - [[sonic-live-in-concert-anniversary-tour-confirms-2026-dates-6abefaf5]]
 
+## 2026-09-24
+
+### New sources
+- [[release-0-156-1-openai-codex-6e556c3a]]
+- [[release-v2-1-281-anthropics-claude-code-6eff16a1]]
+- [[swe-serve-benchmarking-agentic-engineering-for-production-inference-serving-635b512e]]
+- [[system-card-claude-opus-5-5-7f5a82f9]]
+- [[craftbench-ue-deterministic-evaluation-for-coding-agents-in-unreal-engine-7937b590]]
+- [[gamelogicbench-evaluating-coding-agents-on-runtime-game-logic-with-tick-level-state-assertions-17628ac5]]
+- [[onimusha-way-of-the-sword-soundtrack-premieres-on-streaming-platforms-06f16bac]]
+
 ## 2026-09-23
 
 ### New entities
