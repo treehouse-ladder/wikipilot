@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-25] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#820 requeued (claude/daily-2026-09-25/_report — clean, CI green, auto-merge enabled via MCP; gh CLI blocked by invalid GH_TOKEN)
+
 ## [2026-09-24] daily | agentic-coding — 3 sources, 4 pages
 
 OpenAI Codex CLI v0.156.1 (open-source release details), Claude Code v2.1.281 (changelog), SWE-Serve benchmark (agentic inference-serving evaluation). PR #809.
