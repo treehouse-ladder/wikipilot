@@ -1444,6 +1444,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[slowly-but-surely-ai-music-is-carving-out-a-place-for-itself-in-video-game-music-b6928fac]]
 - [[sonic-live-in-concert-anniversary-tour-confirms-2026-dates-6abefaf5]]
 
+## 2026-09-25
+
+### New sources
+- [[release-v2-1-282-anthropics-claude-code-0b14b0c4]]
+- [[compiled-agency-frontier-general-purpose-coding-agents-build-winning-game-players-from-bare-interaction-from-flappy-bird-to-starcraft-ii-and-civilization-4a47806c]]
+- [[capcom-is-getting-my-hopes-up-for-devil-may-cry-6-with-its-talk-of-reactivating-dormant-franchises-e3918f7e]]
+- [[onimusha-way-of-the-sword-review-great-bosses-boring-bloat-9b455f72]]
+- [[here-s-your-first-taste-of-control-resonant-s-eclectic-soundtrack-645e7257]]
+- [[featuring-viral-hit-manalan-mailla-zoe-s-mixtape-from-control-resonant-is-out-now-a55c5e28]]
+
 ## 2026-09-24
 
 ### New sources

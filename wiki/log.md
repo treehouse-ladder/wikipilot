@@ -2874,3 +2874,27 @@ Stranger Than Heaven: Snoop Dogg as Orpheus, Tori Kelly + Ado theme, Satoshi Fuj
 ## [2026-09-23] daily | 5 topics, 13 sources, 22 pages
 
 Daily research complete. PRs #803–#807. Topics: frontier-models (5 src), agentic-coding (1 src), ai-in-game-dev (2 src), games-of-note (4 src), game-music (1 src).
+
+## [2026-09-25] daily | agentic-coding — 1 source, 2 pages
+
+Claude Code v2.1.282: managed-MCP + Chrome governance gate (allowClaudeInChromeWithManagedMcp), telemetry-variable transparency, 400-error fix for web-search history conversations. PR #815.
+
+## [2026-09-25] daily | frontier-models — 0 sources, 1 page
+
+Quiet day. No new frontier-model sources. Swept all allowlist domains; recent-release cluster already fully covered. Roster staleness noted for human config review. PR #816.
+
+## [2026-09-25] daily | ai-in-game-dev — 1 source, 2 pages
+
+Compiled Agency (arXiv 2609.18996): Gauntlet develop-freeze-evaluate framework; coding agent builds frozen game controllers from bare interaction, zero model calls during play; wins StarCraft II and Civilization Freeciv by total conquest on held-out seeds. PR #817.
+
+## [2026-09-25] daily | games-of-note — 2 sources, 3 pages
+
+Onimusha: Way of the Sword launch: 1M copies day-one, franchise lifetime past 10M; first mainline entry in 20+ years. Capcom states dormant-IP reactivation strategy. Split reception (broadly positive; Kotaku: heartbreakingly confused). Summary regenerated. PR #818.
+
+## [2026-09-25] daily | game-music — 2 sources, 3 pages
+
+Control Resonant (Remedy): Petri Alanko score + licensed "Zoe's Mixtape" EP (FRD Records; Vilma Jaa's viral Manalan Mailla ~2.5M plays). Extends 2026 AAA composed-score + licensed pop-layer pattern. PR #819.
+
+## [2026-09-25] daily | 5 topics, 6 sources, 14 pages
+
+Daily research complete. PRs #815–#819. Topics: agentic-coding (1 src), frontier-models (0 src, quiet), ai-in-game-dev (1 src), games-of-note (2 src), game-music (2 src). Note: gh CLI token invalid in cloud env; PRs created via GitHub MCP API.
