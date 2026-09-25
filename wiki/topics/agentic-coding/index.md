@@ -326,7 +326,8 @@ sources:
   - "[[release-v2-1-281-anthropics-claude-code-6eff16a1]]"
   - "[[release-0-156-1-openai-codex-6e556c3a]]"
   - "[[swe-serve-benchmarking-agentic-engineering-for-production-inference-serving-635b512e]]"
-last_updated: 2026-09-24
+  - "[[release-v2-1-282-anthropics-claude-code-0b14b0c4]]"
+last_updated: 2026-09-25
 last_verified: 2026-09-24
 freshness_window_days: 30
 ---
@@ -461,6 +462,22 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-25
+
+**Claude Code v2.1.282 adds a managed-MCP + Chrome governance gate and telemetry-variable transparency; otherwise an incremental reliability release.** The day after v2.1.281, Claude Code v2.1.282 [[release-v2-1-282-anthropics-claude-code-0b14b0c4]] continues the MCP-governance theme this page tracks: it adds the `allowClaudeInChromeWithManagedMcp` managed setting so that `claude --chrome` can run alongside an exclusive `managed-mcp.json` (i.e. an enterprise can pin the browser mode to a single administrator-controlled MCP configuration rather than blocking it outright).
+
+> Added the allowClaudeInChromeWithManagedMcp managed setting to let claude --chrome run alongside an exclusive managed-mcp.json. [[release-v2-1-282-anthropics-claude-code-0b14b0c4]]
+
+On the observability side, the release surfaces which telemetry environment variables are active via a startup notice plus new `/status` and `claude doctor` entries — a transparency step for operators auditing what an agentic CLI is reporting [[release-v2-1-282-anthropics-claude-code-0b14b0c4]].
+
+> Added a startup notice, and /status and claude doctor entries, listing telemetry variables. [[release-v2-1-282-anthropics-claude-code-0b14b0c4]]
+
+The rest is reliability hardening: a fix for every request failing with a 400 error when a conversation's history holds web-search results the API cannot decrypt, and a fix for earlier extended thinking being dropped when an immediate slash command (`/model`, `/rename`, `/artifacts`) fired mid-turn [[release-v2-1-282-anthropics-claude-code-0b14b0c4]].
+
+> Fixed every request failing with a 400 error in conversations whose history holds web search results the API cannot decrypt. [[release-v2-1-282-anthropics-claude-code-0b14b0c4]]
+
+No MCP spec change (still the 2026-07-28 protocol) and no model-default change since Opus 5.5 landed in v2.1.280.
 
 ### Updates 2026-09-24
 
@@ -2570,6 +2587,7 @@ lint stays quiet until each page actually exists:
 
 ## Open questions
 
+- [ ] Does v2.1.282's `allowClaudeInChromeWithManagedMcp` exclusive-`managed-mcp.json` mode [[release-v2-1-282-anthropics-claude-code-0b14b0c4]] materially reduce the config supply-chain defect surface found in ~1-in-6 real setups, or does pinning to one managed MCP file only govern *which* server is reachable while leaving the contents of that server's tool declarations unchecked at install time?
 - [ ] Does Codex 0.155.0's Touch ID verification for MCP requests [[release-0-155-0-openai-codex-5f7daf35]] apply to all MCP tool calls or only a subset (e.g. write/execute operations vs. read-only queries), and is it available only on Apple Silicon Macs with Secure Enclave or on all Touch ID-equipped Macs — and does Claude Code have an equivalent hardware-backed MCP approval gate on any platform?
 - [ ] Does the v2.1.278 server-side auto-mode classifier default [[release-v2-1-278-anthropics-claude-code-369721da]] introduce an availability/latency dependency — the release warns on "billed fallback", implying that when the server classifier is unreachable Claude Code drops to the billed local classifier; is that fallback classifier the same model variant that produced the 0/720 Trajectory Labs indirect-prompt-injection result [[auto-mode-is-now-the-default-in-claude-code-for-pro-max-and-team-plans-756be989]], or a weaker local variant whose safety is unvalidated?
 - [ ] Does Claude Code's new AGENTS.md fallback [[release-v2-1-277-anthropics-claude-code-01cd6a49]] inherit the AGENTS.md configuration smells (Context Bloat, Skill Leakage) catalogued in [[configuration-smells-in-agents-md-files-common-mistakes-in-configuring-coding-agents-7374633f]], and does the CLAUDE.md-over-AGENTS.md precedence create a split-brain config when a repo's Codex users and Claude Code users maintain divergent instruction files?
