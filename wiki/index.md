@@ -70,6 +70,13 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[release-v2-1-283-anthropics-claude-code-35ab415a]]
+- [[release-0-157-0-openai-codex-64f08139]]
+- [[gameasg-bench-benchmarking-autonomous-software-generation-for-game-development-796f97d5]]
+- [[final-fantasy-vii-remake-original-soundtrack-plus-music-review-ab0ce515]]
+- [[wolverine-already-estimated-to-be-ps5s-6th-top-grossing-game-of-2026-and-selling-faster-than-death-stranding-2-and-ghost-of-yotei-3d8b381b]]
+- [[king-signs-collective-bargaining-agreement-with-swedish-unions-5e5f8b24]]
+- [[wardogs-ceo-studio-doesnt-hire-people-who-advocate-against-crunch-445f1b5c]]
 - [[release-0-155-0-openai-codex-5f7daf35]]
 - [[fareidolia-from-blue-archive-devs-lets-you-call-characters-by-name-and-speak-your-dialogue-choices-out-loud-34570ba8]]
 - [[ai-takes-center-stage-at-tokyo-game-show-2026-ab5a550e]]
