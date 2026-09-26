@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-26] daily | frontier-models — 0 sources, 1 page
+
+Quiet day — no new qualifying sources. Topic page updated with dated quiet-day entry. PR #821.
+
+## [2026-09-26] daily | agentic-coding — 2 sources, 3 pages
+
+Claude Code v2.1.283 (availableModelsMatch managed setting, /doctor prompt-audit, managed sandbox fail-closed); Codex 0.157.0 (GPT-6 Sol/Luna on Bedrock, background server startup, /import in remote sessions). PR #822.
+
+## [2026-09-26] daily | ai-in-game-dev — 1 source, 2 pages
+
+GameASG-Bench (arXiv 2609.21293): 47 browser-native game-generation tasks spanning 12 genres, L1/L2 behavioral checks, pre-generation interface spec evaluation. PR #823.
+
+## [2026-09-26] daily | game-music — 1 source, 2 pages
+
+RPGFan review of FF VII Remake Original Soundtrack Plus: Aerith-heavy, polished but "redundant" companion release. PR #824.
+
+## [2026-09-26] daily | games-of-note — 3 sources, 4 pages
+
+Wolverine commercial data confirmed (1.9M copies / $130M in 3 days, PS5 #1 first-party 2026 despite 77 MC); King Sweden CBA signed at eleventh hour (strike averted, takes effect April 1 2027); Wardogs CEO crunch-screening controversy. PR #825.
+
+## [2026-09-26] daily | 5 topics, 7 sources, 12 pages
+
+Daily research complete. PRs #821–#825. Topics: frontier-models (0 src), agentic-coding (2 src), ai-in-game-dev (1 src), game-music (1 src), games-of-note (3 src).
+
 ## [2026-09-24] daily | agentic-coding — 3 sources, 4 pages
 
 OpenAI Codex CLI v0.156.1 (open-source release details), Claude Code v2.1.281 (changelog), SWE-Serve benchmark (agentic inference-serving evaluation). PR #809.
