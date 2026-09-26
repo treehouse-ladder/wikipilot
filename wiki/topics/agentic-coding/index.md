@@ -327,7 +327,9 @@ sources:
   - "[[release-0-156-1-openai-codex-6e556c3a]]"
   - "[[swe-serve-benchmarking-agentic-engineering-for-production-inference-serving-635b512e]]"
   - "[[release-v2-1-282-anthropics-claude-code-0b14b0c4]]"
-last_updated: 2026-09-25
+  - "[[release-v2-1-283-anthropics-claude-code-35ab415a]]"
+  - "[[release-0-157-0-openai-codex-64f08139]]"
+last_updated: 2026-09-26
 last_verified: 2026-09-24
 freshness_window_days: 30
 ---
@@ -462,6 +464,42 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-26
+
+**Claude Code v2.1.283 adds enterprise model-governance managed settings and an older-model prompt-audit; OpenAI Codex 0.157.0 extends GPT-6 Sol/Luna to Bedrock and turns on automatic background-server startup.** Claude Code v2.1.283 [[release-v2-1-283-anthropics-claude-code-35ab415a]] extends the enterprise-governance surface this page tracks with two new managed settings: `availableModelsMatch: "exact"` pins an `availableModels` entry to the exact version it names so new model releases stay blocked until an administrator lists them, and `deniedModels` blocks specific models even when `availableModels` would otherwise allow them.
+
+> Added `availableModelsMatch` managed setting: with "exact", an `availableModels` entry allows only the model version it names, so new releases stay blocked until listed [[release-v2-1-283-anthropics-claude-code-35ab415a]]
+
+> Added `deniedModels` managed setting to block specific models, even when `availableModels` allows them [[release-v2-1-283-anthropics-claude-code-35ab415a]]
+
+The same release adds `/doctor prompt-audit` (also `/checkup prompt-audit`), which audits a project's CLAUDE.md, skills, agents and commands for prompting patterns written for older models — a maintenance tool for the instruction-file layer this page tracks.
+
+> Added `/doctor prompt-audit` (also `/checkup prompt-audit`) to audit your CLAUDE.md files, skills, agents and commands for prompting patterns written for older models [[release-v2-1-283-anthropics-claude-code-35ab415a]]
+
+Continuing the telemetry-transparency theme from v2.1.282, MCP tool, WebFetch and WebSearch outputs are now attached to the `tool.output` OpenTelemetry span event under `OTEL_LOG_TOOL_CONTENT=1` [[release-v2-1-283-anthropics-claude-code-35ab415a]]. A dynamic-workflows correctness fix stops a workflow started during a model fallback from running every subagent on the fallback model instead of retrying the configured model [[release-v2-1-283-anthropics-claude-code-35ab415a]].
+
+> Fixed dynamic workflows started during a model fallback running every agent on the fallback model instead of retrying the configured model [[release-v2-1-283-anthropics-claude-code-35ab415a]]
+
+Two security/sandbox fixes land: the Windows PowerShell tool no longer lets `cmd /c rd`/`rmdir`/`del`/`erase` delete drive roots, the home folder and other paths `Remove-Item` refuses, and managed `sandbox` settings now fail closed on a single invalid nested value rather than being ignored wholesale [[release-v2-1-283-anthropics-claude-code-35ab415a]].
+
+> Windows: Fixed the PowerShell tool letting `cmd /c rd`, `rmdir`, `del` or `erase` delete drive roots, the home folder and other folders that `Remove-Item` refuses [[release-v2-1-283-anthropics-claude-code-35ab415a]]
+
+> Fixed managed `sandbox` settings being ignored entirely when one nested value was invalid; the invalid value now fails closed and the rest of the block still applies [[release-v2-1-283-anthropics-claude-code-35ab415a]]
+
+Prompt-cache and MCP hardening continue: `DISABLE_PROMPT_CACHING_HAIKU` now applies when Haiku is the session's main model, `/context` counts MCP server instructions as their own row toward the total, and a brief HTTP 404 from a stateless remote MCP server (e.g. a proxy mid-redeploy) no longer leaves it unusable for the rest of the session [[release-v2-1-283-anthropics-claude-code-35ab415a]].
+
+> Fixed `/context` not counting MCP server instructions: they now appear as their own row and count toward the total [[release-v2-1-283-anthropics-claude-code-35ab415a]]
+
+**OpenAI Codex 0.157.0** [[release-0-157-0-openai-codex-64f08139]] follows the previous day's 0.156.1 by extending GPT-6 Sol / Luna to Amazon Bedrock with migration prompts off older models, enabling automatic background-server startup for eligible interactive sessions (with recovery choices when server settings are incompatible), and making `/import` available in remote and local background-server sessions.
+
+> Added GPT-6 Sol and Luna, including Amazon Bedrock support and migration prompts for older models. [[release-0-157-0-openai-codex-64f08139]]
+
+> Enabled automatic background-server startup for eligible interactive sessions, with recovery choices when server settings are incompatible. [[release-0-157-0-openai-codex-64f08139]]
+
+No MCP spec change (still the 2026-07-28 protocol) and no Claude Code model-default change since Opus 5.5 landed in v2.1.280.
+
+_no contradictions or gaps known yet (last reviewed: 2026-09-26)_
 
 ### Updates 2026-09-25
 
@@ -2587,6 +2625,8 @@ lint stays quiet until each page actually exists:
 
 ## Open questions
 
+- [ ] Does v2.1.283's `availableModelsMatch: "exact"` + `deniedModels` model-governance [[release-v2-1-283-anthropics-claude-code-35ab415a]] materially shrink the agentic-coding attack surface, or does it only govern which model runs while leaving the runtime tool-output trust-level confusion unaddressed — mirroring the open enterprise-managed-settings-vs-runtime-injection question?
+- [ ] Does `/doctor prompt-audit` [[release-v2-1-283-anthropics-claude-code-35ab415a]] detect RL-co-adaptation tool-schema drift (newer models inventing extra tool-call fields), or only stale textual prompt patterns (old model names, deprecated thinking keywords) in CLAUDE.md/skills/agents?
 - [ ] Does v2.1.282's `allowClaudeInChromeWithManagedMcp` exclusive-`managed-mcp.json` mode [[release-v2-1-282-anthropics-claude-code-0b14b0c4]] materially reduce the config supply-chain defect surface found in ~1-in-6 real setups, or does pinning to one managed MCP file only govern *which* server is reachable while leaving the contents of that server's tool declarations unchecked at install time?
 - [ ] Does Codex 0.155.0's Touch ID verification for MCP requests [[release-0-155-0-openai-codex-5f7daf35]] apply to all MCP tool calls or only a subset (e.g. write/execute operations vs. read-only queries), and is it available only on Apple Silicon Macs with Secure Enclave or on all Touch ID-equipped Macs — and does Claude Code have an equivalent hardware-backed MCP approval gate on any platform?
 - [ ] Does the v2.1.278 server-side auto-mode classifier default [[release-v2-1-278-anthropics-claude-code-369721da]] introduce an availability/latency dependency — the release warns on "billed fallback", implying that when the server classifier is unreachable Claude Code drops to the billed local classifier; is that fallback classifier the same model variant that produced the 0/720 Trajectory Labs indirect-prompt-injection result [[auto-mode-is-now-the-default-in-claude-code-for-pro-max-and-team-plans-756be989]], or a weaker local variant whose safety is unvalidated?
