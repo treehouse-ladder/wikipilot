@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-27] health | weekly sweep — 1 dispute filed
+
+Weekly health sweep 2026-09-27: 13 candidate sets scanned across 8 parallel agents. 1 dispute filed (grok-4.7 Grok 4.6 token baseline: 38k vs 36k). 36 stale synthesis pages, 9 orphans, 0 broken wikilinks. PR #827 opened with auto-merge queued.
+
 ## [2026-09-26] daily | frontier-models — 0 sources, 1 page
 
 Quiet day — no new qualifying sources. Topic page updated with dated quiet-day entry. PR #821.

@@ -3,7 +3,7 @@ title: "Grok 4.7"
 kind: entity
 aliases: ["Grok4.7", "grok 4.7", "SpaceXAI Grok 4.7"]
 sources: ["[[benchmarking-grok-4-7-653374de]]", "[[xai-launches-grok-4-7-at-bargain-prices-but-benchmarks-reveal-a-wide-gap-to-claude-and-gpt-6-70713dc1]]"]
-last_updated: 2026-09-22
+last_updated: 2026-09-27
 last_verified: 2026-09-22
 freshness_window_days: 30
 input_cost_per_mtoken: 2.00
@@ -37,7 +37,7 @@ Grok 4.7 is SpaceXAI's (formerly xAI) flagship model as of 2026-09-21, **superse
 
 ## Disputes
 
-_none_
+- [[benchmarking-grok-4-7-653374de]] claims Grok 4.6 (xhigh tier) used 38k output tokens per Intelligence Index task; [[xai-launches-grok-4-7-at-bargain-prices-but-benchmarks-reveal-a-wide-gap-to-claude-and-gpt-6-70713dc1]] claims 36k for "Grok 4.6 High". Status: unresolved — the two sources may reference different evaluation tiers (xhigh vs High) for Grok 4.6, or the figures may reflect different benchmark runs; the exact baseline affects the claimed 2.25× token-efficiency gap between Grok 4.7 and its predecessor.
 
 ## Open questions
 
