@@ -6,6 +6,26 @@ Chronological, append-only record of every routine run. Parseable with `grep "^#
 
 pr#833 kind=requeue resolved=true — wiki(ai-in-game-dev): regenerate summary 2026-09-27; CLEAN+green, auto-merge enabled via squash
 
+## [2026-09-27] daily | game-music — 0 sources, 1 page
+
+Quiet day. Bumped dates, inserted update sentinel, added Borderlands 4 open question.
+
+## [2026-09-27] daily | games-of-note — 1 source, 2 pages
+
+Undead Labs completes Xbox divestiture as independent, employee-owned studio but immediately announces significant layoffs including SoD3 staff; seeking new publisher.
+
+## [2026-09-27] daily | ai-in-game-dev — 1 source, 2 pages
+
+Unity Insight (arXiv 2609.27585): first persistent LLM-facing cross-file code–asset index for Unity projects; 53% fewer tokens / 52% less wall-clock vs general-purpose exploration agent.
+
+## [2026-09-27] daily | agentic-coding — 1 source, 2 pages
+
+Cursor Rollouts security review: end-to-end automation over multi-step tasks; outputs require verification before production use.
+
+## [2026-09-27] daily | frontier-models — 0 sources, 1 page
+
+Quiet day. Bumped dates.
+
 ## [2026-09-27] manual | conflict-resolver — 0 rebased, 0 requeued, 1 lint-fixed, 0 failed
 
 pr#827 kind=lint_fix resolved=true sha=cfecd4a0 — fixed 1 broken-wikilink ([[entities/grok-4.7.md]] → [[grok-4.7]] in health-2026-09-27 report); auto-merge re-queued; also requeued pr#831 (games-of-note, CLEAN+green)
