@@ -70,6 +70,9 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[undead-labs-makes-significant-layoffs-after-splitting-from-xbox-f290ef02]]
+- [[unity-insight-a-production-code-asset-index-for-llm-coding-agents-in-unity-projects-820cf77e]]
+- [[bots-for-the-last-mile-rollouts-security-review-b7f53869]]
 - [[release-v2-1-283-anthropics-claude-code-35ab415a]]
 - [[release-0-157-0-openai-codex-64f08139]]
 - [[gameasg-bench-benchmarking-autonomous-software-generation-for-game-development-796f97d5]]
