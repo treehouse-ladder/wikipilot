@@ -2930,3 +2930,7 @@ Control Resonant (Remedy): Petri Alanko score + licensed "Zoe's Mixtape" EP (FRD
 ## [2026-09-25] daily | 5 topics, 6 sources, 14 pages
 
 Daily research complete. PRs #815–#819. Topics: agentic-coding (1 src), frontier-models (0 src, quiet), ai-in-game-dev (1 src), games-of-note (2 src), game-music (2 src). Note: gh CLI token invalid in cloud env; PRs created via GitHub MCP API.
+
+## [2026-09-27] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#834 (game-music daily 2026-09-27) requeued via enable_pr_auto_merge (mergeable_state=clean, CI green). pr#833 (ai-in-game-dev summary) skipped — mergeable_state=unknown (computing after pr#832 merged); will resolve on next push event.
