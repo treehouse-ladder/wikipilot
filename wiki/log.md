@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-27] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#837 kind=rebase resolved=true sha=533519ea — rebased claude/daily-2026-09-27/_report onto main; resolved wiki/log.md conflict (append-only merge, all entries kept); auto-merge enabled via MCP
+
 ## [2026-09-27] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#833 kind=requeue resolved=true — wiki(ai-in-game-dev): regenerate summary 2026-09-27; CLEAN+green, auto-merge enabled via squash
