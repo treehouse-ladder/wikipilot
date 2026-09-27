@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-27] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#833 kind=requeue resolved=true — wiki(ai-in-game-dev): regenerate summary 2026-09-27; CLEAN+green, auto-merge enabled via squash
+
 ## [2026-09-27] manual | conflict-resolver — 0 rebased, 0 requeued, 1 lint-fixed, 0 failed
 
 pr#827 kind=lint_fix resolved=true sha=cfecd4a0 — fixed 1 broken-wikilink ([[entities/grok-4.7.md]] → [[grok-4.7]] in health-2026-09-27 report); auto-merge re-queued; also requeued pr#831 (games-of-note, CLEAN+green)
