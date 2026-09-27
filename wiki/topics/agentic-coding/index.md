@@ -329,7 +329,8 @@ sources:
   - "[[release-v2-1-282-anthropics-claude-code-0b14b0c4]]"
   - "[[release-v2-1-283-anthropics-claude-code-35ab415a]]"
   - "[[release-0-157-0-openai-codex-64f08139]]"
-last_updated: 2026-09-26
+  - "[[bots-for-the-last-mile-rollouts-security-review-b7f53869]]"
+last_updated: 2026-09-27
 last_verified: 2026-09-24
 freshness_window_days: 30
 ---
@@ -464,6 +465,30 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-27
+
+**Cursor ships two "last mile" agentic bots — Rollouts (deploy-health monitoring) and Security Review (per-PR exploitable-bug review) — extending the agentic-coding loop past merge into deployment and security.** Cursor's blog [[bots-for-the-last-mile-rollouts-security-review-b7f53869]] introduces a new class of agent this page hasn't tracked: agents that act *after* the code is written, on the deploy and review last mile rather than in the edit loop. **Rollouts** attaches a monitor to each PR, reads the diff, writes a monitoring plan as a PR comment, and after deploy compares live signals against a pre-deploy baseline, classifying change health per environment.
+
+> Rollouts attaches a monitor to every pull request and watches the change as it deploys, reporting change health per environment: verified healthy, regression detected, or inconclusive. [[bots-for-the-last-mile-rollouts-security-review-b7f53869]]
+
+> When a pull request opens, Rollouts reads the diff and the systems it touches, then writes a monitoring plan as a PR comment. [[bots-for-the-last-mile-rollouts-security-review-b7f53869]]
+
+Rollouts is an integration-heavy agent, wiring source control, CD, and telemetry providers into the loop — which also widens its trust/egress surface relative to an edit-loop agent.
+
+> Rollouts connects to Origin or GitHub for source control, to your continuous delivery system for deploy events, and to Datadog and other telemetry providers for signals. [[bots-for-the-last-mile-rollouts-security-review-b7f53869]]
+
+**Security Review** posts one review comment per PR reporting exploitable bugs, extending Cursor's existing PR-review surface with a security-specific reviewer that reasons about the whole codebase, not just the diff.
+
+> Security Review reads every pull request in the context of the codebase and posts one review comment reporting exploitable bugs. [[bots-for-the-last-mile-rollouts-security-review-b7f53869]]
+
+> Security Review looks for injection across SQL, command, and template surfaces, along with authentication and authorization bypasses, including checks that a refactor stopped running. [[bots-for-the-last-mile-rollouts-security-review-b7f53869]]
+
+Both are gated to paid enterprise tiers.
+
+> Both are available today on Teams and Enterprise plans. [[bots-for-the-last-mile-rollouts-security-review-b7f53869]]
+
+No Claude Code release newer than v2.1.283 [[release-v2-1-283-anthropics-claude-code-35ab415a]] and no MCP spec change today; OpenAI Codex 0.157.1 (2026-09-26) is an internal daemon/MCP/PTY patch over the already-tracked 0.157.0 [[release-0-157-0-openai-codex-64f08139]] with the CLI schema unchanged, so it is not separately ingested.
 
 ### Updates 2026-09-26
 
@@ -2625,6 +2650,8 @@ lint stays quiet until each page actually exists:
 
 ## Open questions
 
+- [ ] Does Cursor's Security Review (one review comment reporting exploitable bugs per PR) [[bots-for-the-last-mile-rollouts-security-review-b7f53869]] measurably outperform the general-purpose Bugbot reviewer on the security-vulnerability subset, and what is its false-negative rate against real-world agentic-PR security defects? No methodology or benchmark accompanies the announcement.
+- [ ] What is the prompt-injection / exfiltration blast radius of Cursor's Rollouts agent [[bots-for-the-last-mile-rollouts-security-review-b7f53869]], given it connects to production telemetry (Datadog), CD deploy events, and source control — does it run in the same sandbox/permission tier as Cursor's edit-loop coding agents, or does wiring in production signal sources broaden network egress in a way that increases attack surface?
 - [ ] Does v2.1.283's `availableModelsMatch: "exact"` + `deniedModels` model-governance [[release-v2-1-283-anthropics-claude-code-35ab415a]] materially shrink the agentic-coding attack surface, or does it only govern which model runs while leaving the runtime tool-output trust-level confusion unaddressed — mirroring the open enterprise-managed-settings-vs-runtime-injection question?
 - [ ] Does `/doctor prompt-audit` [[release-v2-1-283-anthropics-claude-code-35ab415a]] detect RL-co-adaptation tool-schema drift (newer models inventing extra tool-call fields), or only stale textual prompt patterns (old model names, deprecated thinking keywords) in CLAUDE.md/skills/agents?
 - [ ] Does v2.1.282's `allowClaudeInChromeWithManagedMcp` exclusive-`managed-mcp.json` mode [[release-v2-1-282-anthropics-claude-code-0b14b0c4]] materially reduce the config supply-chain defect surface found in ~1-in-6 real setups, or does pinning to one managed MCP file only govern *which* server is reachable while leaving the contents of that server's tool declarations unchecked at install time?
