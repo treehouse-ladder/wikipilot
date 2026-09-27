@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-27] manual | conflict-resolver — 0 rebased, 0 requeued, 1 lint-fixed, 0 failed
+
+pr#827 kind=lint_fix resolved=true sha=cfecd4a0 — fixed 1 broken-wikilink ([[entities/grok-4.7.md]] → [[grok-4.7]] in health-2026-09-27 report); auto-merge re-queued
+
 ## [2026-09-27] health | weekly sweep — 1 dispute filed
 
 Weekly health sweep 2026-09-27: 13 candidate sets scanned across 8 parallel agents. 1 dispute filed (grok-4.7 Grok 4.6 token baseline: 38k vs 36k). 36 stale synthesis pages, 9 orphans, 0 broken wikilinks. PR #827 opened with auto-merge queued.
