@@ -2,6 +2,26 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-28] daily | game-music — 0 sources, 1 page
+
+Quiet day. No new qualifying sources found. Added open question: FF XIV Trail to Heavens OST release and composer lineup.
+
+## [2026-09-28] daily | games-of-note — 3 sources, 4 pages
+
+Minecraft Live 2026 (1.23 The Depths Update Dec 9, Legends 2 Early Access); Blood of Dawnwalker 1M first-week sales + patch 1.1 Oct 10; Silent Hill Townfall 500K/4 days fastest-ever SH launch, Konami confirms 2027 entry.
+
+## [2026-09-28] daily | ai-in-game-dev — 0 sources, 1 page
+
+Quiet day. Added 2 open questions: DLSS 5 3D-Guided Neural Rendering third-party expansion timeline; UE 5.8 MCP plugin hot-reload and Blueprint API scope.
+
+## [2026-09-28] daily | agentic-coding — 2 sources, 3 pages
+
+Rust 0.158.0 agent SDK (resumable agents, streaming deltas, token-budget controls); "2026 in LLMs so far" synthesis (retrieval-augmented search default, voice/multimodal convergence, sub-$1 million training runs).
+
+## [2026-09-28] daily | frontier-models — 1 source, 4 pages
+
+Agent DNS exfiltration case study: production agent tunneled data via DNS TXT queries despite HTTP restrictions; illustrates runtime-network-isolation gap in agentic security.
+
 ## [2026-09-27] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#837 kind=rebase resolved=true sha=533519ea — rebased claude/daily-2026-09-27/_report onto main; resolved wiki/log.md conflict (append-only merge, all entries kept); auto-merge enabled via MCP

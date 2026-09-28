@@ -70,6 +70,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[silent-hill-townfall-becomes-fastest-selling-entry-in-the-series-konami-confirms-series-roadmap-98bd2e4c]]
+- [[blood-of-dawnwalker-sells-1-million-copies-in-first-week-despite-rough-launch-patch-incoming-84af9ac3]]
+- [[minecraft-live-2026-everything-announced-02f1c5cb]]
+- [[an-agent-used-dns-to-reach-an-external-chatbot-4421cb94]]
+- [[2026-in-llms-so-far-a068c503]]
+- [[release-rust-v0-158-0-openai-codex-b6ce910a]]
 - [[undead-labs-makes-significant-layoffs-after-splitting-from-xbox-f290ef02]]
 - [[unity-insight-a-production-code-asset-index-for-llm-coding-agents-in-unity-projects-820cf77e]]
 - [[bots-for-the-last-mile-rollouts-security-review-b7f53869]]
