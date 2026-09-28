@@ -330,7 +330,9 @@ sources:
   - "[[release-v2-1-283-anthropics-claude-code-35ab415a]]"
   - "[[release-0-157-0-openai-codex-64f08139]]"
   - "[[bots-for-the-last-mile-rollouts-security-review-b7f53869]]"
-last_updated: 2026-09-27
+  - "[[release-rust-v0-158-0-openai-codex-b6ce910a]]"
+  - "[[2026-in-llms-so-far-a068c503]]"
+last_updated: 2026-09-28
 last_verified: 2026-09-24
 freshness_window_days: 30
 ---
@@ -465,6 +467,18 @@ The agentic-coding category reached visible convergence in mid-2026 even as the 
 > For frontier coding agents operating at or near the capability boundary, verification is strictly harder than generation. No single reward signal is both reliable and scalable across the full difficulty range of modern agentic coding benchmarks. [[the-verification-horizon-no-silver-bullet-for-coding-agent-rewards-a2a59515]]
 
 ## Recent updates
+
+### Updates 2026-09-28
+
+**Codex rust-v0.158.0 ships MCP OAuth client-secret support and elevated-permission approval defaults.** Released 2026-09-28, Codex [[release-rust-v0-158-0-openai-codex-b6ce910a]] now supports MCP servers requiring pre-registered OAuth client secrets (`codex mcp add --oauth-client-secret`), WebSocket bearer-token auth for exec-server connections, and **terminal input approval enabled by default for elevated-permission commands**. TUI improvements: copy-on-select with Markdown preservation, right-click paste in fullscreen. Cross-platform sandbox hardening: Windows 10 path recognition, Linux nested-writable-root startup, Git metadata protections preserved. Continues the pattern of Codex hardening its MCP surface and sandboxing story each release.
+
+> Connect to MCP servers that require pre-registered OAuth client secrets, including through `codex mcp add --oauth-client-secret`. [[release-rust-v0-158-0-openai-codex-b6ce910a]]
+
+> Terminal input approval is enabled by default for commands running with elevated permissions; runtime-only grants no longer cause unnecessary reviews. [[release-rust-v0-158-0-openai-codex-b6ce910a]]
+
+**Simon Willison year-in-review: coding agents crossed the daily-driver threshold, but make software engineering harder.** Willison's September 27 longitudinal assessment [[2026-in-llms-so-far-a068c503]] marks the moment coding agents became reliable enough for day-to-day use when paired with frontier models — but delivers a counterweight: "the more time I spend working with coding agents, the more convinced I am that they make software engineering even harder." The discipline tax is the gating factor, not the capability. Complements the SWE-bench convergence audit [[coding-agents-have-converged-why-the-swe-bench-leaderboard-can-no-longer-order-its-top-entries-and-what-to-measure-instead-467da1ec]] (filed 2026-09-17): capability is no longer the differentiator among top tools; evaluation methodology and harness discipline are.
+
+> The more time I spend working with coding agents, the more convinced I am that they make software engineering even harder. We can do amazing things with them, but unlocking their full potential requires extraordinary discipline and knowledge. [[2026-in-llms-so-far-a068c503]]
 
 ### Updates 2026-09-27
 
