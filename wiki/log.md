@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-29] daily | 5 topics, 7 sources, 7 pages
+
+Daily research complete. PRs #845–#850. Topics: agentic-coding (1 src, 2 pages), frontier-models (1 src, 1 page), ai-in-game-dev (3 src, 1 page + Summary regen), games-of-note (1 src, 1 page), game-music (1 src, 1 page).
+
+## [2026-09-29] daily | game-music — 1 source, 1 page
+
+Borderlands 4 vinyl 2LP preorder via Laced Records (Feb 2027, £36, "Max Mayhem" swirl + standard black; composers Finishing Move Inc., Cris Velasco, Joshua Carro, Christian Pacaud). PR #849.
+
+## [2026-09-29] daily | games-of-note — 1 source, 1 page
+
+Bill Skarsgård announced as Physint lead at TGS 2026 Xbox showcase; cast includes Charlee Fraser, Don Lee, Minami Hamabe; first update since PlayStation→Xbox switch. PR #848.
+
+## [2026-09-29] daily | ai-in-game-dev — 3 sources, 1 page
+
+SWE-Game benchmark (247 tasks / 41 Godot games, Opus5 leads all 5 task types); Tripo P2.0 (first native quad-mesh AI 3D generator, 25K quads); Alchemy3D-1M (1.25M assets, 1.38M editing pairs, 7 types). Summary regenerated. PR #847, #850.
+
+## [2026-09-29] daily | frontier-models — 1 source, 1 page
+
+OpenAI to unveil GPT-6 Cyber model plus cybersecurity-focused product. PR #846.
+
+## [2026-09-29] daily | agentic-coding — 1 source, 2 pages
+
+Claude Code v2.1.284 released; new entity claude-sonnet-5-5 added. PR #845.
+
 ## [2026-09-28] daily | game-music — 0 sources, 1 page
 
 Quiet day. No new qualifying sources found. Added open question: FF XIV Trail to Heavens OST release and composer lineup.

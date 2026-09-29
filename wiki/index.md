@@ -1460,6 +1460,20 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[slowly-but-surely-ai-music-is-carving-out-a-place-for-itself-in-video-game-music-b6928fac]]
 - [[sonic-live-in-concert-anniversary-tour-confirms-2026-dates-6abefaf5]]
 
+## 2026-09-29
+
+### New entities
+- [[claude-sonnet-5-5]]
+
+### New sources
+- [[release-v2-1-284-anthropics-claude-code-cdf0d632]]
+- [[openai-to-unveil-gpt-6-cyber-model-plus-a-first-of-its-kind-cybersecurity-focused-product-to-help-deploy-it-419269a1]]
+- [[swe-game-can-coding-agents-build-the-games-we-want-4e779b73]]
+- [[tripo-ai-launches-p2-0-model-to-generate-native-quad-meshes-for-production-pipelines-55aa361e]]
+- [[scaling-versatile-3d-assets-editing-with-a-million-scale-dataset-64cdd29a]]
+- [[kojima-says-physint-is-making-steady-progress-and-stars-bill-skarsgard-in-first-update-since-switching-to-xbox-4a998ab1]]
+- [[borderlands-4-vinyl-soundtrack-now-up-for-preorder-via-laced-records-c3bba129]]
+
 ## 2026-09-25
 
 ### New sources
