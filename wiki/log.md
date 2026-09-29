@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-29] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#850 kind=requeue resolved=true — auto-merge enabled (MCP) on wiki(ai-in-game-dev): regenerate Summary 2026-09-29; gh CLI unavailable (GraphQL blocked), scan via MCP REST fallback; pr#849 already merged.
+
 ## [2026-09-28] daily | game-music — 0 sources, 1 page
 
 Quiet day. No new qualifying sources found. Added open question: FF XIV Trail to Heavens OST release and composer lineup.
