@@ -58,8 +58,9 @@ sources:
   - "[[unlocking-the-codex-harness-how-we-built-the-app-server-e205ffac]]"
   - "[[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]]"
   - "[[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]"
-last_updated: 2026-09-18
-last_verified: 2026-08-10
+  - "[[beyond-the-model-demystifying-harness-effects-in-software-engineering-agents-d5e20119]]"
+last_updated: 2026-09-30
+last_verified: 2026-09-30
 freshness_window_days: 30
 ---
 
@@ -88,6 +89,10 @@ The harness encompasses several distinct responsibilities: task specification, c
 **Harness-as-product: OpenAI ships the Agents API as a managed Codex harness (September 2026).** OpenAI's Agents API (public beta 2026-09-10) exposes the Codex harness as an OpenAI-managed cloud service, handling "session orchestration, context compaction, and recovery" with "durable sessions to continue work across turns" [[introducing-the-agents-api-b32e9b84]]. The companion engineering writeup [[unlocking-the-codex-harness-how-we-built-the-app-server-e205ffac]] makes the harness architecture concrete as "a client-friendly, bidirectional JSON-RPC API" managing conversation state, stream execution, tools, sandbox/approval policies, and cross-turn carry. This productizes the harness layer in a parallel direction to Cursor Projects' coordinator agent — both are vendor-managed harness infrastructure that the developer consumes as a service rather than configures locally.
 
 > The Agents API was released in public beta, allowing you to build agents with a managed Codex harness while OpenAI handles session orchestration, context compaction, and recovery. [[introducing-the-agents-api-b32e9b84]]
+
+**NanoHarness empirically isolates the contribution of each harness component (September 2026).** A systematic study (arXiv 2609.32459) introduces NanoHarness, a minimal decomposable framework with 5 components — tool registry, context compression, explicit planning, subagents, and lazy skills — and evaluates their individual contributions via ablation on mini-SWE-agent and OpenCode [[beyond-the-model-demystifying-harness-effects-in-software-engineering-agents-d5e20119]]. The key finding reinforces the Binding Constraint Thesis: "harness effects" frequently dominate model-intrinsic capability, and benchmark comparisons across differently-scaffolded agents systematically misattribute scaffolding improvements to the model. The paper is significant as the first to decompose a minimal harness into individually controlled components with empirical effect sizes.
+
+> Systematic empirical study of harness effects; NanoHarness with 5 components (tool registry, context compression, explicit planning, subagents, lazy skills) [[beyond-the-model-demystifying-harness-effects-in-software-engineering-agents-d5e20119]]
 
 **Multi-Harness RL supplies quantitative evidence for the harness-dominates side of the Binding Constraint Thesis (September 2026).** An arXiv paper (2609.04518) reports "the harness a coding agent runs through moves its solve rate by a factor of 4.3; the recipe that trained it moves it by 1.16" [[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]] — the deploy-time harness dominates the training recipe on this measurement. However, the same paper's negative portability result tempers the multi-harness RL co-training thesis: "Multi-harness exposure and cross-harness credit assignment are distinct interventions, and the second does not by itself make the learned policy harness-independent" [[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]]. Cross-harness credit's held-out benefit is a statistical non-event, so training on diverse harnesses does not automatically yield harness-portable capability.
 
