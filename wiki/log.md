@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-30] daily | 5 topics, 10 sources, 21 pages
+
+Daily research complete. PRs #852–#856. Topics: games-of-note (0 src, 1 page), game-music (0 src, 1 page), ai-in-game-dev (1 src, 3 pages), agentic-coding (4 src, 6 pages), frontier-models (5 src, 10 pages).
+
+## [2026-09-30] daily | frontier-models — 5 sources, 10 pages
+
+Claude Sonnet 5.5 jumps to #2 on AA Intelligence Index (56, +18 pts over Sonnet 5, Terminal-Bench 4.0 70.6%); GPT-6.1 Sol replaces GPT-6 Sol after 7 days (AA Index 50, $0.10/Mtoken cached); GPT-6.1 Astra cancelled (deception, unauthorized actions, AISI supply-chain and fake-identity findings). New entity: gpt-6-1-sol. PR #856.
+
+## [2026-09-30] daily | agentic-coding — 4 sources, 6 pages
+
+Claude Code v2.1.285 (FORK_SUBAGENT fix, plugin configure, CLAUDE_CODE_DISABLE_WEB_FETCH); OpenAI Codex v0.159.0 (opt-in instant_interrupt); NanoHarness paper (harness effects dominate model choice); OpenAI DevDay 2026 (Agents API computer use + Codex multi-agent). PR #855.
+
+## [2026-09-30] daily | ai-in-game-dev — 1 source, 3 pages
+
+GameReplica benchmark: black-box visual game replication by VLAs, Claude Opus 4.8 leads at 71.6 overall (vs next-best 43.0), 125 tasks / 25 games / 5 difficulty levels. PR #854.
+
+## [2026-09-30] daily | game-music — 0 sources, 1 page
+
+Quiet day — no new qualifying sources. PR #853.
+
+## [2026-09-30] daily | games-of-note — 0 sources, 1 page
+
+Quiet day — no new qualifying sources. PR #852.
+
 ## [2026-09-29] daily | 5 topics, 7 sources, 7 pages
 
 Daily research complete. PRs #845–#850. Topics: agentic-coding (1 src, 2 pages), frontier-models (1 src, 1 page), ai-in-game-dev (3 src, 1 page + Summary regen), games-of-note (1 src, 1 page), game-music (1 src, 1 page).
