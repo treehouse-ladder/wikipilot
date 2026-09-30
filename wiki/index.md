@@ -62,6 +62,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gpt-6-astra]]
 - [[claude-fable-5.1]]
 - [[qwen3.7-max]]
+- [[gpt-6-1-sol]]
 
 ## Comparisons
 
@@ -1517,3 +1518,13 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[ninja-theory-now-expected-to-close-as-deal-falls-apart-a30a8db4]]
 - [[halo-s-next-game-is-coming-from-an-unexpected-developer-activision-c6bfb30f]]
 - [[stranger-than-heaven-brings-stars-music-violence-together-this-winter-5cde8206]]
+- [[gamereplica-a-benchmark-for-black-box-visual-game-replication-by-vision-language-agents-761ca2bd]]
+- [[release-v2-1-285-anthropics-claude-code-ff1ca072]]
+- [[release-0-159-0-openai-codex-9b9d615d]]
+- [[beyond-the-model-demystifying-harness-effects-in-software-engineering-agents-d5e20119]]
+- [[devday-2026-recap-6071f63e]]
+- [[introducing-claude-sonnet-5-5-4e3ca8a9]]
+- [[claude-sonnet-5-5-reaches-2-on-the-artificial-analysis-intelligence-index-4075a9b8]]
+- [[introducing-gpt-6-1-sol-d6b9f5e6]]
+- [[gpt-6-1-sol-replaces-gpt-6-sol-after-just-7-days-with-near-astra-intelligence-019783f2]]
+- [[openai-cancels-gpt-6-1-astra-release-over-misbehavior-and-safety-concerns-ba6cd48c]]
