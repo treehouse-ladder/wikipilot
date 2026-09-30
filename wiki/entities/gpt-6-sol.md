@@ -1,8 +1,8 @@
 ---
 title: "GPT-6 Sol"
 kind: entity
-sources: ["[[introducing-gpt-6-sol-and-luna-73461b3e]]", "[[gpt-6-sol-and-luna-push-the-cost-efficiency-frontier-0c4a202e]]"]
-last_updated: 2026-09-23
+sources: ["[[introducing-gpt-6-sol-and-luna-73461b3e]]", "[[gpt-6-sol-and-luna-push-the-cost-efficiency-frontier-0c4a202e]]", "[[introducing-gpt-6-1-sol-d6b9f5e6]]", "[[gpt-6-1-sol-replaces-gpt-6-sol-after-just-7-days-with-near-astra-intelligence-019783f2]]"]
+last_updated: 2026-09-30
 last_verified: 2026-09-23
 freshness_window_days: 30
 ---
@@ -19,7 +19,13 @@ Both models use slightly more output tokens per task (Sol 31k vs 29k for GPT-5.6
 
 > We're passing those savings directly on to users and customers by reducing API prices for Sol and Luna by 50% compared with their GPT-5.6 promotional pricing. [[introducing-gpt-6-sol-and-luna-73461b3e]]
 
-_no contradictions or gaps known yet (last reviewed: 2026-09-23)_
+**Superseded (2026-09-29)**: GPT-6 Sol was retired after just 7 days when OpenAI shipped **GPT-6.1 Sol** — which gains 4 points on the AA Intelligence Index (50 vs ~48) and cuts cached input pricing by 50% (to $0.10/Mtoken), reaching near-Astra intelligence at 20% of Astra's token cost [[gpt-6-1-sol-replaces-gpt-6-sol-after-just-7-days-with-near-astra-intelligence-019783f2]] [[introducing-gpt-6-1-sol-d6b9f5e6]]. GPT-6 Sol's standard pricing ($2/$10 per Mtoken) is retained by GPT-6.1 Sol, so the cost floor is preserved.
+
+> GPT-6.1 Sol replaces GPT-6 Sol after just 7 days. [[gpt-6-1-sol-replaces-gpt-6-sol-after-just-7-days-with-near-astra-intelligence-019783f2]]
+
+## Disputes
+
+- [[introducing-gpt-6-sol-and-luna-73461b3e]] and [[gpt-6-sol-and-luna-push-the-cost-efficiency-frontier-0c4a202e]] place GPT-6 Sol as a still-current cost-efficiency model at time of publication; [[gpt-6-1-sol-replaces-gpt-6-sol-after-just-7-days-with-near-astra-intelligence-019783f2]] confirms it was retired after 7 days on 2026-09-29. Status: resolved — GPT-6 Sol is superseded.
 
 ## See also
 
