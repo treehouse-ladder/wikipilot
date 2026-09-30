@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-30] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#855 (claude/daily-2026-09-30/agentic-coding) kind=requeue resolved=true — apply_static_gate queued --auto (CI green, auto_merge was null). pr#854 (claude/daily-2026-09-30/ai-in-game-dev) already merged.
+
 ## [2026-09-29] daily | 5 topics, 7 sources, 7 pages
 
 Daily research complete. PRs #845–#850. Topics: agentic-coding (1 src, 2 pages), frontier-models (1 src, 1 page), ai-in-game-dev (3 src, 1 page + Summary regen), games-of-note (1 src, 1 page), game-music (1 src, 1 page).
