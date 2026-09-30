@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-09-30] manual | conflict-resolver — 0 rebased, 2 requeued, 0 lint-fixed, 0 failed
+
+pr#854 (ai-in-game-dev) and pr#855 (agentic-coding) were CLEAN with CI green but lacked auto-merge queued; enabled squash auto-merge via CCR route on both.
+
 ## [2026-09-29] daily | 5 topics, 7 sources, 7 pages
 
 Daily research complete. PRs #845–#850. Topics: agentic-coding (1 src, 2 pages), frontier-models (1 src, 1 page), ai-in-game-dev (3 src, 1 page + Summary regen), games-of-note (1 src, 1 page), game-music (1 src, 1 page).
