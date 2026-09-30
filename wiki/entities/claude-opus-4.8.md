@@ -2,8 +2,8 @@
 title: "Claude Opus 4.8"
 kind: entity
 aliases: ["Opus 4.8", "claude-opus-4-8", "Claude Opus 4.8"]
-sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]", "[[claude-sonnet-5-strong-agentic-performance-at-a-higher-cost-per-task-c4346bb2]]", "[[swe-1-7-frontier-intelligence-at-a-fraction-of-the-cost-0d1dcf4a]]", "[[introducing-claude-opus-5-c34a3276]]", "[[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]"]
-last_updated: 2026-09-21
+sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]", "[[claude-sonnet-5-strong-agentic-performance-at-a-higher-cost-per-task-c4346bb2]]", "[[swe-1-7-frontier-intelligence-at-a-fraction-of-the-cost-0d1dcf4a]]", "[[introducing-claude-opus-5-c34a3276]]", "[[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]", "[[gamereplica-a-benchmark-for-black-box-visual-game-replication-by-vision-language-agents-761ca2bd]]"]
+last_updated: 2026-09-30
 last_verified: 2026-07-25
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
@@ -60,6 +60,10 @@ Independent placement detail (post-launch): Opus 4.8 scores 78.8% on CyberGym vu
 **Superseded (2026-07-24)**: Claude Opus 4.8 is superseded as Anthropic's standard flagship by [[claude-opus-5]], released July 24, 2026 at the same $5/$25 per Mtoken pricing. Opus 5 posts large agentic gains — OSWorld 2.0 70.57% (vs 55.7%) and Zapier AutomationBench 26.0% (vs 17.0%) — and turns thinking on by default via a new effort dial [[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]] [[introducing-claude-opus-5-c34a3276]].
 
 > Opus 5 reached 70.57% on OSWorld 2.0 against 55.7% for Opus 4.8. On Zapier AutomationBench it scored 26.0%, against 17.0% for Opus 4.8. [[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]
+
+**Game benchmark (2026-09-30)**: GameReplica benchmark measures black-box visual game replication — agent observes only screenshots and an action interface, must induce rules and generate a runnable replica. Claude Opus 4.8 scores 71.6 Overall (out of 125 tasks across 25 games), leading all tested models; the next-best scores 43.0 [[gamereplica-a-benchmark-for-black-box-visual-game-replication-by-vision-language-agents-761ca2bd]]. This is notably a multimodal-heavy task with no source-code access, suggesting strong visual program synthesis capabilities.
+
+> Claude Opus 4.8 reaches an Overall of 71.6 while the remaining models score between 3.9 and 43.0. Visual-fidelity scores are generally far higher than implementation- and rule-consistency scores, and the gap widens further as difficulty increases. [[gamereplica-a-benchmark-for-black-box-visual-game-replication-by-vision-language-agents-761ca2bd]]
 
 ## Disputes
 
