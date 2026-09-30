@@ -333,8 +333,12 @@ sources:
   - "[[release-rust-v0-158-0-openai-codex-b6ce910a]]"
   - "[[2026-in-llms-so-far-a068c503]]"
   - "[[release-v2-1-284-anthropics-claude-code-cdf0d632]]"
-last_updated: 2026-09-29
-last_verified: 2026-09-29
+  - "[[release-v2-1-285-anthropics-claude-code-ff1ca072]]"
+  - "[[release-0-159-0-openai-codex-9b9d615d]]"
+  - "[[beyond-the-model-demystifying-harness-effects-in-software-engineering-agents-d5e20119]]"
+  - "[[devday-2026-recap-6071f63e]]"
+last_updated: 2026-09-30
+last_verified: 2026-09-30
 freshness_window_days: 30
 ---
 
@@ -434,6 +438,30 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-09-30
+
+Four sources today spanning a Claude Code patch, an OpenAI Codex release, a new harness-effects paper, and OpenAI DevDay 2026:
+
+**Claude Code v2.1.285: fixes FORK_SUBAGENT foreground regression, adds `plugin configure`, `CLAUDE_CODE_DISABLE_WEB_FETCH`, and async-daemon hook fix.** The key fix is for `claude -p` with `CLAUDE_CODE_FORK_SUBAGENT=1` — a subagent's own Agent tool call now runs in the foreground so the subagent correctly receives the child's result [[release-v2-1-285-anthropics-claude-code-ff1ca072]]. This directly addresses a regression in multi-subagent pipelines where the Agent call was silently backgrounded. Also added: `<server>.<key>=<value>` to `claude plugin install --config` for bundled MCP server settings at install time; `claude plugin configure <plugin>` to show and set plugin options; `CLAUDE_CODE_DISABLE_WEB_FETCH` to turn off the WebFetch tool; and a fix for synchronous hooks that hung when a background process (e.g. `some-daemon &`) kept its output open — the hook now finishes shortly after its own process exits [[release-v2-1-285-anthropics-claude-code-ff1ca072]].
+
+> Fixed claude -p with CLAUDE_CODE_FORK_SUBAGENT=1: a subagent's own Agent call now runs in the foreground, so the subagent gets the child's result [[release-v2-1-285-anthropics-claude-code-ff1ca072]]
+
+> Fixed synchronous hooks hanging Claude Code while a background process the hook started (for example some-daemon &) kept its output open; the hook now finishes shortly after its own process exits [[release-v2-1-285-anthropics-claude-code-ff1ca072]]
+
+**OpenAI Codex CLI v0.159.0: opt-in `instant_interrupt` lets new input steer mid-turn, plus transcript scroll while reviewing a plan.** `instant_interrupt` is an opt-in flag that lets new user input interrupt Codex during model responses or long-running code-mode calls, enabling mid-turn steering without waiting for a full turn to complete [[release-0-159-0-openai-codex-9b9d615d]]. Users can also now scroll the transcript while deciding whether to implement a plan — removes the friction of losing context when reviewing long plans. App-server clients gain paginated thread history from a specific item.
+
+> Opt-in instant_interrupt lets new input steer Codex during model responses or long-running code-mode calls. [[release-0-159-0-openai-codex-9b9d615d]]
+
+**Harness effects paper (arXiv 2609.32459): systematic empirical study shows harness components often matter as much as model choice for SE agent performance.** The paper introduces NanoHarness, a minimal 5-component framework (tool registry, context compression, explicit planning, subagents, lazy skills), and uses it with mini-SWE-agent and OpenCode to isolate the contribution of each scaffolding component [[beyond-the-model-demystifying-harness-effects-in-software-engineering-agents-d5e20119]]. Key finding: "harness effects" — design decisions in the scaffolding around a model — often dominate the model's intrinsic capability in determining benchmark performance. This challenges the common practice of ranking models on SE benchmarks where harness configurations differ between systems: comparisons across differently-scaffolded agents attribute harness differences to the model.
+
+> Systematic empirical study of harness effects; NanoHarness with 5 components (tool registry, context compression, explicit planning, subagents, lazy skills) [[beyond-the-model-demystifying-harness-effects-in-software-engineering-agents-d5e20119]]
+
+**OpenAI DevDay 2026: Agents API gains computer use and Codex's multi-agent capabilities; Codex adds voice steering, reusable dev environments, and automatic cloud reviews.** The Agents API now supports computer use so developers can build agents that interact with software, and brings Codex's multi-agent capabilities, tool search, tool calling, and context compaction into third-party applications [[devday-2026-recap-6071f63e]]. The Codex CLI adds voice-based task steering and an `/agents` delegation view for managing multiple parallel tasks. Reusable development environments (shared setup with approved settings and permissions) enable fast task starts. Automatic cloud reviews let Codex take a first pass while the developer is away — converging toward Codex as a background CI-integrated coding agent [[devday-2026-recap-6071f63e]].
+
+> The Agents API now supports computer use so developers can build agents that interact with software to complete tasks. It also brings Codex's multi-agent capabilities, tool search, tool calling, and context compaction into your application. [[devday-2026-recap-6071f63e]]
+
+> The Codex CLI now lets you start and steer tasks with your voice. The new /agents view makes it easier to delegate work and track multiple tasks at once. [[devday-2026-recap-6071f63e]]
 
 ### Updates 2026-09-29
 
