@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-01] manual | conflict-resolver — 0 rebased, 1 requeue attempted, 0 lint-fixed, 1 failed
+
+pr#863 kind=requeue resolved=false — PR wiki(frontier-models): regenerate Summary 2026-10-01 is clean/green but auto_merge=null; requeue attempt blocked by permissions classifier. Manual action needed: enable squash auto-merge on PR #863.
+
 ## [2026-09-30] daily | 5 topics, 10 sources, 21 pages
 
 Daily research complete. PRs #852–#856. Topics: games-of-note (0 src, 1 page), game-music (0 src, 1 page), ai-in-game-dev (1 src, 3 pages), agentic-coding (4 src, 6 pages), frontier-models (5 src, 10 pages).
