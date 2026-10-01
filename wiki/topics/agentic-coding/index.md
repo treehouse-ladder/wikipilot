@@ -337,7 +337,9 @@ sources:
   - "[[release-0-159-0-openai-codex-9b9d615d]]"
   - "[[beyond-the-model-demystifying-harness-effects-in-software-engineering-agents-d5e20119]]"
   - "[[devday-2026-recap-6071f63e]]"
-last_updated: 2026-09-30
+  - "[[release-v2-1-286-anthropics-claude-code-80da4486]]"
+  - "[[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]]"
+last_updated: 2026-10-01
 last_verified: 2026-09-30
 freshness_window_days: 30
 ---
@@ -438,6 +440,22 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-01
+
+Two sources today: a Claude Code patch and a new enterprise cost-routing paper.
+
+**Claude Code v2.1.286 (2026-09-30): counted permission prompts, model-refusal retry, and two parallel-tool-call / cloud-session reliability fixes.** Stacked permission requests now show a position counter, and sessions transparently retry the previous model once when the Anthropic API refuses a model rather than failing every turn [[release-v2-1-286-anthropics-claude-code-80da4486]]. Two fixes touch surfaces this page tracks for multi-subagent and long-running work: `--resume`/`--continue` could silently lose every turn after a batch of parallel tool calls, and cloud sessions with very large histories could fail to wake up — both now fixed [[release-v2-1-286-anthropics-claude-code-80da4486]]. A log-redaction fix masks secrets even when key names contain invisible characters, closing a secret-leak path.
+
+> Fixed claude --resume and --continue sometimes losing every turn after a batch of parallel tool calls. [[release-v2-1-286-anthropics-claude-code-80da4486]]
+
+> Sessions retry the previous model once when the Anthropic API refuses a model, preventing every-turn failures. [[release-v2-1-286-anthropics-claude-code-80da4486]]
+
+**'Control the Harness, Control the Cost' (arXiv 2609.28919, Accenture Responsible AI): a cache-aware prompt-classifier router recovers 14–21% of enterprise model spend.** The paper reframes the harness itself as the dominant cost lever — it decides which model answers, what gets read, how the prompt cache is used, and which subagents run, thereby setting both the per-token rate and the volume bought at it [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]]. Their router (Jev, a calibrated-probability classifier over a bring-your-own request taxonomy) moves work only where no running conversation must rebuild its cache — at session start, in side lanes, and at subagent launch — and reports a counterintuitive prompt-cache result: on long tool-heavy sessions the highest-priced model can cost *less* than the next tier down [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]]. In a 10,000-seat enterprise emulation on repriced public session data, the router recovers 14–21% of model spend ($3.3M–$5.0M/yr at Anthropic's 21 Sep 2026 list prices).
+
+> On long tool-heavy sessions the highest-priced model costs less than the next tier, as repricing about 10,000 real sessions from public datasets confirms. [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]]
+
+> In an emulated enterprise of 10,000 seats with user behaviour taken from these datasets, the router recovers 14 to 21% of model spend at Anthropic's list prices of 21 September 2026, $3.3M to $5.0M a year. [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]]
 
 ### Updates 2026-09-30
 
@@ -2573,6 +2591,7 @@ lint stays quiet until each page actually exists:
 
 ## Disputes
 
+- [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]] claims a cache-aware prompt-classifier router recovers 14–21% of enterprise model spend and that on long tool-heavy sessions the highest-priced model can cost less than the next tier, framing agentic-coding cost overruns as a routing/harness-tuning problem; [[uber-caps-usage-of-ai-tools-like-claude-code-to-manage-costs-d17eb873]] documents a Fortune-100 enterprise imposing hard $1,500/employee/month per-tool ceilings after blowing its 2026 AI budget in four months, framing the overruns as a structural economics ceiling requiring budget gating. Status: unresolved — the two disagree on whether unbounded agentic-coding spend is tunable via routing or requires hard caps.
 - [[cursor-2-0-multi-agents-and-composer-changelog-4665f068]] claims Cursor's Composer model is "4x faster than similarly intelligent models" without naming the comparison set or the harness used to measure speed; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] explicitly notes that even within one harness (mini-SWE-agent), "results of release 1.x and 2.x are not necessarily comparable to each other" — making vendor-side speed claims hard to verify without the full prompt set. Status: unresolved (confidence: medium; sweep: 2026-05-12)
 - [[introducing-claude-opus-4-7-b8af8104]] claims a '3x more production tasks than Opus 4.6' result on Rakuten-SWE-Bench, a partner-internal benchmark whose composition and scoring methodology is not publicly described; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] explicitly notes that even within the public SWE-bench Verified harness, leaderboard rows can be incomparable across mini-SWE-agent versions, suggesting any cross-benchmark 'Nx better' claim should be treated as unfalsifiable until the partner benchmark is published. Status: unresolved
 - [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] claims infrastructure configuration can swing agentic coding benchmark scores by 'sometimes more than the leaderboard gap between top models', with measured infrastructure error rates of 5.8% under strict enforcement vs 0.5% uncapped; this directly undercuts the comparability of any SWE-bench Verified score that does not pin the resource configuration used. Status: unresolved
@@ -2683,6 +2702,8 @@ lint stays quiet until each page actually exists:
 
 ## Open questions
 
+- [ ] Does Control the Harness's cache-aware routing claim [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]] (moving work only at session start, side lanes, and subagent launch so no running conversation rebuilds its cache) survive the prompt-cache-invalidation cliff cases the topic charter flags — i.e. mid-run file edits that bust the cache — or does the 14–21% recovery assume sessions that never invalidate mid-trajectory?
+- [ ] Does v2.1.286's single-retry-on-model-refusal behavior [[release-v2-1-286-anthropics-claude-code-80da4486]] interact with the server-side auto-mode classifier's 'billed fallback' path — when the refused model is the auto-mode classifier model, does the retry preserve the same safety-validated variant or silently drop to a weaker one?
 - [ ] Does Cursor's Security Review (one review comment reporting exploitable bugs per PR) [[bots-for-the-last-mile-rollouts-security-review-b7f53869]] measurably outperform the general-purpose Bugbot reviewer on the security-vulnerability subset, and what is its false-negative rate against real-world agentic-PR security defects? No methodology or benchmark accompanies the announcement.
 - [ ] What is the prompt-injection / exfiltration blast radius of Cursor's Rollouts agent [[bots-for-the-last-mile-rollouts-security-review-b7f53869]], given it connects to production telemetry (Datadog), CD deploy events, and source control — does it run in the same sandbox/permission tier as Cursor's edit-loop coding agents, or does wiring in production signal sources broaden network egress in a way that increases attack surface?
 - [ ] Does v2.1.283's `availableModelsMatch: "exact"` + `deniedModels` model-governance [[release-v2-1-283-anthropics-claude-code-35ab415a]] materially shrink the agentic-coding attack surface, or does it only govern which model runs while leaving the runtime tool-output trust-level confusion unaddressed — mirroring the open enterprise-managed-settings-vs-runtime-injection question?
