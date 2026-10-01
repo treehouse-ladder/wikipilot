@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-01] daily | 6 topics, 15 sources, 19 pages
+
+Daily research complete. PRs #858–#863. Topics: agentic-coding (2 src, 3 pages), ai-in-game-dev (1 src, 2 pages), frontier-models (4 src, 4 pages; summary fix via #863), games-of-note (2 src, 3 pages), game-music (6 src, 7 pages). New entity: gemini-4-argon. Note: gh CLI token invalid in cloud env; PRs created via GitHub MCP API.
+
+## [2026-10-01] daily | frontier-models — 4 sources, 4 pages
+
+Gemini 4 Argon debuts at AA Intelligence Index v4.3 = 53 (limited enterprise preview), creating a three-way #3 tie with Fable 5.1 and GPT-6 Astra — Google's first frontier flagship since Gemini 3.1 Pro (46). DeepSWE v1.1 77.9% claimed benchmark lead contested by independent v4.3 aggregate. GPT-6.1 Sol release confirmed (AA Index 50 high, $0.10/Mtoken cached). Summary regenerated (PR #863). PRs #860, #863.
+
+## [2026-10-01] daily | agentic-coding — 2 sources, 3 pages
+
+Claude Code v2.1.286: counted permission prompts, model-refusal retry, parallel-tool-call reliability, secret-leak patch. Cache-aware routing paper (arXiv 2609.28919): 14–21% cost recovery in 10k-seat enterprise emulation; counterintuitively makes highest-priced model cheapest on long tool-heavy sessions. PR #858.
+
+## [2026-10-01] daily | ai-in-game-dev — 1 source, 2 pages
+
+TGS 2026 retrospective: AI pavilion displaced indie showcase; 86% Japanese developer AI adoption (up from 51% at CESA 2025), uncertain-AI-future framing dominant. PR #859.
+
+## [2026-10-01] daily | games-of-note — 2 sources, 3 pages
+
+Xbox CEO Phil Spencer flat "Xbox is not for sale" denial addressing June 2026 The Information sale rumour; studio closures and layoffs continue. World's Edge cancelled unannounced Age of Empires project and cut ~50% of staff following Activision transition. PR #861.
+
+## [2026-10-01] daily | game-music — 6 sources, 7 pages
+
+Alexander Brandon (Deus Ex/Unreal) displacement: 50 resumes / 1 interview after Frost Giant (Stormgate) layoff — first named-veteran AI-displacement case study on the wiki. September 2026 VGM: 99 OSTs, ~8% AI-generated (stable MoM). Kernel Hearts debut composer Diego Cabrera, NieR vocalist Emi Evans. Ninja Gaiden 4/NG2 Black vinyl (Kid Katana Records). Eclipsium 2LP debut (Hudson Bikichky, Materia Collective). PR #862.
+
 ## [2026-09-30] daily | 5 topics, 10 sources, 21 pages
 
 Daily research complete. PRs #852–#856. Topics: games-of-note (0 src, 1 page), game-music (0 src, 1 page), ai-in-game-dev (1 src, 3 pages), agentic-coding (4 src, 6 pages), frontier-models (5 src, 10 pages).
