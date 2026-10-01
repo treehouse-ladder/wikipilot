@@ -63,6 +63,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[claude-fable-5.1]]
 - [[qwen3.7-max]]
 - [[gpt-6-1-sol]]
+- [[gemini-4-argon]]
 
 ## Comparisons
 
@@ -1528,3 +1529,18 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[introducing-gpt-6-1-sol-d6b9f5e6]]
 - [[gpt-6-1-sol-replaces-gpt-6-sol-after-just-7-days-with-near-astra-intelligence-019783f2]]
 - [[openai-cancels-gpt-6-1-astra-release-over-misbehavior-and-safety-concerns-ba6cd48c]]
+- [[release-v2-1-286-anthropics-claude-code-80da4486]]
+- [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]]
+- [[tokyo-game-show-2026-celebrated-the-past-and-an-uncertain-ai-future-5ec399d4]]
+- [[gemini-4-argon-our-next-era-of-frontier-intelligence-8a18dee8]]
+- [[gemini-4-argon-google-is-back-as-one-of-the-top-three-labs-in-intelligence-achieved-52050b56]]
+- [[google-unveils-gemini-4-argon-retaking-benchmark-lead-over-openai-and-anthropic-but-in-limited-release-37b6da44]]
+- [[openai-releases-gpt-6-1-sol-at-a-fifth-of-gpt-6-astra-token-prices-1e11c9c7]]
+- [[xbox-ceo-insists-its-not-for-sale-amid-studio-closures-layoffs-17c48b1a]]
+- [[world-s-edge-cancels-unannounced-age-of-empires-project-557f8466]]
+- [[deus-ex-unreal-composer-alexander-brandon-can-t-find-new-work-because-of-ai-bros-c7ceab45]]
+- [[how-indie-game-composers-are-surviving-the-layoff-storm-9f3e1b2e]]
+- [[september-2026-vgm-recap-monster-tracklists-delays-and-steady-ai-releases-19e83100]]
+- [[kernel-hearts-review-8e2986e3]]
+- [[ninja-gaiden-4-and-ninja-gaiden-2-black-are-coming-to-vinyl-via-kid-katana-records-3d406f93]]
+- [[the-eclipsium-soundtrack-sounds-like-nothing-you-ve-heard-before-but-it-belongs-on-your-vinyl-shelf-b062184b]]
