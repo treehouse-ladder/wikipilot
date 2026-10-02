@@ -59,7 +59,8 @@ sources:
   - "[[what-does-multi-harness-rl-learn-credit-assignment-and-portability-in-coding-agents-c6c7d0db]]"
   - "[[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]"
   - "[[beyond-the-model-demystifying-harness-effects-in-software-engineering-agents-d5e20119]]"
-last_updated: 2026-09-30
+  - "[[release-v2-1-287-anthropics-claude-code-d3204584]]"
+last_updated: 2026-10-02
 last_verified: 2026-09-30
 freshness_window_days: 30
 ---
@@ -75,6 +76,10 @@ By late May 2026, harness engineering crystallized as a first-class research fie
 > For long-horizon tasks evaluated across models with comparable frontier capability, the agent execution harness — namely the infrastructure layer that governs context construction, tool interaction, orchestration, and verification around a language model — is often a stronger determinant of agent performance than the model it wraps.
 
 The harness encompasses several distinct responsibilities: task specification, context selection, tool access, project memory, task state, observability, failure attribution, verification, permissions, entropy auditing, and intervention recording. Prior work by Anthropic documented long-running-agent harness patterns such as session-bridging with initializer + coding agents [[effective-harnesses-for-long-running-agents-anthropic-engineering-7f7a70a6]], and autonomous three-agent planner/generator/evaluator stacks with automatic compaction [[harness-design-for-long-running-application-development-anthropic-engineering-9fa759b7]]. The production harness layer is now packaged as the Claude Agent SDK [[building-agents-with-the-claude-agent-sdk-anthropic-engineering-cf56e261]].
+
+**Programmatic extensibility: Claude Mods as a code-level harness-modification primitive (October 2026).** As of Claude Code v2.1.287 (2026-10-01), plugins can ship "mods" — JavaScript/TypeScript event handlers that intercept and rewrite agent behavior at runtime [[release-v2-1-287-anthropics-claude-code-d3204584]]. Mods sit a tier below Agent Skills (which are instruction/script bundles): a mod runs code that can watch, change, or take over tool calls, prompts, commands, turns, and UI rendering, enabling deep programmatic customization of the harness itself. This extends the harness's "extension surfaces" from declarative plugin metadata to executable interception points, on by default.
+
+> Mods are made of JavaScript or TypeScript event handlers: Claude Code calls one when an event happens, such as a tool call, a submitted prompt, or a part of the interface being drawn, and the handler can watch the event, change it, or take it over. [[release-v2-1-287-anthropics-claude-code-d3204584]]
 
 **Harness engineering as a named discipline with empirical foundation (September 2026).** A comprehensive source-code anatomy of eleven production coding harnesses frames the discipline precisely: "An agent is a model plus a harness -- the runtime that couples an LLM to the world through a loop, tools, context management, safety controls, orchestration, and extension surfaces. Harness engineering, named as a discipline in early 2026, is the design and evolution of that runtime" [[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]. The study reads the actual source of eleven systems — Claude Code (Anthropic), Codex CLI (OpenAI), Gemini CLI (Google), Mistral Vibe (Mistral), OpenHands, Aider, Mini-SWE-Agent, Hermes (Nous Research), Pi, OpenCode, and OpenClaw — and names Databricks' Omnigent as "the first meta-harness," a harness-of-harnesses layer [[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]. The analysis is descriptive (source-code reading) with no head-to-head benchmark controlling for base model, so it does not adjudicate which architecture scores higher, but it provides the field's most comprehensive empirical foundation to date.
 

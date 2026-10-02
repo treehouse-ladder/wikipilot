@@ -339,7 +339,9 @@ sources:
   - "[[devday-2026-recap-6071f63e]]"
   - "[[release-v2-1-286-anthropics-claude-code-80da4486]]"
   - "[[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]]"
-last_updated: 2026-10-01
+  - "[[release-v2-1-287-anthropics-claude-code-d3204584]]"
+  - "[[release-0-160-0-openai-codex-e61beeca]]"
+last_updated: 2026-10-02
 last_verified: 2026-09-30
 freshness_window_days: 30
 ---
@@ -440,6 +442,24 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-02
+
+Two first-party release notes today, both newer than the v2.1.286 / Codex v0.159.0 entries already on this page.
+
+**Claude Code v2.1.287 (2026-10-01): Claude Mods — a programmatic plugin tier that can intercept and rewrite agent behavior.** Mods are a new, on-by-default extensibility primitive: plugins may now modify deeper behavior via JavaScript/TypeScript event handlers that fire on agent events and can watch, change, or take over the event [[release-v2-1-287-anthropics-claude-code-d3204584]]. This sits a tier below Agent Skills — Skills bundle instructions/scripts Claude loads on demand, whereas a mod runs code that can rewrite a prompt, replace a built-in feature, or add entirely new functionality, including intercepting tool calls and UI rendering. The release also closes two safety-relevant gaps on surfaces this page tracks: Bedrock/Vertex startup checks that ignored an enforced `availableModels` list (which could collapse `/model` to a single Opus row), and a dangerous-`rm` command losing its always-ask safeguard when it also redirected output to a `~` or wildcard path [[release-v2-1-287-anthropics-claude-code-d3204584]].
+
+> Added Claude Mods: plugins may now modify deeper behavior. [[release-v2-1-287-anthropics-claude-code-d3204584]]
+
+> Mods are made of JavaScript or TypeScript event handlers: Claude Code calls one when an event happens, such as a tool call, a submitted prompt, or a part of the interface being drawn, and the handler can watch the event, change it, or take it over. [[release-v2-1-287-anthropics-claude-code-d3204584]]
+
+> Fixed a dangerous rm losing its always-ask safeguard when the same command also redirected output to a ~ or wildcard path. [[release-v2-1-287-anthropics-claude-code-d3204584]]
+
+**OpenAI Codex CLI v0.160.0 (stable): multi-agent env-retention, project-less sessions, and Guardian handoff context.** Subagents now retain environments that are still starting and receive their configuration or preparation failure, tightening the multi-subagent reliability surface this page tracks [[release-0-160-0-openai-codex-e61beeca]]. Sessions can be started outside a project with workspace defaults when policy permits (with saved permissions restored on resume), and Guardian review can now retrieve earlier user instructions and include context from agent handoffs [[release-0-160-0-openai-codex-e61beeca]].
+
+> Subagents now retain environments that are still starting and receive their configuration or preparation failure. [[release-0-160-0-openai-codex-e61beeca]]
+
+> Guardian review capabilities were added to retrieve earlier user instructions and include context from agent handoffs. [[release-0-160-0-openai-codex-e61beeca]]
 
 ### Updates 2026-10-01
 
@@ -2699,6 +2719,7 @@ lint stays quiet until each page actually exists:
 - [[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]] finds harness components (planning, action space, context management) move cost substantially while leaving accuracy largely unchanged for strong models — reframing the harness as a first-class cost lever; [[harness-or-model-isolating-the-harness-effect-in-agentic-coding-with-a-contamination-controlled-private-suite-dfa08e5e]] found no reliable harness advantage on solve rate and concluded harness selection is secondary to model selection. The two agree accuracy is model-driven but disagree on whether the harness is therefore 'secondary' (solve-rate view) or 'primary' (cost/economics view). Status: unresolved
 - [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]] finds 16.7% of real-world agentic-coding setups carry a confirmed defect and argues the harness config layer is an unmanaged dependency layer with 'no lockfile, no install-time check'; prior sandboxing sources present OS-level sandboxing and managed-settings allowlists as the governance story. The sandbox bounds runtime blast radius and the allowlist governs which servers agents can reach, but neither addresses install-time supply-chain defects inside the config artifacts themselves, which the field data shows are already present in ~1-in-6 real setups. Status: unresolved
 - [[swe-serve-benchmarking-agentic-engineering-for-production-inference-serving-635b512e]] argues repository-level SWE benchmarks do not target inference and evaluates whether agents carry a locally-working implementation through a complete production path (hidden functional + regression + end-to-end serving tests); [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents single-turn test-patch resolution as the human-filtered, annotator-reviewed gold standard for coding-agent capability. Status: unresolved — same production-realism-gap direction as FeatureBench/SWE-EVO/SWE-Bench-Mobile but on a distributed inference-serving distribution where a locally-passing patch can still fail the end-to-end serving path.
+- [[release-v2-1-287-anthropics-claude-code-d3204584]] ships Claude Mods as on-by-default plugins whose JS/TS handlers can rewrite prompts and take over tool calls; [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]] finds 16.7% of real-world agentic-coding config setups already carry a confirmed defect and argues the config/plugin layer is an unmanaged software supply chain with 'no lockfile, no install-time check'. A plugin tier that can execute code to intercept and rewrite agent behavior widens exactly that install-time supply-chain surface rather than narrowing it. Status: unresolved
 
 ## Open questions
 
@@ -3008,6 +3029,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does the new per-read 'Yes, but ask again next time' answer for reads outside the working directories [[release-v2-1-284-anthropics-claude-code-cdf0d632]] meaningfully shrink the exfiltration blast radius, or does an injected instruction simply re-request the same out-of-scope read on the next turn, so the one-shot grant buys friction but not injection resistance?
 - [ ] Does the new default Sonnet 5.5 (claude-sonnet-5-5) [[release-v2-1-284-anthropics-claude-code-cdf0d632]] exhibit the RL-co-adaptation tool-schema drift (newer Anthropic models inventing extra tool-call fields) reported for Opus 4.8/Sonnet 5, and is there any published SWE-bench/Terminal-Bench standing for Sonnet 5.5 in Claude Code vs the Opus 5.5 default?
 - [ ] Now that Ultracode is decoupled from the effort slider into its own /effort toggle and no longer forces xhigh effort [[release-v2-1-284-anthropics-claude-code-cdf0d632]], is there any measured accuracy/cost delta between Ultracode-on-at-low-effort and the previous Ultracode-forces-xhigh coupling?
+- [ ] Does a Claude Mod's ability to 'take over' a tool call or rewrite a submitted prompt [[release-v2-1-287-anthropics-claude-code-d3204584]] run before or after the auto-mode transcript classifier and the OS-level bubblewrap/seatbelt sandbox [[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]] — i.e. can a mod suppress or forge the approval signal the classifier inspects, or does it execute inside the same contained tier?
+- [ ] Do Claude Mods compose with Agent Skills and MCP, or do they overlap — can a mod wrap/replace a Skill's or MCP server's tool surface, and if so does mod interception bust the prompt cache the way mid-session tool-definition edits are suspected to [[code-execution-with-mcp-building-more-efficient-ai-agents-9b88bfec]]?
+- [ ] Does Codex v0.160.0's project-less session start with workspace defaults [[release-0-160-0-openai-codex-e61beeca]] broaden the filesystem/network blast radius relative to a project-scoped session, given sessions outside a project have no repo boundary to anchor permission scoping?
 
 ## See also
 
