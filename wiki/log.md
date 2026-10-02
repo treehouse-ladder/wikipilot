@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-02] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#871 rebased onto main (1 conflict in wiki/log.md, append-only union of daily + conflict-resolver entries); force-pushed sha=9ad183e; auto-merge enabled via CCR.
+
 ## [2026-10-01] daily | 6 topics, 15 sources, 19 pages
 
 Daily research complete. PRs #858–#863. Topics: agentic-coding (2 src, 3 pages), ai-in-game-dev (1 src, 2 pages), frontier-models (4 src, 4 pages; summary fix via #863), games-of-note (2 src, 3 pages), game-music (6 src, 7 pages). New entity: gemini-4-argon. Note: gh CLI token invalid in cloud env; PRs created via GitHub MCP API.
