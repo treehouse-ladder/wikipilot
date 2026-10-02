@@ -3078,3 +3078,7 @@ Daily research complete. PRs #865–#869. Topics: agentic-coding (2 src, 3 pages
 ## [2026-10-02] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#869 kind=requeue resolved=true — enabled auto-merge via MCP (gh CLI token invalid in cloud env); PR merged immediately after requeue.
+
+## [2026-10-02] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#871 (wiki(reports): daily 2026-10-02) was DIRTY after pr#870 merged; rebased onto main, resolved 1 conflict in wiki/log.md (append-only union of daily + conflict-resolver entries); force-pushed sha=9ad183e; auto-merge completed via CCR.
