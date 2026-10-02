@@ -3051,6 +3051,30 @@ Control Resonant (Remedy): Petri Alanko score + licensed "Zoe's Mixtape" EP (FRD
 
 Daily research complete. PRs #815–#819. Topics: agentic-coding (1 src), frontier-models (0 src, quiet), ai-in-game-dev (1 src), games-of-note (2 src), game-music (2 src). Note: gh CLI token invalid in cloud env; PRs created via GitHub MCP API.
 
+## [2026-10-02] daily | agentic-coding — 2 sources, 3 pages
+
+Claude Code v2.1.287 Claude Mods (plugin-level event handlers rewrite prompt/UI/built-ins) + Codex v0.160.0 (bug-fix/polish release). Summary-affecting: Claude Mods widens supply-chain surface. PRs #865.
+
+## [2026-10-02] daily | frontier-models — 1 source, 1 page
+
+Cloudflare Clef decision models (open-source RL fine-tuning for structured decision tasks, not general-purpose LLMs). PRs #866.
+
+## [2026-10-02] daily | ai-in-game-dev — 3 sources, 1 page
+
+A2Z GameSpec-Bench: GDD-fidelity benchmark 100 specs, +10.9% from requirement-specific feedback. VR AI Companion study (n=24): autonomous-agent mode lowest workload but worst player experience. Scenario-Driven Neuroevolution: +7% branch coverage on 13 Scratch games. PRs #867.
+
+## [2026-10-02] daily | games-of-note — 2 sources, 1 page
+
+Ace Combat 8: Wings of Theve review 8/10 GameSpot. GTA 6 Nov 19 launch misses all Big 5 GOTY ceremonies this season. PRs #868.
+
+## [2026-10-02] daily | game-music — 1 source, 1 page
+
+Gordy Haab Star Wars: Galactic Racer OST preview — 'The Soul of Racing' main theme; full album Oct 6. PRs #869.
+
+## [2026-10-02] daily | 5 topics, 9 sources, 7 pages
+
+Daily research complete. PRs #865–#869. Topics: agentic-coding (2 src, 3 pages), frontier-models (1 src, 1 page), ai-in-game-dev (3 src, 1 page), games-of-note (2 src, 1 page), game-music (1 src, 1 page). Note: arxiv.org blocked by proxy; ai-in-game-dev source pages created from researcher excerpts. gh CLI not available; PRs created via GitHub MCP API.
+
 ## [2026-10-02] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#869 kind=requeue resolved=true — enabled auto-merge via MCP (gh CLI token invalid in cloud env); PR merged immediately after requeue.
