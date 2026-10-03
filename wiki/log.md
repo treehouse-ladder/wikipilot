@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-03] manual | conflict-resolver — 0 rebased, 0 requeued, 0 lint-fixed, 1 failed
+
+pr#879 kind=rebase resolved=false — branch claude/youthful-mayer-n0didh already reset to main's tip (no diff); closed PR #879 as empty. Prior conflict-resolver log entry (pr#876 requeue) already captured in PR #877.
+
 ## [2026-10-03] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#876 kind=requeue resolved=true — enabled auto-merge via MCP (gh CLI token invalid in cloud env); PR #876 (wiki(game-music): daily 2026-10-03) was CLEAN with green CI but auto-merge not queued; re-queued SQUASH merge.
