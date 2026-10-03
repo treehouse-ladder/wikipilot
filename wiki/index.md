@@ -72,6 +72,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[release-v2-1-288-anthropics-claude-code-da2d811b]]
+- [[007-first-light-big-walk-and-resident-evil-requiem-lead-the-golden-joystick-awards-nominations-a8b99104]]
+- [[i-can-t-believe-a-silly-star-wars-racing-roguelite-is-one-of-my-favorite-games-this-year-9b7adc15]]
+- [[reigns-developer-nerial-enters-hibernation-mode-lays-off-staff-830bc6f6]]
+- [[brace-for-takeoff-star-fox-has-arrived-on-nintendo-music-b22e4b4a]]
+- [[iam8bit-announces-the-mina-the-hollower-3lp-vinyl-89b616da]]
+- [[record-store-sim-wax-heads-gets-a-fitting-double-vinyl-release-cdfdce4c]]
+- [[return-to-kuttenberg-with-this-stunning-kingdom-come-deliverance-ii-live-concert-film-8f858a5a]]
+- [[unreal-optimizations-in-wwise-2026-1-3-7b9c7042]]
 - [[silent-hill-townfall-becomes-fastest-selling-entry-in-the-series-konami-confirms-series-roadmap-98bd2e4c]]
 - [[blood-of-dawnwalker-sells-1-million-copies-in-first-week-despite-rough-launch-patch-incoming-84af9ac3]]
 - [[minecraft-live-2026-everything-announced-02f1c5cb]]
@@ -1337,6 +1346,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-10-03]]
 - [[2026-09-22]]
 - [[2026-09-21]]
 - [[2026-09-19]]
