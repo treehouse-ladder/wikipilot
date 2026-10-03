@@ -60,7 +60,8 @@ sources:
   - "[[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]]"
   - "[[beyond-the-model-demystifying-harness-effects-in-software-engineering-agents-d5e20119]]"
   - "[[release-v2-1-287-anthropics-claude-code-d3204584]]"
-last_updated: 2026-10-02
+  - "[[release-v2-1-288-anthropics-claude-code-da2d811b]]"
+last_updated: 2026-10-03
 last_verified: 2026-09-30
 freshness_window_days: 30
 ---
@@ -80,6 +81,10 @@ The harness encompasses several distinct responsibilities: task specification, c
 **Programmatic extensibility: Claude Mods as a code-level harness-modification primitive (October 2026).** As of Claude Code v2.1.287 (2026-10-01), plugins can ship "mods" — JavaScript/TypeScript event handlers that intercept and rewrite agent behavior at runtime [[release-v2-1-287-anthropics-claude-code-d3204584]]. Mods sit a tier below Agent Skills (which are instruction/script bundles): a mod runs code that can watch, change, or take over tool calls, prompts, commands, turns, and UI rendering, enabling deep programmatic customization of the harness itself. This extends the harness's "extension surfaces" from declarative plugin metadata to executable interception points, on by default.
 
 > Mods are made of JavaScript or TypeScript event handlers: Claude Code calls one when an event happens, such as a tool call, a submitted prompt, or a part of the interface being drawn, and the handler can watch the event, change it, or take it over. [[release-v2-1-287-anthropics-claude-code-d3204584]]
+
+V2.1.288 (2026-10-02) extends the Mods API with `$.ui.selection()`, which returns the user's last fullscreen text selection and, when the selection lies within one transcript row, that row itself [[release-v2-1-288-anthropics-claude-code-da2d811b]]. This gives mods read access to the user's UI selection state, widening the on-by-default plugin supply-chain surface documented in this harness's broader config-defect findings.
+
+> Added $.ui.selection() for mods: returns the text you last selected in fullscreen mode and, when the selection lies within one transcript row, that row. [[release-v2-1-288-anthropics-claude-code-da2d811b]]
 
 **Harness engineering as a named discipline with empirical foundation (September 2026).** A comprehensive source-code anatomy of eleven production coding harnesses frames the discipline precisely: "An agent is a model plus a harness -- the runtime that couples an LLM to the world through a loop, tools, context management, safety controls, orchestration, and extension surfaces. Harness engineering, named as a discipline in early 2026, is the design and evolution of that runtime" [[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]. The study reads the actual source of eleven systems — Claude Code (Anthropic), Codex CLI (OpenAI), Gemini CLI (Google), Mistral Vibe (Mistral), OpenHands, Aider, Mini-SWE-Agent, Hermes (Nous Research), Pi, OpenCode, and OpenClaw — and names Databricks' Omnigent as "the first meta-harness," a harness-of-harnesses layer [[harness-engineering-anatomy-architecture-and-evolution-of-coding-agents-a-source-code-study-of-eleven-systems-dbb73861]]. The analysis is descriptive (source-code reading) with no head-to-head benchmark controlling for base model, so it does not adjudicate which architecture scores higher, but it provides the field's most comprehensive empirical foundation to date.
 

@@ -1,6 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
+last_updated: 2026-10-03
 sources:
   - "[[automate-work-with-routines-claude-code-routines-docs-d09f612e]]"
   - "[[cursor-2-0-multi-agents-and-composer-changelog-4665f068]]"
@@ -341,7 +342,7 @@ sources:
   - "[[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]]"
   - "[[release-v2-1-287-anthropics-claude-code-d3204584]]"
   - "[[release-0-160-0-openai-codex-e61beeca]]"
-last_updated: 2026-10-02
+  - "[[release-v2-1-288-anthropics-claude-code-da2d811b]]"
 last_verified: 2026-09-30
 freshness_window_days: 30
 ---
@@ -442,6 +443,18 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-03
+
+Claude Code shipped **v2.1.288** (Oct 2, 2026), an incremental release whose most substantive change is a major rewrite of the shell-sandbox documentation rather than new capability. The expanded `sandboxing.md` now spells out the sandbox boundary, default filesystem/network access, `excludedCommands`, credential masking, allowed-host behavior, managed-setting locks, and troubleshooting for SSH/Docker/localhost/host-allowlist failures [[release-v2-1-288-anthropics-claude-code-da2d811b]]. This documents — but does not change — the OS-level containment model already on this page; it clarifies the blast-radius boundary without addressing the runtime tool-output trust-level confusion the prompt-injection SoK sources identify as the root cause.
+
+> The sandboxing.md documentation was substantially expanded to explain the shell sandbox boundary, what stays outside it, default filesystem and network access, excludedCommands, credential masking, allowed-host behavior, managed-setting locks, and concrete troubleshooting for SSH, Docker, localhost, and host-allowlist failures.
+
+The release also extends the Mods plugin API with `$.ui.selection()` (returns the user's last fullscreen text selection, and the containing transcript row when the selection lies within one), adds `--max-findings <n>|all` to `/code-review`, scopes the background-command time limit to unattended sessions only (no limit in terminal/desktop/VS Code), and fixes resume/partial-response handling so non-interactive sessions and subagents continue from partial responses [[release-v2-1-288-anthropics-claude-code-da2d811b]].
+
+> Added $.ui.selection() for mods: returns the text you last selected in fullscreen mode and, when the selection lies within one transcript row, that row.
+
+_no contradictions or gaps known yet (last reviewed: 2026-10-03)_
 
 ### Updates 2026-10-02
 
@@ -3032,6 +3045,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does a Claude Mod's ability to 'take over' a tool call or rewrite a submitted prompt [[release-v2-1-287-anthropics-claude-code-d3204584]] run before or after the auto-mode transcript classifier and the OS-level bubblewrap/seatbelt sandbox [[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]] — i.e. can a mod suppress or forge the approval signal the classifier inspects, or does it execute inside the same contained tier?
 - [ ] Do Claude Mods compose with Agent Skills and MCP, or do they overlap — can a mod wrap/replace a Skill's or MCP server's tool surface, and if so does mod interception bust the prompt cache the way mid-session tool-definition edits are suspected to [[code-execution-with-mcp-building-more-efficient-ai-agents-9b88bfec]]?
 - [ ] Does Codex v0.160.0's project-less session start with workspace defaults [[release-0-160-0-openai-codex-e61beeca]] broaden the filesystem/network blast radius relative to a project-scoped session, given sessions outside a project have no repo boundary to anchor permission scoping?
+- [ ] Does v2.1.288's expanded Mods API — `$.ui.selection()` letting a plugin read the user's last fullscreen text selection and its transcript row [[release-v2-1-288-anthropics-claude-code-da2d811b]] — widen the on-by-default plugin supply-chain surface flagged for Claude Mods, where JS/TS handlers can rewrite prompts and intercept tool calls, given ~1-in-6 real agentic-coding config setups already carry a confirmed defect?
+- [ ] Does the rewritten sandboxing guide's documented boundary (`excludedCommands`, credential masking, allowed-host behavior, managed-setting locks) [[release-v2-1-288-anthropics-claude-code-da2d811b]] close any of the previously-noted permission-checker fail-open/fail-closed gaps, or does it only document the existing boundary without changing enforcement?
 
 ## See also
 
