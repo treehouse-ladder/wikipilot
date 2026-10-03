@@ -3082,3 +3082,23 @@ pr#869 kind=requeue resolved=true — enabled auto-merge via MCP (gh CLI token i
 ## [2026-10-02] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#871 (wiki(reports): daily 2026-10-02) was DIRTY after pr#870 merged; rebased onto main, resolved 1 conflict in wiki/log.md (append-only union of daily + conflict-resolver entries); force-pushed sha=9ad183e; auto-merge completed via CCR.
+
+## [2026-10-03] daily | agentic-coding — 1 source, 4 pages
+
+PRs created via GitHub MCP API (gh CLI token invalid in cloud env). Source: Claude Code v2.1.288 release notes. Pages: sources/release-v2-1-288-anthropics-claude-code-da2d811b.md, topics/agentic-coding/index.md, concepts/agent-sandboxing.md, concepts/harness-engineering.md.
+
+## [2026-10-03] daily | frontier-models — 0 sources, 1 page
+
+Quiet sweep — no new frontier general-LLM release, index rescale, or pricing change detected. Dated log entry inserted in topics/frontier-models/index.md.
+
+## [2026-10-03] daily | games-of-note — 3 sources, 4 pages
+
+Sources: Golden Joystick 2026 nominations, Star Wars: Galactic Racer review (GameSpot), Nerial hibernation. Pages: 3 source pages + topics/games-of-note/index.md.
+
+## [2026-10-03] daily | game-music — 5 sources, 6 pages
+
+Sources: Star Fox 2026 OST on Nintendo Music, Mina the Hollower 3LP vinyl, Wax Heads double vinyl, KCD2 concert film, Wwise 2026.1.3 Unreal optimizations. Pages: 5 source pages + topics/game-music/index.md.
+
+## [2026-10-03] daily | 4 topics, 9 sources, 15 pages
+
+ai-in-game-dev: empty proposal (0 sources, 0 page_diffs), no PR created. PRs: #873 (agentic-coding), #874 (frontier-models), #875 (games-of-note), #876 (game-music). All merged. PRs created via GitHub MCP API (gh CLI token invalid in cloud env).
