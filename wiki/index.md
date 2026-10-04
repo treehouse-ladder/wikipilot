@@ -928,6 +928,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[undertale-confirms-2026-orchestral-world-soundtrack-tour-7f8fef62]]
 - [[wuchang-fallen-feathers-vinyl-soundtrack-is-now-available-to-pre-order-ships-september-2026-cc94be3a]]
 - [[video-games-live-los-angeles-september-2026-1d198b8c]]
+- [[release-v2-1-289-anthropics-claude-code-ec085814]]
+- [[we-re-going-to-need-default-hard-budget-caps-on-pretty-much-everything-47be91cd]]
+- [[ling-3-1-flash-intelligence-performance-price-analysis-702c1133]]
+- [[ant-inclusionai-ships-ling-3-1-flash-with-560b-parameters-e58c2683]]
+- [[skies-of-arcadia-eternal-soundtrack-vinyl-edition-music-review-58f55723]]
+- [[ubisoft-unites-developers-of-splinter-cell-the-division-ghost-recon-and-more-under-star-wars-outlaws-studio-massive-entertainment-2252de1f]]
 
 ## Answers
 
@@ -1346,6 +1352,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-10-04]]
 - [[2026-10-03]]
 - [[2026-09-22]]
 - [[2026-09-21]]
