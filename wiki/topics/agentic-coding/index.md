@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-03
+last_updated: 2026-10-04
 sources:
   - "[[automate-work-with-routines-claude-code-routines-docs-d09f612e]]"
   - "[[cursor-2-0-multi-agents-and-composer-changelog-4665f068]]"
@@ -343,6 +343,8 @@ sources:
   - "[[release-v2-1-287-anthropics-claude-code-d3204584]]"
   - "[[release-0-160-0-openai-codex-e61beeca]]"
   - "[[release-v2-1-288-anthropics-claude-code-da2d811b]]"
+  - "[[release-v2-1-289-anthropics-claude-code-ec085814]]"
+  - "[[we-re-going-to-need-default-hard-budget-caps-on-pretty-much-everything-47be91cd]]"
 last_verified: 2026-09-30
 freshness_window_days: 30
 ---
@@ -443,6 +445,28 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-04
+
+Two sources today: a Claude Code patch and a practitioner argument on agent-provisioned cost.
+
+**Claude Code v2.1.289 (2026-10-03): `agent.spawn` for teammates plus three more permission-rule bypass closures.** The release adds `agent.spawn` for teammates, a single agent id shared across plugin hook events, and idle/waiting states in `$.agent.list()` [[release-v2-1-289-anthropics-claude-code-ec085814]] — a user-installed mod can now spawn teammate agents, extending the Mods programmatic tier (shipped in v2.1.287) into multi-agent fan-out from inside a supervised session. It also closes three permission-checker bypasses on surfaces this page tracks: an env-var-prefixed Bash command slipping past deny/ask rules under sandbox auto-allow, Read deny rules not applying to files reached through an IDE symlink, and a nested rule in a compound command being overridden by a mod's approval on managed machines [[release-v2-1-289-anthropics-claude-code-ec085814]]. A related fix stops a user-installed plugin from rewriting an organization-managed MCP server's sign-in tool descriptions.
+
+> Added agent.spawn for teammates, one agent id across plugin hook events, and idle and waiting states in $.agent.list(). [[release-v2-1-289-anthropics-claude-code-ec085814]]
+
+> Fixed Bash deny and ask rules missing a command behind an environment variable prefix with an expanded value (for example TZ="$HOME" rm -rf build) when the sandbox auto-allows commands. [[release-v2-1-289-anthropics-claude-code-ec085814]]
+
+> Fixed a user-installed plugin being able to rewrite the descriptions of an organization-managed MCP server's sign-in tools. [[release-v2-1-289-anthropics-claude-code-ec085814]]
+
+The three new bypass fixes extend the recurring 'checker-can't-fully-analyze → silent fail-open' class already flagged on this page; the mod-approval-over-nested-rule and plugin-rewrites-MCP-sign-in-tool fixes land squarely on the Claude Mods supply-chain surface the page's existing dispute warns the programmatic plugin tier widens.
+
+**Simon Willison, 'We're going to need default hard budget caps on pretty much everything' (2026-10-03).** Willison argues that because coding agents 'greatly reduce the friction of spinning up code that can do useful things' and 'sometimes those things cost money', the pay-by-usage services agents provision should ship hard budget caps on by default [[we-re-going-to-need-default-hard-budget-caps-on-pretty-much-everything-47be91cd]]. He frames a hard cap as 'the feature that lets you say "after $X/month, cut this thing off and return errors"', insists it 'need[s] to be the default' with living-dangerously as opt-in, and wants agents to bias toward recommending capped providers and warn inexperienced builders against uncapped services [[we-re-going-to-need-default-hard-budget-caps-on-pretty-much-everything-47be91cd]].
+
+> A hard budget cap is the feature that lets you say "after $X/month, cut this thing off and return errors". [[we-re-going-to-need-default-hard-budget-caps-on-pretty-much-everything-47be91cd]]
+
+> Hard budget caps need to be the default. If you want to live dangerously you should be able to do that, but it needs to be on an opt-in basis. [[we-re-going-to-need-default-hard-budget-caps-on-pretty-much-everything-47be91cd]]
+
+This is a third voice on the hard-caps side of the page's routing-vs-caps cost dispute, extending it from the agent *tool's* own spend (Uber's per-employee ceilings) to the *downstream* pay-by-usage services agents autonomously provision.
 
 ### Updates 2026-10-03
 
@@ -2733,6 +2757,7 @@ lint stays quiet until each page actually exists:
 - [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]] finds 16.7% of real-world agentic-coding setups carry a confirmed defect and argues the harness config layer is an unmanaged dependency layer with 'no lockfile, no install-time check'; prior sandboxing sources present OS-level sandboxing and managed-settings allowlists as the governance story. The sandbox bounds runtime blast radius and the allowlist governs which servers agents can reach, but neither addresses install-time supply-chain defects inside the config artifacts themselves, which the field data shows are already present in ~1-in-6 real setups. Status: unresolved
 - [[swe-serve-benchmarking-agentic-engineering-for-production-inference-serving-635b512e]] argues repository-level SWE benchmarks do not target inference and evaluates whether agents carry a locally-working implementation through a complete production path (hidden functional + regression + end-to-end serving tests); [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents single-turn test-patch resolution as the human-filtered, annotator-reviewed gold standard for coding-agent capability. Status: unresolved — same production-realism-gap direction as FeatureBench/SWE-EVO/SWE-Bench-Mobile but on a distributed inference-serving distribution where a locally-passing patch can still fail the end-to-end serving path.
 - [[release-v2-1-287-anthropics-claude-code-d3204584]] ships Claude Mods as on-by-default plugins whose JS/TS handlers can rewrite prompts and take over tool calls; [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]] finds 16.7% of real-world agentic-coding config setups already carry a confirmed defect and argues the config/plugin layer is an unmanaged software supply chain with 'no lockfile, no install-time check'. A plugin tier that can execute code to intercept and rewrite agent behavior widens exactly that install-time supply-chain surface rather than narrowing it. Status: unresolved
+- [[we-re-going-to-need-default-hard-budget-caps-on-pretty-much-everything-47be91cd]] argues hard budget caps must be the default (opt-out, not opt-in) for pay-by-usage services that coding agents spin up, framing uncapped agent-provisioned spend as a structural hazard requiring a default kill-switch; [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]] frames agentic-coding cost overruns as recoverable (14-21%) via cache-aware routing and harness tuning rather than hard caps. Status: unresolved — aligns with the hard-caps side of the existing routing-vs-caps dispute ([[uber-caps-usage-of-ai-tools-like-claude-code-to-manage-costs-d17eb873]]) but on the distinct axis of downstream services the agent provisions, not the agent tool's own token spend.
 
 ## Open questions
 
@@ -3047,6 +3072,7 @@ lint stays quiet until each page actually exists:
 - [ ] Does Codex v0.160.0's project-less session start with workspace defaults [[release-0-160-0-openai-codex-e61beeca]] broaden the filesystem/network blast radius relative to a project-scoped session, given sessions outside a project have no repo boundary to anchor permission scoping?
 - [ ] Does v2.1.288's expanded Mods API — `$.ui.selection()` letting a plugin read the user's last fullscreen text selection and its transcript row [[release-v2-1-288-anthropics-claude-code-da2d811b]] — widen the on-by-default plugin supply-chain surface flagged for Claude Mods, where JS/TS handlers can rewrite prompts and intercept tool calls, given ~1-in-6 real agentic-coding config setups already carry a confirmed defect?
 - [ ] Does the rewritten sandboxing guide's documented boundary (`excludedCommands`, credential masking, allowed-host behavior, managed-setting locks) [[release-v2-1-288-anthropics-claude-code-da2d811b]] close any of the previously-noted permission-checker fail-open/fail-closed gaps, or does it only document the existing boundary without changing enforcement?
+- [ ] Does Claude Code v2.1.289's `agent.spawn` for teammates [[release-v2-1-289-anthropics-claude-code-ec085814]] — multi-agent fan-out initiated by a user-installed mod — widen the Claude Mods supply-chain attack surface (the config/plugin layer with 'no lockfile, no install-time check' found defective in ~1-in-6 real setups), by letting an install-time-defective mod silently spawn additional agent instances, or is spawn gated by the same managed-settings allowlist that governs the mod itself?
 
 ## See also
 
