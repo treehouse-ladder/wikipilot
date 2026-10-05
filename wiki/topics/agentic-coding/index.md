@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-04
+last_updated: 2026-10-05
 sources:
   - "[[automate-work-with-routines-claude-code-routines-docs-d09f612e]]"
   - "[[cursor-2-0-multi-agents-and-composer-changelog-4665f068]]"
@@ -345,6 +345,7 @@ sources:
   - "[[release-v2-1-288-anthropics-claude-code-da2d811b]]"
   - "[[release-v2-1-289-anthropics-claude-code-ec085814]]"
   - "[[we-re-going-to-need-default-hard-budget-caps-on-pretty-much-everything-47be91cd]]"
+  - "[[cross-benchmark-transfer-from-rl-on-agentic-coding-tasks-388f3c12]]"
 last_verified: 2026-09-30
 freshness_window_days: 30
 ---
@@ -445,6 +446,16 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-05
+
+One source today: RL cross-benchmark transfer for agentic coding models — direct evidence that harness-independent generalisation is achievable from private training tasks.
+
+**Cross-Benchmark Transfer from RL on Agentic Coding Tasks (arXiv:2610.00890, 2026-10-05) — one epoch of RL on 1,700 private repo/terminal tasks transfers to all six external public benchmarks across three harnesses, including a +12.4pp SWE-Bench Pro and +14.6pp Terminal-Bench 2.1 jump for Kimi K2.7 Code.** The paper post-trains Kimi K2.7 Code — a 1T-parameter, 32B-active open-weight mixture-of-experts model — with GSPO RL alone on 1,700 tasks: 1,000 repository tasks graded by hidden fail-to-pass tests and by pass-to-pass tests of existing behavior, plus 700 terminal tasks graded by expert-written hidden verifiers [[cross-benchmark-transfer-from-rl-on-agentic-coding-tasks-388f3c12]]. One epoch on a rank-32 LoRA adapter improves pass@1 on each of the six external benchmarks across all three harnesses: SWE-Bench Pro 60.1→64.8, DeepSWE 31.0→43.4, Terminal-Bench 2.1 67.4→82.0, Terminal-Bench 3 1.4→12.1, Terminal-Bench 4 0.0→7.6, SWE-Marathon 5.0→25.0 [[cross-benchmark-transfer-from-rl-on-agentic-coding-tasks-388f3c12]]. The cross-harness transfer finding directly bears on the page's open RL-independence question: if a LoRA adapter trained on one private harness consistently lifts scores across SWE-Bench Pro, DeepSWE, and three Terminal-Bench harnesses, "harness-as-confound" is not the whole story — at least part of the signal is model-intrinsic [[cross-benchmark-transfer-from-rl-on-agentic-coding-tasks-388f3c12]]. The root failure mode the paper targets is "last-mile collapse": agents build most of a feature but drop a requirement, test only cases their implementation handles, break pass-to-pass behavior, or validate against an unchecked assumption [[cross-benchmark-transfer-from-rl-on-agentic-coding-tasks-388f3c12]] — consistent with SWE-Bench Pro Verified's "last-mile hypothesis" framing. Caveats: the adapter's size (rank-32 LoRA) and the non-leakage status of the private training task set vs. the public test splits are not independently verified; the Terminal-Bench 3/4 improvements are large in relative terms but start from near zero (1.4 and 0.0), so absolute headroom questions remain.
+
+> Coding agents often fail in the last mile: they build most of a feature but drop a requirement, test only the cases their implementation already handles, break behavior that was supposed to stay intact, or validate against an unchecked assumption. [[cross-benchmark-transfer-from-rl-on-agentic-coding-tasks-388f3c12]]
+
+> One epoch of GSPO on a rank-32 LoRA adapter improves pass@1 on each of the six external benchmarks evaluated, across three agent harnesses: SWE-Bench Pro (60.1 to 64.8), DeepSWE (31.0 to 43.4), Terminal-Bench 2.1 (67.4 to 82.0), Terminal-Bench 3 (1.4 to 12.1), Terminal-Bench 4 (0.0 to 7.6), and SWE-Marathon (5.0 to 25.0). [[cross-benchmark-transfer-from-rl-on-agentic-coding-tasks-388f3c12]]
 
 ### Updates 2026-10-04
 
@@ -3073,6 +3084,7 @@ lint stays quiet until each page actually exists:
 - [ ] Does v2.1.288's expanded Mods API — `$.ui.selection()` letting a plugin read the user's last fullscreen text selection and its transcript row [[release-v2-1-288-anthropics-claude-code-da2d811b]] — widen the on-by-default plugin supply-chain surface flagged for Claude Mods, where JS/TS handlers can rewrite prompts and intercept tool calls, given ~1-in-6 real agentic-coding config setups already carry a confirmed defect?
 - [ ] Does the rewritten sandboxing guide's documented boundary (`excludedCommands`, credential masking, allowed-host behavior, managed-setting locks) [[release-v2-1-288-anthropics-claude-code-da2d811b]] close any of the previously-noted permission-checker fail-open/fail-closed gaps, or does it only document the existing boundary without changing enforcement?
 - [ ] Does Claude Code v2.1.289's `agent.spawn` for teammates [[release-v2-1-289-anthropics-claude-code-ec085814]] — multi-agent fan-out initiated by a user-installed mod — widen the Claude Mods supply-chain attack surface (the config/plugin layer with 'no lockfile, no install-time check' found defective in ~1-in-6 real setups), by letting an install-time-defective mod silently spawn additional agent instances, or is spawn gated by the same managed-settings allowlist that governs the mod itself?
+- [ ] Does the cross-benchmark RL transfer finding (Kimi K2.7 Code GSPO LoRA improving all six public benchmarks across three harnesses [[cross-benchmark-transfer-from-rl-on-agentic-coding-tasks-388f3c12]]) generalize to harnesses beyond SWE-Bench Pro, DeepSWE, and Terminal-Bench — specifically Claude Code's dynamic-workflow / fork-subagent harness — or is the harness-independent transfer property specific to the repository-editing and terminal-command task shapes the private training set used?
 
 ## See also
 
