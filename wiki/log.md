@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-05] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#890 (wiki(games-of-note): daily 2026-10-05) kind=requeue resolved=true — clean CI-green PR found without auto-merge queued; enabled squash auto-merge via MCP enable_pr_auto_merge
+
 ## [2026-10-04] health | weekly sweep — 1 dispute filed
 
 Terminal-Bench 4.0 score dispute on claude-sonnet-5-5 (70.6% vs 64%). 37 stale synthesis pages, 10 orphans, 0 lint errors. PR #882.
