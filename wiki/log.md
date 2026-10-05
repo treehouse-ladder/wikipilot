@@ -3134,3 +3134,19 @@ PR #886 merged. Source: Kotaku on Ubisoft consolidating The Division, Ghost Reco
 ## [2026-10-04] daily | 4 topics, 6 sources, 10 pages
 
 ai-in-game-dev: empty proposal (0 sources, 0 page_diffs in 2026-10-02→2026-10-04 window), no PR created. PRs: #883 (agentic-coding), #884 (frontier-models), #885 (game-music), #886 (games-of-note). All merged. PRs created via GitHub MCP API (gh CLI token invalid in cloud env).
+
+## [2026-10-05] daily | agentic-coding — 1 source, 2 pages
+
+PR #889 merged. Source: cross-benchmark RL transfer on Kimi K2.7 Code (GSPO/LoRA, SWE-Bench Pro 60.1→64.8, DeepSWE 31.0→43.4, Terminal-Bench 2.1 67.4→82.0 across 3 harnesses). Pages: 1 source page + topics/agentic-coding/index.md.
+
+## [2026-10-05] daily | games-of-note — 3 sources, 4 pages
+
+PR #890 merged. Sources: IGN layoffs (Altano 2009+, Macy, Scoville); Kotaku Gears E-Day review (highs and lows, best-looking in series); GameSpot Gears E-Day review (spectacle impressive but falls short of greatness). Pages: 3 source pages + topics/games-of-note/index.md.
+
+## [2026-10-05] daily | ai-in-game-dev — 2 sources, 3 pages
+
+PR #891 merged. Sources: IGMBench world-editing benchmark (110 tasks Minecraft/Terraria, 4 depth strata, reliability falls with depth); Unity MCP v10.3.0 Blender Bridge (drive BlenderMCP from Unity Editor Asset Gen panel). Pages: 2 source pages + topics/ai-in-game-dev/index.md.
+
+## [2026-10-05] daily | 3 topics, 6 sources, 9 pages
+
+PRs: #889 (agentic-coding), #890 (games-of-note), #891 (ai-in-game-dev). All merged. Frontier-models and game-music: empty proposals, no PRs created. PRs created via GitHub MCP API (gh CLI token invalid in cloud env).
