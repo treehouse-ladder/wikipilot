@@ -2,6 +2,18 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-06] daily | games-of-note — 4 sources, 6 pages
+
+Ninja Theory confirmed closure (both rescue deals fell through; layoffs begun); The Coalition / Gears E-Day post-launch layoff fears and Metacritic-bonus clause; Supermassive Games 70 confirmed layoffs (Oct 5) — third redundancy round in three years; Gears E-Day missing features explained. Summary-affecting run. PR #896.
+
+## [2026-10-06] daily | ai-in-game-dev — 1 source, 2 pages
+
+Code2Games paper ingested: coding agents for gaming world generation via LLM-driven procedural pipeline. PR #895.
+
+## [2026-10-06] daily | agentic-coding — 1 source, 3 pages
+
+Claude Code v2.1.290 release notes ingested; background subagent isolation and parallel-subagents pattern updated. PR #894.
+
 ## [2026-10-04] health | weekly sweep — 1 dispute filed
 
 Terminal-Bench 4.0 score dispute on claude-sonnet-5-5 (70.6% vs 64%). 37 stale synthesis pages, 10 orphans, 0 lint errors. PR #882.
