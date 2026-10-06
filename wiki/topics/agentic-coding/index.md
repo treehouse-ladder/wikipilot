@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-05
+last_updated: 2026-10-06
 sources:
   - "[[automate-work-with-routines-claude-code-routines-docs-d09f612e]]"
   - "[[cursor-2-0-multi-agents-and-composer-changelog-4665f068]]"
@@ -446,6 +446,24 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-06
+
+Claude Code shipped **v2.1.290** [[release-v2-1-290-anthropics-claude-code-d9b88297]], the first release after v2.1.289's `agent.spawn` teammates / parallel-subagent expansion [[release-v2-1-289-anthropics-claude-code-ec085814]]. The release extends the plugin-hook surface in two subagent-relevant ways: it adds `agentId` to the `tool.check` event (so a permission-check hook can now see which spawned agent is requesting a tool) and adds `serverToolUses` to the `turn.step` hook results, plus a `ceiling` on the `tool.check` verdict.
+
+> Added agentId to the tool.check event of plugin hooks
+
+> Added serverToolUses to mod's turn.step hook results
+
+It also changes interactive-session WebSearch budgeting from a fixed cap to a refill-over-time model, and fixes two agentic-reliability bugs: scheduled tasks now resume after conversation compaction, and skills' multi-line shell blocks no longer fail under CRLF line endings.
+
+> Changed the interactive session's WebSearch budget to refill over time
+
+> Fixed scheduled tasks not coming back on resume after conversation compaction
+
+> Fixed multi-line shell blocks in skills failing with CRLF line endings
+
+The follow-up v2.1.291 is a two-line hotfix reverting a 290 regression where cloud sessions could drop permission-prompt answers. Incremental maintenance release — does not move the current-state picture.
 
 ### Updates 2026-10-05
 
@@ -2964,6 +2982,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does the structural-codebase-index resolve gain in [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]] hold once the base model is varied (it is measured only with Claude Opus 4.7 held fixed), given [[beyond-resolution-rates-behavioral-drivers-of-coding-agent-success-and-failure-fdcb2bd4]] finds the base LLM is the primary driver of outcome?
 - [ ] The index in [[code-isn-t-memory-a-structural-codebase-index-inside-a-coding-agent-85bf369e]] is claimed to pay off specifically on multi-file changes — does its localization/resolve advantage vanish or invert on the single-file-localization tasks where text-only explorers are 'already strong' ([[swe-explore-benchmarking-how-coding-agents-explore-repositories-a0f69e17]]), and is the multi-file condition the boundary that reconciles it with ContextBench's Bitter Lesson?
 - [ ] If frontier Anthropic models (Opus 4.8, Sonnet 5) are RL co-adapted to Claude Code's built-in edit-tool schema [[better-models-worse-tools-df80d6a1]], does this reduce SWE-bench Verified scores — measured under the bash-only mini-SWE-agent harness [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] that uses neither Claude Code's native tools nor Pi's — and what fraction of measured capability gains since Opus 4.6 are attributable to Claude-Code-specific tool-RL rather than general reasoning improvements?
+- [ ] Does v2.1.290's new `agentId` field on the `tool.check` plugin hook [[release-v2-1-290-anthropics-claude-code-d9b88297]] enable per-subagent permission-policy enforcement (distinct trust tiers per spawned agent), or is it only an observability label — relevant to the parallel-subagent attack-surface question now that `agent.spawn` teammates landed in v2.1.289 [[release-v2-1-289-anthropics-claude-code-ec085814]]?
+- [ ] Does v2.1.290's shift of the interactive WebSearch budget to a refill-over-time model [[release-v2-1-290-anthropics-claude-code-d9b88297]] weaken the default hard-budget-cap containment Simon Willison argued for against DNS/egress exfiltration [[an-agent-used-dns-to-reach-an-external-chatbot-4421cb94]], by letting a long-running injected agent regain search budget it would otherwise have exhausted?
 - [ ] Does GPT-5.6's Programmatic Tool Calling V8 sandbox [[programmatic-tool-calling-c21acdb9]] — no Node.js, no filesystem, no network, no persistent state — subsume the code-execution-with-MCP "tools as code on a filesystem" load-on-demand pattern [[code-execution-with-mcp-building-more-efficient-ai-agents-9b88bfec]], or are the two complementary?
 - [ ] Does relocating subagent dispatch into the model's core API [[the-new-gpt-5-6-family-luna-terra-sol-195d8ae2]] shift the harness-vs-model attribution debate — if parallel-subagent orchestration becomes a model capability rather than a harness capability, does the harness's measured contribution to SWE-bench/Terminal-Bench scores shrink?
 - [ ] Do Cursor 3.11's cloud-agent lifecycle hooks (beforeSubmitPrompt/afterAgentResponse/afterAgentThought/stop/subagentStart) [[side-chats-and-conversation-search-8df90ad3]] compose with Claude Code's hook system and dynamic-workflows fan-out [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]] — is there a portable cross-vendor mid-trajectory control surface emerging?
