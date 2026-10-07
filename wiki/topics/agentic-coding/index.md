@@ -346,7 +346,9 @@ sources:
   - "[[release-v2-1-289-anthropics-claude-code-ec085814]]"
   - "[[we-re-going-to-need-default-hard-budget-caps-on-pretty-much-everything-47be91cd]]"
   - "[[cross-benchmark-transfer-from-rl-on-agentic-coding-tasks-388f3c12]]"
+  - "[[release-v2-1-292-anthropics-claude-code-0c734930]]"
 last_verified: 2026-09-30
+last_updated: 2026-10-07
 freshness_window_days: 30
 ---
 
@@ -446,6 +448,40 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-07
+
+Claude Code v2.1.292 ships several notable harness-layer additions [[release-v2-1-292-anthropics-claude-code-0c734930]]:
+
+**Sub-agent effort control.** The `Agent` tool now accepts an `effort` parameter, letting the orchestrator specify a per-subagent effort level. This is a meaningful architectural addition: previously all subagents inherited the session's default reasoning budget; explicit effort levels make it possible to run cheap shallow subagents for reconnaissance work and expensive deep subagents for synthesis, reducing token cost on complex multi-agent runs.
+
+> Added `effort` parameter to the Agent tool for running sub-agents at specified effort levels
+
+**Plugin marketplace.** `claude plugin install --marketplace <source>` adds and installs plugins directly from a registered marketplace with policy checks, consolidating what previously required a manual `--marketplace-add` + `install` two-step.
+
+> Added `--marketplace <source>` flag to `claude plugin install` to automatically add and install plugins from marketplaces with policy checks
+
+**Prompt caching for mods.** `$.model.complete` in the mod API now supports `cache: true` on text blocks, giving mod authors the same prompt-caching economics available in the core session.
+
+> Added prompt caching to `$.model.complete` with `cache: true` support on text blocks
+
+**Workflow-agent introspection.** The `agent.spawn` mod hook now receives run and index metadata for workflow agents, enabling mods to gate or instrument spawned agents by their position in a workflow.
+
+> Added workflow agents to `agent.spawn` mod hook with run and index information
+
+**MCP protocol upgrade.** Local MCP server connections now negotiate protocol version 2026-07-28 by default, bringing the client into line with the July specification release candidate already tracked in [[the-2026-07-28-mcp-specification-release-candidate-1a1752b8]].
+
+> Local MCP server connections now negotiate protocol version 2026-07-28 by default
+
+**Sandbox security hardening.** Three sandboxing bugs were fixed: (1) sandboxed commands could read staged `/ultrareview` upload files, (2) managed sandbox read-deny paths could leak project-level grants mid-session, and (3) a tampered on-disk cache could bypass the built-in policy plugin. PreToolUse hook approvals now correctly enforce permission prompts for UNC (network) paths.
+
+> Fixed sandboxed commands reading staged `/ultrareview` upload files
+
+> Fixed managed sandbox read-deny paths not dropping project grants mid-session
+
+> Fixed tampered on-disk cache bypassing built-in policy plugin
+
+> Fixed PreToolUse hook approvals and auto mode now respect permission prompts for network (UNC) paths
 
 ### Updates 2026-10-06
 
@@ -2790,6 +2826,7 @@ lint stays quiet until each page actually exists:
 
 ## Open questions
 
+- [ ] What effort levels does the `effort` parameter on the `Agent` tool accept — does it map to model reasoning-budget tokens, or to a named tier (low/medium/high)? The v2.1.292 release notes don't specify [[release-v2-1-292-anthropics-claude-code-0c734930]].
 - [ ] Does Control the Harness's cache-aware routing claim [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]] (moving work only at session start, side lanes, and subagent launch so no running conversation rebuilds its cache) survive the prompt-cache-invalidation cliff cases the topic charter flags — i.e. mid-run file edits that bust the cache — or does the 14–21% recovery assume sessions that never invalidate mid-trajectory?
 - [ ] Does v2.1.286's single-retry-on-model-refusal behavior [[release-v2-1-286-anthropics-claude-code-80da4486]] interact with the server-side auto-mode classifier's 'billed fallback' path — when the refused model is the auto-mode classifier model, does the retry preserve the same safety-validated variant or silently drop to a weaker one?
 - [ ] Does Cursor's Security Review (one review comment reporting exploitable bugs per PR) [[bots-for-the-last-mile-rollouts-security-review-b7f53869]] measurably outperform the general-purpose Bugbot reviewer on the security-vulnerability subset, and what is its false-negative rate against real-world agentic-PR security defects? No methodology or benchmark accompanies the announcement.
