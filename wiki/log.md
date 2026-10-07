@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-07] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#900 requeued (claude/daily-2026-10-07/frontier-models; clean+CI-green orphan; auto-merge enabled)
+
 ## [2026-10-06] daily | games-of-note — 4 sources, 6 pages
 
 Ninja Theory confirmed closure (both rescue deals fell through; layoffs begun); The Coalition / Gears E-Day post-launch layoff fears and Metacritic-bonus clause; Supermassive Games 70 confirmed layoffs (Oct 5) — third redundancy round in three years; Gears E-Day missing features explained. Summary-affecting run. PR #896.
