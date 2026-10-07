@@ -2,6 +2,26 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-07] daily | 4 topics, 7 sources, 14 pages
+
+agentic-coding (1 src, 2 pg, PR #899), frontier-models (2 src, 3 pg, PR #900), games-of-note (2 src, 5 pg, PR #901), ai-in-game-dev (2 src, 3 pg, PR #902). game-music: quiet. Report: wiki/reports/2026-10-07.md.
+
+## [2026-10-07] daily | ai-in-game-dev — 2 sources, 3 pages
+
+GAMEGO (arXiv 2610.06910): synthetic-trajectory framework produces GameGoCoder matching frontier models on GameGoBench. OpenGame (CUHK MMLab): first open-source end-to-end agentic web-game framework + GameCoder-27B trained via execution-grounded RL. PR #902.
+
+## [2026-10-07] daily | games-of-note — 2 sources, 5 pages
+
+WB Games / Skydance acquisition closed (Oct 6, $111B WBD deal); Xbox CEO "returned to growth" claim; Supermassive third layoff round context. New entities: skydance, supermassive-games updated. PR #901.
+
+## [2026-10-07] daily | frontier-models — 2 sources, 3 pages
+
+Mistral Large 4 ingested; new entity mistral-large-4.md created. France's flagship model as of July 2026; competitive but not a benchmark leader vs. current top tier. PR #900.
+
+## [2026-10-07] daily | agentic-coding — 1 source, 2 pages
+
+Claude Code v2.1.292 release notes: background subagent isolation and parallel-subagents execution model documented. PR #899.
+
 ## [2026-10-06] daily | games-of-note — 4 sources, 6 pages
 
 Ninja Theory confirmed closure (both rescue deals fell through; layoffs begun); The Coalition / Gears E-Day post-launch layoff fears and Metacritic-bonus clause; Supermassive Games 70 confirmed layoffs (Oct 5) — third redundancy round in three years; Gears E-Day missing features explained. Summary-affecting run. PR #896.

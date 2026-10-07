@@ -64,6 +64,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[qwen3.7-max]]
 - [[gpt-6-1-sol]]
 - [[gemini-4-argon]]
+- [[mistral-large-4]]
+- [[skydance]]
 
 ## Comparisons
 
@@ -1582,3 +1584,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[report-gears-of-war-e-day-developers-fear-for-their-jobs-and-bonuses-036e77b7]]
 - [[supermassive-lays-off-70-people-less-than-six-months-after-releasing-its-new-sci-fi-horror-game-49020904]]
 - [[gears-of-war-devs-explain-missing-features-we-started-e-day-with-an-empty-hard-drive-building-our-entire-gameplay-sandbox-from-scratch-3629bc48]]
+- [[release-v2-1-292-anthropics-claude-code-0c734930]]
+- [[introducing-mistral-large-4-6f131bbe]]
+- [[mistral-has-released-mistral-large-4-making-france-home-to-the-most-intelligent-model-outside-the-us-and-china-ffd46d0a]]
+- [[warner-bros-games-now-belongs-to-skydance-but-company-makes-no-mention-of-that-in-big-announcement-ab54b942]]
+- [[xbox-s-ceo-says-the-brutal-reset-is-already-working-after-an-all-time-low-we-ve-started-to-return-to-growth-9e1a766f]]
+- [[gamego-training-game-dev-agents-with-synthetic-trajectories-anchored-in-real-world-assets-a8ac830d]]
+- [[opengame-open-agentic-coding-for-games-ce0bb611]]
