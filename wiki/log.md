@@ -2,6 +2,26 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-08] daily | 4 topics, 13 sources, 19 pages
+
+agentic-coding (3 src, 4 pg, PR #905), frontier-models (2 src, 5 pg, PR #906), ai-in-game-dev (4 src, 5 pg, PR #907), games-of-note (4 src, 5 pg, PR #908). game-music: quiet. Report: wiki/reports/2026-10-08.md.
+
+## [2026-10-08] daily | games-of-note — 4 sources, 5 pages
+
+Post-divestiture fallout: Undead Labs studio head Philip Holt described being "irresponsibly transparent" before layoffs; studio now independent/employee-owned under Full Measure; State of Decay 3 on track 2027. Gears of War boss Mike Crump dodged layoff questions post-E-Day, promised faster sequel. Bit Reactor (Star Wars Zero Company) recalls furloughed staff (>50% of pre-launch headcount). PR #908.
+
+## [2026-10-08] daily | ai-in-game-dev — 4 sources, 5 pages
+
+Google Playground (live today) + Unity Spark (later 2026): no-code AI game-creation pipeline from Google + Unity partnership. Copyright guardrails (Mickey Mouse incident) and developer skepticism tracked as counter-threads. Summary-affecting: new "Prompt-to-game deployment" sub-area. PR #907.
+
+## [2026-10-08] daily | frontier-models — 2 sources, 5 pages
+
+Claude Haiku 5.5 completes the Claude 5.5 family: $0.10/$0.50 per Mtoken for ≤100K-token prompts (90% below Haiku 4.5), AA Intelligence Index 43 max. Sonnet 5.5 cache reads cut 50% to $0.10/Mtoken. New entity claude-haiku-5-5.md created. PR #906.
+
+## [2026-10-08] daily | agentic-coding — 3 sources, 4 pages
+
+OpenAI Codex CLI v0.161.0 and Claude Code v2.1.293–294 release notes ingested. Incremental toolchain evolution in agentic-coding landscape. PR #905.
+
 ## [2026-10-07] daily | 4 topics, 7 sources, 14 pages
 
 agentic-coding (1 src, 2 pg, PR #899), frontier-models (2 src, 3 pg, PR #900), games-of-note (2 src, 5 pg, PR #901), ai-in-game-dev (2 src, 3 pg, PR #902). game-music: quiet. Report: wiki/reports/2026-10-07.md.
