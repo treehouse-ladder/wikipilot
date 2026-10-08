@@ -66,6 +66,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gemini-4-argon]]
 - [[mistral-large-4]]
 - [[skydance]]
+- [[claude-haiku-5-5]]
 
 ## Comparisons
 
@@ -1591,3 +1592,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[xbox-s-ceo-says-the-brutal-reset-is-already-working-after-an-all-time-low-we-ve-started-to-return-to-growth-9e1a766f]]
 - [[gamego-training-game-dev-agents-with-synthetic-trajectories-anchored-in-real-world-assets-a8ac830d]]
 - [[opengame-open-agentic-coding-for-games-ce0bb611]]
+- [[release-0-161-0-openai-codex-b08e0342]]
+- [[release-v2-1-293-anthropics-claude-code-0ba886b0]]
+- [[release-v2-1-294-anthropics-claude-code-0dfdf170]]
+- [[introducing-claude-haiku-5-5-cdb1d51f]]
+- [[anthropic-has-released-claude-haiku-5-5-2072257c]]
+- [[google-and-unity-partner-on-new-ai-gaming-platform-for-the-next-era-of-interactive-entertainment-a6c139ea]]
+- [[google-playground-is-an-experimental-ai-game-platform-c0399dd0]]
+- [[unity-ceo-matt-bromberg-on-unity-spark-everyone-can-create-05a74601]]
+- [[unity-unveils-prompting-ai-tool-unity-spark-for-google-playground-67a020e7]]
+- [[undead-labs-studio-head-says-they-were-irresponsibly-transparent-in-preparing-staff-for-layoffs-09a03811]]
+- [[state-of-decay-3-studio-head-talks-about-leaving-xbox-and-how-the-calculus-has-shifted-from-creating-a-tentpole-first-party-ip-to-ensuring-survival-df5cb1b2]]
+- [[gears-of-war-boss-dodges-question-about-future-layoffs-promises-next-game-will-come-sooner-75d1f3b1]]
+- [[star-wars-zero-company-studio-tries-to-bring-back-as-many-furloughed-devs-as-possible-following-unexpected-business-developments-outside-of-our-control-9d1eb191]]
