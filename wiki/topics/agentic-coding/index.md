@@ -347,8 +347,11 @@ sources:
   - "[[we-re-going-to-need-default-hard-budget-caps-on-pretty-much-everything-47be91cd]]"
   - "[[cross-benchmark-transfer-from-rl-on-agentic-coding-tasks-388f3c12]]"
   - "[[release-v2-1-292-anthropics-claude-code-0c734930]]"
+  - "[[release-v2-1-293-anthropics-claude-code-0ba886b0]]"
+  - "[[release-v2-1-294-anthropics-claude-code-0dfdf170]]"
+  - "[[release-0-161-0-openai-codex-b08e0342]]"
 last_verified: 2026-09-30
-last_updated: 2026-10-07
+last_updated: 2026-10-08
 freshness_window_days: 30
 ---
 
@@ -448,6 +451,48 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-08
+
+Three harness-layer releases today: Claude Code v2.1.293–v2.1.294 and OpenAI Codex 0.161.0.
+
+**Claude Code v2.1.293** [[release-v2-1-293-anthropics-claude-code-0ba886b0]] ships four notable additions:
+
+**Subagent type visibility.** `agentType` is now included in the `subagentStatusLine` payload, letting harness scripts distinguish custom subagent types in the status line — useful for multi-agent orchestration tooling that routes or logs by agent role.
+
+> Added agentType to the subagentStatusLine payload, so scripts can tell custom subagent types apart.
+
+**Claude Haiku 5.5 default.** Claude Haiku 5.5 (`claude-haiku-5-5`) is now the default Haiku model on the Anthropic API, with a 1M context window. This is the same model announced on the frontier-models side; its integration into Claude Code as the default Haiku makes it immediately relevant to harness builders using Haiku for cost-optimized subagent slots.
+
+> Added Claude Haiku 5.5 (claude-haiku-5-5), now the default Haiku model on the Anthropic API with a 1M context window.
+
+**`isDeferred` for mods.** `$.tool.register` in the mod API now accepts `isDeferred: false`, which lists the tool's schema in the prompt from the start instead of deferring it behind tool search. This is a prompt-cache/context-budget tradeoff knob for mod authors: eager-listed tools consume more prompt tokens on every turn but never require a tool-search round-trip.
+
+> Added isDeferred to $.tool.register for mods: false lists the tool's schema in the prompt from the start instead of behind tool search.
+
+**MCP HTTP memory fix.** A memory leak where an HTTP MCP connection retained every request object until the connection closed is fixed — relevant for long-running sessions with high-volume MCP tool use.
+
+> Fixed a memory leak where an HTTP MCP connection kept every request it had sent until it closed.
+
+**Claude Code v2.1.294** [[release-v2-1-294-anthropics-claude-code-0dfdf170]] is a targeted safety fix for instruction-style hooks:
+
+**Hook instruction enforcement hardened.** Prompt and agent hooks written as natural-language instructions (e.g. "Block commands that...") were previously not reliably enforcing what they specified — they could allow the behavior they were written to block. v2.1.294 fixes this for both `PreToolUse`/`PostToolUse` hooks and for Stop/SubagentStop hooks, where the model was also stopping early under ambiguous instruction wording.
+
+> Fixed prompt and agent hooks written as instructions (such as "Block commands that...") allowing what they should block.
+
+> Improved how prompt hooks on Stop and SubagentStop written as instructions are judged, so Claude is less likely to stop early.
+
+**OpenAI Codex 0.161.0** [[release-0-161-0-openai-codex-b08e0342]] advances the Rust CLI on two fronts:
+
+**GPT-6.1 Sol as default.** GPT-6.1 Sol is now the default model in both the bundled catalog and the Amazon Bedrock catalog, and also the provider fallback — existing models remain available.
+
+> GPT-6.1 Sol is now the default model in both the bundled and Amazon Bedrock catalogs; it is also the default and provider fallback model, and existing models remain available.
+
+**Multi-agent Bedrock V2 + MCP sign-in.** Amazon Bedrock now supports multi-agent V2 and Ultra reasoning on compatible models; Bedrock Mantle also accepts AWS GovCloud regions. Separately, `/mcp login <name>` lets users authenticate to MCP servers directly from an active terminal session.
+
+> Amazon Bedrock now supports multi-agent V2 and Ultra reasoning on compatible models, and Bedrock Mantle also accepts AWS GovCloud regions.
+
+> You can sign in to MCP servers from an active terminal session with /mcp login <name>.
 
 ### Updates 2026-10-07
 
@@ -3142,6 +3187,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does the rewritten sandboxing guide's documented boundary (`excludedCommands`, credential masking, allowed-host behavior, managed-setting locks) [[release-v2-1-288-anthropics-claude-code-da2d811b]] close any of the previously-noted permission-checker fail-open/fail-closed gaps, or does it only document the existing boundary without changing enforcement?
 - [ ] Does Claude Code v2.1.289's `agent.spawn` for teammates [[release-v2-1-289-anthropics-claude-code-ec085814]] — multi-agent fan-out initiated by a user-installed mod — widen the Claude Mods supply-chain attack surface (the config/plugin layer with 'no lockfile, no install-time check' found defective in ~1-in-6 real setups), by letting an install-time-defective mod silently spawn additional agent instances, or is spawn gated by the same managed-settings allowlist that governs the mod itself?
 - [ ] Does the cross-benchmark RL transfer finding (Kimi K2.7 Code GSPO LoRA improving all six public benchmarks across three harnesses [[cross-benchmark-transfer-from-rl-on-agentic-coding-tasks-388f3c12]]) generalize to harnesses beyond SWE-Bench Pro, DeepSWE, and Terminal-Bench — specifically Claude Code's dynamic-workflow / fork-subagent harness — or is the harness-independent transfer property specific to the repository-editing and terminal-command task shapes the private training set used?
+- [ ] What is the effective per-subagent cost when running Haiku 5.5 at the default Haiku slot in Claude Code v2.1.293+ relative to Haiku 4.5? The 75% cost reduction quoted in the frontier-models announcement interacts with the 1M context window — does default Haiku slot usage typically stay under 100K tokens (the $0.10/Mtoken tier) or routinely cross it?
+- [ ] What is the prompt-cache footprint implication of `isDeferred: false` on `$.tool.register`? Eager-listing a tool's schema consumes prompt tokens on every turn and pushes the prompt-cache boundary further out; for mods that register many tools, is the round-trip savings from skipping tool-search worth the cache-miss overhead on shorter sessions?
 
 ## See also
 
