@@ -75,6 +75,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[release-v2-1-295-anthropics-claude-code-92349bd4]]
+- [[remote-control-for-local-agents-320c088c]]
+- [[hacktrace-behavior-supervised-detection-of-reward-hacking-during-code-generation-88cd4db7]]
+- [[agentgarten-code-worlds-for-evolving-agents-8d8b4c5e]]
+- [[opengameeval-benchmarking-agentic-programming-and-exploration-in-a-stateful-game-engine-fdad34a2]]
+- [[dragon-s-dogma-2-dark-arisen-the-kotaku-review-100993b1]]
+- [[former-activision-ceo-bobby-kotick-named-to-the-board-of-post-merger-skydance-9d605d24]]
+- [[rainbow-six-siege-mobile-already-has-a-shutdown-date-just-7-months-into-its-full-release-797aca55]]
+- [[skydance-is-merging-paramount-and-warner-bros-game-studios-into-one-unit-3b2122db]]
 - [[release-v2-1-288-anthropics-claude-code-da2d811b]]
 - [[007-first-light-big-walk-and-resident-evil-requiem-lead-the-golden-joystick-awards-nominations-a8b99104]]
 - [[i-can-t-believe-a-silly-star-wars-racing-roguelite-is-one-of-my-favorite-games-this-year-9b7adc15]]
