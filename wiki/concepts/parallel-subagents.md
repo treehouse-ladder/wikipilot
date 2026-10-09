@@ -30,7 +30,7 @@ sources:
   - "[[release-v2-1-273-anthropics-claude-code-6726c9df]]"
   - "[[release-v2-1-275-anthropics-claude-code-73339271]]"
   - "[[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]"
-last_updated: 2026-10-06
+last_updated: 2026-10-09
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---

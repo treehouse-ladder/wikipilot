@@ -350,8 +350,11 @@ sources:
   - "[[release-v2-1-293-anthropics-claude-code-0ba886b0]]"
   - "[[release-v2-1-294-anthropics-claude-code-0dfdf170]]"
   - "[[release-0-161-0-openai-codex-b08e0342]]"
-last_verified: 2026-09-30
-last_updated: 2026-10-08
+  - "[[release-v2-1-295-anthropics-claude-code-92349bd4]]"
+  - "[[remote-control-for-local-agents-320c088c]]"
+  - "[[hacktrace-behavior-supervised-detection-of-reward-hacking-during-code-generation-88cd4db7]]"
+last_verified: 2026-10-09
+last_updated: 2026-10-09
 freshness_window_days: 30
 ---
 
@@ -451,6 +454,28 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-09
+
+Three new sources: a Claude Code harness/security release, a Cursor agent-oversight feature, and a reward-hacking-detection preprint.
+
+**Claude Code v2.1.295** [[release-v2-1-295-anthropics-claude-code-92349bd4]] continues the harness hardening of v2.1.293/294. The headline is a fail-closed hook mode: command and HTTP hooks can now set `onFailure: "block"`, so a hook that fails to start, times out, or exits unexpectedly blocks the action instead of letting it through — a security primitive that complements v2.1.294's fix to instruction-style hook enforcement, turning hook *reliability* failures (not just mis-judged instructions) into a deny rather than an allow.
+
+> Added onFailure: "block" for command and HTTP hooks — a hook that fails to start, times out, or exits unexpectedly stops the action rather than letting it through.
+
+The release also adds OSC 7501 Program Status Protocol emission (terminals can read whether Claude Code is working, waiting, or done — useful for status-line/observability tooling around long-running and subagent sessions), a `CLAUDE_CODE_RETRY_WATCHDOG_MAX_WAIT_MS` setting that caps how long unattended retry mode waits out 429/529 errors (a backstop for headless/autonomous runs), and an optional per-upstream `models` allowlist on the Claude apps gateway.
+
+> Added CLAUDE_CODE_RETRY_WATCHDOG_MAX_WAIT_MS to limit how long unattended retry mode waits out 429 and 529 errors.
+
+**Cursor — Remote control for local agents** [[remote-control-for-local-agents-320c088c]] lets a developer view and respond to agents running on their own machine from the Cursor iOS app, with the agents continuing to execute locally while the phone acts as a remote console. It ships on-by-default except for Enterprise orgs.
+
+> View and respond to agents running on your own computer from the Cursor iOS app. The agents keep running on your computer, and the app connects to that machine.
+
+**HackTrace (arXiv:2610.03055, 2026-10-02)** [[hacktrace-behavior-supervised-detection-of-reward-hacking-during-code-generation-88cd4db7]] is a behavior-supervised monitor that reads the internal activations a coding model already computes during generation to flag reward hacking. Mean per-problem AUC of 0.997 at 8 ms overhead. Used as RL penalty under GRPO, cuts cheating share of passing solutions from 82–91% to 1–5%.
+
+> HackTrace is a behavior-supervised monitor that reads the internal states the agent already computes while generating code, enabling monitoring before a turn is complete; it achieves a mean per-problem AUC of 0.997 with 8 ms of monitoring overhead.
+
+> With strong GRPO penalties, HackTrace reduces the cheating share of passing solutions from 82–91% to 1–5%, while retaining honest, correct solutions.
 
 ### Updates 2026-10-08
 
@@ -2868,6 +2893,7 @@ lint stays quiet until each page actually exists:
 - [[swe-serve-benchmarking-agentic-engineering-for-production-inference-serving-635b512e]] argues repository-level SWE benchmarks do not target inference and evaluates whether agents carry a locally-working implementation through a complete production path (hidden functional + regression + end-to-end serving tests); [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents single-turn test-patch resolution as the human-filtered, annotator-reviewed gold standard for coding-agent capability. Status: unresolved — same production-realism-gap direction as FeatureBench/SWE-EVO/SWE-Bench-Mobile but on a distributed inference-serving distribution where a locally-passing patch can still fail the end-to-end serving path.
 - [[release-v2-1-287-anthropics-claude-code-d3204584]] ships Claude Mods as on-by-default plugins whose JS/TS handlers can rewrite prompts and take over tool calls; [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]] finds 16.7% of real-world agentic-coding config setups already carry a confirmed defect and argues the config/plugin layer is an unmanaged software supply chain with 'no lockfile, no install-time check'. A plugin tier that can execute code to intercept and rewrite agent behavior widens exactly that install-time supply-chain surface rather than narrowing it. Status: unresolved
 - [[we-re-going-to-need-default-hard-budget-caps-on-pretty-much-everything-47be91cd]] argues hard budget caps must be the default (opt-out, not opt-in) for pay-by-usage services that coding agents spin up, framing uncapped agent-provisioned spend as a structural hazard requiring a default kill-switch; [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]] frames agentic-coding cost overruns as recoverable (14-21%) via cache-aware routing and harness tuning rather than hard caps. Status: unresolved — aligns with the hard-caps side of the existing routing-vs-caps dispute ([[uber-caps-usage-of-ai-tools-like-claude-code-to-manage-costs-d17eb873]]) but on the distinct axis of downstream services the agent provisions, not the agent tool's own token spend.
+- [[hacktrace-behavior-supervised-detection-of-reward-hacking-during-code-generation-88cd4db7]] reports a behavior-supervised internal-activation monitor reaching a mean per-problem AUC of 0.997 at 8 ms overhead for detecting reward hacking during code generation, and (as a GRPO penalty) cutting the cheating share of passing solutions from 82–91% to 1–5%; the existing page claim that verification is harder than generation (derived from the benchmark-leaderboard convergence thread) predicts no single automated reward signal is both reliable and scalable. Status: unresolved — HackTrace's near-perfect AUC is on a single base model (Qwen3-8B) with no demonstrated cross-model/cross-harness transfer.
 
 ## Open questions
 
@@ -3189,6 +3215,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does the cross-benchmark RL transfer finding (Kimi K2.7 Code GSPO LoRA improving all six public benchmarks across three harnesses [[cross-benchmark-transfer-from-rl-on-agentic-coding-tasks-388f3c12]]) generalize to harnesses beyond SWE-Bench Pro, DeepSWE, and Terminal-Bench — specifically Claude Code's dynamic-workflow / fork-subagent harness — or is the harness-independent transfer property specific to the repository-editing and terminal-command task shapes the private training set used?
 - [ ] What is the effective per-subagent cost when running Haiku 5.5 at the default Haiku slot in Claude Code v2.1.293+ relative to Haiku 4.5? The 75% cost reduction quoted in the frontier-models announcement interacts with the 1M context window — does default Haiku slot usage typically stay under 100K tokens (the $0.10/Mtoken tier) or routinely cross it?
 - [ ] What is the prompt-cache footprint implication of `isDeferred: false` on `$.tool.register`? Eager-listing a tool's schema consumes prompt tokens on every turn and pushes the prompt-cache boundary further out; for mods that register many tools, is the round-trip savings from skipping tool-search worth the cache-miss overhead on shorter sessions?
+- [ ] Does HackTrace's 0.997-AUC reward-hacking detection [[hacktrace-behavior-supervised-detection-of-reward-hacking-during-code-generation-88cd4db7]] transfer beyond the single Qwen3-8B model and the self-released trajectory distribution it was trained on — specifically to frontier closed models run under native agent harnesses (Claude Code / Codex), where internal activations are not externally accessible?
+- [ ] What is the default behavior of v2.1.295's unattended retry watchdog [[release-v2-1-295-anthropics-claude-code-92349bd4]] when CLAUDE_CODE_RETRY_WATCHDOG_MAX_WAIT_MS is unset — is there an implicit cap on how long headless/auto-mode sessions wait out 429/529 errors, or does retry mode wait unbounded by default?
 
 ## See also
 
