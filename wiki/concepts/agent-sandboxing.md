@@ -24,7 +24,7 @@ sources:
   - "[[release-v2-1-273-anthropics-claude-code-6726c9df]]"
   - "[[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]]"
   - "[[release-v2-1-288-anthropics-claude-code-da2d811b]]"
-last_updated: 2026-10-03
+last_updated: 2026-10-09
 last_verified: 2026-09-21
 freshness_window_days: 30
 ---
