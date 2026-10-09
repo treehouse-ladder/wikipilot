@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-09] daily | 5 topics, 9 sources, 18 pages
+
+agentic-coding (3 src, 7 pg, PR #911), frontier-models (0 src, 1 pg, PR #912), game-music (0 src, 1 pg, PR #913), ai-in-game-dev (2 src, 3 pg, PR #914), games-of-note (4 src, 6 pg, PR #915). Report: wiki/reports/2026-10-09.md.
+
+## [2026-10-09] daily | games-of-note — 4 sources, 6 pages
+
+Skydance merges Paramount + WB game studios into Games and Experiences division under Tony Driscoll. Former Activision CEO Bobby Kotick joins Skydance board. Rainbow Six Mobile shutdown announced (Jan 15, 2027 — <12 months after global launch). Dragon's Dogma 2: Dark Arisen Kotaku review (Norgan region praised, dungeons mixed). Cross-page sweep: wiki/entities/skydance.md. PR #915.
+
+## [2026-10-09] daily | ai-in-game-dev — 2 sources, 3 pages
+
+AgentGarten: agents learn from 4 rounds vs millions for conventional RL; persistent world state; faithful+realistic bottleneck identified. OpenGameEval: best model solves 51.7% single-attempt, 39.4% 5/5 consistency; exploration discipline gives +13.4pp on scene-only tasks. PR #914.
+
+## [2026-10-09] daily | game-music — 0 sources, 1 page
+
+Quiet sweep — no new composer news, soundtrack releases, adaptive-music tech, or concert announcements meeting the inclusion bar since 2026-10-04. PR #913.
+
+## [2026-10-09] daily | frontier-models — 0 sources, 1 page
+
+Quiet sweep — no new frontier model releases, benchmark placements, or pricing changes since yesterday. Current board: Claude Opus 5.5 (58) #1, Claude Sonnet 5.5 (56) #2. PR #912.
+
+## [2026-10-09] daily | agentic-coding — 3 sources, 7 pages
+
+Claude Code v2.1.295 release notes (forking, scheduling, artifact updates). Remote Control for local agents (push notifications to phone/inbox, /loop dynamic mode, ScheduleWakeup). HackTrace: behavior-supervised detection of reward hacking during code generation. Cross-page sweep: agent-harnesses, agent-sandboxing, parallel-subagents. PR #911.
+
 ## [2026-10-08] daily | 4 topics, 13 sources, 19 pages
 
 agentic-coding (3 src, 4 pg, PR #905), frontier-models (2 src, 5 pg, PR #906), ai-in-game-dev (4 src, 5 pg, PR #907), games-of-note (4 src, 5 pg, PR #908). game-music: quiet. Report: wiki/reports/2026-10-08.md.
