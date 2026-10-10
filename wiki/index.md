@@ -75,6 +75,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[capcom-is-transforming-its-re-engine-into-an-ai-generation-game-engine-740136f1]]
+- [[capcom-wants-re-engine-rebuilt-for-ai-under-new-rex-project-eb23f23b]]
+- [[order-of-the-sinking-star-is-enormous-for-better-and-worse-c2ba5f59]]
+- [[10-hours-with-jonathan-blow-s-new-puzzle-game-order-of-the-sinking-star-451420c0]]
+- [[electronic-arts-leveraged-buyout-faces-a-bondholder-battle-06631d7c]]
+- [[clive-barker-s-hellraiser-revival-review-5b81397d]]
+- [[hellraiser-revival-the-kotaku-review-d9961d5d]]
+- [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]
+- [[introducing-trusted-access-models-to-the-artificial-analysis-cyber-index-16543c8c]]
 - [[release-v2-1-295-anthropics-claude-code-92349bd4]]
 - [[remote-control-for-local-agents-320c088c]]
 - [[hacktrace-behavior-supervised-detection-of-reward-hacking-during-code-generation-88cd4db7]]
@@ -1364,6 +1373,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-10-10]]
+- [[2026-10-09]]
+- [[2026-10-08]]
+- [[2026-10-07]]
+- [[2026-10-06]]
+- [[2026-10-05]]
 - [[2026-10-04]]
 - [[2026-10-03]]
 - [[2026-09-22]]
