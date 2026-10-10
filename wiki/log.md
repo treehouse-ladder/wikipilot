@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-10] daily | 5 topics, 9 sources, 14 pages
+
+game-music (0 src, 1 pg, PR #917), frontier-models (1 src, 2 pg, PR #918), agentic-coding (1 src, 4 pg, PR #919), games-of-note (5 src, 6 pg, PR #920), ai-in-game-dev (2 src, 1 pg, PR #921). Report: wiki/reports/2026-10-10.md.
+
+## [2026-10-10] daily | ai-in-game-dev — 2 sources, 1 page
+
+Capcom project REX: RE Engine re-architected as "AI-generation game engine" with unified AI-legible base language and autonomous screen+audio dual-process play AI for QA. First AAA first-party proprietary-engine AI-native rebuild announced publicly. Capcom confirms no AI-generated assets in final games. PR #921.
+
+## [2026-10-10] daily | games-of-note — 5 sources, 6 pages
+
+Order of the Sinking Star (Jonathan Blow) reviewed: ambitious 100+ hour puzzle game praised for density but criticized for scope/pace. EA leveraged buyout faces bondholder legal challenge over debt covenants. Clive Barker's Hellraiser revival: conflicting critical reception (Game Informer positive vs Kotaku negative). PR #920.
+
+## [2026-10-10] daily | agentic-coding — 1 source, 4 pages
+
+Claude Code v2.1.296: Sonnet 5.5 cache reads now $0.10/Mtoken (50% reduction), CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL env var for parallel subagent model selection. Summary regenerated; cross-page sweep: claude-sonnet-5-5.md, parallel-subagents.md. PR #919.
+
+## [2026-10-10] daily | frontier-models — 1 source, 2 pages
+
+Artificial Analysis Cyber Index adds trusted-access models tier (government/enterprise only, not public benchmarks). Cross-page sweep: frontier-models/index.md. PR #918.
+
+## [2026-10-10] daily | game-music — 0 sources, 1 page
+
+Quiet sweep — no new qualifying sources in game composer, soundtrack, adaptive music, or live concert news. PR #917.
+
 ## [2026-10-09] daily | 5 topics, 9 sources, 18 pages
 
 agentic-coding (3 src, 7 pg, PR #911), frontier-models (0 src, 1 pg, PR #912), game-music (0 src, 1 pg, PR #913), ai-in-game-dev (2 src, 3 pg, PR #914), games-of-note (4 src, 6 pg, PR #915). Report: wiki/reports/2026-10-09.md.
