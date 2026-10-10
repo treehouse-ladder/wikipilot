@@ -1,8 +1,8 @@
 ---
 title: "Claude Sonnet 5.5"
 kind: entity
-sources: ["[[release-v2-1-284-anthropics-claude-code-cdf0d632]]", "[[introducing-claude-sonnet-5-5-4e3ca8a9]]", "[[claude-sonnet-5-5-reaches-2-on-the-artificial-analysis-intelligence-index-4075a9b8]]", "[[gemini-4-argon-google-is-back-as-one-of-the-top-three-labs-in-intelligence-achieved-52050b56]]", "[[introducing-claude-haiku-5-5-cdb1d51f]]"]
-last_updated: 2026-10-08
+sources: ["[[release-v2-1-284-anthropics-claude-code-cdf0d632]]", "[[introducing-claude-sonnet-5-5-4e3ca8a9]]", "[[claude-sonnet-5-5-reaches-2-on-the-artificial-analysis-intelligence-index-4075a9b8]]", "[[gemini-4-argon-google-is-back-as-one-of-the-top-three-labs-in-intelligence-achieved-52050b56]]", "[[introducing-claude-haiku-5-5-cdb1d51f]]", "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]"]
+last_updated: 2026-10-10
 last_verified: 2026-09-30
 freshness_window_days: 30
 input_cost_per_mtoken: 2.00
@@ -32,9 +32,11 @@ The jump is driven primarily by agentic coding: **Terminal-Bench v4.0 at 70.6%, 
 
 > Sonnet 5.5 scores 70.6% on Terminal-Bench 4.0, an agentic coding evaluation, compared to Sonnet 5's 10.3%. It scores two points below Opus 5.5 on GDPval-AA. [[introducing-claude-sonnet-5-5-4e3ca8a9]]
 
-Sonnet 5.5 is priced at **$2/$10 per Mtoken** (matching Sonnet 5) with up to 90% prompt-caching savings and 50% batch savings, and runs **~30% cheaper than Sonnet 5 for typical token-billed workloads** [[introducing-claude-sonnet-5-5-4e3ca8a9]]. As of 2026-10-08, Sonnet 5.5 cache reads cost 50% less at **$0.10/Mtoken** (was $0.20) [[introducing-claude-haiku-5-5-cdb1d51f]]. It is the **first Sonnet model to beat Pokémon Red working only from screenshots** [[introducing-claude-sonnet-5-5-4e3ca8a9]]. Made the default Sonnet on the Anthropic API via Claude Code v2.1.284 (released 2026-09-28) alongside auto-mode becoming default across all plans [[release-v2-1-284-anthropics-claude-code-cdf0d632]].
+Sonnet 5.5 is priced at **$2/$10 per Mtoken** (matching Sonnet 5) with up to 90% prompt-caching savings and 50% batch savings, and runs **~30% cheaper than Sonnet 5 for typical token-billed workloads** [[introducing-claude-sonnet-5-5-4e3ca8a9]]. As of 2026-10-08, Sonnet 5.5 cache reads cost 50% less at **$0.10/Mtoken** (was $0.20) [[introducing-claude-haiku-5-5-cdb1d51f]]. Claude Code v2.1.296 confirmed the $0.10/Mtoken cache-read price in its cost-reporting update (2026-10-09) [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]. It is the **first Sonnet model to beat Pokémon Red working only from screenshots** [[introducing-claude-sonnet-5-5-4e3ca8a9]]. Made the default Sonnet on the Anthropic API via Claude Code v2.1.284 (released 2026-09-28) alongside auto-mode becoming default across all plans [[release-v2-1-284-anthropics-claude-code-cdf0d632]].
 
 > Sonnet 5.5 cache reads now cost 50% less: $0.10 per million tokens rather than $0.20. [[introducing-claude-haiku-5-5-cdb1d51f]]
+
+> Updated /cost, the status line, --max-budget-usd and the SDK's cost figures to price Sonnet 5.5 cache reads at $0.10 per million tokens (was $0.20). [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]
 
 ## Disputes
 
@@ -50,7 +52,7 @@ Sonnet 5.5 is priced at **$2/$10 per Mtoken** (matching Sonnet 5) with up to 90%
 
 - [x] What is Claude Sonnet 5.5's standing on SWE-bench Verified, Terminal-Bench, and the AA Intelligence Index vs Claude Sonnet 5 and Claude Opus 5.5? **Answered 2026-09-30**: AA Index 56 (#2), Terminal-Bench 4.0 70.6% (vs Sonnet 5's 10.3%), 2 pts below Opus 5.5 on GDPval-AA [[introducing-claude-sonnet-5-5-4e3ca8a9]] [[claude-sonnet-5-5-reaches-2-on-the-artificial-analysis-intelligence-index-4075a9b8]].
 - [ ] Does Sonnet 5.5 exhibit the RL-co-adaptation tool-schema drift (newer Anthropic models inventing extra tool-call fields) reported for Opus 4.8/Sonnet 5 in agentic-coding harnesses?
-- [ ] Does the $0.20/Mtoken cache read price materially reduce per-task cost in long-running agentic sessions vs Claude Sonnet 5's cache pricing?
+- [ ] Does the $0.10/Mtoken cache read price (reduced from $0.20 as of 2026-10-08) [[introducing-claude-haiku-5-5-cdb1d51f]] [[release-v2-1-296-anthropics-claude-code-e75aaf1e]] materially reduce per-task cost in long-running agentic sessions vs Claude Sonnet 5's cache pricing?
 
 ## See also
 

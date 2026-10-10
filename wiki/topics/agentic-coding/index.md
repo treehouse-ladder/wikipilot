@@ -1,8 +1,9 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-06
+last_updated: 2026-10-10
 sources:
+  - "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]"
   - "[[automate-work-with-routines-claude-code-routines-docs-d09f612e]]"
   - "[[cursor-2-0-multi-agents-and-composer-changelog-4665f068]]"
   - "[[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]]"
@@ -353,8 +354,8 @@ sources:
   - "[[release-v2-1-295-anthropics-claude-code-92349bd4]]"
   - "[[remote-control-for-local-agents-320c088c]]"
   - "[[hacktrace-behavior-supervised-detection-of-reward-hacking-during-code-generation-88cd4db7]]"
-last_verified: 2026-10-09
-last_updated: 2026-10-09
+last_verified: 2026-10-10
+last_updated: 2026-10-10
 freshness_window_days: 30
 ---
 
@@ -371,13 +372,15 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 
 > The more time I spend working with coding agents, the more convinced I am that they make software engineering even harder. We can do amazing things with them, but unlocking their full potential requires extraordinary discipline and knowledge. [[2026-in-llms-so-far-a068c503]]
 
-**Leading models.** As of September 2026 general intelligence is led by Claude Fable 5.1 (Intelligence Index 66), a Mythos-level long-horizon model adopted as Claude Code's default long-horizon coding model on release [[introducing-claude-fable-5-1-and-claude-mythos-5-1-e7232d52]]. OpenAI's GPT-6 Astra sits 5 points lower on intelligence but takes the **coding-agent cost-efficiency frontier** — under half the per-task cost of Claude Fable 5 for the same Coding Agent Index score, at Fable-equal $10/$50 per-Mtoken pricing (a lead that is Coding-Agent-Index-specific and not yet field-corroborated; see `## Disputes` / `## Open questions`) [[gpt-6-astra-fc6a277c]]. Within Claude Code the shipped defaults advanced twice this month: **Claude Opus 5.5** became the default Opus model (v2.1.280, 1M context, $4/$20 per Mtoken, $0.20/Mtoken cache reads) [[release-v2-1-280-anthropics-claude-code-23966244]], and **v2.1.284 (2026-09-28) made Claude Sonnet 5.5 the default Sonnet on the Anthropic API** (1M context, $2/$10 per Mtoken, $0.20/Mtoken cache reads) — so the current recommended Claude Code default pairing for agentic-coding work is Opus 5.5 for long-horizon reasoning and Sonnet 5.5 for the everyday driver [[release-v2-1-284-anthropics-claude-code-cdf0d632]].
+**Leading models.** As of September 2026 general intelligence is led by Claude Fable 5.1 (Intelligence Index 66), a Mythos-level long-horizon model adopted as Claude Code's default long-horizon coding model on release [[introducing-claude-fable-5-1-and-claude-mythos-5-1-e7232d52]]. OpenAI's GPT-6 Astra sits 5 points lower on intelligence but takes the **coding-agent cost-efficiency frontier** — under half the per-task cost of Claude Fable 5 for the same Coding Agent Index score, at Fable-equal $10/$50 per-Mtoken pricing (a lead that is Coding-Agent-Index-specific and not yet field-corroborated; see `## Disputes` / `## Open questions`) [[gpt-6-astra-fc6a277c]]. Within Claude Code the shipped defaults advanced twice this month: **Claude Opus 5.5** became the default Opus model (v2.1.280, 1M context, $4/$20 per Mtoken, $0.20/Mtoken cache reads) [[release-v2-1-280-anthropics-claude-code-23966244]], and **v2.1.284 (2026-09-28) made Claude Sonnet 5.5 the default Sonnet on the Anthropic API** (1M context, $2/$10 per Mtoken; cache reads launched at $0.20/Mtoken and were **re-priced to $0.10/Mtoken by v2.1.296** on 2026-10-09, halving the cache-read tax on the fork-based subagent fan-out/fan-in pattern [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]) — so the current recommended Claude Code default pairing for agentic-coding work is Opus 5.5 for long-horizon reasoning and Sonnet 5.5 for the everyday driver [[release-v2-1-284-anthropics-claude-code-cdf0d632]].
 
 > GPT-6 Astra scores equal to GPT-5.6 Sol in the Intelligence Index at 61, which is 5 points lower than Claude Fable 5.1 (max with fallback). [[gpt-6-astra-fc6a277c]]
 
 > Added Claude Opus 5.5 (claude-opus-5-5), now the default Opus model — 1M context, $4/$20 per Mtok with $0.20/Mtok cache reads [[release-v2-1-280-anthropics-claude-code-23966244]]
 
 > Added Claude Sonnet 5.5 (claude-sonnet-5-5), now the default Sonnet model on the Anthropic API — 1M context, $2/$10 per Mtok with $0.20/Mtok cache reads [[release-v2-1-284-anthropics-claude-code-cdf0d632]]
+
+> Updated /cost, the status line, --max-budget-usd and the SDK's cost figures to price Sonnet 5.5 cache reads at $0.10 per million tokens (was $0.20). [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]
 
 **Leading harnesses.** The differentiating layer is now the harness, not just the model, and the term has a published constitutive definition: a harness is "a stateful program that wraps a language model and determines what context the model sees at each step" [[what-makes-a-harness-a-harness-necessary-and-sufficient-conditions-for-an-agent-harness-1afa2530]]. Claude Code ships dynamic workflows that plan and dispatch parallel subagents in a single session [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]], though the original unbounded-fan-out framing was walked back to "aim for fewer than 15 agents" [[claude-code-release-notes-98ffc52d]]. The plan-and-delegate coordinator pattern is now a shipped product on both major labs: Cursor Projects is a persistent, non-coding coordinator that "delegate[s] tasks to thousands of subagents" and runs on its own cloud computer [[introducing-projects-b09bf6f2]], while OpenAI's Agents API exposes the Codex harness as a managed cloud service [[introducing-the-agents-api-b32e9b84]]. Vendor-neutral interop arrived via Devin Desktop (formerly Windsurf), built on the open Agent Client Protocol so one surface can drive Codex, Claude Agent, and OpenCode [[windsurf-is-now-devin-desktop-1283bfa0]], and mobile supervision of long-running agents has converged as a cross-vendor standard [[build-from-anywhere-with-cursor-for-ios-097d5a19]].
 
@@ -454,6 +457,28 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-10
+
+Quiet day — one new source. **Claude Code v2.1.296** [[release-v2-1-296-anthropics-claude-code-e75aaf1e]] (published 2026-10-09, successor to v2.1.295) lands harness-orchestration, cost-reporting, and a permission-checker security fix on top of the v2.1.293–v2.1.295 hardening line.
+
+**Workflow-agent model pinning.** A new `CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL` env var forces every workflow (dynamic-workflow) agent onto a single chosen model while leaving other subagents on their own models — a coarse cost/consistency knob for the plan-and-dispatch dynamic workflows the Summary tracks.
+
+> Added CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL to run every workflow agent on one model while other subagents keep theirs. [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]
+
+**Sonnet 5.5 cache reads re-priced to $0.10/Mtok.** Cost reporting (`/cost`, the status line, `--max-budget-usd`, and SDK cost figures) now prices Claude Sonnet 5.5 cache reads at $0.10 per Mtoken — half the $0.20 the Summary currently records from v2.1.284 — landing directly on the fork-based subagent fan-out/fan-in cache-read cost tax [[release-v2-1-296-anthropics-claude-code-e75aaf1e]].
+
+> Updated /cost, the status line, --max-budget-usd and the SDK's cost figures to price Sonnet 5.5 cache reads at $0.10 per million tokens (was $0.20). [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]
+
+**Unattended-run backstops.** `allow_large` lets the Read tool ingest an oversized text file in a single call when context allows, and `CLAUDE_CODE_OVERLOADED_RETRY_MAX_DELAY_MS` lengthens the 529-overload retry backoff ceiling — both aimed at long-running / headless sessions, complementing the v2.1.295 `CLAUDE_CODE_RETRY_WATCHDOG_MAX_WAIT_MS` cap [[release-v2-1-296-anthropics-claude-code-e75aaf1e]].
+
+> Added an allow_large option to the Read tool to read text files beyond the normal size limits in one call when the whole file is needed and context has room. [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]
+
+> Added CLAUDE_CODE_OVERLOADED_RETRY_MAX_DELAY_MS to set a longer maximum delay for the backoff when retrying an overloaded (529) request. [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]
+
+**Permission-checker security fix.** Bash commands that assign and then use the `BASH_ARGV0` shell variable were being auto-approved; v2.1.296 makes them prompt — closing a checker-can't-fully-analyze fail-open gap in the same family as the v2.1.273 subshell-`rm`-in-bypass-mode and unanalyzable `eval`/`env -C` cases.
+
+> Fixed Bash permission checks auto-approving some commands that assign the BASH_ARGV0 shell variable and then use it; these now prompt for approval. [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]
 
 ### Updates 2026-10-09
 
@@ -3217,6 +3242,9 @@ lint stays quiet until each page actually exists:
 - [ ] What is the prompt-cache footprint implication of `isDeferred: false` on `$.tool.register`? Eager-listing a tool's schema consumes prompt tokens on every turn and pushes the prompt-cache boundary further out; for mods that register many tools, is the round-trip savings from skipping tool-search worth the cache-miss overhead on shorter sessions?
 - [ ] Does HackTrace's 0.997-AUC reward-hacking detection [[hacktrace-behavior-supervised-detection-of-reward-hacking-during-code-generation-88cd4db7]] transfer beyond the single Qwen3-8B model and the self-released trajectory distribution it was trained on — specifically to frontier closed models run under native agent harnesses (Claude Code / Codex), where internal activations are not externally accessible?
 - [ ] What is the default behavior of v2.1.295's unattended retry watchdog [[release-v2-1-295-anthropics-claude-code-92349bd4]] when CLAUDE_CODE_RETRY_WATCHDOG_MAX_WAIT_MS is unset — is there an implicit cap on how long headless/auto-mode sessions wait out 429/529 errors, or does retry mode wait unbounded by default?
+- [ ] Is the Sonnet 5.5 $0.10/Mtok cache-read figure in v2.1.296 an actual price cut or only a correction to previously mis-reported cost output? The release note frames it as a cost-reporting update ("was $0.20") rather than a model price change [[release-v2-1-296-anthropics-claude-code-e75aaf1e]] — needs reconciliation against the Anthropic API published cache-read price and against the Summary's v2.1.284 $0.20 figure.
+- [ ] Does pinning all dynamic-workflow agents to one (presumably cheaper) model via CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL [[release-v2-1-296-anthropics-claude-code-e75aaf1e]] measurably reduce workflow cost without degrading the plan/dispatch quality that the "fewer than 15 agents" default guideline already bounds, and how does it interact with the default per-role model assignment?
+- [ ] Does the Read tool's new allow_large single-call ingestion of oversized files [[release-v2-1-296-anthropics-claude-code-e75aaf1e]] interact badly with prompt caching — i.e. does pulling a large file into one turn's context bust the session cache more than incremental/offset reads would, inverting the cost saving the cache-read re-pricing just delivered?
 
 ## See also
 

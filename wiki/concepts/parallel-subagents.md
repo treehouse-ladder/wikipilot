@@ -30,7 +30,8 @@ sources:
   - "[[release-v2-1-273-anthropics-claude-code-6726c9df]]"
   - "[[release-v2-1-275-anthropics-claude-code-73339271]]"
   - "[[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]"
-last_updated: 2026-10-09
+  - "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]"
+last_updated: 2026-10-10
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---
@@ -90,6 +91,10 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 **Claude Code dynamic workflows now default to fewer than 15 agents (August 2026).** The release notes walk back the unbounded-fan-out framing tracked on [[agentic-coding]], setting dynamic workflows to "default to a medium size guideline (aim for fewer than 15 agents)" and removing Opus 4.7 from fast mode [[claude-code-release-notes-98ffc52d]]. This is a notable tempering of the earlier "hundreds of parallel subagents in a single session" research-preview positioning — a shipped conservative default suggests the unbounded-fan-out story carries real cost/coordination penalties in practice rather than being the recommended path. The absence of published data tying agent count to dynamic-workflow success rate leaves the question of whether 15 is a measured optimum or a pure cost ceiling open.
 
 > Changed dynamic workflows to default to a medium size guideline (aim for fewer than 15 agents), and removed Opus 4.7 from fast mode so /fast now applies to Opus 5 and Opus 4.8. [[claude-code-release-notes-98ffc52d]]
+
+**Claude Code v2.1.296 adds workflow-agent model pinning (October 2026).** A new `CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL` env var forces every workflow (dynamic-workflow) agent onto a single chosen model while leaving other subagents on their own models [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]. This is a coarse cost/consistency knob for dynamic workflows: pin all workflow agents to a cheaper model (e.g. Sonnet) to reduce the fan-out cost tax without individually configuring each spawned agent — trading workflow-orchestration quality for token spend. The open caveat is whether the quality regression from downgrading the plan-and-dispatch agents measurably lowers dynamic-workflow success rates.
+
+> Added CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL to run every workflow agent on one model while other subagents keep theirs. [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]
 
 **Cursor Projects claims "thousands of subagents" over month-scale persistent context (September 2026).** Cursor's new Projects abstraction positions a non-coding coordinator agent as delegating to "thousands of subagents" over months of work [[introducing-projects-b09bf6f2]], explicitly contrasting with Claude Code's tempering to a "fewer than 15 agents" default. The Projects coordinator is a persistent, cloud-resident planner that "delegates tasks to thousands of subagents" while "never blocked and always responsive" [[introducing-projects-b09bf6f2]]. Cursor reports field metrics ("new users merge 30% more PRs while users who primarily use Projects merge six times as many") but the "thousands" figure remains a vendor claim with no disclosed per-task fan-out distribution or independent benchmark — placing it in tension with both the Claude Code "fewer than 15" walkback and OrchBench's finding that "preserving task-critical information is more important than simply increasing the number of agents" [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]].
 
