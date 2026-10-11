@@ -2,7 +2,7 @@
 title: "Supermassive Games"
 kind: entity
 sources: ["[[supermassive-games-begins-third-round-of-layoffs-in-three-years-9bc14ff3]]", "[[until-dawn-2-developer-change-supermassive-to-firesprite-720b9386]]", "[[the-dark-pictures-anthology-has-never-been-more-adrift-directive-8020-review-50a2449d]]", "[[supermassive-lays-off-70-people-less-than-six-months-after-releasing-its-new-sci-fi-horror-game-49020904]]"]
-last_updated: 2026-10-07
+last_updated: 2026-10-11
 last_verified: 2026-10-07
 freshness_window_days: 60
 ---
@@ -25,7 +25,9 @@ The timing of the third layoff wave is particularly pointed: it comes **less tha
 
 > The cuts arrived less than three months after the release of Directive 8020, which was eventually released in May 2026 to a generally mixed critical reception, with a Metacritic score of 72.
 
-_no contradictions or gaps known yet (last reviewed: 2026-10-07)_
+## Disputes
+
+- [[supermassive-games-begins-third-round-of-layoffs-in-three-years-9bc14ff3]] states the third layoff wave "arrived less than three months after the release of Directive 8020" (citing May 2026 release and October 5, 2026 cuts); [[supermassive-lays-off-70-people-less-than-six-months-after-releasing-its-new-sci-fi-horror-game-49020904]] and the entity page's own `## Summary` characterise the interval as "less than six months." May to October 5 is approximately 4–5 months, making "less than six months" accurate and "less than three months" incorrect. Status: unresolved — the entity's inline Summary quote from the source carries the three-month figure verbatim; the source slug itself encodes "six-months," indicating a drafting inconsistency in the original source text rather than two sources disagreeing.
 
 ## Open questions
 

@@ -2,6 +2,8 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-11] health | weekly sweep — 3 disputes filed
+
 ## [2026-10-10] daily | 5 topics, 9 sources, 14 pages
 
 game-music (0 src, 1 pg, PR #917), frontier-models (1 src, 2 pg, PR #918), agentic-coding (1 src, 4 pg, PR #919), games-of-note (5 src, 6 pg, PR #920), ai-in-game-dev (2 src, 1 pg, PR #921). Report: wiki/reports/2026-10-10.md.
