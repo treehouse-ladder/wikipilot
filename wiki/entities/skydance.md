@@ -3,7 +3,7 @@ title: "Skydance"
 kind: entity
 aliases: ["Skydance Corporation", "Paramount Skydance", "Skydance Media"]
 sources: ["[[warner-bros-games-now-belongs-to-skydance-but-company-makes-no-mention-of-that-in-big-announcement-ab54b942]]", "[[paramount-acknowledged-the-existence-of-warner-bros-games-faa1d7b1]]", "[[paramount-unveils-new-unified-paramount-games-studio-3b154906]]", "[[proposed-acquisition-of-warner-bros-discovery-by-paramount-skydance-a93b9ab3]]", "[[former-activision-ceo-bobby-kotick-named-to-the-board-of-post-merger-skydance-9d605d24]]", "[[skydance-is-merging-paramount-and-warner-bros-game-studios-into-one-unit-3b2122db]]"]
-last_updated: 2026-10-09
+last_updated: 2026-10-11
 last_verified: 2026-10-09
 freshness_window_days: 60
 ---
@@ -31,7 +31,9 @@ Notably, **Skydance's official announcement of the deal closing contained no men
 
 > Former Activision Blizzard CEO Bobby Kotick has been named to the board of post-merger Skydance. [[former-activision-ceo-bobby-kotick-named-to-the-board-of-post-merger-skydance-9d605d24]]
 
-_no contradictions or gaps known yet (last reviewed: 2026-10-09)_
+## Disputes
+
+- [[warner-bros-games-now-belongs-to-skydance-but-company-makes-no-mention-of-that-in-big-announcement-ab54b942]] reports that Skydance completed its $111B acquisition of Warner Bros. Discovery on October 6, 2026; [[paramount-agrees-to-delay-warner-bros-merger-into-2027-f9614bb2]] documents Paramount agreeing in August 2026 not to close or integrate operations until at least June 1, 2027, pending a March 2027 antitrust trial. The early close implies either the antitrust challenge was resolved or withdrawn before the contractual freeze date — no source explains the discrepancy. The [[games-of-note]] topic page has a separate "resolved-toward-B" dispute asserting the deal was frozen into 2027, which is now directly contradicted by the October 6 close. Status: unresolved — the mechanism by which the deal closed ~8 months ahead of the contractually-agreed freeze is not documented in wiki sources.
 
 ## Open questions
 
