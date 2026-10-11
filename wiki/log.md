@@ -4,6 +4,30 @@ Chronological, append-only record of every routine run. Parseable with `grep "^#
 
 ## [2026-10-11] health | weekly sweep — 3 disputes filed
 
+## [2026-10-11] daily | 5 topics, 4 sources, 9 pages
+
+agentic-coding (1 src, 2 pg, PR #925), frontier-models (0 src, 1 pg, PR #926), ai-in-game-dev (1 src, 2 pg, PR #927), games-of-note (2 src, 3 pg, PR #928), game-music (0 src, 1 pg, PR #929). Report: wiki/reports/2026-10-11.md.
+
+## [2026-10-11] daily | agentic-coding — 1 source, 2 pages
+
+OpenAI Codex 0.162.0: managed Git worktrees promoted to first-class agent-invokable tooling (trusted local projects, `worktrees` feature flag). New open question: agent-controlled worktree creation vs concurrent-edit risk. PR #925.
+
+## [2026-10-11] daily | frontier-models — 0 sources, 1 page
+
+Quiet sweep — no new frontier model releases, benchmark placements, or pricing changes. PR #926.
+
+## [2026-10-11] daily | ai-in-game-dev — 1 source, 2 pages
+
+UniMate (SIGGRAPH Asia 2026): topology-agnostic text-conditioned flow-matching motion generation for animals, humanoids, and rigged objects. CC BY-NC 4.0 weights. Critical limitation: no contact model (ground-penetration artifacts). New dispute + 2 open questions. PR #927.
+
+## [2026-10-11] daily | games-of-note — 2 sources, 3 pages
+
+Dragon's Dogma 2: Dark Arisen (GameSpot) — solid expansion, "great but at a cost," not as transformative as DD1's Dark Arisen. TOEM 2 (Kotaku) — charming sequel, just a smidge weaker than original. PR #928.
+
+## [2026-10-11] daily | game-music — 0 sources, 1 page
+
+Quiet sweep — no new qualifying sources in game composer, soundtrack, adaptive-audio middleware, or live-concert news. PR #929.
+
 ## [2026-10-10] daily | 5 topics, 9 sources, 14 pages
 
 game-music (0 src, 1 pg, PR #917), frontier-models (1 src, 2 pg, PR #918), agentic-coding (1 src, 4 pg, PR #919), games-of-note (5 src, 6 pg, PR #920), ai-in-game-dev (2 src, 1 pg, PR #921). Report: wiki/reports/2026-10-10.md.

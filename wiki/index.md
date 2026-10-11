@@ -75,6 +75,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[release-0-162-0-openai-codex-6d91f7c5]]
+- [[unimate-one-unified-model-to-animate-diverse-skeletons-b8768176]]
+- [[dragon-s-dogma-2-dark-arisen-is-great-but-at-a-cost-0819cc1c]]
+- [[toem-2-the-kotaku-review-c4cd173a]]
 - [[capcom-is-transforming-its-re-engine-into-an-ai-generation-game-engine-740136f1]]
 - [[capcom-wants-re-engine-rebuilt-for-ai-under-new-rex-project-eb23f23b]]
 - [[order-of-the-sinking-star-is-enormous-for-better-and-worse-c2ba5f59]]
