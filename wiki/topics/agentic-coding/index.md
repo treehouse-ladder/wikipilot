@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-10
+last_updated: 2026-10-11
 sources:
   - "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]"
   - "[[automate-work-with-routines-claude-code-routines-docs-d09f612e]]"
@@ -354,8 +354,9 @@ sources:
   - "[[release-v2-1-295-anthropics-claude-code-92349bd4]]"
   - "[[remote-control-for-local-agents-320c088c]]"
   - "[[hacktrace-behavior-supervised-detection-of-reward-hacking-during-code-generation-88cd4db7]]"
+  - "[[release-0-162-0-openai-codex-6d91f7c5]]"
 last_verified: 2026-10-10
-last_updated: 2026-10-10
+last_updated: 2026-10-11
 freshness_window_days: 30
 ---
 
@@ -457,6 +458,12 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-11
+
+Quiet day — one new source. **OpenAI Codex 0.162.0** [[release-0-162-0-openai-codex-6d91f7c5]] (published 2026-10-08, successor to the 0.161.0 release covered on 2026-10-08) promotes managed Git worktrees from the earlier experimental `--worktree`/`/worktree` session flag to first-class, agent-invokable tooling: the CLI now exposes tools for creating and listing managed Git worktrees from trusted local projects, gated behind the worktrees feature flag [[release-0-162-0-openai-codex-6d91f7c5]]. This hands the agent itself the ability to spin up and enumerate isolated per-task checkouts — the worktree-per-agent isolation substrate the wiki already tracks as the shipped-product answer to concurrent multi-agent editing (Cursor's worktree model, Claude Code's fork-based fan-out). The trust gating (trusted local projects only) is a harness-level containment knob rather than a capability expansion.
+
+> Add tools for creating and listing managed Git worktrees from trusted local projects when the worktrees feature is enabled. [[release-0-162-0-openai-codex-6d91f7c5]]
 
 ### Updates 2026-10-10
 
@@ -2922,6 +2929,7 @@ lint stays quiet until each page actually exists:
 
 ## Open questions
 
+- [ ] Codex 0.162.0's agent-invokable managed worktree tools [[release-0-162-0-openai-codex-6d91f7c5]] let the agent create isolated per-task checkouts on its own — does giving the agent (rather than the human) control of worktree creation inherit the semantically-conflicting-but-textually-clean concurrent-edit risk AgentRoom raises against worktree-per-agent isolation [[agentroom-concurrent-multi-agent-coding-in-a-crdt-backed-shared-workspace-4f6448bf]], and what is the prompt-cache behavior across agent-spawned worktrees?
 - [ ] What effort levels does the `effort` parameter on the `Agent` tool accept — does it map to model reasoning-budget tokens, or to a named tier (low/medium/high)? The v2.1.292 release notes don't specify [[release-v2-1-292-anthropics-claude-code-0c734930]].
 - [ ] Does Control the Harness's cache-aware routing claim [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]] (moving work only at session start, side lanes, and subagent launch so no running conversation rebuilds its cache) survive the prompt-cache-invalidation cliff cases the topic charter flags — i.e. mid-run file edits that bust the cache — or does the 14–21% recovery assume sessions that never invalidate mid-trajectory?
 - [ ] Does v2.1.286's single-retry-on-model-refusal behavior [[release-v2-1-286-anthropics-claude-code-80da4486]] interact with the server-side auto-mode classifier's 'billed fallback' path — when the refused model is the auto-mode classifier model, does the retry preserve the same safety-validated variant or silently drop to a weaker one?
