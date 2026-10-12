@@ -2,6 +2,26 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-12] daily | 4 topics, 5 sources, 9 pages
+
+frontier-models (0 src, 1 pg, PR #931), ai-in-game-dev (1 src, 2 pg, PR #932), game-music (2 src, 3 pg, PRs #933 #935), games-of-note (2 src, 3 pg, PRs #934 #937). Report: wiki/reports/2026-10-12.md. Note: agentic-coding skipped — GitHub release API blocked by proxy during this run.
+
+## [2026-10-12] daily | games-of-note — 2 sources, 3 pages
+
+Warhorse's Martin Klima argues GTA 6's $80 tier should "blaze the trail" for industry-wide base-price increases — developer-side counterweight to consumer/retailer backlash thread. Italy AGCM opens EU-coordinated virtual-currency probe into Activision Blizzard, Riot, Ubisoft, Supercell. PRs #934 (research), #937 (summary regeneration).
+
+## [2026-10-12] daily | game-music — 2 sources, 3 pages
+
+Bose Corporation acquired Firelight Technologies (FMOD maker) — first ownership change for either dominant game-audio middleware platform. Bose pledges FMOD stays "open and broadly supported"; gaming initial focus. PRs #933 (research), #935 (summary regeneration).
+
+## [2026-10-12] daily | ai-in-game-dev — 1 source, 2 pages
+
+NVIDIA refreshes on-device ACE speech stack: Nemotron Speech 3.5 Streaming ASR + Qwen3 TTS (both 600M-param), RTX Spark Developer Preview, DLSS 5 with 3D-Guided Neural Rendering. PR #932.
+
+## [2026-10-12] daily | frontier-models — 0 sources, 1 page
+
+Quiet sweep — no new frontier-model releases, benchmark placements, or pricing changes. PR #931.
+
 ## [2026-10-12] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#932 (ai-in-game-dev daily 2026-10-12): CLEAN + CI green + no auto-merge → requeued squash auto-merge via MCP enable_pr_auto_merge. (gh CLI token invalid in cloud env; MCP GitHub API used instead.)
