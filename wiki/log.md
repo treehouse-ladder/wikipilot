@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-12] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#937 kind=requeue resolved=true — apply_static_gate queued --auto (claude/daily-2026-10-12/games-of-note; 3 files, 87 diff lines, CI green)
+
 ## [2026-10-11] health | weekly sweep — 3 disputes filed
 
 ## [2026-10-11] daily | 5 topics, 4 sources, 9 pages
