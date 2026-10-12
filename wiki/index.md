@@ -1633,3 +1633,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[state-of-decay-3-studio-head-talks-about-leaving-xbox-and-how-the-calculus-has-shifted-from-creating-a-tentpole-first-party-ip-to-ensuring-survival-df5cb1b2]]
 - [[gears-of-war-boss-dodges-question-about-future-layoffs-promises-next-game-will-come-sooner-75d1f3b1]]
 - [[star-wars-zero-company-studio-tries-to-bring-back-as-many-furloughed-devs-as-possible-following-unexpected-business-developments-outside-of-our-control-9d1eb191]]
+
+## 2026-10-12
+
+### New sources
+- [[what-s-new-for-game-developers-dlss-5-with-3d-guided-neural-rendering-nvidia-ace-updates-and-new-rtx-kit-capabilities-cd268d2c]]
+- [[bose-corporation-acquires-firelight-technologies-5d7da981]]
+- [[bose-acquires-fmod-developer-firelight-technologies-to-expand-interactive-audio-business-c56b76a9]]
+- [[kingdom-come-deliverance-studio-co-founder-hopes-grand-theft-auto-6-will-blaze-a-trail-to-higher-game-prices-9b45b7eb]]
+- [[italy-watchdog-opens-probes-into-activision-blizzard-over-mobile-game-monetisation-4f3b3677]]
