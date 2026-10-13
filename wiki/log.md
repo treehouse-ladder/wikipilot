@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-13] manual | conflict-resolver — 0 rebased, 2 requeued, 0 lint-fixed, 0 failed
+
+pr#943 (frontier-models) requeued; pr#944 (games-of-note) requeued — both clean+green, auto-merge re-enabled via GitHub MCP (gh CLI token invalid)
+
 ## [2026-10-12] daily | 4 topics, 5 sources, 9 pages
 
 frontier-models (0 src, 1 pg, PR #931), ai-in-game-dev (1 src, 2 pg, PR #932), game-music (2 src, 3 pg, PRs #933 #935), games-of-note (2 src, 3 pg, PRs #934 #937). Report: wiki/reports/2026-10-12.md. Note: agentic-coding skipped — GitHub release API blocked by proxy during this run.
