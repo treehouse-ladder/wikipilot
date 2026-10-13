@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-11
+last_updated: 2026-10-13
 sources:
   - "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]"
   - "[[automate-work-with-routines-claude-code-routines-docs-d09f612e]]"
@@ -458,6 +458,10 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-13
+
+Quiet day — no new sources. Swept GitHub releases (Claude Code, OpenAI Codex), arXiv (2610 range), the Cursor changelog, simonwillison.net, and every.to for material published since the 2026-10-11 run; nothing new qualified. No Claude Code release has shipped past v2.1.296 (2026-10-09) and no Codex release past 0.162.0 (2026-10-08) — both already logged. The SWE-Bench Pro Verified preprint picked up a 2026-10-12 version bump on arXiv but is already ingested, and Cursor's newest surface (Remote Control for Local Agents) is likewise already covered. Current-state picture unchanged since 2026-10-11; the GitHub release-API proxy block that skipped 2026-10-12 remains in effect and was worked around via changelog trackers.
 
 ### Updates 2026-10-11
 
