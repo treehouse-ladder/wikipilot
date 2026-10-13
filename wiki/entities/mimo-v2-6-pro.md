@@ -1,8 +1,8 @@
 ---
 title: "MiMo-V2.6-Pro"
 kind: entity
-sources: ["[[mimo-v2-6-pro-intelligence-performance-and-price-analysis-528e853b]]"]
-last_updated: 2026-09-23
+sources: ["[[mimo-v2-6-pro-intelligence-performance-and-price-analysis-528e853b]]", "[[announcing-frontiercode-on-artificial-analysis-can-ai-models-write-code-maintainers-would-merge-1772bb3e]]"]
+last_updated: 2026-10-13
 last_verified: 2026-09-23
 freshness_window_days: 30
 ---
@@ -16,6 +16,10 @@ freshness_window_days: 30
 Vendor-reported benchmarks are aggressive — **Terminal-Bench 2.1 89.9% (above Claude Opus 5 and GPT-5.6 Sol), CyberGym 94.0% (framed as leading all reported models), DeepSWE v1.1 71.9% (just below Opus 5's 74.0%)** — but these are Xiaomi-reported and not independently reproduced [[mimo-v2-6-pro-intelligence-performance-and-price-analysis-528e853b]]. The model is positioned as an open-weights value/coding play rather than a change to the aggregate-intelligence or contamination-resistant coding leaderboards.
 
 > MiMo-V2.6-Pro was released on September 21, 2026 and scores 46 on the Artificial Analysis Intelligence Index ... The model has 1020 billion parameters and is a sparse Mixture-of-Experts model with 42B active parameters. [[mimo-v2-6-pro-intelligence-performance-and-price-analysis-528e853b]]
+
+**FrontierCode placement (Oct 12, 2026).** MiMo-V2.6-Pro is the **top open-weights model on FrontierCode at 45%**, behind Claude Opus 5.5 (52% average / 58% pass), GPT-6.1 Sol (49%), and Claude Fable 5.1 (49%) [[announcing-frontiercode-on-artificial-analysis-can-ai-models-write-code-maintainers-would-merge-1772bb3e]]. FrontierCode measures whether an AI-written change is good enough for a maintainer to merge, penalizing excessive diffs, out-of-scope edits, and unhelpful tests [[announcing-frontiercode-on-artificial-analysis-can-ai-models-write-code-maintainers-would-merge-1772bb3e]].
+
+> Claude Opus 5.5 (max with fallback) leads FrontierCode with an average score of 52% and a pass rate of 58%. GPT-6.1 Sol (max) and Claude Fable 5.1 (max with fallback) follow at 49%. The top open-weights model is MiMo-V2.6-Pro at 45%. [[announcing-frontiercode-on-artificial-analysis-can-ai-models-write-code-maintainers-would-merge-1772bb3e]]
 
 _no contradictions or gaps known yet (last reviewed: 2026-09-23)_
 

@@ -1,8 +1,8 @@
 ---
 title: "Muse Spark"
 kind: entity
-sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[introducing-muse-spark-1-1-f8a95609]]", "[[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]", "[[muse-spark-1-2-3d7d1796]]", "[[introducing-muse-code-and-muse-spark-1-2-a73147b0]]", "[[introducing-muse-glimmer-c60b75d4]]", "[[muse-glimmer-benchmarks-and-analysis-e12a4eb2]]", "[[muse-spark-1-3-meta-reaches-the-frontier-90b59e4e]]"]
-last_updated: "2026-09-06"
+sources: ["[[muse-spark-meta-is-back-in-the-ai-race-f945bfc7]]", "[[introducing-muse-spark-1-1-f8a95609]]", "[[muse-spark-1-1-meta-gains-8-intelligence-index-points-in-three-months-56cc77a0]]", "[[muse-spark-1-2-3d7d1796]]", "[[introducing-muse-code-and-muse-spark-1-2-a73147b0]]", "[[introducing-muse-glimmer-c60b75d4]]", "[[muse-glimmer-benchmarks-and-analysis-e12a4eb2]]", "[[muse-spark-1-3-meta-reaches-the-frontier-90b59e4e]]", "[[muse-wonder-and-muse-wonder-full-a-material-jump-in-intelligence-over-previous-meta-models-744148a1]]"]
+last_updated: "2026-10-13"
 last_verified: "2026-09-03"
 freshness_window_days: 30
 ---
@@ -44,6 +44,10 @@ Five days after Muse Spark 1.2, Meta released **Muse Glimmer**, a 30B Apache-2.0
 > Muse Spark 1.3 (xhigh) enters the Artificial Analysis Intelligence Index at 61, up 4 points from Muse Spark 1.2 (57, August) and 8 points from Muse Spark 1.1 (53, July). Both variants' gains come primarily from improvements in agentic work and scientific capabilities. [[muse-spark-1-3-meta-reaches-the-frontier-90b59e4e]]
 
 > Muse Spark 1.3 (xhigh) supports text, image, and video input, outputs text, and has a 1M tokens context window. [[muse-spark-1-3-meta-reaches-the-frontier-90b59e4e]]
+
+**Superseded by Muse Wonder and Muse Wonder Full (Oct 12, 2026).** Meta released Muse Wonder and Muse Wonder Full on October 12, 2026, superseding the Muse Spark line as Meta's flagship [[muse-wonder-and-muse-wonder-full-a-material-jump-in-intelligence-over-previous-meta-models-744148a1]]. On the AA Intelligence Index v4.3 basis, Muse Spark 1.3 (max) re-scores at 48, while Muse Wonder (max) reaches 52 and Muse Wonder Full (max) reaches 56 — a material generation jump in roughly six weeks, with the largest gains in agentic evaluations including Terminal-Bench 4.0 rising from 33% to 57% [[muse-wonder-and-muse-wonder-full-a-material-jump-in-intelligence-over-previous-meta-models-744148a1]]. Muse Wonder is available on Meta's first-party API at $4/$20 per Mtoken; Muse Wonder Full is Muse-Code-only and not priced per token [[muse-wonder-and-muse-wonder-full-a-material-jump-in-intelligence-over-previous-meta-models-744148a1]].
+
+> Muse Wonder and Muse Wonder Full score 52 and 56 at max reasoning effort on the Artificial Analysis Intelligence Index v4.3, above Muse Spark 1.3 (max), which scored 48. The largest gains were seen in agentic evaluations, including Terminal-Bench 4.0 rising from 33% to 57%. [[muse-wonder-and-muse-wonder-full-a-material-jump-in-intelligence-over-previous-meta-models-744148a1]]
 
 ## Disputes
 
