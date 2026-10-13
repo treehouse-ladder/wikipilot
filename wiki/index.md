@@ -1634,6 +1634,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gears-of-war-boss-dodges-question-about-future-layoffs-promises-next-game-will-come-sooner-75d1f3b1]]
 - [[star-wars-zero-company-studio-tries-to-bring-back-as-many-furloughed-devs-as-possible-following-unexpected-business-developments-outside-of-our-control-9d1eb191]]
 
+## 2026-10-13
+
+### New sources
+- [[muse-wonder-and-muse-wonder-full-a-material-jump-in-intelligence-over-previous-meta-models-744148a1]]
+- [[announcing-frontiercode-on-artificial-analysis-can-ai-models-write-code-maintainers-would-merge-1772bb3e]]
+- [[towards-physically-grounded-articulated-3d-assets-a-multi-agent-pipeline-and-benchmark-12ac0328]]
+- [[valor-mortis-the-kotaku-review-560f704a]]
+- [[gears-of-war-e-day-estimated-to-have-sold-just-230-000-copies-despite-rave-reviews-33f58a0a]]
+- [[gears-of-war-e-day-was-taken-down-by-ddos-attack-developers-confirm-146b5974]]
+
 ## 2026-10-12
 
 ### New sources
