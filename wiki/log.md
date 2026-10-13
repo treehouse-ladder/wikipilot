@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-13] daily | agentic-coding — 0 sources, 1 page
+
+PR #940 merged. Quiet sweep — GitHub release API proxy block (same issue as 2026-10-12); no qualifying new releases found via changelog trackers. Pages: topics/agentic-coding/index.md.
+
+## [2026-10-13] daily | frontier-models — 2 sources, 4 pages
+
+PR #943 merged. Sources: Meta Muse Wonder / Muse Wonder Full (AA Intelligence Index v4.3: Wonder Full 56, co-#2 with Sonnet 5.5); FrontierCode benchmark by Cognition (Opus 5.5 leads 52% avg / 58% pass rate; MiMo-V2.6-Pro top open-weights at 45%). Pages: 2 source pages + topics/frontier-models/index.md (summary regenerated) + entities/muse-spark.md + entities/mimo-v2-6-pro.md.
+
+## [2026-10-13] daily | ai-in-game-dev — 1 source, 2 pages
+
+PR #941 merged. Source: Artisan multi-agent pipeline for physically grounded articulated 3D assets (arXiv 2610.13947) — physics-simulation feedback, lowest collision rates / highest stability rates on benchmark. Pages: 1 source page + topics/ai-in-game-dev/index.md.
+
+## [2026-10-13] daily | games-of-note — 3 sources, 4 pages
+
+PR #944 merged. Sources: Valor Mortis Kotaku review (One More Level, Oct 13 launch, Dark Souls×BioShock, competent but thin); Gears E-Day week-1 sales (~230k paid, 1.7M Game Pass, ~$37M revenue, Kotaku correction from 320k); E-Day DDoS confirmed by The Coalition (resolved within hours). Pages: 3 source pages + topics/games-of-note/index.md (summary regenerated).
+
+## [2026-10-13] daily | game-music — 0 sources, 1 page
+
+PR #942 merged. Quiet sweep — RPGFan DNS unreachable via proxy (ENOTFOUND); sweep deferred to next run. Pages: topics/game-music/index.md.
+
+## [2026-10-13] daily | 5 topics, 6 sources, 12 pages
+
+PRs: #940 (agentic-coding), #943 (frontier-models), #941 (ai-in-game-dev), #944 (games-of-note), #942 (game-music). All merged. Summary regenerated for frontier-models and games-of-note (summary_affecting: true). Context compaction occurred mid-run; wiki-merger and topic-summarizer subagents ran across both context windows.
+
 ## [2026-10-12] daily | 4 topics, 5 sources, 9 pages
 
 frontier-models (0 src, 1 pg, PR #931), ai-in-game-dev (1 src, 2 pg, PR #932), game-music (2 src, 3 pg, PRs #933 #935), games-of-note (2 src, 3 pg, PRs #934 #937). Report: wiki/reports/2026-10-12.md. Note: agentic-coding skipped — GitHub release API blocked by proxy during this run.
