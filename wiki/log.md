@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-14] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#947 kind=requeue resolved=true — enabled squash auto-merge on wiki(frontier-models): daily 2026-10-14 (mergeable_state=clean, CI green)
+
 ## [2026-10-13] daily | agentic-coding — 0 sources, 1 page
 
 PR #940 merged. Quiet sweep — GitHub release API proxy block (same issue as 2026-10-12); no qualifying new releases found via changelog trackers. Pages: topics/agentic-coding/index.md.
