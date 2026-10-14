@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-14] daily | 5 topics, 10 sources, 15 pages
+
+PRs: #946 (agentic-coding), #947 (frontier-models), #948 (game-music), #949 (games-of-note), #950 (ai-in-game-dev). All merged. No summary regeneration today (summary_affecting: false for all topics). Report: wiki/reports/2026-10-14.md.
+
+## [2026-10-14] daily | ai-in-game-dev — 2 sources, 3 pages
+
+PR #950 merged. Sources: GCA autonomous game production pipeline (arXiv 2610.16776), Recursive Game Creator 4-role studio model SOTA on GameCraft-Bench (arXiv 2610.08621). Pages: topics/ai-in-game-dev/index.md, sources (×2).
+
+## [2026-10-14] daily | games-of-note — 3 sources, 4 pages
+
+PR #949 merged. Sources: Triple-i Initiative Oct 2026 showcase (Machinarium 2, Talos Principle 3, Escapists 3, etc.), Castlevania: Belmont's Curse GameSpot review, Kotaku pre-launch piece. Pages: topics/games-of-note/index.md, sources (×3).
+
+## [2026-10-14] daily | game-music — 2 sources, 3 pages
+
+PR #948 merged. Sources: Kernel Hearts OST review (Pretty Patterns composer, vally.exe vocals — RPGFan top pick 2026), Castlevania: Belmont's Curse OST review (Yoann Laulan adaptive score, 97/100). Pages: topics/game-music/index.md, sources (×2).
+
+## [2026-10-14] daily | frontier-models — 1 sources, 2 pages
+
+PR #947 merged. Sources: Meta Muse Wonder (Personal Superintelligence Index, PSI benchmark, full model via Muse Code only). Pages: topics/frontier-models/index.md, sources (×1).
+
+## [2026-10-14] daily | agentic-coding — 2 sources, 3 pages
+
+PR #946 merged. Sources: Engineering Sustainable Agents comparison study (Tencent), SweeperBench interactive-software bug-discovery benchmark (Cambridge). Pages: topics/agentic-coding/index.md, sources (×2).
+
 ## [2026-10-13] daily | agentic-coding — 0 sources, 1 page
 
 PR #940 merged. Quiet sweep — GitHub release API proxy block (same issue as 2026-10-12); no qualifying new releases found via changelog trackers. Pages: topics/agentic-coding/index.md.
