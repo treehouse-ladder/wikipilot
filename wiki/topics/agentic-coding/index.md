@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-13
+last_updated: 2026-10-14
 sources:
   - "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]"
   - "[[automate-work-with-routines-claude-code-routines-docs-d09f612e]]"
@@ -355,8 +355,10 @@ sources:
   - "[[remote-control-for-local-agents-320c088c]]"
   - "[[hacktrace-behavior-supervised-detection-of-reward-hacking-during-code-generation-88cd4db7]]"
   - "[[release-0-162-0-openai-codex-6d91f7c5]]"
+  - "[[sweeper-bench-can-agents-discover-bugs-in-interactive-software-4352e6c3]]"
+  - "[[engineering-sustainable-agents-a-systematic-comparison-of-agentic-llms-for-developer-workflows-484c6e84]]"
 last_verified: 2026-10-10
-last_updated: 2026-10-11
+last_updated: 2026-10-14
 freshness_window_days: 30
 ---
 
@@ -458,6 +460,22 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-14
+
+Two new benchmark papers extend the evaluation landscape for agentic coding systems.
+
+**SWEeper-Bench** [[sweeper-bench-can-agents-discover-bugs-in-interactive-software-4352e6c3]] introduces a harder variant of the bug-fixing paradigm: agents must *discover* bugs rather than fix pre-identified ones. The benchmark comprises 200 tasks from real bug fixes in 200 open-source web applications; agents receive only the codebase and an open-ended task description.
+
+> SWEeper-Bench introduces 200 tasks derived from real bug fixes across 200 open-source web applications. Unlike prior benchmarks, agents are given only the codebase and an open-ended request — no pre-identified bug location. The best-performing agent across 15 frontier systems achieves a 59.0% pass rate. The primary bottleneck is not code generation but bug discovery: agents routinely navigate to the relevant feature yet fail to trigger or recognize the underlying defect.
+
+Top frontier agents reach 59.0% on best-of-15. The primary failure mode is not code manipulation but perceptual: agents navigate to the relevant feature yet fail to trigger or recognize the bug — underscoring that tool-use and code-writing capability have outpaced situated fault-finding.
+
+**Engineering Sustainable Agents** [[engineering-sustainable-agents-a-systematic-comparison-of-agentic-llms-for-developer-workflows-484c6e84]] provides the first systematic energy audit of multi-agent SE workflows. Across five developer tasks (code generation, technical debt identification, vulnerability detection, log parsing, log analysis), six open-weight models, two prompt strategies, and three hardware platforms:
+
+> Across five SE tasks (code generation, technical debt identification, vulnerability detection, log parsing, log analysis), six open-weight models, two prompt strategies, and three hardware platforms, multi-agent architectures consume 6.36× more energy and run 6.07× slower than single-query approaches — with worst-case overhead reaching 160×. Accuracy improvements from multi-agent over single-query are limited, challenging the assumption that orchestration overhead is justified by proportional capability gains.
+
+The result is a counterweight to default multi-agent enthusiasm: orchestration carries real energy and latency costs that are rarely reflected in benchmark leaderboards.
 
 ### Updates 2026-10-13
 
@@ -3257,6 +3275,8 @@ lint stays quiet until each page actually exists:
 - [ ] Is the Sonnet 5.5 $0.10/Mtok cache-read figure in v2.1.296 an actual price cut or only a correction to previously mis-reported cost output? The release note frames it as a cost-reporting update ("was $0.20") rather than a model price change [[release-v2-1-296-anthropics-claude-code-e75aaf1e]] — needs reconciliation against the Anthropic API published cache-read price and against the Summary's v2.1.284 $0.20 figure.
 - [ ] Does pinning all dynamic-workflow agents to one (presumably cheaper) model via CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL [[release-v2-1-296-anthropics-claude-code-e75aaf1e]] measurably reduce workflow cost without degrading the plan/dispatch quality that the "fewer than 15 agents" default guideline already bounds, and how does it interact with the default per-role model assignment?
 - [ ] Does the Read tool's new allow_large single-call ingestion of oversized files [[release-v2-1-296-anthropics-claude-code-e75aaf1e]] interact badly with prompt caching — i.e. does pulling a large file into one turn's context bust the session cache more than incremental/offset reads would, inverting the cost saving the cache-read re-pricing just delivered?
+
+- [ ] What accuracy thresholds justify the 6×+ energy overhead of multi-agent architectures over single-query approaches for SE tasks? Are there task categories (e.g. long-horizon refactors) where the tradeoff clearly favors multi-agent? [[engineering-sustainable-agents-a-systematic-comparison-of-agentic-llms-for-developer-workflows-484c6e84]]
 
 ## See also
 
