@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-14] manual | conflict-resolver — 0 rebased, 2 requeued, 0 lint-fixed, 0 failed
+
+pr#950 (ai-in-game-dev) kind=requeue resolved=true — enabled auto-merge (squash); pr#951 (_report) kind=requeue resolved=true — enabled auto-merge (squash). Note: gh CLI token invalid; requeus performed via MCP GitHub tools.
+
 ## [2026-10-14] daily | 5 topics, 10 sources, 15 pages
 
 PRs: #946 (agentic-coding), #947 (frontier-models), #948 (game-music), #949 (games-of-note), #950 (ai-in-game-dev). All merged. No summary regeneration today (summary_affecting: false for all topics). Report: wiki/reports/2026-10-14.md.
