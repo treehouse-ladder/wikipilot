@@ -75,6 +75,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[game-creation-agents-autonomous-game-production-67613906]]
+- [[recursive-game-creator-an-agentic-product-level-experience-oriented-game-harness-efff7e49]]
+- [[triple-i-initiative-october-2026-everything-announced-at-the-showcase-fa7cc3ac]]
+- [[castlevania-belmont-s-curse-review-the-series-at-its-best-1e512aac]]
+- [[castlevania-belmont-s-curse-is-kicking-my-ass-in-the-worst-way-f3701719]]
+- [[kernel-hearts-original-soundtrack-music-review-f378d604]]
+- [[castlevania-belmonts-curse-review-6111f609]]
+- [[muse-wonder-a-frontier-model-for-personal-and-professional-ai-agents-7758c02a]]
+- [[engineering-sustainable-agents-a-systematic-comparison-of-agentic-llms-for-developer-workflows-484c6e84]]
+- [[sweeper-bench-can-agents-discover-bugs-in-interactive-software-4352e6c3]]
 - [[release-0-162-0-openai-codex-6d91f7c5]]
 - [[unimate-one-unified-model-to-animate-diverse-skeletons-b8768176]]
 - [[dragon-s-dogma-2-dark-arisen-is-great-but-at-a-cost-0819cc1c]]
@@ -1377,6 +1387,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-10-14]]
 - [[2026-10-10]]
 - [[2026-10-09]]
 - [[2026-10-08]]
