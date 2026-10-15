@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-14
+last_updated: 2026-10-15
 sources:
   - "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]"
   - "[[automate-work-with-routines-claude-code-routines-docs-d09f612e]]"
@@ -357,8 +357,9 @@ sources:
   - "[[release-0-162-0-openai-codex-6d91f7c5]]"
   - "[[sweeper-bench-can-agents-discover-bugs-in-interactive-software-4352e6c3]]"
   - "[[engineering-sustainable-agents-a-systematic-comparison-of-agentic-llms-for-developer-workflows-484c6e84]]"
+  - "[[doc2harness-benchmarking-llms-on-long-horizon-harness-engineering-of-coding-agents-a3455f18]]"
 last_verified: 2026-10-10
-last_updated: 2026-10-14
+last_updated: 2026-10-15
 freshness_window_days: 30
 ---
 
@@ -460,6 +461,18 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-15
+
+One new source: a benchmark that moves the evaluation target from the coding agent to the *harness it runs inside*.
+
+**Doc2Harness** [[doc2harness-benchmarking-llms-on-long-horizon-harness-engineering-of-coding-agents-a3455f18]] (arXiv:2610.20344, 2026-10-14) argues the existing eval landscape scores agents under a *fixed* harness and therefore never measures the harness-engineering skill itself. It is a two-stage benchmark: a build model assembles a complete candidate harness inside an isolated container from a development document plus an interface-only contract skeleton, and a scripted mock model then drives that harness end-to-end in separate containers. Scoring reads four observable channels — model requests, files on disk, process exit code, and command output — with positive controls to exclude vacuous passes.
+
+> Across 19 frontier models evaluated with three builds each on 328 test cases, GPT-6 Astra scores highest at 53.05% and the weakest model scores 27.44%; failures cluster around how cross-cutting functionality is split across modules. [[doc2harness-benchmarking-llms-on-long-horizon-harness-engineering-of-coding-agents-a3455f18]]
+
+This sits alongside the wiki's existing harness-evolution-evaluation thread (Evo-Bench, HarnessOpt-Bench, "Rethinking the evaluation of harness evolution"): rather than asking whether an *evolved* harness beats a human-designed one, Doc2Harness asks whether a frontier model can *build* a working harness from a spec at all — and even the best model clears only ~53%, with the mock-driven, four-channel scoring an attempt to keep that number honest.
+
+No new Claude Code (past v2.1.296, Oct 9), Codex (past 0.162.0, Oct 8), or Cursor surface shipped in the window; the release-API proxy block from 2026-10-13 remains in effect and was worked around via changelog trackers.
 
 ### Updates 2026-10-14
 
@@ -2948,9 +2961,11 @@ lint stays quiet until each page actually exists:
 - [[release-v2-1-287-anthropics-claude-code-d3204584]] ships Claude Mods as on-by-default plugins whose JS/TS handlers can rewrite prompts and take over tool calls; [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]] finds 16.7% of real-world agentic-coding config setups already carry a confirmed defect and argues the config/plugin layer is an unmanaged software supply chain with 'no lockfile, no install-time check'. A plugin tier that can execute code to intercept and rewrite agent behavior widens exactly that install-time supply-chain surface rather than narrowing it. Status: unresolved
 - [[we-re-going-to-need-default-hard-budget-caps-on-pretty-much-everything-47be91cd]] argues hard budget caps must be the default (opt-out, not opt-in) for pay-by-usage services that coding agents spin up, framing uncapped agent-provisioned spend as a structural hazard requiring a default kill-switch; [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]] frames agentic-coding cost overruns as recoverable (14-21%) via cache-aware routing and harness tuning rather than hard caps. Status: unresolved — aligns with the hard-caps side of the existing routing-vs-caps dispute ([[uber-caps-usage-of-ai-tools-like-claude-code-to-manage-costs-d17eb873]]) but on the distinct axis of downstream services the agent provisions, not the agent tool's own token spend.
 - [[hacktrace-behavior-supervised-detection-of-reward-hacking-during-code-generation-88cd4db7]] reports a behavior-supervised internal-activation monitor reaching a mean per-problem AUC of 0.997 at 8 ms overhead for detecting reward hacking during code generation, and (as a GRPO penalty) cutting the cheating share of passing solutions from 82–91% to 1–5%; the existing page claim that verification is harder than generation (derived from the benchmark-leaderboard convergence thread) predicts no single automated reward signal is both reliable and scalable. Status: unresolved — HackTrace's near-perfect AUC is on a single base model (Qwen3-8B) with no demonstrated cross-model/cross-harness transfer.
+- [[doc2harness-benchmarking-llms-on-long-horizon-harness-engineering-of-coding-agents-a3455f18]] reports a single-number per-model ranking of harness-building capability (GPT-6 Astra top at 53.05%); [[position-coding-benchmarks-are-misaligned-with-agentic-software-engineering-0019f733]] argues single end-to-end scores are categorically misaligned for comparing coding-agent capability because the harness/context/environment can move the score as much as a model generation — and Doc2Harness's own scores could in turn be swung by the resource/infrastructure noise [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] documents. Status: unresolved — Doc2Harness measures the distinct meta-capability of building a harness rather than resolving an issue, so the misalignment critique may apply differently, but the paper still publishes a single leaderboard number.
 
 ## Open questions
 
+- [ ] Doc2Harness drives each built harness with a *scripted mock model* rather than a live frontier model in the loop [[doc2harness-benchmarking-llms-on-long-horizon-harness-engineering-of-coding-agents-a3455f18]] — does a harness that passes under a deterministic mock driver transfer to real model-in-the-loop behavior (where context-management, retry, and tool-schema quirks surface), or does the mock driver systematically over-credit harnesses that only work against predictable inputs?
 - [ ] Codex 0.162.0's agent-invokable managed worktree tools [[release-0-162-0-openai-codex-6d91f7c5]] let the agent create isolated per-task checkouts on its own — does giving the agent (rather than the human) control of worktree creation inherit the semantically-conflicting-but-textually-clean concurrent-edit risk AgentRoom raises against worktree-per-agent isolation [[agentroom-concurrent-multi-agent-coding-in-a-crdt-backed-shared-workspace-4f6448bf]], and what is the prompt-cache behavior across agent-spawned worktrees?
 - [ ] What effort levels does the `effort` parameter on the `Agent` tool accept — does it map to model reasoning-budget tokens, or to a named tier (low/medium/high)? The v2.1.292 release notes don't specify [[release-v2-1-292-anthropics-claude-code-0c734930]].
 - [ ] Does Control the Harness's cache-aware routing claim [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]] (moving work only at session start, side lanes, and subagent launch so no running conversation rebuilds its cache) survive the prompt-cache-invalidation cliff cases the topic charter flags — i.e. mid-run file edits that bust the cache — or does the 14–21% recovery assume sessions that never invalidate mid-trajectory?
