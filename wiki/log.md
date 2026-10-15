@@ -3352,3 +3352,7 @@ PR #891 merged. Sources: IGMBench world-editing benchmark (110 tasks Minecraft/T
 ## [2026-10-05] daily | 3 topics, 6 sources, 9 pages
 
 PRs: #889 (agentic-coding), #890 (games-of-note), #891 (ai-in-game-dev). All merged. Frontier-models and game-music: empty proposals, no PRs created. PRs created via GitHub MCP API (gh CLI token invalid in cloud env).
+
+## [2026-10-15] manual | conflict-resolver — 0 rebased, 2 requeued, 0 lint-fixed, 0 failed
+
+pr#954 kind=requeue resolved=true — wiki(frontier-models): daily 2026-10-15 (auto-merge enabled); pr#955 kind=requeue resolved=true — wiki(ai-in-game-dev): daily 2026-10-15 (auto-merge enabled)
