@@ -2,9 +2,9 @@
 title: "Step 5 Preview"
 kind: entity
 aliases: ["StepFun Step 5", "Step5 Preview", "step-5-preview"]
-sources: ["[[stepfun-launches-step-5-preview-600b-sparse-moe-1m-context-weights-open-oct-15-3397b6e7]]", "[[stepfun-launches-step-5-preview-a-600b-total-27b-active-moe-model-with-1m-context-for-long-horizon-agentic-work-f4fd772d]]"]
-last_updated: 2026-09-22
-last_verified: 2026-09-22
+sources: ["[[stepfun-launches-step-5-preview-600b-sparse-moe-1m-context-weights-open-oct-15-3397b6e7]]", "[[stepfun-launches-step-5-preview-a-600b-total-27b-active-moe-model-with-1m-context-for-long-horizon-agentic-work-f4fd772d]]", "[[stepfun-ai-step-5-preview-nvfp4-0deda4e2]]"]
+last_updated: 2026-10-15
+last_verified: 2026-10-15
 freshness_window_days: 30
 input_cost_per_mtoken: 1.00
 output_cost_per_mtoken: 2.70
@@ -33,14 +33,21 @@ Step 5 Preview is StepFun's latest frontier model, launched 2026-09-20, a **600B
 
 > On Artificial Analysis, Step 5 Preview scores about 44 on the intelligence index, which StepFun positions among the top open-weight models in that ranking. [[stepfun-launches-step-5-preview-600b-sparse-moe-1m-context-weights-open-oct-15-3397b6e7]]
 
+**Weights released (2026-10-15).** StepFun released Step 5 Preview's open weights on schedule to its official Hugging Face organization as FP8 and BF16 checkpoints plus an NVFP4 quant, served via OpenAI-compatible vLLM/SGLang or offline Transformers [[stepfun-ai-step-5-preview-nvfp4-0deda4e2]]. The release is governed by the **StepFun Model License 1.0**, described as "an Apache-2.0-Style license, with additional attribution and commercial-license conditions" — open-weights but not unconditionally permissive, unlike the MIT-licensed GLM-5.3 / Kimi K3 [[stepfun-ai-step-5-preview-nvfp4-0deda4e2]]. The official model card's specification table lists inputs as text and image (launch materials and the card intro additionally cite video); FP8 serves on a single 8xH200 or 4xB300 node, while BF16 requires 8xB300 or 2x8xH200 [[stepfun-ai-step-5-preview-nvfp4-0deda4e2]]. This resolves the standing open question on whether the Oct 15 weights release would happen as announced.
+
+> Step 5 Preview can be served through an OpenAI-compatible API with vLLM or SGLang, or used for offline generation with the standalone Transformers implementation. The examples below cover FP8 and BF16 checkpoints. [[stepfun-ai-step-5-preview-nvfp4-0deda4e2]]
+
+> The StepFun Model License 1.0 is an Apache-2.0-Style license, with additional attribution and commercial-license conditions specific to model use, modification and distribution. [[stepfun-ai-step-5-preview-nvfp4-0deda4e2]]
+
 ## Disputes
 
-_none_
+- [[stepfun-ai-step-5-preview-nvfp4-0deda4e2]] (official model-card specification table) lists Step 5 Preview inputs as text and image only; the same card's intro prose and the launch source [[stepfun-launches-step-5-preview-600b-sparse-moe-1m-context-weights-open-oct-15-3397b6e7]] state it accepts text, images, and video. Status: unresolved — likely the hosted API preview supports video input while the documented input set for the open-weights checkpoint is text+image.
 
 ## Open questions
 
 - [ ] Full AA Intelligence Index placement (AA-Briefcase, Terminal-Bench, GDPval-AA Elo) not yet reported.
-- [ ] Weights open Oct 15 — confirm at that date whether the release happens as announced.
+- [ ] ~~Weights open Oct 15 — confirm at that date whether the release happens as announced.~~ Resolved 2026-10-15: weights released on schedule.
+- [ ] Does the StepFun Model License 1.0's additional attribution and commercial-license conditions restrict commercial redistribution/self-hosting of Step 5 Preview vs MIT-licensed open-weights peers? [[stepfun-ai-step-5-preview-nvfp4-0deda4e2]]
 
 ## See also
 
