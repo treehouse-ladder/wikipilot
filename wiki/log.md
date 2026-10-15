@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-15] daily | 5 topics, 7 sources, 13 pages
+
+PRs: #953 (agentic-coding), #954 (frontier-models), #955 (ai-in-game-dev), #956 (games-of-note), #957 (game-music). All merged. No summary regeneration today (summary_affecting: false for all topics). Report: wiki/reports/2026-10-15.md.
+
+## [2026-10-15] daily | game-music — 0 sources, 1 page
+
+PR #957 merged. Quiet run — no new sources. Noted Castlevania: Belmont's Curse launched today; OST specialist reviews from RPGFan/VGMO/gamemusic.tools pending. Pages: topics/game-music/index.md.
+
+## [2026-10-15] daily | games-of-note — 3 sources, 4 pages
+
+PR #956 merged. Sources: Legacy Games "forever" storefront shutdown announcement (Feb 28, 2027), Ubisoft proposes closing RedLynx (Trials) + downsizing Singapore (Kotaku), Ubisoft RedLynx closure/Singapore downsize (Game Developer). Pages: topics/games-of-note/index.md, sources (×3).
+
+## [2026-10-15] daily | ai-in-game-dev — 2 sources, 3 pages
+
+PR #955 merged. Sources: Helix World real-time audio-visual world model (unified spatial audio synthesis), WorldSonus streaming video-to-audio generation for game worlds. Pages: topics/ai-in-game-dev/index.md, sources (×2).
+
+## [2026-10-15] daily | frontier-models — 1 source, 3 pages
+
+PR #954 merged. Sources: StepFun HuggingFace model card (Step 5 Preview weights released on schedule: FP8 + BF16 + NVFP4 quant, StepFun Model License 1.0). Pages: topics/frontier-models/index.md, entities/step-5.md, sources (×1).
+
+## [2026-10-15] daily | agentic-coding — 1 source, 2 pages
+
+PR #953 merged. Sources: Doc2Harness benchmarking paper (arXiv 2610.20344) — harness engineering as first-class skill for long-horizon agentic coding. Pages: topics/agentic-coding/index.md, sources (×1).
+
 ## [2026-10-14] manual | conflict-resolver — 0 rebased, 2 requeued, 0 lint-fixed, 0 failed
 
 pr#950 (ai-in-game-dev) kind=requeue resolved=true — enabled auto-merge (squash); pr#951 (_report) kind=requeue resolved=true — enabled auto-merge (squash). Note: gh CLI token invalid; requeus performed via MCP GitHub tools.

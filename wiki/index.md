@@ -75,6 +75,13 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[doc2harness-benchmarking-llms-on-long-horizon-harness-engineering-of-coding-agents-a3455f18]]
+- [[stepfun-ai-step-5-preview-nvfp4-0deda4e2]]
+- [[meet-helix-world-a-real-time-audio-visual-world-model-ae1860e2]]
+- [[worldsonus-bringing-sound-to-worlds-e7415abd]]
+- [[online-store-that-promised-games-were-yours-to-keep-forever-is-shutting-down-1d4dc43b]]
+- [[ubisoft-is-closing-down-yet-another-studio-possibly-ending-a-25-year-fan-favorite-franchise-eb3685e0]]
+- [[ubisoft-to-close-trials-studio-redlynx-downsize-ubisoft-singapore-015f6e16]]
 - [[game-creation-agents-autonomous-game-production-67613906]]
 - [[recursive-game-creator-an-agentic-product-level-experience-oriented-game-harness-efff7e49]]
 - [[triple-i-initiative-october-2026-everything-announced-at-the-showcase-fa7cc3ac]]
@@ -1387,6 +1394,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-10-15]]
 - [[2026-10-14]]
 - [[2026-10-10]]
 - [[2026-10-09]]
