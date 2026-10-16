@@ -1,8 +1,9 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-15
+last_updated: 2026-10-16
 sources:
+  - "[[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]]"
   - "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]"
   - "[[automate-work-with-routines-claude-code-routines-docs-d09f612e]]"
   - "[[cursor-2-0-multi-agents-and-composer-changelog-4665f068]]"
@@ -461,6 +462,26 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-16
+
+One new source: an eval framework that makes the *skill/tool/harness intervention itself* the unit of measurement and finds most interventions buy cost, not capability.
+
+**HPCAgent-Bench** [[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]] (arXiv:2610.20673) benchmarks code-optimizing agents, their harnesses, and their skills across 689 kernels in three tracks (loop-level challenges, HPC kernels, ML models), with each kernel authored once in NumPy and C/Fortran references derived from it. Correctness is checked by an external judge on hidden fuzzed inputs and submissions are timed, closing off the reward-hacking channels that the wiki's eval-reliability cluster repeatedly flags.
+
+> We present HPCAgent-Bench with 689 kernels in three tracks [[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]]
+
+> The orchestrator, the part of the framework that schedules episodes, runs one agent per task. [[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]]
+
+Its methodological contribution is a pair of causal metrics — *intervention efficacy* (paired runs with and without an added tool/skill) and *weighted token cost* — designed to isolate what an added harness component actually buys. The headline result lands squarely on the wiki's "harness is a cost lever, not an accuracy lever" thread and corroborates SkillsBench's marginal-SE-benefit finding: added interventions almost never moved speedup but routinely tripled token spend.
+
+> Across 40 matched setups, added interventions significantly changed speedup only twice, but they raised token cost by up to 3.0x. [[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]]
+
+Agents still deliver real gains over the non-agentic baseline (up to 4.2x over automatic parallelizers), and those gains transfer across machines (93-99% of device-agnostic answers stay correct; per-kernel speedup rank correlation r_s >= 0.84), so the critique is specifically that *marginal* skill/tool additions under-deliver, not that agentic optimization fails.
+
+> Agents reach up to 4.2x speedup over automatic parallelizers, and their optimizations transfer to another machine. [[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]]
+
+Caveat: this is the HPC performance-optimization regime, not SWE-bench-style issue resolution, and the base model already encodes most of the optimization knowledge — so the "interventions add cost not capability" finding may be regime-specific (see Open questions). No new Claude Code (past v2.1.296, Oct 9), Codex (past 0.162.0, Oct 8), or Cursor surface shipped in the window.
 
 ### Updates 2026-10-15
 
@@ -2962,6 +2983,7 @@ lint stays quiet until each page actually exists:
 - [[we-re-going-to-need-default-hard-budget-caps-on-pretty-much-everything-47be91cd]] argues hard budget caps must be the default (opt-out, not opt-in) for pay-by-usage services that coding agents spin up, framing uncapped agent-provisioned spend as a structural hazard requiring a default kill-switch; [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]] frames agentic-coding cost overruns as recoverable (14-21%) via cache-aware routing and harness tuning rather than hard caps. Status: unresolved — aligns with the hard-caps side of the existing routing-vs-caps dispute ([[uber-caps-usage-of-ai-tools-like-claude-code-to-manage-costs-d17eb873]]) but on the distinct axis of downstream services the agent provisions, not the agent tool's own token spend.
 - [[hacktrace-behavior-supervised-detection-of-reward-hacking-during-code-generation-88cd4db7]] reports a behavior-supervised internal-activation monitor reaching a mean per-problem AUC of 0.997 at 8 ms overhead for detecting reward hacking during code generation, and (as a GRPO penalty) cutting the cheating share of passing solutions from 82–91% to 1–5%; the existing page claim that verification is harder than generation (derived from the benchmark-leaderboard convergence thread) predicts no single automated reward signal is both reliable and scalable. Status: unresolved — HackTrace's near-perfect AUC is on a single base model (Qwen3-8B) with no demonstrated cross-model/cross-harness transfer.
 - [[doc2harness-benchmarking-llms-on-long-horizon-harness-engineering-of-coding-agents-a3455f18]] reports a single-number per-model ranking of harness-building capability (GPT-6 Astra top at 53.05%); [[position-coding-benchmarks-are-misaligned-with-agentic-software-engineering-0019f733]] argues single end-to-end scores are categorically misaligned for comparing coding-agent capability because the harness/context/environment can move the score as much as a model generation — and Doc2Harness's own scores could in turn be swung by the resource/infrastructure noise [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] documents. Status: unresolved — Doc2Harness measures the distinct meta-capability of building a harness rather than resolving an issue, so the misalignment critique may apply differently, but the paper still publishes a single leaderboard number.
+- [[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]] finds via paired intervention-efficacy measurement that adding a tool/skill to a code-optimizing agent significantly changed speedup in only 2 of 40 matched setups while raising token cost by up to 3.0x, placing it with [[skillsbench-benchmarking-how-well-agent-skills-work-across-diverse-tasks-1743f5a5]] and [[an-empirical-study-of-harness-design-for-coding-agents-34ddd89e]] on the 'harness/skill components are a cost lever, not an accuracy lever' side; [[from-model-scaling-to-system-scaling-scaling-the-harness-in-agentic-ai-80b4d5d5]] argues more elaborate harnesses unlock more capability (system scaling > model scaling). Status: unresolved — HPCAgent-Bench measures the HPC performance-optimization regime with causal paired ablations, where the base model may already capture most optimization knowledge, so its indictment of marginal interventions may not transfer to the SWE issue-resolution regime the system-scaling thesis targets.
 
 ## Open questions
 
@@ -3292,6 +3314,7 @@ lint stays quiet until each page actually exists:
 - [ ] Does the Read tool's new allow_large single-call ingestion of oversized files [[release-v2-1-296-anthropics-claude-code-e75aaf1e]] interact badly with prompt caching — i.e. does pulling a large file into one turn's context bust the session cache more than incremental/offset reads would, inverting the cost saving the cache-read re-pricing just delivered?
 
 - [ ] What accuracy thresholds justify the 6×+ energy overhead of multi-agent architectures over single-query approaches for SE tasks? Are there task categories (e.g. long-horizon refactors) where the tradeoff clearly favors multi-agent? [[engineering-sustainable-agents-a-systematic-comparison-of-agentic-llms-for-developer-workflows-484c6e84]]
+- [ ] Does HPCAgent-Bench's intervention-efficacy finding — that added tools/skills raise token cost up to 3.0x while rarely improving speedup [[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]] — transfer from the HPC performance-optimization regime to SWE-bench-style issue resolution, or is it specific to a task where the base model already encodes most of the required optimization knowledge and the external timing judge admits little room for scaffolding gains?
 
 ## See also
 
