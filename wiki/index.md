@@ -67,6 +67,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[mistral-large-4]]
 - [[skydance]]
 - [[claude-haiku-5-5]]
+- [[muse-spark-open]]
 
 ## Comparisons
 
@@ -976,6 +977,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[ant-inclusionai-ships-ling-3-1-flash-with-560b-parameters-e58c2683]]
 - [[skies-of-arcadia-eternal-soundtrack-vinyl-edition-music-review-58f55723]]
 - [[ubisoft-unites-developers-of-splinter-cell-the-division-ghost-recon-and-more-under-star-wars-outlaws-studio-massive-entertainment-2252de1f]]
+- [[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]]
+- [[introducing-muse-spark-open-the-most-capable-us-open-weight-model-to-date-499fcbd0]]
+- [[meta-releases-muse-spark-open-says-it-is-most-capable-us-based-open-model-f8f922cc]]
+- [[castlevania-belmont-s-curse-becomes-the-highest-rated-entry-in-decades-ef5975e5]]
+- [[the-game-awards-2026-date-and-venue-revealed-56669ff9]]
+- [[13-sentinels-original-soundtrack-remix-arrange-album-and-unicorn-overlord-vinyl-albums-announced-1957e6b5]]
 
 ## Answers
 
@@ -1394,6 +1401,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-10-16]]
 - [[2026-10-15]]
 - [[2026-10-14]]
 - [[2026-10-10]]
