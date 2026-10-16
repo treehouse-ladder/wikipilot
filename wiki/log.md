@@ -2,9 +2,9 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
-## [2026-10-16] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+## [2026-10-16] manual | conflict-resolver — 0 rebased, 2 requeued, 0 lint-fixed, 0 failed
 
-pr#964 (_report daily 2026-10-16) kind=requeue resolved=true — CI green, auto_merge null; enabled squash auto-merge via CCR PUT route. (gh CLI and GraphQL unavailable in cloud env; CCR REST route used directly.)
+pr#963 (game-music daily 2026-10-16) kind=requeue resolved=true — enabled auto-merge (squash) via GitHub MCP API; gh CLI token invalid in cloud env. pr#964 (_report daily 2026-10-16) kind=requeue resolved=true — CI green, auto_merge null; enabled squash auto-merge via CCR PUT route.
 
 ## [2026-10-16] daily | 5 topics, 7 sources, 14 pages
 
@@ -3384,3 +3384,4 @@ PR #891 merged. Sources: IGMBench world-editing benchmark (110 tasks Minecraft/T
 ## [2026-10-05] daily | 3 topics, 6 sources, 9 pages
 
 PRs: #889 (agentic-coding), #890 (games-of-note), #891 (ai-in-game-dev). All merged. Frontier-models and game-music: empty proposals, no PRs created. PRs created via GitHub MCP API (gh CLI token invalid in cloud env).
+
