@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-16] daily | 5 topics, 7 sources, 14 pages
+
+PRs: #959 (agentic-coding, merged), #960 (frontier-models, merged), #961 (ai-in-game-dev, merged), #962 (games-of-note, auto-merge pending), #963 (game-music, auto-merge pending). No summary regeneration today (summary_affecting: false for all topics). Report: wiki/reports/2026-10-16.md.
+
 ## [2026-10-15] daily | 5 topics, 7 sources, 13 pages
 
 PRs: #953 (agentic-coding), #954 (frontier-models), #955 (ai-in-game-dev), #956 (games-of-note), #957 (game-music). All merged. No summary regeneration today (summary_affecting: false for all topics). Report: wiki/reports/2026-10-15.md.
