@@ -71,6 +71,7 @@ Five days after Muse Spark 1.2, Meta released **Muse Glimmer**, a 30B Apache-2.0
 
 ## See also
 
+- [[muse-spark-open]] — Meta's purpose-built open-weight sibling model (released Oct 2026)
 - [[muse-code]]
 - [[frontier-models]]
 - [[claude-opus-4.7]]
