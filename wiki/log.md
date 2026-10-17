@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-17] daily | 5 topics, 11 sources, 10 pages
+
+PRs: #967 (game-music, merged), #968 (agentic-coding, merged), #969 (games-of-note, merged), #970 (frontier-models, merged), #971 (ai-in-game-dev, merged). Summary regeneration: game-music (Justice/GTA VI). Report: wiki/reports/2026-10-17.md.
+
+## [2026-10-17] daily | game-music — 1 sources, 2 pages
+
+PR #967 merged. Justice (Jean-Baptiste de Laubier + Gaspard Augé) confirmed as GTA VI original score composers; dynamic score + "Flower in a Hurricane" single. Summary regenerated to reflect Justice announcement. Pages: topics/game-music/index.md, sources/justice-revealed-as-gta-vi-original-score-composers-149b1457.md.
+
+## [2026-10-17] daily | agentic-coding — 2 sources, 3 pages
+
+PR #968 merged. OpenAI Codex 0.163.0 (improved diff application) and Claude Code v2.1.299 (auto-compact token threshold fix, spawn limits) ingested. Pages: topics/agentic-coding/index.md, 2 source pages.
+
+## [2026-10-17] daily | games-of-note — 3 sources, 3 pages
+
+PR #969 merged. GTA 6 confirmed TGA 2026 eligible (resolves prior dispute); MW4 campaign 7/10 (Kotaku); Ubisoft DE ~100/600 voluntary departures. Pages: topics/games-of-note/index.md, 3 source pages.
+
+## [2026-10-17] daily | frontier-models — 2 sources, 1 page
+
+PR #970 merged. Nvidia Nemotron 3.5 Super VL (120B/12B active, 26 AA Index, #1 US open weight) and Nemotron 3.5 Bolt 74B-A9B (74B/9B active, 21 AA Index) launched; Beam 1.0/Reflection (501B/23B active, 30 AA Index, Apache 2.0). Pages: topics/frontier-models/index.md, 2 source pages.
+
+## [2026-10-17] daily | ai-in-game-dev — 3 sources, 1 page
+
+PR #971 merged. 3DCodeVerse (code-only 3D ecosystem, 90% win rate vs Claude Design); Player-1 (PPO game-control framework, 38.33% MineDojo-300); ExeWorldBench (executable-world benchmark, frontier models show substantial limitations). Pages: topics/ai-in-game-dev/index.md, 3 source pages.
+
 ## [2026-10-16] manual | conflict-resolver — 0 rebased, 2 requeued, 0 lint-fixed, 0 failed
 
 pr#963 (game-music daily 2026-10-16) kind=requeue resolved=true — enabled auto-merge (squash) via GitHub MCP API; gh CLI token invalid in cloud env. pr#964 (_report daily 2026-10-16) kind=requeue resolved=true — CI green, auto_merge null; enabled squash auto-merge via CCR PUT route.
