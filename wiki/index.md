@@ -983,6 +983,17 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[castlevania-belmont-s-curse-becomes-the-highest-rated-entry-in-decades-ef5975e5]]
 - [[the-game-awards-2026-date-and-venue-revealed-56669ff9]]
 - [[13-sentinels-original-soundtrack-remix-arrange-album-and-unicorn-overlord-vinyl-albums-announced-1957e6b5]]
+- [[justice-revealed-as-gta-vi-original-score-composers-149b1457]]
+- [[release-0-163-0-openai-codex-255cde9f]]
+- [[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]
+- [[gta-6-avoids-a-very-awkward-situation-by-officially-being-eligible-for-the-2026-game-awards-1294b3e6]]
+- [[cod-modern-warfare-4-campaign-review-a-high-price-for-revenge-e77afd5a]]
+- [[the-ubisoft-carnage-continues-with-one-in-six-german-staff-asked-to-voluntarily-resign-8f35a0eb]]
+- [[nvidia-releases-nemotron-3-5-super-vl-and-nemotron-3-5-bolt-74b-a9b-f9af1b85]]
+- [[beam-1-0-intelligence-performance-price-analysis-1981d520]]
+- [[3dcodeverse-exploring-3d-worlds-as-code-eee664f3]]
+- [[player-1-learning-to-play-from-synthetic-experience-517f3f67]]
+- [[exeworldbench-benchmarking-code-based-executable-3d-world-modeling-bfff77a6]]
 
 ## Answers
 
