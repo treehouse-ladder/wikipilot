@@ -1,8 +1,10 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-16
+last_updated: 2026-10-17
 sources:
+  - "[[release-0-163-0-openai-codex-255cde9f]]"
+  - "[[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]"
   - "[[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]]"
   - "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]"
   - "[[automate-work-with-routines-claude-code-routines-docs-d09f612e]]"
@@ -462,6 +464,32 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-17
+
+Two harness-layer releases shipped in the window, both incremental hardening of the two leading CLI agents.
+
+**OpenAI Codex 0.163.0** [[release-0-163-0-openai-codex-255cde9f]] (published 2026-10-15, successor to 0.162.0 covered on 2026-10-11) lands a latency-oriented harness change: the agent can now fan out its own read-only lookups concurrently rather than serializing them.
+
+> The Codex agent can now run independent read-only tools simultaneously, including skill, memory, and conversation-history lookups. [[release-0-163-0-openai-codex-255cde9f]]
+
+This is an intra-turn parallelism knob distinct from the inter-task worktree fan-out 0.162.0 shipped — it parallelizes the agent's own information-gathering (skills/memory/history) inside a single turn, trimming wall-clock on context assembly without spawning sub-agents. The release also makes the TUI leader key configurable.
+
+> Add a configurable leader key in /keymap; the default is Ctrl+X, shortcut hints stay open until you choose or cancel, and voice mute moves to F9. [[release-0-163-0-openai-codex-255cde9f]]
+
+**Claude Code v2.1.299** [[release-v2-1-299-anthropics-claude-code-fd1cb9e7]] (published 2026-10-14, successor to v2.1.296 covered on 2026-10-10; v2.1.297–v2.1.298 shipped in between) continues the mods/governance + reliability line. Agent view can now pin defaults for new sessions' effort and fast mode, and `/usage` gains warnings for the cost-heavy conditions.
+
+> Agent view can now set the defaults for new sessions' effort and fast mode. [[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]
+
+> /usage now shows warnings for several conditions, including max effort and large tool results. [[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]
+
+The reliability fixes touch the MCP and sandbox surfaces the wiki tracks: an MCP HTTP connection could hang 30s when a server never finished replying to a notification, sandboxed commands on WSL2 failed with a bwrap error when the sandbox could write to the Windows drive, and scheduled wakeups did not fire while a background task was running under the Agent SDK / IDE / remote-control paths.
+
+> Fixed MCP HTTP connections that could hang for 30 seconds when a server never finished its reply to a notification. [[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]
+
+> Fixed sandboxed commands on WSL2 failing with a bwrap error when the sandbox could write to the Windows drive. [[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]
+
+Both releases are incremental harness hardening — no new leader, benchmark, or best-practice shift — so the current-state picture is unchanged.
 
 ### Updates 2026-10-16
 
@@ -3315,6 +3343,8 @@ lint stays quiet until each page actually exists:
 
 - [ ] What accuracy thresholds justify the 6×+ energy overhead of multi-agent architectures over single-query approaches for SE tasks? Are there task categories (e.g. long-horizon refactors) where the tradeoff clearly favors multi-agent? [[engineering-sustainable-agents-a-systematic-comparison-of-agentic-llms-for-developer-workflows-484c6e84]]
 - [ ] Does HPCAgent-Bench's intervention-efficacy finding — that added tools/skills raise token cost up to 3.0x while rarely improving speedup [[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]] — transfer from the HPC performance-optimization regime to SWE-bench-style issue resolution, or is it specific to a task where the base model already encodes most of the required optimization knowledge and the external timing judge admits little room for scaffolding gains?
+- [ ] Does Codex 0.163.0's parallel execution of independent read-only tools [[release-0-163-0-openai-codex-255cde9f]] change prompt-cache behavior or token accounting versus sequential calls — i.e. does concurrently interleaving skill/memory/conversation-history lookups within a turn disturb the session-stable tool-output ordering the cost-engineering thread relies on, or is it purely a wall-clock win?
+- [ ] Does Claude Code v2.1.299's agent-view default for new sessions' effort/fast mode [[release-v2-1-299-anthropics-claude-code-fd1cb9e7]] resolve the still-open question of what the `effort` parameter maps to (reasoning-budget tokens vs. a named low/medium/high tier), or only expose the same unspecified knob at a new configuration layer?
 
 ## See also
 
