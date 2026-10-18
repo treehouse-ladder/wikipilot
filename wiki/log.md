@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-18] daily | 5 topics, 9 sources, 14 pages
+
+PRs: #974 (frontier-models, merged), #975 (agentic-coding, merged), #976 (ai-in-game-dev, merged), #977 (games-of-note, merged), #978 (game-music, merged). Summary regeneration: agentic-coding (PR #979, supplemental, auto-merge enabled). Frontier-models summary NOT regenerated (summarizer not dispatched — session restart gap). Report: wiki/reports/2026-10-18.md.
+
+## [2026-10-18] daily | game-music — 0 sources, 1 page
+
+PR #978 merged. Quiet run. Noted GTA VI composer open question resolved (Justice confirmed by 2026-10-17 run). Pages: topics/game-music/index.md.
+
+## [2026-10-18] daily | games-of-note — 0 sources, 1 page
+
+PR #977 merged. Quiet run. Added open question tracking Golden Joystick 44th Award winners (ceremony expected late October/November 2026). Pages: topics/games-of-note/index.md.
+
+## [2026-10-18] daily | ai-in-game-dev — 1 source, 2 pages
+
+PR #976 merged. EA Sports NHL 27 confirmed using AI-cloned commentator voice (John Buccigross, with consent) — first confirmed live deployment by a top-5 publisher. Pages: topics/ai-in-game-dev/index.md, sources/report-ea-s-nhl-27-is-using-genai-to-make-commentator-voiceover-979e8915.md.
+
+## [2026-10-18] daily | agentic-coding — 6 sources, 8 pages
+
+PR #975 merged. Claude Code v2.1.300-302: idle compaction, fork default on all surfaces. Cursor Cloud Agent Canvases + Environments API beta. HarnessSecurity-Bench: auto-approve raises attack success 29.2% → 95.6%. Before They Can Solve: base model predicts post-training SWE performance (Spearman 0.830 RepoBench XFirst). Summary regeneration PR #979 auto-merge enabled. Pages: topics/agentic-coding/index.md, concepts/agent-sandboxing.md, 6 source pages.
+
+## [2026-10-18] daily | frontier-models — 2 sources, 3 pages
+
+PR #974 merged. AA-3D benchmark for AI 3D-world building; Artificial Analysis Decision Index v1.0. New entity: Muse Spark Open. Pages: topics/frontier-models/index.md, entities/muse-spark-open.md, 2 source pages. Summary NOT regenerated (session restart gap).
+
 ## [2026-10-18] health | weekly sweep — 2 disputes filed
 
 6 candidate sets scanned (5 source-triggered, 1 stale_sweep). 2 disputes filed on US open-weights leadership conflict (Muse Spark Open vs Nemotron 3.5 Super VL). 30 stale pages, 12 orphan pages, 0 lint errors.
