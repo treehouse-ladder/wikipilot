@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-18] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#979 kind=requeue resolved=true — auto-merge queued for claude/daily-2026-10-18/agentic-coding (was clean+green, auto_merge was null)
+
 ## [2026-10-18] health | weekly sweep — 2 disputes filed
 
 6 candidate sets scanned (5 source-triggered, 1 stale_sweep). 2 disputes filed on US open-weights leadership conflict (Muse Spark Open vs Nemotron 3.5 Super VL). 30 stale pages, 12 orphan pages, 0 lint errors.
