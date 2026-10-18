@@ -24,7 +24,8 @@ sources:
   - "[[release-v2-1-273-anthropics-claude-code-6726c9df]]"
   - "[[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]]"
   - "[[release-v2-1-288-anthropics-claude-code-da2d811b]]"
-last_updated: 2026-10-09
+  - "[[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]"
+last_updated: 2026-10-18
 last_verified: 2026-09-21
 freshness_window_days: 30
 ---
@@ -108,6 +109,12 @@ Claude Code v2.1.271 (2026-09-14) refines auto-mode network sandboxing from sess
 > We study 3,171 public GitHub repositories, including 2,660 setups that assemble two or more component types and 511 published skill collections. 16.0% of setups carry a confirmed security defect, 0.8% have a configuration that cannot work as written, 2.4% contain a skill outside the specification, and 16.7% have a confirmed defect of either kind. [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]]
 
 > The harness is a dependency layer installed from marketplaces and public repositories, running with the developer's privileges, with no lockfile, no install-time check, and no vocabulary for what a component may do. [[scanning-the-harness-an-empirical-study-of-supply-chain-defects-in-ai-coding-agent-configurations-711c3579]]
+
+**HarnessSecurity-Bench: systematic empirical study of coding-agent harness security mechanisms (2026-10-18).** HarnessSecurity-Bench is the first systematic empirical study and benchmark of open- and closed-source coding agent harnesses [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]. The benchmark has 23 tasks across five attack surfaces and tests nine security mechanisms across six harnesses: Claude Code, Codex CLI, Gemini CLI, gptme, Qwen Code, and GitHub Copilot. In 2,500 trials with a GLM-5.2 baseline, turning on auto-approve raised utility but increased attack success from 29.2% to 95.6%. The cross-cutting finding — restrictions on a shared capability block legitimate work AND malicious work, while allowed tools can leave unauthorized operations reachable through other execution paths — directly reinforces the isolation-vs-utility tradeoff documented throughout this page (MOSAIC, Balkanization, IssueTrojanBench).
+
+> In 2,500 trials using a GLM-5.2 baseline, turning on auto-approve raised utility but increased attack success from 29.2% to 95.6%. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
+
+> Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Disputes
 
