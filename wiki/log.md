@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-18] health | weekly sweep — 2 disputes filed
+
+6 candidate sets scanned (5 source-triggered, 1 stale_sweep). 2 disputes filed on US open-weights leadership conflict (Muse Spark Open vs Nemotron 3.5 Super VL). 30 stale pages, 12 orphan pages, 0 lint errors.
+
 ## [2026-10-17] daily | 5 topics, 11 sources, 10 pages
 
 PRs: #967 (game-music, merged), #968 (agentic-coding, merged), #969 (games-of-note, merged), #970 (frontier-models, merged), #971 (ai-in-game-dev, merged). Summary regeneration: game-music (Justice/GTA VI). Report: wiki/reports/2026-10-17.md.
