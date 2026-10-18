@@ -994,6 +994,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[3dcodeverse-exploring-3d-worlds-as-code-eee664f3]]
 - [[player-1-learning-to-play-from-synthetic-experience-517f3f67]]
 - [[exeworldbench-benchmarking-code-based-executable-3d-world-modeling-bfff77a6]]
+- [[announcing-aa-3d-a-benchmark-for-ai-models-building-interactive-3d-experiences-0682008e]]
+- [[artificial-analysis-decision-index-v1-0-00d52fc8]]
+- [[release-v2-1-300-anthropics-claude-code-5dc7e9d0]]
+- [[release-v2-1-301-anthropics-claude-code-dca7cce8]]
+- [[release-v2-1-302-anthropics-claude-code-9951decf]]
+- [[cloud-agent-canvases-and-environment-improvements-cursor-a39e7daa]]
+- [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
+- [[before-they-can-solve-predicting-post-training-coding-agent-performance-from-base-models-3f8c4424]]
+- [[report-ea-s-nhl-27-is-using-genai-to-make-commentator-voiceover-979e8915]]
 
 ## Answers
 
