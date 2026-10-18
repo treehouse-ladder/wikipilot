@@ -1,11 +1,17 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-17
+last_updated: 2026-10-18
 sources:
   - "[[release-0-163-0-openai-codex-255cde9f]]"
   - "[[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]"
   - "[[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]]"
+  - "[[release-v2-1-300-anthropics-claude-code-5dc7e9d0]]"
+  - "[[release-v2-1-301-anthropics-claude-code-dca7cce8]]"
+  - "[[release-v2-1-302-anthropics-claude-code-9951decf]]"
+  - "[[cloud-agent-canvases-and-environment-improvements-cursor-a39e7daa]]"
+  - "[[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]"
+  - "[[before-they-can-solve-predicting-post-training-coding-agent-performance-from-base-models-3f8c4424]]"
   - "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]"
   - "[[automate-work-with-routines-claude-code-routines-docs-d09f612e]]"
   - "[[cursor-2-0-multi-agents-and-composer-changelog-4665f068]]"
@@ -464,6 +470,28 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > We audit 1,968 agentic benchmark tasks and find that 323 tasks (16.4%) are reward-hackable. [[hardening-agent-benchmarks-with-adversarial-hacker-fixer-loops-8f1d4aec]]
 
 ## Recent updates
+
+### Updates 2026-10-18
+
+**Claude Code v2.1.300–302 (2026-10-15 to 2026-10-17) — fork subagents on by default, idle compaction, unattended retry cap, and vim % motion.** Three releases shipped in three days. The headline change is in **v2.1.302: fork subagents are now on by default in `claude -p`, the Agent SDK, the desktop app, and VS Code** [[release-v2-1-302-anthropics-claude-code-9951decf]] — this closes the gap between the prior "fork is on in cloud routines" state (CLAUDE_CODE_FORK_SUBAGENT=1 was required explicitly for cloud routines) and an always-on default across CLI, SDK, and IDE surfaces. **v2.1.300** ships idle compaction in the terminal: a conversation that accumulates 200K+ tokens and sits idle for ~54 minutes is compacted before its one-hour prompt cache expires, preventing silent cache invalidation on long-running sessions [[release-v2-1-300-anthropics-claude-code-5dc7e9d0]]. A new `CLAUDE_CODE_DISABLE_FILE_MENTIONS` setting lets Claude receive only the *paths* of @-mentioned files rather than their contents — useful in harnesses that manage context injection explicitly. **v2.1.301** adds `CLAUDE_CODE_RETRY_WATCHDOG_MAX_USAGE_LIMIT_WAIT_MS` for unattended retry mode, capping how long the watchdog waits for a usage limit to reset [[release-v2-1-301-anthropics-claude-code-dca7cce8]]; it also adds new classifier fields in OpenTelemetry `tool_decision` events and fixes a Fable model fallback when the newest Fable is unavailable to an org. All three releases are on the autonomy + reliability line — no new leader or benchmark shift.
+
+> Fork subagents are now on by default in claude -p, the Agent SDK, the desktop app and VS Code. [[release-v2-1-302-anthropics-claude-code-9951decf]]
+
+> Added idle compaction in the terminal: a 200K+ token conversation left idle for about 54 minutes is compacted before its one-hour prompt cache expires. [[release-v2-1-300-anthropics-claude-code-5dc7e9d0]]
+
+**Cursor Cloud Agent Canvases and Environment Improvements (2026-10-15)** — cloud agents can now build and share interactive canvases, Environments API is available in beta, environments support up to 300 repos, and large environments load 5x faster [[cloud-agent-canvases-and-environment-improvements-cursor-a39e7daa]]. This ships alongside the Cursor 3.7 Canvases and Design Mode release covered on 2026-10-16 — cloud agents generating browser-renderable outputs (the canvas) and the environment beta (up to 300 repos in a single managed workspace) are both new. The 5x environment load speed is a direct reduction in one of the leading cloud-agent latency sources the wiki tracks.
+
+> Cloud agents can now build and share interactive canvases. [[cloud-agent-canvases-and-environment-improvements-cursor-a39e7daa]]
+
+> The Environments API is available in beta, environments support up to 300 repos, and large environments load 5x faster. [[cloud-agent-canvases-and-environment-improvements-cursor-a39e7daa]]
+
+**HarnessSecurity-Bench (arXiv:2610.07639) — first systematic empirical study of coding-agent harness security.** The benchmark has 23 tasks across five attack surfaces and tests nine mechanisms across six harnesses: Claude Code, Codex CLI, Gemini CLI, gptme, Qwen Code, and GitHub Copilot [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]. In 2,500 trials with a GLM-5.2 baseline, auto-approve raised utility but pushed attack success from 29.2% to 95.6%. The cross-cutting finding — restrictions on a shared capability block legitimate work AND malicious work, while allowed tools can leave unauthorized operations reachable through other paths — directly reinforces the isolation-vs-utility tradeoff the wiki has tracked since the MOSAIC paper and the Balkanization post.
+
+> In 2,500 trials using a GLM-5.2 baseline, turning on auto-approve raised utility but increased attack success from 29.2% to 95.6%. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
+
+**Before They Can Solve (arXiv:2610.10478) — predicting post-training coding-agent performance from base models.** Standard end-to-end pass@K is a weak fit for this because many base checkpoints cannot reliably produce the required tool calls; across ten open-source base/post-trained model pairs, Spearman correlation with post-trained SWE-Bench Verified pass@1 ranged from 0.830 (RepoBench XFirst) to −0.394 (HumanEval) [[before-they-can-solve-predicting-post-training-coding-agent-performance-from-base-models-3f8c4424]]. The paper's proposed approach replays each trajectory, identifies the *decisive step* (the first step whose cumulative patch turns failing tests into passing ones), and scores base checkpoints with three targeted probes at that step: Decisive-Action BPB, Patch MCQ, and prefix-conditioned pass@K.
+
+> It replays each trajectory to find a decisive step, the first step whose cumulative patch turns failing tests into passing ones. It then scores base checkpoints with three probes at that step: Decisive-Action BPB, Patch MCQ, and prefix-conditioned pass@K. [[before-they-can-solve-predicting-post-training-coding-agent-performance-from-base-models-3f8c4424]]
 
 ### Updates 2026-10-17
 
@@ -3345,6 +3373,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does HPCAgent-Bench's intervention-efficacy finding — that added tools/skills raise token cost up to 3.0x while rarely improving speedup [[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]] — transfer from the HPC performance-optimization regime to SWE-bench-style issue resolution, or is it specific to a task where the base model already encodes most of the required optimization knowledge and the external timing judge admits little room for scaffolding gains?
 - [ ] Does Codex 0.163.0's parallel execution of independent read-only tools [[release-0-163-0-openai-codex-255cde9f]] change prompt-cache behavior or token accounting versus sequential calls — i.e. does concurrently interleaving skill/memory/conversation-history lookups within a turn disturb the session-stable tool-output ordering the cost-engineering thread relies on, or is it purely a wall-clock win?
 - [ ] Does Claude Code v2.1.299's agent-view default for new sessions' effort/fast mode [[release-v2-1-299-anthropics-claude-code-fd1cb9e7]] resolve the still-open question of what the `effort` parameter maps to (reasoning-budget tokens vs. a named low/medium/high tier), or only expose the same unspecified knob at a new configuration layer?
+- [ ] Now that fork subagents are on by default in claude -p / Agent SDK / desktop / VS Code (v2.1.302), does the prior 'fork is on only in cloud routines via CLAUDE_CODE_FORK_SUBAGENT=1' framing need to be retired from the Summary and from harness-engineering concept pages? [[release-v2-1-302-anthropics-claude-code-9951decf]]
+- [ ] HarnessSecurity-Bench's 2,500-trial GLM-5.2 baseline auto-approve finding (attack success 29.2% → 95.6%) uses a single baseline model; does the same jump hold for frontier models (Claude Code / Codex) used with auto-approve in production? [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
+- [ ] Before They Can Solve finds RepoBench XFirst (Spearman 0.830) is the strongest base-model probe for post-trained SWE-Bench Verified pass@1, but the paper only covers open-source base/post-trained pairs; does the decisive-step probe generalize to closed-source models where base checkpoints are not publicly available? [[before-they-can-solve-predicting-post-training-coding-agent-performance-from-base-models-3f8c4424]]
 
 ## See also
 
