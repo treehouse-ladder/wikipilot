@@ -2,7 +2,7 @@
 title: "Muse Spark Open"
 kind: entity
 sources: ["[[introducing-muse-spark-open-the-most-capable-us-open-weight-model-to-date-499fcbd0]]", "[[meta-releases-muse-spark-open-says-it-is-most-capable-us-based-open-model-f8f922cc]]"]
-last_updated: "2026-10-16"
+last_updated: "2026-10-18"
 last_verified: "2026-10-16"
 freshness_window_days: 30
 ---
@@ -31,6 +31,11 @@ Meta explicitly distinguishes this from its closed frontier line: "We will gener
 
 ## Disputes
 - Benchmark independence: [[introducing-muse-spark-open-the-most-capable-us-open-weight-model-to-date-499fcbd0]] and [[meta-releases-muse-spark-open-says-it-is-most-capable-us-based-open-model-f8f922cc]] report benchmarks from Meta alone; the "most capable US-built open-weight" claim has no independent AA Intelligence Index corroboration yet. Status: unresolved — pending independent evaluation.
+- US open-weights leadership: [[introducing-muse-spark-open-the-most-capable-us-open-weight-model-to-date-499fcbd0]] claims Muse Spark Open is "the most capable US-built open-weight model to date" (Oct 16); [[nvidia-releases-nemotron-3-5-super-vl-and-nemotron-3-5-bolt-74b-a9b-f9af1b85]] claims Nemotron 3.5 Super VL is "now the leading US open weight model, scoring 26 on the Artificial Analysis Intelligence Index" (Oct 17). Status: unresolved (confidence: high; sweep: 2026-10-18)
+
+> Muse Spark Open is the most capable US-built open-weight model to date, built for coding and AI agents. [[introducing-muse-spark-open-the-most-capable-us-open-weight-model-to-date-499fcbd0]]
+
+> Nvidia's Nemotron 3.5 Super VL is now the leading US open weight model, scoring 26 on the Artificial Analysis Intelligence Index. [[nvidia-releases-nemotron-3-5-super-vl-and-nemotron-3-5-bolt-74b-a9b-f9af1b85]]
 
 ## Open questions
 - [ ] What does Muse Spark Open score on the AA Intelligence Index once independently benchmarked? Does it surpass GLM-5.3 (60, MIT) and Kimi K3 (57) for released open-weights leadership?
