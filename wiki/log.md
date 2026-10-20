@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-20] daily | 5 topics, 16 sources, 21 pages
+
+PRs: #983 (games-of-note, merged), #984 (ai-in-game-dev, merged), #985 (agentic-coding, merged), #986 (frontier-models, merged), #987 (game-music, merged). No summary regenerations (summary_affecting: false for all topics). Report: wiki/reports/2026-10-20.md.
+
+## [2026-10-20] daily | games-of-note — 2 sources, 3 pages
+
+PR #983 merged. PIF reportedly weighing EA + Savvy Games Group merger (Bloomberg; gated on Moonton close); Netflix Oct 14 6% layoffs (~1,000 employees) affecting games division. Pages: topics/games-of-note/index.md, 2 source pages.
+
+## [2026-10-20] daily | ai-in-game-dev — 2 sources, 3 pages
+
+PR #984 merged. Epic's Disney shooter project reportedly shifts to AI-first development (no hand-written code mandate); Sega removes Shogun 2 Complete Edition remaster from sale after quality backlash, restores original. Pages: topics/ai-in-game-dev/index.md, 2 source pages.
+
+## [2026-10-20] daily | agentic-coding — 6 sources, 7 pages
+
+PR #985 merged. SWE-Bench Pro V2 (cleaner benchmark), SWE-Residual (starting-state robustness), SWE-CC (policy compliance), SEPO (self-evolving agents), PackHallu (rule-file prompt injection attacks), INFUSE (indirect prompt injection benchmark). 6 disputes filed, 4 open questions added. Pages: topics/agentic-coding/index.md, 6 source pages.
+
+## [2026-10-20] daily | frontier-models — 3 sources, 4 pages
+
+PR #986 merged. DeepSeek V4.1 Flash 1017 (AA Index 45), MiniMax-M3.1-Flash (AA Index 42, $0.15/$0.60/Mtoken, 1M context), AA-Robotics v0.1 (first embodied-AI benchmark; GPT-6 Astra leads). No board position changes; no entity frontmatter updates. Pages: topics/frontier-models/index.md, 3 source pages.
+
+## [2026-10-20] daily | game-music — 3 sources, 4 pages
+
+PR #987 merged. VGO / Shota Nakama headlines Brasil Game Show 2026 (3 sets, São Paulo); Ace Combat 8: Wings of Theve -The Vinyl Collection- (2LP numbered box, 80 EUR/USD); Dave the Diver first vinyl pressing (Laced Records, 40 tracks). Pages: topics/game-music/index.md, 3 source pages.
+
 ## [2026-10-18] daily | 5 topics, 9 sources, 14 pages
 
 PRs: #974 (frontier-models, merged), #975 (agentic-coding, merged), #976 (ai-in-game-dev, merged), #977 (games-of-note, merged), #978 (game-music, merged). Summary regeneration: agentic-coding (PR #979, auto-merge enabled), frontier-models (PR #980, auto-merge enabled). Report: wiki/reports/2026-10-18.md.

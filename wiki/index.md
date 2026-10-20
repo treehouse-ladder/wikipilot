@@ -1003,6 +1003,22 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 - [[before-they-can-solve-predicting-post-training-coding-agent-performance-from-base-models-3f8c4424]]
 - [[report-ea-s-nhl-27-is-using-genai-to-make-commentator-voiceover-979e8915]]
+- [[saudi-arabia-s-pif-weighs-merger-between-ea-and-savvy-games-group-58acc9b9]]
+- [[netflix-lays-off-around-1-000-employees-with-cuts-affecting-games-division-bf0efb49]]
+- [[no-more-hand-written-code-epic-s-disney-project-reportedly-shifts-to-ai-first-development-c4ec7f98]]
+- [[the-shogun-2-remaster-is-so-bad-sega-is-removing-it-from-sale-and-bringing-back-the-original-f032f376]]
+- [[swe-bench-pro-v2-a-cleaner-harder-to-game-coding-benchmark-736b0f1e]]
+- [[swe-residual-evaluating-starting-state-robustness-of-coding-agents-596bf03a]]
+- [[correct-code-broken-contributions-swe-cc-benchmarking-repository-policy-compliance-for-coding-agents-5b2b5d0e]]
+- [[self-evolving-coding-agents-via-harness-policy-optimization-aa4ccde8]]
+- [[package-hallucination-attacks-on-coding-agents-through-prompt-injection-in-rule-files-5a87e487]]
+- [[infuse-a-unified-surface-benchmark-for-indirect-prompt-injection-in-agentic-systems-320f4f65]]
+- [[deepseek-v4-1-flash-1017-max-intelligence-performance-price-analysis-f1cb07a7]]
+- [[minimax-m3-1-flash-intelligence-performance-price-analysis-36d52caf]]
+- [[welcome-to-the-era-of-embodied-ai-introducing-aa-robotics-v0-1-83b170a0]]
+- [[ace-combat-8-wings-of-theve-the-vinyl-collection-ab1dfadb]]
+- [[brasil-game-show-2026-will-feature-three-exclusive-performances-by-shota-nakama-and-the-video-game-orchestra-f4a8a60d]]
+- [[dave-the-diver-original-video-game-soundtrack-exclusive-vinyl-edition-3f5e08ba]]
 
 ## Answers
 
@@ -1421,6 +1437,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-10-20]]
 - [[2026-10-16]]
 - [[2026-10-15]]
 - [[2026-10-14]]
