@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-20] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#986 kind=requeue resolved=true — apply_static_gate queued --auto (claude/daily-2026-10-20/frontier-models, CI green, mergeable_state=clean)
+
 ## [2026-10-18] daily | 5 topics, 9 sources, 14 pages
 
 PRs: #974 (frontier-models, merged), #975 (agentic-coding, merged), #976 (ai-in-game-dev, merged), #977 (games-of-note, merged), #978 (game-music, merged). Summary regeneration: agentic-coding (PR #979, auto-merge enabled), frontier-models (PR #980, auto-merge enabled). Report: wiki/reports/2026-10-18.md.
