@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-21] daily | 5 topics, 9 sources, 14 pages
+
+PRs: #989 (frontier-models, open), #990 (ai-in-game-dev, open), #991 (game-music, open), #992 (games-of-note, open), #993 (agentic-coding, open). No summary regenerations (summary_affecting: false for all topics). Report: wiki/reports/2026-10-21.md.
+
+## [2026-10-21] daily | agentic-coding — 4 sources, 5 pages
+
+PR #993. Scion VCS (Anthropic monorepo, designed for always-online agents; 2,500→30,000 merges/day, migrated off git in 5 months); Battle Drones RTS (321-commit agent-driven case study, audio multiplayer); Claude Code v2.1.304 (tool search on by default behind custom ANTHROPIC_BASE_URL); v2.1.305 (sandbox.allowNestedUserNamespaces opt-in weakens file protections; fixes Vertex/Bedrock regression). 2 disputes filed, 3 open questions added. Pages: topics/agentic-coding/index.md, 4 source pages.
+
+## [2026-10-21] daily | ai-in-game-dev — 1 source, 2 pages
+
+PR #990. Digital Sun (Moonlighter studio) delays ReVamp Tower Defensevania playtest to Discord-only over generative AI cloning concerns. Pages: topics/ai-in-game-dev/index.md, 1 source page.
+
+## [2026-10-21] daily | frontier-models — 1 source, 2 pages
+
+PR #989. Mercury 3 (Inception Labs diffusion LLM): beats GPT-6 Luna and Claude Haiku 5.5 on benchmarks, running at 1,068 tokens/sec on NVIDIA GPUs. Pages: topics/frontier-models/index.md, 1 source page.
+
+## [2026-10-21] daily | game-music — 1 source, 2 pages
+
+PR #991. 007 First Light (The Flight) and Saros (Sam Slater) nominated for Ivor Composer Awards 2026 (November 17, Grosvenor House London); Spirit of the North (Pav Gekko) also nominated. Pages: topics/game-music/index.md, 1 source page.
+
+## [2026-10-21] daily | games-of-note — 2 sources, 3 pages
+
+PR #992. Planet Zoo 2 receives polarizing critical reception: PC Gamer 60/100 vs Insider Gaming 10/10. 1 dispute filed (critical divide on launch quality). Pages: topics/games-of-note/index.md, 2 source pages.
+
 ## [2026-10-20] daily | 5 topics, 16 sources, 21 pages
 
 PRs: #983 (games-of-note, merged), #984 (ai-in-game-dev, merged), #985 (agentic-coding, merged), #986 (frontier-models, merged), #987 (game-music, merged). No summary regenerations (summary_affecting: false for all topics). Report: wiki/reports/2026-10-20.md.
