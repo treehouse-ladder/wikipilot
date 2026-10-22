@@ -31,7 +31,8 @@ sources:
   - "[[release-v2-1-275-anthropics-claude-code-73339271]]"
   - "[[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]"
   - "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]"
-last_updated: 2026-10-10
+  - "[[release-v2-1-307-anthropics-claude-code-1f4559e4]]"
+last_updated: 2026-10-22
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---
@@ -95,6 +96,10 @@ Cursor's June 2026 `/in-cloud` update pushes the isolation boundary from worktre
 **Claude Code v2.1.296 adds workflow-agent model pinning (October 2026).** A new `CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL` env var forces every workflow (dynamic-workflow) agent onto a single chosen model while leaving other subagents on their own models [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]. This is a coarse cost/consistency knob for dynamic workflows: pin all workflow agents to a cheaper model (e.g. Sonnet) to reduce the fan-out cost tax without individually configuring each spawned agent — trading workflow-orchestration quality for token spend. The open caveat is whether the quality regression from downgrading the plan-and-dispatch agents measurably lowers dynamic-workflow success rates.
 
 > Added CLAUDE_CODE_WORKFLOW_SUBAGENT_MODEL to run every workflow agent on one model while other subagents keep theirs. [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]
+
+**Claude Code v2.1.307 fixes co-launched fork subagent coordination (October 2026).** The release addresses a reliability bug where parallel fork subagents launched together could attempt to start each other's work — each is now told which launch is its own [[release-v2-1-307-anthropics-claude-code-1f4559e4]]. This is load-bearing for fork-based fan-out patterns: when multiple subagents launch in the same turn, confusion about work ownership creates redundant effort and merge conflicts at the parent's synthesis step. The fix hardens the fork-default orchestration model this page tracks, refining the reliability of the parallel-subagent pattern that became the cross-surface default in v2.1.302.
+
+> Improved fork subagents launched together: each is now told which launch is its own, so forks are much less likely to try to start each other's work [[release-v2-1-307-anthropics-claude-code-1f4559e4]]
 
 **Cursor Projects claims "thousands of subagents" over month-scale persistent context (September 2026).** Cursor's new Projects abstraction positions a non-coding coordinator agent as delegating to "thousands of subagents" over months of work [[introducing-projects-b09bf6f2]], explicitly contrasting with Claude Code's tempering to a "fewer than 15 agents" default. The Projects coordinator is a persistent, cloud-resident planner that "delegates tasks to thousands of subagents" while "never blocked and always responsive" [[introducing-projects-b09bf6f2]]. Cursor reports field metrics ("new users merge 30% more PRs while users who primarily use Projects merge six times as many") but the "thousands" figure remains a vendor claim with no disclosed per-task fan-out distribution or independent benchmark — placing it in tension with both the Claude Code "fewer than 15" walkback and OrchBench's finding that "preserving task-critical information is more important than simply increasing the number of agents" [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]].
 

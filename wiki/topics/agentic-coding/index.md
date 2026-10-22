@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-18
+last_updated: 2026-10-22
 sources:
   - "[[release-0-163-0-openai-codex-255cde9f]]"
   - "[[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]"
@@ -98,6 +98,9 @@ sources:
   - "[[ai-harness-engineering-a-runtime-substrate-for-foundation-model-software-agents-3354d29a]]"
   - "[[sqlite-agents-md-62a30e39]]"
   - "[[updates-to-bugbot-for-teams-and-individuals-7716e08c]]"
+  - "[[release-v2-1-307-anthropics-claude-code-1f4559e4]]"
+  - "[[release-v2-1-306-anthropics-claude-code-b624a9cb]]"
+  - "[[release-v2-1-308-anthropics-claude-code-b5445ed7]]"
   - "[[how-we-contain-claude-across-products-64af1d1a]]"
   - "[[stop-comparing-llm-agents-without-disclosing-the-harness-9cf00bc3]]"
   - "[[towards-direct-evaluation-of-harness-optimizers-via-priority-ranking-b643bf3f]]"
@@ -494,6 +497,28 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-10-22
+
+Three Claude Code patch releases continue the release cadence past v2.1.305. All are incremental; none changes the current leader or a recommended best practice, so the Summary is left untouched.
+
+**Observability + auto-mode safety.** v2.1.307 adds a `claude_code.safety_event` OpenTelemetry event that fires for every tool call a safety mechanism intervenes on [[release-v2-1-307-anthropics-claude-code-1f4559e4]]. This gives the agentic-workflow observability layer a first-party telemetry hook on each permission/auto-mode/sandbox/hook decision — relevant to the unresolved auto-mode / prompt-injection dispute cluster, though it logs rule-and-classifier decisions rather than ground-truth injection outcomes.
+
+> Added the `claude_code.safety_event` OpenTelemetry event for each tool call a permission rule, auto mode, a safety check, a hook or the sandbox stopped, prompted or sent back [[release-v2-1-307-anthropics-claude-code-1f4559e4]]
+
+**MCP reliability.** v2.1.307 makes HTTP MCP retries idempotency-aware, eliminating the duplicate-send hazard when a connection drops mid-call [[release-v2-1-307-anthropics-claude-code-1f4559e4]]; v2.1.306 separately fixes a case where sessions with many MCP tools surfaced a spurious "prompt is too long" error and triggered an unneeded compaction [[release-v2-1-306-anthropics-claude-code-b624a9cb]].
+
+> Fixed HTTP MCP tool calls being sent twice when the connection closed mid-call; only read-only or idempotent tools are now retried [[release-v2-1-307-anthropics-claude-code-1f4559e4]]
+
+> Fixed an API error being replaced by "prompt is too long", and an unneeded compaction, in sessions with many MCP tools [[release-v2-1-306-anthropics-claude-code-b624a9cb]]
+
+**Fork-subagent coordination.** v2.1.307 fixes co-launched fork subagents so each is told which launch is its own, reducing cases where parallel forks try to start each other's work — a reliability refinement to the fork-based fan-out pattern that became the cross-surface default in v2.1.302. It also hardens the loop by retrying unparseable tool calls up to twice before ending the turn [[release-v2-1-307-anthropics-claude-code-1f4559e4]].
+
+> Improved fork subagents launched together: each is now told which launch is its own, so forks are much less likely to try to start each other's work [[release-v2-1-307-anthropics-claude-code-1f4559e4]]
+
+**v2.1.308** (2026-10-22) is a bug-fix / reliability-only release with no itemized changes [[release-v2-1-308-anthropics-claude-code-b5445ed7]].
+
+> Bug fixes and reliability improvements [[release-v2-1-308-anthropics-claude-code-b5445ed7]]
 
 ### Updates 2026-10-21
 
@@ -3223,6 +3248,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does the Binding Constraint Thesis hold once we control for context-window size and prompt caching, or are those harness features the actual binding constraint?
 - [ ] How do the harness-optimizer benchmarks in [[towards-direct-evaluation-of-harness-optimizers-via-priority-ranking-b643bf3f]] correlate with end-to-end SWE-bench-Verified gains?
 - [ ] Anthropic's [[how-we-contain-claude-across-products-64af1d1a]] reports 93% prompt-approval rates — what is the equivalent figure for Codex, Cursor, and Antigravity? (No public number disclosed.)
+- [ ] Does the new `claude_code.safety_event` OpenTelemetry event [[release-v2-1-307-anthropics-claude-code-1f4559e4]] capture enough (ground-truth labels, not just rule/classifier verdicts) to empirically measure auto mode's real-world injection-interception rate against an adaptive attacker — the gap the 0/720 static Trajectory Labs result [[auto-mode-is-now-the-default-in-claude-code-for-pro-max-and-team-plans-756be989]] leaves open?
+- [ ] Does v2.1.307's fix telling each co-launched fork subagent 'which launch is its own' [[release-v2-1-307-anthropics-claude-code-1f4559e4]] measurably change the wall-clock or merge cost of fork-based fan-out, and does it interact with OrchBench's finding that preserving task-critical context matters more than adding agents [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]?
 - [ ] Does Claude Code's dynamic workflows (hundreds of parallel subagents) amplify SpecBench-style reward hacking, or do parallel subagents catch each other's hacks during merge?
 - [ ] How does Anthropic's Outcomes loop compare to Codex's /goals command in practice for long-horizon agentic-coding tasks — both vendors converged on the same primitive but neither has published head-to-head evals.
 - [ ] How does the Cursor planner/worker/judge architecture compare in cost-per-merged-PR against OpenHands' main-agent + sub-agent delegation pattern, when both are run on the same SWE-bench-style task set? [[scaling-long-running-autonomous-coding-8b8b74bd]] [[openhands-product-update-may-2026-d5c547b5]]
