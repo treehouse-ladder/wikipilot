@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-22] daily | 5 topics, 7 sources, 11 pages
+
+PRs: #995 (agentic-coding, merged), #996 (frontier-models, merged), #997 (ai-in-game-dev, merged), #998 (games-of-note, merged), #999 (game-music, merged). Summary regenerations: none (summary_affecting: false for all topics). Report: wiki/reports/2026-10-22.md.
+
+## [2026-10-22] daily | agentic-coding — 3 sources, 3 pages
+
+PR #995. Claude Code v2.1.306 (built-in /anthropic-skills command for loading new skills by category), v2.1.307 (multi-model orchestration improvements, agent handoff protocol), v2.1.308 (parallel subagent task scheduling enhancements). Pages: topics/agentic-coding/index.md, concepts/parallel-subagents.md, concepts/agent-sandboxing.md.
+
+## [2026-10-22] daily | frontier-models — 1 source, 5 pages
+
+PR #996. HealthBench Professional: length-adjusted health-communication evaluation — GPT-6 Astra (Max) #1 at 66.0%, GPT-6.1 Sol (Max) #2 at 65.1%, Claude Sonnet 5.5 (Max) #3 at 63.0%; Claude Opus 5.5 falls to #6 at 59.9% due to verbose responses (~5,900 chars avg). Pages: topics/frontier-models/index.md, entities/gpt-6-astra.md, entities/gpt-6-1-sol.md, entities/claude-sonnet-5-5.md, entities/claude-opus-5-5.md.
+
+## [2026-10-22] daily | ai-in-game-dev — 1 source, 1 page
+
+PR #997. Matrix-Game 4.0 decouples game execution from visual generation via executable harness; 480p 60 FPS, ~112 ms latency on RTX 5090, playable N64-era demos. Pages: topics/ai-in-game-dev/index.md.
+
+## [2026-10-22] daily | games-of-note — 1 source, 1 page
+
+PR #998. EA closes BioWare after 30 years — ~400 jobs cut (~3% EA workforce), Mass Effect 5 canceled, BioWare Edmonton closing; Respawn+DICE teamed on Star Wars: Battlefront 3. Pages: topics/games-of-note/index.md.
+
+## [2026-10-22] daily | game-music — 1 source, 1 page
+
+PR #999. Rare Treats: Diddy Kong Racing Revisited — David Wise 23-track reimagining on 1xLP, artwork by Kevin Bayliss, released via Materia Store. Pages: topics/game-music/index.md.
+
 ## [2026-10-21] daily | 5 topics, 9 sources, 14 pages
 
 PRs: #989 (frontier-models, open), #990 (ai-in-game-dev, open), #991 (game-music, open), #992 (games-of-note, open), #993 (agentic-coding, open). No summary regenerations (summary_affecting: false for all topics). Report: wiki/reports/2026-10-21.md.

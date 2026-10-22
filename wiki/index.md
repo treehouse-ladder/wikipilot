@@ -1725,3 +1725,14 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[battle-dronesa-vibe-coded-rts-with-audio-based-multiplayer-d0f0045f]]
 - [[release-v2-1-305-anthropics-claude-code-11a9e9ae]]
 - [[release-v2-1-304-anthropics-claude-code-637ddeb3]]
+
+## 2026-10-22
+
+### New sources
+- [[release-v2-1-306-anthropics-claude-code-b624a9cb]]
+- [[release-v2-1-307-anthropics-claude-code-1f4559e4]]
+- [[release-v2-1-308-anthropics-claude-code-b5445ed7]]
+- [[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]
+- [[matrix-game-4-0-harnessing-video-models-for-real-time-playable-game-worlds-a91b664b]]
+- [[ea-closes-bioware-after-30-years-of-game-development-14749523]]
+- [[rare-treats-diddy-kong-racing-revisited-david-wise-1xlp-vinyl-record-7488f032]]
