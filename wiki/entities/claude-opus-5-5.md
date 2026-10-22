@@ -1,8 +1,8 @@
 ---
 title: "Claude Opus 5.5"
 kind: entity
-sources: ["[[introducing-claude-opus-5-5-ec3fa700]]", "[[claude-opus-5-5-takes-the-top-spot-on-the-artificial-analysis-intelligence-index-4950ff35]]", "[[system-card-claude-opus-5-5-7f5a82f9]]"]
-last_updated: 2026-09-24
+sources: ["[[introducing-claude-opus-5-5-ec3fa700]]", "[[claude-opus-5-5-takes-the-top-spot-on-the-artificial-analysis-intelligence-index-4950ff35]]", "[[system-card-claude-opus-5-5-7f5a82f9]]", "[[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]"]
+last_updated: 2026-10-22
 last_verified: 2026-09-24
 freshness_window_days: 30
 ---
@@ -27,7 +27,11 @@ The **System Card** (published 2026-09-24) confirms **the largest capability gai
 
 > Claude Opus 5.5 demonstrates consistent strong performance, with leading scores on six of the ten Intelligence Index evaluations. Claude Opus 5.5 leads in agentic knowledge work on AA-Briefcase, reaching an Elo of 1822, which is +143 over Fable 5.1. Opus 5.5 is level with Opus 5 on cost per task despite 1.6x the output tokens. [[claude-opus-5-5-takes-the-top-spot-on-the-artificial-analysis-intelligence-index-4950ff35]]
 
-_no contradictions or gaps known yet (last reviewed: 2026-09-24)_
+**HealthBench Professional (2026-10-22): Claude Opus 5.5 leads raw score at 71.4% but falls to 6th after length adjustment (59.9%).** Artificial Analysis evaluated frontier models on realistic health conversations with a length-adjustment penalty for responses over 2,000 characters (judge: GPT-5.4 low). **Claude Opus 5.5 achieves the highest raw score at 71.4% but ranks 6th on the length-adjusted score at 59.9%**, losing over 11 points due to averaging approximately 5,900-character responses — the largest drop of any evaluated model [[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]. Length-adjusted #1 is GPT-6 Astra (Max, 66.0%). Claude Fable 5.1 likewise loses over 11 points after adjustment. This is a domain-specific tension with Opus 5.5's #1 aggregate-intelligence position: on health communication specifically, verbosity control is a measurable gap at the frontier.
+
+> Claude Opus 5.5 has the highest raw score (71.4%) but falls to sixth after adjustment (59.9%), as its answers average about 5,900 characters; Claude Opus 5.5 and Claude Fable 5.1 lose over 11 points after length adjustment. [[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]
+
+_no contradictions or gaps known yet (last reviewed: 2026-10-22)_
 
 ## See also
 

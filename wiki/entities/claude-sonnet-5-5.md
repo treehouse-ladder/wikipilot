@@ -1,8 +1,8 @@
 ---
 title: "Claude Sonnet 5.5"
 kind: entity
-sources: ["[[release-v2-1-284-anthropics-claude-code-cdf0d632]]", "[[introducing-claude-sonnet-5-5-4e3ca8a9]]", "[[claude-sonnet-5-5-reaches-2-on-the-artificial-analysis-intelligence-index-4075a9b8]]", "[[gemini-4-argon-google-is-back-as-one-of-the-top-three-labs-in-intelligence-achieved-52050b56]]", "[[introducing-claude-haiku-5-5-cdb1d51f]]", "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]"]
-last_updated: 2026-10-10
+sources: ["[[release-v2-1-284-anthropics-claude-code-cdf0d632]]", "[[introducing-claude-sonnet-5-5-4e3ca8a9]]", "[[claude-sonnet-5-5-reaches-2-on-the-artificial-analysis-intelligence-index-4075a9b8]]", "[[gemini-4-argon-google-is-back-as-one-of-the-top-three-labs-in-intelligence-achieved-52050b56]]", "[[introducing-claude-haiku-5-5-cdb1d51f]]", "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]", "[[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]"]
+last_updated: 2026-10-22
 last_verified: 2026-09-30
 freshness_window_days: 30
 input_cost_per_mtoken: 2.00
@@ -37,6 +37,10 @@ Sonnet 5.5 is priced at **$2/$10 per Mtoken** (matching Sonnet 5) with up to 90%
 > Sonnet 5.5 cache reads now cost 50% less: $0.10 per million tokens rather than $0.20. [[introducing-claude-haiku-5-5-cdb1d51f]]
 
 > Updated /cost, the status line, --max-budget-usd and the SDK's cost figures to price Sonnet 5.5 cache reads at $0.10 per million tokens (was $0.20). [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]
+
+**HealthBench Professional (2026-10-22): Claude Sonnet 5.5 ranks 3rd on the length-adjusted health-communication evaluation at 63.0%.** Artificial Analysis evaluated frontier models on realistic health conversations with a length-adjustment penalty for responses over 2,000 characters (judge: GPT-5.4 low). **Claude Sonnet 5.5 (Max, Default Fallback) scores 63.0%**, third behind GPT-6 Astra (Max, 66.0%) and GPT-6.1 Sol (Max, 65.1%) [[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]. Notably, Sonnet 5.5 places above Claude Opus 5.5 on the length-adjusted ranking (Opus 5.5 falls to 6th at 59.9% due to verbose responses averaging ~5,900 chars), demonstrating that Sonnet 5.5's more concise response style is an advantage on length-penalizing evaluations despite Opus 5.5's overall intelligence leadership.
+
+> GPT-6 Astra (Max) scores the highest on HealthBench Professional with a score of 66.0%, followed by GPT-6.1 Sol (Max) with a score of 65.1% and Claude Sonnet 5.5 (Max, Default Fallback) with a score of 63.0%. [[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]
 
 ## Disputes
 
