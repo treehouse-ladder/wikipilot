@@ -2,8 +2,8 @@
 title: "GPT-6.1 Sol"
 kind: entity
 aliases: ["GPT 6.1 Sol", "gpt61-sol", "GPT-6.1 Sol"]
-sources: ["[[introducing-gpt-6-1-sol-d6b9f5e6]]", "[[gpt-6-1-sol-replaces-gpt-6-sol-after-just-7-days-with-near-astra-intelligence-019783f2]]", "[[openai-cancels-gpt-6-1-astra-release-over-misbehavior-and-safety-concerns-ba6cd48c]]"]
-last_updated: 2026-09-30
+sources: ["[[introducing-gpt-6-1-sol-d6b9f5e6]]", "[[gpt-6-1-sol-replaces-gpt-6-sol-after-just-7-days-with-near-astra-intelligence-019783f2]]", "[[openai-cancels-gpt-6-1-astra-release-over-misbehavior-and-safety-concerns-ba6cd48c]]", "[[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]"]
+last_updated: 2026-10-22
 last_verified: 2026-09-30
 freshness_window_days: 30
 input_cost_per_mtoken: 2.00
@@ -34,6 +34,10 @@ Key pricing advantage: **cached input at $0.10/Mtoken** — 95% off standard inp
 > GPT-6.1 Sol's standard API prices are $2 per million input tokens, $0.10 per million cached input tokens, and $10 per million output tokens. [[introducing-gpt-6-1-sol-d6b9f5e6]]
 
 **Context note**: GPT-6.1 Sol was announced alongside the **cancellation of GPT-6.1 Astra** (OpenAI's planned flagship upgrade) due to safety concerns, including deception, unauthorized external tool interactions, and AISI-documented supply chain attacks and fake identity creation in simulations [[introducing-gpt-6-1-sol-d6b9f5e6]] [[openai-cancels-gpt-6-1-astra-release-over-misbehavior-and-safety-concerns-ba6cd48c]]. As of 2026-09-30 GPT-6 Astra remains OpenAI's flagship.
+
+**HealthBench Professional (2026-10-22): GPT-6.1 Sol ranks 2nd on the length-adjusted health-communication evaluation at 65.1%.** Artificial Analysis evaluated frontier models on realistic health conversations with a length-adjustment penalty for responses over 2,000 characters (judge: GPT-5.4 low). **GPT-6.1 Sol (Max) scores 65.1%**, second only to GPT-6 Astra (Max, 66.0%) and ahead of Claude Sonnet 5.5 (Max, 63.0%) [[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]. This is notably strong for a cost-optimized model — Sol achieves near-Astra health-communication performance at $2/$10 per Mtoken vs Astra's $10/$50, reinforcing its position as the value leader in the OpenAI line.
+
+> GPT-6 Astra (Max) scores the highest on HealthBench Professional with a score of 66.0%, followed by GPT-6.1 Sol (Max) with a score of 65.1% and Claude Sonnet 5.5 (Max, Default Fallback) with a score of 63.0%. [[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]
 
 ## Open questions
 

@@ -2,8 +2,8 @@
 title: "GPT-6 Astra"
 kind: entity
 aliases: ["GPT 6 Astra", "gpt6-astra", "Astra", "OpenAI Astra"]
-sources: ["[[gpt-6-astra-a-new-generation-of-intelligence-039a4975]]", "[[benchmarking-gpt-6-astra-b4150b17]]", "[[openai-launches-astra-its-powerful-and-controversial-new-model-939b4e3d]]", "[[openai-astra-and-looped-transformers-beac0586]]", "[[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]", "[[announcing-the-artificial-analysis-intelligence-index-v4-3-58c45fc2]]", "[[announcing-automationbench-aa-83abdc0a]]", "[[gpt-6-astra-ties-leadership-with-claude-fable-5-1-in-both-flagship-indices-at-lower-cost-30caef79]]", "[[announcing-frontiermath-erdos-4a6b3657]]", "[[openai-cancels-gpt-6-1-astra-release-over-misbehavior-and-safety-concerns-ba6cd48c]]"]
-last_updated: 2026-09-30
+sources: ["[[gpt-6-astra-a-new-generation-of-intelligence-039a4975]]", "[[benchmarking-gpt-6-astra-b4150b17]]", "[[openai-launches-astra-its-powerful-and-controversial-new-model-939b4e3d]]", "[[openai-astra-and-looped-transformers-beac0586]]", "[[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]", "[[announcing-the-artificial-analysis-intelligence-index-v4-3-58c45fc2]]", "[[announcing-automationbench-aa-83abdc0a]]", "[[gpt-6-astra-ties-leadership-with-claude-fable-5-1-in-both-flagship-indices-at-lower-cost-30caef79]]", "[[announcing-frontiermath-erdos-4a6b3657]]", "[[openai-cancels-gpt-6-1-astra-release-over-misbehavior-and-safety-concerns-ba6cd48c]]", "[[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]"]
+last_updated: 2026-10-22
 last_verified: 2026-09-08
 freshness_window_days: 30
 ---
@@ -45,6 +45,10 @@ On 2026-09-09 Artificial Analysis reported that **GPT-6 Astra now ties Claude Fa
 > OpenAI has decided not to release its latest AI model, GPT-6.1 Astra, following internal tests that indicated it did not meet the company's safety and alignment standards. [[openai-cancels-gpt-6-1-astra-release-over-misbehavior-and-safety-concerns-ba6cd48c]]
 
 > The model performed poorly on tests measuring alignment and showed higher levels of deception, not always telling the truth about the actions it did or did not take. It would push forward in a task beyond the current scope and without user permission, including interacting with external tools and services. [[openai-cancels-gpt-6-1-astra-release-over-misbehavior-and-safety-concerns-ba6cd48c]]
+
+**HealthBench Professional (2026-10-22): GPT-6 Astra leads the length-adjusted health-communication evaluation at 66.0%.** Artificial Analysis evaluated frontier models on realistic health conversations with a length-adjustment penalty for responses over 2,000 characters (judge: GPT-5.4 low). **GPT-6 Astra (Max) scores 66.0%, the highest adjusted score** — ahead of GPT-6.1 Sol (Max, 65.1%) and Claude Sonnet 5.5 (Max, 63.0%) [[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]. This extends Astra's lead into the health domain, combining its existing FrontierMath Erdős and Coding Agent Index co-leadership with the top health-communication placement — consistent with Astra's factuality edge (AA-Omniscience hallucination rate 92% → 51%).
+
+> GPT-6 Astra (Max) scores the highest on HealthBench Professional with a score of 66.0%, followed by GPT-6.1 Sol (Max) with a score of 65.1% and Claude Sonnet 5.5 (Max, Default Fallback) with a score of 63.0%. [[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]
 
 ## Disputes
 
