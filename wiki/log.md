@@ -3525,3 +3525,7 @@ PR #891 merged. Sources: IGMBench world-editing benchmark (110 tasks Minecraft/T
 
 PRs: #889 (agentic-coding), #890 (games-of-note), #891 (ai-in-game-dev). All merged. Frontier-models and game-music: empty proposals, no PRs created. PRs created via GitHub MCP API (gh CLI token invalid in cloud env).
 
+
+## [2026-10-23] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#1003 rebased onto main (merged PRs #1002 frontier-models + #1004 games-of-note); resolved conflict on wiki/topics/frontier-models/index.md; CI green; auto-merge re-queued
