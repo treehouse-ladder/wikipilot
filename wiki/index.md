@@ -76,6 +76,13 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[gamessoundcon-2026-your-chance-to-network-with-the-composers-for-call-of-duty-assassin-s-creed-and-fallout-af92aa61]]
+- [[announcing-harvey-lab-aa-v1-1-adding-hallucination-checks-to-raise-the-bar-for-agentic-legal-work-99cdd0c5]]
+- [[gemini-4-argon-is-now-available-for-developers-11e9f2ee]]
+- [[ling-3-1-flash-1019-intelligence-performance-price-analysis-444935c6]]
+- [[golden-joystick-awards-2026-nominees-unveiled-7d8c4252]]
+- [[microsoft-ceo-describes-non-stop-xbox-layoffs-as-streamlining-43689427]]
+- [[ready-or-not-the-kotaku-review-f1651dec]]
 - [[doc2harness-benchmarking-llms-on-long-horizon-harness-engineering-of-coding-agents-a3455f18]]
 - [[stepfun-ai-step-5-preview-nvfp4-0deda4e2]]
 - [[meet-helix-world-a-real-time-audio-visual-world-model-ae1860e2]]

@@ -2,6 +2,22 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-23] daily | 3 topics merged — 7 sources, 7 pages
+
+PRs merged: #1001 (game-music), #1002 (frontier-models), #1004 (games-of-note). Pending auto-merge: #1003 (ai-in-game-dev, rebased), #1005 (agentic-coding). Report: wiki/reports/2026-10-23.md.
+
+## [2026-10-23] daily | game-music — 1 source, 2 pages
+
+PR #1001 merged. Source: GamesSoundCon 2026 (musictech.com) — adaptive-music case study and AI-in-audio track at the field's main conference. Pages: 1 source page + topics/game-music/index.md.
+
+## [2026-10-23] daily | frontier-models — 3 sources, 4 pages
+
+PR #1002 merged. Sources: Gemini 4 Argon GA ($2/$10 intro pricing, rises $4/$20 after Nov 30); Harvey LAB-AA v1.1 hallucination gate (Grok 4.7 leads at 9.4% pass rate); Ling 3.1 Flash 1019 (AA Index 44, open-weights). Pages: 3 source pages + topics/frontier-models/index.md.
+
+## [2026-10-23] daily | games-of-note — 3 sources, 1 page
+
+PR #1004 merged. Sources: Golden Joystick Awards 2026 nominees (44th GJA, 007 First Light leads, ceremony Nov 11); Microsoft Xbox layoffs ("streamlining", 5,750 total since Activision); Kotaku Ready Or Not review (PS5, ~20h, meticulous level design praised). Pages: 3 source pages + topics/games-of-note/index.md.
+
 ## [2026-10-22] daily | 5 topics, 7 sources, 11 pages
 
 PRs: #995 (agentic-coding, merged), #996 (frontier-models, merged), #997 (ai-in-game-dev, merged), #998 (games-of-note, merged), #999 (game-music, merged). Summary regenerations: none (summary_affecting: false for all topics). Report: wiki/reports/2026-10-22.md.
