@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-22
+last_updated: 2026-10-23
 sources:
   - "[[release-0-163-0-openai-codex-255cde9f]]"
   - "[[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]"
@@ -380,8 +380,12 @@ sources:
   - "[[battle-dronesa-vibe-coded-rts-with-audio-based-multiplayer-d0f0045f]]"
   - "[[release-v2-1-305-anthropics-claude-code-11a9e9ae]]"
   - "[[release-v2-1-304-anthropics-claude-code-637ddeb3]]"
-last_verified: 2026-10-10
-last_updated: 2026-10-21
+  - "[[paranoiaeval-benchmarking-unnecessary-defensive-work-in-agentic-coding-72bd20a7]]"
+  - "[[re-executing-coding-agent-evaluations-unchanged-decisions-and-unresolved-policy-risk-9fbbfda8]]"
+  - "[[release-v2-1-309-anthropics-claude-code-0307ec12]]"
+  - "[[swe-journey-towards-more-realistic-evaluation-of-coding-assistants-through-long-horizon-multi-turn-interaction-68134226]]"
+last_verified: 2026-10-23
+last_updated: 2026-10-23
 freshness_window_days: 30
 ---
 
@@ -497,6 +501,22 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-10-23
+
+**Evaluation methodology — paranoia and persona effects.** ParanoiaEval introduces 200 evidence-controlled task pairs from 50 repositories to measure how much agents over-restrict when evidence is available to act [[paranoiaeval-benchmarking-unnecessary-defensive-work-in-agentic-coding-72bd20a7]]. SWE-Journey finds a dramatic persona effect: models pass 75%+ tests with a "software architect" system prompt but fewer than 25% with a "non-coder" prompt on identical tasks, with personas mined from real interaction data [[swe-journey-towards-more-realistic-evaluation-of-coding-assistants-through-long-horizon-multi-turn-interaction-68134226]].
+
+> ParanoiaEval contains 200 evidence-controlled repository-level task pairs from 50 repositories. [[paranoiaeval-benchmarking-unnecessary-defensive-work-in-agentic-coding-72bd20a7]]
+
+> On average, models pass over 75% of tests for requested functionality with software architects, but fewer than 25% with non-coders. [[swe-journey-towards-more-realistic-evaluation-of-coding-assistants-through-long-horizon-multi-turn-interaction-68134226]]
+
+**SWE-bench stability confirmed.** Two preregistered re-execution studies returned negative results — benchmark scores appear stable against the main gaming concerns [[re-executing-coding-agent-evaluations-unchanged-decisions-and-unresolved-policy-risk-9fbbfda8]].
+
+> Two preregistered re-execution studies returned negative results. [[re-executing-coding-agent-evaluations-unchanged-decisions-and-unresolved-policy-risk-9fbbfda8]]
+
+**Claude Code v2.1.309 — three security fixes.** Sandboxed commands and auto-accepted edits can no longer modify the MCP config file passed with `--mcp-config`; Bash permission checks now handle compound `cd+git` commands correctly; and disabled MCP servers no longer reconnect via a later permission prompt [[release-v2-1-309-anthropics-claude-code-0307ec12]].
+
+> Fixed sandboxed commands and auto-accepted edits being able to modify the MCP config file passed with --mcp-config. [[release-v2-1-309-anthropics-claude-code-0307ec12]]
 
 ### Updates 2026-10-22
 
