@@ -370,6 +370,20 @@ uv run wikipilot ingest \
 
 The CLI dedupes by SHA-256 of the normalized URL, writes `wiki/sources/<title>-<sha8>.md` with the documented frontmatter, then runs the Phase 5 image pipeline (configurable via `wikipilot.toml [images]`). Re-ingesting the same URL is a no-op.
 
+**Excerpts with `$` in them: use `--excerpts-file`.** In a double-quoted shell argument `"$10 per million"` becomes `"0 per million"` before the CLI runs — that is how several 2026 pricing quotes were recorded as `0`. Write the quotes to a JSON array (`["quote 1", "quote 2"]`) and pass `--excerpts-file path.json`; the agents' `ingest-source` skill does this by default. `wikipilot ingest` also refuses excerpts that match the mangled shape (`costs  per million`, `priced at 0 per million`, `under 0M annual revenue`) unless you pass `--allow-suspicious-excerpts`.
+
+**Repairing an already-corrupted source page.** Source pages are append-only once committed, so the sanctioned path is the same as for re-running the image pipeline: delete `wiki/sources/<slug>.md` (and `wiki/assets/<slug>/` if present) and re-ingest the URL with correct excerpts from the live page. The slug is deterministic (title + URL hash), so every existing `[[source-slug]]` citation keeps resolving as long as you pass the same `--title`. Find candidates with:
+
+```bash
+uv run python -c "
+from pathlib import Path
+from wikipilot.sources import detect_mangled_dollar_amounts
+for p in sorted(Path('wiki/sources').glob('*.md')):
+    hits = detect_mangled_dollar_amounts(p.read_text(encoding='utf-8'))
+    if hits: print(p.name, hits)
+"
+```
+
 ## Disabling image downloads
 
 The Phase 5 image pipeline is on by default. To turn it off for a routine run, edit `wikipilot.toml`:

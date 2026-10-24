@@ -10,6 +10,7 @@ following the docs from day one.
 
 from __future__ import annotations
 
+import contextlib
 import sys
 from datetime import date
 from pathlib import Path
@@ -60,7 +61,11 @@ from wikipilot.lint import (
     Linter,
 )
 from wikipilot.qmd_index import index_vault, qmd_available
-from wikipilot.sources import ingest_source_with_images
+from wikipilot.sources import (
+    detect_mangled_dollar_amounts,
+    ingest_source_with_images,
+    load_excerpts_file,
+)
 from wikipilot.wiki import (
     INDEX_SKELETON,
     WIKI_DIRS,
@@ -77,10 +82,26 @@ DEFAULT_TOPICS_PATH = Path("topics.yaml")
 DEFAULT_CONFIG_PATH = Path("wikipilot.toml")
 
 
+def _force_utf8_stdio() -> None:
+    """Make stdout/stderr UTF-8 so wiki text (→, —, …) never crashes a command.
+
+    Windows consoles default to a legacy code page (cp1252), and ``click.echo``
+    of a lint message containing ``→`` raised ``UnicodeEncodeError``. CI and
+    the cloud routines run on Linux where this is a no-op.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is None:
+            continue
+        with contextlib.suppress(ValueError, OSError):  # closed / odd streams
+            reconfigure(encoding="utf-8", errors="replace")
+
+
 @click.group(help="Wikipilot: autonomous-research wiki maintained by Claude Code Cloud Routines.")
 @click.version_option(__version__, prog_name="wikipilot")
 def main() -> None:
     """Top-level entry point."""
+    _force_utf8_stdio()
 
 
 def _collect_previous_summary_citations(vault: Vault) -> dict[str, int]:
@@ -773,7 +794,31 @@ def _render_fire_response(response: object, *, what: str) -> None:
     "--excerpt",
     "excerpts",
     multiple=True,
-    help="Repeatable. Verbatim quote excerpt to include under '## Excerpts'.",
+    help=(
+        "Repeatable. Verbatim quote excerpt to include under '## Excerpts'. "
+        "Prefer --excerpts-file: in a double-quoted shell argument, `$4` is "
+        "expanded by the shell and the price silently disappears."
+    ),
+)
+@click.option(
+    "--excerpts-file",
+    "excerpts_file",
+    type=click.Path(exists=True, dir_okay=False, path_type=Path),
+    default=None,
+    help=(
+        "File holding the excerpts: a JSON array of strings (preferred), "
+        '{"excerpts": [...]}, or blank-line-separated paragraphs. '
+        "Written by the agent with its file tool, so no shell ever sees the text."
+    ),
+)
+@click.option(
+    "--allow-suspicious-excerpts",
+    is_flag=True,
+    default=False,
+    help=(
+        "Skip the mangled-dollar guard. By default ingest refuses excerpts that "
+        "look like a shell ate a `$N` (e.g. 'priced at 0 per million')."
+    ),
 )
 @click.option(
     "--vault",
@@ -796,6 +841,8 @@ def ingest_cmd(
     title: str,
     body: str,
     excerpts: tuple[str, ...],
+    excerpts_file: Path | None,
+    allow_suspicious_excerpts: bool,
     vault_path: Path,
     config_path: Path,
 ) -> None:
@@ -804,6 +851,31 @@ def ingest_cmd(
     Idempotent: re-ingesting a known URL prints the existing slug and skips
     image work. Driven by the ``ingest-source`` skill at runtime.
     """
+    all_excerpts: list[str] = list(excerpts)
+    if excerpts_file is not None:
+        try:
+            all_excerpts.extend(load_excerpts_file(excerpts_file))
+        except ValueError as exc:
+            raise click.UsageError(str(exc)) from exc
+
+    if not allow_suspicious_excerpts:
+        suspicious = [
+            (i, hit)
+            for i, excerpt in enumerate(all_excerpts, start=1)
+            for hit in detect_mangled_dollar_amounts(excerpt)
+        ]
+        if suspicious:
+            lines = [
+                "Refusing to ingest: excerpt(s) look like a shell ate a `$N` amount "
+                "(e.g. `$10 per million` became `0 per million`).",
+                "Re-run with the verbatim text via --excerpts-file (write the file with "
+                "your file tool, not a double-quoted bash string), or pass "
+                "--allow-suspicious-excerpts if the text really reads this way.",
+                "",
+            ]
+            lines.extend(f"  excerpt {i}: …{hit}…" for i, hit in suspicious)
+            raise click.ClickException("\n".join(lines))
+
     vault = Vault.at(vault_path)
     config = load_wikipilot_config(config_path) if config_path.exists() else None
     images_cfg = config.images if config is not None else None
@@ -813,7 +885,7 @@ def ingest_cmd(
         title=title,
         topic=topic_id,
         body=body,
-        excerpts=list(excerpts) if excerpts else None,
+        excerpts=all_excerpts or None,
         images=images_cfg,
     )
     rec = result.record

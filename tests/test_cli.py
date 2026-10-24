@@ -509,6 +509,84 @@ class TestIngestCommand:
         assert result.exit_code == 0
         assert "Existing source returned" in result.output
 
+    def _ingest_args(self, vault: Path, config: Path, *extra: str) -> list[str]:
+        return [
+            "ingest",
+            "--url",
+            "https://example.com/pricing/new-model",
+            "--topic",
+            "ai-agents",
+            "--title",
+            "Pricing Page",
+            "--vault",
+            str(vault),
+            "--config",
+            str(config),
+            *extra,
+        ]
+
+    def test_excerpts_file_preserves_dollar_amounts(
+        self, runner: CliRunner, tmp_path: Path
+    ) -> None:
+        vault = _copy_vault(tmp_path)
+        config = tmp_path / "wikipilot.toml"
+        config.write_text("[images]\nenabled = false\n", encoding="utf-8")
+        excerpts = tmp_path / "excerpts.json"
+        excerpts.write_text(
+            '["Priced at $10 per million input tokens and $50 per million output tokens."]',
+            encoding="utf-8",
+        )
+        result = runner.invoke(
+            main, self._ingest_args(vault, config, "--excerpts-file", str(excerpts))
+        )
+        assert result.exit_code == 0, result.output
+        page = next((vault / "sources").glob("pricing-page-*.md"))
+        assert "> Priced at $10 per million input tokens and $50 per million" in page.read_text(
+            encoding="utf-8"
+        )
+
+    def test_refuses_mangled_excerpt(self, runner: CliRunner, tmp_path: Path) -> None:
+        vault = _copy_vault(tmp_path)
+        config = tmp_path / "wikipilot.toml"
+        config.write_text("[images]\nenabled = false\n", encoding="utf-8")
+        result = runner.invoke(
+            main,
+            self._ingest_args(
+                vault, config, "--excerpt", "Fable 5 is priced at 0 per million input tokens."
+            ),
+        )
+        assert result.exit_code != 0
+        assert "Refusing to ingest" in result.output
+        assert "priced at 0 per million" in result.output
+        assert not list((vault / "sources").glob("pricing-page-*.md"))
+
+    def test_allow_suspicious_overrides_guard(self, runner: CliRunner, tmp_path: Path) -> None:
+        vault = _copy_vault(tmp_path)
+        config = tmp_path / "wikipilot.toml"
+        config.write_text("[images]\nenabled = false\n", encoding="utf-8")
+        result = runner.invoke(
+            main,
+            self._ingest_args(
+                vault,
+                config,
+                "--excerpt",
+                "Fable 5 is priced at 0 per million input tokens.",
+                "--allow-suspicious-excerpts",
+            ),
+        )
+        assert result.exit_code == 0, result.output
+        assert "Created source" in result.output
+
+    def test_bad_excerpts_file_is_usage_error(self, runner: CliRunner, tmp_path: Path) -> None:
+        vault = _copy_vault(tmp_path)
+        config = tmp_path / "wikipilot.toml"
+        config.write_text("[images]\nenabled = false\n", encoding="utf-8")
+        bad = tmp_path / "bad.json"
+        bad.write_text("[]", encoding="utf-8")
+        result = runner.invoke(main, self._ingest_args(vault, config, "--excerpts-file", str(bad)))
+        assert result.exit_code == 2
+        assert "contains no excerpts" in result.output
+
 
 class TestIndexWikiCommand:
     def test_missing_qmd_exits_one(

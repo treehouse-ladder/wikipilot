@@ -602,7 +602,7 @@ Errors fail the lint (exit code 1); warnings are reported but don't fail. The au
 | `freshness-report [vault]` | list pages by ascending freshness (most stale first) |
 | `deck <topic-id> [--out path] [--theme name]` | generate a Marp deck from `wiki/topics/<id>/index.md` |
 | `index-wiki [vault] [--full]` | refresh the qmd index over the vault |
-| `ingest --url ... --topic ... --title ... [--excerpt ...]` | write a source page and download its images |
+| `ingest --url ... --topic ... --title ... (--excerpts-file path.json \| --excerpt ...)` | write a source page and download its images. Prefer `--excerpts-file` (JSON array written by the agent's file tool): a double-quoted shell `--excerpt "$10 per million"` loses the `$10`. Refuses mangled-looking excerpts (`priced at 0 per million`) unless `--allow-suspicious-excerpts` |
 | `research [--topic id]` | trigger Daily Research routine via the `/fire` API |
 | `query "<question>"` | trigger Wiki Query routine via the `/fire` API |
 | `dry-run --topic <id> \| --query "<q>" \| --weekly-health` | exercise the apply path locally (no Anthropic call) |

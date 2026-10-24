@@ -29,6 +29,8 @@ Body: human-readable summary plus verbatim ``>`` excerpts to preserve evidence.
 from __future__ import annotations
 
 import hashlib
+import json
+import re
 import urllib.parse
 from dataclasses import dataclass
 from datetime import date
@@ -49,6 +51,93 @@ SOURCE_FRESHNESS_WINDOW_DAYS = 365
 """Source pages don't go stale in the same way synthesis pages do; we still
 record a window so the lint can flag truly ancient pages, but we set it
 generously so daily lint runs don't churn on every source."""
+
+
+_MANGLED_DOLLAR_PATTERNS: tuple[re.Pattern[str], ...] = (
+    # "$4 per million" -> " per million": a price word with nothing before it.
+    re.compile(
+        r"(?:^|[\s(])\s(?:per|/)\s*(?:million|1M|M|1k|thousand|token|character|image|second|minute|month|year)\b",
+        re.I,
+    ),
+    # "$10 per million" -> "0 per million"; "$100M revenue" -> "0M revenue";
+    # "costs $20" -> "costs 0". A bare 0 that is not part of a number (0.5,
+    # 10, 2026) and sits next to a money/quantity word.
+    re.compile(
+        r"(?<![\d$.,€£¥])0(?:[MKB]|bn)?\s+(?:per|/|annual|in revenue|revenue|billion|million|a month|a year|monthly|yearly)\b",
+        re.I,
+    ),
+    re.compile(
+        r"\b(?:costs?|priced at|price of|pricing of|for just|down to|starting at|starts at|under|raised|spent|valuation of)\s+0(?:[MKB]|bn)?\b(?![.,]\d|\s*%)",
+        re.I,
+    ),
+)
+
+
+def detect_mangled_dollar_amounts(text: str) -> list[str]:
+    """Return the suspicious snippets in ``text`` that look like a shell ate a ``$N``.
+
+    Background: agents used to shell out ``wikipilot ingest --excerpt "<quote>"``
+    with double quotes, so bash expanded ``$4`` / ``$10`` as positional
+    parameters and the evidence layer recorded ``"costs  per million"`` and
+    ``"priced at 0 per million"``. Pricing is exactly what the comparison and
+    tool-profile fields depend on, so the ingest path now refuses excerpts
+    matching these shapes unless explicitly overridden.
+
+    The patterns are deliberately narrow (a bare ``0`` or an empty slot right
+    next to a money/quantity word); legitimate prose rarely says "0 per
+    million" or "costs 0". Returns an empty list when nothing looks wrong.
+    """
+    spans: list[tuple[int, int]] = []
+    for pattern in _MANGLED_DOLLAR_PATTERNS:
+        for match in pattern.finditer(text):
+            span = (match.start(), match.end())
+            # Two patterns often fire on the same "0 per million"; report once.
+            if any(s <= span[0] < e or s < span[1] <= e for s, e in spans):
+                continue
+            spans.append(span)
+    hits: list[str] = []
+    for start, end in sorted(spans):
+        lo = max(0, start - 20)
+        hi = min(len(text), end + 20)
+        hits.append(text[lo:hi].replace("\n", " ").strip())
+    return hits
+
+
+def load_excerpts_file(path: Path) -> list[str]:
+    """Read excerpts from a file written by the agent (no shell in the loop).
+
+    Accepted shapes:
+
+    - a JSON array of strings (preferred — survives multi-line quotes and
+      every shell metacharacter), or
+    - a JSON object with an ``"excerpts"`` key holding that array, or
+    - plain text with one excerpt per paragraph (blank-line separated).
+
+    Raises ``ValueError`` on an unreadable or empty file.
+    """
+    raw = path.read_text(encoding="utf-8")
+    if not raw.strip():
+        raise ValueError(f"excerpts file {path} is empty")
+    items: list[object]
+    stripped = raw.lstrip()
+    if stripped.startswith(("[", "{")):
+        try:
+            data = json.loads(raw)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"excerpts file {path} is not valid JSON: {exc}") from exc
+        if isinstance(data, dict):
+            data = data.get("excerpts")
+        if not isinstance(data, list):
+            raise ValueError(
+                f"excerpts file {path} must be a JSON array (or {{'excerpts': [...]}})"
+            )
+        items = data
+    else:
+        items = [block for block in re.split(r"\n\s*\n", raw) if block.strip()]
+    excerpts = [str(item).strip() for item in items if str(item).strip()]
+    if not excerpts:
+        raise ValueError(f"excerpts file {path} contains no excerpts")
+    return excerpts
 
 
 @dataclass(frozen=True)
