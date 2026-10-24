@@ -722,6 +722,143 @@ def compare_regen_cmd(comparison_slug: str, vault_path: Path, config_path: Path)
     click.echo(f"Regenerated comparison: {path.relative_to(vault.root.parent)}")
 
 
+@main.command("tools")
+@click.option(
+    "--topic", "topic_id", default=None, help="Only tools whose modality this topic owns."
+)
+@click.option("--modality", "modality", default=None, help="Only tools with this modality.")
+@click.option(
+    "--format",
+    "fmt",
+    type=click.Choice(["md", "json"]),
+    default="md",
+    show_default=True,
+)
+@click.option(
+    "--vault",
+    "vault_path",
+    type=click.Path(exists=True, file_okay=False, dir_okay=True, path_type=Path),
+    default=DEFAULT_WIKI_PATH,
+    show_default=True,
+)
+@click.option(
+    "--config",
+    "config_path",
+    type=click.Path(file_okay=True, dir_okay=False, path_type=Path),
+    default=Path("wikipilot.toml"),
+    show_default=True,
+)
+def tools_cmd(
+    topic_id: str | None,
+    modality: str | None,
+    fmt: str,
+    vault_path: Path,
+    config_path: Path,
+) -> None:
+    """Dump every `profile: tool` entity's machine-readable profile.
+
+    The benchmark scout's registry (JSON, `schema_version: 1`, additive-only
+    contract — see docs/architecture.md) and the topic-researcher's derived
+    roster (`--topic <id>` selects tools whose modality that topic owns per
+    wikipilot.toml [tool_profiles.modality_topics]).
+    """
+    from wikipilot.tools import (
+        build_registry,
+        current_head_rev,
+        iter_tool_entities,
+        render_registry_markdown,
+        tools_for_modality,
+        tools_for_topic,
+    )
+
+    vault = Vault.at(vault_path)
+    config = load_wikipilot_config(config_path)  # falls back to defaults when the file is missing
+    if topic_id and modality:
+        click.echo("ERROR: pass only one of --topic / --modality", err=True)
+        sys.exit(2)
+    if topic_id:
+        selected = tools_for_topic(vault, config.tool_profiles, topic_id)
+    elif modality:
+        selected = tools_for_modality(vault, modality)
+    else:
+        selected = list(iter_tool_entities(vault))
+    registry = build_registry(vault, tools=selected, head_rev=current_head_rev(vault))
+    if fmt == "json":
+        import json
+
+        click.echo(json.dumps(registry, indent=2, ensure_ascii=False, default=str))
+    else:
+        click.echo(render_registry_markdown(registry), nl=False)
+
+
+@main.command("tool-changes")
+@click.option(
+    "--since",
+    "since",
+    type=click.DateTime(formats=["%Y-%m-%d"]),
+    default=None,
+    help="Baseline = last commit on or before this date (YYYY-MM-DD).",
+)
+@click.option(
+    "--since-rev",
+    "since_rev",
+    default=None,
+    help="Baseline = this git revision (SHA, tag, or ref). Preferred by the benchmark scout.",
+)
+@click.option(
+    "--format",
+    "fmt",
+    type=click.Choice(["md", "json"]),
+    default="md",
+    show_default=True,
+)
+@click.option(
+    "--vault",
+    "vault_path",
+    type=click.Path(exists=True, file_okay=False, dir_okay=True, path_type=Path),
+    default=DEFAULT_WIKI_PATH,
+    show_default=True,
+)
+@click.option(
+    "--config",
+    "config_path",
+    type=click.Path(file_okay=True, dir_okay=False, path_type=Path),
+    default=Path("wikipilot.toml"),
+    show_default=True,
+)
+def tool_changes_cmd(
+    since: Any,
+    since_rev: str | None,
+    fmt: str,
+    vault_path: Path,
+    config_path: Path,
+) -> None:
+    """Diff tool-profile tracked fields against a baseline git revision.
+
+    Emits the `## Creator tooling changes` markdown section (daily + weekly
+    reports) or the versioned JSON delta the benchmark scout consumes
+    (`changes`, `new_tools`, `removed_tools`; `source_url` resolved per
+    change). Exactly one of --since / --since-rev is required.
+    """
+    from wikipilot.tool_changes import (
+        compute_tool_changes,
+        render_json,
+        render_markdown,
+        resolve_baseline_rev,
+    )
+
+    vault = Vault.at(vault_path)
+    config = load_wikipilot_config(config_path)
+    since_date = since.date() if since is not None else None
+    try:
+        baseline = resolve_baseline_rev(vault, since=since_date, since_rev=since_rev)
+        report = compute_tool_changes(vault, config.tool_profiles, baseline_rev=baseline)
+    except WikiError as exc:
+        click.echo(f"ERROR: {exc}", err=True)
+        sys.exit(2)
+    click.echo(render_json(report) if fmt == "json" else render_markdown(report), nl=False)
+
+
 def _merge_glosses(config: Any) -> dict[str, str]:
     """Merge ``[frontier_models].benchmark_glosses`` + ``cost_glosses``.
 

@@ -25,6 +25,9 @@ Rules implemented in Phase 1:
   newest-first (the event log is append-at-top)
 - ``check_summary_shrinkage`` — warn when a regenerated topic ``## Summary``
   drops a large fraction of its citations vs the previous git revision
+- ``check_tool_profile`` — entity pages with ``profile: tool`` carry every
+  profile field with the configured enum values and list shapes (see
+  CLAUDE.md "Tool entity profile"); error severity, never auto-fixed
 """
 
 from __future__ import annotations
@@ -34,12 +37,22 @@ from collections.abc import Iterable
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
+from typing import Any
 
-from wikipilot.config import WikipilotConfig
+from wikipilot.config import ToolProfilesConfig, WikipilotConfig
 from wikipilot.images import parse_image_refs
+from wikipilot.tools import (
+    PROFILE_FIELDS,
+    PROFILE_LIST_FIELDS,
+    PROFILE_LIST_SOURCE_FIELDS,
+    PROFILE_SCALAR_SOURCE_FIELDS,
+    UNKNOWN,
+    is_tool_page,
+)
 from wikipilot.wiki import (
     Page,
     Vault,
+    _coerce_date,
     parse_log_headings,
     slugify,
 )
@@ -638,6 +651,152 @@ def check_summary_shrinkage(ctx: LintContext) -> list[LintIssue]:
     return issues
 
 
+_TOOL_SOURCE_RE = re.compile(r"^\[\[[^\[\]|#\n]+\]\]$")
+
+
+def _is_source_ref(value: Any) -> bool:
+    """True for ``null`` or a single ``[[slug]]`` wikilink string."""
+    if value is None:
+        return True
+    return isinstance(value, str) and bool(_TOOL_SOURCE_RE.match(value.strip()))
+
+
+def check_tool_profile(ctx: LintContext) -> list[LintIssue]:
+    """Entity pages with ``profile: tool`` must carry a complete, well-typed profile.
+
+    Error severity: the profile is the machine-readable surface the user's
+    asset-generation benchmark reads (``wikipilot tools`` /
+    ``wikipilot tool-changes``), so a missing field or an off-enum value is
+    a broken contract, not a style nit. Deliberately NOT auto-fixable — the
+    only correct fix for a missing value is a sourced value or the literal
+    ``unknown``, and the lint-fixer must never invent either.
+
+    Checks (allowed values from ``wikipilot.toml [tool_profiles]``):
+
+    - every key in :data:`PROFILE_FIELDS` present;
+    - ``modality`` in ``modalities``; ``status`` in ``status_values``;
+    - ``access`` a non-empty list, each item in ``access_values``;
+    - ``tasks`` a non-empty list of strings;
+    - ``model_ids`` a list of strings; a ``prefix:`` entry must use a
+      configured ``model_id_prefixes`` entry;
+    - ``arena_rank`` and ``arena_rank_source`` lists of equal length;
+      ``arena_rank_source`` items ``[[wikilink]]`` or ``null``;
+    - scalar ``*_source`` siblings ``[[wikilink]]`` or ``null``;
+    - ``last_release`` an ISO date or the literal ``unknown``;
+    - scalar text fields non-empty (``unknown`` is fine, ``""`` is not).
+    """
+    cfg: ToolProfilesConfig = (
+        ctx.config.tool_profiles if ctx.config is not None else ToolProfilesConfig()
+    )
+    issues: list[LintIssue] = []
+
+    def problem(page: Page, message: str) -> None:
+        issues.append(
+            LintIssue(
+                severity=SEVERITY_ERROR,
+                code="tool-profile",
+                path=page.path,
+                message=message,
+            )
+        )
+
+    for page in ctx.pages:
+        if not is_tool_page(page):
+            continue
+        md = page.metadata
+        missing = [f for f in PROFILE_FIELDS if f not in md]
+        if missing:
+            problem(page, f"profile: tool is missing field(s): {missing}")
+        # Enums.
+        modality = md.get("modality")
+        if "modality" in md and modality not in cfg.modalities:
+            problem(
+                page,
+                f"modality {modality!r} not in [tool_profiles].modalities {list(cfg.modalities)}",
+            )
+        status = md.get("status")
+        if "status" in md and status not in cfg.status_values:
+            problem(
+                page,
+                f"status {status!r} not in [tool_profiles].status_values {list(cfg.status_values)}",
+            )
+        # Lists.
+        for list_field in PROFILE_LIST_FIELDS:
+            if list_field not in md:
+                continue
+            value = md[list_field]
+            if not isinstance(value, list):
+                problem(page, f"{list_field} must be a list (got {type(value).__name__})")
+                continue
+            if list_field in {"access", "tasks"} and not value:
+                problem(page, f"{list_field} must be a non-empty list")
+            if any(not isinstance(item, str) or not item.strip() for item in value):
+                problem(page, f"{list_field} entries must be non-empty strings")
+        access = md.get("access")
+        if isinstance(access, list):
+            bad = [a for a in access if a not in cfg.access_values]
+            if bad:
+                problem(
+                    page,
+                    f"access value(s) {bad} not in [tool_profiles].access_values "
+                    f"{list(cfg.access_values)}",
+                )
+        model_ids = md.get("model_ids")
+        if isinstance(model_ids, list):
+            for item in model_ids:
+                if not isinstance(item, str) or ":" not in item:
+                    continue
+                prefix = item.split(":", 1)[0]
+                if prefix not in cfg.model_id_prefixes:
+                    problem(
+                        page,
+                        f"model_ids entry {item!r} uses unknown prefix {prefix!r} "
+                        f"(allowed: {list(cfg.model_id_prefixes)}; vendor ids are unprefixed)",
+                    )
+        # Sources.
+        for src_field in PROFILE_SCALAR_SOURCE_FIELDS:
+            if src_field in md and not _is_source_ref(md[src_field]):
+                problem(page, f"{src_field} must be a single [[source-slug]] wikilink or null")
+        for src_field in PROFILE_LIST_SOURCE_FIELDS:
+            if src_field not in md:
+                continue
+            value = md[src_field]
+            if not isinstance(value, list):
+                problem(page, f"{src_field} must be a list (got {type(value).__name__})")
+                continue
+            if any(not _is_source_ref(item) for item in value):
+                problem(page, f"{src_field} entries must be [[source-slug]] wikilinks or null")
+            base_field = src_field[: -len("_source")]
+            base = md.get(base_field)
+            if isinstance(base, list) and len(base) != len(value):
+                problem(
+                    page,
+                    f"{src_field} must have the same length as {base_field} "
+                    f"({len(value)} vs {len(base)})",
+                )
+        # Dates / scalars.
+        if "last_release" in md:
+            lr = md["last_release"]
+            if not (lr == UNKNOWN or _coerce_date(lr) is not None):
+                problem(page, f"last_release must be an ISO date or 'unknown' (got {lr!r})")
+        for text_field in (
+            "vendor",
+            "open_weights_license",
+            "hardware_floor",
+            "pricing",
+            "commercial_use",
+        ):
+            if text_field in md:
+                value = md[text_field]
+                if value is None or (isinstance(value, str) and not value.strip()):
+                    problem(
+                        page,
+                        f"{text_field} must be a non-empty string (write the literal 'unknown' "
+                        "when no source states it)",
+                    )
+    return issues
+
+
 @dataclass
 class Linter:
     """Compose all lint rules and run them against a ``LintContext``."""
@@ -654,6 +813,7 @@ class Linter:
         check_divergence_discipline,
         check_updates_order,
         check_summary_shrinkage,
+        check_tool_profile,
         check_ownership_violations,
     )
 

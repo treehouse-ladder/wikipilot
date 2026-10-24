@@ -27,6 +27,13 @@ python scripts/preflight.py
 
 Preflight verifies: `gh` is authenticated, `uv` is installed, `qmd` is installed and indexed, `wiki/` is writable, `topics.yaml` parses, every enabled topic has a `wiki/topics/<id>/purpose.md`, and required env vars are set (`WIKIPILOT_AUTO_MERGE`, `CLAUDE_CODE_FORK_SUBAGENT`).
 
+Then record the `main` revision the run starts from — Step 6 diffs the tool-entity registry against it:
+
+```bash
+git fetch origin main
+MAIN_SHA_AT_START=$(git rev-parse origin/main)
+```
+
 ## Step 2: Cache-warming prefix (read once, share across subagents)
 
 Read these files into your context BEFORE dispatching any subagent. They become the cached prefix every parallel `topic-researcher` will share via `CLAUDE_CODE_FORK_SUBAGENT=1`:
@@ -182,19 +189,32 @@ Then for every topic in `merged_topics`:
 
 After all topics are aggregated:
 
-3. **Regenerate the persistent comparison snapshots.** The `frontier-models` topic-researcher has (in Step 3) populated `entity_field_updates` for any cost/benchmark fields that moved today; the `wiki-merger` applied those to entity frontmatter on `main` during Step 4. Now regenerate both comparison pages from the freshly-updated entity frontmatter, then read each one's *body* (minus frontmatter) for the curator and the report snapshot:
+3. **Regenerate the persistent comparison snapshots.** The `frontier-models` topic-researcher has (in Step 3) populated `entity_field_updates` for any cost/benchmark fields that moved today, and the `ai-in-game-dev` / `generative-media-models` researchers have done the same for their tool rosters (`status`, `pricing`, `commercial_use`, `arena_rank`); the `wiki-merger` applied those to entity frontmatter on `main` during Step 4. Now regenerate every comparison page from the freshly-updated entity frontmatter, then read the two frontier tables' *bodies* (minus frontmatter) for the curator and the report snapshot:
 
    ```bash
    uv run wikipilot compare regen cost-comparison
    uv run wikipilot compare regen benchmark-leaders
+   uv run wikipilot compare regen 3d-tools
+   uv run wikipilot compare regen rig-and-motion-tools
+   uv run wikipilot compare regen audio-tools
+   # image-tools / video-tools: regen once they exist (≥ 2 tool entities per modality).
+   for c in image-tools video-tools; do [ -f "wiki/comparisons/$c.md" ] && uv run wikipilot compare regen "$c"; done
    COST_TABLE=$(awk '/^---$/{c++; next} c>=2' wiki/comparisons/cost-comparison.md)
    BENCH_TABLE=$(awk '/^---$/{c++; next} c>=2' wiki/comparisons/benchmark-leaders.md)
+   ```
+
+3b. **Compute the creator-tooling delta.** Zero LLM tokens: `wikipilot tool-changes` diffs every `profile: tool` entity's tracked fields on the current checkout against the `main` revision recorded in Step 1, and reports new / removed tool entities. The markdown goes into the report; the JSON is what the benchmark scout consumes.
+
+   ```bash
+   TOOL_CHANGES_MD=$(uv run wikipilot tool-changes --since-rev "$MAIN_SHA_AT_START" --format md)
+   uv run wikipilot tool-changes --since-rev "$MAIN_SHA_AT_START" --format json > /tmp/tool-changes.json
    ```
 
 4. **Dispatch the `daily-brief-curator` (Opus) subagent.** Assemble its inputs:
 
    - `PROPOSALS_PATH`: write every merged proposal (the JSON each `topic-researcher` returned in Step 3) to a tempfile.
    - `COST_TABLE_PATH` / `BENCHMARK_TABLE_PATH`: `wiki/comparisons/cost-comparison.md` / `benchmark-leaders.md` (already regenerated above).
+   - `TOOL_CHANGES_PATH`: `/tmp/tool-changes.json` (from 3b) — the curator may surface a tool's status / pricing / licence change in `## Today's brief` or `## Watchlist`, citing the entity's `_source` slug.
    - `PRIOR_REPORT_PATH`: `wiki/reports/$(date -u -d yesterday +%Y-%m-%d).md` if it exists, otherwise omit.
    - `TODAY`: `${DATE}`.
 
@@ -203,6 +223,7 @@ After all topics are aggregated:
      proposals_path: <tempfile>,
      cost_table_path: "wiki/comparisons/cost-comparison.md",
      benchmark_table_path: "wiki/comparisons/benchmark-leaders.md",
+     tool_changes_path: "/tmp/tool-changes.json",
      prior_report_path: "<resolved-or-empty>",
      today: "${DATE}",
    })
@@ -218,7 +239,7 @@ After all topics are aggregated:
 
 6. **Build the per-topic `notable_findings_by_topic` list.** One markdown bullet per merged topic, of the form `- **[[<topic-id>]]**: <first sentence of the proposal's primary `update_entry`> [[<top-cited-source-slug>]].`. The curator's `## Today's brief` is for cross-topic editorial — this section keeps the per-topic head-line accessible without re-reading the proposals.
 
-7. **Write `wiki/reports/${DATE}.md`** via `wikipilot.log.write_run_report` with the merged topics in `topics_processed`, every new source path in `sources_added`, every page touched (across all topic PRs) in `pages_touched`, every PR URL in `pr_links`, any `failed_topics` listed in `notes`, AND the curator output (`brief`, `leader_changes`, `watchlist`), the `model_snapshot`, and `notable_findings_by_topic` populated as above.
+7. **Write `wiki/reports/${DATE}.md`** via `wikipilot.log.write_run_report` with the merged topics in `topics_processed`, every new source path in `sources_added`, every page touched (across all topic PRs) in `pages_touched`, every PR URL in `pr_links`, any `failed_topics` listed in `notes`, AND the curator output (`brief`, `leader_changes`, `watchlist`), the `model_snapshot`, `notable_findings_by_topic` populated as above, and `creator_tooling_changes=TOOL_CHANGES_MD` from 3b (rendered as `## Creator tooling changes` right after `## Leader changes`; the empty-delta sentinel is fine and expected on most days).
 
 8. **Append the final summary log entry**: `## [${DATE}] daily | <N> topics, <total> sources, <total> pages`.
 

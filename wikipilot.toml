@@ -64,6 +64,9 @@ trusted_authors = []
 # narrow per deployment. NEVER add `ownership-violation` — it's a security
 # boundary that exists precisely to require human review of any Claude branch
 # edit to CLAUDE.md / topics.yaml / wiki/topics/<id>/purpose.md.
+# `tool-profile` is deliberately NOT auto-fixable either: a failing profile
+# field means a value was guessed or mis-typed, and the fixer must not invent
+# `unknown` / enum values to make lint pass — a human or the researcher decides.
 auto_fix_lint_categories = [
   "broken-wikilink",
   "broken-image-ref",
@@ -142,3 +145,50 @@ arc_agi_2 = "Abstract pattern reasoning resistant to training-set memorization. 
 [frontier_models.cost_glosses]
 input_cost_per_mtoken = "USD/Mtoken input. Lower = cheaper to feed long codebases + cached prompts to the agent."
 output_cost_per_mtoken = "USD/Mtoken output. Lower = cheaper for long-running parallel-agent sessions."
+
+[tool_profiles]
+# Machine-readable profile carried by entity pages with `profile: tool`
+# (generative-media + 3D/rig/motion tools). See CLAUDE.md "Tool entity
+# profile". Read by the `tool-profile` lint rule, `wikipilot tools`,
+# `wikipilot tool-changes`, the comparison pages, and the topic-researcher
+# roster sweep. Human-owned.
+#
+# There is deliberately NO static roster here: the roster for a topic is
+# DERIVED at run time as "every `profile: tool` entity whose `modality`
+# maps to that topic in `modality_topics`". A new tool entity proposed via
+# a researcher `page_diff` joins the sweep on the next run with no edit to
+# this file.
+modalities = ["image", "video", "3d", "rig", "motion", "music", "sfx", "voice", "sprite"]
+
+# Allowed values for the list-valued `access` field. A tool typically has
+# several (e.g. open-weights AND fal). The benchmark scout's admission
+# rule is "any of api | fal | replicate | open-weights". `web` = hosted
+# web app / studio UI with no stated API; `none` = no public access path
+# (research-only); `unknown` = no ingested source states how it is reached.
+access_values = ["api", "fal", "replicate", "open-weights", "web", "desktop", "none", "unknown"]
+
+# Allowed values for `status`.
+status_values = ["active", "preview", "deprecated", "shutdown"]
+
+# `model_ids` entries may be prefixed with an aggregator name to carry the
+# endpoint id (e.g. `fal:fal-ai/hunyuan3d-v21`, `replicate:tencent/hunyuan3d-2`).
+# Unprefixed entries are the vendor's own id.
+model_id_prefixes = ["fal", "replicate"]
+
+# Fields the roster sweep re-confirms every run and `tool-changes` diffs.
+# Each carries a sibling `<field>_source` (wikilink or null; a list for
+# `arena_rank`).
+tracked_fields = ["status", "pricing", "commercial_use", "arena_rank"]
+
+# Which topic owns (and sweeps) each modality. Every entry in `modalities`
+# MUST appear here — config load fails otherwise.
+[tool_profiles.modality_topics]
+image = "generative-media-models"
+video = "generative-media-models"
+music = "generative-media-models"
+sfx = "generative-media-models"
+voice = "generative-media-models"
+sprite = "generative-media-models"
+"3d" = "ai-in-game-dev"
+rig = "ai-in-game-dev"
+motion = "ai-in-game-dev"

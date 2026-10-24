@@ -29,6 +29,7 @@ Your output is the *only* part of the daily report a hyper-busy user will read t
 - `PROPOSALS_PATH` — a JSON file the orchestrator wrote, containing every merged `topic-researcher` proposal from today's run (one array entry per topic). Includes `sources`, `page_diffs`, `entity_field_updates`, `new_disputes`, `new_open_questions`.
 - `COST_TABLE_PATH` — path to the freshly regenerated `wiki/comparisons/cost-comparison.md`. Already has `## Leader changes since last regen` populated when something moved.
 - `BENCHMARK_TABLE_PATH` — path to the freshly regenerated `wiki/comparisons/benchmark-leaders.md`. Same shape.
+- `TOOL_CHANGES_PATH` (optional) — path to today's `wikipilot tool-changes --format json` output: tracked-field moves (`status`, `pricing`, `commercial_use`, `arena_rank`) on `profile: tool` entities plus `new_tools` / `removed_tools`. A licence tightening, a shutdown, a price change or a new arena #1 for a 3D / motion / voice / image / video tool is brief- or watchlist-worthy in the game-dev lens; cite the entry's `source_slug`. Omitted when the delta is empty.
 - `PRIOR_REPORT_PATH` — path to yesterday's `wiki/reports/<DATE-1>.md` (if it exists); read for continuity so today's brief doesn't repeat unchanged bullets.
 - `TODAY` — ISO date for this run.
 - The shared cached prefix from the orchestrator: `CLAUDE.md`, `wikipilot.toml`, `wiki/index.md`, recent `wiki/log.md`, every `wiki/topics/<id>/purpose.md`.

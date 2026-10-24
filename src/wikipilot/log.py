@@ -69,6 +69,12 @@ class RunReport:
     # researcher's `update_entry`, prefixed with `[[topic-id]]`. Renders
     # as `## Notable findings by topic`.
     notable_findings_by_topic: list[str] = field(default_factory=list)
+    # Already-formatted markdown from `wikipilot tool-changes --format md`
+    # (begins with its own `## Creator tooling changes` heading). Renders
+    # right after `## Leader changes`. Empty string = section omitted
+    # (legacy callers); the CLI's empty-delta sentinel is still rendered so
+    # "nothing moved today" is an explicit statement, not an absence.
+    creator_tooling_changes: str = ""
 
 
 @dataclass(frozen=True)
@@ -85,6 +91,9 @@ class HealthReport:
     runtime_seconds: float | None
     token_usage: dict[str, int]
     notes: str = ""
+    # `wikipilot tool-changes --since <7 days ago> --format md` output; the
+    # week's rollup of tool status / pricing / licence / arena moves.
+    creator_tooling_changes: str = ""
 
 
 def append_log_entry(
@@ -170,6 +179,7 @@ def _render_run_report_body(report: RunReport) -> str:
 
     1. ``## Today's brief`` — the curator's must-reads.
     2. ``## Leader changes`` — only when a #1 swapped today.
+    2b. ``## Creator tooling changes`` — `wikipilot tool-changes` delta.
     3. ``## Frontier model snapshot`` — the regenerated cost + benchmark tables.
     4. ``## Watchlist`` — the curator's high-signal-but-not-must-read items.
     5. ``## Notable findings by topic`` — one bullet per topic.
@@ -184,6 +194,11 @@ def _render_run_report_body(report: RunReport) -> str:
     if report.leader_changes.strip():
         sections.append("")
         sections.append(report.leader_changes.strip())
+    if report.creator_tooling_changes.strip():
+        sections.append("")
+        sections.append(
+            _ensure_heading(report.creator_tooling_changes, "## Creator tooling changes")
+        )
     if report.model_snapshot.strip():
         sections.append("")
         sections.append("## Frontier model snapshot")
@@ -294,9 +309,25 @@ def _render_health_report_body(report: HealthReport) -> str:
             _bullet_list(report.broken_wikilinks) or "_None._",
         ]
     )
+    if report.creator_tooling_changes.strip():
+        sections.extend(
+            ["", _ensure_heading(report.creator_tooling_changes, "## Creator tooling changes")]
+        )
     if report.notes:
         sections.extend(["", "## Notes", report.notes.strip()])
     return "\n".join(sections) + "\n"
+
+
+def _ensure_heading(block: str, heading: str) -> str:
+    """Prefix ``heading`` unless ``block`` already starts with it.
+
+    ``wikipilot tool-changes --format md`` emits the heading itself; a caller
+    that pastes just the bullets still gets a well-formed section.
+    """
+    text = block.strip()
+    if text.startswith(heading):
+        return text
+    return f"{heading}\n\n{text}"
 
 
 def _bullet_list(items: list[str]) -> str:
