@@ -384,8 +384,11 @@ sources:
   - "[[re-executing-coding-agent-evaluations-unchanged-decisions-and-unresolved-policy-risk-9fbbfda8]]"
   - "[[release-v2-1-309-anthropics-claude-code-0307ec12]]"
   - "[[swe-journey-towards-more-realistic-evaluation-of-coding-assistants-through-long-horizon-multi-turn-interaction-68134226]]"
+  - "[[release-0-164-0-openai-codex-b28a06ef]]"
+  - "[[training-the-whole-agent-not-just-the-model-16ab0f9e]]"
+  - "[[what-does-a-harness-buy-tokens-mostly-da56a135]]"
 last_verified: 2026-10-23
-last_updated: 2026-10-23
+last_updated: 2026-10-24
 freshness_window_days: 30
 ---
 
@@ -501,6 +504,28 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-10-24
+
+Three sources in the window — one agentic-CLI release and two harness papers that extend the harness-evolution and harness-as-cost-lever threads. None changes the current leader or a recommended best practice; all are incremental, so the Summary is left untouched.
+
+**OpenAI Codex 0.164.0 (2026-10-23).** Successor to 0.163.0 (covered 2026-10-17). The release adds `/presets` — ten numbered slots for saved prompts and slash commands with a keyboard menu — and lets you set model, reasoning effort, speed, and permission profiles inline as arguments to `/model` and `/permissions` rather than through menu navigation [[release-0-164-0-openai-codex-b28a06ef]]. It also previews viewed/generated images in the fullscreen transcript on Kitty/Sixel terminals and fixes duplicate assistant messages around interleaved commands. The preset and inline-argument changes are a workflow-ergonomics refinement to the CLI loop (fewer menu round-trips per turn); no benchmark or leader shift.
+
+> Save reusable prompts and slash commands in ten numbered /presets slots, with a keyboard menu for quick access. [[release-0-164-0-openai-codex-b28a06ef]]
+
+> Set model, reasoning effort, speed, and permission profiles directly with inline /model and /permissions arguments. [[release-0-164-0-openai-codex-b28a06ef]]
+
+**Harness evolution — HarnessAdapt-RL (arXiv:2610.28069).** This paper argues coding-agent training usually updates the policy while the harness stays fixed, and instead co-trains the policy and *adapts its harness* during RL: a frozen teacher writes task-specific mechanism-level skills for flawed repair strategies, a separate teacher evolves tools/hooks for recurring interaction problems, and a change is kept only if it does not lower the pass or trainable rate [[training-the-whole-agent-not-just-the-model-16ab0f9e]]. On a 9B base it beats GRPO by 9.8 points on SWE-bench Verified, 12.6 on Multilingual, and 6.4 on Pro, and also beats GRPO trained with the human-designed OpenHands harness — placing it in the harness-evolution cluster alongside Self-HPO [[self-evolving-coding-agents-via-harness-policy-optimization-aa4ccde8]] and HarnessForge [[harnessforge-joint-harness-and-policy-evolution-for-adaptive-agent-systems-0a4762a0]]. Notably, the learned skills partly internalize: they persist after removal at evaluation, yet removing them at *deployment* still costs up to 7.7 points, so the harness remains load-bearing.
+
+> HarnessAdapt-RL trains the policy and adapts its harness during reinforcement learning. [[training-the-whole-agent-not-just-the-model-16ab0f9e]]
+
+> Using a 9B base model, HarnessAdapt-RL improves over GRPO by 9.8 points on SWE-bench Verified, 12.6 on Multilingual, and 6.4 on Pro, and also beats GRPO trained with the human-designed OpenHands harness. [[training-the-whole-agent-not-just-the-model-16ab0f9e]]
+
+**Harness as a cost lever — "What Does a Harness Buy? Tokens, Mostly" (arXiv:2610.04433).** Holding the model fixed across Claude Code, mini-SWE-agent, and OpenCode on SWE-bench Verified, the authors find harness swaps move accuracy about as much as rerunning the same harness (Claude Code and mini-SWE-agent land within five points on the 447-task pool; the only effect clearing the noise is a loss, OpenCode trailing by up to 9 points), while cost per task varies by up to 3x — driven mainly by the fixed per-step preamble (~16.6k tokens for Claude Code vs ~0.8k for mini-SWE-agent), and provider cached-input pricing scales the bill without reordering harnesses [[what-does-a-harness-buy-tokens-mostly-da56a135]]. This directly corroborates the wiki's "harness is a cost lever, not an accuracy lever" thread from HPCAgent-Bench [[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]] and SkillsBench [[skillsbench-benchmarking-how-well-agent-skills-work-across-diverse-tasks-1743f5a5]] — now with concrete per-harness preamble-token accounting — and sits in tension with the HarnessAdapt-RL result above (see Disputes).
+
+> On a 45-task hard subset, swapping the harness flips about as many task outcomes as rerunning the same harness; on the 447-task pool, Claude Code and mini-SWE-agent land within five points of each other. [[what-does-a-harness-buy-tokens-mostly-da56a135]]
+
+> With the same model and tasks, cost per task varies by up to 3x across harnesses ... about 16.6k tokens for Claude Code, 7k for OpenCode, and 0.8k for mini-SWE-agent. [[what-does-a-harness-buy-tokens-mostly-da56a135]]
 
 ### Updates 2026-10-23
 
@@ -3159,6 +3184,7 @@ lint stays quiet until each page actually exists:
 - [[infuse-a-unified-surface-benchmark-for-indirect-prompt-injection-in-agentic-systems-320f4f65]] measures indirect prompt injection across execution-time surfaces (READMEs, config files, terminal output, repo metadata, build artifacts), finding mean attack success 19.6% with guard models giving limited protection while prompt-level instructional hardening cuts mean ASR from 58.2% to 14.3% (model-dependent security-utility tradeoffs); [[auto-mode-is-now-the-default-in-claude-code-for-pro-max-and-team-plans-756be989]] offers a 0/720 indirect-prompt-injection result as evidence auto mode is safe to default. Status: unresolved — INFUSE shows non-trivial residual ASR across realistic coding surfaces and that hardening mitigates but does not eliminate injection, consistent with the adaptive-attacker caveat on the 0/720 static result.
 - [[release-v2-1-305-anthropics-claude-code-11a9e9ae]] adds an opt-in `sandbox.allowNestedUserNamespaces` setting that, per its own release notes, lets sandboxed Linux commands create user namespaces and thereby weakens the sandbox's file protections (to run Chromium / rootless podman); [[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]] presents OS-level sandboxing (bubblewrap/seatbelt + network proxy) as the containment layer that bounds a prompt-injected agent's blast radius. A user-facing toggle that relaxes file protections widens exactly that blast radius for the sessions that enable it. Status: unresolved
 - [[battle-dronesa-vibe-coded-rts-with-audio-based-multiplayer-d0f0045f]] reports a practitioner shipping a 321-commit RTS having 'reviewed almost none of the code', corroborating [[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]]'s claim that line-by-line human review no longer scales; [[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]] finds 94% of developers fail to detect AI-agent sabotage, implying unreviewed agent output leaves an assurance gap. Battle Drones is a low-stakes hobby game where the gap carries little risk, so it does not resolve whether the same reduced-review practice is safe for production code. Status: unresolved
+- [[training-the-whole-agent-not-just-the-model-16ab0f9e]] claims an adapted harness buys real accuracy (co-trained HarnessAdapt-RL beats GRPO by 9.8pp on SWE-bench Verified, and removing the harness skills at deployment costs up to 7.7pp); [[what-does-a-harness-buy-tokens-mostly-da56a135]] claims swapping off-the-shelf harnesses with a fixed model buys mostly tokens, not accuracy (Claude Code and mini-SWE-agent within 5 points; cost varies up to 3x). The two measure different regimes — train-time harness co-evolution vs. inference-time harness swap. Status: unresolved
 
 ## Open questions
 
@@ -3504,6 +3530,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does Scion's always-reachable-server model [[redesigning-source-control-at-anthropic-56ee56e4]] (clients fetch on demand; server performs commits/merges/rebases/blame) change the latency and prompt-cache profile for agent clients relative to git's local operations, and does centralizing those operations create a throughput ceiling or a new egress/trust surface for sandboxed agents?
 - [ ] Battle Drones had Claude run 'over a thousand simulated playtest sessions' to rebalance units [[battle-dronesa-vibe-coded-rts-with-audio-based-multiplayer-d0f0045f]] — is agent-driven self-playtesting a reliable game-balance signal, or does it overfit to the agent's own simulation assumptions (the same oracle-credibility problem the eval-realism cluster raises for self-authored verifiers)?
 - [ ] Does v2.1.304's tool-search-on-by-default-behind-a-custom-ANTHROPIC_BASE_URL [[release-v2-1-304-anthropics-claude-code-637ddeb3]] change prompt-cache behavior for self-hosted/proxied setups, given deferred tool schemas are injected into context on demand rather than listed up front?
+- [ ] Does the HarnessAdapt-RL co-training result (harness changes buy accuracy) hold for harnesses applied to an already-post-trained frontier model, or is the +9.8pp gain contingent on jointly training a small (9B) base with its harness?
+- [ ] Would the "What Does a Harness Buy? Tokens, Mostly" within-5-points finding survive on long-horizon / multi-repo tasks (vs SWE-bench Verified single-repo issue resolution), where harness context management may matter more?
 
 ## See also
 

@@ -2,7 +2,7 @@
 title: "Claude Sonnet 5.5"
 kind: entity
 sources: ["[[release-v2-1-284-anthropics-claude-code-cdf0d632]]", "[[introducing-claude-sonnet-5-5-4e3ca8a9]]", "[[claude-sonnet-5-5-reaches-2-on-the-artificial-analysis-intelligence-index-4075a9b8]]", "[[gemini-4-argon-google-is-back-as-one-of-the-top-three-labs-in-intelligence-achieved-52050b56]]", "[[introducing-claude-haiku-5-5-cdb1d51f]]", "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]", "[[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]"]
-last_updated: 2026-10-22
+last_updated: 2026-10-24
 last_verified: 2026-09-30
 freshness_window_days: 30
 input_cost_per_mtoken: 2.00

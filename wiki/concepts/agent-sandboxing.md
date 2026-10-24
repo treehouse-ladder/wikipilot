@@ -26,7 +26,7 @@ sources:
   - "[[release-v2-1-288-anthropics-claude-code-da2d811b]]"
   - "[[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]"
   - "[[release-v2-1-307-anthropics-claude-code-1f4559e4]]"
-last_updated: 2026-10-22
+last_updated: 2026-10-24
 last_verified: 2026-09-21
 freshness_window_days: 30
 ---

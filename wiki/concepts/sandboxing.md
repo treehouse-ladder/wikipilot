@@ -15,7 +15,7 @@ sources:
   - "[[the-balkanization-of-execution-security-research-for-ai-coding-agents-isolation-access-control-and-time-of-check-to-time-of-use-vulnerabilities-df4a38f9]]"
   - "[[issuetrojanbench-benchmarking-ai-coding-agents-against-malicious-issue-requests-adf13fff]]"
   - "[[release-0-151-0-openai-codex-1f2ada50]]"
-last_updated: 2026-08-30
+last_updated: 2026-10-24
 last_verified: 2026-07-26
 freshness_window_days: 30
 ---
