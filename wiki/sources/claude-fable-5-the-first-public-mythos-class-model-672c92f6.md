@@ -1,5 +1,5 @@
 ---
-fetched_at: &id001 2026-06-11
+fetched_at: &id001 2026-10-24
 freshness_window_days: 365
 image_count: 0
 kind: source
@@ -14,4 +14,6 @@ url: https://artificialanalysis.ai/articles/claude-fable-5-mythos
 
 ## Excerpts
 
-> Claude Fable 5 is Anthropic's first publicly available Mythos-class model — a tier above Claude Opus 4.8. It is priced at 0 per million input tokens and 0 per million output tokens, twice Claude Opus 4.8. On SWE-bench Pro, Fable 5 scores 80.3%, an 11-point lead over Opus 4.8 (69.2%) and more than 20 points ahead of GPT-5.5 (58.6%) and Gemini 3.1 Pro (54.2%).
+> Anthropic has released Claude Fable 5, the first publicly available Mythos-class model that ranks #1 in our agentic real-world knowledge work benchmark GDPval-AA. Claude Fable 5 shares the same underlying model as Claude Mythos 5, with added security guardrails for potentially harmful cybersecurity, biology, chemistry, and distillation-related queries. The release also introduces a fallback mechanism, allowing Claude Fable 5 to route flagged queries to a second model such as Claude Opus 4.8.
+
+> Anthropic shared access with us ahead of public release to benchmark this model. Claude Fable 5 scores 1932 on GDPval-AA, our benchmark for agentic real-world work tasks, taking the #1 position and putting Anthropic models in 3 of the top 4 spots. The result was measured using adaptive reasoning at max effort, with Claude Opus 4.8 configured as the fallback model. Fable 5 falls back to Opus 4.8 on 2% of GDPval-AA tasks, with Anthropic stating that fallback occurs in fewer than 5% of sessions on average.

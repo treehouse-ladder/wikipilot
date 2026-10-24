@@ -3553,3 +3553,7 @@ PRs: #889 (agentic-coding), #890 (games-of-note), #891 (ai-in-game-dev). All mer
 ## [2026-10-23] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#1003 rebased onto main (merged PRs #1002 frontier-models + #1004 games-of-note); resolved conflict on wiki/topics/frontier-models/index.md; CI green; auto-merge re-queued
+
+## [2026-10-24] manual | re-ingest 8 sources with shell-mangled `$` excerpts
+
+Deleted and re-ingested (same URL/title, so slugs and citations are unchanged) the 8 source pages whose verbatim quotes lost dollar amounts to bash `$N` expansion: [[advancing-the-price-performance-frontier-with-gpt-5-6-dca7adc6]], [[claude-fable-5-and-claude-mythos-5-e11fcea9]], [[claude-fable-5-the-first-public-mythos-class-model-672c92f6]], [[introducing-claude-opus-4-8-5348a7d2]], [[minimaxai-minimax-h3-hugging-face-1f0e60fd]], [[realtime-tts-2-a-new-frontier-voice-model-that-feels-as-real-as-you-68a9e733]], [[xbox-will-reportedly-undergo-major-layoffs-next-month-9fa40cc2]], [[littlebigplanet-and-sackboy-a-big-adventure-vinyl-soundtracks-up-for-preorder-via-iam8bit-890918f1]]. Excerpts now quote the live pages as of 2026-10-24 via `ingest --excerpts-file`. Three live pages no longer carry the originally quoted sentence (OpenAI Sol promo pricing, Inworld sub-130ms/per-character price, MiniMax H3 288 GB + AA ranks) and Opus 4.8 fast mode now lists $10/$50 rather than $30/$150 — flagged for the next frontier-models / ai-in-game-dev sweep.
