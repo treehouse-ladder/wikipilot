@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-24] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#1011 merge-conflict resolved — wiki/log.md had two same-day conflict-resolver entries; merge commit pushed to claude/youthful-mayer-5d0t6j; auto-merge enabled via MCP
+
 ## [2026-10-24] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
 pr#1011 requeued — CI green, `mergeable_state: unknown`, auto-merge was not set; enabled auto-merge via MCP (gh CLI token invalid)
