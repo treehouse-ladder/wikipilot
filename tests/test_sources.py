@@ -6,12 +6,16 @@ from collections.abc import Iterator
 from dataclasses import dataclass, field
 from datetime import date
 
+import pytest
+
 from wikipilot.config import ImagesConfig
 from wikipilot.sources import (
     SOURCE_FRESHNESS_WINDOW_DAYS,
+    detect_mangled_dollar_amounts,
     find_source,
     ingest_source_with_images,
     list_sources,
+    load_excerpts_file,
     normalize_url,
     relative_assets_path,
     source_slug,
@@ -20,6 +24,72 @@ from wikipilot.sources import (
     write_source,
 )
 from wikipilot.wiki import Page, Vault
+
+
+class TestDetectMangledDollarAmounts:
+    """Shapes bash leaves behind when `$N` is expanded inside double quotes."""
+
+    @pytest.mark.parametrize(
+        "text",
+        [
+            "GPT-5.6 Sol now costs  per million input tokens and 0 per million output tokens.",
+            "Claude Fable 5 is priced at 0 per million input tokens.",
+            "permits commercial use for organizations under 0M annual revenue",
+            "sub-130ms first-chunk latency, down to 0 per million characters.",
+            "Pricing starts at  per million input tokens",
+            "the division had spent 0 billion on content investments",
+            "the limited edition is priced at 0 while the standard is 5",
+        ],
+    )
+    def test_flags_real_corruption(self, text: str) -> None:
+        assert detect_mangled_dollar_amounts(text), text
+
+    @pytest.mark.parametrize(
+        "text",
+        [
+            "costs $0.60 per million tokens",
+            "priced at $10 per million input tokens and $50 per million output tokens",
+            "organizations under $100M annual revenue",
+            "exploit rates ranging from 0% (Claude Sonnet 4.5) to 40%",
+            "from 0 to 100 in 3 seconds",
+            "price of 0.5 per image",
+            "latency of 0 ms per frame",
+            "released in 2026 under the MIT license",
+            "a 1.0B parameter model and a 0.46B distilled variant",
+        ],
+    )
+    def test_ignores_legitimate_prose(self, text: str) -> None:
+        assert detect_mangled_dollar_amounts(text) == [], text
+
+    def test_reports_each_hit_once(self) -> None:
+        hits = detect_mangled_dollar_amounts("organizations under 0M annual revenue")
+        assert len(hits) == 1
+        assert "0M annual revenue" in hits[0]
+
+
+class TestLoadExcerptsFile:
+    def test_json_array(self, tmp_path) -> None:
+        p = tmp_path / "e.json"
+        p.write_text('["quote with $10 per million", "second\\nline"]', encoding="utf-8")
+        assert load_excerpts_file(p) == ["quote with $10 per million", "second\nline"]
+
+    def test_json_object(self, tmp_path) -> None:
+        p = tmp_path / "e.json"
+        p.write_text('{"excerpts": ["a", " b "]}', encoding="utf-8")
+        assert load_excerpts_file(p) == ["a", "b"]
+
+    def test_paragraph_text(self, tmp_path) -> None:
+        p = tmp_path / "e.txt"
+        p.write_text("first quote $4\n\n\nsecond quote\n", encoding="utf-8")
+        assert load_excerpts_file(p) == ["first quote $4", "second quote"]
+
+    @pytest.mark.parametrize("content", ["", "   \n", "[]", '{"other": 1}', "[not json"])
+    def test_rejects_bad_files(self, tmp_path, content: str) -> None:
+        p = tmp_path / "e.json"
+        p.write_text(content, encoding="utf-8")
+        with pytest.raises(ValueError):
+            load_excerpts_file(p)
+
 
 PNG_MAGIC = b"\x89PNG\r\n\x1a\n"
 

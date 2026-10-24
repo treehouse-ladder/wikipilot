@@ -11,6 +11,7 @@ allowed_tools:
   - Bash
   - Read
   - Edit
+  - Write
 ---
 
 # ingest-source
@@ -21,14 +22,30 @@ Call this skill from `topic-researcher` and `query-answerer` whenever a new URL 
 
 ## How to use
 
+**Step 1 — write the excerpts to a file with the Write tool** (never through Bash). A JSON array of strings, one entry per verbatim quote:
+
+```json
+["Claude Fable 5 is priced at $10 per million input tokens and $50 per million output tokens.",
+ "The weights are released under the MiniMax H3 Community License Agreement, which permits commercial use for organizations under $100M annual revenue."]
+```
+
+Save it as e.g. `/tmp/excerpts-<slug-ish>.json`.
+
+**Step 2 — call the CLI, pointing at the file:**
+
 ```bash
 uv run wikipilot ingest \
   --url "<url>" \
   --topic "<topic-id>" \
   --title "<title>" \
-  --excerpt "<verbatim quote 1>" \
-  --excerpt "<verbatim quote 2>"
+  --excerpts-file /tmp/excerpts-<slug-ish>.json
 ```
+
+### Why the file, not `--excerpt "<quote>"`
+
+Excerpts routinely contain `$` (prices, revenue thresholds, valuations). Inside a double-quoted bash argument, `$10` is a positional-parameter expansion: the shell turns `"priced at $10 per million"` into `"priced at 0 per million"` **before** the CLI ever sees it, and the corrupted text lands as the wiki's "verbatim" evidence. This happened to at least eight source pages in 2026 (GPT-5.6 Sol, Claude Fable 5, Opus 4.8, MiniMax H3, Inworld TTS-2 pricing all recorded as `0`). Writing the file with the Write tool keeps the text out of any shell.
+
+`--excerpt "<quote>"` still works for quotes that contain no shell metacharacters, but `wikipilot ingest` now **refuses** any excerpt that looks like a shell ate a `$N` (`costs  per million`, `priced at 0 per million`, `under 0M annual revenue`, …) and exits non-zero with the offending snippet. Fix the excerpt and re-run; only pass `--allow-suspicious-excerpts` when the source genuinely reads that way (rare — e.g. a free tier described as "$0 per million" is written with the `$` and does not trip the guard).
 
 The CLI calls `wikipilot.sources.ingest_source_with_images`, which writes the source page **and** runs the image-localization pipeline (`wikipilot.images.download_for_source`) before returning. Re-ingesting a known URL is a no-op (idempotent dedupe by SHA-256 of normalized URL).
 
