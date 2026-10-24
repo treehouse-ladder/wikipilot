@@ -117,6 +117,42 @@ arc_agi_2_source: null
 
 The `topic-researcher` (for `TOPIC_ID == "frontier-models"` only) sweeps every entity in the roster on every daily run and emits `entity_field_updates` (see "Schemas" below) when any field's value has moved. The `wiki-merger` applies them as in-place frontmatter writes, appends the cited `>` quote to the entity's `## Summary` if it isn't already there, and bumps `last_verified` only on entities whose values the researcher re-confirmed today.
 
+### Tool entity profile
+
+Entity pages that describe a **generative tool** (image / video / 3D / rig / motion / music / SFX / voice / sprite generators) carry `profile: tool` plus a structured block so a script can read the field values without parsing prose. This is the machine-readable surface the user's asset-generation benchmark reads as its scout feed (via `wikipilot tools` and `wikipilot tool-changes`), and what the per-modality comparison pages (`3d-tools`, `rig-and-motion-tools`, `audio-tools`, `image-tools`, `video-tools`) aggregate. Allowed values live in `wikipilot.toml [tool_profiles]`; the `tool-profile` lint rule (error) enforces the shape.
+
+```yaml
+profile: tool
+modality: 3d # one of [tool_profiles].modalities
+tasks: ["image-to-3d", "text-to-3d", "retexture"] # free-form list, ≥ 1
+vendor: "Meshy" # company / lab name, or unknown
+model_ids: ["meshy-7", "fal:fal-ai/meshy/v7"] # vendor ids unprefixed; aggregator endpoints prefixed `fal:` / `replicate:`
+access: ["api", "fal"] # non-empty list, each in [tool_profiles].access_values
+open_weights_license: unknown # SPDX-ish or vendor license name when open weights exist, else unknown / "n/a"
+hardware_floor: unknown # e.g. "24 GB VRAM", only meaningful for open weights
+pricing: unknown # short, WITH unit and date: "$0.20/image (2026-10-24)"
+pricing_source: null # [[source-slug]] or null
+commercial_use: unknown # short, dated: "allowed on all paid plans (2026-10-24)"
+commercial_use_source: null
+status: active # one of [tool_profiles].status_values
+status_source: "[[meshy-7-is-live-higher-fidelity-image-to-3d-generation-with-ultra-mode-f27c1d9b]]"
+last_release: 2026-08-05 # ISO date or unknown
+arena_rank: ["Artificial Analysis Image-to-3D: #1 (2026-08-05)"] # list of "<board>: <rank> (<date>)"; [] when none
+arena_rank_source: ["[[meshy-7-1-ultra-4k-detail-richness-benchmark-45c8801a]]"] # same length as arena_rank
+```
+
+Rules:
+
+- **Every field is present.** A value that no ingested source states is the literal string `unknown` (empty list `[]` for `arena_rank` / `arena_rank_source`, `null` for a scalar `_source`). **Never guessed, never inferred from a vendor's reputation.** The gap goes under `## Open questions`.
+- `access` is a **list** — a tool is often reachable several ways (TRELLIS.2 is open-weights *and* on fal). The benchmark's admission rule is "any of `api | fal | replicate | open-weights`". `web` means a hosted app/studio with no stated API, `none` means research-only with no public access path, and `["unknown"]` means no ingested source states how the tool is reached.
+- `arena_rank` is a **list** because one tool sits on several boards; `arena_rank_source` is a parallel list of equal length so each board claim carries its own citation.
+- The four **tracked fields** (`[tool_profiles].tracked_fields`: `status`, `pricing`, `commercial_use`, `arena_rank`) each carry a `_source` sibling. These are what the roster sweep re-confirms and what `wikipilot tool-changes` diffs.
+- `kind` stays `entity`. `profile: tool` is a discriminator, not a new page kind — the standard entity sections (`## Summary` with cited `>` quotes, `## Disputes`, `## Open questions`, `## See also`) still apply.
+
+**Derived roster, not a static list.** `wikipilot.toml` is human-owned, so a static roster there would never include a tool the researcher proposes via `page_diffs`. Instead `[tool_profiles.modality_topics]` maps each modality to the topic that owns it, and the roster for a topic is computed at run time as "every `profile: tool` entity whose `modality` maps to `TOPIC_ID`" — `uv run wikipilot tools --topic <id> --format json`. The owning topic's `topic-researcher` sweeps that roster every run (mandate #11), re-confirms every tracked field, and emits `entity_field_updates`; a new tool entity joins the sweep on its first day in `main`.
+
+**Sweep allowlist exemption.** Re-confirming an existing tool entity's tracked fields may cite the entity's `vendor` domain and the aggregator domains (`fal.ai`, `replicate.com`) regardless of the topic's `allowlist_domains` in `topics.yaml`. Discovery of *new* sources still honors the allowlist.
+
 ## Standard page sections
 
 Concept, entity, topic, and answer pages all share the same structure:
@@ -168,7 +204,8 @@ Phase 9 introduces `comparison` as a first-class wiki kind alongside `concept` /
 - **Location**: `wiki/comparisons/<slug>.md`.
 - **Frontmatter**: standard fields plus `comparison_of: [entity-slug-1, entity-slug-2, ...]` (≥ 2 entries) and `compare_fields: [field-name-1, ...]` (≥ 1 entry). Optionally `highlight_leaders: true` and `show_glosses: true` (see below).
 - **Body**: a generated markdown table; one row per entity, one column per field. Cells render as `_unknown_` when the entity page omits the field — that's the explicit signal to backfill the value on the entity, not the comparison.
-- **Lifecycle**: create with `wikipilot compare new <slug> --of <e1,e2> --fields <f1,f2> --title "..."`; regenerate with `wikipilot compare regen <slug>`. Regeneration re-reads frontmatter and rewrites the body; idempotent (`last_updated` bumps to today, `last_verified` is left alone). The Daily Research report PR regenerates both `cost-comparison` and `benchmark-leaders` automatically.
+- **Lifecycle**: create with `wikipilot compare new <slug> --of <e1,e2> --fields <f1,f2> --title "..."`; regenerate with `wikipilot compare regen <slug>`. Regeneration re-reads frontmatter and rewrites the body; idempotent (`last_updated` bumps to today, `last_verified` is left alone). The Daily Research report PR regenerates `cost-comparison`, `benchmark-leaders`, and every tool comparison (`3d-tools`, `rig-and-motion-tools`, `audio-tools`, plus `image-tools` / `video-tools` once they exist) automatically.
+- **Tool comparisons**: one per modality group, each comparing `profile: tool` entities on `access, pricing, commercial_use, status, arena_rank` (see "Tool entity profile"). No leader highlighting — the columns are text. `image-tools` and `video-tools` are created by the first daily run that yields ≥ 2 tool entities for that modality (`compare new` requires two).
 - **Leader highlighting** (`highlight_leaders: true`): the per-column #1 cell renders `**bold**`, #2 renders `_italic_`. Columns listed in `[frontier_models].cost_fields` are inverted (lower-is-better). Missing values (`_unknown_`) are excluded from the ranking. A `## Leader changes since last regen` paragraph is appended below the table summarizing any #1 swap vs. the previous git revision of the same file.
 - **Column glosses** (`show_glosses: true`): a `## What each column means for me` legend block is rendered immediately above the table. Glosses live in `wikipilot.toml [frontier_models.benchmark_glosses]` and `[frontier_models.cost_glosses]` — one human-curated sentence per column, in the game-dev + agentic-workflow lens. Columns without a registered gloss render `_no gloss configured_`.
 - **Lint exclusions**: comparison pages are NOT subject to `citation-density` (the table is the synthesis; cited claims live on the entity pages) or `orphan-page` (comparisons are referenced from topic indices, but a missing backlink shouldn't block).
@@ -239,6 +276,7 @@ After every routine run, the orchestrator writes `wiki/reports/YYYY-MM-DD.md` (o
 - Runtime, model used per agent, token usage by tier
 - Links to every PR opened (auto-merged or left open)
 - Disputes newly raised, Open questions newly added
+- `## Creator tooling changes` — every `profile: tool` entity whose `status`, `pricing`, `commercial_use` or `arena_rank` changed since the baseline revision, with the `[[source]]` per change (output of `wikipilot tool-changes`). This delta is what decides which benchmark cells get re-run.
 
 ## Model selection (per-agent, set in `.claude/agents/*.md` frontmatter)
 
@@ -269,7 +307,7 @@ The canonical prompt lives at [`prompts/daily_runner.md`](prompts/daily_runner.m
 3. Set `CLAUDE_CODE_FORK_SUBAGENT=1` and dispatch `topic-researcher` **in parallel** via the Task tool, one per enabled topic. Each returns a structured `Proposal` (schema below).
 4. For each topic, in series: branch `claude/daily-YYYY-MM-DD/<topic-id>`, dispatch `wiki-merger` (inserts the dated `### Updates` entry at the top of `## Recent updates`; never touches `## Summary`), then — **only when the proposal's `summary_affecting` is true** — dispatch `topic-summarizer` to regenerate the topic's `## Summary` view from the now-updated log + entity frontmatter, then dispatch `wiki-linter`, run `pytest` + `wikipilot lint wiki/`, commit, push, `gh pr create`, `python scripts/maybe_automerge.py --pr <num> --route daily_research`. The shim calls `apply_static_gate` — it queues `gh pr merge --squash --auto` whenever every deterministic criterion passes (file count, diff lines, human-only paths, trust) and lets GitHub's required-status-checks rule hold the merge until CI is green. The local Python deliberately does NOT predict CI status: predicting CI was what stranded PRs in May 2026 (empty rollup parsed as "all checks passed"); the Conflict Resolver routine (see below) handles the only remaining failure mode. **Per-topic PRs do not write to `wiki/log.md` or `wiki/index.md`** — those writes are batched on the report PR in step 6 to avoid the parallel-merge conflict cascade. Topic PRs end up file-disjoint by construction (topic page + source pages + cross-page sweep targets only) and merge cleanly through the queue in parallel.
 5. Wait for every topic PR to reach a terminal state (`MERGED` or terminally failed) before starting step 6. Topic PRs are parallel-mergeable so the wait is typically <3 min.
-6. On a fresh `claude/daily-YYYY-MM-DD/_report` branch cut from post-merge `main`: append one `## [DATE] daily | <topic-id> — N sources, M pages` entry per merged topic via `append-log`, update `wiki/index.md` for every new source/page across all merged topics via `update-index`, write `wiki/reports/YYYY-MM-DD.md` via `wikipilot.log.write_run_report`, append the final summary log entry, commit, push, `gh pr create`, gate. The report PR's diff touches `wiki/log.md`, `wiki/index.md`, and `wiki/reports/<DATE>.md` exclusively — no other open PR competes for those files at this point in the run, so it cannot conflict.
+6. On a fresh `claude/daily-YYYY-MM-DD/_report` branch cut from post-merge `main`: append one `## [DATE] daily | <topic-id> — N sources, M pages` entry per merged topic via `append-log`, update `wiki/index.md` for every new source/page across all merged topics via `update-index`, regenerate every comparison page (`compare regen`), run `wikipilot tool-changes --since-rev <main SHA captured at run start>` to produce the `## Creator tooling changes` section, write `wiki/reports/YYYY-MM-DD.md` via `wikipilot.log.write_run_report`, append the final summary log entry, commit, push, `gh pr create`, gate. The report PR's diff touches `wiki/log.md`, `wiki/index.md`, `wiki/comparisons/*.md`, and `wiki/reports/<DATE>.md` exclusively — no other open PR competes for those files at this point in the run, so it cannot conflict.
 
 ## Query workflow (for `query_answerer.md` orchestrator)
 
@@ -293,7 +331,7 @@ The canonical prompt lives at [`prompts/weekly_health.md`](prompts/weekly_health
 3. Run `python scripts/disputes_seed.py --json` to produce candidate sets.
 4. Dispatch `wiki-disputes-scanner` **per candidate set in parallel** with `CLAUDE_CODE_FORK_SUBAGENT=1`.
 5. Apply all dispute proposals to a single branch `claude/health-YYYY-MM-DD` (append-only edits to `## Disputes` sections; never resolves anything).
-6. Run `wikipilot freshness-report` and `wikipilot lint wiki/`; append summaries to the health report.
+6. Run `wikipilot freshness-report`, `wikipilot lint wiki/`, and `wikipilot tool-changes --since <7 days ago>`; append summaries (and the `## Creator tooling changes` section) to the health report.
 7. Write `wiki/reports/health-YYYY-MM-DD.md`.
 8. `gh pr create`; `python scripts/maybe_automerge.py --pr <num> --route weekly_health` (permissive gate).
 
@@ -423,12 +461,12 @@ Manual recovery: `wikipilot recover-prs` enumerates every open `claude/*` PR to 
 
 `slug` on each `ProposalSource` is the **deterministic** source-page slug — exactly what `wikipilot.sources.source_slug(url, title=title)` returns (and exactly what the source file is named). Required: the researcher computes it once (cheap one-liner: `uv run python -c "from wikipilot.sources import source_slug; print(source_slug('URL', title='TITLE'))"`) and uses the same value verbatim in every `[[source-slug]]` citation it writes into `update_entry`. The `wiki-merger` validates every wikilink in every page it touches against the union of `known_slugs(vault)` and the proposal's `slug` values before committing (Layer 6); unresolved links trigger `autofix_wikilink` (single-candidate slug glob), and any link the merger still can't resolve aborts the topic with a structured error in the run report. Back-compat: when `slug` is omitted on a legacy proposal, the merger computes it on the fly via the same `source_slug` call.
 
-`entity_field_updates` is only populated by the `frontier-models` topic-researcher's daily roster sweep (see "Daily run workflow" and the agent prompt). Other topics omit the field or pass `[]`. Each entry has:
+`entity_field_updates` is populated by two roster sweeps (see "Daily run workflow" and the agent prompt): the `frontier-models` researcher's benchmark/cost sweep over `[frontier_models].roster`, and the **tool-profile sweep** run by every topic that owns a modality in `[tool_profiles.modality_topics]` (today `generative-media-models` and `ai-in-game-dev`) over its derived roster (`wikipilot tools --topic <id>`). Other topics omit the field or pass `[]`. Each entry has:
 
-- `entity_slug`: the target entity (must be in `[frontier_models].roster`).
-- `field`: one of `[frontier_models].benchmarks` or `[frontier_models].cost_fields`.
-- `old_value` / `new_value`: the prior frontmatter value (or `null`) and the value to write.
-- `source_slug`: the source page that substantiates `new_value` (also added to the entity's `sources:` list if not already there).
+- `entity_slug`: the target entity (in `[frontier_models].roster`, or a `profile: tool` entity whose modality the researching topic owns).
+- `field`: one of `[frontier_models].benchmarks` / `[frontier_models].cost_fields` (frontier sweep) or `[tool_profiles].tracked_fields` (tool sweep: `status`, `pricing`, `commercial_use`, `arena_rank`).
+- `old_value` / `new_value`: the prior frontmatter value (or `null`) and the value to write. List-valued fields (`arena_rank`) are compared and written as whole lists.
+- `source_slug`: the source page that substantiates `new_value` (also added to the entity's `sources:` list if not already there). For `arena_rank` the merger writes it into `arena_rank_source` at the matching index.
 - `excerpt`: the verbatim quote that will land under the entity's `## Summary` if not already present.
 - `verified_today`: `true` when the researcher actually re-confirmed the value against the source today; controls whether `wiki-merger` bumps `last_verified` on the entity.
 
@@ -576,6 +614,7 @@ Every entry: `## [YYYY-MM-DD] kind | subject` followed by a one-line summary. `k
 | Rule | Severity | What it checks |
 |---|---|---|
 | `frontmatter` | error | required keys present, kind valid, dates parse, types match; comparison pages additionally require `comparison_of` (≥ 2) and `compare_fields` (≥ 1); `aliases` (when present) must be a list of strings |
+| `tool-profile` | error | on entity pages with `profile: tool`: every profile field present; `modality` / `status` in the configured enums; `access` a non-empty list of configured values; `model_ids` a list whose prefixed entries use a configured prefix; `arena_rank` and `arena_rank_source` lists of equal length; scalar `_source` siblings a `[[wikilink]]` or `null`; `last_release` an ISO date or `unknown`. NOT auto-fixable — the fixer never invents a value. |
 | `log-format` | error | every `## ` heading in `log.md` matches the schema (code blocks excluded) |
 | `broken-wikilink` | error | every `[[link]]` resolves to a known page slug, alias slug, or entity-declared alias |
 | `broken-image-ref` | error | every local `![](path)` / `<img src="path">` resolves to an existing file |
@@ -608,6 +647,8 @@ Errors fail the lint (exit code 1); warnings are reported but don't fail. The au
 | `dry-run --topic <id> \| --query "<q>" \| --weekly-health` | exercise the apply path locally (no Anthropic call) |
 | `compare new <slug> --of e1,e2,... --fields f1,f2,... --title "..."` | create a new comparison page reading frontmatter fields from each entity |
 | `compare regen <slug>` | regenerate the body of an existing comparison page from current entity frontmatter |
+| `tools [--topic id] [--modality m] [--format md\|json]` | dump every `profile: tool` entity's profile (the benchmark scout's registry; also the researcher's derived roster). JSON carries `schema_version: 1` and is an additive-only contract |
+| `tool-changes (--since YYYY-MM-DD \| --since-rev SHA) [--format md\|json]` | diff every tool entity's tracked fields against the baseline git revision; renders `## Creator tooling changes` (daily + weekly reports) or the versioned JSON delta (`changes`, `new_tools`, `removed_tools`, with `source_url` resolved per change) |
 | `recover-prs [--dry-run] [--base main]` | enumerate every open `claude/*` PR to `main` and re-run `apply_gate` per PR (escape hatch when a content routine crashes mid-loop and leaves PRs open without a gate decision, or when the Conflict Resolver routine itself is unhealthy) |
 | `daily-completeness-check [--today YYYY-MM-DD] [--flag-open-topics] [--dry-run]` | enumerate today's daily-frequency topics from `topics.yaml`, compare to merged/open `claude/daily-<DATE>/*` PRs, file (or edit in place) a `daily-incomplete`-labeled GitHub issue when anything is missing. Fired daily by `.github/workflows/daily-completeness.yml`. |
 

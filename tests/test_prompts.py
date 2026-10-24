@@ -73,6 +73,25 @@ def test_daily_runner_includes_curator_and_compare_regen_steps() -> None:
     assert "notable_findings_by_topic" in body
 
 
+def test_daily_runner_regenerates_tool_comparisons_and_tool_changes() -> None:
+    """The benchmark scout feed depends on Step 6 regenerating the per-modality
+    tool comparisons AND emitting the zero-LLM `tool-changes` delta against the
+    `main` SHA captured at run start, then threading it into the report."""
+    body = _read("daily_runner")
+    for slug in ("3d-tools", "rig-and-motion-tools", "audio-tools"):
+        assert f"wikipilot compare regen {slug}" in body
+    assert "MAIN_SHA_AT_START" in body
+    assert 'wikipilot tool-changes --since-rev "$MAIN_SHA_AT_START"' in body
+    assert "creator_tooling_changes" in body
+    assert "tool_changes_path" in body
+
+
+def test_weekly_health_includes_tool_changes_section() -> None:
+    body = _read("weekly_health")
+    assert "wikipilot tool-changes --since" in body
+    assert "creator_tooling_changes" in body
+
+
 def test_query_answerer_prompt_exists() -> None:
     body = _read("query_answerer")
     assert body.strip(), "query_answerer.md must not be empty"

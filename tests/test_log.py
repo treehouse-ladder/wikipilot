@@ -169,8 +169,87 @@ class TestWriteRunReport:
         accounting = body.index("## Run accounting")
         assert brief < leaders < snapshot < watchlist < notable < disputes < accounting
 
+    def test_creator_tooling_changes_after_leader_changes(self, sample_vault: Vault) -> None:
+        report = RunReport(
+            routine="daily_research",
+            run_date=date(2026, 10, 24),
+            run_id="tools-test",
+            topics_processed=[],
+            sources_added=[],
+            pages_touched=[],
+            runtime_seconds=None,
+            token_usage={},
+            pr_links=[],
+            new_disputes=[],
+            new_open_questions=[],
+            leader_changes="## Leader changes\n\n- b [[s]]",
+            model_snapshot="snapshot body",
+            creator_tooling_changes=(
+                "## Creator tooling changes\n\n- [[meshy]] `status`: `active` → `preview` [[s]]"
+            ),
+        )
+        body = write_run_report(sample_vault, report).read_text(encoding="utf-8")
+        leaders = body.index("## Leader changes")
+        tooling = body.index("## Creator tooling changes")
+        snapshot = body.index("## Frontier model snapshot")
+        assert leaders < tooling < snapshot
+        assert body.count("## Creator tooling changes") == 1  # heading not duplicated
+
+    def test_creator_tooling_changes_heading_added_when_missing(self, sample_vault: Vault) -> None:
+        report = RunReport(
+            routine="daily_research",
+            run_date=date(2026, 10, 24),
+            run_id="tools-test-2",
+            topics_processed=[],
+            sources_added=[],
+            pages_touched=[],
+            runtime_seconds=None,
+            token_usage={},
+            pr_links=[],
+            new_disputes=[],
+            new_open_questions=[],
+            creator_tooling_changes="_No creator tooling changes in this period._",
+        )
+        body = write_run_report(sample_vault, report).read_text(encoding="utf-8")
+        assert "## Creator tooling changes\n\n_No creator tooling changes" in body
+
+    def test_creator_tooling_changes_omitted_when_empty(self, sample_vault: Vault) -> None:
+        report = RunReport(
+            routine="daily_research",
+            run_date=date(2026, 10, 24),
+            run_id="tools-test-3",
+            topics_processed=[],
+            sources_added=[],
+            pages_touched=[],
+            runtime_seconds=None,
+            token_usage={},
+            pr_links=[],
+            new_disputes=[],
+            new_open_questions=[],
+        )
+        body = write_run_report(sample_vault, report).read_text(encoding="utf-8")
+        assert "## Creator tooling changes" not in body
+
 
 class TestWriteHealthReport:
+    def test_health_report_creator_tooling_section(self, sample_vault: Vault) -> None:
+        report = HealthReport(
+            run_date=date(2026, 10, 24),
+            run_id="health-tools",
+            stale_pages=[],
+            citation_density_failures=[],
+            new_disputes=[],
+            orphan_pages=[],
+            broken_wikilinks=[],
+            runtime_seconds=None,
+            token_usage={},
+            notes="n",
+            creator_tooling_changes="## Creator tooling changes\n\n- **New tool** [[tripo]]",
+        )
+        body = write_health_report(sample_vault, report).read_text(encoding="utf-8")
+        assert body.index("## Broken wikilinks") < body.index("## Creator tooling changes")
+        assert body.index("## Creator tooling changes") < body.index("## Notes")
+
     def test_writes_health_report(self, sample_vault: Vault) -> None:
         report = HealthReport(
             run_date=date(2026, 5, 17),

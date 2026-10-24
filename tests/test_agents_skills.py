@@ -175,3 +175,32 @@ def test_wiki_merger_applies_entity_field_updates() -> None:
     body = (AGENTS_DIR / "wiki-merger.md").read_text(encoding="utf-8")
     assert "entity_field_updates" in body
     assert "verified_today" in body
+
+
+def test_topic_researcher_documents_tool_roster_sweep() -> None:
+    """Mandate #11b: derived roster via `wikipilot tools`, tracked fields,
+    never-guess rule, and the sweep allowlist exemption (mandate #5)."""
+    body = (AGENTS_DIR / "topic-researcher.md").read_text(encoding="utf-8")
+    assert "wikipilot tools --topic <TOPIC_ID> --format json" in body
+    assert "tracked_fields" in body
+    assert "modality_topics" in body
+    for field_name in ("status", "pricing", "commercial_use", "arena_rank"):
+        assert f"`{field_name}`" in body
+    assert "never guess" in body.lower()
+    assert "allowlist exemption" in body.lower()
+    assert "fal.ai" in body and "replicate.com" in body
+
+
+def test_wiki_merger_handles_tool_tracked_fields() -> None:
+    body = (AGENTS_DIR / "wiki-merger.md").read_text(encoding="utf-8")
+    assert "[tool_profiles].tracked_fields" in body
+    assert "profile: tool" in body
+    assert "arena_rank_source" in body
+    assert "parallel list of equal length" in body
+    assert "tool-profile" in body
+
+
+def test_daily_brief_curator_accepts_tool_changes_input() -> None:
+    body = (AGENTS_DIR / "daily-brief-curator.md").read_text(encoding="utf-8")
+    assert "TOOL_CHANGES_PATH" in body
+    assert "new_tools" in body

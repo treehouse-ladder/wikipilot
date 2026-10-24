@@ -2,8 +2,8 @@
 title: Frontier LLM landscape — purpose
 kind: purpose
 sources: []
-last_updated: 2026-05-12
-last_verified: 2026-05-12
+last_updated: 2026-10-24
+last_verified: 2026-10-24
 freshness_window_days: 365
 ---
 
@@ -58,6 +58,14 @@ The wiki should accumulate working answers to:
   `ai-in-game-dev`).
 - Marketing announcements without methodology — "we beat GPT-X on
   internal eval" with no public scores or methods.
+- **Generative media models** — releases, pricing, licenses and arena
+  ranks of image / video / music / SFX / speech *generation* models
+  (GPT Image, Nano Banana, Veo, Sora, Suno, ElevenLabs, ...) go to
+  `generative-media-models`. Multimodal *input* capabilities of an LLM
+  (vision, audio understanding) stay here. When a single launch post
+  covers both (e.g. a Gemini release that also ships an image model),
+  flag `also_relevant_to: ["generative-media-models"]` and keep only the
+  LLM claims on this topic's pages.
 
 ## Key entities to track
 

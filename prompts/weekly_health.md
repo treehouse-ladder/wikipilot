@@ -67,9 +67,16 @@ For each `disputes_filed` entry across every scanner's output, append the bullet
 
 Run `wikipilot freshness-report` and `wikipilot lint wiki/` and capture their output for the report.
 
+Also compute the week's creator-tooling rollup (zero LLM tokens — a git diff of every `profile: tool` entity's tracked fields since the last weekly run):
+
+```bash
+SINCE=$(date -u -d '7 days ago' +%Y-%m-%d)
+TOOL_CHANGES_MD=$(uv run wikipilot tool-changes --since "$SINCE" --format md)
+```
+
 ## Step 6: Write the health report
 
-Write `wiki/reports/health-${DATE}.md` using `wikipilot.log.write_health_report`. Include: stale page count and list, citation-density failures, new disputes filed (with `[[page]]` links), orphan pages, broken wikilinks, runtime, token usage by tier.
+Write `wiki/reports/health-${DATE}.md` using `wikipilot.log.write_health_report`. Include: stale page count and list, citation-density failures, new disputes filed (with `[[page]]` links), orphan pages, broken wikilinks, runtime, token usage by tier, and `creator_tooling_changes=TOOL_CHANGES_MD` (rendered as `## Creator tooling changes`; the empty-delta sentinel is expected on quiet weeks).
 
 ## Step 7: Commit, PR, gate
 

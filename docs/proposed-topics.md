@@ -2,7 +2,7 @@
 
 This file captures the reasoning behind the five topics seeded in Phase 9 and the design choices that shaped how the `topic-researcher` ingests sources. It's a future-self note, not a charter — the actual charters live in `wiki/topics/<id>/purpose.md` and the operational config in `topics.yaml`. When a topic gets added, removed, or significantly retargeted, append a short note here so the rationale doesn't get lost in git history.
 
-## The five Phase 9 topics
+## The five Phase 9 topics (plus `generative-media-models`, added 2026-10-24)
 
 The set was chosen to span the user's two anchor domains (agentic AI workflow and video-game development) at three levels of abstraction: the toolchain, the underlying capabilities, and the surrounding industry. Each topic earns its keep by producing synthesis that another topic can't.
 
@@ -35,6 +35,22 @@ Adjacent terms considered: `gamedev-industry`, `game-releases-2026`. The first i
 Game composers, soundtracks, audio tech, live concerts, music criticism. Low natural source flow; the safety cap of 20 will rarely if ever trip here.
 
 Adjacent terms considered: `vgm` (folded in — same domain), `game-audio` (broader; would include sound design, foley — out of scope for now since the user's interest is composer-and-soundtrack-centric).
+
+### `generative-media-models` (added 2026-10-24)
+
+Image, video, music, SFX, speech and sprite generation models — releases, API availability, pricing, commercial-use terms, arena / leaderboard movements with methodology, deprecations, aggregator (fal.ai / Replicate) hosting changes, open-weight releases with hardware floor. Added because the user is building a monthly benchmark of generative tools for game creators and uses the wiki as its scout feed: a script diffs the wiki's tool entities and comparison pages against the benchmark's model registry before each round.
+
+**Why a new topic rather than widening `ai-in-game-dev`.** The diagnosis the benchmark agent brought was "the charter excludes general-purpose image generation". That was only half right: `ai-in-game-dev` already listed SD / Flux / Midjourney, sprite generation and ElevenLabs voice as in-scope and promised a `text-to-image-pipeline-comparison`. Nothing landed because (a) its `allowlist_domains` and `search_hints` point at engine vendors and arxiv, and (b) its lens — "does this ship inside a pipeline" — is not the lineup / price / license lens the benchmark needs. A vendor-and-lineup tracker is a different topic with different sources, so it got its own charter, and the overlapping items were moved out of `ai-in-game-dev` explicitly (entities `stable-diffusion`, `flux`, `midjourney`, `comfyui`, `elevenlabs`; concepts `text-to-image-pipelines`, `sprite-generation`; the text-to-image comparison, now `image-tools`).
+
+**Boundary resolutions.**
+
+- `ai-in-game-dev` keeps 3D generation, retexture / PBR, auto-rigging, text-to-motion, video mocap and facial animation, and now states explicitly that for those tools the vendor changelog, API availability, model ids, pricing and commercial-use terms are in-scope (not just capabilities). Its `allowlist_domains` gained `meshy.ai`, `docs.meshy.ai`, `tripo3d.ai`, `docs.tripo3d.ai`, `hyper3d.ai`, `hunyuan.tencent.com`, `fal.ai`, `replicate.com`, `github.com` so the roster sweep can cite vendor pricing pages.
+- `frontier-models` had "multi-modal capabilities (vision, audio, video input/output)" in scope and shares `openai.com`, `deepmind.google`, `huggingface.co` with the new allowlist — a gpt-image or Veo launch would have been claimed by two researchers. Its charter now sends generation-model releases to `generative-media-models` and keeps multimodal *input*; a launch post covering both gets `also_relevant_to`.
+- `game-music` is composer-centric and said nothing about generative music; it now points generative music / SFX / speech models at the new topic and keeps the craft debate.
+
+**Tool entity profile.** Alongside the topic, entity pages gained a machine-readable `profile: tool` frontmatter block (see `CLAUDE.md` "Tool entity profile") with a lint rule, derived per-topic rosters (`wikipilot.toml [tool_profiles].modality_topics`), per-modality comparison pages (`3d-tools`, `rig-and-motion-tools`, `audio-tools`; `image-tools` / `video-tools` once ≥ 2 entities exist), a roster sweep in the `topic-researcher`, and two zero-LLM CLIs for the scout: `wikipilot tools --format json` (full registry dump) and `wikipilot tool-changes --since DATE | --since-rev SHA` (versioned delta, also rendered as `## Creator tooling changes` in the daily and weekly reports). The `kind: tool` the benchmark agent first proposed was rejected in favor of `kind: entity` + `profile: tool` to keep `VALID_KINDS`, `Vault.page_path`, index sections and every agent prompt unchanged; the proposed `wiki/entities/_tool-template.md` was rejected because `_*.md` is the personal-scratch convention (lint-exempt, agents never read it) — the template lives in `CLAUDE.md` and `docs/architecture.md` instead.
+
+Adjacent terms considered: `ai-art-tools` (too narrow — misses audio), `creator-tooling` (too broad — would pull in editors and DCC apps), `media-foundation-models` (research-flavored; the lens here is lineup and price, not architecture).
 
 ## Topics explicitly considered and rejected
 

@@ -202,6 +202,83 @@ class FrontierModelsConfig:
     cost_glosses: dict[str, str] = field(default_factory=dict)
 
 
+DEFAULT_TOOL_MODALITIES: tuple[str, ...] = (
+    "image",
+    "video",
+    "3d",
+    "rig",
+    "motion",
+    "music",
+    "sfx",
+    "voice",
+    "sprite",
+)
+DEFAULT_TOOL_ACCESS_VALUES: tuple[str, ...] = (
+    "api",
+    "fal",
+    "replicate",
+    "open-weights",
+    "web",
+    "desktop",
+    "none",
+    "unknown",
+)
+DEFAULT_TOOL_STATUS_VALUES: tuple[str, ...] = ("active", "preview", "deprecated", "shutdown")
+DEFAULT_TOOL_MODEL_ID_PREFIXES: tuple[str, ...] = ("fal", "replicate")
+DEFAULT_TOOL_TRACKED_FIELDS: tuple[str, ...] = (
+    "status",
+    "pricing",
+    "commercial_use",
+    "arena_rank",
+)
+DEFAULT_TOOL_MODALITY_TOPICS: dict[str, str] = {
+    "image": "generative-media-models",
+    "video": "generative-media-models",
+    "music": "generative-media-models",
+    "sfx": "generative-media-models",
+    "voice": "generative-media-models",
+    "sprite": "generative-media-models",
+    "3d": "ai-in-game-dev",
+    "rig": "ai-in-game-dev",
+    "motion": "ai-in-game-dev",
+}
+
+
+@dataclass(frozen=True)
+class ToolProfilesConfig:
+    """``[tool_profiles]`` — the machine-readable tool profile contract.
+
+    Carried by entity pages with ``profile: tool`` (see CLAUDE.md "Tool
+    entity profile"). Four consumers:
+
+    - the ``tool-profile`` lint rule (enum membership, list shapes);
+    - :mod:`wikipilot.tools` (``wikipilot tools`` registry dump) and
+      :mod:`wikipilot.tool_changes` (``wikipilot tool-changes`` delta);
+    - the per-modality comparison pages (``3d-tools`` etc.);
+    - the ``topic-researcher`` roster sweep, which derives its roster from
+      ``modality_topics`` instead of a static list — so a new tool entity
+      proposed via ``page_diffs`` is swept on the next run with no edit to
+      the human-owned ``wikipilot.toml``.
+
+    Validation: every entry in ``modalities`` MUST map to a topic in
+    ``modality_topics`` (and vice versa). Everything else is a plain
+    string list.
+    """
+
+    modalities: tuple[str, ...] = DEFAULT_TOOL_MODALITIES
+    access_values: tuple[str, ...] = DEFAULT_TOOL_ACCESS_VALUES
+    status_values: tuple[str, ...] = DEFAULT_TOOL_STATUS_VALUES
+    model_id_prefixes: tuple[str, ...] = DEFAULT_TOOL_MODEL_ID_PREFIXES
+    tracked_fields: tuple[str, ...] = DEFAULT_TOOL_TRACKED_FIELDS
+    modality_topics: dict[str, str] = field(
+        default_factory=lambda: dict(DEFAULT_TOOL_MODALITY_TOPICS)
+    )
+
+    def modalities_for_topic(self, topic_id: str) -> tuple[str, ...]:
+        """Return the modalities ``topic_id`` owns (possibly empty)."""
+        return tuple(m for m, t in self.modality_topics.items() if t == topic_id)
+
+
 @dataclass(frozen=True)
 class WikipilotConfig:
     """Parsed ``wikipilot.toml``."""
@@ -214,6 +291,7 @@ class WikipilotConfig:
     images: ImagesConfig = field(default_factory=ImagesConfig)
     branches: BranchesConfig = field(default_factory=BranchesConfig)
     frontier_models: FrontierModelsConfig = field(default_factory=FrontierModelsConfig)
+    tool_profiles: ToolProfilesConfig = field(default_factory=ToolProfilesConfig)
 
 
 def load_topics(path: Path | str) -> list[TopicConfig]:
@@ -358,6 +436,7 @@ def _config_from_dict(data: dict[str, Any], *, source: str) -> WikipilotConfig:
     frontier_models = _frontier_models_from_dict(
         data.get("frontier_models", {}) or {}, source=source
     )
+    tool_profiles = _tool_profiles_from_dict(data.get("tool_profiles", {}) or {}, source=source)
     try:
         return WikipilotConfig(
             automerge_common=common,
@@ -368,6 +447,7 @@ def _config_from_dict(data: dict[str, Any], *, source: str) -> WikipilotConfig:
             images=images,
             branches=branches,
             frontier_models=frontier_models,
+            tool_profiles=tool_profiles,
         )
     except TypeError as exc:
         # Surface unknown keys with the file path attached.
@@ -458,6 +538,82 @@ def _frontier_models_from_dict(data: dict[str, Any], *, source: str) -> Frontier
         cost_fields=tuple(cost_fields),
         benchmark_glosses=dict(benchmark_glosses),
         cost_glosses=dict(cost_glosses),
+    )
+
+
+def _tool_profiles_from_dict(data: dict[str, Any], *, source: str) -> ToolProfilesConfig:
+    """Parse ``[tool_profiles]`` with strict modality/topic cross-validation.
+
+    An empty block (or a missing one) yields the documented defaults, so
+    forks that never touch tool profiles don't have to copy the block.
+    When present, every ``modalities`` entry must have an owning topic in
+    ``modality_topics`` and no ``modality_topics`` key may name an unknown
+    modality — a modality nobody sweeps would silently rot.
+    """
+    if not data:
+        return ToolProfilesConfig()
+    known_keys = {
+        "modalities",
+        "access_values",
+        "status_values",
+        "model_id_prefixes",
+        "tracked_fields",
+        "modality_topics",
+    }
+    unknown = set(data.keys()) - known_keys
+    if unknown:
+        raise ConfigError(f"{source}: [tool_profiles] has unknown keys: {sorted(unknown)}")
+    where = f"{source}: [tool_profiles]"
+    modalities = _coerce_str_list(
+        data.get("modalities", list(DEFAULT_TOOL_MODALITIES)), where=f"{where}.modalities"
+    )
+    access_values = _coerce_str_list(
+        data.get("access_values", list(DEFAULT_TOOL_ACCESS_VALUES)),
+        where=f"{where}.access_values",
+    )
+    status_values = _coerce_str_list(
+        data.get("status_values", list(DEFAULT_TOOL_STATUS_VALUES)),
+        where=f"{where}.status_values",
+    )
+    prefixes = _coerce_str_list(
+        data.get("model_id_prefixes", list(DEFAULT_TOOL_MODEL_ID_PREFIXES)),
+        where=f"{where}.model_id_prefixes",
+    )
+    tracked = _coerce_str_list(
+        data.get("tracked_fields", list(DEFAULT_TOOL_TRACKED_FIELDS)),
+        where=f"{where}.tracked_fields",
+    )
+    modality_topics = _coerce_str_dict(
+        data.get("modality_topics", dict(DEFAULT_TOOL_MODALITY_TOPICS)) or {},
+        where=f"{source}: [tool_profiles.modality_topics]",
+    )
+    for lst, name in (
+        (modalities, "modalities"),
+        (access_values, "access_values"),
+        (status_values, "status_values"),
+        (tracked, "tracked_fields"),
+    ):
+        if not lst:
+            raise ConfigError(f"{where}.{name} must be a non-empty list")
+    unmapped = [m for m in modalities if m not in modality_topics]
+    if unmapped:
+        raise ConfigError(
+            f"{source}: [tool_profiles.modality_topics] is missing entries for "
+            f"{sorted(unmapped)} (every modality must name the topic that sweeps it)"
+        )
+    unknown_modalities = [m for m in modality_topics if m not in modalities]
+    if unknown_modalities:
+        raise ConfigError(
+            f"{source}: [tool_profiles.modality_topics] names unknown modalities "
+            f"{sorted(unknown_modalities)} (not in [tool_profiles].modalities)"
+        )
+    return ToolProfilesConfig(
+        modalities=tuple(modalities),
+        access_values=tuple(access_values),
+        status_values=tuple(status_values),
+        model_id_prefixes=tuple(prefixes),
+        tracked_fields=tuple(tracked),
+        modality_topics=dict(modality_topics),
     )
 
 

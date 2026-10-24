@@ -2,8 +2,8 @@
 title: Game composers and audio — purpose
 kind: purpose
 sources: []
-last_updated: 2026-05-12
-last_verified: 2026-05-12
+last_updated: 2026-10-24
+last_verified: 2026-10-24
 freshness_window_days: 365
 ---
 
@@ -50,6 +50,10 @@ release belongs here; the game's gameplay belongs there).
   appears there.
 - General music industry coverage not games-related (pop releases, etc.).
 - Live concerts of music not originally written for games.
+- **Generative music / SFX / speech models** (Suno, Udio, Lyria, Stable
+  Audio, ElevenLabs SFX) — their releases, pricing and licenses are
+  `generative-media-models`. A composer's *use* of such a tool in a
+  shipped score, or the craft debate around it, still belongs here.
 
 ## Key entities to track
 

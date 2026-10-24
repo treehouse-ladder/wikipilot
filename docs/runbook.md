@@ -560,6 +560,29 @@ uv run wikipilot compare regen cost-comparison
 uv run wikipilot compare regen benchmark-leaders
 ```
 
+The same step also regenerates the **tool comparisons** (`3d-tools`, `rig-and-motion-tools`, `audio-tools`, plus `image-tools` / `video-tools` once they exist) — see "Adding a tool entity" below.
+
+## Adding a tool entity (generative-media + 3D/rig/motion tools)
+
+Generative tools are entity pages with a `profile: tool` frontmatter block (see `CLAUDE.md` "Tool entity profile" and [`docs/architecture.md`](architecture.md#tool-entity-profile-benchmark-scout-feed)). The daily researchers for `generative-media-models` and `ai-in-game-dev` create them from `page_diffs`; to add one by hand:
+
+1. Create `wiki/entities/<slug>.md` with standard entity frontmatter plus the full profile block. Every profile field must be present; anything no ingested source states is the literal `unknown` (empty list for `arena_rank` / `arena_rank_source`, `null` for a scalar `_source`). Never guess.
+2. Cite every claim in `## Summary` with `[[source-slug]]` and one `>` quote per source; satisfy the divergence rule (`## Disputes`, `## Open questions`, or the sentinel).
+3. `uv run wikipilot lint wiki/` — the `tool-profile` rule is error-severity and reports exactly which field or enum value is off.
+4. Add the slug to the matching comparison page's `comparison_of` list (or `compare new` a page if this is the second tool of a new modality), then `uv run wikipilot compare regen <slug>`.
+5. The entity joins the owning topic's roster sweep automatically on the next daily run — rosters are derived from `[tool_profiles.modality_topics]`, not from a static list.
+
+Inspect the registry and the delta the benchmark scout reads:
+
+```bash
+uv run wikipilot tools --format md                       # all tool profiles as a table
+uv run wikipilot tools --topic ai-in-game-dev --format json
+uv run wikipilot tool-changes --since 2026-10-01          # markdown "## Creator tooling changes"
+uv run wikipilot tool-changes --since-rev <sha> --format json
+```
+
+`tool-changes` diffs the four tracked fields (`status`, `pricing`, `commercial_use`, `arena_rank`) of every tool entity against the baseline revision and lists new / removed tool entities. The JSON shape is versioned (`schema_version: 1`) and additive-only; the markdown is what lands in the daily report and the weekly health report.
+
 ## Reading the daily brief
 
 `wiki/reports/<DATE>.md` is the user's primary daily read. The editorial sections (curator-generated, see [`.claude/agents/daily-brief-curator.md`](../.claude/agents/daily-brief-curator.md)) land at the top of the page; the accounting tail (counts, PR links, runtime, notes) lives under a collapsible `<details>` block.
@@ -568,6 +591,7 @@ Section order, top-to-bottom:
 
 1. **`## Today's brief`** — 3–7 must-read bullets ranked through the user's "best games + most-optimized agentic workflow" lens (see [`prompts/daily_brief_curator.md`](../prompts/daily_brief_curator.md)). Every bullet carries at least one `[[source-slug]]` citation and a one-line "why it matters to you" rationale.
 2. **`## Leader changes`** — only present when a #1 swapped on either comparison page today. Each bullet calls out the new leader, the metric, and the configured `[frontier_models].benchmark_glosses` / `cost_glosses` gloss verbatim so the same one-liner the user sees on the leaderboard appears in the brief.
+2b. **`## Creator tooling changes`** — every `profile: tool` entity whose `status`, `pricing`, `commercial_use` or `arena_rank` moved since the run's baseline `main` SHA, with the `[[source]]` per change (output of `wikipilot tool-changes`). Decides which benchmark cells get re-run.
 3. **`## Frontier model snapshot`** — the regenerated cost + benchmark tables, transcluded so the report is self-contained even if the comparison files change.
 4. **`## Watchlist`** — 0–10 high-signal-but-not-must-read items.
 5. **`## Notable findings by topic`** — one bullet per merged topic (head sentence of the researcher's `update_entry`).

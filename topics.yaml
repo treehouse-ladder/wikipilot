@@ -105,13 +105,16 @@ topics:
     display_name: "AI in game development"
     purpose: |
       In-scope: game engine AI tools (Unity AI, Unreal AI, Unity MCP,
-      Blender MCP); content generation pipelines (text-to-image,
-      text-to-3D, image-to-3D, 2D character rigs, sprite generation,
-      mocap); AI NPC behavior, dialog, voice synthesis; AI playtesting.
+      Blender MCP); 3D content generation pipelines (text-to-3D,
+      image-to-3D, retexture/PBR materials, auto-rigging, text-to-motion,
+      video mocap, facial animation) — including their vendor changelogs,
+      API availability, model ids, pricing and commercial-use terms; AI
+      NPC behavior, dialog, voice *in-engine*; AI playtesting.
 
-      Out-of-scope: general-purpose image/3D generation outside game-dev
-      workflows; non-game procedural generation; engine-agnostic LLM
-      agentic tools (those go in `agentic-coding`).
+      Out-of-scope: 2D image, video, music, SFX, speech and sprite
+      generation models (those go in `generative-media-models`);
+      non-game procedural generation; engine-agnostic LLM agentic tools
+      (those go in `agentic-coding`).
 
       Read wiki/topics/ai-in-game-dev/purpose.md for the full charter.
     search_hints:
@@ -120,7 +123,8 @@ topics:
       - "text-to-3D pipeline"
       - "AI NPC behavior dialog"
       - "AI mocap pipeline"
-      - "2D character rig generation"
+      - "auto-rigging text-to-motion model"
+      - "image-to-3D api pricing commercial license"
     allowlist_domains:
       - "unity.com"
       - "unrealengine.com"
@@ -129,6 +133,17 @@ topics:
       - "arxiv.org"
       - "gamedeveloper.com"
       - "gdcvault.com"
+      # Vendor + aggregator domains so the tool-profile roster sweep can
+      # cite pricing / commercial-use / model-id pages for 3D tools.
+      - "meshy.ai"
+      - "docs.meshy.ai"
+      - "tripo3d.ai"
+      - "docs.tripo3d.ai"
+      - "hyper3d.ai"
+      - "hunyuan.tencent.com"
+      - "fal.ai"
+      - "replicate.com"
+      - "github.com"
     frequency: daily
     max_sources_per_run: 20
     freshness_window_days: 30
@@ -193,3 +208,67 @@ topics:
     frequency: daily
     max_sources_per_run: 20
     freshness_window_days: 60
+
+  - id: generative-media-models
+    display_name: "Generative media models (image, video, music, SFX, speech, sprites)"
+    purpose: |
+      In-scope: releases, capability changes, API availability, pricing,
+      and license / commercial-use terms of models that generate images,
+      video, music, sound effects and speech; arena and leaderboard
+      movements that come with methodology (arena.ai text-to-image and
+      image-to-video boards, Artificial Analysis image / video / speech
+      arenas); deprecations and shutdowns (e.g. the Sora API, Udio
+      exports); aggregator hosting changes (fal.ai, Replicate) that make a
+      model reachable by API; open-weight releases with their hardware
+      floor. Explicitly in-scope: game-oriented sprite, pixel-art, tileset
+      and spritesheet generators (PixelLab, Retro Diffusion, Scenario,
+      Layer, Ludo, SpriteCook).
+
+      Out-of-scope: LLM text models (`frontier-models`); 3D generation,
+      rigging and motion (`ai-in-game-dev`); engine-embedded generators
+      with no public API (note them once as documented-only and move on);
+      marketing without methodology.
+
+      Read wiki/topics/generative-media-models/purpose.md for the full
+      charter and the tool-profile roster sweep contract.
+    search_hints:
+      - "text-to-image leaderboard"
+      - "image-to-video arena"
+      - "gpt-image release"
+      - "nano banana"
+      - "seedream"
+      - "flux release"
+      - "pixel art sprite generator api"
+      - "text-to-music api commercial license"
+      - "sound effects generation model"
+      - "tts speech arena"
+      - "model deprecation shutdown api"
+    allowlist_domains:
+      - "arena.ai"
+      - "artificialanalysis.ai"
+      - "fal.ai"
+      - "replicate.com"
+      - "openai.com"
+      - "blog.google"
+      - "deepmind.google"
+      - "bfl.ai"
+      - "ideogram.ai"
+      - "recraft.ai"
+      - "reve.art"
+      - "seed.bytedance.com"
+      - "minimax.io"
+      - "klingai.com"
+      - "elevenlabs.io"
+      - "stability.ai"
+      - "suno.com"
+      - "inworld.ai"
+      - "cartesia.ai"
+      - "pixellab.ai"
+      - "retrodiffusion.ai"
+      - "scenario.com"
+      - "huggingface.co"
+      - "arxiv.org"
+      - "github.com"
+    frequency: daily
+    max_sources_per_run: 20
+    freshness_window_days: 30

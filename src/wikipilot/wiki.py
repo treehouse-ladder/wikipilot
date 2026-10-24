@@ -235,6 +235,15 @@ class Page:
             )
         return [str(item) for item in raw]
 
+    @property
+    def profile(self) -> str | None:
+        """Optional ``profile:`` discriminator (e.g. ``tool`` on generative-tool entities).
+
+        See CLAUDE.md "Tool entity profile". ``None`` when the key is absent.
+        """
+        value = self.metadata.get("profile")
+        return str(value) if value is not None else None
+
     def wikilinks(self) -> list[str]:
         return parse_wikilinks(self.content)
 

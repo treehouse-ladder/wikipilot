@@ -147,6 +147,115 @@ The wiki only stays maintainable if it's clear who owns each file. The Python li
 
 See [`CLAUDE.md`](../CLAUDE.md) for the full conventions, frontmatter contract, citation discipline, and per-agent model assignments.
 
+## Tool entity profile (benchmark scout feed)
+
+The user runs a monthly benchmark of generative tools for game creators (2D art, 3D, animation, rigging, audio). The wiki is its scout: before each round a script diffs the wiki's tool registry against the benchmark's model registry. To make that diff deterministic, generative tools are **entity pages with a machine-readable `profile: tool` block** — `kind` stays `entity` so every existing code path (comparisons, cross-page sweep, index sections, agent prompts) keeps working; `profile` is a discriminator.
+
+```yaml
+---
+title: "Meshy"
+kind: entity
+aliases: ["Meshy AI", "Meshy 7"]
+sources: ["[[meshy-7-is-live-higher-fidelity-image-to-3d-generation-with-ultra-mode-f27c1d9b]]"]
+last_updated: 2026-10-24
+last_verified: 2026-10-24
+freshness_window_days: 30
+profile: tool
+modality: 3d                       # [tool_profiles].modalities
+tasks: ["image-to-3d", "text-to-3d"]
+vendor: "Meshy"
+model_ids: ["meshy-7", "fal:fal-ai/meshy/v7"]   # unprefixed = vendor id; `fal:` / `replicate:` = aggregator endpoint
+access: ["api", "fal"]             # non-empty list; [tool_profiles].access_values (api, fal, replicate, open-weights, web, desktop, none, unknown)
+open_weights_license: unknown
+hardware_floor: unknown
+pricing: unknown                   # "<amount>/<unit> (<date>)" when known
+pricing_source: null
+commercial_use: unknown            # "<terms> (<date>)" when known
+commercial_use_source: null
+status: active                     # [tool_profiles].status_values
+status_source: "[[meshy-7-is-live-higher-fidelity-image-to-3d-generation-with-ultra-mode-f27c1d9b]]"
+last_release: 2026-08-05           # ISO date or unknown
+arena_rank: []                     # ["<board>: <rank> (<date>)", ...]
+arena_rank_source: []              # same length as arena_rank
+---
+```
+
+Design decisions:
+
+- **Every field present, `unknown` when unsourced, never guessed.** The lint rule `tool-profile` (error) enforces presence and enum membership; it cannot be auto-fixed because the fixer would have to invent a value.
+- **Lists where reality is multi-valued.** `access` (a model is often open-weights *and* on fal), `model_ids` (vendor id plus aggregator endpoints), `arena_rank` (one tool on several boards). `arena_rank_source` is a parallel list so each board claim has its own citation.
+- **Tracked fields.** `[tool_profiles].tracked_fields` (`status`, `pricing`, `commercial_use`, `arena_rank`) each carry a `_source` sibling. These are what the roster sweep re-confirms daily and what `tool-changes` diffs.
+- **Derived roster.** `wikipilot.toml` is human-owned, so a static roster would never include a tool the researcher proposes in a `page_diff`. `[tool_profiles.modality_topics]` maps modality → owning topic; the per-topic roster is computed at run time by `wikipilot.tools.tools_for_topic`.
+
+### Scout interface (`wikipilot tools`, `wikipilot tool-changes`)
+
+Both commands are pure Python over frontmatter + `git show`; zero LLM tokens. Both emit `schema_version: 1` and follow an **additive-only contract**: new keys may appear, existing keys never change meaning or disappear within a major version.
+
+`wikipilot tools [--topic ID] [--modality M] --format json` — the full current registry:
+
+```json
+{
+  "schema_version": 1,
+  "head_rev": "<sha or null>",
+  "tools": [
+    {
+      "slug": "meshy",
+      "path": "wiki/entities/meshy.md",
+      "title": "Meshy",
+      "modality": "3d",
+      "tasks": ["image-to-3d", "text-to-3d"],
+      "vendor": "Meshy",
+      "model_ids": ["meshy-7", "fal:fal-ai/meshy/v7"],
+      "access": ["api", "fal"],
+      "open_weights_license": "unknown",
+      "hardware_floor": "unknown",
+      "pricing": "unknown",
+      "pricing_source": null,
+      "pricing_source_url": null,
+      "commercial_use": "unknown",
+      "commercial_use_source": null,
+      "commercial_use_source_url": null,
+      "status": "active",
+      "status_source": "meshy-7-is-live-higher-fidelity-image-to-3d-generation-with-ultra-mode-f27c1d9b",
+      "status_source_url": "https://www.meshy.ai/blog/meshy-7",
+      "last_release": "2026-08-05",
+      "arena_rank": [],
+      "arena_rank_source": [],
+      "arena_rank_source_url": [],
+      "last_verified": "2026-10-24",
+      "sources": ["meshy-7-is-live-higher-fidelity-image-to-3d-generation-with-ultra-mode-f27c1d9b"]
+    }
+  ]
+}
+```
+
+`*_source` values are bare source slugs (the `[[...]]` wrapper is stripped); `*_source_url` is resolved from the source page's `url` frontmatter (`null` when the slug doesn't resolve). The scout's admission check is `any(a in {"api","fal","replicate","open-weights"} for a in tool["access"])`.
+
+`wikipilot tool-changes (--since YYYY-MM-DD | --since-rev SHA) --format json` — what moved since a baseline. `--since-rev` is the natural query for the benchmark (it pins the wiki commit each round read); `--since DATE` resolves to `git rev-list -1 --before=DATE HEAD`.
+
+```json
+{
+  "schema_version": 1,
+  "baseline_rev": "<sha>",
+  "head_rev": "<sha>",
+  "changes": [
+    {
+      "entity": "meshy",
+      "field": "pricing",
+      "old": "unknown",
+      "new": "$0.20/generation (2026-11-02)",
+      "source_slug": "meshy-pricing-2026-11-...",
+      "source_url": "https://www.meshy.ai/pricing",
+      "last_verified": "2026-11-02"
+    }
+  ],
+  "new_tools": [ { "...full tool record as in `wikipilot tools`..." } ],
+  "removed_tools": ["slug"]
+}
+```
+
+The markdown rendering of the same diff (`--format md`, default) is the `## Creator tooling changes` section of the daily report (baseline = `main` SHA at run start) and the weekly health report (baseline = 7 days ago).
+
 ## Cost shape
 
 - **Daily Research**: O(topics × Opus_cached_prefix × cache_read_multiplier + topics × Opus_proposal_size + topics × Sonnet_merger + topics × Haiku_lint). Opus pricing on `topic-researcher` dominates. Mitigated by `CLAUDE_CODE_FORK_SUBAGENT=1` (shared cached prefix) and `max_sources_per_run` per topic.

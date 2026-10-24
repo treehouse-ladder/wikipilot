@@ -11,6 +11,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[ai-in-game-dev]]
 - [[games-of-note]]
 - [[game-music]]
+- [[generative-media-models]]
 
 ## Concepts
 
@@ -68,11 +69,31 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[skydance]]
 - [[claude-haiku-5-5]]
 - [[muse-spark-open]]
+- [[meshy]]
+- [[tripo]]
+- [[hyper3d-rodin]]
+- [[hunyuan3d]]
+- [[trellis-2]]
+- [[autodesk-wonder-3d]]
+- [[cubepart]]
+- [[assetgen]]
+- [[hy-motion]]
+- [[unimate]]
+- [[tokenrig]]
+- [[motionbricks]]
+- [[mocapanything]]
+- [[audio2face]]
+- [[inworld-realtime-tts-2]]
+- [[elevenlabs]]
+- [[minimax-h3]]
 
 ## Comparisons
 
 - [[cost-comparison]]
 - [[benchmark-leaders]]
+- [[3d-tools]]
+- [[rig-and-motion-tools]]
+- [[audio-tools]]
 
 ## Sources
 

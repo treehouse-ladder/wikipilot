@@ -39,6 +39,12 @@ UNKNOWN_VALUE = "_unknown_"
 """Cell rendered when an entity page omits a requested field. Markdown
 italic so it stands out in Obsidian without breaking table layout."""
 
+EMPTY_LIST_VALUE = "_none_"
+"""Cell rendered when an entity page carries the field as an explicitly
+empty list (e.g. ``arena_rank: []`` on a tool profile = "no known board
+placement"). Distinct from :data:`UNKNOWN_VALUE`, which means the field is
+absent and should be backfilled."""
+
 NO_GLOSS_PLACEHOLDER = "_no gloss configured_"
 """Placeholder for the legend block when a column has no matching entry in
 ``[frontier_models.benchmark_glosses]`` / ``[frontier_models.cost_glosses]``.
@@ -100,8 +106,14 @@ def render_comparison_table(
     show_glosses: bool = False,
     glosses: dict[str, str] | None = None,
     leader_changes: str | None = None,
+    slug: str | None = None,
 ) -> str:
     """Render a deterministic markdown table from ``aggregated`` data.
+
+    ``slug`` is the comparison page's own slug, used in the "re-run
+    ``wikipilot compare regen <slug>``" hint; when omitted it is derived
+    from ``title`` (legacy behaviour, which is wrong whenever the page slug
+    was chosen independently of the title).
 
     Row order follows ``entity_slugs`` (caller controls). Column order
     follows ``fields``. Cells that are missing render as :data:`UNKNOWN_VALUE`.
@@ -126,6 +138,7 @@ def render_comparison_table(
     ``## Leader changes since last regen`` section.
     """
     glosses = glosses or {}
+    page_slug = slug or _slug_from_title(title)
     cost_fields_set = set(cost_fields)
     numeric_by_field = _coerce_numeric_columns(aggregated, entity_slugs=entity_slugs, fields=fields)
     leaders_by_field: dict[str, tuple[str | None, str | None]] = {}
@@ -168,7 +181,7 @@ def render_comparison_table(
             f"This comparison aggregates `{', '.join(fields)}` across "
             f"{len(entity_slugs)} entities. Cells marked {UNKNOWN_VALUE} are "
             f"missing on the source entity page; backfill the value there and "
-            f"re-run `wikipilot compare regen {_slug_from_title(title)}` to refresh."
+            f"re-run `wikipilot compare regen {page_slug}` to refresh."
         ),
     ]
     if show_glosses:
@@ -266,6 +279,7 @@ def write_comparison_page(
         cost_fields=cost_fields,
         show_glosses=show_glosses,
         glosses=glosses,
+        slug=slug,
     )
     path = vault.page_path("comparison", slug)
     metadata: dict[str, Any] = {
@@ -343,6 +357,7 @@ def regenerate_comparison(
         show_glosses=inputs.show_glosses,
         glosses=glosses,
         leader_changes=leader_changes_text,
+        slug=comparison_slug,
     )
     page.metadata["last_updated"] = today
     page.write()
@@ -507,7 +522,7 @@ def _render_cell(value: Any) -> str:
         return UNKNOWN_VALUE
     if isinstance(value, (list, tuple)):
         if not value:
-            return UNKNOWN_VALUE
+            return EMPTY_LIST_VALUE
         return ", ".join(str(item) for item in value)
     if isinstance(value, bool):
         return "yes" if value else "no"
