@@ -4,7 +4,23 @@ Chronological, append-only record of every routine run. Parseable with `grep "^#
 
 ## [2026-10-24] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
 
+pr#1011 requeued — CI green, `mergeable_state: unknown`, auto-merge was not set; enabled auto-merge via MCP (gh CLI token invalid)
+
+## [2026-10-24] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
 pr#1009 requeued (games-of-note, clean+green, auto-merge enabled via MCP — gh CLI token invalid this session)
+
+## [2026-10-24] daily | 2 topics — 5 sources, 10 pages
+
+PRs merged: #1008 (agentic-coding). Pending auto-merge: #1009 (games-of-note, CI green, clean). Empty runs: game-music, frontier-models, ai-in-game-dev. Report: wiki/reports/2026-10-24.md.
+
+## [2026-10-24] daily | agentic-coding — 3 sources, 9 pages
+
+PR #1008 merged. Sources: Codex 0.164.0 (/presets, inline /model and /permissions, image preview); HarnessAdapt-RL (+9.8pp SWE-bench Verified co-training policy+harness); What Does a Harness Buy? Tokens, Mostly (harness swap ≈ noise on accuracy; 3× cost spread). Pages: topics/agentic-coding/index.md + 5 concepts + 3 entities.
+
+## [2026-10-24] daily | games-of-note — 2 sources, 1 page
+
+PR #1009 pending auto-merge (CI green). Sources: FF Resonance Xbox launch (MC 85 PS5/88 PC/82 Switch 2, Famitsu 36/40, first FF HD-2D entry); PushSquare PS5 review (turn-based classic FF, Brave Exvius story arc). Pages: topics/games-of-note/index.md.
 
 ## [2026-10-23] daily | 3 topics merged — 7 sources, 7 pages
 

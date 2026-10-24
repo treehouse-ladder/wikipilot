@@ -76,6 +76,11 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[release-0-164-0-openai-codex-b28a06ef]]
+- [[training-the-whole-agent-not-just-the-model-16ab0f9e]]
+- [[what-does-a-harness-buy-tokens-mostly-da56a135]]
+- [[final-fantasy-resonance-is-launching-on-xbox-to-extremely-impressive-reviews-4be2dc04]]
+- [[review-final-fantasy-resonance-ps5-square-s-series-returns-to-its-roots-to-fantastic-effect-063b6aa3]]
 - [[gamessoundcon-2026-your-chance-to-network-with-the-composers-for-call-of-duty-assassin-s-creed-and-fallout-af92aa61]]
 - [[announcing-harvey-lab-aa-v1-1-adding-hallucination-checks-to-raise-the-bar-for-agentic-legal-work-99cdd0c5]]
 - [[gemini-4-argon-is-now-available-for-developers-11e9f2ee]]
