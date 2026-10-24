@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-24] manual | conflict-resolver — 0 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#1009 requeued (games-of-note, clean+green, auto-merge enabled via MCP — gh CLI token invalid this session)
+
 ## [2026-10-23] daily | 3 topics merged — 7 sources, 7 pages
 
 PRs merged: #1001 (game-music), #1002 (frontier-models), #1004 (games-of-note). Pending auto-merge: #1003 (ai-in-game-dev, rebased), #1005 (agentic-coding). Report: wiki/reports/2026-10-23.md.
