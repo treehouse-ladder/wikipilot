@@ -2,7 +2,7 @@
 title: "Muse Code"
 kind: entity
 sources: ["[[introducing-muse-code-and-muse-spark-1-2-a73147b0]]", "[[introducing-muse-glimmer-c60b75d4]]"]
-last_updated: 2026-08-16
+last_updated: 2026-10-24
 last_verified: 2026-08-06
 freshness_window_days: 30
 ---

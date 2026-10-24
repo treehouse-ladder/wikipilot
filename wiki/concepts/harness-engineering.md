@@ -61,7 +61,7 @@ sources:
   - "[[beyond-the-model-demystifying-harness-effects-in-software-engineering-agents-d5e20119]]"
   - "[[release-v2-1-287-anthropics-claude-code-d3204584]]"
   - "[[release-v2-1-288-anthropics-claude-code-da2d811b]]"
-last_updated: 2026-10-03
+last_updated: 2026-10-24
 last_verified: 2026-09-30
 freshness_window_days: 30
 ---
