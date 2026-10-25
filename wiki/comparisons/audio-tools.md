@@ -8,9 +8,10 @@ compare_fields:
 comparison_of:
 - inworld-realtime-tts-2
 - elevenlabs
+- eleven-music
 freshness_window_days: 30
 kind: comparison
-last_updated: 2026-10-24
+last_updated: 2026-10-25
 last_verified: 2026-10-24
 sources: []
 title: Audio tools (speech, music, SFX)
