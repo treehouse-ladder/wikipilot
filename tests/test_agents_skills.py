@@ -120,6 +120,15 @@ def test_wiki_merger_documents_cross_page_sweep() -> None:
     assert "human-only" in body
 
 
+def test_wiki_disputes_scanner_requires_slug_wikilinks() -> None:
+    """2026-10-25: path-style [[entities/x.md]] links in the health report
+    failed broken-wikilink in CI. Scanner and health prompt both spell out
+    that wikilinks are bare slugs."""
+    body = (AGENTS_DIR / "wiki-disputes-scanner.md").read_text(encoding="utf-8")
+    assert "never paths or filenames" in body
+    assert "[[entities/minimax-h3.md]]" in body  # the anti-example is named explicitly
+
+
 def test_wiki_disputes_scanner_never_resolves() -> None:
     body = (AGENTS_DIR / "wiki-disputes-scanner.md").read_text(encoding="utf-8").lower()
     assert (

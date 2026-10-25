@@ -76,14 +76,38 @@ def test_daily_runner_includes_curator_and_compare_regen_steps() -> None:
 def test_daily_runner_regenerates_tool_comparisons_and_tool_changes() -> None:
     """The benchmark scout feed depends on Step 6 regenerating the per-modality
     tool comparisons AND emitting the zero-LLM `tool-changes` delta against the
-    `main` SHA captured at run start, then threading it into the report."""
+    previous report's merge commit (falling back to the run-start `main` SHA),
+    then threading it into the report verbatim."""
     body = _read("daily_runner")
     for slug in ("3d-tools", "rig-and-motion-tools", "audio-tools"):
         assert f"wikipilot compare regen {slug}" in body
     assert "MAIN_SHA_AT_START" in body
-    assert 'wikipilot tool-changes --since-rev "$MAIN_SHA_AT_START"' in body
+    assert "PREV_REPORT_SHA" in body
+    assert "--grep='^feat(wiki/reports): daily research'" in body
+    assert ': "${PREV_REPORT_SHA:=$MAIN_SHA_AT_START}"' in body
+    assert 'wikipilot tool-changes --since-rev "$PREV_REPORT_SHA"' in body
+    assert 'tool-changes --since-rev "$MAIN_SHA_AT_START"' not in body
+    assert "verbatim" in body
     assert "creator_tooling_changes" in body
     assert "tool_changes_path" in body
+
+
+def test_daily_runner_step5_self_heals_orphan_clean_prs() -> None:
+    """2026-10-25: a topic PR sat CLEAN with no auto-merge request until the
+    Conflict Resolver requeued it hours later, and the report was cut without
+    it. Step 5 must requeue through the same deterministic gate (once) and
+    must not start Step 6 while a topic PR is still open within its deadline."""
+    body = _read("daily_runner")
+    assert "TIMEOUT_SEC=900" in body
+    assert 'python scripts/maybe_automerge.py --pr "$PR_NUM" --route daily_research' in body
+    assert "REQUEUED" in body
+    assert "Do not start Step 6" in body
+
+
+def test_weekly_health_requires_slug_wikilinks() -> None:
+    body = _read("weekly_health")
+    assert "never paths or filenames" in body
+    assert "basename without `.md`" in body
 
 
 def test_weekly_health_includes_tool_changes_section() -> None:
@@ -257,12 +281,19 @@ def test_conflict_resolver_skips_index_wiki_for_cost() -> None:
     assert "do not need" in body or "intentionally" in body or "skip" in body
 
 
-def test_conflict_resolver_skips_log_on_no_op_scans() -> None:
-    """Logging every push fire would flood wiki/log.md. The prompt must
-    explicitly call out the "scan empty → no log entry" rule so the
-    no-op path stays cheap."""
+def test_conflict_resolver_never_opens_prs() -> None:
+    """2026-10-25: the resolver's wiki/log.md entries were each a fresh
+    claude/* branch + PR, which conflicted with the next one, re-fired the
+    routine on merge, and so on (6 fires, 6 PRs, 4 pure self-maintenance).
+    The audit trail must live on the touched PR as a comment; the orchestrator
+    must never author a commit, branch, or PR."""
     body = _read("conflict_resolver")
-    assert "scan returned empty" in body or "Skip the log entry" in body
+    assert "gh pr comment" in body
+    assert "Never create a branch or open a PR" in body
+    assert "Do not append to `wiki/log.md`" in body
+    assert "append-log" not in body
+    # The no-op path still records nothing at all.
+    assert "scan returned `[]`" in body
 
 
 def test_daily_runner_enforces_citation_discipline() -> None:

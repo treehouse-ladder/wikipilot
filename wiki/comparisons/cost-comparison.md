@@ -63,3 +63,11 @@ This comparison aggregates `input_cost_per_mtoken, output_cost_per_mtoken` acros
 | [[qwen3.7-max]] | 2.5 | 7.5 |
 | [[mai-code-1-flash]] | _0.75_ | 4.5 |
 | [[minimax-m3]] | **0.6** | **2.4** |
+
+## Notes
+
+**Note on non-roster models (2026-09-04):** [[gpt-6-astra]] (OpenAI's new flagship as of Sep 3, 2026) is not in the roster and does not appear in this comparison. It costs $10/$50 per Mtoken — matching [[claude-fable-5]] and 2.5× [[gpt-5.6-sol]]'s $4/$20 [[benchmarking-gpt-6-astra-b4150b17]].
+
+**Note on regeneration (2026-10-25):** this note was wiped by the first automated `compare regen` on 2026-10-25 and restored from git history. Everything above `## Notes` is generated and rewritten on every regen; only this section is preserved.
+
+_no contradictions or gaps known yet (last reviewed: 2026-10-25)_

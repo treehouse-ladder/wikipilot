@@ -15,7 +15,7 @@ Your job: enumerate every open `claude/*` PR that needs an automated fix and dis
 
 After every dispatch (LLM or deterministic), GitHub's required-status-checks rule holds the merge until CI is green on the resulting tip.
 
-Unlike the three content-producing routines (Daily Research, Wiki Query, Weekly Health), this routine **does not synthesize wiki content** — it only acts on existing PRs. The `requeue` path costs zero LLM tokens; the `rebase` and `lint_fix` paths each cost one Opus dispatch per affected PR. The in-routine `scripts/maybe_automerge.py` shim still handles the 95% happy-path case at zero LLM cost — this routine is the safety net for the remaining 5%.
+Unlike the three content-producing routines (Daily Research, Wiki Query, Weekly Health), this routine **does not write to the wiki at all** — not synthesis, not `wiki/log.md`, nothing. It only acts on existing PRs, and its audit trail is a comment on each PR it touched (Step 5). The `requeue` path costs zero LLM tokens; the `rebase` and `lint_fix` paths each cost one Opus dispatch per affected PR. The in-routine `scripts/maybe_automerge.py` shim still handles the 95% happy-path case at zero LLM cost — this routine is the safety net for the remaining 5%.
 
 ## Step 0: Bootstrap the cloned repo
 
@@ -144,17 +144,17 @@ pr#31 kind=rebase resolved=false reason="post-rebase pytest/lint failed"
 
 After dispatching, **do NOT re-scan before the next entry** — the entries' merge states were sampled at the start of step 3 and the orchestrator does not re-query GitHub between dispatches. If a PR's state flipped between the scan and the dispatch, the subagent will report `resolved: false, reason: "<state changed>"` (or `maybe_automerge.py` will no-op) and you move on. The next push event re-scans.
 
-## Step 5: Log only when something happened
+## Step 5: Record the outcome on the affected PR — never in the wiki
 
-Most fires of this routine resolve to "scan returned empty list → exit". Logging every fire would flood `wiki/log.md`. Only append a `manual` entry to `wiki/log.md` when at least one entry was dispatched (regardless of `dispatch_kind` or resolved/failed outcome). Use the `append-log` skill:
+Most fires of this routine resolve to "scan returned empty list → exit" with nothing to record. When at least one entry was dispatched, the audit trail is **one comment on each PR that was touched**, written after its handler returns (regardless of `dispatch_kind` or resolved/failed outcome):
 
-```
-## [<DATE>] manual | conflict-resolver — N rebased, M requeued, K lint-fixed, L failed
-
-(one-line summary per PR if helpful, e.g. "pr#28 rebased; pr#46 requeued; pr#47 lint-fix broken-wikilink; pr#31 unresolvable")
+```bash
+gh pr comment "$PR_NUM" --body "conflict-resolver $(date -u +%Y-%m-%dT%H:%M:%SZ) [$DISPATCH_KIND]: <one-line outcome — e.g. 'rebased onto main a1b2c3d, resolved append-only conflict in wiki/log.md, force-pushed d4e5f6a, auto-merge re-enabled' | 'requeued via maybe_automerge.py' | 'lint-fix broken-wikilink ×6 in wiki/reports/health-2026-10-25.md, pushed 00936d0' | 'unresolved: <reason>'>"
 ```
 
-Skip the log entry when the scan returned `[]`. The push event itself is the audit trail; flooding the log with no-op entries makes the real ones harder to find.
+**Do not append to `wiki/log.md`. Do not create a branch. Do not open a PR.** Until 2026-10-25 this step appended a `manual | conflict-resolver` entry to `wiki/log.md`, which in practice meant a fresh `claude/*` branch plus a one-line PR per fire. Each such PR conflicted on `wiki/log.md` with the next one, the merge re-fired this routine, which then rebased its *own* earlier log PR and logged *that* — six fires and six PRs in one morning, four of them pure self-maintenance. Writing the record where the work happened (the PR) breaks the loop: a comment is not a push to `main`, so it cannot re-trigger the routine. To review the resolver's activity: `gh pr list --state all --search "conflict-resolver in:comments" --limit 50`.
+
+Skip Step 5 entirely when the scan returned `[]`. The push event itself is the audit trail for no-op fires.
 
 ## Hard rules
 
@@ -163,5 +163,6 @@ Skip the log entry when the scan returned `[]`. The push event itself is the aud
 - **Dispatch sequentially.** Never use the `dispatching-parallel-agents` skill here — the handlers share the merge state of `main` and a parallel rebase/force-push race is exactly the kind of bug this routine exists to prevent.
 - **One scan per session.** Do not re-run `conflict_resolver_scan.py` between dispatches; the next push event will re-scan with fresh state. Re-scanning mid-session would burn redundant `gh api` calls (including the `gh run view --log-failed` calls the BLOCKED-PR classifier needs) without adding signal.
 - **The subagent owns git mutations.** The orchestrator never runs `git push`, `git rebase`, or `gh pr merge` directly — the only exception is the deterministic `requeue` path, which runs `python scripts/maybe_automerge.py` (which internally calls `gh pr merge --auto` through `apply_static_gate`). If a subagent returns `resolved: false`, leave the PR alone — a human looks, or the next push event re-tries.
+- **Never create a branch or open a PR from this orchestrator.** The only git mutations in a resolver session are the subagents' force-pushes to the PR branch they were dispatched for. This routine produces no commits of its own — not to `wiki/log.md`, not to `wiki/reports/`, not anywhere. A resolver-authored PR is itself a stuck-PR generator (see Step 5).
 - **Cost expectation:** ~5-10 push-to-`main` events per day on a busy day. Each fires this orchestrator (Sonnet). 90%+ of fires scan to empty and exit in <10s of orchestrator time. The `requeue` path is zero-LLM; Opus tokens only burn on `rebase` and `lint_fix` dispatches — typically 1-3 of each per day combined.
-- **Divergence discipline** — not directly applicable here (no synthesis pages are written by this routine), but if you append a `wiki/log.md` entry, include enough context that a future researcher can trace `conflict-resolver` back to the PRs and SHAs involved.
+- **Divergence discipline** — not applicable here (no wiki pages are written by this routine). The PR comment from Step 5 must still carry enough context (dispatch kind, SHAs, files) that a future researcher can reconstruct what happened from the PR alone.

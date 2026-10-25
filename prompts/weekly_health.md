@@ -76,7 +76,9 @@ TOOL_CHANGES_MD=$(uv run wikipilot tool-changes --since "$SINCE" --format md)
 
 ## Step 6: Write the health report
 
-Write `wiki/reports/health-${DATE}.md` using `wikipilot.log.write_health_report`. Include: stale page count and list, citation-density failures, new disputes filed (with `[[page]]` links), orphan pages, broken wikilinks, runtime, token usage by tier, and `creator_tooling_changes=TOOL_CHANGES_MD` (rendered as `## Creator tooling changes`; the empty-delta sentinel is expected on quiet weeks).
+Write `wiki/reports/health-${DATE}.md` using `wikipilot.log.write_health_report`. Include: stale page count and list, citation-density failures, new disputes filed (with `[[page]]` links), orphan pages, broken wikilinks, runtime, token usage by tier, and `creator_tooling_changes=TOOL_CHANGES_MD` (rendered as `## Creator tooling changes`; the empty-delta sentinel is expected on quiet weeks — paste the command output verbatim).
+
+**Wikilinks in the report are page slugs, never paths or filenames**: `[[minimax-h3]]`, not `[[entities/minimax-h3.md]]`. The scanner's JSON `page` field is a path — convert it to the bare slug (basename without `.md`) before writing it as a wikilink. On 2026-10-25 six path-style links in the health report failed `broken-wikilink` in CI and needed an Opus lint-fix dispatch to land the PR.
 
 ## Step 7: Commit, PR, gate
 

@@ -10,8 +10,10 @@ from click.testing import CliRunner
 
 from wikipilot.cli import main
 from wikipilot.compare import (
+    NOTES_HEADING,
     UNKNOWN_VALUE,
     aggregate_entity_fields,
+    extract_preserved_notes,
     regenerate_comparison,
     render_comparison_table,
     write_comparison_page,
@@ -209,6 +211,97 @@ class TestRegenerateComparison:
             encoding="utf-8"
         )
         assert "| 8 |" in regen_text
+
+
+class TestNotesPreservation:
+    """Regen rewrites everything above ``## Notes``; the section itself survives."""
+
+    NOTES = (
+        "## Notes\n\n"
+        "**Note on non-roster models (2026-09-04):** [[gpt-6-astra]] is not in the roster; "
+        "it costs $10/$50 per Mtoken [[benchmarking-gpt-6-astra-b4150b17]].\n\n"
+        "### Sub-heading under notes\n\n"
+        "- a bullet that must survive\n\n"
+        "_no contradictions or gaps known yet (last reviewed: 2026-09-08)_\n"
+    )
+
+    def _page_with_notes(self, vault: Vault) -> Path:
+        _seed_entity(vault, "alpha", title="Alpha", extra={"cost": "5"})
+        _seed_entity(vault, "beta", title="Beta", extra={"cost": "8"})
+        path = write_comparison_page(
+            vault,
+            "cost-comparison",
+            title="Cost comparison",
+            entity_slugs=["alpha", "beta"],
+            fields=["cost"],
+            today=date(2026, 5, 11),
+        )
+        page = Page.read(path)
+        # Replace the seeded default notes with richer hand-written content.
+        head = page.content[: page.content.index(NOTES_HEADING)]
+        page.content = head + self.NOTES
+        page.write()
+        return path
+
+    def test_new_page_seeds_notes_section_with_sentinel(self, sample_vault: Vault) -> None:
+        _seed_entity(sample_vault, "alpha", title="Alpha", extra={"cost": "5"})
+        _seed_entity(sample_vault, "beta", title="Beta", extra={"cost": "8"})
+        path = write_comparison_page(
+            sample_vault,
+            "cost-comparison",
+            title="Cost comparison",
+            entity_slugs=["alpha", "beta"],
+            fields=["cost"],
+            today=date(2026, 5, 11),
+        )
+        text = path.read_text(encoding="utf-8")
+        assert text.rstrip().endswith(
+            "## Notes\n\n_no contradictions or gaps known yet (last reviewed: 2026-05-11)_"
+        )
+
+    def test_regen_preserves_notes_verbatim(self, sample_vault: Vault) -> None:
+        path = self._page_with_notes(sample_vault)
+        # Change an upstream value so the table really is rewritten.
+        beta = Page.read(sample_vault.dir_for("entities") / "beta.md")
+        beta.metadata["cost"] = "9"
+        beta.write()
+        regenerate_comparison(sample_vault, "cost-comparison", today=date(2026, 6, 1))
+        text = path.read_text(encoding="utf-8")
+        assert "| 9 |" in text
+        assert text.count(NOTES_HEADING) == 1
+        assert text.rstrip().endswith(self.NOTES.rstrip())
+        # Notes come after the table, never before it.
+        assert text.index("| [[beta]] |") < text.index(NOTES_HEADING)
+
+    def test_regen_twice_is_stable(self, sample_vault: Vault) -> None:
+        path = self._page_with_notes(sample_vault)
+        regenerate_comparison(sample_vault, "cost-comparison", today=date(2026, 6, 1))
+        first = path.read_text(encoding="utf-8")
+        regenerate_comparison(sample_vault, "cost-comparison", today=date(2026, 6, 1))
+        assert path.read_text(encoding="utf-8") == first
+
+    def test_regen_without_notes_is_unchanged_behaviour(self, sample_vault: Vault) -> None:
+        _seed_entity(sample_vault, "alpha", title="Alpha", extra={"cost": "5"})
+        _seed_entity(sample_vault, "beta", title="Beta", extra={"cost": "8"})
+        path = write_comparison_page(
+            sample_vault,
+            "cost-comparison",
+            title="Cost comparison",
+            entity_slugs=["alpha", "beta"],
+            fields=["cost"],
+            today=date(2026, 5, 11),
+        )
+        page = Page.read(path)
+        page.content = page.content[: page.content.index(NOTES_HEADING)].rstrip() + "\n"
+        page.write()
+        regenerate_comparison(sample_vault, "cost-comparison", today=date(2026, 6, 1))
+        assert NOTES_HEADING not in path.read_text(encoding="utf-8")
+
+    def test_extract_notes_requires_heading_at_column_zero(self) -> None:
+        assert extract_preserved_notes("## Summary\n\nblah\n") is None
+        assert extract_preserved_notes("## Summary\n\n> ## Notes quoted\n") is None
+        assert extract_preserved_notes("## Summary\n\n## Notes\n\nkeep\n") == "## Notes\n\nkeep\n"
+        assert extract_preserved_notes("## Notes extra words\n") is None
 
 
 class TestCompareCli:

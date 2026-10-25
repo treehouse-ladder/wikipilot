@@ -27,7 +27,7 @@ python scripts/preflight.py
 
 Preflight verifies: `gh` is authenticated, `uv` is installed, `qmd` is installed and indexed, `wiki/` is writable, `topics.yaml` parses, every enabled topic has a `wiki/topics/<id>/purpose.md`, and required env vars are set (`WIKIPILOT_AUTO_MERGE`, `CLAUDE_CODE_FORK_SUBAGENT`).
 
-Then record the `main` revision the run starts from — Step 6 diffs the tool-entity registry against it:
+Then record the `main` revision the run starts from — Step 6 uses it as the fallback baseline for the tool-entity delta:
 
 ```bash
 git fetch origin main
@@ -154,10 +154,12 @@ Before starting the report PR, every topic PR must reach a terminal state. Poll 
 ```bash
 for entry in topic_results:
   PR_NUM="${entry.pr_number}"
-  TIMEOUT_SEC=600  # 10 min; merge queue typically completes in <3 min for parallel-mergeable PRs
+  TIMEOUT_SEC=900  # 15 min; merge queue typically completes in <3 min for parallel-mergeable PRs
   DEADLINE=$(( $(date +%s) + TIMEOUT_SEC ))
+  REQUEUED=0
   while [ $(date +%s) -lt $DEADLINE ]; do
-    STATE=$(gh pr view "$PR_NUM" --json state,mergedAt -q '.state')
+    read -r STATE MSS AUTO < <(gh pr view "$PR_NUM" --json state,mergeStateStatus,autoMergeRequest \
+      -q '[.state, .mergeStateStatus, (.autoMergeRequest // "null" | tostring)] | @tsv')
     if [ "$STATE" = "MERGED" ]; then
       mark "${entry.topic_id}" merged
       break
@@ -166,12 +168,22 @@ for entry in topic_results:
       mark "${entry.topic_id}" closed_without_merge
       break
     fi
+    # Self-heal the orphan-CLEAN case (2026-10-25: pr#1024 sat CLEAN with no
+    # auto-merge request for 4 h until the Conflict Resolver requeued it, and
+    # this loop timed out). Same deterministic gate the resolver runs — once.
+    if [ "$MSS" = "CLEAN" ] && [ "$AUTO" = "null" ] && [ "$REQUEUED" = 0 ] \
+       && [ $(( DEADLINE - $(date +%s) )) -lt $(( TIMEOUT_SEC - 60 )) ]; then
+      python scripts/maybe_automerge.py --pr "$PR_NUM" --route daily_research || true
+      REQUEUED=1
+    fi
     sleep 15
   done
   if not marked: mark "${entry.topic_id}" timed_out
 ```
 
-After this step, `topic_results` partitions cleanly into `merged_topics` (eligible for log/index/report) and `failed_topics` (will be surfaced in the report's Notes section).
+The requeue fires at most once per PR and only after the PR has been `CLEAN` without an auto-merge request for 60 s (GitHub's merge-queue snapshot can lag the `gh pr merge --auto` call by a few seconds; 60 s is well past that). It is the same `apply_static_gate` path the in-routine shim and the Conflict Resolver use, so it cannot bypass the trust check or the human-only-path block.
+
+After this step, `topic_results` partitions cleanly into `merged_topics` (eligible for log/index/report) and `failed_topics` (will be surfaced in the report's Notes section). **Do not start Step 6 while any topic PR is still `OPEN` and within its deadline** — the report branch is cut from post-merge `main`, and a topic that merges *after* the report is cut is invisible to that day's `tool-changes` delta and index update.
 
 ## Step 6: Report PR — log + index + reports/<DATE>.md
 
@@ -203,12 +215,18 @@ After all topics are aggregated:
    BENCH_TABLE=$(awk '/^---$/{c++; next} c>=2' wiki/comparisons/benchmark-leaders.md)
    ```
 
-3b. **Compute the creator-tooling delta.** Zero LLM tokens: `wikipilot tool-changes` diffs every `profile: tool` entity's tracked fields on the current checkout against the `main` revision recorded in Step 1, and reports new / removed tool entities. The markdown goes into the report; the JSON is what the benchmark scout consumes.
+3b. **Compute the creator-tooling delta.** Zero LLM tokens: `wikipilot tool-changes` diffs every `profile: tool` entity's tracked fields on the current checkout against a baseline revision, and reports new / removed tool entities. The markdown goes into the report; the JSON is what the benchmark scout consumes.
+
+   The baseline is **the previous daily report's merge commit**, not the SHA from Step 1. By construction that is the last point the feed was reported from, so a topic PR that merged *after* yesterday's report was cut (e.g. a Conflict Resolver requeue hours later) is picked up today instead of falling between two run-start snapshots and never being reported. `MAIN_SHA_AT_START` is only the fallback for a vault that has never produced a daily report.
 
    ```bash
-   TOOL_CHANGES_MD=$(uv run wikipilot tool-changes --since-rev "$MAIN_SHA_AT_START" --format md)
-   uv run wikipilot tool-changes --since-rev "$MAIN_SHA_AT_START" --format json > /tmp/tool-changes.json
+   PREV_REPORT_SHA=$(git log origin/main -1 --format=%H --grep='^feat(wiki/reports): daily research')
+   : "${PREV_REPORT_SHA:=$MAIN_SHA_AT_START}"   # first-ever run fallback
+   TOOL_CHANGES_MD=$(uv run wikipilot tool-changes --since-rev "$PREV_REPORT_SHA" --format md)
+   uv run wikipilot tool-changes --since-rev "$PREV_REPORT_SHA" --format json > /tmp/tool-changes.json
    ```
+
+   **Paste `TOOL_CHANGES_MD` into `creator_tooling_changes` verbatim.** Never summarise it, annotate it, or substitute prose for it — the empty-delta sentinel the command prints on a quiet day is a valid and expected value, and a hand-written "pending" note (2026-10-25) is worse than the sentinel because it breaks the machine-readable contract the benchmark scout depends on.
 
 4. **Dispatch the `daily-brief-curator` (Opus) subagent.** Assemble its inputs:
 

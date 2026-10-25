@@ -542,6 +542,8 @@ uv run wikipilot compare regen cost-comparison
 
 Idempotent: re-reads the comparison page's own `comparison_of` / `compare_fields`, queries each entity, rewrites the table. `last_updated` bumps to today; `last_verified` is left alone (regen is mechanical, not a re-verification of the underlying claims). When the page has `highlight_leaders: true`, a "Leader changes since last regen" paragraph is appended below the table by diffing against the previous git revision of the same file — useful for spotting #1 swaps day-over-day.
 
+**Regen rewrites everything above `## Notes` and preserves `## Notes` to end-of-file verbatim.** That trailing section is the one place for hand-written content on a comparison page: dated caveats, "model X is not in the roster" call-outs, benchmark re-scale notes, the divergence sentinel. `compare new` seeds it with the sentinel. Anything you write inside `## Summary` or between the glosses and the table is generated prose and will be gone on the next daily run — on 2026-10-25 the first automated regen wiped seven weeks of notes that had accumulated in `## Summary` on `benchmark-leaders` and `cost-comparison`; they were restored from `git show <pre-regen-sha>:wiki/comparisons/<slug>.md` under `## Notes`. If that ever happens again, the recovery is the same one-liner plus a `## Notes` heading.
+
 Both commands write to `wiki/comparisons/<slug>.md`. Prefer slugs that read as comparison nouns (`cost-comparison`, `agentic-ide-comparison`, `text-to-3d-comparison`) over verbs.
 
 ### Persistent comparisons regenerated daily
