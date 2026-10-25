@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-25] manual | conflict-resolver — 0 rebased, 0 requeued, 1 lint-fixed, 0 failed
+
+pr#1018 (weekly health) lint-fixed: 6 broken-wikilink errors in health-2026-10-25.md used path-style [[entities/minimax-h3.md]] links instead of slug style; rewrote to canonical slugs, pushed 00936d0, auto-merge enabled
+
 ## [2026-10-24] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#1011 merge-conflict resolved — wiki/log.md had two same-day conflict-resolver entries; merge commit pushed to claude/youthful-mayer-5d0t6j; auto-merge enabled via MCP
