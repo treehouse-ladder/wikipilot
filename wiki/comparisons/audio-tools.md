@@ -21,9 +21,10 @@ title: Audio tools (speech, music, SFX)
 
 ## Summary
 
-This comparison aggregates `access, pricing, commercial_use, status, arena_rank` across 2 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen audio-tools` to refresh.
+This comparison aggregates `access, pricing, commercial_use, status, arena_rank` across 3 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen audio-tools` to refresh.
 
 | Entity | access | pricing | commercial_use | status | arena_rank |
 | --- | --- | --- | --- | --- | --- |
 | [[inworld-realtime-tts-2]] | api | unknown | unknown | active | Artificial Analysis Speech Arena (realtime TTS): #1 (2026-06-11) |
 | [[elevenlabs]] | unknown | unknown | unknown | active | _none_ |
+| [[eleven-music]] | api | $0.15/min, 5-min cap per generation (2026-10-25) | allowed on all paid plans except Studio Games self-serve (2026-10-25) | active | _none_ |
