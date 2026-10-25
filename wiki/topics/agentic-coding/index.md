@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-23
+last_updated: 2026-10-25
 sources:
   - "[[release-0-163-0-openai-codex-255cde9f]]"
   - "[[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]"
@@ -387,8 +387,10 @@ sources:
   - "[[release-0-164-0-openai-codex-b28a06ef]]"
   - "[[training-the-whole-agent-not-just-the-model-16ab0f9e]]"
   - "[[what-does-a-harness-buy-tokens-mostly-da56a135]]"
+  - "[[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]"
+  - "[[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]"
 last_verified: 2026-10-23
-last_updated: 2026-10-24
+last_updated: 2026-10-25
 freshness_window_days: 30
 ---
 
@@ -435,7 +437,7 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 
 > The Environments API is available in beta, environments support up to 300 repos, and large environments load 5x faster. [[cloud-agent-canvases-and-environment-improvements-cursor-a39e7daa]]
 
-**Best-practice primitives.** Fork-based delegation is now on by default across **every surface**: as of v2.1.302, `subagent_type: "fork"` (full-conversation + prompt-cache inheritance) is the default spawn in `claude -p`, the Agent SDK, the desktop app, and VS Code [[release-v2-1-302-anthropics-claude-code-9951decf]] — graduating from its prior cloud-routine-only scope [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]. v2.1.300 adds idle compaction: a 200K+ token session left idle for ~54 minutes is compacted before its one-hour prompt cache expires [[release-v2-1-300-anthropics-claude-code-5dc7e9d0]], preventing silent cache invalidation on long-running unattended sessions. The dominant payoff of subagents is context preservation, not raw parallelism, a preference backed by OrchBench's execution-free finding that "preserving task-critical information is more important than simply increasing the number of agents" [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]. Agent Skills are a portable open standard [[introducing-agent-skills-anthropic-5fb2ccf0]], and instruction-file configuration has converged: as of v2.1.277 a project with no CLAUDE.md falls back to reading AGENTS.md, putting Claude Code on the same standard as Codex [[release-v2-1-277-anthropics-claude-code-01cd6a49]].
+**Best-practice primitives.** Fork-based delegation is now on by default across **every surface**: as of v2.1.302, `subagent_type: "fork"` (full-conversation + prompt-cache inheritance) is the default spawn in `claude -p`, the Agent SDK, the desktop app, and VS Code [[release-v2-1-302-anthropics-claude-code-9951decf]] — graduating from its prior cloud-routine-only scope [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]. v2.1.300 adds idle compaction: a 200K+ token session left idle for ~54 minutes is compacted before its one-hour prompt cache expires [[release-v2-1-300-anthropics-claude-code-5dc7e9d0]], preventing silent cache invalidation on long-running unattended sessions. The dominant payoff of subagents is context preservation, not raw parallelism, a preference backed by OrchBench's execution-free finding that "preserving task-critical information is more important than simply increasing the number of agents" [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]. The first cross-tool empirical cost/benefit study of *native* dynamic concurrency now sharpens *when* to fan out: across 2,124 executions and 11.2 billion tokens over Codex Multiagent v2, Claude Code Dynamic Workflow, and Kimi Code AgentSwarm, dynamic concurrency helps only on long-horizon work and is flat-to-negative on bounded tasks, at 1.4–3.3x the tokens of sequential execution [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]] — so the current recommended best practice is **conservative concurrency defaults with runtime scheduling**, reserving fan-out for long-horizon tasks rather than bounded ones, consistent with Claude Code's own walkback to "fewer than 15 agents" [[claude-code-release-notes-98ffc52d]]. A complementary NP-Bench study adds a third coordination design alongside worktree-per-agent (Cursor) and write-time CRDT (AgentRoom): proactive pre-execution scheduling, where a planner partitions work into disjoint scopes and orders merges along the producer-consumer dependency graph *before any agent runs*, raising clean integration from 1/9 to 9/9 and cutting merge conflicts 13→0 in simulation, and verifying coordination protocols rather than catching the merge-time failure where each agent passes its own tests but the merged result is broken [[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]. Agent Skills are a portable open standard [[introducing-agent-skills-anthropic-5fb2ccf0]], and instruction-file configuration has converged: as of v2.1.277 a project with no CLAUDE.md falls back to reading AGENTS.md, putting Claude Code on the same standard as Codex [[release-v2-1-277-anthropics-claude-code-01cd6a49]].
 
 > Fork subagents are now on by default in claude -p, the Agent SDK, the desktop app and VS Code. [[release-v2-1-302-anthropics-claude-code-9951decf]]
 
@@ -444,6 +446,10 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Added idle compaction in the terminal: a 200K+ token conversation left idle for about 54 minutes is compacted before its one-hour prompt cache expires. [[release-v2-1-300-anthropics-claude-code-5dc7e9d0]]
 
 > We find that preserving task-critical information is more important than simply increasing the number of agents, and a systematic study of orchestration strategies across workflows containing up to 1,000 subtasks reveals previously hidden coordination failures. [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]
+
+> Our results show that dynamic concurrency benefits most on long-horizon tasks, while bounded tasks often see little or negative improvement. [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]
+
+> Each passes its own tests while the merged result is broken, a failure mode single-agent evaluation misses. [[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]
 
 > Skills are folders that include instructions, scripts, and resources that Claude can load when needed. They can be used across Claude apps, Claude Code, and the API. [[introducing-agent-skills-anthropic-5fb2ccf0]]
 
@@ -504,6 +510,18 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-10-25
+
+Two October 2026 arXiv papers on parallel-subagent coordination sharpen the wiki's standing 'context-preservation over raw parallelism' position with the first cross-tool empirical cost/benefit data and a new proactive-scheduling coordination design. Neither changes the current leader; the first does refine a recommended best practice.
+
+**Dynamic concurrency is flat-to-negative on bounded tasks — "When Sub-Agents Work in Parallel" (arXiv:2610.10263).** A controlled study of the *native* dynamic-concurrency mechanisms of three agentic CLIs — Codex Multiagent v2, Claude Code Dynamic Workflow, and Kimi Code AgentSwarm — ran 2,124 executions across 354 tasks (226 repository-generation, 28 sustained-evolution, and 100 bounded SWE-bench Verified tasks), recording 11.2 billion tokens (~$20,780) [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]. Dynamic concurrency helps only on long-horizon work and is flat-to-negative on bounded tasks, at 1.4-3.3x the tokens of sequential execution, with 13 concurrency-specific failure modes across 28 observable patterns catalogued. This is the first cross-tool empirical corroboration of OrchBench's finding that preserving task-critical information matters more than agent count, and it directly quantifies the fan-out cost tax.
+
+> Our results show that dynamic concurrency benefits most on long-horizon tasks, while bounded tasks often see little or negative improvement. [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]
+
+**Pre-execution scheduling as a third coordination design — "Verifying Coordination in Parallel Coding Agents: NP-Bench" (arXiv:2610.07261).** Nerveplane's planner partitions work into disjoint scopes and orders merges along the producer-consumer dependency graph *before any agent runs*; on NP-Bench this raised clean-integration from 1/9 to 9/9 and cut merge conflicts 13→0 in simulation [[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]. This adds a proactive-scheduling design point to the worktree-per-agent (Cursor) vs write-time-CRDT (AgentRoom) coordination debate the wiki already tracks.
+
+> Each passes its own tests while the merged result is broken, a failure mode single-agent evaluation misses. [[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]
 
 ### Updates 2026-10-24
 
@@ -3185,6 +3203,8 @@ lint stays quiet until each page actually exists:
 - [[release-v2-1-305-anthropics-claude-code-11a9e9ae]] adds an opt-in `sandbox.allowNestedUserNamespaces` setting that, per its own release notes, lets sandboxed Linux commands create user namespaces and thereby weakens the sandbox's file protections (to run Chromium / rootless podman); [[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]] presents OS-level sandboxing (bubblewrap/seatbelt + network proxy) as the containment layer that bounds a prompt-injected agent's blast radius. A user-facing toggle that relaxes file protections widens exactly that blast radius for the sessions that enable it. Status: unresolved
 - [[battle-dronesa-vibe-coded-rts-with-audio-based-multiplayer-d0f0045f]] reports a practitioner shipping a 321-commit RTS having 'reviewed almost none of the code', corroborating [[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]]'s claim that line-by-line human review no longer scales; [[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]] finds 94% of developers fail to detect AI-agent sabotage, implying unreviewed agent output leaves an assurance gap. Battle Drones is a low-stakes hobby game where the gap carries little risk, so it does not resolve whether the same reduced-review practice is safe for production code. Status: unresolved
 - [[training-the-whole-agent-not-just-the-model-16ab0f9e]] claims an adapted harness buys real accuracy (co-trained HarnessAdapt-RL beats GRPO by 9.8pp on SWE-bench Verified, and removing the harness skills at deployment costs up to 7.7pp); [[what-does-a-harness-buy-tokens-mostly-da56a135]] claims swapping off-the-shelf harnesses with a fixed model buys mostly tokens, not accuracy (Claude Code and mini-SWE-agent within 5 points; cost varies up to 3x). The two measure different regimes — train-time harness co-evolution vs. inference-time harness swap. Status: unresolved
+- [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]] finds, across 2,124 executions of Codex, Claude Code, and Kimi Code, that dynamic concurrency is flat-to-negative on bounded SWE-bench Verified tasks and helps only on long-horizon work, at 1.4-3.3x the token cost of sequential execution; vendor dynamic-workflow positioning frames large fan-out as a general capability. Status: unresolved — empirical study scopes benefit to long-horizon tasks, making fan-out a net loss on bounded ones (consistent with OrchBench).
+- [[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]] argues parallel-agent coordination should be solved proactively by pre-execution scope partitioning (planner-first); prior wiki entries track write-time CRDT (AgentRoom) and worktree isolation (Cursor) as the shipping designs. Status: unresolved — three competing coordination designs with no head-to-head comparison across all three.
 
 ## Open questions
 
@@ -3532,6 +3552,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does v2.1.304's tool-search-on-by-default-behind-a-custom-ANTHROPIC_BASE_URL [[release-v2-1-304-anthropics-claude-code-637ddeb3]] change prompt-cache behavior for self-hosted/proxied setups, given deferred tool schemas are injected into context on demand rather than listed up front?
 - [ ] Does the HarnessAdapt-RL co-training result (harness changes buy accuracy) hold for harnesses applied to an already-post-trained frontier model, or is the +9.8pp gain contingent on jointly training a small (9B) base with its harness?
 - [ ] Would the "What Does a Harness Buy? Tokens, Mostly" within-5-points finding survive on long-horizon / multi-repo tasks (vs SWE-bench Verified single-repo issue resolution), where harness context management may matter more?
+- [ ] Does [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]'s 'flat-to-negative on bounded tasks' result hold for context-inheriting fork subagents (the default in Claude Code), or is it specific to the fresh-context fan-out the three studied mechanisms use?
+- [ ] Nerveplane's pre-execution scheduling [[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]] depends on each work item's declared scope being accurate — what is the false-scope/under-declaration rate when an agent touches files outside its declared scope mid-task?
 
 ## See also
 

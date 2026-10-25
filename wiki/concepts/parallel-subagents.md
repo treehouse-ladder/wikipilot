@@ -32,7 +32,9 @@ sources:
   - "[[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]"
   - "[[release-v2-1-296-anthropics-claude-code-e75aaf1e]]"
   - "[[release-v2-1-307-anthropics-claude-code-1f4559e4]]"
-last_updated: 2026-10-24
+  - "[[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]"
+  - "[[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]"
+last_updated: 2026-10-25
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---
@@ -146,6 +148,12 @@ Claude Code v2.1.271 (2026-09-14) adds a subagent context-hygiene control, `omit
 **Subagent execution vs inline skill loading (2026-09-22).** An empirical study compares two ways of executing reusable knowledge in long-horizon tasks: loading a skill's instructions inline into the main context (the default agent-skills pattern) versus spawning a fresh-context subagent [[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]. The paper finds subagent execution wins when a skill exposes a clear input-output contract and degrades more gracefully as distracting tools accumulate, with subagent invocation lowering peak context length on over 80% of tasks on stronger models (GPT-5.3 Codex, Kimi K2.6) [[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]. The cost is coordination overhead — extra tokens to pass state between the main agent and its subagents — trading higher total token count for reduced peak context. This finding operationalizes the context-preservation-over-parallelism thread this page tracks (Willison's per-task model downgrade, fork-by-default) as an explicit skill-execution architectural choice: spawn a fresh subagent rather than loading the skill inline when the horizon is long enough that inline instructions degrade reasoning quality.
 
 > Agent skills are typically executed by loading their skill instructions into an agent's context and relying on the agent to follow them. As task horizons grow, however, this approach becomes increasingly brittle, because reasoning quality degrades as more information accumulates in the context window. [[subagents-vs-agent-skills-executing-reusable-knowledge-for-long-horizon-agentic-tasks-c9c36d9e]]
+
+**The first cross-tool empirical cost/benefit study of dynamic concurrency confirms context-preservation beats raw parallelism (October 2026).** A controlled study of the native dynamic-concurrency mechanisms of three agentic CLIs — Codex Multiagent v2, Claude Code Dynamic Workflow, and Kimi Code AgentSwarm — across 2,124 executions and 11.2 billion tokens finds dynamic concurrency helps only on long-horizon work and is flat-to-negative on bounded tasks, at 1.4-3.3x the token cost of sequential execution [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]. This empirically corroborates OrchBench's execution-free finding that preserving task-critical information matters more than agent count, and directly quantifies the fan-out cost tax this page has tracked across per-task model downgrades, fork-by-default, and bounded concurrency caps. A separate NP-Bench study adds a third coordination design to the worktree-per-agent / write-time-CRDT debate: proactive pre-execution scheduling, where a planner partitions work into disjoint scopes and orders merges along the producer-consumer dependency graph before any agent runs, raising clean-integration from 1/9 to 9/9 and cutting merge conflicts from 13 to 0 in simulation [[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]].
+
+> Our results show that dynamic concurrency benefits most on long-horizon tasks, while bounded tasks often see little or negative improvement. [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]
+
+> Each passes its own tests while the merged result is broken, a failure mode single-agent evaluation misses. [[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]
 
 ## Disputes
 
