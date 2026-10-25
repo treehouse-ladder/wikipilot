@@ -86,6 +86,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[inworld-realtime-tts-2]]
 - [[elevenlabs]]
 - [[minimax-h3]]
+- [[kimi-k3.1-pro]]
+- [[gpt-image]]
+- [[nano-banana]]
+- [[ideogram]]
+- [[kling]]
+- [[seedance]]
+- [[eleven-music]]
+- [[pixellab]]
+- [[retro-diffusion]]
+- [[scenario]]
 
 ## Comparisons
 
@@ -94,6 +104,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[3d-tools]]
 - [[rig-and-motion-tools]]
 - [[audio-tools]]
+- [[image-tools]]
+- [[video-tools]]
 
 ## Sources
 
@@ -1470,6 +1482,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-10-25]]
 - [[2026-10-20]]
 - [[2026-10-16]]
 - [[2026-10-15]]
@@ -1769,3 +1782,26 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[matrix-game-4-0-harnessing-video-models-for-real-time-playable-game-worlds-a91b664b]]
 - [[ea-closes-bioware-after-30-years-of-game-development-14749523]]
 - [[rare-treats-diddy-kong-racing-revisited-david-wise-1xlp-vinyl-record-7488f032]]
+
+## 2026-10-25
+
+### New sources
+- [[kimi-k3-1-pro-launches-at-4th-on-the-intelligence-index-and-will-lead-open-weights-models-c9f225d9]]
+- [[kimi-k3-1-pro-intelligence-performance-price-analysis-fb7b4f33]]
+- [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]
+- [[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]
+- [[meshy-image-to-3d-api-meshy-t2-5-is-the-default-smart-topology-model-lowpoly-retires-30-oct-2026-82720073]]
+- [[gta-6-is-148-ahead-of-this-other-popular-aaa-game-so-far-9ff9d5c2]]
+- [[gamemaker-s-gmrt-runtime-will-soon-be-free-for-all-developers-0868e90e]]
+- [[what-game-audio-employers-are-looking-for-in-2026-3867f703]]
+- [[world-of-warcraft-announce-20th-anniversary-concert-tour-including-royal-albert-hall-gig-1ff707e7]]
+- [[loopsmith-1-21-0-press-play-and-hear-it-and-area-music-in-fmod-and-wwise-98a6af51]]
+- [[gpt-image-2-5-flare-and-sunburst-released-by-openai-cf34266e]]
+- [[nano-banana-2-lite-google-deepmind-image-generation-at-0-034-1k-images-3eac9764]]
+- [[ideogram-3-0-launches-with-open-weights-model-and-commercial-license-1f773818]]
+- [[kling-4-0-and-4-0-flash-video-generation-models-launch-b0391b87]]
+- [[seedance-wins-artificial-analysis-image-to-video-with-audio-output-benchmark-1-a7869d54]]
+- [[elevenlabs-music-0-15-per-minute-5-minute-cap-studio-games-plan-restriction-9f14fd6d]]
+- [[pixellab-sprite-generation-mcp-server-for-claude-code-1195a2d7]]
+- [[retro-diffusion-pixel-art-generation-from-0-03-per-image-mcp-server-available-0746b611]]
+- [[scenario-mcp-server-for-claude-code-codex-and-cursor-9bf7b8e5]]
