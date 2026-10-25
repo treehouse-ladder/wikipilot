@@ -3,7 +3,7 @@ title: "Claude Opus 4.8"
 kind: entity
 aliases: ["Opus 4.8", "claude-opus-4-8", "Claude Opus 4.8"]
 sources: ["[[introducing-claude-opus-4-8-5348a7d2]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[claude-opus-4-8-benchmarks-explained-60247f20]]", "[[how-opus-4-8-compares-to-claude-mythos-and-gpt-5-5-80451407]]", "[[nemotron-3-ultra-announced-high-speed-leading-us-open-weights-intelligence-81a38c83]]", "[[claude-fable-5-and-claude-mythos-5-e11fcea9]]", "[[claude-opus-4-8-max-intelligence-performance-price-analysis-27b7d2eb]]", "[[claude-in-microsoft-foundry-is-now-generally-available-9f490039]]", "[[claude-sonnet-5-strong-agentic-performance-at-a-higher-cost-per-task-c4346bb2]]", "[[swe-1-7-frontier-intelligence-at-a-fraction-of-the-cost-0d1dcf4a]]", "[[introducing-claude-opus-5-c34a3276]]", "[[meet-the-new-claude-opus-5-frontier-class-agentic-coding-and-computer-use-at-unchanged-opus-pricing-7f7892b3]]", "[[gamereplica-a-benchmark-for-black-box-visual-game-replication-by-vision-language-agents-761ca2bd]]"]
-last_updated: 2026-09-30
+last_updated: 2026-10-25
 last_verified: 2026-07-25
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
@@ -68,6 +68,11 @@ Independent placement detail (post-launch): Opus 4.8 scores 78.8% on CyberGym vu
 ## Disputes
 
 - [[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]] claims Opus 4.8 is the public AA Intelligence Index #1 at 61.4; [[claude-mythos-preview-d737ab91]] claims an unreleased Anthropic model (Claude Mythos Preview) is state-of-the-art on SWE-bench Verified (93.9%) and withheld from GA. Status: unresolved — the public leaderboard #1 (Opus 4.8) is not Anthropic's true capability ceiling while Mythos remains invitation-only.
+- Entity Summary claims fast mode runs at "$30/$150 per Mtoken — roughly 3x cheaper than the prior fast tier" citing [[introducing-claude-opus-4-8-5348a7d2]]; the re-ingested version of that source (fetched 2026-10-24) states "Pricing for fast mode is $10 per million input tokens and $50 per million output tokens" — the $30/$150 figure was a shell-variable corruption artifact from the original ingest (flagged in the 2026-10-24 manual re-ingest log entry). Status: unresolved (confidence: high; sweep: 2026-10-25) — the entity body still carries the corrupted figure.
+
+> From entity Summary: "fast mode in Claude Code running at 2.5x speed for $30/$150 per Mtoken — roughly 3x cheaper than the prior fast tier" [[introducing-claude-opus-4-8-5348a7d2]]
+
+> From source [[introducing-claude-opus-4-8-5348a7d2]] (fetched 2026-10-24): "Pricing for fast mode is $10 per million input tokens and $50 per million output tokens. Opus 4.8 launches alongside several new features. … fast mode for Opus 4.8—where the model can work at 2.5× the speed—is now three times cheaper than it was for previous models."
 
 ## Open questions
 

@@ -5,7 +5,7 @@ aliases: ["Realtime TTS-2", "Inworld TTS", "Inworld TTS-2"]
 sources:
   - "[[realtime-tts-2-a-new-frontier-voice-model-that-feels-as-real-as-you-68a9e733]]"
   - "[[bringing-personality-to-pixels-inworld-levels-up-game-characters-using-generative-ai-4d8d4bbc]]"
-last_updated: 2026-10-24
+last_updated: 2026-10-25
 last_verified: 2026-10-24
 freshness_window_days: 30
 profile: tool
@@ -41,7 +41,11 @@ An earlier NVIDIA post (May 2026) already placed Inworld's TTS at #1 on Artifici
 
 ## Disputes
 
-_no contradictions or gaps known yet (last reviewed: 2026-10-24)_
+- Entity Summary and quote block claim "sub-130 ms first-chunk latency" citing [[realtime-tts-2-a-new-frontier-voice-model-that-feels-as-real-as-you-68a9e733]]; the re-ingested version of that source (fetched 2026-10-24) states "Sub-200ms median time-to-first-audio for the TTS layer alone" — the sub-130ms figure was one of the claims flagged as no longer on the live page in the 2026-10-24 manual re-ingest log entry. Status: unresolved (confidence: high; sweep: 2026-10-25) — the entity still carries sub-130ms; the other source cited on this page ([[bringing-personality-to-pixels-inworld-levels-up-game-characters-using-generative-ai-4d8d4bbc]], May 2026) already reported sub-200ms, making this a confirmed two-source inconsistency.
+
+> From entity Summary/quote block: "#1 realtime TTS by real users on the Artificial Analysis Speech Arena with sub-130ms first-chunk latency" [[realtime-tts-2-a-new-frontier-voice-model-that-feels-as-real-as-you-68a9e733]]
+
+> From source [[realtime-tts-2-a-new-frontier-voice-model-that-feels-as-real-as-you-68a9e733]] (fetched 2026-10-24): "Sub-200ms median time-to-first-audio for the TTS layer alone."
 
 ## Open questions
 

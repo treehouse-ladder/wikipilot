@@ -2,7 +2,7 @@
 title: "GPT-5.6 Sol"
 kind: entity
 sources: ["[[gpt-5-6-frontier-intelligence-that-scales-with-your-ambition-e19fbb75]]", "[[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]]", "[[expanding-daybreak-as-the-cyber-defense-window-narrows-081601c2]]", "[[advancing-the-price-performance-frontier-with-gpt-5-6-dca7adc6]]", "[[benchmarking-gpt-6-astra-b4150b17]]", "[[gpt-6-astra-ties-leadership-with-claude-fable-5-1-in-both-flagship-indices-at-lower-cost-30caef79]]"]
-last_updated: 2026-09-10
+last_updated: 2026-10-25
 last_verified: 2026-08-23
 freshness_window_days: 30
 ---
@@ -31,6 +31,11 @@ On 2026-08-21 OpenAI cut GPT-5.6 Sol's price by over 20% for at least three mont
 
 - [[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]] asserts GPT-5.6 Sol (max) is "the new publicly-accessible #2 aggregate model (ahead of Opus 4.8 at 56 and GPT-5.5 at 55)" on AA Intelligence Index at launch (July 2026); [[opus-5-fable-5-level-intelligence-at-a-lower-cost-per-task-864f9aa5]] and [[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]] show Claude Opus 5 launched at 61 (v4.1)/63 (v4.1.1), placing it #1 and making GPT-5.6 Sol #3 at best as of August 2026. Status: unresolved — entity page still describes Sol as #2; needs refresh to reflect post-Opus-5 ranking.
 - [[gpt-5-6-benchmarks-across-intelligence-speed-and-cost-1b9cd635]] cites AA Intelligence Index **59** for GPT-5.6 Sol (max) at v4.1; [[launching-v4-1-1-of-the-artificial-analysis-intelligence-index-8f7aaf85]] rescaled all models under v4.1.1, placing Sol at **61**; the entity frontmatter (`aa_intelligence_index: 59`) has not been updated. Status: unresolved — frontmatter and Summary cite the pre-rescale value.
+- Entity Summary claims Sol's price was cut to "$4/$20 per Mtoken" citing [[advancing-the-price-performance-frontier-with-gpt-5-6-dca7adc6]], and the entity's quote block reproduces that claim; the re-ingested version of that source (fetched 2026-10-24) states "Sol pricing remains unchanged" and documents only Terra (−20%) and Luna (−80%) cuts. Status: unresolved (confidence: high; sweep: 2026-10-25) — the $4/$20 figure originated from the original ingest and was one of the three claims flagged as no longer on the live page in the 2026-10-24 re-ingest manual entry.
+
+> From entity Summary/quote block: "GPT-5.6 Sol now costs $4 per million input tokens and $20 per million output tokens, a 20% reduction in input pricing and a 33% reduction in output pricing." [[advancing-the-price-performance-frontier-with-gpt-5-6-dca7adc6]]
+
+> From source [[advancing-the-price-performance-frontier-with-gpt-5-6-dca7adc6]] (fetched 2026-10-24): "Sol pricing remains unchanged. Starting July 30, API pricing is $2 per million input tokens and $12 per million output tokens for Terra, and $0.20 per million input tokens and $1.20 per million output tokens for Luna."
 
 ## Open questions
 

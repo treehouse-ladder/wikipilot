@@ -56,7 +56,11 @@ Topic created. Seeded three speech/video tool entities ([[minimax-h3]], [[inworl
 
 ## Disputes
 
-_(none yet)_
+- Topic Summary claims MiniMax H3 "ranks #1 in Video Editing, #2 in Text-to-Video and #3 in Image-to-Video on the Artificial Analysis boards" citing [[minimaxai-minimax-h3-hugging-face-1f0e60fd]]; current version of that source (fetched 2026-10-24) contains no mention of "Artificial Analysis" or any arena rankings. Status: unresolved (confidence: high; sweep: 2026-10-25)
+
+> From topic Summary: "On the Artificial Analysis leaderboards H3 ranks #1 in Video Editing, #2 in Text-to-Video, and #3 in Image-to-Video."
+
+> From source [[minimaxai-minimax-h3-hugging-face-1f0e60fd]]: No mention of Artificial Analysis or arena rankings in any excerpt.
 
 ## Open questions
 
