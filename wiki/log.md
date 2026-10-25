@@ -4,6 +4,10 @@ Chronological, append-only record of every routine run. Parseable with `grep "^#
 
 ## [2026-10-25] manual | conflict-resolver — 2 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
+pr#1029 (claude/youthful-mayer-5em3iy): rebased onto main (76a3896), resolved append-only log conflict, force-pushed a23811a; auto-merge enabled. pr#1030 (claude/youthful-mayer-2k5t4i): rebased onto main, resolved append-only log conflict, force-pushed 75ff613; auto-merge enabled.
+
+## [2026-10-25] manual | conflict-resolver — 2 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
 pr#1018 (claude/health-2026-10-25) rebased onto bc8942f, auto-merge re-enabled; pr#1026 (claude/daily-2026-10-25/_report) auto-merged before rebase needed.
 
 ## [2026-10-25] health | weekly sweep — 7 disputes filed
