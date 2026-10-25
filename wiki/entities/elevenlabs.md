@@ -4,7 +4,7 @@ kind: entity
 aliases: ["Eleven Labs", "Eleven v3", "elevenlabs.io"]
 sources:
   - "[[ai-voice-for-games-elevenlabs-31e6ac62]]"
-last_updated: 2026-10-24
+last_updated: 2026-10-25
 last_verified: 2026-10-24
 freshness_window_days: 30
 profile: tool
@@ -53,3 +53,4 @@ _no contradictions or gaps known yet (last reviewed: 2026-10-24)_
 - [[generative-media-models]]
 - [[audio-tools]]
 - [[inworld-realtime-tts-2]]
+- [[eleven-music]]
