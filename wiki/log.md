@@ -6,6 +6,10 @@ Chronological, append-only record of every routine run. Parseable with `grep "^#
 
 pr#1018 (claude/health-2026-10-25) rebased onto bc8942f, auto-merge re-enabled; pr#1026 (claude/daily-2026-10-25/_report) auto-merged before rebase needed.
 
+## [2026-10-25] manual | conflict-resolver — 1 rebased, 0 requeued, 0 lint-fixed, 0 failed
+
+pr#1028 (claude/youthful-mayer-213033): dirty state (wiki/log.md conflict with health-sweep entries); rebased onto main; resolved append-only conflict; force-pushed to feb034a; auto-merge enabled.
+
 ## [2026-10-25] health | weekly sweep — 7 disputes filed
 
 Weekly health sweep. All 7 disputes from 2026-10-24 re-ingest of 8 sources corrupted by shell $N variable expansion. PR #1018.
