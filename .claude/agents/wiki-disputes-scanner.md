@@ -45,6 +45,7 @@ You run on the Weekly Health routine, one subagent per candidate set, dispatched
    - [[source-A]] claims X; [[source-B]] claims not-X. Status: unresolved (confidence: high|medium|low; sweep: YYYY-MM-DD)
    ```
    - Include a `>` quote from each side as evidence in the body of the dispute.
+   - **Wikilinks are page slugs, never paths or filenames**: `[[minimax-h3]]`, not `[[entities/minimax-h3.md]]` or `[[wiki/entities/minimax-h3]]`. The `page` field in the JSON summary below is the only place a path belongs. (2026-10-25: path-style links in the health report tripped `broken-wikilink` and cost an Opus lint-fix dispatch.)
 4. **NEVER auto-resolve a dispute.** Your job is to flag, not to decide. Disputes resolution is human-only.
 5. **Bump `last_updated` on every modified page** (not `last_verified` — you didn't re-verify the underlying claims).
 6. **Output a structured summary** as JSON in a fenced block:

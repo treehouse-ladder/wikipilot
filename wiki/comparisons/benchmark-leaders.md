@@ -63,3 +63,13 @@ This comparison aggregates `aa_intelligence_index, gdpval_aa_elo, swe_bench_veri
 | [[glm-5]] | 60 | 1524 | _unknown_ | _unknown_ | _unknown_ |
 | [[kimi-k2.6]] | 54 | 1520 | 0.802 | 0.413 | _unknown_ |
 | [[qwen3.7-max]] | 57 | _unknown_ | _unknown_ | _unknown_ | _unknown_ |
+
+## Notes
+
+**Note on non-roster models (2026-09-04):** [[gpt-6-astra]] (AA Index 61, OpenAI's new flagship as of Sep 3, 2026) is not in the roster and does not appear in this comparison. It ties [[gpt-5.6-sol]] at AA Index 61 but costs $10/$50 per Mtoken (2.5× Sol) [[benchmarking-gpt-6-astra-b4150b17]].
+
+**Note on AA Intelligence Index v4.3 (2026-09-08):** The v4.3 re-scale (which replaced τ³-Banking with AutomationBench-AA at 5% weight and upgraded Terminal-Bench to v4.0) changed the leaderboard ordering — [[claude-fable-5.1]] and [[gpt-6-astra]] are now tied at 53 on v4.3, down from their v4.2 scores of 57 and 55 respectively. The table above shows entity frontmatter values which are not yet updated to v4.3. [[announcing-the-artificial-analysis-intelligence-index-v4-3-58c45fc2]]
+
+**Note on regeneration (2026-10-25):** these notes were wiped by the first automated `compare regen` on 2026-10-25 and restored from git history. Everything above `## Notes` is generated and rewritten on every regen; only this section is preserved.
+
+_no contradictions or gaps known yet (last reviewed: 2026-09-08)_

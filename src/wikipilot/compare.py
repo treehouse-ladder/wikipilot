@@ -45,6 +45,24 @@ empty list (e.g. ``arena_rank: []`` on a tool profile = "no known board
 placement"). Distinct from :data:`UNKNOWN_VALUE`, which means the field is
 absent and should be backfilled."""
 
+NOTES_HEADING = "## Notes"
+"""Trailing section that :func:`regenerate_comparison` preserves verbatim.
+
+Everything above it is generated and rewritten on every regen; everything
+from this heading to end-of-file is hand-written (caveats, non-roster
+call-outs, the divergence sentinel) and carried over untouched. The
+2026-10-25 daily run wiped weeks of such notes that had been living inside
+``## Summary`` — this section exists so there is exactly one safe place."""
+
+_NOTES_HEADING_RE = re.compile(rf"^{re.escape(NOTES_HEADING)}[ \t]*$", re.MULTILINE)
+
+DEFAULT_NOTES_SECTION = (
+    f"{NOTES_HEADING}\n\n_no contradictions or gaps known yet (last reviewed: {{today}})_\n"
+)
+"""Seed for ``## Notes`` on freshly created comparison pages. The sentinel is
+harmless on comparisons (exempt from ``divergence-discipline``) and makes the
+convention visible from day one."""
+
 NO_GLOSS_PLACEHOLDER = "_no gloss configured_"
 """Placeholder for the legend block when a column has no matching entry in
 ``[frontier_models.benchmark_glosses]`` / ``[frontier_models.cost_glosses]``.
@@ -107,8 +125,13 @@ def render_comparison_table(
     glosses: dict[str, str] | None = None,
     leader_changes: str | None = None,
     slug: str | None = None,
+    preserved_tail: str | None = None,
 ) -> str:
     """Render a deterministic markdown table from ``aggregated`` data.
+
+    ``preserved_tail`` is an already-extracted trailing ``## Notes`` section
+    (see :func:`extract_preserved_notes`) appended verbatim as the final
+    block, so hand-written caveats survive regeneration.
 
     ``slug`` is the comparison page's own slug, used in the "re-run
     ``wikipilot compare regen <slug>``" hint; when omitted it is derived
@@ -192,7 +215,23 @@ def render_comparison_table(
     sections.extend(["", *table_lines])
     if leader_changes:
         sections.extend(["", "## Leader changes since last regen", "", leader_changes.strip()])
+    if preserved_tail:
+        sections.extend(["", preserved_tail.strip()])
     return "\n".join(sections) + "\n"
+
+
+def extract_preserved_notes(content: str) -> str | None:
+    """Return the trailing ``## Notes`` section of a comparison body, or ``None``.
+
+    The slice runs from the first ``## Notes`` heading (at column 0, on its
+    own line) to end-of-file, so sub-headings and multiple paragraphs under
+    it are all kept. Returns ``None`` when the body has no such heading, in
+    which case regeneration behaves exactly as before.
+    """
+    match = _NOTES_HEADING_RE.search(content)
+    if match is None:
+        return None
+    return content[match.start() :].strip() + "\n"
 
 
 def _coerce_numeric_columns(
@@ -280,6 +319,7 @@ def write_comparison_page(
         show_glosses=show_glosses,
         glosses=glosses,
         slug=slug,
+        preserved_tail=DEFAULT_NOTES_SECTION.format(today=today.isoformat()),
     )
     path = vault.page_path("comparison", slug)
     metadata: dict[str, Any] = {
@@ -328,6 +368,9 @@ def regenerate_comparison(
     same file via ``git show HEAD:<path>``; non-git environments (or
     a brand-new page) silently skip the section. ``git_runner`` is
     injectable for tests.
+
+    A trailing ``## Notes`` section in the existing body is preserved
+    verbatim (see :data:`NOTES_HEADING`); everything above it is rewritten.
     """
     today = today or date.today()
     path = vault.page_path("comparison", comparison_slug)
@@ -335,6 +378,7 @@ def regenerate_comparison(
         raise WikiError(f"no comparison page at {path}")
     page = Page.read(path)
     inputs = _read_inputs(page)
+    preserved_tail = extract_preserved_notes(page.content)
     aggregated = aggregate_entity_fields(vault, inputs.entity_slugs, inputs.fields)
     leader_changes_text: str | None = None
     if inputs.highlight_leaders:
@@ -358,6 +402,7 @@ def regenerate_comparison(
         glosses=glosses,
         leader_changes=leader_changes_text,
         slug=comparison_slug,
+        preserved_tail=preserved_tail,
     )
     page.metadata["last_updated"] = today
     page.write()
