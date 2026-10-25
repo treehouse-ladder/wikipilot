@@ -6,6 +6,10 @@ Chronological, append-only record of every routine run. Parseable with `grep "^#
 
 pr#1018 (claude/health-2026-10-25) rebased onto bc8942f, auto-merge re-enabled; pr#1026 (claude/daily-2026-10-25/_report) auto-merged before rebase needed.
 
+## [2026-10-25] manual | conflict-resolver — 1 rebased, 1 requeued, 0 lint-fixed, 0 failed
+
+pr#1025 requeued (auto-merge enabled; merged as 63ebf8d); pr#1018 rebase completed by conflict-resolver agent but human-merged (715bf204) before force-push.
+
 ## [2026-10-25] health | weekly sweep — 7 disputes filed
 
 Weekly health sweep. All 7 disputes from 2026-10-24 re-ingest of 8 sources corrupted by shell $N variable expansion. PR #1018.
