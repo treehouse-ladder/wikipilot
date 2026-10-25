@@ -5,7 +5,7 @@ aliases: ["MiniMax-H3", "Hailuo H3", "MiniMaxAI/MiniMax-H3"]
 sources:
   - "[[minimaxai-minimax-h3-hugging-face-1f0e60fd]]"
   - "[[minimax-releases-minimax-h3-an-omni-modal-video-model-that-generates-15-second-2k-clips-with-native-stereo-audio-53db5121]]"
-last_updated: 2026-10-24
+last_updated: 2026-10-25
 last_verified: 2026-10-24
 freshness_window_days: 30
 profile: tool
@@ -48,6 +48,17 @@ The Hugging Face repository (fetched two days later) carries the weights as two 
 ## Disputes
 
 - [[minimax-releases-minimax-h3-an-omni-modal-video-model-that-generates-15-second-2k-clips-with-native-stereo-audio-53db5121]] claims open weights were "promised, not shipped" and the API was the only access path; [[minimaxai-minimax-h3-hugging-face-1f0e60fd]] claims the 288 GB weights are published on Hugging Face. Status: resolved-toward-B — the HF card is the later snapshot (2026-08-03 vs 2026-08-01), so `access` lists both `api` and `open-weights`.
+- Entity Summary claims "two task-specific checkpoints totalling 288 GB" and cites [[minimaxai-minimax-h3-hugging-face-1f0e60fd]]; current version of that source (fetched 2026-10-24) contains no mention of "288 GB" or any checkpoint size. Status: unresolved (confidence: high; sweep: 2026-10-25)
+
+> From entity: "The Hugging Face repository (fetched two days later) carries the weights as two task-specific checkpoints totalling 288 GB under the MiniMax H3 Community License"
+
+> From source [[minimaxai-minimax-h3-hugging-face-1f0e60fd]]: "MiniMax H3 is released as two task-specific checkpoints. Each checkpoint contains a specialized Omni Transformer Model together with the required processor, tokenizer, text encoder, Visual VAE, and standalone Audio VAE components." (no size specified)
+
+- Entity Summary, quote block, and frontmatter arena_rank claim Artificial Analysis rankings (#1 Video Editing, #2 Text-to-Video, #3 Image-to-Video) citing [[minimaxai-minimax-h3-hugging-face-1f0e60fd]]; current version of that source (fetched 2026-10-24) contains no mention of "Artificial Analysis" or any arena rankings. Status: unresolved (confidence: high; sweep: 2026-10-25)
+
+> From entity quote block: "On the Artificial Analysis leaderboards H3 ranks #1 in Video Editing, #2 in Text-to-Video, and #3 in Image-to-Video."
+
+> From source [[minimaxai-minimax-h3-hugging-face-1f0e60fd]]: No mention of Artificial Analysis or arena rankings in any excerpt.
 
 ## Open questions
 

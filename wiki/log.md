@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-25] health | weekly sweep — 7 disputes filed
+
+Weekly health sweep. All 7 disputes from 2026-10-24 re-ingest of 8 sources corrupted by shell $N variable expansion. PR #1018.
+
 ## [2026-10-25] manual | conflict-resolver — 0 rebased, 1 requeued, 1 lint-fixed, 0 failed
 
 pr#1024 requeued (clean/CI-green → auto-merge enabled via REST, merged); pr#1018 lint-fix broken-wikilink (fix pre-existing from prior session, auto-merge re-queued; PR remains dirty — pending rebase dispatch on next push).
