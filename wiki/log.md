@@ -2,6 +2,35 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-25] daily | _report — 6 topics, 19 sources, 21 pages
+
+Daily research 2026-10-25 complete. All 6 topic PRs merged. image-tools and video-tools comparison pages created for the first time. See wiki/reports/2026-10-25.md.
+
+
+## [2026-10-25] daily | generative-media-models — 9 sources, 11 pages
+
+9 new tool entity pages (gpt-image, nano-banana, ideogram, kling, seedance, eleven-music, pixellab, retro-diffusion, scenario). Topic index updated. audio-tools comparison updated with eleven-music.
+
+## [2026-10-25] daily | game-music — 3 sources, 1 page
+
+Wwise employer survey (78% require Wwise proficiency), WoW 20th anniversary concert tour (Royal Albert Hall 2027), Loopsmith 1.21.0 (press-play preview + area music for FMOD/Wwise).
+
+## [2026-10-25] daily | games-of-note — 2 sources, 1 page
+
+GTA 6 preorders 6.45M units/$630M (148% ahead of comparable title, on pace for 25M). GameMaker GMRT runtime free for all developers from Jan 1 2027.
+
+## [2026-10-25] daily | ai-in-game-dev — 1 source, 2 pages
+
+Meshy T2.5 becomes default image-to-3D model on Meshy API; LowPoly model_type retires Oct 30 2026. Entity and topic updated.
+
+## [2026-10-25] daily | agentic-coding — 2 sources, 3 pages
+
+Dynamic concurrency empirical study (arXiv:2610.10263): conservative concurrency defaults are best practice; flat-to-negative scaling on bounded tasks. NP-Bench (arXiv:2610.07261): pre-execution scheduling planner raises clean integration from 1/9 to 9/9, merge conflicts 13→0. Summary regenerated.
+
+## [2026-10-25] daily | frontier-models — 2 sources, 3 pages
+
+Kimi K3.1 Pro entity added (AA Intelligence Index #4, 55 points, $2/$10 per M tokens). Cross-page sweep on kimi-k3.md.
+
 ## [2026-10-25] manual | conflict-resolver — 0 rebased, 0 requeued, 1 lint-fixed, 0 failed
 
 pr#1018 (weekly health) lint-fixed: 6 broken-wikilink errors in health-2026-10-25.md used path-style [[entities/minimax-h3.md]] links instead of slug style; rewrote to canonical slugs, pushed 00936d0, auto-merge enabled
