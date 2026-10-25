@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-10-25] manual | conflict-resolver — 0 rebased, 1 requeued, 1 lint-fixed, 0 failed
+
+pr#1024 requeued (clean/CI-green → auto-merge enabled via REST, merged); pr#1018 lint-fix broken-wikilink (fix pre-existing from prior session, auto-merge re-queued; PR remains dirty — pending rebase dispatch on next push).
+
 ## [2026-10-25] daily | _report — 6 topics, 19 sources, 21 pages
 
 Daily research 2026-10-25 complete. All 6 topic PRs merged. image-tools and video-tools comparison pages created for the first time. See wiki/reports/2026-10-25.md.
