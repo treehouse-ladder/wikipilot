@@ -6,8 +6,9 @@ sources:
   - "[[tripo-ai-launches-p2-0-model-to-generate-native-quad-meshes-for-production-pipelines-55aa361e]]"
   - "[[tripo-ai-debuts-production-grade-native-3d-diffusion-at-gdc-2026-46b8acea]]"
   - "[[tripo-ai-raises-nearly-200-million-in-series-a-and-series-a-financing-to-advance-ai-3d-and-world-model-roadmap-999735d1]]"
-last_updated: 2026-10-24
-last_verified: 2026-10-24
+  - "[[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]]"
+last_updated: 2026-10-26
+last_verified: 2026-10-26
 freshness_window_days: 30
 profile: tool
 modality: 3d
@@ -17,10 +18,10 @@ model_ids: ["tripo-p1.0", "tripo-p2.0"]
 access: ["web"]
 open_weights_license: unknown
 hardware_floor: unknown
-pricing: unknown
-pricing_source: null
-commercial_use: unknown
-commercial_use_source: null
+pricing: "free 300 credits/mo (non-commercial); Pro $19.90/mo (3,000 credits); API billed under separate commercial contract (2026-10-26)"
+pricing_source: "[[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]]"
+commercial_use: "free tier non-commercial; commercial licence permanently attached to assets generated on paid (Pro+) tiers (2026-10-26)"
+commercial_use_source: "[[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]]"
 status: active
 status_source: "[[tripo-ai-launches-p2-0-model-to-generate-native-quad-meshes-for-production-pipelines-55aa361e]]"
 last_release: unknown
@@ -44,14 +45,17 @@ Tripo AI raised nearly $200M across Series A+ and A++ rounds and announced Proje
 
 > Tripo AI announced the completion of its Series A+ and Series A++ financing rounds, raising nearly $200 million in total.
 
+**Pricing and commercial use confirmed (2026-10-26).** The free tier is non-commercial (300 credits/mo); commercial use requires a paid plan. On Pro+ tiers, the commercial licence is permanently attached to assets generated using Pro-tier credits — the licence persists after downgrading. The Pro plan is $19.90/mo (3,000 credits). API access is handled via a separate commercial contract, not bundled into subscription plans [[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]].
+
+> Commercial use is unlocked on paid tiers: once a model is generated using Pro-tier credits, the commercial license is permanently attached to that asset. The Pro plan is listed at 19.90 USD per month with 3,000 credits per month. API access is never bundled as an add-on feature to Subscription Plans; it requires a separate commercial contract and account setup. [[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]]
+
 ## Disputes
 
-_no contradictions or gaps known yet (last reviewed: 2026-10-24)_
+_no contradictions or gaps known yet (last reviewed: 2026-10-26)_
 
 ## Open questions
 
-- [ ] Does Tripo expose a public API (and fal / Replicate endpoints)? No ingested source mentions one; `access` lists only the Studio web app.
-- [ ] Pricing and commercial-use terms — no source on record.
+- [ ] Does Tripo expose a public API (and fal / Replicate endpoints)? The API exists but requires a separate commercial contract [[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]]; no fal/Replicate endpoint named in any ingested source — `access` stays `["web"]` until confirmed.
 - [ ] P2.0 official launch date (source says "following the P2.0 Preview in August" without a date).
 - [ ] Third-party arena placement — none cited.
 
