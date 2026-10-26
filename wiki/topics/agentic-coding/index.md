@@ -389,8 +389,10 @@ sources:
   - "[[what-does-a-harness-buy-tokens-mostly-da56a135]]"
   - "[[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]"
   - "[[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]"
+  - "[[release-v2-1-310-anthropics-claude-code-97c5df49]]"
+  - "[[research-sparqlite-sparql-1-1-inside-sqlite-written-in-rust-439c9906]]"
 last_verified: 2026-10-23
-last_updated: 2026-10-25
+last_updated: 2026-10-26
 freshness_window_days: 30
 ---
 
@@ -510,6 +512,22 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-10-26
+
+Two new in-scope sources in the window — one agentic-CLI release and one practitioner deep-dive. Both are incremental: the release extends an existing prompt-cache-preservation mechanism and the practitioner post reinforces the standing 'human review doesn't scale' dispute cluster. Neither changes a current leader or recommended best practice, so the Summary is left untouched.
+
+**Claude Code v2.1.310 (2026-10-23) — idle compaction reaches the GUI surfaces; Monitor tool on managed providers.** The idle-compaction mechanism that shipped in the terminal in v2.1.300 [[release-v2-1-300-anthropics-claude-code-5dc7e9d0]] now also runs in the VS Code chat panel and the Desktop Code tab, computing the summary while the session is idle and using it only if the next message arrives an hour or more later — extending protection against silent one-hour-prompt-cache expiry to the IDE/desktop surfaces [[release-v2-1-310-anthropics-claude-code-97c5df49]]. The release also unlocks the Monitor tool and plugin monitors on Bedrock, Vertex, and Foundry (and when telemetry is disabled), adds a managed setting that blocks monitors from plugins that aren't force-enabled, retries requests that fail behind gateways rejecting the effort beta value or mid-conversation system messages, fixes compaction after a 'Prompt is too long' error keeping too much dense (base64/SVG) text, and disables git askpass for plugin and marketplace clones — a small narrowing of the plugin supply-chain surface the wiki's config-defect thread tracks.
+
+> Added idle compaction to the VS Code chat panel and the Desktop Code tab: the summary is computed while you're away and only used if your next message comes an hour or more later. [[release-v2-1-310-anthropics-claude-code-97c5df49]]
+
+> Disabled git askpass for plugin and marketplace clones. [[release-v2-1-310-anthropics-claude-code-97c5df49]]
+
+**A 12-hour unreviewable Ultracode run — Simon Willison's sparqlite (2026-10-16).** Willison ran Claude Code for web in 'Ultracode' mode — dynamic workflows that generate JavaScript coordinating a network of subagents — autonomously for over 12 hours to produce sparqlite, a Rust SQLite loadable extension running SPARQL 1.1, which passes 636 of 639 applicable W3C tests [[research-sparqlite-sparql-1-1-inside-sqlite-written-in-rust-439c9906]]. He is explicit that the output is unreviewable at that scale, calling it 'next-level vibe coding.' This is a fresh first-party data point for both the Ultracode/dynamic-workflows long-horizon thread and the 'line-by-line human review no longer scales' cluster ([[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]], [[a-quote-from-rick-brewster-f5a31c99]], [[battle-dronesa-vibe-coded-rts-with-audio-based-multiplayer-d0f0045f]]), though as a low-stakes personal research project it carries little risk itself (see Disputes).
+
+> This research task is really an experiment in running Claude Code for web in "Ultracode" mode. In that mode, Claude Code makes aggressive use of dynamic workflows, generating JavaScript that defines and coordinates a network of subagents. [[research-sparqlite-sparql-1-1-inside-sqlite-written-in-rust-439c9906]]
+
+> It's not remotely feasible to review the code that was produced here. [[research-sparqlite-sparql-1-1-inside-sqlite-written-in-rust-439c9906]]
 
 ### Updates 2026-10-25
 
@@ -3081,6 +3099,7 @@ lint stays quiet until each page actually exists:
 
 ## Disputes
 
+- [[research-sparqlite-sparql-1-1-inside-sqlite-written-in-rust-439c9906]] reports a practitioner running Claude Code for web in Ultracode mode autonomously for 12+ hours to build a Rust SQLite SPARQL extension (636/639 W3C tests passing) while stating it is 'not remotely feasible to review the code that was produced here', corroborating [[the-end-of-code-review-coding-agents-supersede-human-inspection-5c810c5a]]'s claim that line-by-line human review no longer scales and echoing [[battle-dronesa-vibe-coded-rts-with-audio-based-multiplayer-d0f0045f]]; [[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]] finds 94% of developers fail to detect AI-agent sabotage, implying unreviewed agent output leaves an assurance gap. sparqlite is a low-stakes personal research project where the gap carries little risk, so it does not resolve whether the same reduced-review practice is safe for production code. Status: unresolved
 - [[control-the-harness-control-the-cost-routing-and-governing-ai-coding-agents-in-the-enterprise-9275e031]] claims a cache-aware prompt-classifier router recovers 14–21% of enterprise model spend and that on long tool-heavy sessions the highest-priced model can cost less than the next tier, framing agentic-coding cost overruns as a routing/harness-tuning problem; [[uber-caps-usage-of-ai-tools-like-claude-code-to-manage-costs-d17eb873]] documents a Fortune-100 enterprise imposing hard $1,500/employee/month per-tool ceilings after blowing its 2026 AI budget in four months, framing the overruns as a structural economics ceiling requiring budget gating. Status: unresolved — the two disagree on whether unbounded agentic-coding spend is tunable via routing or requires hard caps.
 - [[cursor-2-0-multi-agents-and-composer-changelog-4665f068]] claims Cursor's Composer model is "4x faster than similarly intelligent models" without naming the comparison set or the harness used to measure speed; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] explicitly notes that even within one harness (mini-SWE-agent), "results of release 1.x and 2.x are not necessarily comparable to each other" — making vendor-side speed claims hard to verify without the full prompt set. Status: unresolved (confidence: medium; sweep: 2026-05-12)
 - [[introducing-claude-opus-4-7-b8af8104]] claims a '3x more production tasks than Opus 4.6' result on Rakuten-SWE-Bench, a partner-internal benchmark whose composition and scoring methodology is not publicly described; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] explicitly notes that even within the public SWE-bench Verified harness, leaderboard rows can be incomparable across mini-SWE-agent versions, suggesting any cross-benchmark 'Nx better' claim should be treated as unfalsifiable until the partner benchmark is published. Status: unresolved
@@ -3208,6 +3227,8 @@ lint stays quiet until each page actually exists:
 
 ## Open questions
 
+- [ ] sparqlite's 12+-hour Ultracode run is long-horizon work — the regime where [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]] found dynamic concurrency pays off — but [[research-sparqlite-sparql-1-1-inside-sqlite-written-in-rust-439c9906]] discloses no token/dollar cost, so whether the dynamic-workflow JS-orchestrated subagent network stayed within the 1.4-3.3x token overhead that study measured for long-horizon tasks is unknown.
+- [ ] Does v2.1.310's extension of idle compaction to the VS Code chat panel and Desktop Code tab [[release-v2-1-310-anthropics-claude-code-97c5df49]] use the same one-hour-prompt-cache trigger and 200K+ token threshold as the terminal idle compaction shipped in v2.1.300 [[release-v2-1-300-anthropics-claude-code-5dc7e9d0]], or does the GUI surface compact on a different policy?
 - [ ] Doc2Harness drives each built harness with a *scripted mock model* rather than a live frontier model in the loop [[doc2harness-benchmarking-llms-on-long-horizon-harness-engineering-of-coding-agents-a3455f18]] — does a harness that passes under a deterministic mock driver transfer to real model-in-the-loop behavior (where context-management, retry, and tool-schema quirks surface), or does the mock driver systematically over-credit harnesses that only work against predictable inputs?
 - [ ] Codex 0.162.0's agent-invokable managed worktree tools [[release-0-162-0-openai-codex-6d91f7c5]] let the agent create isolated per-task checkouts on its own — does giving the agent (rather than the human) control of worktree creation inherit the semantically-conflicting-but-textually-clean concurrent-edit risk AgentRoom raises against worktree-per-agent isolation [[agentroom-concurrent-multi-agent-coding-in-a-crdt-backed-shared-workspace-4f6448bf]], and what is the prompt-cache behavior across agent-spawned worktrees?
 - [ ] What effort levels does the `effort` parameter on the `Agent` tool accept — does it map to model reasoning-budget tokens, or to a named tier (low/medium/high)? The v2.1.292 release notes don't specify [[release-v2-1-292-anthropics-claude-code-0c734930]].
