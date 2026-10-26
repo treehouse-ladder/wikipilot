@@ -1805,3 +1805,32 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[pixellab-sprite-generation-mcp-server-for-claude-code-1195a2d7]]
 - [[retro-diffusion-pixel-art-generation-from-0-03-per-image-mcp-server-available-0746b611]]
 - [[scenario-mcp-server-for-claude-code-codex-and-cursor-9bf7b8e5]]
+
+## 2026-10-26
+
+### New sources
+- [[release-v2-1-310-anthropics-claude-code-97c5df49]]
+- [[research-sparqlite-sparql-1-1-inside-sqlite-written-in-rust-439c9906]]
+- [[kimodo-scaling-controllable-human-motion-generation-fe9ff887]]
+- [[nvidia-kimodo-soma-rp-v1-1-hugging-face-3543d52b]]
+- [[jca-joint-controllable-action-for-3d-game-generation-a52a4d8e]]
+- [[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]
+- [[meshy-pricing-credits-plans-and-usage-62da5fc3]]
+- [[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]]
+- [[flux-3-image-maximum-control-over-every-pixel-37948658]]
+- [[flux-3-image-klein-open-weights-5-6b-parameters-155c7b54]]
+- [[flux-3-max-text-and-image-to-video-post-trained-by-fal-4991600a]]
+- [[introducing-seedance-2-5-78d1ddb7]]
+- [[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]
+- [[aa-image-t2i-v2-1-leaderboard-top-ai-image-models-634924f7]]
+- [[text-to-image-leaderboard-best-ai-image-generators-ba150d9e]]
+- [[what-to-know-about-the-sora-discontinuation-4d8dc7c1]]
+- [[licensing-ideogram-bdab80bb]]
+- [[ideogram-text-to-image-api-on-fal-7cd91f04]]
+- [[kling-api-pricing-fba30089]]
+
+### New pages
+- [[kimodo]]
+- [[flux]]
+- [[flux-3-max]]
+- [[sora]]

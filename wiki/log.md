@@ -3613,3 +3613,32 @@ Deleted and re-ingested (same URL/title, so slugs and citations are unchanged) t
 ## [2026-10-24] manual | generative-media-models topic + tool entity profiles (benchmark scout feed)
 
 Added the generative-media-models topic (charter, purpose.md, index.md) and amended ai-in-game-dev / frontier-models / game-music charters; introduced the profile: tool entity contract ([tool_profiles] in wikipilot.toml, tool-profile lint rule, wikipilot tools / tool-changes CLI); backfilled 17 tool entities from existing sources only ([[meshy]], [[tripo]], [[hyper3d-rodin]], [[hunyuan3d]], [[trellis-2]], [[autodesk-wonder-3d]], [[cubepart]], [[assetgen]], [[hy-motion]], [[unimate]], [[tokenrig]], [[motionbricks]], [[mocapanything]], [[audio2face]], [[inworld-realtime-tts-2]], [[elevenlabs]], [[minimax-h3]]) and created [[3d-tools]], [[rig-and-motion-tools]], [[audio-tools]] comparisons. Unsourced fields are recorded as unknown and listed per entity under Open questions.
+
+
+## [2026-10-26] daily | game-music — 0 sources, 1 page
+
+Quiet run; no new sources for game-music topic. Topic index freshness bump only. PR #1033.
+
+## [2026-10-26] daily | games-of-note — 0 sources, 1 page
+
+Quiet run; no new sources for games-of-note topic. Topic index freshness bump only. PR #1034.
+
+## [2026-10-26] daily | frontier-models — 0 sources, 1 page
+
+Quiet run; no new sources for frontier-models topic. Topic index freshness bump only. PR #1035.
+
+## [2026-10-26] daily | agentic-coding — 2 sources, 2 pages
+
+PR #1036 merged. 2 sources ingested; topic index and one concept page updated.
+
+## [2026-10-26] daily | ai-in-game-dev — 6 sources, 3 pages
+
+PR #1037 merged. Sources: Kimodo motion/rigging tool (SOMA-SEED-v1.1, G1 NVIDIA license variants, commercial-ready); 5 additional ai-in-game-dev sources. Pages: new entity [[kimodo]], topic index [[ai-in-game-dev]], cross-page sweep targets.
+
+## [2026-10-26] daily | generative-media-models — 11 sources, 9 pages
+
+PR #1038 merged. New entities: [[flux]] (FLUX 3 Image, BFL), [[flux-3-max]] (BFL video), [[sora]] (OpenAI, shutdown). Updated: [[gpt-image]] (#1 AA-Image-T2I v2.1 Elo 1196 and #1 AA-Image-Editing v2.1 Elo 1199), [[seedance]] (#1 I2V audio board $9.07/min), [[minimax-h3]] (#1 I2V no-audio Elo 1140 $34.12/min), [[ideogram]] (pricing + commercial_use backfilled), [[kling]] (API preview pricing), [[generative-media-models]] topic index. Summary regenerated.
+
+## [2026-10-26] daily | 6 topics, 19 sources, 17 pages
+
+PRs: #1033 (game-music), #1034 (games-of-note), #1035 (frontier-models), #1036 (agentic-coding), #1037 (ai-in-game-dev), #1038 (generative-media-models) — all merged. New tool entities: [[flux]], [[flux-3-max]], [[kimodo]], [[sora]]. Image/video leaderboard rankings updated. Ideogram, Kling, Meshy, Tripo, MiniMax H3, Seedance pricing/commercial-use fields backfilled. Generative-media-models summary regenerated.
