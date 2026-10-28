@@ -3,7 +3,7 @@ title: "GPT-6 Astra"
 kind: entity
 aliases: ["GPT 6 Astra", "gpt6-astra", "Astra", "OpenAI Astra"]
 sources: ["[[gpt-6-astra-a-new-generation-of-intelligence-039a4975]]", "[[benchmarking-gpt-6-astra-b4150b17]]", "[[openai-launches-astra-its-powerful-and-controversial-new-model-939b4e3d]]", "[[openai-astra-and-looped-transformers-beac0586]]", "[[announcing-artificial-analysis-intelligence-index-v4-2-2ec73a97]]", "[[announcing-the-artificial-analysis-intelligence-index-v4-3-58c45fc2]]", "[[announcing-automationbench-aa-83abdc0a]]", "[[gpt-6-astra-ties-leadership-with-claude-fable-5-1-in-both-flagship-indices-at-lower-cost-30caef79]]", "[[announcing-frontiermath-erdos-4a6b3657]]", "[[openai-cancels-gpt-6-1-astra-release-over-misbehavior-and-safety-concerns-ba6cd48c]]", "[[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]"]
-last_updated: 2026-10-22
+last_updated: 2026-10-28
 last_verified: 2026-09-08
 freshness_window_days: 30
 ---
@@ -65,6 +65,8 @@ On 2026-09-09 Artificial Analysis reported that **GPT-6 Astra now ties Claude Fa
 ## See also
 
 - [[frontier-models]]
+- [[gpt-6-1-terra]]
+- [[gpt-6-1-sol]]
 - [[gpt-5.6-sol]]
 - [[claude-fable-5]]
 - [[claude-opus-5]]

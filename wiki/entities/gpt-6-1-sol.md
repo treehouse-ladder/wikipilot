@@ -3,7 +3,7 @@ title: "GPT-6.1 Sol"
 kind: entity
 aliases: ["GPT 6.1 Sol", "gpt61-sol", "GPT-6.1 Sol"]
 sources: ["[[introducing-gpt-6-1-sol-d6b9f5e6]]", "[[gpt-6-1-sol-replaces-gpt-6-sol-after-just-7-days-with-near-astra-intelligence-019783f2]]", "[[openai-cancels-gpt-6-1-astra-release-over-misbehavior-and-safety-concerns-ba6cd48c]]", "[[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]"]
-last_updated: 2026-10-22
+last_updated: 2026-10-28
 last_verified: 2026-09-30
 freshness_window_days: 30
 input_cost_per_mtoken: 2.00
@@ -48,5 +48,6 @@ Key pricing advantage: **cached input at $0.10/Mtoken** — 95% off standard inp
 
 - [[gpt-6-sol]]
 - [[gpt-6-astra]]
+- [[gpt-6-1-terra]]
 - [[frontier-models]]
 - [[cost-comparison]]

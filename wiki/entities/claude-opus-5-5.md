@@ -1,9 +1,9 @@
 ---
 title: "Claude Opus 5.5"
 kind: entity
-sources: ["[[introducing-claude-opus-5-5-ec3fa700]]", "[[claude-opus-5-5-takes-the-top-spot-on-the-artificial-analysis-intelligence-index-4950ff35]]", "[[system-card-claude-opus-5-5-7f5a82f9]]", "[[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]"]
-last_updated: 2026-10-22
-last_verified: 2026-09-24
+sources: ["[[introducing-claude-opus-5-5-ec3fa700]]", "[[claude-opus-5-5-takes-the-top-spot-on-the-artificial-analysis-intelligence-index-4950ff35]]", "[[system-card-claude-opus-5-5-7f5a82f9]]", "[[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]", "[[announcing-artificial-analysis-intelligence-index-v5-6d6987e4]]"]
+last_updated: 2026-10-28
+last_verified: 2026-10-28
 freshness_window_days: 30
 ---
 
@@ -31,7 +31,13 @@ The **System Card** (published 2026-09-24) confirms **the largest capability gai
 
 > Claude Opus 5.5 has the highest raw score (71.4%) but falls to sixth after adjustment (59.9%), as its answers average about 5,900 characters; Claude Opus 5.5 and Claude Fable 5.1 lose over 11 points after length adjustment. [[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]
 
-_no contradictions or gaps known yet (last reviewed: 2026-10-22)_
+**Confirmed #1 under the new Artificial Analysis Intelligence Index v5 (2026-10-27).** Claude Opus 5.5 (max) leads v5 at **58**, ahead of GPT-6 Astra (57) and GPT-6.1 Sol (55), and leads three of the nine constituent evaluations (no model leads all nine) [[announcing-artificial-analysis-intelligence-index-v5-6d6987e4]]. Index cost is $10.04 per Intelligence Index task at max effort, vs GPT-6 Astra's $6.24 and GPT-6.1 Sol's $1.27 — the top spot carries the highest per-task cost of the leaders [[announcing-artificial-analysis-intelligence-index-v5-6d6987e4]].
+
+> Claude Opus 5.5 (max) leads the Artificial Analysis Intelligence Index v5 at 58, ahead of GPT-6 Astra (max) at 57 and GPT-6.1 Sol (max) at 55. Anthropic and OpenAI hold the top five models. [[announcing-artificial-analysis-intelligence-index-v5-6d6987e4]]
+
+> Claude Opus 5.5 (max) costs $10.04 per Intelligence Index task, compared with GPT-6 Astra (max) at $6.24 and GPT-6.1 Sol (max) at $1.27. [[announcing-artificial-analysis-intelligence-index-v5-6d6987e4]]
+
+_no contradictions or gaps known yet (last reviewed: 2026-10-28)_
 
 ## See also
 
