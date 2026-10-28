@@ -1,9 +1,9 @@
 ---
 title: Generative media models
 kind: topic
-sources: ["[[minimaxai-minimax-h3-hugging-face-1f0e60fd]]", "[[minimax-releases-minimax-h3-an-omni-modal-video-model-that-generates-15-second-2k-clips-with-native-stereo-audio-53db5121]]", "[[realtime-tts-2-a-new-frontier-voice-model-that-feels-as-real-as-you-68a9e733]]", "[[ai-voice-for-games-elevenlabs-31e6ac62]]", "[[gpt-image-2-5-flare-and-sunburst-released-by-openai-cf34266e]]", "[[nano-banana-2-lite-google-deepmind-image-generation-at-0-034-1k-images-3eac9764]]", "[[ideogram-3-0-launches-with-open-weights-model-and-commercial-license-1f773818]]", "[[kling-4-0-and-4-0-flash-video-generation-models-launch-b0391b87]]", "[[seedance-wins-artificial-analysis-image-to-video-with-audio-output-benchmark-1-a7869d54]]", "[[elevenlabs-music-0-15-per-minute-5-minute-cap-studio-games-plan-restriction-9f14fd6d]]", "[[pixellab-sprite-generation-mcp-server-for-claude-code-1195a2d7]]", "[[retro-diffusion-pixel-art-generation-from-0-03-per-image-mcp-server-available-0746b611]]", "[[scenario-mcp-server-for-claude-code-codex-and-cursor-9bf7b8e5]]", "[[flux-3-image-maximum-control-over-every-pixel-37948658]]", "[[flux-3-image-klein-open-weights-5-6b-parameters-155c7b54]]", "[[flux-3-max-text-and-image-to-video-post-trained-by-fal-4991600a]]", "[[introducing-seedance-2-5-78d1ddb7]]", "[[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]", "[[aa-image-t2i-v2-1-leaderboard-top-ai-image-models-634924f7]]", "[[text-to-image-leaderboard-best-ai-image-generators-ba150d9e]]", "[[what-to-know-about-the-sora-discontinuation-4d8dc7c1]]", "[[licensing-ideogram-bdab80bb]]", "[[ideogram-text-to-image-api-on-fal-7cd91f04]]", "[[kling-api-pricing-fba30089]]"]
-last_updated: 2026-10-26
-last_verified: 2026-10-25
+sources: ["[[minimaxai-minimax-h3-hugging-face-1f0e60fd]]", "[[minimax-releases-minimax-h3-an-omni-modal-video-model-that-generates-15-second-2k-clips-with-native-stereo-audio-53db5121]]", "[[realtime-tts-2-a-new-frontier-voice-model-that-feels-as-real-as-you-68a9e733]]", "[[ai-voice-for-games-elevenlabs-31e6ac62]]", "[[gpt-image-2-5-flare-and-sunburst-released-by-openai-cf34266e]]", "[[nano-banana-2-lite-google-deepmind-image-generation-at-0-034-1k-images-3eac9764]]", "[[ideogram-3-0-launches-with-open-weights-model-and-commercial-license-1f773818]]", "[[kling-4-0-and-4-0-flash-video-generation-models-launch-b0391b87]]", "[[seedance-wins-artificial-analysis-image-to-video-with-audio-output-benchmark-1-a7869d54]]", "[[elevenlabs-music-0-15-per-minute-5-minute-cap-studio-games-plan-restriction-9f14fd6d]]", "[[pixellab-sprite-generation-mcp-server-for-claude-code-1195a2d7]]", "[[retro-diffusion-pixel-art-generation-from-0-03-per-image-mcp-server-available-0746b611]]", "[[scenario-mcp-server-for-claude-code-codex-and-cursor-9bf7b8e5]]", "[[flux-3-image-maximum-control-over-every-pixel-37948658]]", "[[flux-3-image-klein-open-weights-5-6b-parameters-155c7b54]]", "[[flux-3-max-text-and-image-to-video-post-trained-by-fal-4991600a]]", "[[introducing-seedance-2-5-78d1ddb7]]", "[[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]", "[[aa-image-t2i-v2-1-leaderboard-top-ai-image-models-634924f7]]", "[[text-to-image-leaderboard-best-ai-image-generators-ba150d9e]]", "[[what-to-know-about-the-sora-discontinuation-4d8dc7c1]]", "[[licensing-ideogram-bdab80bb]]", "[[ideogram-text-to-image-api-on-fal-7cd91f04]]", "[[kling-api-pricing-fba30089]]", "[[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]", "[[wan-3-0-text-to-video-api-on-fal-581fd1f9]]", "[[aa-video-editing-v1-1-leaderboard-top-ai-video-models-1743cee9]]", "[[seedance-2-5-us-image-to-video-api-on-fal-f520e761]]"]
+last_updated: 2026-10-28
+last_verified: 2026-10-28
 freshness_window_days: 30
 ---
 
@@ -16,11 +16,11 @@ See [purpose](purpose.md) for the topic charter (in-scope / out-of-scope) and
 
 This topic tracks the current lineup of models that generate images, video, music, sound effects and speech — how each is reached (vendor API, fal.ai, Replicate, open weights), what it costs, under what commercial-use terms its output may ship in a game, and where it sits on arena boards with methodology. Every model is an entity page with a machine-readable tool profile (`profile: tool`) — currently [[minimax-h3]], [[inworld-realtime-tts-2]] and [[elevenlabs]] — and the per-modality comparison pages ([[audio-tools]] today) aggregate those profiles. The topic was created on 2026-10-24 and seeded only from sources already in the wiki, so coverage of image, music and SFX models is empty until the first daily run.
 
-**Video.** The only video model with a source in the wiki is MiniMax H3, an omni-modal model that generates 15-second 2K clips with native stereo audio from unified text / image / video / audio context, released as two open-weight checkpoints under the MiniMax H3 Community License and ranked #1 Video Editing, #2 Text-to-Video and #3 Image-to-Video on the Artificial Analysis boards at the time of the model card [[minimaxai-minimax-h3-hugging-face-1f0e60fd]] [[minimax-releases-minimax-h3-an-omni-modal-video-model-that-generates-15-second-2k-clips-with-native-stereo-audio-53db5121]]. Its absolute per-second price is not recorded (the launch coverage gives only relative figures).
+**Video.** As of 2026-10-28 the video-board leaders are: **[[wan-3]] (Wan 3.0, Alibaba)** at #1 on both the Artificial Analysis text-to-video board (AA-Video-T2V v2.1, with audio, Elo 1174) [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]] and the video-editing board (AA-Video-Editing v1.1, Elo 1198) [[aa-video-editing-v1-1-leaderboard-top-ai-video-models-1743cee9]], available on fal at $0.05–$0.20/s by resolution [[wan-3-0-text-to-video-api-on-fal-581fd1f9]]; and **[[minimax-h3]] (768p)** as #1 image-to-video (AA-Video-I2V v1.1, Elo 1140, $34.12/min AA-measured) and #1 open-weights text-to-video (Elo 1158, #3 overall) [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]. [[seedance]] (Seedance 2.5) is now live on fal under `bytedance/seedance-2.5/us` (~$0.47/s at 720p) [[seedance-2-5-us-image-to-video-api-on-fal-f520e761]]; Seedance 2.0 720p remains #1 on the AA I2V audio-output board (Elo 1197) [[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]. MiniMax H3 retains open-weight checkpoints under the MiniMax H3 Community License [[minimaxai-minimax-h3-hugging-face-1f0e60fd]]. [[flux-3-max]] (BFL/fal, $0.085/s) covers text-to-video, image-to-video and keyframes-to-video on fal [[flux-3-max-text-and-image-to-video-post-trained-by-fal-4991600a]]; [[kling]] (Kling 4.0, API + Replicate, API preview pricing for 4.0) and [[sora]] (shutdown Sep 24, 2026) round out the video entity roster.
 
-> On the Artificial Analysis leaderboards H3 ranks #1 in Video Editing, #2 in Text-to-Video, and #3 in Image-to-Video.
+> Wan 3.0 currently leads AA-Video-T2V v2.1 with an Elo score of 1174. [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]
 
-> At 2K, H3's per-second price is less than a third of mainstream models; at 768p, less than half the price of mainstream 720p.
+> MiniMax H3 (768p) currently leads among open weights models on AA-Video-T2V v2.1 with an Elo score of 1158. [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]
 
 **Speech.** Inworld's Realtime TTS-2 targets in-game conversational use with sub-130 ms first-chunk latency, inline plain-language voice direction and one voice identity across 100+ languages, and was #1 realtime TTS on the Artificial Analysis Speech Arena at launch [[realtime-tts-2-a-new-frontier-voice-model-that-feels-as-real-as-you-68a9e733]]; ElevenLabs (Eleven v3) targets multilingual NPC voice with an Unreal Engine integration [[ai-voice-for-games-elevenlabs-31e6ac62]]. Both are speech entities in [[audio-tools]]; their pricing and commercial-use terms are open questions.
 
@@ -31,6 +31,24 @@ This topic tracks the current lineup of models that generate images, video, musi
 **Image, music, SFX, sprites.** No sources yet. The researcher's first runs should seed the `image-tools` and `video-tools` comparison pages once at least two tool entities per modality exist; the 3D and motion side of the same tool roster is owned by [[ai-in-game-dev]] (see [[3d-tools]] and [[rig-and-motion-tools]]).
 
 ## Recent updates
+
+### Updates 2026-10-28
+
+**Video — new leader and new entity.** [[wan-3]] (Alibaba Wan 3.0) added as a video tool entity. It now leads the Artificial Analysis text-to-video board (AA-Video-T2V v2.1, with audio) at Elo 1174, ahead of Utopai X, MiniMax H3 (768p), HeyGen Video 1 and Dreamina Seedance 2.5 [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]], and also leads the Artificial Analysis video-editing board (AA-Video-Editing v1.1) at Elo 1198 [[aa-video-editing-v1-1-leaderboard-top-ai-video-models-1743cee9]]. On fal it is priced per second by resolution: $0.05/s (480p), $0.10/s (720p), $0.20/s (1080p); the Wan 3.0 Prime tier runs $0.068/$0.14/$0.28 per second [[wan-3-0-text-to-video-api-on-fal-581fd1f9]].
+
+> Wan 3.0 currently leads AA-Video-T2V v2.1 with an Elo score of 1174. [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]
+
+> Wan 3.0 leads AA-Video-Editing v1.1 at Elo 1198, ahead of Dreamina Seedance 2.5 at 1155 and Hyperflow H3 at 1153. [[aa-video-editing-v1-1-leaderboard-top-ai-video-models-1743cee9]]
+
+> Wan 3.0 on fal is priced at $0.05 per second at 480p, $0.10 per second at 720p, and $0.20 per second at 1080p. [[wan-3-0-text-to-video-api-on-fal-581fd1f9]]
+
+**Image-to-video board unchanged at the top.** [[minimax-h3]] (768p) re-confirmed #1 on AA-Video-I2V v1.1 at Elo 1140; on the text-to-video board the same model sits at #3 overall and #1 among open-weights models (Elo 1158) [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]].
+
+> MiniMax H3 (768p) currently leads among open weights models on AA-Video-T2V v2.1 with an Elo score of 1158. [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]
+
+**Seedance 2.5 now live on fal.** [[seedance]]: Seedance 2.5 is reachable on fal under `bytedance/seedance-2.5/us`, billed by output tokens — roughly $0.2205/s (480p), $0.4730/s (720p) and $1.164/s (1080p), at $0.0214 per 1,000 tokens for 480p/720p, with no subscription or minimum [[seedance-2-5-us-image-to-video-api-on-fal-f520e761]]. This answers the prior open question on Seedance 2.5's fal availability.
+
+> For 480p, your request will cost roughly $0.2205 per second of generated video, for 720p, you will be charged roughly $0.4730 per second of generated video, and for 1080p, roughly $1.164 per second of generated video. [[seedance-2-5-us-image-to-video-api-on-fal-f520e761]]
 
 ### Updates 2026-10-26
 
@@ -89,7 +107,8 @@ Topic created. Seeded three speech/video tool entities ([[minimax-h3]], [[inworl
 ## Disputes
 
 - [[flux-3-max-text-and-image-to-video-post-trained-by-fal-4991600a]] (fal) claims FLUX 3 Max is joint #1 image-to-video on Artificial Analysis's preliminary arena (Elo 1139, tied Seedance 2.5); [[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]] shows the live AA I2V boards led by MiniMax H3 768p (Elo 1140) and Seedance 2.0 720p (audio board, Elo 1197) with FLUX 3 Max not listed as sole #1. Status: unresolved
-- Topic Summary claims MiniMax H3 "ranks #1 in Video Editing, #2 in Text-to-Video and #3 in Image-to-Video on the Artificial Analysis boards" citing [[minimaxai-minimax-h3-hugging-face-1f0e60fd]]; current version of that source (fetched 2026-10-24) contains no mention of "Artificial Analysis" or any arena rankings. Status: partially-resolved — [[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]] (2026-10-26) confirms I2V #1; Video Editing #1 and T2V #2 remain uncited. (confidence: high; sweep: 2026-10-25)
+- Topic Summary claims MiniMax H3 "ranks #1 in Video Editing, #2 in Text-to-Video and #3 in Image-to-Video on the Artificial Analysis boards" citing [[minimaxai-minimax-h3-hugging-face-1f0e60fd]]; current version of that source (fetched 2026-10-24) contains no mention of "Artificial Analysis" or any arena rankings. Status: partially-resolved — [[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]] (2026-10-26) confirms I2V #1; [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]] (2026-10-28) places H3 #3 overall / #1 open-weights on T2V (not #2 overall); Video Editing #1 now confirmed by [[aa-video-editing-v1-1-leaderboard-top-ai-video-models-1743cee9]] (Wan 3.0 is #1, H3/Hyperflow H3 not explicitly ranked but the prior claim of H3 #1 is superseded). (confidence: high; sweep: 2026-10-25)
+- [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]] shows MiniMax H3 (768p) at #3 overall on the text-to-video board (behind Wan 3.0 and Utopai X); the topic Summary's carried-forward claim that H3 is "#2 in Text-to-Video" is therefore superseded on the live board. Status: resolved-toward-aa-video-t2v — H3 is #3 overall / #1 open-weights on AA-Video-T2V v2.1 as of 2026-10-28.
 
 > From topic Summary: "On the Artificial Analysis leaderboards H3 ranks #1 in Video Editing, #2 in Text-to-Video, and #3 in Image-to-Video."
 
@@ -107,7 +126,10 @@ Topic created. Seeded three speech/video tool entities ([[minimax-h3]], [[inworl
 - [ ] Full (non-Klein) FLUX 3 Image per-call price on the BFL API; Klein open-weights license name (SPDX or vendor name) and hardware floor.
 - [ ] FLUX 3 Max commercial-use terms for game video; primary dated release announcement (reported 2026-10-19, unconfirmed).
 - [ ] Does any third-party aggregator (fal, Replicate) still serve a Sora-2 endpoint after the 2026-09-24 OpenAI API shutdown?
-- [ ] Seedance 2.5 API launch date and fal/Replicate endpoint availability.
+- [x] Seedance 2.5 API launch date and fal/Replicate endpoint availability — **resolved 2026-10-28**: `bytedance/seedance-2.5/us` live on fal [[seedance-2-5-us-image-to-video-api-on-fal-f520e761]].
+- [ ] What is Seedance 2.5's own placement on the AA-Video-I2V / T2V boards (it appears in the T2V top-5 but with no clean standalone Elo in the ingested snapshot)?
+- [ ] Does FLUX 3 Max's live AA image-to-video placement match its vendor-reported joint-#1 claim? The AA I2V board snapshot lists it near Elo 1138, below MiniMax H3 (1140) — needs a clean dedicated citation.
+- [ ] Is Wan 3.0 available as open weights, and under what license and hardware floor? One aggregator noted no official Alibaba model card; fal lists API-only pricing.
 - [ ] Which image models (FLUX 3 Image, GPT Image 2.5, Ideogram 3.0) permit game-shipping commercial use under their standard API/self-serve terms?
 
 ## See also
@@ -116,3 +138,4 @@ Topic created. Seeded three speech/video tool entities ([[minimax-h3]], [[inworl
 - [[ai-in-game-dev]]
 - [[frontier-models]]
 - [[game-music]]
+- [[wan-3]]

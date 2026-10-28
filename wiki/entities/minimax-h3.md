@@ -6,8 +6,9 @@ sources:
   - "[[minimaxai-minimax-h3-hugging-face-1f0e60fd]]"
   - "[[minimax-releases-minimax-h3-an-omni-modal-video-model-that-generates-15-second-2k-clips-with-native-stereo-audio-53db5121]]"
   - "[[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]"
-last_updated: 2026-10-26
-last_verified: 2026-10-26
+  - "[[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]"
+last_updated: 2026-10-28
+last_verified: 2026-10-28
 freshness_window_days: 30
 profile: tool
 modality: video
@@ -25,9 +26,11 @@ status: active
 status_source: "[[minimaxai-minimax-h3-hugging-face-1f0e60fd]]"
 last_release: unknown
 arena_rank:
-  - "Artificial Analysis Image-to-Video (AA-Video-I2V v1.1, 768p, no audio): #1, Elo 1140 (2026-10-26)"
+  - "Artificial Analysis Image-to-Video (AA-Video-I2V v1.1, 768p): #1, Elo 1140 (2026-10-28)"
+  - "Artificial Analysis Text-to-Video (AA-Video-T2V v2.1, open weights): #1, Elo 1158 (2026-10-28)"
 arena_rank_source:
   - "[[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]"
+  - "[[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]"
 ---
 
 # MiniMax H3
@@ -42,7 +45,9 @@ The Hugging Face repository (fetched two days later) carries the weights as two 
 
 > The weights are released under the MiniMax H3 Community License Agreement, which permits commercial use for organizations under 0M annual revenue with attribution, though open weights are temporarily limited in certain regions until the regulatory and compliance framework becomes clearer. On the Artificial Analysis leaderboards H3 ranks #1 in Video Editing, #2 in Text-to-Video, and #3 in Image-to-Video.
 
-The Artificial Analysis AA-Video-I2V v1.1 leaderboard (October 2026) shows MiniMax H3 768p at #1 with Elo 1140, and lists its API price at $34.12/min [[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]].
+The Artificial Analysis AA-Video-I2V v1.1 leaderboard (October 2026) shows MiniMax H3 768p at #1 with Elo 1140, and lists its API price at $34.12/min [[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]. On the AA-Video-T2V v2.1 board (October 28, 2026), MiniMax H3 768p sits at #3 overall (Elo 1158) and #1 among open-weights models [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]].
+
+> MiniMax H3 (768p) currently leads among open weights models on AA-Video-T2V v2.1 with an Elo score of 1158. [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]
 
 > MiniMax H3 (768p) currently leads AA-Video-I2V v1.1 with an Elo score of 1140. Its listed API price is $34.12 /min. [[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]
 
