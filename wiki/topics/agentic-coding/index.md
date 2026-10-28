@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-25
+last_updated: 2026-10-28
 sources:
   - "[[release-0-163-0-openai-codex-255cde9f]]"
   - "[[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]"
@@ -391,8 +391,10 @@ sources:
   - "[[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]"
   - "[[release-v2-1-310-anthropics-claude-code-97c5df49]]"
   - "[[research-sparqlite-sparql-1-1-inside-sqlite-written-in-rust-439c9906]]"
+  - "[[release-v2-1-311-anthropics-claude-code-93af44a6]]"
+  - "[[release-v2-1-312-anthropics-claude-code-dc8a856f]]"
 last_verified: 2026-10-23
-last_updated: 2026-10-26
+last_updated: 2026-10-28
 freshness_window_days: 30
 ---
 
@@ -512,6 +514,22 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-10-28
+
+Two new in-scope agentic-CLI releases in the window — Claude Code v2.1.311 (2026-10-26) and v2.1.312 (2026-10-27) — both incremental reliability/config refinements that land on the fork-based parallel-subagent and background-agent surfaces the wiki already tracks. Neither changes a current leader or recommended best practice, so the Summary is left untouched. (OpenAI Codex 0.165.0 also shipped 2026-10-27 but could not be ingested this run — verbatim release text was unreachable through the proxy; see Open questions.)
+
+**Claude Code v2.1.311 (2026-10-26) — subagent / background-agent reliability fixes and standard-context auto-compaction.** The release repairs several defects on the fork-based subagent and background-agent paths: subagents could not use MCP tools from servers that finished connecting after the subagent started [[release-v2-1-311-anthropics-claude-code-93af44a6]]; `SubagentStop` hooks fired about twice a minute per running subagent instead of once at completion [[release-v2-1-311-anthropics-claude-code-93af44a6]]; a subagent's isolated worktree could be removed while a background subagent it spawned was still working in it (a worktree-per-agent lifecycle bug relevant to the coordination-design thread) [[release-v2-1-311-anthropics-claude-code-93af44a6]]; and background agents in auto mode waiting on their own shells started a new main conversation turn on every wake [[release-v2-1-311-anthropics-claude-code-93af44a6]]. Separately, standard-context sessions that ran a request over 200K tokens previously stopped with a "Usage credits required for 1M context" error and now compact and continue instead — a robustness/cost refinement that keeps long sessions on the standard-context path rather than forcing an escalation [[release-v2-1-311-anthropics-claude-code-93af44a6]].
+
+> Fixed subagents being unable to use MCP tools from servers that finish connecting after the subagent starts [[release-v2-1-311-anthropics-claude-code-93af44a6]]
+
+> Fixed standard-context sessions stopping with "Usage credits required for 1M context" when a request ran over 200K tokens; Claude Code now compacts the conversation and continues [[release-v2-1-311-anthropics-claude-code-93af44a6]]
+
+**Claude Code v2.1.312 (2026-10-27) — a per-session hooks concurrency cap and a CLAUDE.md overwrite guard.** The release introduces a runtime throttle on the hook surface: prompt and agent hooks now run at most 24 at a time per session, subagents included (plus at most 12 that have waited longer than their event timeout) — a new concurrency ceiling that sits alongside the dynamic-workflows "aim for fewer than 15 agents" guideline on the fan-out surface [[release-v2-1-312-anthropics-claude-code-dc8a856f]]. A subagent's `autoCompactWindow` can now lower (but still never raise) the window set by `CLAUDE_CODE_AUTO_COMPACT_WINDOW`, where it previously had no effect [[release-v2-1-312-anthropics-claude-code-dc8a856f]]. On the config-integrity side the Write tool now guards against overwriting a very large CLAUDE.md, rules file or @-included file after seeing only its start — it asks Claude to read the whole file or edit in place [[release-v2-1-312-anthropics-claude-code-dc8a856f]] — and per-directory / `paths:` skills are no longer lost after a Bash `cd` deeper into a git repository [[release-v2-1-312-anthropics-claude-code-dc8a856f]].
+
+> Changed prompt and agent hooks to run at most 24 at a time per session, sub-agents included, plus at most 12 that have waited longer than their event's timeout; a `timeout` under 1 second now counts as 1 second [[release-v2-1-312-anthropics-claude-code-dc8a856f]]
+
+> Fixed Claude overwriting a very large CLAUDE.md, rules file or @-included file in a subdirectory after seeing only its start; Write now asks Claude to read it all or edit in place [[release-v2-1-312-anthropics-claude-code-dc8a856f]]
 
 ### Updates 2026-10-26
 
@@ -3575,6 +3593,9 @@ lint stays quiet until each page actually exists:
 - [ ] Would the "What Does a Harness Buy? Tokens, Mostly" within-5-points finding survive on long-horizon / multi-repo tasks (vs SWE-bench Verified single-repo issue resolution), where harness context management may matter more?
 - [ ] Does [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]'s 'flat-to-negative on bounded tasks' result hold for context-inheriting fork subagents (the default in Claude Code), or is it specific to the fresh-context fan-out the three studied mechanisms use?
 - [ ] Nerveplane's pre-execution scheduling [[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]] depends on each work item's declared scope being accurate — what is the false-scope/under-declaration rate when an agent touches files outside its declared scope mid-task?
+- [ ] Does v2.1.312's new per-session hooks concurrency cap ("at most 24 at a time per session, sub-agents included") [[release-v2-1-312-anthropics-claude-code-dc8a856f]] impose an effective ceiling on hook-heavy fork-based parallel subagent fan-out, and how does it interact with the dynamic-workflows "fewer than 15 agents" guideline — i.e. is the binding limit the agent count or the per-session hook concurrency?
+- [ ] Does v2.1.311's change making standard-context sessions compact past 200K tokens instead of erroring ("Usage credits required for 1M context") [[release-v2-1-311-anthropics-claude-code-93af44a6]] materially shift the cost profile of long unattended sessions by keeping them on standard-context pricing via compaction rather than escalating to the 1M-context tier, and does the extra compaction cost offset the saving?
+- [ ] OpenAI Codex 0.165.0 (2026-10-27) reportedly turns Memory v2 on by default with support for importing external-agent memories, adds a built-in Vertex AI provider and GPT-6.1 Terra, and fixes a marketplace URL-validation gap that could let Git connect to a different host than the one checked — but verbatim release text could not be retrieved this run (developers.openai.com, havoptic, and GitHub release pages were all unreachable through the proxy). Ingest and verify next run: does "importing external-agent memories" open a cross-agent memory-poisoning vector analogous to the SKILL.md injection surface (SkillJect), and does the marketplace-URL fix parallel Claude Code v2.1.310's plugin/marketplace git-askpass hardening in the config supply-chain thread?
 
 ## See also
 
