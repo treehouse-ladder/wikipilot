@@ -12,7 +12,7 @@ comparison_of:
 - flux
 freshness_window_days: 30
 kind: comparison
-last_updated: 2026-10-26
+last_updated: 2026-10-30
 last_verified: 2026-10-25
 sources: []
 title: Image generation tools
