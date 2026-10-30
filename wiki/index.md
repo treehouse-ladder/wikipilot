@@ -1834,3 +1834,35 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[flux]]
 - [[flux-3-max]]
 - [[sora]]
+
+## 2026-10-28
+
+### New sources
+- [[claude-code-release-v2-1-311-anthropics-claude-code-93af44a6]]
+- [[claude-code-release-v2-1-312-anthropics-claude-code-dc8a856f]]
+- [[artificial-analysis-intelligence-index-v5-6d6987e4]]
+- [[introducing-gpt-6-1-terra-35e334c1]]
+- [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]
+- [[aa-video-editing-v1-1-leaderboard-top-ai-video-models-1743cee9]]
+- [[wan-3-0-text-to-video-api-on-fal-581fd1f9]]
+- [[seedance-2-5-us-image-to-video-api-on-fal-f520e761]]
+
+### New pages
+- [[gpt-6-1-terra]]
+- [[wan-3]]
+
+## 2026-10-30
+
+### New sources
+- [[phantom-blade-zero-scores-an-impressive-88-metacritic-score-as-reviews-go-live-d23892ee]]
+- [[pricing-plans-for-ai-3d-generation-ceafc9f6]]
+- [[gemini-4-carbon-our-next-frontier-model-a92d7b7e]]
+- [[gemini-4-carbon-is-the-new-1-on-the-artificial-analysis-intelligence-index-v5-53854855]]
+- [[shengshu-technology-launches-vidu-q4-preview-a-next-generation-ai-video-model-built-for-lifelike-performances-b956992b]]
+- [[tencent-opens-hy-nomas-an-interactive-video-world-model-running-on-one-rtx-4090-7543a82b]]
+- [[vidu-q4-preview-aa-video-i2v-debut-38fa453c]]
+
+### New pages
+- [[gemini-4-carbon]]
+- [[vidu-q4-preview]]
+- [[hy-nomas]]
