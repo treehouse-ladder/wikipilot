@@ -1855,6 +1855,9 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ### New sources
 - [[phantom-blade-zero-scores-an-impressive-88-metacritic-score-as-reviews-go-live-d23892ee]]
+- [[new-action-rpg-just-had-one-of-steam-s-biggest-launches-ever-bb1907b8]]
+- [[phantom-blade-zero-review-combat-so-good-you-won-t-care-the-story-makes-no-sense-cfbaea38]]
+- [[rockstar-games-workers-to-vote-on-unionization-right-as-grand-theft-auto-vi-launches-cf90f9e1]]
 - [[pricing-plans-for-ai-3d-generation-ceafc9f6]]
 - [[gemini-4-carbon-our-next-frontier-model-a92d7b7e]]
 - [[gemini-4-carbon-is-the-new-1-on-the-artificial-analysis-intelligence-index-v5-53854855]]

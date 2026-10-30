@@ -3695,6 +3695,10 @@ PR #1054 merged. Quiet run; no new in-scope agentic-coding sources in the Oct 29
 
 PR #1056 merged. Sources: Vidu Q4 Preview launch (technologymagazine), Vidu Q4 AA-I2V debut (orcarouter), Hy-Nomas open-source release (alphasignal). New entities: [[vidu-q4-preview]], [[hy-nomas]]. Topic index updated.
 
-## [2026-10-30] daily | 6 topics, 8 sources, 11 pages
+## [2026-10-30] daily | games-of-note (follow-up #1057) — 3 sources, 1 page
 
-PRs: #1049 (game-music), #1050 (ai-in-game-dev), #1051 (frontier-models), #1054 (agentic-coding), #1055 (games-of-note), #1056 (generative-media-models) — all merged. New entities: [[gemini-4-carbon]], [[vidu-q4-preview]], [[hy-nomas]]. Frontier-models summary regenerated (Carbon leads AA v5 at 59).
+PR #1057 merged. Expands the Phantom Blade Zero launch picture: 723,876 peak Steam concurrent (#15 all-time). Sources: Kotaku Steam-launch article, GameSpot 8/10 review. Also adds Rockstar UK IWGB union-vote source (Nov 12–26, straddling GTA 6 Nov 19 launch). games-of-note Summary updated.
+
+## [2026-10-30] daily | 6 topics, 11 sources, 11 pages
+
+PRs: #1049 (game-music), #1050 (ai-in-game-dev), #1051 (frontier-models), #1054 (agentic-coding), #1055+#1057 (games-of-note), #1056 (generative-media-models) — all merged. New entities: [[gemini-4-carbon]], [[vidu-q4-preview]], [[hy-nomas]]. Frontier-models summary regenerated (Carbon leads AA v5 at 59). Games-of-note summary updated (Phantom Blade Zero: #15 all-time Steam launch).
