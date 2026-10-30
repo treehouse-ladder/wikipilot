@@ -393,7 +393,7 @@ sources:
   - "[[research-sparqlite-sparql-1-1-inside-sqlite-written-in-rust-439c9906]]"
   - "[[release-v2-1-311-anthropics-claude-code-93af44a6]]"
   - "[[release-v2-1-312-anthropics-claude-code-dc8a856f]]"
-last_verified: 2026-10-23
+last_verified: 2026-10-30
 last_updated: 2026-10-28
 freshness_window_days: 30
 ---
@@ -517,9 +517,11 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 
 ### Updates 2026-10-30
 
-**Quiet run — no new in-scope sources found.** Today's sweep (Claude Code GitHub releases, Codex changelog, agentic-CLI release notes, arxiv preprint tracker) surfaced no new agentic-coding developments since 2026-10-28. The most recent Claude Code releases remain v2.1.312 (2026-10-27, hook concurrency cap + CLAUDE.md overwrite guard) and v2.1.311 (2026-10-26, subagent MCP-server timing fix + standard-context auto-compaction). No new Codex, Cursor, or Aider releases landed in the Oct 29–30 window. Near-term watch: Codex 0.165.0 (shipped 2026-10-27) remains un-ingested because verbatim release text was unreachable; and the parallel-subagent cost study (arXiv:2610.10263) open question about whether fan-out costs translate to hosted Ultracode context is still unresolved.
+No sources could be ingested this run. The 2026-10-27 to 2026-10-30 window surfaced four in-scope agentic-CLI releases — Claude Code v2.1.313 and v2.1.314 (continuing the v2.1.312 line [[release-v2-1-312-anthropics-claude-code-dc8a856f]]) and OpenAI Codex 0.165.0 (2026-10-27) and 0.166.0 (2026-10-29), successors to 0.164.0 [[release-0-164-0-openai-codex-b28a06ef]] — but every source host returned HTTP 403 through this run's egress proxy: the GitHub release pages (both github.com and api.github.com, for anthropics/claude-code and openai/codex), docs.claude.com's Claude Code release notes, and developers.openai.com's Codex changelog were all unreachable, and the qmd index MCP timed out. WebSearch returned only paraphrased summaries, which the citation-discipline rule bars from standing as verbatim `>` evidence, so none of the four were ingested. This is the same proxy-reachability failure the 2026-10-28 entry flagged for Codex 0.165.0, now extended to the Claude Code releases as well. All four are queued for ingest on the next run with reachable source hosts (see Open questions); no current leader or recommended best practice is affected, so the Summary is left untouched.
 
-_no contradictions or gaps known yet (last reviewed: 2026-10-30)_
+> Changed prompt and agent hooks to run at most 24 at a time per session, sub-agents included, plus at most 12 that have waited longer than their event's timeout; a `timeout` under 1 second now counts as 1 second [[release-v2-1-312-anthropics-claude-code-dc8a856f]]
+
+> Save reusable prompts and slash commands in ten numbered /presets slots, with a keyboard menu for quick access. [[release-0-164-0-openai-codex-b28a06ef]]
 
 ### Updates 2026-10-28
 
@@ -3602,6 +3604,9 @@ lint stays quiet until each page actually exists:
 - [ ] Does v2.1.312's new per-session hooks concurrency cap ("at most 24 at a time per session, sub-agents included") [[release-v2-1-312-anthropics-claude-code-dc8a856f]] impose an effective ceiling on hook-heavy fork-based parallel subagent fan-out, and how does it interact with the dynamic-workflows "fewer than 15 agents" guideline — i.e. is the binding limit the agent count or the per-session hook concurrency?
 - [ ] Does v2.1.311's change making standard-context sessions compact past 200K tokens instead of erroring ("Usage credits required for 1M context") [[release-v2-1-311-anthropics-claude-code-93af44a6]] materially shift the cost profile of long unattended sessions by keeping them on standard-context pricing via compaction rather than escalating to the 1M-context tier, and does the extra compaction cost offset the saving?
 - [ ] OpenAI Codex 0.165.0 (2026-10-27) reportedly turns Memory v2 on by default with support for importing external-agent memories, adds a built-in Vertex AI provider and GPT-6.1 Terra, and fixes a marketplace URL-validation gap that could let Git connect to a different host than the one checked — but verbatim release text could not be retrieved this run (developers.openai.com, havoptic, and GitHub release pages were all unreachable through the proxy). Ingest and verify next run: does "importing external-agent memories" open a cross-agent memory-poisoning vector analogous to the SKILL.md injection surface (SkillJect), and does the marketplace-URL fix parallel Claude Code v2.1.310's plugin/marketplace git-askpass hardening in the config supply-chain thread?
+- [ ] Ingest the four 2026-10-27–2026-10-30 agentic-CLI releases once their source hosts are reachable (all returned HTTP 403 through the egress proxy on 2026-10-30): Claude Code v2.1.313 (slug `release-v2-1-313-anthropics-claude-code-8b35225a`, https://github.com/anthropics/claude-code/releases/tag/v2.1.313), v2.1.314 (`release-v2-1-314-anthropics-claude-code-fbfedaa6`, https://github.com/anthropics/claude-code/releases/tag/v2.1.314), Codex 0.165.0 (`release-0-165-0-openai-codex-bd138645`, https://github.com/openai/codex/releases/tag/rust-v0.165.0), Codex 0.166.0 (`release-0-166-0-openai-codex-10be109e`, https://github.com/openai/codex/releases/tag/rust-v0.166.0). Codex 0.165.0 was already queued by the 2026-10-28 run and remains unreachable.
+- [ ] Does Claude Code v2.1.314's reported `permissions.blockWritesOutsideWorkingDirectories` setting — a write-side analogue to the v2.1.273 `blockReadsOutsideWorkingDirectories` gate [[release-v2-1-273-anthropics-claude-code-6726c9df]] — materially shrink the overwrite/exfiltration blast radius against a prompt-injected agent, or does it only block path traversal while leaving the runtime tool-output trust-level confusion unaddressed? (Unverified — surfaced only via WebSearch paraphrase this run; needs verbatim ingest to confirm the setting exists and its exact semantics.)
+- [ ] Does Codex 0.165.0–0.166.0's addition of GPT-6.1 Terra across the bundled, Vertex AI, and Bedrock catalogs (reported via WebSearch, unverified) move any published SWE-bench Verified / Terminal-Bench 2.x Codex-CLI standings, and does it deprecate the GPT-5.6 Terra/Luna line the wiki tracks? Cross-relevant to frontier-models — confirm on verbatim ingest.
 
 ## See also
 
