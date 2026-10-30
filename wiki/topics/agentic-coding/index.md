@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-28
+last_updated: 2026-10-30
 sources:
   - "[[release-0-163-0-openai-codex-255cde9f]]"
   - "[[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]"
@@ -514,6 +514,12 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-10-30
+
+**Quiet run — no new in-scope sources found.** Today's sweep (Claude Code GitHub releases, Codex changelog, agentic-CLI release notes, arxiv preprint tracker) surfaced no new agentic-coding developments since 2026-10-28. The most recent Claude Code releases remain v2.1.312 (2026-10-27, hook concurrency cap + CLAUDE.md overwrite guard) and v2.1.311 (2026-10-26, subagent MCP-server timing fix + standard-context auto-compaction). No new Codex, Cursor, or Aider releases landed in the Oct 29–30 window. Near-term watch: Codex 0.165.0 (shipped 2026-10-27) remains un-ingested because verbatim release text was unreachable; and the parallel-subagent cost study (arXiv:2610.10263) open question about whether fan-out costs translate to hosted Ultracode context is still unresolved.
+
+_no contradictions or gaps known yet (last reviewed: 2026-10-30)_
 
 ### Updates 2026-10-28
 
