@@ -92,6 +92,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[ideogram]]
 - [[kling]]
 - [[seedance]]
+- [[suno]]
+- [[minimax-music]]
 - [[eleven-music]]
 - [[pixellab]]
 - [[retro-diffusion]]
@@ -1064,6 +1066,15 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[ace-combat-8-wings-of-theve-the-vinyl-collection-ab1dfadb]]
 - [[brasil-game-show-2026-will-feature-three-exclusive-performances-by-shota-nakama-and-the-video-game-orchestra-f4a8a60d]]
 - [[dave-the-diver-original-video-game-soundtrack-exclusive-vinyl-edition-3f5e08ba]]
+- [[sq-relax-krystelle-s-chillwave-music-review-e8a9b031]]
+- [[ue-devs-can-now-choose-to-train-ai-models-on-their-projects-99fc6761]]
+- [[epic-is-updating-its-eula-to-allow-ai-training-on-outputs-from-unreal-engine-and-metahuman-9502f826]]
+- [[mistral-large-4-le-chonk-is-now-open-weight-5a25565a]]
+- [[aa-video-i2v-v2-1-leaderboard-top-ai-video-models-7458c112]]
+- [[suno-mcp-beta-fbbc54a2]]
+- [[minimax-music-2-6-text-to-audio-api-on-fal-ff196b6a]]
+- [[key-updates-in-claude-code-v2-1-314-denying-writes-outside-the-working-directory-and-fixing-gaps-in-sandbox-and-hook-enforcement-74166b1e]]
+- [[release-v2-1-316-11bfb616]]
 
 ## Answers
 
@@ -1482,6 +1493,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-10-31]]
+- [[2026-10-30]]
 - [[2026-10-25]]
 - [[2026-10-20]]
 - [[2026-10-16]]
@@ -1869,3 +1882,20 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gemini-4-carbon]]
 - [[vidu-q4-preview]]
 - [[hy-nomas]]
+
+## 2026-10-31
+
+### New sources
+- [[sq-relax-krystelle-s-chillwave-music-review-e8a9b031]]
+- [[ue-devs-can-now-choose-to-train-ai-models-on-their-projects-99fc6761]]
+- [[epic-is-updating-its-eula-to-allow-ai-training-on-outputs-from-unreal-engine-and-metahuman-9502f826]]
+- [[mistral-large-4-le-chonk-is-now-open-weight-5a25565a]]
+- [[aa-video-i2v-v2-1-leaderboard-top-ai-video-models-7458c112]]
+- [[suno-mcp-beta-fbbc54a2]]
+- [[minimax-music-2-6-text-to-audio-api-on-fal-ff196b6a]]
+- [[key-updates-in-claude-code-v2-1-314-denying-writes-outside-the-working-directory-and-fixing-gaps-in-sandbox-and-hook-enforcement-74166b1e]]
+- [[release-v2-1-316-11bfb616]]
+
+### New pages
+- [[suno]]
+- [[minimax-music]]

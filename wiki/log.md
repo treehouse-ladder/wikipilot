@@ -3702,3 +3702,31 @@ PR #1057 merged. Expands the Phantom Blade Zero launch picture: 723,876 peak Ste
 ## [2026-10-30] daily | 6 topics, 11 sources, 11 pages
 
 PRs: #1049 (game-music), #1050 (ai-in-game-dev), #1051 (frontier-models), #1054 (agentic-coding), #1055+#1057 (games-of-note), #1056 (generative-media-models) — all merged. New entities: [[gemini-4-carbon]], [[vidu-q4-preview]], [[hy-nomas]]. Frontier-models summary regenerated (Carbon leads AA v5 at 59). Games-of-note summary updated (Phantom Blade Zero: #15 all-time Steam launch).
+
+## [2026-10-31] daily | games-of-note — 0 sources, 1 page
+
+Quiet run — no new sources ingested. Dated log entry added; GTA 6 launch coverage queued for next run.
+
+## [2026-10-31] daily | game-music — 1 source, 1 page
+
+New source: SQ Relax — Krystelle's Chillwave (2026 Square Enix chillwave arranged album, RPGFan review). 20 arrangements including FFVIII and FFV tracks. New chillwave-genre data point for the vinyl-revival cycle.
+
+## [2026-10-31] daily | ai-in-game-dev — 2 sources, 2 pages
+
+Epic removed AI training restrictions from Unreal Engine EULA (Section 6e). Write, Edit, NotebookEdit sandbox tightening via `permissions.blockWritesOutsideWorkingDirectories`. Meshy entity freshness verified.
+
+## [2026-10-31] daily | frontier-models — 1 source, 2 pages
+
+Mistral Large 4 ("Le Chonk") open weights released on Hugging Face (`mistralai/Mistral-Large-4-1T-A52B`) under Mistral Ecosystem Open-Weight License. API pricing updated: $0.70/$2.10/Mtoken (down from $1.36/$4.18 preview). No leader changes on AA Intelligence Index.
+
+## [2026-10-31] daily | generative-media-models — 3 sources, 5 pages
+
+AA-Video-I2V v2.1 board update: Seedance 2.5 #1 (Elo 1152) on audio-output leaderboard; MiniMax H3 drops to #4 overall but retains #1 open-weights. Suno MCP beta launched. MiniMax Music 2.6 live on fal ($0.15/audio). Two new tool entities: [[suno]] (music), [[minimax-music]].
+
+## [2026-10-31] daily | agentic-coding — 2 sources, 1 page
+
+Claude Code v2.1.314: `permissions.blockWritesOutsideWorkingDirectories` (write-path deny-all in every permission mode), idle compaction on VS Code/Desktop Code tab. Claude Code v2.1.316: `CLAUDE_CODE_SUBAGENT_EFFORT`, `CLAUDE_CODE_DISABLE_ULTRATHINK`, shell-cleanup fix on exit.
+
+## [2026-10-31] daily | _report — 6 topics, 9 sources, 12 pages
+
+All 6 topic PRs merged: games-of-note (0 sources), game-music (1), ai-in-game-dev (2), frontier-models (1), generative-media-models (3), agentic-coding (2). New entities: [[suno]], [[minimax-music]]. Creator tooling: Seedance v2.1 board #1, MiniMax H3 drops to #4 overall/#1 open-weights on v2.1.

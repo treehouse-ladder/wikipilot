@@ -9,9 +9,11 @@ comparison_of:
 - inworld-realtime-tts-2
 - elevenlabs
 - eleven-music
+- suno
+- minimax-music
 freshness_window_days: 30
 kind: comparison
-last_updated: 2026-10-30
+last_updated: 2026-10-31
 last_verified: 2026-10-24
 sources: []
 title: Audio tools (speech, music, SFX)
@@ -21,10 +23,12 @@ title: Audio tools (speech, music, SFX)
 
 ## Summary
 
-This comparison aggregates `access, pricing, commercial_use, status, arena_rank` across 3 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen audio-tools` to refresh.
+This comparison aggregates `access, pricing, commercial_use, status, arena_rank` across 5 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen audio-tools` to refresh.
 
 | Entity | access | pricing | commercial_use | status | arena_rank |
 | --- | --- | --- | --- | --- | --- |
 | [[inworld-realtime-tts-2]] | api | unknown | unknown | active | Artificial Analysis Speech Arena (realtime TTS): #1 (2026-06-11) |
 | [[elevenlabs]] | unknown | unknown | unknown | active | _none_ |
 | [[eleven-music]] | api | $0.15/min, 5-min cap per generation (2026-10-25) | allowed on all paid plans except Studio Games self-serve (2026-10-25) | active | _none_ |
+| [[suno]] | api | unknown | unknown | active | _none_ |
+| [[minimax-music]] | fal | $0.15 per generated audio (fal, 2026-10-31) | unknown | active | _none_ |
