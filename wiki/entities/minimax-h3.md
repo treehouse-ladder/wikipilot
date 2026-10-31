@@ -7,8 +7,9 @@ sources:
   - "[[minimax-releases-minimax-h3-an-omni-modal-video-model-that-generates-15-second-2k-clips-with-native-stereo-audio-53db5121]]"
   - "[[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]"
   - "[[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]"
-last_updated: 2026-10-28
-last_verified: 2026-10-28
+  - "[[aa-video-i2v-v2-1-leaderboard-top-ai-video-models-7458c112]]"
+last_updated: 2026-10-31
+last_verified: 2026-10-31
 freshness_window_days: 30
 profile: tool
 modality: video
@@ -26,9 +27,11 @@ status: active
 status_source: "[[minimaxai-minimax-h3-hugging-face-1f0e60fd]]"
 last_release: unknown
 arena_rank:
-  - "Artificial Analysis Image-to-Video (AA-Video-I2V v1.1, 768p): #1, Elo 1140 (2026-10-28)"
+  - "Artificial Analysis Image-to-Video v2.1 (audio output, 768p): #4 overall, #1 open-weights, Elo 1129 (2026-10-31)"
+  - "Artificial Analysis Image-to-Video v1.1 (768p): #1, Elo 1140 (2026-10-28)"
   - "Artificial Analysis Text-to-Video (AA-Video-T2V v2.1, open weights): #1, Elo 1158 (2026-10-28)"
 arena_rank_source:
+  - "[[aa-video-i2v-v2-1-leaderboard-top-ai-video-models-7458c112]]"
   - "[[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]"
   - "[[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]"
 ---

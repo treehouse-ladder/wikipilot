@@ -7,8 +7,9 @@ sources:
   - "[[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]"
   - "[[introducing-seedance-2-5-78d1ddb7]]"
   - "[[seedance-2-5-us-image-to-video-api-on-fal-f520e761]]"
-last_updated: 2026-10-28
-last_verified: 2026-10-28
+  - "[[aa-video-i2v-v2-1-leaderboard-top-ai-video-models-7458c112]]"
+last_updated: 2026-10-31
+last_verified: 2026-10-31
 freshness_window_days: 30
 profile: tool
 modality: video
@@ -25,8 +26,12 @@ commercial_use_source: null
 status: active
 status_source: "[[seedance-2-5-us-image-to-video-api-on-fal-f520e761]]"
 last_release: unknown
-arena_rank: ["Artificial Analysis Image-to-Video (audio output, Seedance 2.0 720p): #1, Elo 1197 (2026-10-26)"]
-arena_rank_source: ["[[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]"]
+arena_rank:
+  - "Artificial Analysis Image-to-Video v2.1 (audio output, Seedance 2.5): #1, Elo 1152 (2026-10-31)"
+  - "Artificial Analysis Image-to-Video v1.1 (audio output, Seedance 2.0 720p): #1, Elo 1197 (2026-10-26)"
+arena_rank_source:
+  - "[[aa-video-i2v-v2-1-leaderboard-top-ai-video-models-7458c112]]"
+  - "[[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]"
 ---
 
 # Seedance
