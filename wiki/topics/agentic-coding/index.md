@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-30
+last_updated: 2026-10-31
 sources:
   - "[[release-0-163-0-openai-codex-255cde9f]]"
   - "[[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]"
@@ -393,8 +393,10 @@ sources:
   - "[[research-sparqlite-sparql-1-1-inside-sqlite-written-in-rust-439c9906]]"
   - "[[release-v2-1-311-anthropics-claude-code-93af44a6]]"
   - "[[release-v2-1-312-anthropics-claude-code-dc8a856f]]"
-last_verified: 2026-10-30
-last_updated: 2026-10-28
+  - "[[key-updates-in-claude-code-v2-1-314-denying-writes-outside-the-working-directory-and-fixing-gaps-in-sandbox-and-hook-enforcement-74166b1e]]"
+  - "[[release-v2-1-316-11bfb616]]"
+last_verified: 2026-10-31
+last_updated: 2026-10-31
 freshness_window_days: 30
 ---
 
@@ -514,6 +516,24 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-10-31
+
+Two Claude Code releases in the 2026-10-30/31 window close out the queued items from the 2026-10-30 run that couldn't be ingested due to proxy issues.
+
+**Claude Code v2.1.314 (2026-10-30) — write-path sandbox tightening and idle compaction on desktop surfaces.** The headline addition is `permissions.blockWritesOutsideWorkingDirectories`: when enabled, the Write, Edit, and NotebookEdit tools refuse paths outside the session's working directories in every permission mode — including bypass mode [[key-updates-in-claude-code-v2-1-314-denying-writes-outside-the-working-directory-and-fixing-gaps-in-sandbox-and-hook-enforcement-74166b1e]]. This closes the remaining write-outside gap that pure sandbox policies left open when Claude was trusted by the user to bypass sandbox checks. Idle compaction now ships to VS Code and Claude Desktop's Code tab: the summary is computed while the user is away and is used only if the next message arrives an hour or more later [[key-updates-in-claude-code-v2-1-314-denying-writes-outside-the-working-directory-and-fixing-gaps-in-sandbox-and-hook-enforcement-74166b1e]]. Also fixed: `claude -p` now exits with a non-zero code and an error when startup fails, rather than exiting 0 with no output [[key-updates-in-claude-code-v2-1-314-denying-writes-outside-the-working-directory-and-fixing-gaps-in-sandbox-and-hook-enforcement-74166b1e]].
+
+> Added permissions.blockWritesOutsideWorkingDirectories: Write, Edit and NotebookEdit refuse paths outside the working directories in every permission mode. [[key-updates-in-claude-code-v2-1-314-denying-writes-outside-the-working-directory-and-fixing-gaps-in-sandbox-and-hook-enforcement-74166b1e]]
+
+> Added idle compaction to VS Code and Claude Desktop's Code tab: the summary is computed while you're away and only used if your next message comes an hour or more later. [[key-updates-in-claude-code-v2-1-314-denying-writes-outside-the-working-directory-and-fixing-gaps-in-sandbox-and-hook-enforcement-74166b1e]]
+
+**Claude Code v2.1.316 (2026-10-31) — subagent effort control and ultrathink killswitch.** Two new environment variables land on the effort-control surface: `CLAUDE_CODE_DISABLE_ULTRATHINK` turns the ultrathink keyword off entirely [[release-v2-1-316-11bfb616]], and `CLAUDE_CODE_SUBAGENT_EFFORT` sets a default effort level for subagents when no other mechanism specifies one [[release-v2-1-316-11bfb616]]. The latter is a workflow-design lever for orchestrators that want to pin subagent effort without patching every Agent() call. Also fixed: shell commands no longer run on macOS and Linux after Claude Code exits on its own [[release-v2-1-316-11bfb616]].
+
+> Added CLAUDE_CODE_DISABLE_ULTRATHINK, which turns the ultrathink keyword off. [[release-v2-1-316-11bfb616]]
+
+> Added CLAUDE_CODE_SUBAGENT_EFFORT to set the effort level subagents run at when nothing else specifies one. [[release-v2-1-316-11bfb616]]
+
+> Fixed shell commands being left running on macOS and Linux when Claude Code exits by itself. [[release-v2-1-316-11bfb616]]
 
 ### Updates 2026-10-30
 
