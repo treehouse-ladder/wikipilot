@@ -11,8 +11,8 @@ sources:
   - "[[meshy-image-to-3d-api-meshy-t2-5-is-the-default-smart-topology-model-lowpoly-retires-30-oct-2026-82720073]]"
   - "[[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]"
   - "[[meshy-pricing-credits-plans-and-usage-62da5fc3]]"
-last_updated: 2026-10-26
-last_verified: 2026-10-26
+last_updated: 2026-10-31
+last_verified: 2026-10-31
 freshness_window_days: 30
 profile: tool
 modality: 3d
