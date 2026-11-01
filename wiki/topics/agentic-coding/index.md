@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-10-31
+last_updated: 2026-11-01
 sources:
   - "[[release-0-163-0-openai-codex-255cde9f]]"
   - "[[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]"
@@ -396,7 +396,7 @@ sources:
   - "[[key-updates-in-claude-code-v2-1-314-denying-writes-outside-the-working-directory-and-fixing-gaps-in-sandbox-and-hook-enforcement-74166b1e]]"
   - "[[release-v2-1-316-11bfb616]]"
 last_verified: 2026-10-31
-last_updated: 2026-10-31
+last_updated: 2026-11-01
 freshness_window_days: 30
 ---
 
@@ -516,6 +516,12 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-01
+
+Quiet run — no new sources ingested for agentic-coding today. Swept allowlisted outlets (github.com/anthropics/claude-code releases, github.com/openai/codex releases, Cursor blog, Windsurf blog) and found no material published since 2026-10-31 meeting the topic's charter scope. The openai/codex releases page (0.165.0 and 0.166.0) was inaccessible via the egress proxy; filed as open question in frontier-models.
+
+_no contradictions or gaps known yet (last reviewed: 2026-11-01)_
 
 ### Updates 2026-10-31
 
