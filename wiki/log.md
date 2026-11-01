@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-01] health | weekly sweep — 6 disputes filed
+
+Weekly disputes scanner: 8 groups, 46 candidate sets, 6 disputes filed across meshy.md, claude-opus-5-5.md, frontier-models/index.md, generative-media-models/index.md.
+
 ## [2026-10-25] manual | conflict-resolver — 2 rebased, 0 requeued, 0 lint-fixed, 0 failed
 
 pr#1029 (claude/youthful-mayer-5em3iy): rebased onto main (76a3896), resolved append-only log conflict, force-pushed a23811a; auto-merge enabled. pr#1030 (claude/youthful-mayer-2k5t4i): rebased onto main, resolved append-only log conflict, force-pushed 75ff613; auto-merge enabled.
