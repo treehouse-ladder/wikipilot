@@ -2,7 +2,7 @@
 title: Generative media models
 kind: topic
 sources: ["[[minimaxai-minimax-h3-hugging-face-1f0e60fd]]", "[[minimax-releases-minimax-h3-an-omni-modal-video-model-that-generates-15-second-2k-clips-with-native-stereo-audio-53db5121]]", "[[realtime-tts-2-a-new-frontier-voice-model-that-feels-as-real-as-you-68a9e733]]", "[[ai-voice-for-games-elevenlabs-31e6ac62]]", "[[gpt-image-2-5-flare-and-sunburst-released-by-openai-cf34266e]]", "[[nano-banana-2-lite-google-deepmind-image-generation-at-0-034-1k-images-3eac9764]]", "[[ideogram-3-0-launches-with-open-weights-model-and-commercial-license-1f773818]]", "[[kling-4-0-and-4-0-flash-video-generation-models-launch-b0391b87]]", "[[seedance-wins-artificial-analysis-image-to-video-with-audio-output-benchmark-1-a7869d54]]", "[[elevenlabs-music-0-15-per-minute-5-minute-cap-studio-games-plan-restriction-9f14fd6d]]", "[[pixellab-sprite-generation-mcp-server-for-claude-code-1195a2d7]]", "[[retro-diffusion-pixel-art-generation-from-0-03-per-image-mcp-server-available-0746b611]]", "[[scenario-mcp-server-for-claude-code-codex-and-cursor-9bf7b8e5]]", "[[flux-3-image-maximum-control-over-every-pixel-37948658]]", "[[flux-3-image-klein-open-weights-5-6b-parameters-155c7b54]]", "[[flux-3-max-text-and-image-to-video-post-trained-by-fal-4991600a]]", "[[introducing-seedance-2-5-78d1ddb7]]", "[[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]", "[[aa-image-t2i-v2-1-leaderboard-top-ai-image-models-634924f7]]", "[[text-to-image-leaderboard-best-ai-image-generators-ba150d9e]]", "[[what-to-know-about-the-sora-discontinuation-4d8dc7c1]]", "[[licensing-ideogram-bdab80bb]]", "[[ideogram-text-to-image-api-on-fal-7cd91f04]]", "[[kling-api-pricing-fba30089]]", "[[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]", "[[wan-3-0-text-to-video-api-on-fal-581fd1f9]]", "[[aa-video-editing-v1-1-leaderboard-top-ai-video-models-1743cee9]]", "[[seedance-2-5-us-image-to-video-api-on-fal-f520e761]]", "[[shengshu-technology-launches-vidu-q4-preview-a-next-generation-ai-video-model-built-for-lifelike-performances-b956992b]]", "[[tencent-opens-hy-nomas-an-interactive-video-world-model-running-on-one-rtx-4090-7543a82b]]", "[[vidu-q4-preview-aa-video-i2v-debut-38fa453c]]", "[[aa-video-i2v-v2-1-leaderboard-top-ai-video-models-7458c112]]", "[[suno-mcp-beta-fbbc54a2]]", "[[minimax-music-2-6-text-to-audio-api-on-fal-ff196b6a]]"]
-last_updated: 2026-10-31
+last_updated: 2026-11-01
 last_verified: 2026-10-31
 freshness_window_days: 30
 ---
@@ -31,6 +31,12 @@ This topic tracks the current lineup of models that generate images, video, musi
 **Image, music, SFX, sprites.** No sources yet. The researcher's first runs should seed the `image-tools` and `video-tools` comparison pages once at least two tool entities per modality exist; the 3D and motion side of the same tool roster is owned by [[ai-in-game-dev]] (see [[3d-tools]] and [[rig-and-motion-tools]]).
 
 ## Recent updates
+
+### Updates 2026-11-01
+
+Quiet run — no new sources ingested for generative-media-models today. Swept allowlisted outlets (Artificial Analysis, Replicate, fal.ai, Hugging Face, Meshy blog, Tripo AI blog) and found no material published since 2026-10-31 meeting the topic's charter scope. Tool-profile roster sweep skipped due to qmd MCP connection failure.
+
+_no contradictions or gaps known yet (last reviewed: 2026-11-01)_
 
 ### Updates 2026-10-31
 
@@ -166,6 +172,9 @@ Topic created. Seeded three speech/video tool entities ([[minimax-h3]], [[inworl
 - [ ] Does FLUX 3 Max's live AA image-to-video placement match its vendor-reported joint-#1 claim? The AA I2V board snapshot lists it near Elo 1138, below MiniMax H3 (1140) — needs a clean dedicated citation.
 - [ ] Is Wan 3.0 available as open weights, and under what license and hardware floor? One aggregator noted no official Alibaba model card; fal lists API-only pricing.
 - [ ] Which image models (FLUX 3 Image, GPT Image 2.5, Ideogram 3.0) permit game-shipping commercial use under their standard API/self-serve terms?
+- [ ] Has Meshy's pricing changed after the $400M Series B at $1.5B valuation (2026-10-10)? The Meshy pricing page was swept on 2026-11-01 but no changes were found; re-check on the next run.
+- [ ] Does Tripo AI's P2.0 native-quad-mesh generation reduce the downstream retopology burden to zero for production pipelines, or does it still require manual cleanup for game-engine compliance?
+- [ ] Utopai X holds #2 on AA-Video-T2V v2.1 (Elo 1161) but has no API — does Utopai plan a public API/fal/Replicate release, and does access status change before the next roster sweep?
 
 ## See also
 
