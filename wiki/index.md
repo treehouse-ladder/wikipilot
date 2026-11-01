@@ -1493,6 +1493,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-11-01]]
 - [[2026-10-31]]
 - [[2026-10-30]]
 - [[2026-10-25]]
@@ -1895,6 +1896,9 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[minimax-music-2-6-text-to-audio-api-on-fal-ff196b6a]]
 - [[key-updates-in-claude-code-v2-1-314-denying-writes-outside-the-working-directory-and-fixing-gaps-in-sandbox-and-hook-enforcement-74166b1e]]
 - [[release-v2-1-316-11bfb616]]
+- [[the-biggest-new-game-releases-of-november-2026-ec3881dd]]
+- [[gta-6-reviews-here-s-when-the-scores-might-come-in-0540fec0]]
+- [[gta-6-preorders-are-unprecedented-across-the-industry-take-two-claims-75082da8]]
 
 ### New pages
 - [[suno]]
