@@ -148,10 +148,23 @@ Topic created. Seeded three speech/video tool entities ([[minimax-h3]], [[inworl
 - [[flux-3-max-text-and-image-to-video-post-trained-by-fal-4991600a]] (fal) claims FLUX 3 Max is joint #1 image-to-video on Artificial Analysis's preliminary arena (Elo 1139, tied Seedance 2.5); [[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]] shows the live AA I2V boards led by MiniMax H3 768p (Elo 1140) and Seedance 2.0 720p (audio board, Elo 1197) with FLUX 3 Max not listed as sole #1. Status: unresolved
 - Topic Summary claims MiniMax H3 "ranks #1 in Video Editing, #2 in Text-to-Video and #3 in Image-to-Video on the Artificial Analysis boards" citing [[minimaxai-minimax-h3-hugging-face-1f0e60fd]]; current version of that source (fetched 2026-10-24) contains no mention of "Artificial Analysis" or any arena rankings. Status: partially-resolved — [[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]] (2026-10-26) confirms I2V #1; [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]] (2026-10-28) places H3 #3 overall / #1 open-weights on T2V (not #2 overall); Video Editing #1 now confirmed by [[aa-video-editing-v1-1-leaderboard-top-ai-video-models-1743cee9]] (Wan 3.0 is #1, H3/Hyperflow H3 not explicitly ranked but the prior claim of H3 #1 is superseded). (confidence: high; sweep: 2026-10-25)
 - [[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]] shows MiniMax H3 (768p) at #3 overall on the text-to-video board (behind Wan 3.0 and Utopai X); the topic Summary's carried-forward claim that H3 is "#2 in Text-to-Video" is therefore superseded on the live board. Status: resolved-toward-aa-video-t2v — H3 is #3 overall / #1 open-weights on AA-Video-T2V v2.1 as of 2026-10-28.
+- Topic Summary (as of 2026-10-28, citing v1.1 board data) claims MiniMax H3 (768p) is #1 image-to-video (AA-Video-I2V v1.1, Elo 1140); [[aa-video-i2v-v2-1-leaderboard-top-ai-video-models-7458c112]] (2026-10-31) shows that on the updated v2.1 board, Dreamina Seedance 2.5 is #1 (Elo 1152) and MiniMax H3 768p is #4 overall (Elo 1129, #1 among open-weights). Status: unresolved — the Summary has not been regenerated to reflect the current v2.1 board version and standings. (confidence: high; sweep: 2026-11-01)
+
+> From topic Summary: "and **[[minimax-h3]] (768p)** as #1 image-to-video (AA-Video-I2V v1.1, Elo 1140, $34.12/min AA-measured)"
+
+> From 2026-10-31 log entry: "The Artificial Analysis Image-to-Video (audio output) v2.1 leaderboard now shows **Dreamina Seedance 2.5 at #1 (Elo 1152)**, Utopai X at #2 (1144, no API), Dreamina Seedance 2.0 at #3 (1135), and **MiniMax H3 768p at #4 (Elo 1129) — first among open-weights models**"
 
 > From topic Summary: "On the Artificial Analysis leaderboards H3 ranks #1 in Video Editing, #2 in Text-to-Video, and #3 in Image-to-Video."
 
 > From source [[minimaxai-minimax-h3-hugging-face-1f0e60fd]]: No mention of Artificial Analysis or arena rankings in any excerpt.
+
+- Topic Summary (line 31) claims "Image, music, SFX, sprites. No sources yet"; Recent updates 2026-10-25 and 2026-10-26 show image/sprite/music entities added ([[gpt-image]], [[nano-banana]], [[ideogram]], [[flux]], [[pixellab]], [[retro-diffusion]], [[scenario]], [[eleven-music]]). Status: unresolved (confidence: high; sweep: 2026-11-01)
+
+> From topic Summary (line 31): "**Image, music, SFX, sprites.** No sources yet. The researcher's first runs should seed the `image-tools` and `video-tools` comparison pages once at least two tool entities per modality exist..."
+
+> From Recent updates 2026-10-25: "**Image models.** Three new image-generation entities added: [[gpt-image]] (OpenAI GPT Image 2.5 Flare + Sunburst — API, speed/quality variants, supports editing/inpainting/outpainting [[gpt-image-2-5-flare-and-sunburst-released-by-openai-cf34266e]]), [[nano-banana]] (Google DeepMind Nano Banana 2 Lite at $0.034/1K images via `gemini-3.1-flash-image` [[nano-banana-2-lite-google-deepmind-image-generation-at-0-034-1k-images-3eac9764]]), and [[ideogram]] (Ideogram 3.0 with commercial API on fal.ai and a research-only open-weights variant on Hugging Face [[ideogram-3-0-launches-with-open-weights-model-and-commercial-license-1f773818]])."
+
+> From Recent updates 2026-10-25: "**Sprites.** Three new sprite/game-asset entities added: [[pixellab]] (Claude-compatible MCP server, from $0.001/image [[pixellab-sprite-generation-mcp-server-for-claude-code-1195a2d7]]), [[retro-diffusion]] (pixel art, from $0.03/image, MCP server [[retro-diffusion-pixel-art-generation-from-0-03-per-image-mcp-server-available-0746b611]]), and [[scenario]] (game-ready sprites via MCP server compatible with Claude Code, Codex, and Cursor [[scenario-mcp-server-for-claude-code-codex-and-cursor-9bf7b8e5]])."
 
 ## Open questions
 

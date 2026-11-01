@@ -2,7 +2,7 @@
 title: "Claude Opus 5.5"
 kind: entity
 sources: ["[[introducing-claude-opus-5-5-ec3fa700]]", "[[claude-opus-5-5-takes-the-top-spot-on-the-artificial-analysis-intelligence-index-4950ff35]]", "[[system-card-claude-opus-5-5-7f5a82f9]]", "[[healthbench-and-healthbench-professional-evaluating-models-in-realistic-health-conversations-df80623c]]", "[[announcing-artificial-analysis-intelligence-index-v5-6d6987e4]]"]
-last_updated: 2026-10-28
+last_updated: 2026-11-01
 last_verified: 2026-10-28
 freshness_window_days: 30
 ---
@@ -38,6 +38,12 @@ The **System Card** (published 2026-09-24) confirms **the largest capability gai
 > Claude Opus 5.5 (max) costs $10.04 per Intelligence Index task, compared with GPT-6 Astra (max) at $6.24 and GPT-6.1 Sol (max) at $1.27. [[announcing-artificial-analysis-intelligence-index-v5-6d6987e4]]
 
 _no contradictions or gaps known yet (last reviewed: 2026-10-28)_
+
+## Disputes
+
+- [[announcing-artificial-analysis-intelligence-index-v5-6d6987e4]] claims Claude Opus 5.5 leads AA Index v5 at 58 (2026-10-27); [[gemini-4-carbon-is-the-new-1-on-the-artificial-analysis-intelligence-index-v5-53854855]] claims Gemini 4 Carbon scores highest at 59, followed by Opus 5.5 at 58 (2026-10-30). Status: unresolved (confidence: high; sweep: 2026-11-01)
+> Claude Opus 5.5 (max) leads the Artificial Analysis Intelligence Index v5 at 58, ahead of GPT-6 Astra (max) at 57 and GPT-6.1 Sol (max) at 55.
+> Gemini 4 Carbon (High) scores the highest on Artificial Analysis Intelligence Index with a score of 59, followed by Claude Opus 5.5 (Max, Default Fallback) with a score of 58.
 
 ## See also
 

@@ -11,7 +11,7 @@ sources:
   - "[[meshy-image-to-3d-api-meshy-t2-5-is-the-default-smart-topology-model-lowpoly-retires-30-oct-2026-82720073]]"
   - "[[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]"
   - "[[meshy-pricing-credits-plans-and-usage-62da5fc3]]"
-last_updated: 2026-10-31
+last_updated: 2026-11-01
 last_verified: 2026-10-31
 freshness_window_days: 30
 profile: tool
@@ -67,7 +67,13 @@ On the product side, Meshy 3D Agent Beta (a chat-based, multi-step ideation-to-a
 
 ## Disputes
 
-_no contradictions or gaps known yet (last reviewed: 2026-10-24)_
+- Open questions section claims "Pricing (per-credit / per-generation cost and plan tiers) — no ingested source states a figure" but frontmatter cites [[meshy-pricing-credits-plans-and-usage-62da5fc3]] with confirmed plan tiers (free 100 credits/mo; Pro $20/mo with 1,000 credits; Studio $70/mo with 5,500 shared credits). Status: unresolved (confidence: high; sweep: 2026-11-01)
+
+> The free plan includes 100 credits per month with no credit card required. Paid tiers are Pro (1,000 credits/month), Premium (3,000), Ultra (8,000), and Studio (5,500 shared across a team). The official USD pricing page lists Pro at 20 USD/month and Studio at 70 USD/month. [[meshy-pricing-credits-plans-and-usage-62da5fc3]]
+
+- Open questions section claims "Commercial-use terms per plan (free vs subscribed) — only 'subscribed users can download 7.1 models' is on record" but frontmatter cites [[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]] with full commercial-use details (free tier: CC BY 4.0 with attribution required; all paid plans: full private ownership, no attribution). Status: unresolved (confidence: high; sweep: 2026-11-01)
+
+> Models generated on the Meshy free plan are licensed under CC BY 4.0, which permits commercial use if Meshy is credited. If you are a paid customer, you own the assets created through our platform. Models generated while you were on a paid plan keep the rights associated with that plan. [[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]
 
 ## Open questions
 
