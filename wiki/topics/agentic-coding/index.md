@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-01
+last_updated: 2026-11-04
 sources:
   - "[[release-0-163-0-openai-codex-255cde9f]]"
   - "[[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]"
@@ -554,6 +554,10 @@ The same release extends idle compaction to the GUI surfaces and discloses the t
 > codex queue --resume was added, which resumes unloaded threads after queueing a message
 
 > codex doctor --network-only was added to diagnose only settings, network environment, provider HTTP, and Responses WebSocket
+
+**Cross-domain: Runway Dev MCP plugins for coding agents (November 2, 2026).** Runway released Dev plugins that connect a coding agent's MCP client directly to the Runway Dev API, surfacing generative video generation inside agentic workflows [[runway-dev-plugins-for-coding-agents-35216bb0]]. This extends the class of "media-generation MCPs reachable from Claude Code" (see also [[generative-media-models]]).
+
+> Runway announced Dev plugins for coding agents on November 2, 2026. The plugins connect your coding agent to your Runway Dev account through the Runway Dev MCP and add Runway's skills for building with the generative media API. [[runway-dev-plugins-for-coding-agents-35216bb0]]
 
 ### Updates 2026-11-01
 
