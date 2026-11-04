@@ -8,7 +8,7 @@ sources:
   - "[[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]"
   - "[[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]"
   - "[[aa-video-i2v-v2-1-leaderboard-top-ai-video-models-7458c112]]"
-last_updated: 2026-10-31
+last_updated: 2026-11-04
 last_verified: 2026-10-31
 freshness_window_days: 30
 profile: tool
@@ -82,3 +82,4 @@ The Artificial Analysis AA-Video-I2V v1.1 leaderboard (October 2026) shows MiniM
 - [[generative-media-models]]
 - [[frontier-models]]
 - [[minimax-m3]]
+- [[pika-h3-flex]]
