@@ -395,8 +395,12 @@ sources:
   - "[[release-v2-1-312-anthropics-claude-code-dc8a856f]]"
   - "[[key-updates-in-claude-code-v2-1-314-denying-writes-outside-the-working-directory-and-fixing-gaps-in-sandbox-and-hook-enforcement-74166b1e]]"
   - "[[release-v2-1-316-11bfb616]]"
+  - "[[release-v2-1-317-anthropics-claude-code-ddf42b69]]"
+  - "[[release-v2-1-316-anthropics-claude-code-11bfb616]]"
+  - "[[release-v2-1-314-anthropics-claude-code-fbfedaa6]]"
+  - "[[release-0-166-0-openai-codex-10be109e]]"
 last_verified: 2026-10-31
-last_updated: 2026-11-01
+last_updated: 2026-11-04
 freshness_window_days: 30
 ---
 
@@ -516,6 +520,40 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-04
+
+Four tool releases landed in the 2026-10-26 → 2026-11-04 window; all are incremental hardening/ergonomics rather than capability-frontier moves.
+
+**Claude Code v2.1.314** adds a write-path sandbox counterpart to the existing read restriction [[release-v2-1-314-anthropics-claude-code-fbfedaa6]], extending the permission-checker surface to writes and asserting enforcement even in bypass mode:
+
+> Added permissions.blockWritesOutsideWorkingDirectories so that Write, Edit and NotebookEdit refuse paths outside the working directories in every permission mode, even in bypass mode
+
+The same release extends idle compaction to the GUI surfaces and discloses the trigger policy the standing v2.1.310 open question asked about — the VS Code and Desktop Code tab surfaces use the same 200K+ token threshold and one-hour-prompt-cache-expiry trigger as the terminal idle compaction shipped in v2.1.300 [[release-v2-1-300-anthropics-claude-code-5dc7e9d0]]:
+
+> Idle compaction in VS Code and Claude Desktop's Code tab: a 200K+ token conversation left idle is summarized, and the summary is used on your next message if the prompt cache has expired. It now also runs on Bedrock, Vertex, Foundry and gateways once the 1h cache is on
+
+**Claude Code v2.1.317** (2026-11-03) adds two narrow exfiltration/containment gates and a hook primitive [[release-v2-1-317-anthropics-claude-code-ddf42b69]]:
+
+> Added a check that asks before a web or shell tool call sends your account email address to the network
+
+> Added onFailure: "block" for Agent SDK hook callbacks, so a callback that fails blocks the action instead of letting it run
+
+> Added a warning to /schedule when a new cloud scheduled task gets connectors you did not ask for, with how to remove them
+
+**Claude Code v2.1.316** (2026-10-31) adds a cost-governance lever and a thinking-keyword toggle [[release-v2-1-316-anthropics-claude-code-11bfb616]]. The pooled group budget is a soft, gateway-level spend ceiling that sits alongside the hard per-employee caps documented in the Uber case, aligning with the budget-gating side of the routing-vs-caps cost dispute:
+
+> Added pooled group budgets to the Claude apps gateway: one monthly budget that a group's members share, on top of each member's own limit
+
+> Added CLAUDE_CODE_DISABLE_ULTRATHINK, which turns the ultrathink keyword off
+
+**Codex 0.166.0** (2026-10-29) adds GPT-6.1 Terra across its model catalogs, swaps the npm wrapper for a native execve binary, and extends cross-session queueing and diagnostics [[release-0-166-0-openai-codex-10be109e]]:
+
+> Added GPT-6.1 Terra to the bundled, Vertex AI, and Amazon Bedrock model catalogs.
+
+> codex queue --resume was added, which resumes unloaded threads after queueing a message
+
+> codex doctor --network-only was added to diagnose only settings, network environment, provider HTTP, and Responses WebSocket
 
 ### Updates 2026-11-01
 
@@ -3162,6 +3200,7 @@ lint stays quiet until each page actually exists:
 - [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]] claims an automatically-evolved harness surpasses the human-designed Codex-CLI harness (77.0% vs 71.9% pass@1 on Terminal-Bench 2) and transfers frozen to SWE-bench-verified; [[quantifying-infrastructure-noise-in-agentic-coding-evals-anthropic-engineering-c78d84ac]] shows Terminal-Bench scores can swing several percentage points from infrastructure resource configuration, so a 5.1-point harness gain may be partly confounded unless resource configuration was pinned identically. Status: unresolved
 - [[making-claude-code-more-secure-and-autonomous-anthropic-engineering-c765441e]] claims OS-level sandboxing (bubblewrap/seatbelt + network proxy) reduces permission prompts by 84% and contains prompt-injected agents from exfiltration; [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]] claims attack success rates exceed 85% against state-of-the-art defenses with adaptive strategies and that tool outputs are trusted at system-instruction level — so the sandbox bounds blast radius but does not address the underlying trust-level confusion the SoK identifies as the root cause. Status: unresolved
 - [[auto-mode-is-now-the-default-in-claude-code-for-pro-max-and-team-plans-756be989]] reports an Anthropic-commissioned Trajectory Labs eval in which 0 of 720 indirect-prompt-injection attempts succeeded against Claude Fable 5 / Opus 5 / Sonnet 5 in auto mode, offered as evidence that shipping auto mode as the default is safe; [[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]] argues data-instruction separation cannot both block contextual-manipulation attacks and preserve legitimate flows (an impossibility-style result), and [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]] reports >85% attack success against state-of-the-art defenses under adaptive strategies. The 0/720 result is on 72 held-out static scenarios frozen as of 2026-07-17, so it does not test the adaptive/co-optimized attacker the SoK and impossibility framing warn about. Status: unresolved
+- [[release-v2-1-317-anthropics-claude-code-ddf42b69]] adds a per-call check before a web or shell tool call sends the user's account email over the network, narrowing one exfiltration channel; [[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]] argues data/instruction separation cannot both block contextual-manipulation attacks and preserve legitimate flows, implying a prompt-injected agent can still exfiltrate equivalent data through other permitted network calls that the single-field email check does not cover. Status: unresolved
 - [[moonlight-mayhem-raccoon-heist-by-codex-gpt-5-6-sol-ultra-eee2b82f]] reports Codex (GPT-5.6 Sol Ultra) failed to spot and correct a gross visual rendering bug despite reviewing screenshots during development; [[one-shotting-a-raccoon-heist-game-using-claude-fable-5-b023d4b3]] reports Claude Fable 5 successfully closed its own visual feedback loop via Playwright screenshots, iterating on the design without a human eyeballing each step. Status: unresolved
 - [[swe-webdevbench-evaluating-coding-agent-application-platforms-as-virtual-software-agencies-c47cb7a6]] claims no app-generation platform scores above 60% on engineering quality (a 'production-readiness cliff'); [[2026-agentic-coding-trends-report-27fe0474]] claims 2026 is the era where development shifts to orchestrating agents that write code, implying production-grade output is increasingly delegable. The two are in tension on how production-ready autonomous full-stack output actually is. Status: unresolved
 - [[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]] claims that even on isolated tasks, traditional deterministic pass/fail script evaluation "produces severe misjudgments and false signals" and proposes SWE-Judge (LLM-based, human-validated) as a corrective; [[swe-bench-verified-overview-and-bash-only-methodology-52afb0a4]] presents deterministic test-patch scoring as the trusted, annotator-reviewed gold standard for coding-agent capability — so the two disagree on whether deterministic scripts are sufficient as the scoring mechanism. Status: unresolved
@@ -3633,6 +3672,9 @@ lint stays quiet until each page actually exists:
 - [ ] Ingest the four 2026-10-27–2026-10-30 agentic-CLI releases once their source hosts are reachable (all returned HTTP 403 through the egress proxy on 2026-10-30): Claude Code v2.1.313 (slug `release-v2-1-313-anthropics-claude-code-8b35225a`, https://github.com/anthropics/claude-code/releases/tag/v2.1.313), v2.1.314 (`release-v2-1-314-anthropics-claude-code-fbfedaa6`, https://github.com/anthropics/claude-code/releases/tag/v2.1.314), Codex 0.165.0 (`release-0-165-0-openai-codex-bd138645`, https://github.com/openai/codex/releases/tag/rust-v0.165.0), Codex 0.166.0 (`release-0-166-0-openai-codex-10be109e`, https://github.com/openai/codex/releases/tag/rust-v0.166.0). Codex 0.165.0 was already queued by the 2026-10-28 run and remains unreachable.
 - [ ] Does Claude Code v2.1.314's reported `permissions.blockWritesOutsideWorkingDirectories` setting — a write-side analogue to the v2.1.273 `blockReadsOutsideWorkingDirectories` gate [[release-v2-1-273-anthropics-claude-code-6726c9df]] — materially shrink the overwrite/exfiltration blast radius against a prompt-injected agent, or does it only block path traversal while leaving the runtime tool-output trust-level confusion unaddressed? (Unverified — surfaced only via WebSearch paraphrase this run; needs verbatim ingest to confirm the setting exists and its exact semantics.)
 - [ ] Does Codex 0.165.0–0.166.0's addition of GPT-6.1 Terra across the bundled, Vertex AI, and Bedrock catalogs (reported via WebSearch, unverified) move any published SWE-bench Verified / Terminal-Bench 2.x Codex-CLI standings, and does it deprecate the GPT-5.6 Terra/Luna line the wiki tracks? Cross-relevant to frontier-models — confirm on verbatim ingest.
+- [ ] Does v2.1.314's `permissions.blockWritesOutsideWorkingDirectories`, enforced 'even in bypass mode' [[release-v2-1-314-anthropics-claude-code-fbfedaa6]], close the subshell / unanalyzable-command fail-open class flagged for the read-side checker in v2.1.273 [[release-v2-1-273-anthropics-claude-code-6726c9df]], or can an injected agent still write outside the working directory via a command the permission checker cannot statically analyze?
+- [ ] Does v2.1.317's account-email network check [[release-v2-1-317-anthropics-claude-code-ddf42b69]] generalize to other credentials/PII (API keys, file contents), or is it a single-field guard that leaves the broader exfiltration surface the prompt-injection SoK identifies unaddressed?
+- [ ] Does Codex 0.166.0's `codex queue --resume` [[release-0-166-0-openai-codex-10be109e]] carry conversation context or prompt cache when it resumes an unloaded thread, or is it a cold reload — i.e. does it change the caching/cost profile the prior `codex queue` open question flagged [[release-0-149-0-openai-codex-785d6f65]]?
 
 ## See also
 
