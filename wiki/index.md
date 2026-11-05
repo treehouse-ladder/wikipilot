@@ -111,6 +111,14 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Sources
 
+- [[axion-1-0-open-agent-foundation-models-simplified-4841cbfc]]
+- [[minimax-h3-highspeed-video-generation-5b521e7c]]
+- [[introducing-images-2-6-295354ff]]
+- [[gpt-image-2-6-sunburst-model-e5a487dd]]
+- [[tripo-agentic-canvas-the-ai-agent-that-gets-your-3d-work-done-93f2bd5a]]
+- [[changelog-tripo-developers-fe455299]]
+- [[romancing-saga-re-universe-original-soundtrack-vol-4-music-review-12c7679a]]
+- [[release-v2-1-318-anthropics-claude-code-797aba84]]
 - [[release-0-164-0-openai-codex-b28a06ef]]
 - [[training-the-whole-agent-not-just-the-model-16ab0f9e]]
 - [[what-does-a-harness-buy-tokens-mostly-da56a135]]

@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-05] daily | frontier-models — 1 source, 2 pages
+
+Axion 1.0 by ByteDance Research: 35B MoE open-weight agent foundation model (Apache 2.0, arXiv 2611.03233). HLE 52.8, SEAL-0 60.4; simplified pretraining recipe. New source page added; frontier-models index updated.
+
+## [2026-11-05] daily | generative-media-models — 3 sources, 6 pages
+
+GPT Image 2.6 (Flare+Sunburst) released 2026-11-04: `gpt-image-2.6-flare` and `gpt-image-2.6-sunburst` in API; Sunburst $30/1M output tokens. MiniMax H3 now on Replicate with per-second tiers (Lite $0.04/s, Highspeed $0.06/s, H3 $0.08/s, 50% off through year-end). [[gpt-image]] and [[minimax-h3]] entities updated.
+
+## [2026-11-05] daily | ai-in-game-dev — 2 sources, 4 pages
+
+Tripo Agentic Canvas beta: node-based 3D pipeline in Studio (generation → retopology → UV → texturing → PBR → rigging/animation → FBX/GLB export). API v2 retired 2026-11-01; v3.0 topology pricing (35cr triangle / 40cr quad); USD billing switches 2026-12-01 at 1 credit = $0.01. [[tripo]] entity pricing updated.
+
+## [2026-11-05] daily | agentic-coding — 1 source, 2 pages
+
+Claude Code v2.1.318 released: tool call streaming improvements and minor agent-loop fixes. New source page; topic index updated.
+
+## [2026-11-05] daily | games-of-note — 0 sources, 1 page
+
+Quiet run. No new notable sources today; topic index divergence sentinel updated.
+
+## [2026-11-05] daily | game-music — 1 source, 2 pages
+
+Romancing SaGa Re;Universe Vol. 4 OST review (RPGFan, 86/100): 36-track arranged album with orchestral/jazz fusion highlights; composer Kenji Ito + multiple arrangers.
+
 ## [2026-11-01] daily | agentic-coding — 0 sources, 1 page
 
 Quiet run. qmd MCP CONNECT_TIMEOUT; Codex 0.165.0/0.166.0 release pages still unreachable. Appended log entry + divergence sentinel.
@@ -3758,3 +3782,31 @@ Claude Code v2.1.314: `permissions.blockWritesOutsideWorkingDirectories` (write-
 ## [2026-10-31] daily | _report — 6 topics, 9 sources, 12 pages
 
 All 6 topic PRs merged: games-of-note (0 sources), game-music (1), ai-in-game-dev (2), frontier-models (1), generative-media-models (3), agentic-coding (2). New entities: [[suno]], [[minimax-music]]. Creator tooling: Seedance v2.1 board #1, MiniMax H3 drops to #4 overall/#1 open-weights on v2.1.
+
+## [2026-11-05] daily | game-music — 1 source, 2 pages
+
+Romancing SaGa Re;Universe Vol. 4 OST review ingested; topic index updated with entry and open question.
+
+## [2026-11-05] daily | games-of-note — 0 sources, 1 page
+
+Quiet run. Topic index updated with sentinel entry.
+
+## [2026-11-05] daily | agentic-coding — 1 source, 2 pages
+
+Claude Code v2.1.318 patch release ingested. Release page on npm confirms version bump; full changelog not surfaced in the release tag. Two open questions filed: full changelog and subagent/skill/MCP protocol changes.
+
+## [2026-11-05] daily | ai-in-game-dev — 2 sources, 4 pages
+
+Tripo Agentic Canvas launched (agentic 3D pipeline in a web UI; MCP-compatible). Tripo developer changelog ingested: API v3.0 now priced by topology (35 credits triangle / 40 credits quad mesh); billing switching to USD display at 1 credit = $0.01 effective 2026-12-01. [[tripo]] entity pricing updated. Disputes + open question filed.
+
+## [2026-11-05] daily | generative-media-models — 3 sources, 6 pages
+
+GPT-Image-2.6-Sunburst pricing confirmed: $30/1M output tokens via API. MiniMax H3 Highspeed pricing on Replicate: $0.06/s (50% off through year-end). [[gpt-image]] and [[minimax-h3]] entities updated with verified pricing and sources.
+
+## [2026-11-05] daily | frontier-models — 1 source, 2 pages
+
+Axion 1.0 (ByteDance) ingested: fully open agent foundation model (35B MoE, Apache 2.0) with simplified training recipe (2 SFT stages + RL over agent trajectories; skips mid-training, DPO, on-policy distillation). HLE 52.8, SEAL-0 60.4; competitive with leading commercial models on several agentic benchmarks per the paper.
+
+## [2026-11-05] daily | _report — 6 topics, 8 sources, 17 pages
+
+All 6 topic PRs merged: game-music (#1084, 1 source), games-of-note (#1086/#1085, 0 sources), agentic-coding (#1087, 1 source), ai-in-game-dev (#1088, 2 sources), generative-media-models (#1090, 3 sources), frontier-models (#1091, 1 source). Creator tooling changes: [[gpt-image]] pricing confirmed, [[minimax-h3]] Replicate pricing added, [[tripo]] API v3.0 topology pricing. New tool (since 2026-11-01): [[pika-h3-flex]] (video, open-weights + API).
