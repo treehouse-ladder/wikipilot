@@ -7,8 +7,10 @@ sources:
   - "[[tripo-ai-debuts-production-grade-native-3d-diffusion-at-gdc-2026-46b8acea]]"
   - "[[tripo-ai-raises-nearly-200-million-in-series-a-and-series-a-financing-to-advance-ai-3d-and-world-model-roadmap-999735d1]]"
   - "[[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]]"
-last_updated: 2026-10-26
-last_verified: 2026-10-26
+  - "[[tripo-agentic-canvas-the-ai-agent-that-gets-your-3d-work-done-93f2bd5a]]"
+  - "[[changelog-tripo-developers-fe455299]]"
+last_updated: 2026-11-05
+last_verified: 2026-11-05
 freshness_window_days: 30
 profile: tool
 modality: 3d
@@ -18,12 +20,12 @@ model_ids: ["tripo-p1.0", "tripo-p2.0"]
 access: ["web"]
 open_weights_license: unknown
 hardware_floor: unknown
-pricing: "free 300 credits/mo (non-commercial); Pro $19.90/mo (3,000 credits); API billed under separate commercial contract (2026-10-26)"
-pricing_source: "[[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]]"
+pricing: "free 300 credits/mo (non-commercial); Pro $19.90/mo (3,000 credits); API v3.0 priced by topology (35 credits triangle mesh / 40 credits quad mesh); API billing switches to USD display at 1 credit = $0.01 effective 2026-12-01 (2026-11-05)"
+pricing_source: "[[changelog-tripo-developers-fe455299]]"
 commercial_use: "free tier non-commercial; commercial licence permanently attached to assets generated on paid (Pro+) tiers (2026-10-26)"
 commercial_use_source: "[[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]]"
 status: active
-status_source: "[[tripo-ai-launches-p2-0-model-to-generate-native-quad-meshes-for-production-pipelines-55aa361e]]"
+status_source: "[[changelog-tripo-developers-fe455299]]"
 last_release: unknown
 arena_rank: []
 arena_rank_source: []
@@ -48,6 +50,12 @@ Tripo AI raised nearly $200M across Series A+ and A++ rounds and announced Proje
 **Pricing and commercial use confirmed (2026-10-26).** The free tier is non-commercial (300 credits/mo); commercial use requires a paid plan. On Pro+ tiers, the commercial licence is permanently attached to assets generated using Pro-tier credits — the licence persists after downgrading. The Pro plan is $19.90/mo (3,000 credits). API access is handled via a separate commercial contract, not bundled into subscription plans [[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]].
 
 > Commercial use is unlocked on paid tiers: once a model is generated using Pro-tier credits, the commercial license is permanently attached to that asset. The Pro plan is listed at 19.90 USD per month with 3,000 credits per month. API access is never bundled as an add-on feature to Subscription Plans; it requires a separate commercial contract and account setup. [[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]]
+
+Tripo added **Agentic Canvas** (beta, early November 2026), a node-based workflow surface in Tripo Studio whose agent plans and runs a 3D pipeline from generation through refinement to export; the canvas exposes nodes for image generation, HD Model / Smart Mesh generation, retopology, UV, texturing, PBR, rigging and animation, plus an AI 3D Lab node for mesh repair and scene building, and its export node covers FBX/GLB/STL/3MF with tutorials demonstrating export to Unreal Engine 5 and Blender [[tripo-agentic-canvas-the-ai-agent-that-gets-your-3d-work-done-93f2bd5a]]. On the API side, Tripo's developer changelog confirms V2 was retired on 2026-11-01 (V3 is the migration target), that API pricing/balances switch to USD display at 1 credit = $0.01 from 2026-12-01, and that the V3 flagship is priced by output topology at 35 credits (triangle mesh) / 40 credits (quad mesh) [[changelog-tripo-developers-fe455299]].
+
+> The export node covers formats such as STL, 3MF, FBX, and GLB. Tutorials also show exporting to Unreal Engine 5 and Blender projects. [[tripo-agentic-canvas-the-ai-agent-that-gets-your-3d-work-done-93f2bd5a]]
+
+> v3.0 is priced by output topology: 35 credits for a triangle mesh, and 40 credits for a quad mesh (quad=true). [[changelog-tripo-developers-fe455299]]
 
 ## Disputes
 
