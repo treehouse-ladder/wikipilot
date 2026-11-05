@@ -399,8 +399,9 @@ sources:
   - "[[release-v2-1-316-anthropics-claude-code-11bfb616]]"
   - "[[release-v2-1-314-anthropics-claude-code-fbfedaa6]]"
   - "[[release-0-166-0-openai-codex-10be109e]]"
+  - "[[release-v2-1-318-anthropics-claude-code-797aba84]]"
 last_verified: 2026-10-31
-last_updated: 2026-11-04
+last_updated: 2026-11-05
 freshness_window_days: 30
 ---
 
@@ -520,6 +521,12 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-05
+
+**Claude Code v2.1.318 patch release ships.** Anthropic released Claude Code v2.1.318 as a patch update on npm (`@anthropic-ai/claude-code@2.1.318`) [[release-v2-1-318-anthropics-claude-code-797aba84]]. The release page does not list feature or fix details beyond the version bump; full changelog remains uncaptured (filed under Open questions).
+
+> Claude Code v2.1.318 patch release, available on npm as @anthropic-ai/claude-code@2.1.318. [[release-v2-1-318-anthropics-claude-code-797aba84]]
 
 ### Updates 2026-11-04
 
@@ -3679,6 +3686,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does v2.1.314's `permissions.blockWritesOutsideWorkingDirectories`, enforced 'even in bypass mode' [[release-v2-1-314-anthropics-claude-code-fbfedaa6]], close the subshell / unanalyzable-command fail-open class flagged for the read-side checker in v2.1.273 [[release-v2-1-273-anthropics-claude-code-6726c9df]], or can an injected agent still write outside the working directory via a command the permission checker cannot statically analyze?
 - [ ] Does v2.1.317's account-email network check [[release-v2-1-317-anthropics-claude-code-ddf42b69]] generalize to other credentials/PII (API keys, file contents), or is it a single-field guard that leaves the broader exfiltration surface the prompt-injection SoK identifies unaddressed?
 - [ ] Does Codex 0.166.0's `codex queue --resume` [[release-0-166-0-openai-codex-10be109e]] carry conversation context or prompt cache when it resumes an unloaded thread, or is it a cold reload — i.e. does it change the caching/cost profile the prior `codex queue` open question flagged [[release-0-149-0-openai-codex-785d6f65]]?
+- [ ] Full changelog for Claude Code v2.1.318 not captured — the GitHub release tag page should be re-fetched to extract any notable feature/fix details [[release-v2-1-318-anthropics-claude-code-797aba84]].
+- [ ] Confirm whether Claude Code v2.1.318 ships any changes to the subagent dispatch, skill invocation, or MCP protocol handling that affect agentic workflow patterns [[release-v2-1-318-anthropics-claude-code-797aba84]].
 
 ## See also
 
