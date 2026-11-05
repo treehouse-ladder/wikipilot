@@ -8,19 +8,20 @@ sources:
   - "[[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]"
   - "[[aa-video-t2v-v2-1-leaderboard-top-ai-video-models-050f7208]]"
   - "[[aa-video-i2v-v2-1-leaderboard-top-ai-video-models-7458c112]]"
-last_updated: 2026-11-04
-last_verified: 2026-10-31
+  - "[[minimax-h3-highspeed-video-generation-5b521e7c]]"
+last_updated: 2026-11-05
+last_verified: 2026-11-05
 freshness_window_days: 30
 profile: tool
 modality: video
 tasks: ["text-to-video", "image-to-video", "video-editing", "first-last-frame", "subject-reference", "motion-reference", "native-stereo-audio"]
 vendor: "MiniMax"
 model_ids: ["MiniMaxAI/MiniMax-H3"]
-access: ["api", "open-weights"]
+access: ["api", "open-weights", "replicate"]
 open_weights_license: "MiniMax H3 Community License Agreement"
 hardware_floor: unknown
-pricing: "AA-measured $34.12/min (768p image-to-video, AA-Video-I2V v1.1) (2026-10-26)"
-pricing_source: "[[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]"
+pricing: "Replicate hosted (768p): H3 Lite $0.04/s, H3 Highspeed $0.06/s, H3 $0.08/s (Lite/Highspeed 50% off through year-end) (2026-11-05); also AA-measured $34.12/min (768p I2V v1.1)"
+pricing_source: "[[minimax-h3-highspeed-video-generation-5b521e7c]]"
 commercial_use: "permitted with attribution for organizations below an annual-revenue threshold (figure illegible in source); open weights regionally restricted (2026-08-03)"
 commercial_use_source: "[[minimaxai-minimax-h3-hugging-face-1f0e60fd]]"
 status: active
@@ -54,6 +55,10 @@ The Artificial Analysis AA-Video-I2V v1.1 leaderboard (October 2026) shows MiniM
 
 > MiniMax H3 (768p) currently leads AA-Video-I2V v1.1 with an Elo score of 1140. Its listed API price is $34.12 /min. [[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]
 
+As of 2026-11-05, Replicate hosts MiniMax H3 at three 768p tiers — H3 Lite $0.04/s, H3 Highspeed $0.06/s, H3 $0.08/s — with H3 Lite and Highspeed 50% off through year-end; a 10-second Highspeed clip costs $0.60 [[minimax-h3-highspeed-video-generation-5b521e7c]]. This is the first concrete per-second host price recorded for H3, complementing the prior AA-measured $34.12/min (768p I2V v1.1). Replicate is now a third access path alongside the vendor API and open weights.
+
+> MiniMax H3 Lite is $0.04 per second, H3 Highspeed is $0.06 per second, and H3 is $0.08 per second, all at 768P. A 10-second Highspeed video costs $0.60. [[minimax-h3-highspeed-video-generation-5b521e7c]]
+
 ## Disputes
 
 - [[minimax-releases-minimax-h3-an-omni-modal-video-model-that-generates-15-second-2k-clips-with-native-stereo-audio-53db5121]] claims open weights were "promised, not shipped" and the API was the only access path; [[minimaxai-minimax-h3-hugging-face-1f0e60fd]] claims the 288 GB weights are published on Hugging Face. Status: resolved-toward-B — the HF card is the later snapshot (2026-08-03 vs 2026-08-01), so `access` lists both `api` and `open-weights`.
@@ -76,6 +81,7 @@ The Artificial Analysis AA-Video-I2V v1.1 leaderboard (October 2026) shows MiniM
 - [ ] VRAM / multi-GPU floor for the 288 GB checkpoints.
 - [ ] Release date (`last_release` is `unknown`; the announcement coverage is dated 2026-08-01).
 - [ ] fal / Replicate endpoint ids.
+- [ ] Are Replicate's H3 Lite / Highspeed / H3 tiers the base MiniMax H3 model or speed-distilled variants, and do their outputs carry the same MiniMax H3 Community License terms?
 
 ## See also
 
