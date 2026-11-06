@@ -400,8 +400,9 @@ sources:
   - "[[release-v2-1-314-anthropics-claude-code-fbfedaa6]]"
   - "[[release-0-166-0-openai-codex-10be109e]]"
   - "[[release-v2-1-318-anthropics-claude-code-797aba84]]"
+  - "[[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]]"
 last_verified: 2026-10-31
-last_updated: 2026-11-05
+last_updated: 2026-11-06
 freshness_window_days: 30
 ---
 
@@ -521,6 +522,18 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-06
+
+**Claude Code v2.1.317 and v2.1.318 changelog details confirmed.** The CHANGELOG for Claude Code v2.1.317 and v2.1.318 reveals a mix of Agent SDK/mod ergonomics, MCP stability fixes, and subagent model-routing changes [[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]]. Key items:
+
+- **Agent SDK mod ergonomics**: `$.model.fork` gains an `effort` option so a quick side task can run at `low` effort regardless of the session's setting; `onFailure: "block"` added to Agent SDK hook callbacks so a callback failure blocks the action instead of letting it run through [[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]].
+- **MCP stability**: Fixed stdio MCP servers that exit on the version probe being re-probed on every start; a server that exits within 3 s is pinned to the legacy handshake for 7 days. Fixed project and local MCP servers disconnecting after the first turn in desktop sessions. Improved MCP tool errors: a tool call before the tool is loaded now returns its input schema [[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]].
+- **Subagent model routing**: Subagents and teammates on a different model now use that model's saved effort level or its default, not the session's effort level [[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]].
+- **Bug fixes**: Fixed workflows re-running finished agents on resume after a usage limit; fixed idle compaction replacing a conversation with a non-summary reply; fixed the "Now using usage credits" notice reappearing every ~30 s during background subagent runs; fixed skills synced from claude.ai being lost/re-downloaded every 10 min when they can't be written to disk; fixed `DISABLE_PROMPT_CACHING_OPUS/SONNET` having no effect on `[1m]` and other-region model spellings [[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]].
+- **VSCode fix**: Forked conversations were dropping messages — only one parallel tool-call result was kept; last compacted messages could be lost, leaving Claude's answer without its context [[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]].
+
+> Added an `effort` option to a mod's `$.model.fork`, so a quick side job can run at `low` whatever effort the session uses; the result reports the effort sent [[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]]
 
 ### Updates 2026-11-05
 
