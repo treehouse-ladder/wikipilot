@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-07] daily | generative-media-models — 3 sources, 8 pages
+
+Nano Banana 2.1 (Google DeepMind Gemini 3.6 Flash Image) added as a new entity distinct from [[nano-banana]]. ElevenLabs flagship corrected to Eleven v4 / v4 Turbo (supersedes v3; v4 Turbo ~100 ms latency / 90+ languages). Suno commercial-use documented: Pro/Premier paid plans grant commercial rights for game-shippable releases.
+
+## [2026-11-07] daily | ai-in-game-dev — 0 sources, 2 pages
+
+Meshy pricing completeness correction: Premium ($40/mo, 3,000 credits) and Ultra ($100/mo, 8,000 credits) tiers added to frontmatter — omitted from prior entry that only listed Free/Pro/Studio. All paid tiers confirmed to include commercial rights and private license.
+
+## [2026-11-07] daily | frontier-models — 3 sources, 4 pages
+
+GPT-6 Cyber (OpenAI, 2026-11-05): cybersecurity-specialist model, top-1 on SWE-bench Cyber 71.3%. New [[gpt-6-cyber]] entity page. Inkling 2 Small (Thinking Machines, preview): highest-scoring open-weights model outside China on most published benchmarks (pending weights release). [[inkling]] entity updated.
+
+## [2026-11-07] daily | games-of-note — 4 sources, 1 page
+
+Zelda: Ocarina of Time Remake (2026-11-07): highest-rated game of 2026 at launch. Unity in $1.5B acquisition talks with Saudi Arabia's PIF. Ubisoft bidding for Arkane Austin as Xbox sells the studio amid Blade development concerns. Nagoshi Studio closes as NetEase cuts funding.
+
+## [2026-11-07] daily | agentic-coding — 3 sources, 1 page
+
+Claude Code v2.1.317–v2.1.319 changelog. Cursor adds voice chat with agents. OpenAI Codex release 0.167.0. Cross-topic sweep: agentic-coding index updated.
+
+## [2026-11-07] daily | game-music — 0 sources, 1 page
+
+Roster sweep only: no new in-scope sources published since the 2026-11-05 run. Topic index freshness bumped.
+
 ## [2026-11-05] daily | frontier-models — 1 source, 2 pages
 
 Axion 1.0 by ByteDance Research: 35B MoE open-weight agent foundation model (Apache 2.0, arXiv 2611.03233). HLE 52.8, SEAL-0 60.4; simplified pretraining recipe. New source page added; frontier-models index updated.
