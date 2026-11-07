@@ -2,8 +2,8 @@
 title: "Inkling"
 kind: entity
 aliases: ["Thinking Machines Inkling", "Inkling MoE"]
-sources: ["[[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]", "[[inkling-our-open-weights-model-06531d4a]]", "[[introducing-inkling-small-5c51c45f]]", "[[inkling-small-lands-within-a-point-of-inkling-on-the-artificial-analysis-intelligence-index-with-less-than-a-third-of-the-parameters-805cabb6]]"]
-last_updated: 2026-09-21
+sources: ["[[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]", "[[inkling-our-open-weights-model-06531d4a]]", "[[introducing-inkling-small-5c51c45f]]", "[[inkling-small-lands-within-a-point-of-inkling-on-the-artificial-analysis-intelligence-index-with-less-than-a-third-of-the-parameters-805cabb6]]", "[[thinking-machines-inkling-2-small-the-highest-scoring-open-weights-model-outside-of-china-pending-weights-release-b70ccc60]]", "[[introducing-inkling-2-small-187bb7cb]]"]
+last_updated: 2026-11-07
 last_verified: 2026-07-31
 freshness_window_days: 30
 aa_intelligence_index: 41
@@ -44,6 +44,12 @@ Thinking Machines fully released **Inkling-Small** on July 31, 2026 (previously 
 > Inkling Small scores 40 on the Artificial Analysis Intelligence Index, within a point of its flagship sibling Inkling with less than a third of the total and active parameters. No open weights model at its size or smaller scores higher on the Intelligence Index. [[inkling-small-lands-within-a-point-of-inkling-on-the-artificial-analysis-intelligence-index-with-less-than-a-third-of-the-parameters-805cabb6]]
 
 > Inkling-Small is a multimodal, Mixture-of-Experts model with controllable reasoning effort that matches Inkling at a quarter of the size. [[introducing-inkling-small-5c51c45f]]
+
+Thinking Machines previewed **Inkling 2 Small** on 2026-11-07 (closed-weights for now, Apache 2.0 release pending): it scores **31 on AA Intelligence Index v5.0.1** (+18 over Inkling Small, ~4x output tokens/task), matching Gemini 3.8 Flash (high) and surpassing MiMo-V2.6-Pro, at $1.18/task [[thinking-machines-inkling-2-small-the-highest-scoring-open-weights-model-outside-of-china-pending-weights-release-b70ccc60]]. Artificial Analysis frames it as the model that, upon weights release, would be the highest-scoring open-weights model developed **outside China** [[thinking-machines-inkling-2-small-the-highest-scoring-open-weights-model-outside-of-china-pending-weights-release-b70ccc60]]. Thinking Machines launched it as closed-weights on Tinker and intends to publish full weights under Apache 2.0 "next week" after external safety testing and red-teaming [[introducing-inkling-2-small-187bb7cb]].
+
+> Inkling 2 Small scores 31 on the Artificial Analysis Intelligence Index v5.0.1, up 18 points from Inkling Small, with roughly 4x as many output tokens per task. It matches Gemini 3.8 Flash (high) and surpasses MiMo-V2.6-Pro. Once the weights are released, the model would be the highest-scoring open weights model developed outside China based on current rankings. [[thinking-machines-inkling-2-small-the-highest-scoring-open-weights-model-outside-of-china-pending-weights-release-b70ccc60]]
+
+> Thinking Machines intends to make the full weights of Inkling 2 Small available under an Apache 2.0 license next week, after the completion of external safety testing and red-teaming; it is launched as a closed-weight model on the Tinker platform. [[introducing-inkling-2-small-187bb7cb]]
 
 ## Disputes
 
