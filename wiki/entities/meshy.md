@@ -11,8 +11,8 @@ sources:
   - "[[meshy-image-to-3d-api-meshy-t2-5-is-the-default-smart-topology-model-lowpoly-retires-30-oct-2026-82720073]]"
   - "[[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]"
   - "[[meshy-pricing-credits-plans-and-usage-62da5fc3]]"
-last_updated: 2026-11-01
-last_verified: 2026-10-31
+last_updated: 2026-11-07
+last_verified: 2026-11-07
 freshness_window_days: 30
 profile: tool
 modality: 3d
@@ -22,7 +22,7 @@ model_ids: ["meshy-6", "meshy-7", "meshy-7.1", "meshy-t2.5"]
 access: ["web", "api"]
 open_weights_license: unknown
 hardware_floor: unknown
-pricing: "free 100 credits/mo; Pro $20/mo (1,000 credits); Studio $70/mo (5,500 shared credits) (2026-10-26)"
+pricing: "Free 100 credits/mo; Pro $20/mo (1,000 credits); Premium $40/mo (3,000 credits); Ultra $100/mo (8,000 credits); Studio $70/mo (5,500 shared credits); Enterprise custom; all paid tiers include commercial rights + private license (2026-11-07)"
 pricing_source: "[[meshy-pricing-credits-plans-and-usage-62da5fc3]]"
 commercial_use: "free tier CC BY 4.0 (commercial with attribution); all paid plans full private commercial, no attribution (2026-10-26)"
 commercial_use_source: "[[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]"
@@ -59,11 +59,15 @@ On the product side, Meshy 3D Agent Beta (a chat-based, multi-step ideation-to-a
 
 > Meshy retires lowpoly on October 30, 2026. After that date, a request with model_type: "lowpoly" returns an error; the recommended replacement is smart-topology with meshy-t2.5. [[meshy-image-to-3d-api-meshy-t2-5-is-the-default-smart-topology-model-lowpoly-retires-30-oct-2026-82720073]]
 
-**Pricing and commercial use (confirmed 2026-10-26).** The free tier provides 100 credits/mo and licenses outputs under CC BY 4.0 — commercial use is permitted with Meshy attribution. Paid plans (Pro $20/mo, Studio $70/mo) grant full private ownership with no attribution requirement; models generated while on a paid plan retain that plan's rights even after downgrading [[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]][[meshy-pricing-credits-plans-and-usage-62da5fc3]].
+**Pricing and commercial use (confirmed 2026-11-07).** The free tier provides 100 credits/mo (no credit card required) and licenses outputs under CC BY 4.0 — commercial use is permitted with Meshy attribution. Paid tiers are Pro $20/mo (1,000 credits), Premium $40/mo (3,000 credits), Ultra $100/mo (8,000 credits), Studio $70/mo (5,500 shared credits across a team), and Enterprise (custom) — all paid tiers grant full private ownership with commercial rights and no attribution requirement; models generated while on a paid plan retain that plan's rights even after downgrading [[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]][[meshy-pricing-credits-plans-and-usage-62da5fc3]].
+
+> The free plan includes 100 credits per month with no credit card required. [[meshy-pricing-credits-plans-and-usage-62da5fc3]]
+
+> Paid tiers are Pro (1,000 credits/month), Premium (3,000), Ultra (8,000), and Studio (5,500 shared across a team). [[meshy-pricing-credits-plans-and-usage-62da5fc3]]
+
+> The official USD pricing page lists Pro at 20 USD/month and Studio at 70 USD/month; the EUR version lists Pro at 19 EUR and Studio at 67 EUR. All paid plans include commercial-use rights and a private license. [[meshy-pricing-credits-plans-and-usage-62da5fc3]]
 
 > Models generated on the Meshy free plan are licensed under CC BY 4.0, which permits commercial use if Meshy is credited. If you are a paid customer, you own the assets created through our platform. [[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]
-
-> The official USD pricing page lists Pro at 20 USD/month and Studio at 70 USD/month. All paid plans include commercial-use rights and a private license. [[meshy-pricing-credits-plans-and-usage-62da5fc3]]
 
 ## Disputes
 
