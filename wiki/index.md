@@ -98,6 +98,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[pixellab]]
 - [[retro-diffusion]]
 - [[scenario]]
+- [[gpt-6-cyber]]
+- [[nano-banana-2-1]]
 
 ## Comparisons
 
@@ -1083,6 +1085,25 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[minimax-music-2-6-text-to-audio-api-on-fal-ff196b6a]]
 - [[key-updates-in-claude-code-v2-1-314-denying-writes-outside-the-working-directory-and-fixing-gaps-in-sandbox-and-hook-enforcement-74166b1e]]
 - [[release-v2-1-316-11bfb616]]
+- [[gpt-6-cyber-advancing-the-frontier-of-aligned-cybersecurity-agents-14e90e72]]
+- [[introducing-inkling-2-small-187bb7cb]]
+- [[thinking-machines-inkling-2-small-the-highest-scoring-open-weights-model-outside-of-china-pending-weights-release-b70ccc60]]
+- [[report-silver-lake-and-the-saudi-arabia-pif-hold-talks-with-unity-to-explore-acquisition-06ae03c1]]
+- [[ubisoft-among-the-bidders-for-arkane-as-xbox-looks-to-sell-the-studio-ad2cf5c4]]
+- [[unity-is-in-1-5-billion-buyout-talks-with-saudi-arabia-s-pif-b200f894]]
+- [[xbox-accused-of-sabotaging-arkane-as-it-tries-to-finish-blade-db13ed3e]]
+- [[nagoshi-studio-closes-as-netease-cuts-its-funding-13ad681f]]
+- [[the-ocarina-of-time-remake-has-claimed-2026-s-review-crown-but-gta-6-could-have-something-to-say-about-it-e5a396e3]]
+- [[yakuza-spiritual-successor-gang-of-dragon-seemingly-cancelled-as-nagoshi-studio-is-closed-c476322f]]
+- [[zelda-ocarina-of-time-remake-reviews-make-it-2026-s-highest-rated-game-42cb8d24]]
+- [[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]]
+- [[release-0-167-0-openai-codex-b8ddb6db]]
+- [[release-v2-1-319-anthropics-claude-code-7cf21137]]
+- [[voice-chat-with-agents-cursor-c9e26081]]
+- [[moonshotai-kimi-k3-1-pro-hugging-face-f4a904d0]]
+- [[nano-banana-2-1-model-card-google-deepmind-2783cdec]]
+- [[eleven-v4-our-most-expressive-text-to-speech-ai-model-yet-028b20a4]]
+- [[can-i-distribute-my-songs-to-spotify-etc-25684551]]
 
 ## Answers
 
@@ -1501,6 +1522,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-11-07]]
 - [[2026-11-01]]
 - [[2026-10-31]]
 - [[2026-10-30]]
@@ -1911,3 +1933,30 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 ### New pages
 - [[suno]]
 - [[minimax-music]]
+
+## 2026-11-07
+
+### New sources
+- [[gpt-6-cyber-advancing-the-frontier-of-aligned-cybersecurity-agents-14e90e72]]
+- [[introducing-inkling-2-small-187bb7cb]]
+- [[thinking-machines-inkling-2-small-the-highest-scoring-open-weights-model-outside-of-china-pending-weights-release-b70ccc60]]
+- [[report-silver-lake-and-the-saudi-arabia-pif-hold-talks-with-unity-to-explore-acquisition-06ae03c1]]
+- [[ubisoft-among-the-bidders-for-arkane-as-xbox-looks-to-sell-the-studio-ad2cf5c4]]
+- [[unity-is-in-1-5-billion-buyout-talks-with-saudi-arabia-s-pif-b200f894]]
+- [[xbox-accused-of-sabotaging-arkane-as-it-tries-to-finish-blade-db13ed3e]]
+- [[nagoshi-studio-closes-as-netease-cuts-its-funding-13ad681f]]
+- [[the-ocarina-of-time-remake-has-claimed-2026-s-review-crown-but-gta-6-could-have-something-to-say-about-it-e5a396e3]]
+- [[yakuza-spiritual-successor-gang-of-dragon-seemingly-cancelled-as-nagoshi-studio-is-closed-c476322f]]
+- [[zelda-ocarina-of-time-remake-reviews-make-it-2026-s-highest-rated-game-42cb8d24]]
+- [[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]]
+- [[release-0-167-0-openai-codex-b8ddb6db]]
+- [[release-v2-1-319-anthropics-claude-code-7cf21137]]
+- [[voice-chat-with-agents-cursor-c9e26081]]
+- [[moonshotai-kimi-k3-1-pro-hugging-face-f4a904d0]]
+- [[nano-banana-2-1-model-card-google-deepmind-2783cdec]]
+- [[eleven-v4-our-most-expressive-text-to-speech-ai-model-yet-028b20a4]]
+- [[can-i-distribute-my-songs-to-spotify-etc-25684551]]
+
+### New pages
+- [[gpt-6-cyber]]
+- [[nano-banana-2-1]]
