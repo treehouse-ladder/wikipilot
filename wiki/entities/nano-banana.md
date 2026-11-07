@@ -4,7 +4,8 @@ kind: entity
 aliases: ["Nano Banana", "gemini-3.1-flash-image"]
 sources:
   - "[[nano-banana-2-lite-google-deepmind-image-generation-at-0-034-1k-images-3eac9764]]"
-last_updated: 2026-10-25
+  - "[[nano-banana-2-1-model-card-google-deepmind-2783cdec]]"
+last_updated: 2026-11-07
 last_verified: 2026-10-25
 freshness_window_days: 30
 profile: tool
@@ -33,6 +34,10 @@ arena_rank_source: []
 Nano Banana 2 Lite is Google DeepMind's image generation model available via the Gemini API as `gemini-3.1-flash-image`, priced at $0.034 per 1K images — a notably low per-image cost compared to other hosted image generators [[nano-banana-2-lite-google-deepmind-image-generation-at-0-034-1k-images-3eac9764]]. It supports both image generation and editing and is built on the Gemini 3.1 Flash architecture.
 
 > Nano Banana 2 Lite is available via the Gemini API as gemini-3.1-flash-image. Priced at $0.034 per 1K images generated. Supports image generation and editing. Built on the Gemini 3.1 Flash architecture.
+
+**Related model split out: [[nano-banana-2-1]].** Google DeepMind's Nano Banana 2.1 (built on Gemini 3.6 Flash, model card updated 2026-10-06) is a distinct, newer model tracked separately at [[nano-banana-2-1]]; this page continues to track Nano Banana 2 Lite (`gemini-3.1-flash-image`, on Gemini 3.1 Flash) [[nano-banana-2-1-model-card-google-deepmind-2783cdec]].
+
+> Nano Banana 2 is Gemini 3.1 Flash Image, which combines the advanced features of Nano Banana Pro with the speed of Gemini Flash. [[nano-banana-2-1-model-card-google-deepmind-2783cdec]]
 
 ## Disputes
 
