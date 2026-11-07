@@ -100,6 +100,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[scenario]]
 - [[gpt-6-cyber]]
 - [[nano-banana-2-1]]
+- [[pika-h3-flex]]
 
 ## Comparisons
 
@@ -1104,6 +1105,24 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[nano-banana-2-1-model-card-google-deepmind-2783cdec]]
 - [[eleven-v4-our-most-expressive-text-to-speech-ai-model-yet-028b20a4]]
 - [[can-i-distribute-my-songs-to-spotify-etc-25684551]]
+- [[gemini-4-carbon-medium-intelligence-performance-price-analysis-022fb946]]
+- [[genie-4-a-new-generation-of-world-simulation-e960e889]]
+- [[nanbeige4-3-33b-intelligence-performance-price-analysis-6ce7e50f]]
+- [[release-0-166-0-openai-codex-10be109e]]
+- [[release-v2-1-314-anthropics-claude-code-fbfedaa6]]
+- [[release-v2-1-317-anthropics-claude-code-ddf42b69]]
+- [[the-elder-scrolls-6-sentinel-has-officially-been-announced-a3970612]]
+- [[the-elder-scrolls-vis-name-has-been-officially-confirmed-as-the-elder-scrolls-vi-sentinel-by-series-director-todd-howard-27dcf159]]
+- [[the-elder-scrolls-vi-officially-titled-sentinel-83434754]]
+- [[gta-6-review-embargo-reportedly-set-for-november-18-d5b4146e]]
+- [[gta-6-review-embargo-reportedly-lifts-november-18th-but-some-outlets-may-wait-until-launch-8b0e3cd4]]
+- [[take-two-ceo-reveals-record-preorders-for-gta-vi-ahead-of-november-release-8df1ee5d]]
+- [[wow-forever-launch-server-status-and-known-issues-001b4086]]
+- [[games-industry-layoffs-hit-10977-in-2026-already-surpassing-all-of-2025-with-months-to-go-0c7ffab2]]
+- [[phantom-blade-zero-phaenomenaler-launch-mit-ueber-600000-steam-spielern-4d13b2ab]]
+- [[introducing-pika-h3-flex-0a7ab440]]
+- [[pika-on-x-meet-pika-h3-flex-96454635]]
+- [[runway-dev-plugins-for-coding-agents-35216bb0]]
 
 ## Answers
 
@@ -1523,6 +1542,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 ## Reports
 
 - [[2026-11-07]]
+- [[2026-11-04]]
 - [[2026-11-01]]
 - [[2026-10-31]]
 - [[2026-10-30]]

@@ -50,6 +50,30 @@ Quiet run. No new notable sources today; topic index divergence sentinel updated
 
 Romancing SaGa Re;Universe Vol. 4 OST review (RPGFan, 86/100): 36-track arranged album with orchestral/jazz fusion highlights; composer Kenji Ito + multiple arrangers.
 
+## [2026-11-04] daily | generative-media-models — 3 sources, 5 pages
+
+Pika H3 Flex entity added (#1 open-weights DesignArena T2V, LoRA on MiniMax H3); Runway Dev MCP plugins noted; cross-page sweep touched minimax-h3 and agentic-coding.
+
+## [2026-11-04] daily | games-of-note — 9 sources, 2 pages
+
+TES VI officially titled "Sentinel" (Hammerfell); WoW Forever launched Nov 4; GTA 6 review embargo Nov 18 + Take-Two $1.39B bookings; 2026 industry layoffs hit 10,977 (record); Phantom Blade Zero German source cross-check.
+
+## [2026-11-04] daily | ai-in-game-dev — 1 source, 2 pages
+
+PixelLab sprite MCP server confirmed available; cross-page sweep updated generative-media-models.
+
+## [2026-11-04] daily | game-music — 0 sources, 1 page
+
+Quiet run; no new sources. Divergence sentinel confirmed.
+
+## [2026-11-04] daily | agentic-coding — 4 sources, 1 page
+
+Codex 0.165.0 and 0.166.0 changelogs ingested; Codex doctor/queue commands documented.
+
+## [2026-11-04] daily | frontier-models — 2 sources, 1 page
+
+Two sources ingested; frontier model entity field updates applied.
+
 ## [2026-11-01] daily | agentic-coding — 0 sources, 1 page
 
 Quiet run. qmd MCP CONNECT_TIMEOUT; Codex 0.165.0/0.166.0 release pages still unreachable. Appended log entry + divergence sentinel.
