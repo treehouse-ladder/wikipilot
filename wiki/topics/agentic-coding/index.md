@@ -1,8 +1,11 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-04
+last_updated: 2026-11-07
 sources:
+  - "[[release-v2-1-319-anthropics-claude-code-7cf21137]]"
+  - "[[release-0-167-0-openai-codex-b8ddb6db]]"
+  - "[[voice-chat-with-agents-cursor-c9e26081]]"
   - "[[release-0-163-0-openai-codex-255cde9f]]"
   - "[[release-v2-1-299-anthropics-claude-code-fd1cb9e7]]"
   - "[[hpcagent-bench-a-framework-for-sound-benchmarking-of-code-optimizing-agents-harnesses-and-skills-36ce626b]]"
@@ -522,6 +525,30 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-07
+
+Three incremental tool releases landed on 2026-11-06 across the three leading agentic IDEs; all are hardening/ergonomics rather than capability-frontier moves.
+
+**Claude Code v2.1.319** (2026-11-06) tightens the auto-mode safety default and patches three concrete permission-bypass vulnerabilities [[release-v2-1-319-anthropics-claude-code-7cf21137]]. Behind LLM gateways (or with telemetry/feature flags off), auto mode now fails closed — calls the server-side check cannot verify are asked about or denied, with no fallback to the local classifier — directly removing the local-classifier fallback path the standing v2.1.273 open question flagged as an unvalidated weakening of the auto-mode safety story:
+
+> Auto mode behind gateways: calls the server can't verify are now asked about or denied, with no fallback to the local classifier. Set CLAUDE_CODE_AUTO_MODE_SERVER=0 to keep the old behavior. [[release-v2-1-319-anthropics-claude-code-7cf21137]]
+
+The same release fixes a worktree-creation sandbox escape, a Bash permission bypass via a crafted environment prefix, and — most relevant to the page's auto-mode dispute cluster — a sed command that could skip the permission check in accept-edits and auto mode:
+
+> Fixed a sandbox escape when creating a worktree, a Bash permission bypass using a crafted environment prefix, and a sed command that could skip the permission check in accept-edits and auto mode. [[release-v2-1-319-anthropics-claude-code-7cf21137]]
+
+It also adds a `permissions.denyInsteadOfPrompting` setting (a prompt-waiting tool call is denied and the turn continues), moves MCP tasks to the background, and makes `-p` mode stop silently dropping a pending deferred tool call on resume (the run now exits 1) [[release-v2-1-319-anthropics-claude-code-7cf21137]].
+
+**Codex CLI 0.167.0** (2026-11-06) is multi-agent-supervision ergonomics: an agent command center opened with `codex agents --no-daemon`, unread-result markers in the command center and session picker, and cross-provider saved-chat persistence [[release-0-167-0-openai-codex-b8ddb6db]].
+
+> Open the agent command center with codex agents --no-daemon. The command center and session picker now mark unread results. [[release-0-167-0-openai-codex-b8ddb6db]]
+
+**Cursor Voice Chat with Agents** (2026-11-06) adds a realtime voice call to supervise agents across the Agents Window, IDE, web, and iOS; the voice agent can delegate coding work to the chat agent mid-run and is backed by Grok Voice (zero data retention under Privacy Mode) [[voice-chat-with-agents-cursor-c9e26081]].
+
+> You can now talk with your agents in a realtime voice call. Voice chat works in the Agents Window, the IDE, on web, and in Cursor for iOS. [[voice-chat-with-agents-cursor-c9e26081]]
+
+> Voice chat runs on Grok Voice. With Privacy Mode on, voice chat runs with zero data retention. [[voice-chat-with-agents-cursor-c9e26081]]
 
 ### Updates 2026-11-06
 
@@ -3339,9 +3366,13 @@ lint stays quiet until each page actually exists:
 - [[training-the-whole-agent-not-just-the-model-16ab0f9e]] claims an adapted harness buys real accuracy (co-trained HarnessAdapt-RL beats GRPO by 9.8pp on SWE-bench Verified, and removing the harness skills at deployment costs up to 7.7pp); [[what-does-a-harness-buy-tokens-mostly-da56a135]] claims swapping off-the-shelf harnesses with a fixed model buys mostly tokens, not accuracy (Claude Code and mini-SWE-agent within 5 points; cost varies up to 3x). The two measure different regimes — train-time harness co-evolution vs. inference-time harness swap. Status: unresolved
 - [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]] finds, across 2,124 executions of Codex, Claude Code, and Kimi Code, that dynamic concurrency is flat-to-negative on bounded SWE-bench Verified tasks and helps only on long-horizon work, at 1.4-3.3x the token cost of sequential execution; vendor dynamic-workflow positioning frames large fan-out as a general capability. Status: unresolved — empirical study scopes benefit to long-horizon tasks, making fan-out a net loss on bounded ones (consistent with OrchBench).
 - [[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]] argues parallel-agent coordination should be solved proactively by pre-execution scope partitioning (planner-first); prior wiki entries track write-time CRDT (AgentRoom) and worktree isolation (Cursor) as the shipping designs. Status: unresolved — three competing coordination designs with no head-to-head comparison across all three.
+- [[release-v2-1-319-anthropics-claude-code-7cf21137]] fixes a sed command that could skip the permission check in accept-edits and auto mode (alongside a Bash permission bypass via a crafted environment prefix and a worktree sandbox escape), demonstrating that auto mode shipped with concrete, exploitable permission-bypass paths; [[auto-mode-is-now-the-default-in-claude-code-for-pro-max-and-team-plans-756be989]] offers the 0/720 Trajectory Labs indirect-prompt-injection result as evidence that shipping auto mode as the default is safe. The patched sed/Bash bypasses are implementation-level holes the frozen static-scenario eval did not surface, reinforcing the adaptive-attacker gap rather than closing it. Status: unresolved
 
 ## Open questions
 
+- [ ] Does v2.1.319's removal of the local-classifier fallback behind gateways (auto mode now asks-about-or-denies calls the server cannot verify) [[release-v2-1-319-anthropics-claude-code-7cf21137]] actually close the safety gap raised for the Bedrock/Vertex/Foundry local-classifier default [[release-v2-1-273-anthropics-claude-code-6726c9df]], or does failing closed merely convert the weaker-classifier risk into an availability/usability regression that pressures users toward CLAUDE_CODE_AUTO_MODE_SERVER=0?
+- [ ] What is the prompt-injection / exfiltration blast radius of Cursor's Grok-Voice-backed voice agent that can hand coding work to the chat agent mid-run [[voice-chat-with-agents-cursor-c9e26081]] — does the voice channel inherit the same sandbox/permission tier as the edit-loop agent, and can an instruction routed through spoken input bypass text-layer injection checks?
+- [ ] Does Codex 0.167.0's agent command center (codex agents --no-daemon, unread-result markers) [[release-0-167-0-openai-codex-b8ddb6db]] converge with Cursor's Agents Window and Anthropic's workflow UI on a shared multi-agent-supervision mental model, or is each vendor's command center a closed substrate?
 - [ ] sparqlite's 12+-hour Ultracode run is long-horizon work — the regime where [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]] found dynamic concurrency pays off — but [[research-sparqlite-sparql-1-1-inside-sqlite-written-in-rust-439c9906]] discloses no token/dollar cost, so whether the dynamic-workflow JS-orchestrated subagent network stayed within the 1.4-3.3x token overhead that study measured for long-horizon tasks is unknown.
 - [ ] Does v2.1.310's extension of idle compaction to the VS Code chat panel and Desktop Code tab [[release-v2-1-310-anthropics-claude-code-97c5df49]] use the same one-hour-prompt-cache trigger and 200K+ token threshold as the terminal idle compaction shipped in v2.1.300 [[release-v2-1-300-anthropics-claude-code-5dc7e9d0]], or does the GUI surface compact on a different policy?
 - [ ] Doc2Harness drives each built harness with a *scripted mock model* rather than a live frontier model in the loop [[doc2harness-benchmarking-llms-on-long-horizon-harness-engineering-of-coding-agents-a3455f18]] — does a harness that passes under a deterministic mock driver transfer to real model-in-the-loop behavior (where context-management, retry, and tool-schema quirks surface), or does the mock driver systematically over-credit harnesses that only work against predictable inputs?
