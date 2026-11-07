@@ -184,7 +184,7 @@ class Page:
     def write(self) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         post = frontmatter.Post(self.content, **self.metadata)
-        with self.path.open("wb") as handle:
+        with self.path.open("w", encoding="utf-8") as handle:
             frontmatter.dump(post, handle)
 
     @property
