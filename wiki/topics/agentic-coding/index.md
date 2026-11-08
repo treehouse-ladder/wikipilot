@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-07
+last_updated: 2026-11-08
 sources:
   - "[[release-v2-1-319-anthropics-claude-code-7cf21137]]"
   - "[[release-0-167-0-openai-codex-b8ddb6db]]"
@@ -404,8 +404,9 @@ sources:
   - "[[release-0-166-0-openai-codex-10be109e]]"
   - "[[release-v2-1-318-anthropics-claude-code-797aba84]]"
   - "[[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]]"
+  - "[[build-live-apps-in-cursor-c30b3225]]"
 last_verified: 2026-10-31
-last_updated: 2026-11-06
+last_updated: 2026-11-08
 freshness_window_days: 30
 ---
 
@@ -432,7 +433,7 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 
 > Updated /cost, the status line, --max-budget-usd and the SDK's cost figures to price Sonnet 5.5 cache reads at $0.10 per million tokens (was $0.20). [[release-v2-1-296-anthropics-claude-code-e75aaf1e]]
 
-**Leading harnesses.** The differentiating layer is now the harness, not just the model, and the term has a published constitutive definition: a harness is "a stateful program that wraps a language model and determines what context the model sees at each step" [[what-makes-a-harness-a-harness-necessary-and-sufficient-conditions-for-an-agent-harness-1afa2530]]. Claude Code ships dynamic workflows that plan and dispatch parallel subagents in a single session [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]], though the original unbounded-fan-out framing was walked back to "aim for fewer than 15 agents" [[claude-code-release-notes-98ffc52d]]. The plan-and-delegate coordinator pattern is now a shipped product on both major labs: Cursor Projects is a persistent, non-coding coordinator that "delegate[s] tasks to thousands of subagents" and runs on its own cloud computer [[introducing-projects-b09bf6f2]], while OpenAI's Agents API exposes the Codex harness as a managed cloud service [[introducing-the-agents-api-b32e9b84]]. Vendor-neutral interop arrived via Devin Desktop (formerly Windsurf), built on the open Agent Client Protocol so one surface can drive Codex, Claude Agent, and OpenCode [[windsurf-is-now-devin-desktop-1283bfa0]], and mobile supervision of long-running agents has converged as a cross-vendor standard [[build-from-anywhere-with-cursor-for-ios-097d5a19]]. Cursor extended its cloud harness in October 2026 with interactive canvases (cloud agents can now generate and share browser-renderable outputs) and an Environments API beta supporting up to 300 repositories with 5x faster load times [[cloud-agent-canvases-and-environment-improvements-cursor-a39e7daa]].
+**Leading harnesses.** The differentiating layer is now the harness, not just the model, and the term has a published constitutive definition: a harness is "a stateful program that wraps a language model and determines what context the model sees at each step" [[what-makes-a-harness-a-harness-necessary-and-sufficient-conditions-for-an-agent-harness-1afa2530]]. Claude Code ships dynamic workflows that plan and dispatch parallel subagents in a single session [[introducing-dynamic-workflows-in-claude-code-cdc1ceeb]], though the original unbounded-fan-out framing was walked back to "aim for fewer than 15 agents" [[claude-code-release-notes-98ffc52d]]. The plan-and-delegate coordinator pattern is now a shipped product on both major labs: Cursor Projects is a persistent, non-coding coordinator that "delegate[s] tasks to thousands of subagents" and runs on its own cloud computer [[introducing-projects-b09bf6f2]], while OpenAI's Agents API exposes the Codex harness as a managed cloud service [[introducing-the-agents-api-b32e9b84]]. Vendor-neutral interop arrived via Devin Desktop (formerly Windsurf), built on the open Agent Client Protocol so one surface can drive Codex, Claude Agent, and OpenCode [[windsurf-is-now-devin-desktop-1283bfa0]], and mobile supervision of long-running agents has converged as a cross-vendor standard [[build-from-anywhere-with-cursor-for-ios-097d5a19]]. Cursor extended its cloud harness in October 2026 with interactive canvases (cloud agents can now generate and share browser-renderable outputs) and an Environments API beta supporting up to 300 repositories with 5x faster load times [[cloud-agent-canvases-and-environment-improvements-cursor-a39e7daa]], then in November pushed that harness past code generation into full-stack provisioning with **Build Live Apps**: from a natural-language prompt a Cursor cloud agent scaffolds a web app, spins up a Postgres database if needed, configures authentication behind Cursor SSO, provisions hosting, runs deterministic and agentic security checks (catching secrets written in app files or exposed credentials before anything goes live), and publishes to a unique live domain across Cursor Origin and GitHub — the first notable milestone extending the agentic-IDE category from coding assistant into end-to-end cloud deployment [[build-live-apps-in-cursor-c30b3225]].
 
 > A harness is a stateful program that wraps a language model and determines what context the model sees at each step. [[what-makes-a-harness-a-harness-necessary-and-sufficient-conditions-for-an-agent-harness-1afa2530]]
 
@@ -451,6 +452,10 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Cloud agents can now build and share interactive canvases. [[cloud-agent-canvases-and-environment-improvements-cursor-a39e7daa]]
 
 > The Environments API is available in beta, environments support up to 300 repos, and large environments load 5x faster. [[cloud-agent-canvases-and-environment-improvements-cursor-a39e7daa]]
+
+> Start a cloud agent and ask it to build an app. Cursor will scaffold the web app, spin up a Postgres database if needed, set up authentication behind Cursor SSO, and provision hosting. [[build-live-apps-in-cursor-c30b3225]]
+
+> On publish, Cursor will run deterministic and agentic security checks to catch common issues, like secrets written in app files or exposed credentials. Nothing goes live until the checks pass and you explicitly publish the app. [[build-live-apps-in-cursor-c30b3225]]
 
 **Best-practice primitives.** Fork-based delegation is now on by default across **every surface**: as of v2.1.302, `subagent_type: "fork"` (full-conversation + prompt-cache inheritance) is the default spawn in `claude -p`, the Agent SDK, the desktop app, and VS Code [[release-v2-1-302-anthropics-claude-code-9951decf]] — graduating from its prior cloud-routine-only scope [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]]. v2.1.300 adds idle compaction: a 200K+ token session left idle for ~54 minutes is compacted before its one-hour prompt cache expires [[release-v2-1-300-anthropics-claude-code-5dc7e9d0]], preventing silent cache invalidation on long-running unattended sessions. The dominant payoff of subagents is context preservation, not raw parallelism, a preference backed by OrchBench's execution-free finding that "preserving task-critical information is more important than simply increasing the number of agents" [[orchbench-evaluating-multi-agent-orchestration-plans-in-isolation-via-deterministic-simulation-c9f42c6d]]. The first cross-tool empirical cost/benefit study of *native* dynamic concurrency now sharpens *when* to fan out: across 2,124 executions and 11.2 billion tokens over Codex Multiagent v2, Claude Code Dynamic Workflow, and Kimi Code AgentSwarm, dynamic concurrency helps only on long-horizon work and is flat-to-negative on bounded tasks, at 1.4–3.3x the tokens of sequential execution [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]] — so the current recommended best practice is **conservative concurrency defaults with runtime scheduling**, reserving fan-out for long-horizon tasks rather than bounded ones, consistent with Claude Code's own walkback to "fewer than 15 agents" [[claude-code-release-notes-98ffc52d]]. A complementary NP-Bench study adds a third coordination design alongside worktree-per-agent (Cursor) and write-time CRDT (AgentRoom): proactive pre-execution scheduling, where a planner partitions work into disjoint scopes and orders merges along the producer-consumer dependency graph *before any agent runs*, raising clean integration from 1/9 to 9/9 and cutting merge conflicts 13→0 in simulation, and verifying coordination protocols rather than catching the merge-time failure where each agent passes its own tests but the merged result is broken [[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]. Agent Skills are a portable open standard [[introducing-agent-skills-anthropic-5fb2ccf0]], and instruction-file configuration has converged: as of v2.1.277 a project with no CLAUDE.md falls back to reading AGENTS.md, putting Claude Code on the same standard as Codex [[release-v2-1-277-anthropics-claude-code-01cd6a49]].
 
@@ -525,6 +530,14 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-08
+
+**Cursor launches 'Build Live Apps' — cloud agent scaffolds, deploys, and security-scans full-stack apps end-to-end.** Cursor's Build Live Apps feature lets a cloud agent handle the full delivery pipeline: scaffold a web app, spin up a Postgres database if needed, configure auth behind Cursor SSO, provision hosting, and publish to a unique domain — all from a natural-language prompt [[build-live-apps-in-cursor-c30b3225]]. If the app needs outside systems such as a data warehouse, the agent asks for the secrets it needs. On publish, Cursor runs deterministic and agentic security checks to catch secrets written in app files or exposed credentials; nothing goes live until the checks pass and the user explicitly publishes [[build-live-apps-in-cursor-c30b3225]]. Deployment works from new or existing repos across Cursor Origin and GitHub, with GitLab planned. The Origin App Marketplace now integrates with 20+ apps for CI, code review, security, monitoring, and project management, including Cloudflare, Linear, Sentry, and Socket Security [[build-live-apps-in-cursor-c30b3225]]. Available on all paid plans with cloud agents enabled.
+
+> Start a cloud agent and ask it to build an app. Cursor will scaffold the web app, spin up a Postgres database if needed, set up authentication behind Cursor SSO, and provision hosting. [[build-live-apps-in-cursor-c30b3225]]
+
+> On publish, Cursor will run deterministic and agentic security checks to catch common issues, like secrets written in app files or exposed credentials. Nothing goes live until the checks pass and you explicitly publish the app. [[build-live-apps-in-cursor-c30b3225]]
 
 ### Updates 2026-11-07
 
@@ -3732,6 +3745,8 @@ lint stays quiet until each page actually exists:
 - [ ] Does Codex 0.166.0's `codex queue --resume` [[release-0-166-0-openai-codex-10be109e]] carry conversation context or prompt cache when it resumes an unloaded thread, or is it a cold reload — i.e. does it change the caching/cost profile the prior `codex queue` open question flagged [[release-0-149-0-openai-codex-785d6f65]]?
 - [ ] Full changelog for Claude Code v2.1.318 not captured — the GitHub release tag page should be re-fetched to extract any notable feature/fix details [[release-v2-1-318-anthropics-claude-code-797aba84]].
 - [ ] Confirm whether Claude Code v2.1.318 ships any changes to the subagent dispatch, skill invocation, or MCP protocol handling that affect agentic workflow patterns [[release-v2-1-318-anthropics-claude-code-797aba84]].
+- [ ] Does Cursor's Build Live Apps cloud provisioning support custom domains beyond the auto-assigned Cursor Origin domain, and does it support custom infrastructure targets (AWS, GCP) or only Cursor Origin hosting? [[build-live-apps-in-cursor-c30b3225]]
+- [ ] What is the per-task cost or credit consumption for Build Live Apps cloud agents on paid Cursor plans — not stated in the source [[build-live-apps-in-cursor-c30b3225]]?
 
 ## See also
 
