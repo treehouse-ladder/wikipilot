@@ -2,6 +2,22 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-08] daily | generative-media-models — 2 sources, 5 pages
+
+ElevenLabs SFX v3 (`eleven_text_to_sound_v3`) added as new [[elevenlabs-sfx]] entity (modality: sfx; 40 credits/sec; v2 deprecated Mar 1 2027). Music v2.5 (`music_v2_5`) now default in [[eleven-music]]; music_v1 deprecated Jan 31 2027; model_ids open question resolved.
+
+## [2026-11-08] daily | ai-in-game-dev — 1 source, 2 pages
+
+Unity official Codex Skills CLI editor-control plugin (31 engine-authored skills, unity-cli, Unity 6+): Claude tools usable as Editor actions [[unity-s-official-plugin-for-codex-skills-cli-editor-control-bf75726a]].
+
+## [2026-11-08] daily | agentic-coding — 1 source, 2 pages
+
+Cursor live-app development: auto-restart on agent code changes, inline browser for rapid iteration.
+
+## [2026-11-08] daily | game-music — 0 sources, 1 page
+
+Quiet run — 0 new in-window sources. Ivors ceremony Nov 17 (London) is next awards checkpoint; GTA VI launch Nov 19 is next watch item for Justice score coverage.
+
 ## [2026-11-08] health | weekly sweep — 2 disputes filed
 
 Disputes scanner examined 16 candidate sets (13 groups after overlap consolidation) across 38 pages. 2 disputes filed: [[tripo]] access field vs API pricing inconsistency (high confidence); [[elevenlabs]] Eleven v3 vs v4 current-flagship conflict (medium confidence).

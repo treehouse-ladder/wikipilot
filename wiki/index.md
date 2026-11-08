@@ -101,6 +101,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gpt-6-cyber]]
 - [[nano-banana-2-1]]
 - [[pika-h3-flex]]
+- [[elevenlabs-sfx]]
 
 ## Comparisons
 
@@ -1869,6 +1870,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[pixellab-sprite-generation-mcp-server-for-claude-code-1195a2d7]]
 - [[retro-diffusion-pixel-art-generation-from-0-03-per-image-mcp-server-available-0746b611]]
 - [[scenario-mcp-server-for-claude-code-codex-and-cursor-9bf7b8e5]]
+- [[build-live-apps-in-cursor-c30b3225]]
+- [[unity-s-official-plugin-for-codex-skills-cli-editor-control-bf75726a]]
+- [[sfx-v3-api-generate-sound-effects-from-multi-part-prompts-6992a7c6]]
+- [[elevenlabs-introduces-music-v2-5-its-best-music-model-yet-e742a57d]]
 
 ## 2026-10-26
 
@@ -1980,3 +1985,14 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 ### New pages
 - [[gpt-6-cyber]]
 - [[nano-banana-2-1]]
+
+## 2026-11-08
+
+### New sources
+- [[build-live-apps-in-cursor-c30b3225]]
+- [[unity-s-official-plugin-for-codex-skills-cli-editor-control-bf75726a]]
+- [[sfx-v3-api-generate-sound-effects-from-multi-part-prompts-6992a7c6]]
+- [[elevenlabs-introduces-music-v2-5-its-best-music-model-yet-e742a57d]]
+
+### New pages
+- [[elevenlabs-sfx]]
