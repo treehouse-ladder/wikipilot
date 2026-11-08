@@ -9,7 +9,7 @@ sources:
   - "[[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]]"
   - "[[tripo-agentic-canvas-the-ai-agent-that-gets-your-3d-work-done-93f2bd5a]]"
   - "[[changelog-tripo-developers-fe455299]]"
-last_updated: 2026-11-05
+last_updated: 2026-11-08
 last_verified: 2026-11-05
 freshness_window_days: 30
 profile: tool
@@ -59,7 +59,11 @@ Tripo added **Agentic Canvas** (beta, early November 2026), a node-based workflo
 
 ## Disputes
 
-_no contradictions or gaps known yet (last reviewed: 2026-10-26)_
+- [[changelog-tripo-developers-fe455299]] lists API v3.0 topology pricing (35 credits triangle / 40 credits quad), implying a reachable API endpoint; [[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]] confirms the API requires a separate commercial contract; frontmatter `access: ["web"]` asserts only web access with no API listed. The pricing field and the access field are internally inconsistent. Status: unresolved
+
+> v3.0 is priced by output topology: 35 credits for a triangle mesh, and 40 credits for a quad mesh (quad=true). [[changelog-tripo-developers-fe455299]]
+
+> API access is never bundled as an add-on feature to Subscription Plans; it requires a separate commercial contract and account setup. [[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]]
 
 ## Open questions
 
