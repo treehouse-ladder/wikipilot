@@ -23,7 +23,7 @@ comparison_of:
 freshness_window_days: 30
 highlight_leaders: true
 kind: comparison
-last_updated: 2026-11-07
+last_updated: 2026-11-08
 last_verified: '2026-05-22'
 show_glosses: true
 sources:

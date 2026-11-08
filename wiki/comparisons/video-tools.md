@@ -13,7 +13,7 @@ comparison_of:
 - sora
 freshness_window_days: 30
 kind: comparison
-last_updated: 2026-11-07
+last_updated: 2026-11-08
 last_verified: 2026-10-25
 sources: []
 title: Video generation tools
