@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-08] health | weekly sweep — 2 disputes filed
+
+Disputes scanner examined 16 candidate sets (13 groups after overlap consolidation) across 38 pages. 2 disputes filed: [[tripo]] access field vs API pricing inconsistency (high confidence); [[elevenlabs]] Eleven v3 vs v4 current-flagship conflict (medium confidence).
+
 ## [2026-11-07] daily | generative-media-models — 3 sources, 8 pages
 
 Nano Banana 2.1 (Google DeepMind Gemini 3.6 Flash Image) added as a new entity distinct from [[nano-banana]]. ElevenLabs flagship corrected to Eleven v4 / v4 Turbo (supersedes v3; v4 Turbo ~100 ms latency / 90+ languages). Suno commercial-use documented: Pro/Premier paid plans grant commercial rights for game-shippable releases.

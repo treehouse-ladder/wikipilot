@@ -5,7 +5,7 @@ aliases: ["Eleven Labs", "Eleven v3", "elevenlabs.io"]
 sources:
   - "[[ai-voice-for-games-elevenlabs-31e6ac62]]"
   - "[[eleven-v4-our-most-expressive-text-to-speech-ai-model-yet-028b20a4]]"
-last_updated: 2026-11-07
+last_updated: 2026-11-08
 last_verified: 2026-11-07
 freshness_window_days: 30
 profile: tool
@@ -45,7 +45,11 @@ The single ingested source is the vendor's gaming use-case page [[ai-voice-for-g
 
 ## Disputes
 
-_no contradictions or gaps known yet (last reviewed: 2026-10-24)_
+- [[ai-voice-for-games-elevenlabs-31e6ac62]] describes Eleven v3 as the current TTS model; [[eleven-v4-our-most-expressive-text-to-speech-ai-model-yet-028b20a4]] states Eleven v4 + v4 Turbo are now the current flagship TTS, superseding v3. The entity page Summary contains both claims in present tense. Status: unresolved (confidence: medium; sweep: 2026-11-08)
+
+> ElevenLabs has released Eleven v3, a text-to-speech model that performs text with human-like emotion, timing, and nuance.
+
+> Eleven v4 is our latest and most advanced Text to Speech model, and the first in a new generation of models.
 
 ## Open questions
 
