@@ -2,8 +2,8 @@
 title: "Skydance"
 kind: entity
 aliases: ["Skydance Corporation", "Paramount Skydance", "Skydance Media"]
-sources: ["[[warner-bros-games-now-belongs-to-skydance-but-company-makes-no-mention-of-that-in-big-announcement-ab54b942]]", "[[paramount-acknowledged-the-existence-of-warner-bros-games-faa1d7b1]]", "[[paramount-unveils-new-unified-paramount-games-studio-3b154906]]", "[[proposed-acquisition-of-warner-bros-discovery-by-paramount-skydance-a93b9ab3]]", "[[former-activision-ceo-bobby-kotick-named-to-the-board-of-post-merger-skydance-9d605d24]]", "[[skydance-is-merging-paramount-and-warner-bros-game-studios-into-one-unit-3b2122db]]"]
-last_updated: 2026-10-11
+sources: ["[[warner-bros-games-now-belongs-to-skydance-but-company-makes-no-mention-of-that-in-big-announcement-ab54b942]]", "[[paramount-acknowledged-the-existence-of-warner-bros-games-faa1d7b1]]", "[[paramount-unveils-new-unified-paramount-games-studio-3b154906]]", "[[proposed-acquisition-of-warner-bros-discovery-by-paramount-skydance-a93b9ab3]]", "[[former-activision-ceo-bobby-kotick-named-to-the-board-of-post-merger-skydance-9d605d24]]", "[[skydance-is-merging-paramount-and-warner-bros-game-studios-into-one-unit-3b2122db]]", "[[skydance-lays-off-game-developers-post-warner-bros-merger-a0c5eed2]]"]
+last_updated: 2026-11-10
 last_verified: 2026-10-09
 freshness_window_days: 60
 ---
@@ -30,6 +30,10 @@ Notably, **Skydance's official announcement of the deal closing contained no men
 > Skydance is merging Paramount and Warner Bros.' game studios into one unit. The Warner Bros. studios that now sit in this unit include Hogwarts Legacy's developer and the Mortal Kombat studio, among others. It is still unclear what the division's plans are or how many layoffs it will face. Tony Driscoll will lead the combined division. [[skydance-is-merging-paramount-and-warner-bros-game-studios-into-one-unit-3b2122db]]
 
 > Former Activision Blizzard CEO Bobby Kotick has been named to the board of post-merger Skydance. [[former-activision-ceo-bobby-kotick-named-to-the-board-of-post-merger-skydance-9d605d24]]
+
+**Post-merger layoffs at Paramount Games (November 10, 2026).** One month after the WBD deal closed, Skydance's gaming division is laying off at least 30 developers at Paramount Games — the entity formed by merging Skydance Interactive and Skydance New Media over the summer [[skydance-lays-off-game-developers-post-warner-bros-merger-a0c5eed2]]. Whether any Warner Bros. Games–side staff were also cut is unclear. This is the first confirmed post-merger layoff wave on the gaming side.
+
+> Skydance's gaming division is now laying off scores of developers just a month after its parent company merged with Warner Bros. The affected studio was formed when Skydance Interactive and Skydance New Media were both merged into a new entity called Paramount Games over the summer. Insider Gaming reports that at least 30 people at Paramount Games were impacted. [[skydance-lays-off-game-developers-post-warner-bros-merger-a0c5eed2]]
 
 ## Disputes
 
