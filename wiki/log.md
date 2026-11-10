@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-10] daily | generative-media-models — 7 sources, 10 pages
+
+GPT Image 2.6 Sunburst (max) now leads AA-Image-T2I v2.1 (Elo 1259) and AA-Image-Editing v2.1 (Elo 1209). Three new entities: [[seedream]] (ByteDance Seedream 5.0 Pro, $0.0675/image on fal), [[stable-audio]] (Stability AI Stable Audio 3.0, game-use cleared, AudioSparx licensed), [[cartesia]] (Sonic 3.6, #3 AA Controlled Voice TTS Elo 1148). [[nano-banana-2-1]] pricing confirmed (~$0.04–0.13/image on fal). ElevenLabs arena_rank updated.
+
+## [2026-11-10] daily | games-of-note — 2 sources, 3 pages
+
+Skydance lays off 30+ at Paramount Games one month after WBD merger close [[skydance-lays-off-game-developers-post-warner-bros-merger-a0c5eed2]]; [[skydance]] entity updated. GTA 6 preloading live worldwide; code-in-a-box Nov 12, game unlocks Nov 19; $100 Ultimate Edition digital-only; datamined 2027 multiplayer [[gta-6-preloading-is-officially-live-files-mention-multiplayer-and-ps5-pro-features-f03efcee]].
+
+## [2026-11-10] daily | ai-in-game-dev — 1 source, 2 pages
+
+UE 5.9 MegaJam Preview (2026-11-09): Unreal MCP now auto-launches with the editor; expanded toolsets (rendering, source control, profiling, debugging, gameplay testing, geometry, audio, UI, level creation); new Lore source-control integration and Fab toolset; known caveat: Toolset plugins off by default on new 5.9-preview projects [[unreal-engine-5-9-megajam-preview-a37599a6]].
+
+## [2026-11-10] daily | frontier-models — 2 sources, 3 pages
+
+Tencent Hy4 scores 35 on AA Intelligence Index v5.0.1 (below the 37 median); $0.83/$2.50 per Mtok; 1M context; verbose (160M tokens/run vs median 72.6M). No board impact — Carbon/Opus 5.5/GPT-6 Astra leaders unchanged [[tencent-hy4-intelligence-performance-price-analysis-65eda1d6]].
+
+## [2026-11-10] daily | agentic-coding — 2 sources, 4 pages
+
+Claude Code v2.1.321: Fable 5.2 (`claude-fable-5-2`) is new default Fable model (1M context, $8/$40 per Mtok, $0.20/Mtok cache reads); multiple sandbox/permission-bypass fixes [[release-v2-1-321-anthropics-claude-code-ace31f3b]]. v2.1.322 adds fast mode on Vertex (global/us/eu regions) [[release-v2-1-322-anthropics-claude-code-dbc58eac]].
+
+## [2026-11-10] daily | game-music — 0 sources, 1 page
+
+Quiet run — 0 new in-window sources. Ivors ceremony 2026-11-17 (Best Original Video Game Score nominees: 007 First Light, Saros, Spirit of the North 2) not yet held. GTA VI launches 2026-11-19 with 'GTA VI: The Album' (multi-artist, game day) and Justice score (separate, Dec 11); coverage on general-news outlets only.
+
 ## [2026-11-08] daily | generative-media-models — 2 sources, 5 pages
 
 ElevenLabs SFX v3 (`eleven_text_to_sound_v3`) added as new [[elevenlabs-sfx]] entity (modality: sfx; 40 credits/sec; v2 deprecated Mar 1 2027). Music v2.5 (`music_v2_5`) now default in [[eleven-music]]; music_v1 deprecated Jan 31 2027; model_ids open question resolved.
@@ -3878,3 +3902,31 @@ Axion 1.0 (ByteDance) ingested: fully open agent foundation model (35B MoE, Apac
 ## [2026-11-05] daily | _report — 6 topics, 8 sources, 17 pages
 
 All 6 topic PRs merged: game-music (#1084, 1 source), games-of-note (#1086/#1085, 0 sources), agentic-coding (#1087, 1 source), ai-in-game-dev (#1088, 2 sources), generative-media-models (#1090, 3 sources), frontier-models (#1091, 1 source). Creator tooling changes: [[gpt-image]] pricing confirmed, [[minimax-h3]] Replicate pricing added, [[tripo]] API v3.0 topology pricing. New tool (since 2026-11-01): [[pika-h3-flex]] (video, open-weights + API).
+
+## [2026-11-10] daily | game-music — 0 sources, 1 page
+
+Quiet run; no new in-scope, in-window, citable material found. Watch items: Ivors Composer Awards ceremony (2026-11-17, Grosvenor House) result still pending; GTA VI soundtrack and Justice score covered only on non-allowlist outlets.
+
+## [2026-11-10] daily | agentic-coding — 2 sources, 4 pages
+
+Claude Code v2.1.321: Claude Fable 5.2 becomes default Fable model ($8/$40 per Mtoken, $0.20/Mtoken cache reads); batch of sandbox/permission-bypass fixes (read-only Bash outside sandbox, cp/mv destination bypass, MCP OAuth token leak). v2.1.322: fast mode extended to Vertex (global/us/eu, fallback to standard). agent-sandboxing concept page updated.
+
+## [2026-11-10] daily | frontier-models — 2 sources, 3 pages
+
+Tencent Hy4 scores 35 on AA Intelligence Index v5.0.1 (below median 37); Hy4-preview open weights published on Hugging Face — provenance vs. evaluated build unresolved. No roster leader changes.
+
+## [2026-11-10] daily | ai-in-game-dev — 1 source, 2 pages
+
+Unreal Engine 5.9 MCP expanded toolsets announced (rendering, source control, profiling, debugging, gameplay testing, geometry, audio, UI, level creation); new Lore source-control integration and Fab toolset. MCP auto-launches with editor in 5.9.
+
+## [2026-11-10] daily | games-of-note — 2 sources, 3 pages
+
+Skydance lays off 30+ at Paramount Games one month after WBD merger. GTA 6 preloading live worldwide; datamined files reference 2027 multiplayer launch and PS5 Pro features.
+
+## [2026-11-10] daily | generative-media-models — 7 sources, 10 pages
+
+GPT Image 2.6 Sunburst leads AA-Image-T2I v2.1 (Elo 1259) and AA-Image-Editing v2.1 (Elo 1209). New entities: [[seedream]] (ByteDance Seedream 5.0 Pro, infographic gen, multilingual text), [[cartesia]] (Sonic 3.6 TTS, #3 AA Controlled Voice TTS Elo 1148), [[stable-audio]] (Stability AI, AudioSparx licensed, game use cleared). Nano Banana 2.1 fal pricing confirmed ($0.04–0.13/image).
+
+## [2026-11-10] daily | _report — 6 topics, 14 sources, 23 pages
+
+All 6 topic PRs merged: game-music (#1115, 0 sources), agentic-coding (#1116, 2 sources), frontier-models (#1118, 2 sources), ai-in-game-dev (#1119, 1 source), games-of-note (#1120, 2 sources), generative-media-models (#1121, 7 sources). Creator tooling changes: [[elevenlabs]] arena_rank updated (#1 Eleven v4 Turbo Elo 1155, #2 Eleven v4 Elo 1154), [[gpt-image]] arena_rank updated (T2I Elo 1259 → was 1196, Editing Elo 1209 → was 1199), [[nano-banana-2-1]] pricing confirmed ($0.04–0.13/image on fal). New tools: [[cartesia]] (voice/TTS), [[seedream]] (image), [[stable-audio]] (music).

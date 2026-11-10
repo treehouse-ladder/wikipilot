@@ -102,6 +102,9 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[nano-banana-2-1]]
 - [[pika-h3-flex]]
 - [[elevenlabs-sfx]]
+- [[seedream]]
+- [[stable-audio]]
+- [[cartesia]]
 
 ## Comparisons
 
@@ -1542,6 +1545,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-11-10]]
 - [[2026-11-07]]
 - [[2026-11-04]]
 - [[2026-11-01]]
@@ -1684,6 +1688,20 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[rockstar-reveals-gta-vi-soundtrack-and-opens-pre-orders-for-2lp-vinyl-fe62ba11]]
 - [[slowly-but-surely-ai-music-is-carving-out-a-place-for-itself-in-video-game-music-b6928fac]]
 - [[sonic-live-in-concert-anniversary-tour-confirms-2026-dates-6abefaf5]]
+- [[release-v2-1-321-anthropics-claude-code-ace31f3b]]
+- [[release-v2-1-322-anthropics-claude-code-dbc58eac]]
+- [[tencent-hy4-intelligence-performance-price-analysis-65eda1d6]]
+- [[tencent-hy4-preview-87553218]]
+- [[unreal-engine-5-9-megajam-preview-a37599a6]]
+- [[skydance-lays-off-game-developers-post-warner-bros-merger-a0c5eed2]]
+- [[gta-6-preloading-is-officially-live-files-mention-multiplayer-and-ps5-pro-features-f03efcee]]
+- [[aa-image-editing-v2-1-leaderboard-top-ai-image-models-9069ca61]]
+- [[controlled-voice-leaderboard-top-ai-voice-models-0313c536]]
+- [[introducing-seedream-5-0-pro-it-understands-design-fbaad63d]]
+- [[introducing-sonic-3-6-1274d75a]]
+- [[nano-banana-2-1-text-to-image-api-on-fal-76f8d675]]
+- [[seedream-5-0-pro-api-multimodal-ai-image-model-12934420]]
+- [[stable-audio-vs-suno-udio-elevenlabs-mubert-and-lyria-licensing-export-rights-and-self-hosting-compared-3b88bdac]]
 
 ## 2026-09-29
 
@@ -1996,3 +2014,26 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ### New pages
 - [[elevenlabs-sfx]]
+
+## 2026-11-10
+
+### New sources
+- [[release-v2-1-321-anthropics-claude-code-ace31f3b]]
+- [[release-v2-1-322-anthropics-claude-code-dbc58eac]]
+- [[tencent-hy4-intelligence-performance-price-analysis-65eda1d6]]
+- [[tencent-hy4-preview-87553218]]
+- [[unreal-engine-5-9-megajam-preview-a37599a6]]
+- [[skydance-lays-off-game-developers-post-warner-bros-merger-a0c5eed2]]
+- [[gta-6-preloading-is-officially-live-files-mention-multiplayer-and-ps5-pro-features-f03efcee]]
+- [[aa-image-editing-v2-1-leaderboard-top-ai-image-models-9069ca61]]
+- [[controlled-voice-leaderboard-top-ai-voice-models-0313c536]]
+- [[introducing-seedream-5-0-pro-it-understands-design-fbaad63d]]
+- [[introducing-sonic-3-6-1274d75a]]
+- [[nano-banana-2-1-text-to-image-api-on-fal-76f8d675]]
+- [[seedream-5-0-pro-api-multimodal-ai-image-model-12934420]]
+- [[stable-audio-vs-suno-udio-elevenlabs-mubert-and-lyria-licensing-export-rights-and-self-hosting-compared-3b88bdac]]
+
+### New pages
+- [[seedream]]
+- [[stable-audio]]
+- [[cartesia]]
