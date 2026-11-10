@@ -2,6 +2,7 @@
 title: Agent Sandboxing
 kind: concept
 sources:
+  - "[[release-v2-1-321-anthropics-claude-code-ace31f3b]]"
   - "[[sandlock-confining-ai-agent-code-with-unprivileged-linux-primitives-6c9c9e93]]"
   - "[[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]]"
   - "[[mosaic-knowledge-guided-cli-command-composition-attack-in-llm-coding-agents-92fab58e]]"
@@ -26,7 +27,7 @@ sources:
   - "[[release-v2-1-288-anthropics-claude-code-da2d811b]]"
   - "[[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]"
   - "[[release-v2-1-307-anthropics-claude-code-1f4559e4]]"
-last_updated: 2026-10-24
+last_updated: 2026-11-10
 last_verified: 2026-09-21
 freshness_window_days: 30
 ---
@@ -120,6 +121,10 @@ Claude Code v2.1.271 (2026-09-14) refines auto-mode network sandboxing from sess
 > In 2,500 trials using a GLM-5.2 baseline, turning on auto-approve raised utility but increased attack success from 29.2% to 95.6%. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
+
+**Claude Code v2.1.321 (2026-11-10) ships another batch of sandbox/permission-bypass patches.** The release fixes a read-only Bash command that ran outside the sandbox without a permission prompt, Bash permission checks judging a file write from the wrong folder and not prompting, deny rules/protected-file prompts not applying to the target of a `cp`/`mv` into a directory, and an MCP OAuth path that sent refresh-token secrets to another host on a server redirect [[release-v2-1-321-anthropics-claude-code-ace31f3b]]. This continues the same fail-open/fail-closed oscillation pattern already seen in v2.1.273 and v2.1.319 — each patch closes a concrete bypass the permission checker missed, reinforcing that static analysis of shell commands remains the design boundary where security and usability pull in opposite directions [[agentic-coding]].
+
+> Fixed a case where a read-only Bash command ran outside the sandbox without a permission prompt [[release-v2-1-321-anthropics-claude-code-ace31f3b]]
 
 ## Disputes
 
