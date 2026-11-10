@@ -5,8 +5,9 @@ aliases: ["Eleven Labs", "Eleven v3", "elevenlabs.io"]
 sources:
   - "[[ai-voice-for-games-elevenlabs-31e6ac62]]"
   - "[[eleven-v4-our-most-expressive-text-to-speech-ai-model-yet-028b20a4]]"
-last_updated: 2026-11-08
-last_verified: 2026-11-07
+  - "[[controlled-voice-leaderboard-top-ai-voice-models-0313c536]]"
+last_updated: 2026-11-10
+last_verified: 2026-11-10
 freshness_window_days: 30
 profile: tool
 modality: voice
@@ -23,8 +24,12 @@ commercial_use_source: null
 status: active
 status_source: "[[ai-voice-for-games-elevenlabs-31e6ac62]]"
 last_release: 2026-09-28
-arena_rank: []
-arena_rank_source: []
+arena_rank:
+  - "Artificial Analysis Controlled Voice TTS: #1 (Eleven v4 Turbo, Elo 1155) (2026-11-10)"
+  - "Artificial Analysis Controlled Voice TTS: #2 (Eleven v4, Elo 1154) (2026-11-10)"
+arena_rank_source:
+  - "[[controlled-voice-leaderboard-top-ai-voice-models-0313c536]]"
+  - "[[controlled-voice-leaderboard-top-ai-voice-models-0313c536]]"
 ---
 
 # ElevenLabs
@@ -43,6 +48,10 @@ The single ingested source is the vendor's gaming use-case page [[ai-voice-for-g
 
 > Eleven v4 and v4 Turbo are available now in ElevenAgents, ElevenCreative, and via the ElevenAPI. [[eleven-v4-our-most-expressive-text-to-speech-ai-model-yet-028b20a4]]
 
+**AA Controlled Voice TTS leaderboard (2026-11-10).** ElevenLabs holds the top two positions on the Artificial Analysis Controlled Voice TTS leaderboard: Eleven v4 Turbo at Elo 1155 (#1) and Eleven v4 at Elo 1154 (#2). Cartesia Sonic 3.6 is #3 (1148) and Inworld Realtime TTS-2 is #4 (1143) [[controlled-voice-leaderboard-top-ai-voice-models-0313c536]].
+
+> On the Artificial Analysis Controlled Voice TTS leaderboard, ElevenLabs holds the top two spots, with Eleven v4 Turbo at 1155 Elo and Eleven v4 at 1154. Cartesia's Sonic 3.6 is close behind at 1148, and Inworld's Realtime TTS-2 is at 1143. [[controlled-voice-leaderboard-top-ai-voice-models-0313c536]]
+
 ## Disputes
 
 - [[ai-voice-for-games-elevenlabs-31e6ac62]] describes Eleven v3 as the current TTS model; [[eleven-v4-our-most-expressive-text-to-speech-ai-model-yet-028b20a4]] states Eleven v4 + v4 Turbo are now the current flagship TTS, superseding v3. The entity page Summary contains both claims in present tense. Status: unresolved (confidence: medium; sweep: 2026-11-08)
@@ -58,7 +67,7 @@ The single ingested source is the vendor's gaming use-case page [[ai-voice-for-g
 - [ ] Access path on record (API / SDK / Unreal plugin) — not stated in the ingested page, so `access` is `["unknown"]`.
 - [ ] Pricing per plan and per-character cost.
 - [ ] Commercial-use terms for generated voices by plan tier.
-- [ ] Artificial Analysis Speech Arena placement relative to [[inworld-realtime-tts-2]].
+- [x] Artificial Analysis Speech Arena placement relative to [[inworld-realtime-tts-2]]: ElevenLabs holds #1 (Eleven v4 Turbo, Elo 1155) and #2 (Eleven v4, Elo 1154) on AA Controlled Voice TTS; Inworld Realtime TTS-2 is #4 (Elo 1143) [[controlled-voice-leaderboard-top-ai-voice-models-0313c536]].
 - [ ] Eleven v3 release date.
 
 ## See also

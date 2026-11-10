@@ -8,8 +8,9 @@ sources:
   - "[[text-to-image-leaderboard-best-ai-image-generators-ba150d9e]]"
   - "[[introducing-images-2-6-295354ff]]"
   - "[[gpt-image-2-6-sunburst-model-e5a487dd]]"
-last_updated: 2026-11-05
-last_verified: 2026-11-05
+  - "[[aa-image-editing-v2-1-leaderboard-top-ai-image-models-9069ca61]]"
+last_updated: 2026-11-10
+last_verified: 2026-11-10
 freshness_window_days: 30
 profile: tool
 modality: image
@@ -27,11 +28,11 @@ status: active
 status_source: "[[gpt-image-2-5-flare-and-sunburst-released-by-openai-cf34266e]]"
 last_release: 2026-11-04
 arena_rank:
-  - "Artificial Analysis Text-to-Image (AA-Image-T2I v2.1): #1, Elo 1196 (2026-10-26)"
-  - "Artificial Analysis Image Editing (AA-Image-Editing v2.1): #1, Elo 1199 (2026-10-26)"
+  - "Artificial Analysis Text-to-Image (AA-Image-T2I v2.1): #1, Elo 1259 (2026-11-10)"
+  - "Artificial Analysis Image Editing (AA-Image-Editing v2.1): #1, Elo 1209 (2026-11-10)"
 arena_rank_source:
-  - "[[aa-image-t2i-v2-1-leaderboard-top-ai-image-models-634924f7]]"
-  - "[[aa-image-t2i-v2-1-leaderboard-top-ai-image-models-634924f7]]"
+  - "[[aa-image-editing-v2-1-leaderboard-top-ai-image-models-9069ca61]]"
+  - "[[aa-image-editing-v2-1-leaderboard-top-ai-image-models-9069ca61]]"
 ---
 
 # GPT Image 2.5
@@ -46,7 +47,9 @@ GPT Image 2.5 ships as two variants: **Flare** (speed and cost priority) and **S
 
 > The overall board, dated Oct 7, 2026 and built on 6M+ votes, puts GPT-Image-2.5 Sunburst first at 1425 (+/-7). GPT-Image-2.5 Flare is second (1398), and GPT-Image-2 (Medium) is third (1383). 82 models appear in that snapshot. [[text-to-image-leaderboard-best-ai-image-generators-ba150d9e]]
 
-OpenAI released GPT Image 2.6 on 2026-11-04: `gpt-image-2.6-flare` and `gpt-image-2.6-sunburst` are available in the API, and Images 2.6 is live in ChatGPT and Codex [[introducing-images-2-6-295354ff]]. Sunburst is the quality-first variant with higher-quality generation and greater image consistency across edits; the developer model page prices `gpt-image-2.6-sunburst` at $30 per 1M output tokens [[gpt-image-2-6-sunburst-model-e5a487dd]]. This supersedes the GPT Image 2.5 (Flare/Sunburst) release as OpenAI's current image model (frontmatter updated with model_ids `gpt-image-2.6-flare` / `gpt-image-2.6-sunburst` and last_release 2026-11-04). GPT Image 2.5 Sunburst (max) remains #1 on the Artificial Analysis AA-Image-T2I v2.1 and AA-Image-Editing v2.1 boards; GPT Image 2.6 is not yet arena-ranked as of 2026-11-05 [[aa-image-t2i-v2-1-leaderboard-top-ai-image-models-634924f7]].
+OpenAI released GPT Image 2.6 on 2026-11-04: `gpt-image-2.6-flare` and `gpt-image-2.6-sunburst` are available in the API, and Images 2.6 is live in ChatGPT and Codex [[introducing-images-2-6-295354ff]]. Sunburst is the quality-first variant with higher-quality generation and greater image consistency across edits; the developer model page prices `gpt-image-2.6-sunburst` at $30 per 1M output tokens [[gpt-image-2-6-sunburst-model-e5a487dd]]. This supersedes the GPT Image 2.5 (Flare/Sunburst) release as OpenAI's current image model (frontmatter updated with model_ids `gpt-image-2.6-flare` / `gpt-image-2.6-sunburst` and last_release 2026-11-04). **As of 2026-11-10, GPT Image 2.6 Sunburst (max) leads both the AA-Image-T2I v2.1 board (Elo 1259) and the AA-Image-Editing v2.1 board (Elo 1209); GPT Image 2.6 Flare (max) follows at Elo 1228 and 1206 respectively, with 2.5 variants now ranked below 2.6** [[aa-image-editing-v2-1-leaderboard-top-ai-image-models-9069ca61]].
+
+> GPT Image 2.6 Sunburst (max) currently leads AA-Image-T2I v2.1 with an Elo score of 1259, ahead of GPT Image 2.6 Flare (max) at 1228. On AA-Image-Editing v2.1, GPT Image 2.6 Sunburst (max) leads with an Elo score of 1209, with GPT Image 2.6 Flare (max) following at 1206. [[aa-image-editing-v2-1-leaderboard-top-ai-image-models-9069ca61]]
 
 > GPT-Image-2.6 Sunburst and GPT-Image-2.6 Flare are available in the API. Images 2.6 is available in ChatGPT and Codex. [[introducing-images-2-6-295354ff]]
 
