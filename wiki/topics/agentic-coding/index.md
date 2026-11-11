@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-10
+last_updated: 2026-11-11
 sources:
   - "[[release-v2-1-322-anthropics-claude-code-dbc58eac]]"
   - "[[release-v2-1-321-anthropics-claude-code-ace31f3b]]"
@@ -540,6 +540,12 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-11
+
+Quiet run — no new in-scope, in-window, citable material found. Swept the allowlisted domains (anthropic.com, docs.anthropic.com, cursor.com, openai.com, arxiv.org, github.com, simonwillison.net, every.to) and broader queries on agentic IDE releases, MCP, SWE-bench, prompt caching, and sandboxing. qmd MCP was unavailable this run (CONNECT_TIMEOUT); conceptual dedupe performed via direct Read/Grep. No new Claude Code release has shipped since v2.1.322 (ingested 2026-11-10). No new Cursor, Codex, or Aider release surfaced. No new agentic-eval or SWE-bench paper surfaced on arxiv.org.
+
+_no contradictions or gaps known yet (last reviewed: 2026-11-11)_
 
 ### Updates 2026-11-10
 
