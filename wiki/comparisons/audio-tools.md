@@ -11,9 +11,10 @@ comparison_of:
 - eleven-music
 - suno
 - minimax-music
+- underdog-woof
 freshness_window_days: 30
 kind: comparison
-last_updated: 2026-11-10
+last_updated: 2026-11-11
 last_verified: 2026-10-24
 sources: []
 title: Audio tools (speech, music, SFX)
@@ -23,7 +24,7 @@ title: Audio tools (speech, music, SFX)
 
 ## Summary
 
-This comparison aggregates `access, pricing, commercial_use, status, arena_rank` across 5 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen audio-tools` to refresh.
+This comparison aggregates `access, pricing, commercial_use, status, arena_rank` across 6 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen audio-tools` to refresh.
 
 | Entity | access | pricing | commercial_use | status | arena_rank |
 | --- | --- | --- | --- | --- | --- |
@@ -32,3 +33,4 @@ This comparison aggregates `access, pricing, commercial_use, status, arena_rank`
 | [[eleven-music]] | api | $0.15/min, 5-min cap per generation (2026-10-25) | allowed on all paid plans except Studio Games self-serve (2026-10-25) | active | _none_ |
 | [[suno]] | api | unknown | allowed on Pro/Premier paid plans (songs made & downloaded while subscribed carry commercial rights, incl. Spotify/Apple Music distribution); free-tier downloads personal/non-commercial only; no retroactive license (2026-11-07) | active | _none_ |
 | [[minimax-music]] | fal | $0.15 per generated audio (fal, 2026-10-31) | unknown | active | _none_ |
+| [[underdog-woof]] | open-weights | free for personal, research, teaching and non-profit use; commercial license from conway.tech (price undisclosed) (2026-11-11) | non-commercial only under underdog-non-commercial-1.0; commercial license available from Conway Research on request (2026-11-11) | active | _none_ |
