@@ -2,6 +2,30 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-11] daily | frontier-models — 2 sources, 2 pages
+
+Claude Fable 5.2 (and Mythos 5.2, same underlying model) shipped 2026-11-11; Fable 5.2 (max) is the new #1 on AA Intelligence Index v5.0.1 at 65 of 104 models, displacing Gemini 4 Carbon (59) by 6 points. Pricing $8/$40 per Mtoken (–20% from Fable 5.1). New entity: [[claude-fable-5.2]].
+
+## [2026-11-11] daily | ai-in-game-dev — 1 source, 1 page
+
+Unreal Canvas shipped as an experimental card-based generative workspace for images/videos/meshes via AI agents (in-editor or standalone); bring-your-own-model (developer-supplied provider keys); Unreal Canvas Bridge exposes Movie Render Graph rendering as MCP tools [[unreal-canvas-experimental-633cfe5b]].
+
+## [2026-11-11] daily | games-of-note — 3 sources, 1 page
+
+PlayStation canceled Fairgame$ (Haven Studios) after ~5-year development, no related layoffs [[playstation-cancels-fairgames-after-years-of-silence-a3b4b339]]. GTA VI pre-orders "exceeding expectations" ahead of Nov 19 launch [[take-two-ceo-grand-theft-auto-vi-pre-orders-are-exceeding-expectations-a21cc636]].
+
+## [2026-11-11] daily | generative-media-models — 0 sources, 0 pages (quiet run)
+
+No new sources or page changes this run.
+
+## [2026-11-11] daily | agentic-coding — 0 sources, 0 pages (quiet run)
+
+No new sources or page changes this run.
+
+## [2026-11-11] daily | game-music — 0 sources, 0 pages (quiet run)
+
+No new sources or page changes this run.
+
 ## [2026-11-10] daily | generative-media-models — 7 sources, 10 pages
 
 GPT Image 2.6 Sunburst (max) now leads AA-Image-T2I v2.1 (Elo 1259) and AA-Image-Editing v2.1 (Elo 1209). Three new entities: [[seedream]] (ByteDance Seedream 5.0 Pro, $0.0675/image on fal), [[stable-audio]] (Stability AI Stable Audio 3.0, game-use cleared, AudioSparx licensed), [[cartesia]] (Sonic 3.6, #3 AA Controlled Voice TTS Elo 1148). [[nano-banana-2-1]] pricing confirmed (~$0.04–0.13/image on fal). ElevenLabs arena_rank updated.

@@ -2037,3 +2037,16 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[seedream]]
 - [[stable-audio]]
 - [[cartesia]]
+
+## 2026-11-11
+
+### New sources
+- [[introducing-claude-fable-5-2-and-claude-mythos-5-2-a989f158]]
+- [[claude-fable-5-2-max-intelligence-performance-price-analysis-fbdf36c6]]
+- [[unreal-canvas-experimental-633cfe5b]]
+- [[playstation-cancels-fairgames-after-years-of-silence-a3b4b339]]
+- [[sony-cancels-live-service-ps5-game-fairgames-but-no-layoffs-ac70eded]]
+- [[take-two-ceo-grand-theft-auto-vi-pre-orders-are-exceeding-expectations-a21cc636]]
+
+### New pages
+- [[claude-fable-5.2]]
