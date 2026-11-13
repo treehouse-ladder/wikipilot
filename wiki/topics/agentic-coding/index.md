@@ -1,8 +1,9 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-11
+last_updated: 2026-11-13
 sources:
+  - "[[release-v2-1-323-anthropics-claude-code-8427d4fe]]"
   - "[[release-v2-1-322-anthropics-claude-code-dbc58eac]]"
   - "[[release-v2-1-321-anthropics-claude-code-ace31f3b]]"
   - "[[release-v2-1-319-anthropics-claude-code-7cf21137]]"
@@ -540,6 +541,24 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-13
+
+**Claude Code v2.1.323 ships Code Mode — an experimental opt-in in which Claude writes JavaScript to call its tools instead of emitting one tool-call block per action** [[release-v2-1-323-anthropics-claude-code-8427d4fe]]. This is the most significant harness-level change to the tool-invocation loop this topic has tracked: expressing a multi-step tool sequence as a single program collapses round-trips that otherwise each cost a full model turn, which is the same token/latency lever as prompt caching but applied to the control flow rather than the prefix. It is opt-in per user and can be disabled org-wide.
+
+The same release adds **`engines["claude-code"]` to `plugin.json`** — plugins outside their stated Claude Code version range are not installed, updated or loaded, and install/update pick the newest version that fits [[release-v2-1-323-anthropics-claude-code-8427d4fe]]. This is a lockfile-adjacent answer to the harness supply-chain gap documented on [[agent-sandboxing]] (no install-time check, no vocabulary for what a component may do). It also adds `CLAUDE_CODE_AUTO_MODE_MODEL` in managed settings for Claude Desktop sessions on third-party providers.
+
+**v2.1.323 is the largest single batch of sandbox/permission fixes this topic has recorded — twelve of them** [[release-v2-1-323-anthropics-claude-code-8427d4fe]]. The notable ones: `--permission-mode auto` (or settings `defaultMode: auto`) started in a *more* permissive mode when auto mode was unavailable and now fails closed into Manual; Write/Edit could write to a path covered by a `Read` deny rule; `sandbox.excludedCommands` let unnamed commands escape the sandbox; `claude -p` and the Agent SDK ran Bash unsandboxed when sandbox-enabling settings failed validation (now a hard start-up stop naming the invalid setting); the Bash sandbox could switch off mid-session; sandboxed commands could read Claude Code's checkpoint copies under the config directory; `rm` judged from the wrong folder skipped the dangerous-removal prompt under bypass permissions; some `lsof` commands ran unprompted; plan files could be written outside the project when `plansDirectory` is set; Bash deny/ask rules missed commands run through `sudo`/`env` wrappers. The fail-open→fail-closed oscillation pattern noted on v2.1.273, v2.1.319 and v2.1.321 continues, with this release weighted toward *defaults* failing open rather than individual command checks.
+
+> Added Code Mode, an experimental opt-in in which Claude writes JavaScript to call its tools; see https://code.claude.com/docs/en/code-mode to turn it on, or to turn it off for an organization [[release-v2-1-323-anthropics-claude-code-8427d4fe]]
+
+> Added `engines["claude-code"]` to `plugin.json`: plugins outside their stated Claude Code version range are not installed, updated or loaded, and install and update pick the newest version that fits [[release-v2-1-323-anthropics-claude-code-8427d4fe]]
+
+> Fixed `--permission-mode auto` or a settings `defaultMode: auto` starting in a mode that could allow more when auto mode was unavailable. It now starts in Manual mode, which asks first [[release-v2-1-323-anthropics-claude-code-8427d4fe]]
+
+qmd MCP was unavailable this run (CONNECT_TIMEOUT); conceptual dedupe performed via direct Read/Grep. No new Cursor, Codex or Aider release and no new agentic-eval or SWE-bench paper surfaced on the allowlisted domains.
+
+_no contradictions or gaps known yet (last reviewed: 2026-11-13)_
 
 ### Updates 2026-11-11
 
