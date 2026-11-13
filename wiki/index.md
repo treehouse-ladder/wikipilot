@@ -105,6 +105,9 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[seedream]]
 - [[stable-audio]]
 - [[cartesia]]
+- [[gemini-4-hydrogen]]
+- [[muse-ember]]
+- [[minimax-h3-image]]
 
 ## Comparisons
 
@@ -2060,3 +2063,23 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ### New pages
 - [[claude-fable-5.2]]
+
+## 2026-11-13
+
+### New sources
+- [[gemini-4-hydrogen-model-card-google-deepmind-441ce58c]]
+- [[introducing-gemini-4-hydrogen-for-agentic-workflows-d7c21c50]]
+- [[gemini-4-hydrogen-xhigh-intelligence-performance-price-analysis-38ea2af2]]
+- [[meta-s-muse-ember-is-the-cheapest-model-scoring-36-on-the-intelligence-index-545a831c]]
+- [[minimax-h3-image-bringing-4k-image-generation-into-the-10-second-era-0e365028]]
+- [[minimax-h3-image-4k-ai-image-generator-and-editor-4b0c4b72]]
+- [[vibe-your-way-to-50k-the-2026-epic-ai-megajam-is-coming-f9c2fa96]]
+- [[gta-6-ps5-pro-features-frame-rates-and-xbox-cloud-gaming-details-confirmed-by-rockstar-e45fd3d1]]
+- [[killing-floor-studio-cofounder-blames-spiraling-layoffs-on-woke-leftists-a5460426]]
+- [[tripwire-layoffs-come-after-announcing-new-publishing-initiative-24b9a6c9]]
+- [[release-v2-1-323-anthropics-claude-code-8427d4fe]]
+
+### New pages
+- [[gemini-4-hydrogen]]
+- [[muse-ember]]
+- [[minimax-h3-image]]
