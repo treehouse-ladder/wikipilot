@@ -2,6 +2,7 @@
 title: Agent Sandboxing
 kind: concept
 sources:
+  - "[[release-v2-1-323-anthropics-claude-code-8427d4fe]]"
   - "[[release-v2-1-321-anthropics-claude-code-ace31f3b]]"
   - "[[sandlock-confining-ai-agent-code-with-unprivileged-linux-primitives-6c9c9e93]]"
   - "[[coding-with-enemy-can-human-developers-detect-ai-agent-sabotage-2f8947e2]]"
@@ -27,7 +28,7 @@ sources:
   - "[[release-v2-1-288-anthropics-claude-code-da2d811b]]"
   - "[[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]"
   - "[[release-v2-1-307-anthropics-claude-code-1f4559e4]]"
-last_updated: 2026-11-10
+last_updated: 2026-11-13
 last_verified: 2026-09-21
 freshness_window_days: 30
 ---
@@ -125,6 +126,14 @@ Claude Code v2.1.271 (2026-09-14) refines auto-mode network sandboxing from sess
 **Claude Code v2.1.321 (2026-11-10) ships another batch of sandbox/permission-bypass patches.** The release fixes a read-only Bash command that ran outside the sandbox without a permission prompt, Bash permission checks judging a file write from the wrong folder and not prompting, deny rules/protected-file prompts not applying to the target of a `cp`/`mv` into a directory, and an MCP OAuth path that sent refresh-token secrets to another host on a server redirect [[release-v2-1-321-anthropics-claude-code-ace31f3b]]. This continues the same fail-open/fail-closed oscillation pattern already seen in v2.1.273 and v2.1.319 — each patch closes a concrete bypass the permission checker missed, reinforcing that static analysis of shell commands remains the design boundary where security and usability pull in opposite directions [[agentic-coding]].
 
 > Fixed a case where a read-only Bash command ran outside the sandbox without a permission prompt [[release-v2-1-321-anthropics-claude-code-ace31f3b]]
+
+**Claude Code v2.1.323 (2026-11-13): twelve sandbox/permission fixes, weighted toward defaults that failed open.** Where v2.1.321's patches were mostly individual command-check misses, this batch is dominated by *mode and settings* failures: `--permission-mode auto` (or settings `defaultMode: auto`) started in a mode that could allow more when auto mode was unavailable, and now starts in Manual, which asks first; `claude -p` and the Agent SDK ran Bash unsandboxed when `--settings` or SDK settings that turn the sandbox on failed validation, and Claude Code now stops at start-up naming the invalid setting; the Bash sandbox could switch off during a session; and `sandbox.excludedCommands` let a command it does not name run outside the sandbox [[release-v2-1-323-anthropics-claude-code-8427d4fe]]. Also fixed: Write/Edit writing to a path covered by a `Read` deny rule, sandboxed commands reading Claude Code's checkpoint copies under the config directory, an `rm` judged from the wrong folder skipping the dangerous-removal prompt, unprompted `lsof`, plan files escaping the project when `plansDirectory` is set, and Bash deny/ask rules missing commands run through `sudo`/`env` wrappers. A sandbox whose *failure* path is more permissive than its success path is the sharper version of the fail-open problem this page tracks — the bypass is reached by misconfiguration rather than by crafting a command.
+
+> Fixed `claude -p` and the Agent SDK running Bash unsandboxed when `--settings` or SDK settings that turn the sandbox on fail validation; Claude Code now stops at start-up and names the invalid setting [[release-v2-1-323-anthropics-claude-code-8427d4fe]]
+
+The same release adds `engines["claude-code"]` to `plugin.json`, so plugins outside their stated Claude Code version range are not installed, updated or loaded [[release-v2-1-323-anthropics-claude-code-8427d4fe]] — a partial, version-range-only answer to the "no lockfile, no install-time check" harness supply-chain gap described above; it constrains *which version* of a component loads, not *what the component may do*.
+
+> Added `engines["claude-code"]` to `plugin.json`: plugins outside their stated Claude Code version range are not installed, updated or loaded, and install and update pick the newest version that fits [[release-v2-1-323-anthropics-claude-code-8427d4fe]]
 
 ## Disputes
 
