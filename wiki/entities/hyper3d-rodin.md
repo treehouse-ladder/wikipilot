@@ -5,8 +5,8 @@ aliases: ["Rodin", "Rodin Gen-2.5", "Hyper3D", "hyper3d.ai"]
 sources:
   - "[[how-hyper3d-rodin-gen-2-5-is-bringing-production-level-control-to-ai-3d-generation-41af1fa2]]"
   - "[[pricing-plans-for-ai-3d-generation-ceafc9f6]]"
-last_updated: 2026-10-30
-last_verified: 2026-10-30
+last_updated: 2026-11-13
+last_verified: 2026-11-13
 freshness_window_days: 30
 profile: tool
 modality: 3d
