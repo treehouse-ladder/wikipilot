@@ -1,8 +1,11 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-13
+last_updated: 2026-11-14
 sources:
+  - "[[release-v2-1-325-anthropics-claude-code-e58a3ce1]]"
+  - "[[release-0-169-0-openai-codex-a0c08c46]]"
+  - "[[release-0-168-0-openai-codex-6cfc942e]]"
   - "[[release-v2-1-323-anthropics-claude-code-8427d4fe]]"
   - "[[release-v2-1-322-anthropics-claude-code-dbc58eac]]"
   - "[[release-v2-1-321-anthropics-claude-code-ace31f3b]]"
@@ -541,6 +544,30 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-14
+
+**Claude Code v2.1.325 ships a large sandbox/permission + Code Mode hardening batch and a zstd-decoding security fix; v2.1.324 was skipped.** Anthropic's official CHANGELOG jumps from v2.1.323 straight to v2.1.325 (no 2.1.324), the same skip pattern seen at v2.1.320. v2.1.325 opens with a security fix in how zstd-compressed responses are decoded [[release-v2-1-325-anthropics-claude-code-e58a3ce1]]. The permission-model fixes continue the fail-open→fail-closed oscillation this page has tracked since v2.1.273: a gap where some compound Bash commands could run without asking now prompts, and a Bash allow rule could run a different program than the one it names [[release-v2-1-325-anthropics-claude-code-e58a3ce1]]. Relative deny/ask rules (e.g. `Read(./.env)`) stopped covering the project after a `cd` and now also apply in added directories; Artifact-tool deny/ask rules and hooks were not applying in some cloud sessions; and sandboxed commands could write to the native updater's download folder [[release-v2-1-325-anthropics-claude-code-e58a3ce1]]. This is also the first batch of **Code Mode** fixes since the feature launched in v2.1.323: Code Mode scripts ignored a worktree entered with `EnterWorktree`, wrote `~` paths into the project, and left `/mcp` showing an expired-sign-in server as connected; a Yes typed at a permission/plan dialog didn't reach Claude; and a resumed session that ended mid-Code-Mode-script started work by itself (now waits for the next prompt) [[release-v2-1-325-anthropics-claude-code-e58a3ce1]]. A subagent-routing fix stops subagents with their own model being forced onto the plan-mode model under `opusplan`/`haiku` [[release-v2-1-325-anthropics-claude-code-e58a3ce1]].
+
+> Fixed a gap in Bash permission checks where some compound commands could run without asking; these now ask for permission [[release-v2-1-325-anthropics-claude-code-e58a3ce1]]
+
+> Fixed a case where a Bash allow rule could run a different program than the one it names [[release-v2-1-325-anthropics-claude-code-e58a3ce1]]
+
+> Fixed sandboxed commands being able to write to the native updater's download folder in some cases [[release-v2-1-325-anthropics-claude-code-e58a3ce1]]
+
+> Fixed Code Mode scripts ignoring a worktree entered with EnterWorktree, writing ~ paths into the project, and leaving /mcp showing an MCP server as connected after its sign-in expired [[release-v2-1-325-anthropics-claude-code-e58a3ce1]]
+
+**OpenAI Codex CLI 0.168.0 and 0.169.0 (both 2026-11-13) build out a multi-pane terminal workspace, in-terminal model-provider management, and an untrusted-directory security default.** 0.168.0 introduces an opt-in `features.tui_workspace` that renders a side conversation beside the main chat (resizable divider, `leader z` to zoom), and moves model-provider selection into the sessions menu while keeping existing/resumed chats on their saved provider [[release-0-168-0-openai-codex-6cfc942e]]. 0.169.0 extends that workspace to **multiple side-chat tabs** (reopenable after restart), lets users add/edit custom model providers from the terminal (including device-code onboarding for gateways over SSH), and surfaces Cloud conversations in the terminal on macOS/Linux [[release-0-169-0-openai-codex-a0c08c46]]. Notably it tightens a trust boundary: `codex exec` now keeps project config and MCP servers disabled in untrusted directories even under `--sandbox workspace-write`, requiring explicit `--trust` [[release-0-169-0-openai-codex-a0c08c46]] — a capability-gating move adjacent to the sandbox concerns tracked on [[agent-sandboxing]].
+
+> The opt-in terminal workspace supports multiple side-chat tabs. Switch between them with the keyboard or mouse, and reopen saved local side chats after restarting Codex. [[release-0-169-0-openai-codex-a0c08c46]]
+
+> codex exec keeps project configuration and MCP servers disabled in untrusted directories, even with --sandbox workspace-write. Use --trust with codex exec or codex review to explicitly save project trust. [[release-0-169-0-openai-codex-a0c08c46]]
+
+> Enable features.tui_workspace to view a side conversation beside the main chat. Drag the divider to resize the panes or press leader z to zoom the focused pane. [[release-0-168-0-openai-codex-6cfc942e]]
+
+These are incremental hardening (Claude Code) and supervision-ergonomics (Codex) releases — no capability-frontier shift, so the Summary view is left untouched. qmd MCP was unavailable this run (CONNECT_TIMEOUT); dedupe done via direct Read/Grep. No new Cursor, Aider, or SWE-bench/agent-eval material surfaced on the allowlisted domains in-window.
+
+_no contradictions or gaps known yet (last reviewed: 2026-11-14)_
 
 ### Updates 2026-11-13
 
