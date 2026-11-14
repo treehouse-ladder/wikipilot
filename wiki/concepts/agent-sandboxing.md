@@ -28,7 +28,10 @@ sources:
   - "[[release-v2-1-288-anthropics-claude-code-da2d811b]]"
   - "[[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]"
   - "[[release-v2-1-307-anthropics-claude-code-1f4559e4]]"
-last_updated: 2026-11-13
+  - "[[release-v2-1-325-anthropics-claude-code-e58a3ce1]]"
+  - "[[release-0-169-0-openai-codex-a0c08c46]]"
+  - "[[release-0-168-0-openai-codex-6cfc942e]]"
+last_updated: 2026-11-14
 last_verified: 2026-09-21
 freshness_window_days: 30
 ---
@@ -134,6 +137,12 @@ Claude Code v2.1.271 (2026-09-14) refines auto-mode network sandboxing from sess
 The same release adds `engines["claude-code"]` to `plugin.json`, so plugins outside their stated Claude Code version range are not installed, updated or loaded [[release-v2-1-323-anthropics-claude-code-8427d4fe]] — a partial, version-range-only answer to the "no lockfile, no install-time check" harness supply-chain gap described above; it constrains *which version* of a component loads, not *what the component may do*.
 
 > Added `engines["claude-code"]` to `plugin.json`: plugins outside their stated Claude Code version range are not installed, updated or loaded, and install and update pick the newest version that fits [[release-v2-1-323-anthropics-claude-code-8427d4fe]]
+
+**Claude Code v2.1.325 (2026-11-13) adds another round of sandbox/permission fixes continuing the fail-open pattern.** A gap where some compound Bash commands could run without asking now prompts, a Bash allow rule could run a different program than the one it names, and sandboxed commands could write to the native updater's download folder [[release-v2-1-325-anthropics-claude-code-e58a3ce1]]. Relative deny/ask rules (e.g. `Read(./.env)`) stopped covering the project after a `cd` and now also apply in added directories, and Artifact-tool deny/ask rules/hooks were not applying in some cloud sessions [[release-v2-1-325-anthropics-claude-code-e58a3ce1]]. On the Codex side, v0.169.0 hardened a trust boundary: `codex exec` now keeps project config and MCP servers disabled in untrusted directories even under `--sandbox workspace-write`, requiring an explicit `--trust` to persist project trust [[release-0-169-0-openai-codex-a0c08c46]] — an explicit directory-trust capability gate for a shell-using coding agent. Codex v0.168.0 also expanded sandboxing to block `chown` and `chmod` in network-disable sandbox mode, closing another class of privilege-escalation vectors [[release-0-168-0-openai-codex-6cfc942e]].
+
+> Fixed a gap in Bash permission checks where some compound commands could run without asking; these now ask for permission [[release-v2-1-325-anthropics-claude-code-e58a3ce1]]
+
+> codex exec keeps project configuration and MCP servers disabled in untrusted directories, even with --sandbox workspace-write. Use --trust with codex exec or codex review to explicitly save project trust. [[release-0-169-0-openai-codex-a0c08c46]]
 
 ## Disputes
 
