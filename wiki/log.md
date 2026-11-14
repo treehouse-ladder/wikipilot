@@ -29,6 +29,29 @@ Roster sweep; re-confirmed active models' last_verified dates.
 ## [2026-11-14] daily | game-music — 0 sources, 1 page
 
 No new sources; 2026-11-14 update entry added to topic index.
+## [2026-11-13] daily | agentic-coding — 1 source, 3 pages
+
+Claude Code v2.1.323: Code Mode (experimental opt-in — Claude writes JavaScript to call its tools), plugin version-range enforcement via `engines["claude-code"]` in plugin.json, and 12 sandbox/permission fixes weighted toward defaults that failed open (--permission-mode auto starting permissively, claude -p running Bash unsandboxed on bad settings, Bash sandbox switching off mid-session) [[release-v2-1-323-anthropics-claude-code-8427d4fe]].
+
+## [2026-11-13] daily | frontier-models — 4 sources, 7 pages
+
+Gemini 4 Hydrogen released 2026-11-12: Google DeepMind's fast/low-cost agentic tier (successor to Gemini 3.8 Flash), $1.50/$7.50/Mtoken, AA Intelligence Index 51 at high effort (low 27 / medium 41 / high 51 / xhigh 54) [[introducing-gemini-4-hydrogen-for-agentic-workflows-d7c21c50]]. Muse Ember (Meta): cheapest model at AA 36 (max), $0.10/$0.50/Mtoken, ~3× cheaper than Claude Haiku 5.5 at the same score [[meta-s-muse-ember-is-the-cheapest-model-scoring-36-on-the-intelligence-index-545a831c]]. New entities: [[gemini-4-hydrogen]], [[muse-ember]].
+
+## [2026-11-13] daily | generative-media-models — 2 sources, 2 pages
+
+MiniMax H3 Image launched: 4K image generation and editing model (up to 4096×4096), targeting sub-10-second generation, API and fal.ai access. New entity: [[minimax-h3-image]] [[minimax-h3-image-bringing-4k-image-generation-into-the-10-second-era-0e365028]].
+
+## [2026-11-13] daily | games-of-note — 3 sources, 1 page
+
+GTA VI PS5 Pro features, frame rates (60fps Performance/30fps Quality), and Xbox Cloud Gaming support confirmed by Rockstar ahead of Nov 19 launch [[gta-6-ps5-pro-features-frame-rates-and-xbox-cloud-gaming-details-confirmed-by-rockstar-e45fd3d1]]. Tripwire Interactive (Killing Floor studio) layoffs announced after a new publishing initiative [[tripwire-layoffs-come-after-announcing-new-publishing-initiative-24b9a6c9]].
+
+## [2026-11-13] daily | ai-in-game-dev — 1 source, 3 pages
+
+2026 Epic AI Megajam announced: $50K prize pool, 72-hour jam, Unreal Engine required; reinforces agentic game-dev tooling (Canvas, MCP) as the new entrant on-ramp [[vibe-your-way-to-50k-the-2026-epic-ai-megajam-is-coming-f9c2fa96]]. Cross-page sweep: [[hyper3d-rodin]], [[meshy]].
+
+## [2026-11-13] daily | game-music — 0 sources, 1 page (quiet run)
+
+No new in-scope sources found. Swept allowlisted domains; no new AI music releases or papers surfaced.
 
 ## [2026-11-11] daily | frontier-models — 2 sources, 2 pages
 
