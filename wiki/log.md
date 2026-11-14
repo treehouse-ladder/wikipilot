@@ -2,6 +2,34 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-14] daily | _report — 6 topics, 9 sources, 11 pages
+
+Full run complete. PRs #1140–1145 all merged. Tool changes: flux-3-max pricing updated; seedream updated to 5.5; minimax-h3-image newly tracked.
+
+## [2026-11-14] daily | generative-media-models — 4 sources, 4 pages
+
+Seedream 5.5 launched (RGBA, 100-round stable editing); MiniMax H3-Image takes #1 on AA open-weights T2I v2.1 (Elo 1067); FLUX 3 Max pricing updated ($0.17/s 720p, $0.29/s 1080p on fal).
+
+## [2026-11-14] daily | games-of-note — 1 source, 1 page
+
+GTA 6 almost refused classification in South Korea over out-of-context content; The Game Awards 2026 date set.
+
+## [2026-11-14] daily | ai-in-game-dev — 1 source, 2 pages
+
+Hyper3D Rodin adds prompt-editable automatic rigging (humans, animals, fantasy creatures, individual fingers) with motion presets; last_release updated to 2026-11-03.
+
+## [2026-11-14] daily | agentic-coding — 3 sources, 2 pages
+
+Claude Code v2.1.325 fixes compound-Bash permission gap + relative-deny-rule tracking after cd; Codex v0.169.0 adds directory-trust gate; Codex v0.168.0 extends sandbox to block chown/chmod.
+
+## [2026-11-14] daily | frontier-models — 0 sources, 1 page
+
+Roster sweep; re-confirmed active models' last_verified dates.
+
+## [2026-11-14] daily | game-music — 0 sources, 1 page
+
+No new sources; 2026-11-14 update entry added to topic index.
+
 ## [2026-11-11] daily | frontier-models — 2 sources, 2 pages
 
 Claude Fable 5.2 (and Mythos 5.2, same underlying model) shipped 2026-11-11; Fable 5.2 (max) is the new #1 on AA Intelligence Index v5.0.1 at 65 of 104 models, displacing Gemini 4 Carbon (59) by 6 points. Pricing $8/$40 per Mtoken (–20% from Fable 5.1). New entity: [[claude-fable-5.2]].
