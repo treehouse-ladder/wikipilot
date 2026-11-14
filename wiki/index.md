@@ -1542,9 +1542,19 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[report-futurlab-makes-layoffs-without-informing-team-leads-03b50623]]
 - [[powerwash-simulator-execs-absurdly-tried-to-soften-the-blow-of-layoffs-by-referring-to-let-go-workers-as-the-leavers-8b6df0fb]]
 - [[blue-reflection-second-light-official-soundtrack-music-review-f2d1746e]]
+- [[release-v2-1-325-anthropics-claude-code-e58a3ce1]]
+- [[release-0-169-0-openai-codex-a0c08c46]]
+- [[release-0-168-0-openai-codex-6cfc942e]]
+- [[hyper3d-changelog-latest-rodin-updates-new-features-0b754bd2]]
+- [[gta-6-was-almost-refused-classification-in-south-korea-for-featuring-too-many-out-of-context-penises-703375fa]]
+- [[more-realistic-images-more-stable-editing-across-100-rounds-introducing-seedream-5-5-3d7aaab5]]
+- [[seedream-5-5-text-to-image-api-on-fal-adff6dde]]
+- [[aa-image-t2i-v2-1-open-weights-leaderboard-top-ai-image-models-cbe6c9ba]]
+- [[flux-3-max-text-to-video-api-on-fal-efe4bc78]]
 
 ## Reports
 
+- [[2026-11-14]]
 - [[2026-11-10]]
 - [[2026-11-07]]
 - [[2026-11-04]]
