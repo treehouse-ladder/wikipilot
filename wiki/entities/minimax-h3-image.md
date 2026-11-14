@@ -5,8 +5,9 @@ aliases: ["MiniMax H3 Image", "H3-Image", "MiniMaxAI/MiniMax-H3-Image"]
 sources:
   - "[[minimax-h3-image-bringing-4k-image-generation-into-the-10-second-era-0e365028]]"
   - "[[minimax-h3-image-4k-ai-image-generator-and-editor-4b0c4b72]]"
-last_updated: 2026-11-13
-last_verified: 2026-11-13
+  - "[[aa-image-t2i-v2-1-open-weights-leaderboard-top-ai-image-models-cbe6c9ba]]"
+last_updated: 2026-11-14
+last_verified: 2026-11-14
 freshness_window_days: 30
 profile: tool
 modality: image
@@ -23,8 +24,8 @@ commercial_use_source: "[[minimax-h3-image-4k-ai-image-generator-and-editor-4b0c
 status: active
 status_source: "[[minimax-h3-image-bringing-4k-image-generation-into-the-10-second-era-0e365028]]"
 last_release: unknown
-arena_rank: []
-arena_rank_source: []
+arena_rank: ["AA-Image-T2I v2.1 Open Weights: #1 (Elo 1067) (2026-11-14)"]
+arena_rank_source: ["[[aa-image-t2i-v2-1-open-weights-leaderboard-top-ai-image-models-cbe6c9ba]]"]
 ---
 
 # MiniMax H3-Image
@@ -41,9 +42,13 @@ H3-Image is available on the MiniMax API Platform, MiniMax Code (via API), Hailu
 
 > H3-Image is available on the MiniMax API Platform, MiniMax Code, and Hailuo AI, and the open weights are released on Hugging Face under the MiniMax-H3-Image Community License Agreement. [[minimax-h3-image-bringing-4k-image-generation-into-the-10-second-era-0e365028]]
 
-API pricing (as of launch, 2026-11-13): ~$0.022 per image at 1K resolution, ~$0.023 at 2K, ~$0.069 at 4K, with a limited-time 50% launch discount bringing 4K to ~$0.034 per image [[minimax-h3-image-4k-ai-image-generator-and-editor-4b0c4b72]]. H3-Image has not yet appeared on any third-party benchmark or arena board.
+API pricing (as of launch, 2026-11-13): ~$0.022 per image at 1K resolution, ~$0.023 at 2K, ~$0.069 at 4K, with a limited-time 50% launch discount bringing 4K to ~$0.034 per image [[minimax-h3-image-4k-ai-image-generator-and-editor-4b0c4b72]]. API pricing (as of launch, 2026-11-13): ~$0.022 per image at 1K resolution, ~$0.023 at 2K, ~$0.069 at 4K, with a limited-time 50% launch discount bringing 4K to ~$0.034 per image [[minimax-h3-image-4k-ai-image-generator-and-editor-4b0c4b72]].
 
 > MiniMax's official pricing lists H3-Image standard text-to-image at about $0.022 per image at 1K, about $0.023 at 2K, and about $0.069 at 4K, with a limited-time 50 percent launch discount bringing 4K to about $0.034 per image. [[minimax-h3-image-4k-ai-image-generator-and-editor-4b0c4b72]]
+
+As of 2026-11-14, MiniMax H3-Image ranks **#1 on the Artificial Analysis AA-Image-T2I v2.1 Open Weights Leaderboard** at Elo 1067, ahead of Alibaba Qwen-Image-2.1 and FLUX 3 Image Klein [[aa-image-t2i-v2-1-open-weights-leaderboard-top-ai-image-models-cbe6c9ba]]. Note: H3-Image does not appear on the main (all-models) T2I v2.1 board — this ranking is on the open-weights-only sub-leaderboard.
+
+> MiniMax's H3-Image (Hugging Face) tops the open-weights text-to-image board at Elo 1067, with Alibaba's Qwen-Image-2.1 and Black Forest Labs' FLUX 3 Image Klein following close behind. [[aa-image-t2i-v2-1-open-weights-leaderboard-top-ai-image-models-cbe6c9ba]]
 
 ## Disputes
 
@@ -51,7 +56,7 @@ _no contradictions or gaps known yet (last reviewed: 2026-11-13)_
 
 ## Open questions
 
-- [ ] Does H3-Image appear on the Artificial Analysis T2I v2.1 board, and if so at what Elo — the existing top-of-board is GPT Image 2.5 Sunburst (Elo 1196)?
+- [x] Does H3-Image appear on the Artificial Analysis T2I v2.1 board? — Confirmed on the **open-weights sub-board**: #1 at Elo 1067 [[aa-image-t2i-v2-1-open-weights-leaderboard-top-ai-image-models-cbe6c9ba]]. Not currently listed on the main (all-models) T2I v2.1 board.
 - [ ] What is the exact revenue threshold in the community license beyond which commercial use requires a separate MiniMax license?
 - [ ] Hardware floor for running the 33.1B open-weights model (VRAM requirement for quantized vs. BF16 inference)?
 - [ ] Exact release date for `last_release` (sources carry no ISO date, only launch-week pricing context).
