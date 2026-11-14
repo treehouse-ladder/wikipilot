@@ -5,8 +5,9 @@ aliases: ["Rodin", "Rodin Gen-2.5", "Hyper3D", "hyper3d.ai"]
 sources:
   - "[[how-hyper3d-rodin-gen-2-5-is-bringing-production-level-control-to-ai-3d-generation-41af1fa2]]"
   - "[[pricing-plans-for-ai-3d-generation-ceafc9f6]]"
-last_updated: 2026-11-13
-last_verified: 2026-11-13
+  - "[[hyper3d-changelog-latest-rodin-updates-new-features-0b754bd2]]"
+last_updated: 2026-11-14
+last_verified: 2026-11-14
 freshness_window_days: 30
 profile: tool
 modality: 3d
@@ -21,8 +22,8 @@ pricing_source: "[[pricing-plans-for-ai-3d-generation-ceafc9f6]]"
 commercial_use: unknown
 commercial_use_source: null
 status: active
-status_source: "[[how-hyper3d-rodin-gen-2-5-is-bringing-production-level-control-to-ai-3d-generation-41af1fa2]]"
-last_release: unknown
+status_source: "[[hyper3d-changelog-latest-rodin-updates-new-features-0b754bd2]]"
+last_release: 2026-11-03
 arena_rank: []
 arena_rank_source: []
 ---
@@ -42,6 +43,12 @@ The hyper3d.ai pricing page (October 2026) shows tiered subscription plans and a
 > Free: $0/mo, direct credits at $1.5/credit; Creator: $30/mo ($24/mo annually); Business: $120/mo ($96/mo annually) — adds full API access; Enterprise: custom pricing. [[pricing-plans-for-ai-3d-generation-ceafc9f6]]
 
 Commercial-use terms are not stated in the ingested pricing source; that gap is filed under Open questions.
+
+**Automatic rigging with prompt-editable skeletons added November 2026.** Rodin's November 2026 changelog reveals automatic rigging for characters (humans, animals, fantasy creatures down to individual fingers), prompt-editable skeleton customization ("Add tail bones", "Add ear bones"), and motion preset fine-tuning [[hyper3d-changelog-latest-rodin-updates-new-features-0b754bd2]]. The rigging capability first launched October 23, 2026, with a major prompt-editable update on November 3, 2026, making Rodin a full generation-to-rigging pipeline rather than a geometry-only tool.
+
+> Bring humans, animals, and fantasy creatures to life with automatic rigging—even down to individual fingers. Need a different skeleton? Just describe it. Type Add tail bones or Add ear bones to customize your rig with a prompt. [[hyper3d-changelog-latest-rodin-updates-new-features-0b754bd2]]
+
+> Choose a motion preset to get moving, then fine-tune the animation with interactive controls. [[hyper3d-changelog-latest-rodin-updates-new-features-0b754bd2]]
 
 ## Disputes
 
