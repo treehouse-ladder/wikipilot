@@ -1557,6 +1557,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-11-16]]
 - [[2026-11-14]]
 - [[2026-11-10]]
 - [[2026-11-07]]
@@ -2083,3 +2084,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gemini-4-hydrogen]]
 - [[muse-ember]]
 - [[minimax-h3-image]]
+
+## 2026-11-16
+
+### New sources
+- [[witcher-3-devs-use-ai-to-help-polish-voice-actor-reprise-role-of-geralt-after-stroke-dd57c503]]
+- [[gta-6-passes-12-million-copies-sold-and-1-2-billion-in-revenue-and-the-game-isn-t-even-out-yet-16c536aa]]
+- [[qwen4-max-intelligence-performance-price-analysis-29c61cea]]
