@@ -2,6 +2,34 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-16] daily | _report — 6 topics, 3 sources, 9 pages
+
+Full run complete. PRs #1150–1155 all opened (1150-1153 merged; 1154-1155 CI passed, auto-merge pending). Sources: Witcher 3 AI voice restoration (ai-in-game-dev), GTA 6 12.13M pre-purchases (games-of-note), Qwen4 Max AA Index 43 (frontier-models). No creator tooling changes this run.
+
+## [2026-11-16] daily | frontier-models — 1 source, 2 pages
+
+Qwen4 Max debuts at AA Intelligence Index (v5) = 43 — above median 41 for similarly-priced models but below frontier cluster. $1.50/$4.50/Mtoken, 984K context, text+image input. No roster leader changes.
+
+## [2026-11-16] daily | games-of-note — 1 source, 2 pages
+
+GTA 6 passes 12.13M pre-purchases (~$1.18B gross) per Sensor Tower ahead of Nov 19 launch; 75% PS5 / 25% Xbox. Sensor Tower projects 25M total by launch. TGA 2026 nominations expected Nov 17; GTA 6 review embargo Nov 18.
+
+## [2026-11-16] daily | ai-in-game-dev — 1 source, 2 pages
+
+CD Projekt Red uses Respeecher to restore Polish Geralt voice for Witcher 3 Songs of the Past expansion after actor's stroke — consent-first, still-paid, restorative use case filed as new open question on AI voice acting ethics.
+
+## [2026-11-16] daily | generative-media-models — 0 sources, 1 page
+
+Quiet run. Nano Banana Pro open question unresolved pending primary source. No new leaderboard movements or model releases confirmed.
+
+## [2026-11-16] daily | agentic-coding — 0 sources, 1 page
+
+Quiet run. No new agentic IDE/CLI tools, MCP developments, harness patterns, or eval results today.
+
+## [2026-11-16] daily | game-music — 0 sources, 1 page
+
+Quiet run. No new notable composers, soundtrack releases, adaptive music technology, or game audio developments today.
+
 ## [2026-11-15] daily | ABORTED — preflight failures (gh auth, ANTHROPIC_API_KEY unset)
 
 ## [2026-11-14] daily | _report — 6 topics, 9 sources, 11 pages
