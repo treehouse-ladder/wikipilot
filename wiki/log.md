@@ -2,6 +2,8 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-15] daily | ABORTED — preflight failures (gh auth, ANTHROPIC_API_KEY unset)
+
 ## [2026-11-14] daily | _report — 6 topics, 9 sources, 11 pages
 
 Full run complete. PRs #1140–1145 all merged. Tool changes: flux-3-max pricing updated; seedream updated to 5.5; minimax-h3-image newly tracked.
