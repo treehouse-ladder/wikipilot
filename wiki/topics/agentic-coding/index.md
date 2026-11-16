@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-14
+last_updated: 2026-11-16
 sources:
   - "[[release-v2-1-325-anthropics-claude-code-e58a3ce1]]"
   - "[[release-0-169-0-openai-codex-a0c08c46]]"
@@ -544,6 +544,10 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-16
+
+Quiet run — no new high-signal sources found today matching the topic charter. No new tools, harness patterns, MCP developments, or eval results to report.
 
 ### Updates 2026-11-14
 
