@@ -6,8 +6,8 @@ sources:
   - "[[ai-voice-for-games-elevenlabs-31e6ac62]]"
   - "[[eleven-v4-our-most-expressive-text-to-speech-ai-model-yet-028b20a4]]"
   - "[[controlled-voice-leaderboard-top-ai-voice-models-0313c536]]"
-last_updated: 2026-11-10
-last_verified: 2026-11-10
+last_updated: 2026-11-17
+last_verified: 2026-11-17
 freshness_window_days: 30
 profile: tool
 modality: voice
