@@ -2,6 +2,34 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-17] daily | _report — 6 topics, 8 sources, 13 pages
+
+Full run complete. PRs #1157–1162 all merged. Sources: Claude Code v2.1.326 (agentic-coding), Unity acquires Synty Studios + Hyper3D Rodin ToS (ai-in-game-dev), GTA 6 gold + TGA nominees + Fortis shutdown (games-of-note), FFXIV Piano Collections review (game-music), Recraft V4.1 Flash V2 (generative-media-models). Creator tooling: Hyper3D Rodin commercial_use confirmed; Recraft newly tracked.
+
+## [2026-11-17] daily | frontier-models — 0 sources, 1 page
+
+Kimi K3.1 Pro open weights confirmed live (re-confirmed 2026-11-17 via AA model page) — now top released open-weights model on AA Intelligence Index v5 (score 46), superseding stale GLM-5.3 v4.1=60 framing. License caveat: Kimi K3.1 Pro License restricts MaaS use unlike MIT-licensed GLM-5.3. 1 dispute resolved, 2 open questions added.
+
+## [2026-11-17] daily | generative-media-models — 1 source, 4 pages
+
+Recraft V4.1 Flash V2 launches as "fastest AI image model on the market" — Recraft entity created and added to image-tools comparison. ElevenLabs SFX and ElevenLabs entity pages updated.
+
+## [2026-11-17] daily | game-music — 1 source, 1 page
+
+Final Fantasy XIV Piano Collections: Till Dawn, My Tears Flow reviewed — Masayoshi Soken's later-career work praised for emotional range and orchestral complexity.
+
+## [2026-11-17] daily | games-of-note — 3 sources, 1 page
+
+GTA 6 goes gold (no last-minute delays, Nov 19 launch confirmed); TGA 2026 nominees to be revealed Nov 17; Fortis Games shut down (440 jobs at risk).
+
+## [2026-11-17] daily | ai-in-game-dev — 2 sources, 2 pages
+
+Unity acquires Synty Studios POLYGON asset library (760k+ assets) for Unity Spark; Hyper3D Rodin commercial_use resolved: paid plans allow commercial use for games/products/client projects.
+
+## [2026-11-17] daily | agentic-coding — 1 source, 4 pages
+
+Claude Code v2.1.326: Code Mode now composable with agent teams; sandbox fail-closed fixes (cp over-blocking, destructive Bash transcript hiding, Linux .git/config.lock orphan cleanup). agent-sandboxing and parallel-subagents concept pages updated.
+
 ## [2026-11-16] daily | _report — 6 topics, 3 sources, 9 pages
 
 Full run complete. PRs #1150–1155 all opened (1150-1153 merged; 1154-1155 CI passed, auto-merge pending). Sources: Witcher 3 AI voice restoration (ai-in-game-dev), GTA 6 12.13M pre-purchases (games-of-note), Qwen4 Max AA Index 43 (frontier-models). No creator tooling changes this run.

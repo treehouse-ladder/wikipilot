@@ -58,6 +58,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[supermassive-games]]
 - [[small-axe-studios]]
 - [[mick-gordon]]
+- [[recraft]]
 - [[black-pony-immersive]]
 - [[qwen3.8-flash-next]]
 - [[gpt-6-astra]]
@@ -1554,9 +1555,18 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[seedream-5-5-text-to-image-api-on-fal-adff6dde]]
 - [[aa-image-t2i-v2-1-open-weights-leaderboard-top-ai-image-models-cbe6c9ba]]
 - [[flux-3-max-text-to-video-api-on-fal-efe4bc78]]
+- [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]
+- [[unity-acquires-synty-studios-library-coming-to-unity-spark-73d27350]]
+- [[hyper3d-rodin-terms-of-service-fdae09c1]]
+- [[fortis-games-shuts-down-as-up-to-440-jobs-are-put-at-risk-b5ed80d9]]
+- [[gta-6-won-t-have-any-last-minute-delays-as-it-s-officially-gone-gold-3b59c9df]]
+- [[the-game-awards-2026-nominees-to-be-revealed-on-17th-november-a4f73df1]]
+- [[final-fantasy-xiv-piano-collections-till-dawn-my-tears-flow-music-review-1771f68e]]
+- [[recraft-v4-1-flash-v2-the-fastest-ai-image-model-on-the-market-2b7c5ee7]]
 
 ## Reports
 
+- [[2026-11-17]]
 - [[2026-11-16]]
 - [[2026-11-14]]
 - [[2026-11-10]]
@@ -2091,3 +2101,18 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[witcher-3-devs-use-ai-to-help-polish-voice-actor-reprise-role-of-geralt-after-stroke-dd57c503]]
 - [[gta-6-passes-12-million-copies-sold-and-1-2-billion-in-revenue-and-the-game-isn-t-even-out-yet-16c536aa]]
 - [[qwen4-max-intelligence-performance-price-analysis-29c61cea]]
+
+## 2026-11-17
+
+### New sources
+- [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]
+- [[unity-acquires-synty-studios-library-coming-to-unity-spark-73d27350]]
+- [[hyper3d-rodin-terms-of-service-fdae09c1]]
+- [[fortis-games-shuts-down-as-up-to-440-jobs-are-put-at-risk-b5ed80d9]]
+- [[gta-6-won-t-have-any-last-minute-delays-as-it-s-officially-gone-gold-3b59c9df]]
+- [[the-game-awards-2026-nominees-to-be-revealed-on-17th-november-a4f73df1]]
+- [[final-fantasy-xiv-piano-collections-till-dawn-my-tears-flow-music-review-1771f68e]]
+- [[recraft-v4-1-flash-v2-the-fastest-ai-image-model-on-the-market-2b7c5ee7]]
+
+### New pages
+- [[recraft]]

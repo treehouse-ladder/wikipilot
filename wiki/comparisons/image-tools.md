@@ -10,9 +10,10 @@ comparison_of:
 - nano-banana
 - ideogram
 - flux
+- recraft
 freshness_window_days: 30
 kind: comparison
-last_updated: 2026-11-16
+last_updated: 2026-11-17
 last_verified: 2026-10-25
 sources: []
 title: Image generation tools
@@ -22,7 +23,7 @@ title: Image generation tools
 
 ## Summary
 
-This comparison aggregates `access, pricing, commercial_use, status, arena_rank` across 4 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen image-tools` to refresh.
+This comparison aggregates `access, pricing, commercial_use, status, arena_rank` across 5 entities. Cells marked _unknown_ are missing on the source entity page; backfill the value there and re-run `wikipilot compare regen image-tools` to refresh.
 
 | Entity | access | pricing | commercial_use | status | arena_rank |
 | --- | --- | --- | --- | --- | --- |
@@ -30,3 +31,4 @@ This comparison aggregates `access, pricing, commercial_use, status, arena_rank`
 | [[nano-banana]] | api | $0.034/1K images (2026-10-25) | unknown | active | _none_ |
 | [[ideogram]] | api, fal, open-weights, web | fal API $0.03 (turbo) / $0.06 (balanced) / $0.09 (quality) per image (2026-10-26) | image outputs free for any use incl. commercial (vendor FAQ); open-weights variant under Ideogram Non-Commercial Model Agreement; self-serve commercial weights license $300/10k images/mo (2026-10-26) | active | _none_ |
 | [[flux]] | api, open-weights | flux-3-image-klein from $0.009/1K images via BFL API (2026-10-26); full FLUX 3 Image per-call price unknown | unknown | active | _none_ |
+| [[recraft]] | api, web | $0.007/image (recraft-v4-1-flash-v2, raster; 2026-11-17) | unknown | active | _none_ |
