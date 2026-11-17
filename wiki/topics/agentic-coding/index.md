@@ -1,8 +1,9 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-16
+last_updated: 2026-11-17
 sources:
+  - "[[release-v2-1-326-anthropics-claude-code-4e2b4f15]]"
   - "[[release-v2-1-325-anthropics-claude-code-e58a3ce1]]"
   - "[[release-0-169-0-openai-codex-a0c08c46]]"
   - "[[release-0-168-0-openai-codex-6cfc942e]]"
@@ -412,7 +413,7 @@ sources:
   - "[[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]]"
   - "[[build-live-apps-in-cursor-c30b3225]]"
 last_verified: 2026-10-31
-last_updated: 2026-11-10
+last_updated: 2026-11-17
 freshness_window_days: 30
 ---
 
@@ -544,6 +545,28 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-17
+
+**Claude Code v2.1.326 (2026-11-16) is an incremental hardening release whose standout is composing Code Mode with agent teams, plus continued sandbox/permission fail-closed work and new background-session safety guarantees.** The latest entry in the official CHANGELOG, v2.1.326, now lets **Code Mode be turned on while agent teams are enabled** — and sessions that already had Code Mode on now start in Code Mode when teams are active [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]. This is the first release to combine the two biggest recent harness levers this topic tracks: Code Mode's control-flow collapse (Claude writes JavaScript to call its tools instead of one tool-call block per action, landed v2.1.323) and parallel agent teams, letting a program-expressed tool sequence drive a multi-agent session.
+
+The permission/sandbox fail-open→fail-closed oscillation this page has tracked since v2.1.273 continues: a `cp` of a file was being refused when only its source was covered by an `Edit` deny rule (over-blocking, now fixed), and — more consequential for supervision — Bash commands that delete or overwrite files (`find -delete`, `cat a > b`, `sort -o`) were being summarized in the transcript as a mere search or read, hiding their destructive effect from the operator [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]. A sandboxed command interrupted mid-run could leave empty placeholder files, including `.git/config.lock`, in the project on Linux (now cleaned up) [[release-v2-1-326-anthropics-claude-code-4e2b4f15]].
+
+Two **background-agent safety** fixes are notable for anyone running autonomous/background sessions: a background session that lost the LLM gateway its shell exported (after a crash, a reopen from another folder, or when the background service lacks it) now **stops before any model request** rather than silently falling back to a default endpoint; and the background service could end the user's *own* processes — e.g. an SSH login — when an OS process number on its kill list had been reused by an unrelated process [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]. On the MCP and config-robustness front, the release adds a message explaining why MCP servers stop loading when an administrator drops a `managed-mcp.json` into a live session, a startup warning when an `--allowedTools`/`--disallowedTools`/`--tools` value isn't a complete rule, and a guard that drops settings values nested past 64 levels (deeply-nested settings had been crashing Claude Code or applying only intermittently) [[release-v2-1-326-anthropics-claude-code-4e2b4f15]].
+
+> Added support for turning on Code Mode while agent teams are enabled; if you already turned it on, sessions with teams on now start in Code Mode [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]
+
+> Fixed Bash commands that delete or overwrite files (`find -delete`, `cat a > b`, `sort -o`) being summed up in the transcript as a search or a read [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]
+
+> Fixed background sessions losing the LLM gateway your shell exported after a crash, after a reopen from another folder, or when the background service lacks it: they now stop before any model request [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]
+
+> Fixed the background service ending your own processes, such as an SSH login, when a process number on its list had been reused by another user's process [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]
+
+> Fixed `cp` of a file being refused when only its source was covered by an `Edit` deny rule [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]
+
+This is incremental hardening and supervision-ergonomics work, not a capability-frontier shift, so the Summary view is left untouched. No new Codex stable release (only 0.170/0.171 alphas), no new Cursor changelog entry since Build Live Apps (2026-11-08), and no new in-window agentic-eval/SWE-bench paper surfaced on the allowlisted domains. qmd-search MCP was unavailable this run (CONNECT_TIMEOUT); dedupe done via direct Read/Grep.
+
+_no contradictions or gaps known yet (last reviewed: 2026-11-17)_
 
 ### Updates 2026-11-16
 
