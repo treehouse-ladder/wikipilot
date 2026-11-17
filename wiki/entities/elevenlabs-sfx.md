@@ -4,8 +4,8 @@ kind: entity
 aliases: ["ElevenLabs Sound Effects", "ElevenLabs SFX v3", "eleven_text_to_sound_v3"]
 sources:
   - "[[sfx-v3-api-generate-sound-effects-from-multi-part-prompts-6992a7c6]]"
-last_updated: 2026-11-08
-last_verified: 2026-11-08
+last_updated: 2026-11-17
+last_verified: 2026-11-17
 freshness_window_days: 30
 profile: tool
 modality: sfx
