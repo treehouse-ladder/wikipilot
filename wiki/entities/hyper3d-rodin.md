@@ -6,8 +6,8 @@ sources:
   - "[[how-hyper3d-rodin-gen-2-5-is-bringing-production-level-control-to-ai-3d-generation-41af1fa2]]"
   - "[[pricing-plans-for-ai-3d-generation-ceafc9f6]]"
   - "[[hyper3d-changelog-latest-rodin-updates-new-features-0b754bd2]]"
-last_updated: 2026-11-14
-last_verified: 2026-11-14
+last_updated: 2026-11-17
+last_verified: 2026-11-17
 freshness_window_days: 30
 profile: tool
 modality: 3d
@@ -19,8 +19,8 @@ open_weights_license: unknown
 hardware_floor: unknown
 pricing: "Free $0/mo (direct credits $1.5/credit); Creator $30/mo ($24/mo billed yearly); Business $120/mo ($96/mo billed yearly, adds full API access); Enterprise custom; API usage-based from 0.5 credits/generation (2026-10-30)"
 pricing_source: "[[pricing-plans-for-ai-3d-generation-ceafc9f6]]"
-commercial_use: unknown
-commercial_use_source: null
+commercial_use: paid plans include commercial-use rights for generated models (games/products/client projects); Rodin output use not limited by vendor; ChatAvatar output needs separate purchased licence (2026-11-17)
+commercial_use_source: "[[hyper3d-rodin-terms-of-service-fdae09c1]]"
 status: active
 status_source: "[[hyper3d-changelog-latest-rodin-updates-new-features-0b754bd2]]"
 last_release: 2026-11-03
@@ -50,6 +50,7 @@ Commercial-use terms are not stated in the ingested pricing source; that gap is 
 
 > Choose a motion preset to get moving, then fine-tune the animation with interactive controls. [[hyper3d-changelog-latest-rodin-updates-new-features-0b754bd2]]
 
+> If you use Rodin to generate Output, we will not limit your use of such Output, subject to any restrictions set forth in these Agreements, the Applicable Laws and any third-party terms. Paid plans include commercial-use rights, so you can use generated models in games, products, and client projects. [[hyper3d-rodin-terms-of-service-fdae09c1]]
 ## Disputes
 
 _no contradictions or gaps known yet (last reviewed: 2026-10-30)_
