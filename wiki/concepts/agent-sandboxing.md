@@ -31,7 +31,8 @@ sources:
   - "[[release-v2-1-325-anthropics-claude-code-e58a3ce1]]"
   - "[[release-0-169-0-openai-codex-a0c08c46]]"
   - "[[release-0-168-0-openai-codex-6cfc942e]]"
-last_updated: 2026-11-14
+  - "[[release-v2-1-326-anthropics-claude-code-4e2b4f15]]"
+last_updated: 2026-11-17
 last_verified: 2026-09-21
 freshness_window_days: 30
 ---
@@ -143,6 +144,12 @@ The same release adds `engines["claude-code"]` to `plugin.json`, so plugins outs
 > Fixed a gap in Bash permission checks where some compound commands could run without asking; these now ask for permission [[release-v2-1-325-anthropics-claude-code-e58a3ce1]]
 
 > codex exec keeps project configuration and MCP servers disabled in untrusted directories, even with --sandbox workspace-write. Use --trust with codex exec or codex review to explicitly save project trust. [[release-0-169-0-openai-codex-a0c08c46]]
+
+**Claude Code v2.1.326 (2026-11-16) closes a transcript-obfuscation gap and fixes background-service process targeting.** Bash commands that delete or overwrite files (`find -delete`, `cat a > b`, `sort -o`) were being summarized in the transcript as a mere search or read — hiding their destructive effect from the operator and transcript-auditing tools [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]. An Edit deny rule covering only a file's *source* path was incorrectly blocking a `cp` from that source, over-restricting legitimate operations [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]. On the background-service side: a background session that lost its LLM gateway now stops before any model request (rather than silently falling back), and the background service could end the user's own OS processes when a PID it had on its kill list was reused by an unrelated process — such as an SSH login — which is now guarded [[release-v2-1-326-anthropics-claude-code-4e2b4f15]].
+
+> Fixed Bash commands that delete or overwrite files (`find -delete`, `cat a > b`, `sort -o`) being summed up in the transcript as a search or a read [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]
+
+> Fixed background sessions losing the LLM gateway your shell exported after a crash, after a reopen from another folder, or when the background service lacks it: they now stop before any model request [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]
 
 ## Disputes
 

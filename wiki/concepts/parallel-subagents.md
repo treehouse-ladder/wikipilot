@@ -34,7 +34,8 @@ sources:
   - "[[release-v2-1-307-anthropics-claude-code-1f4559e4]]"
   - "[[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]"
   - "[[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]"
-last_updated: 2026-10-25
+  - "[[release-v2-1-326-anthropics-claude-code-4e2b4f15]]"
+last_updated: 2026-11-17
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---
@@ -154,6 +155,10 @@ Claude Code v2.1.271 (2026-09-14) adds a subagent context-hygiene control, `omit
 > Our results show that dynamic concurrency benefits most on long-horizon tasks, while bounded tasks often see little or negative improvement. [[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]
 
 > Each passes its own tests while the merged result is broken, a failure mode single-agent evaluation misses. [[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]
+
+**Claude Code v2.1.326 enables Code Mode with agent teams (November 2026).** For the first time, Code Mode (where Claude expresses its tool calls as JavaScript rather than structured tool-call blocks) can be enabled alongside agent teams — sessions that already had Code Mode on will now start in Code Mode when teams are active [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]. This is the first release to compose the two biggest recent harness levers: Code Mode's program-expressed tool sequences and the parallel agent-team orchestration pattern. The combination lets a JavaScript-expressed tool sequence drive a multi-agent session, reducing per-action overhead for long-running parallel work.
+
+> Added support for turning on Code Mode while agent teams are enabled; if you already turned it on, sessions with teams on now start in Code Mode [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]
 
 ## Disputes
 
