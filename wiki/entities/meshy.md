@@ -11,8 +11,9 @@ sources:
   - "[[meshy-image-to-3d-api-meshy-t2-5-is-the-default-smart-topology-model-lowpoly-retires-30-oct-2026-82720073]]"
   - "[[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]"
   - "[[meshy-pricing-credits-plans-and-usage-62da5fc3]]"
-last_updated: 2026-11-13
-last_verified: 2026-11-13
+  - "[[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]"
+last_updated: 2026-11-18
+last_verified: 2026-11-18
 freshness_window_days: 30
 profile: tool
 modality: 3d
@@ -27,7 +28,7 @@ pricing_source: "[[meshy-pricing-credits-plans-and-usage-62da5fc3]]"
 commercial_use: "free tier CC BY 4.0 (commercial with attribution); all paid plans full private commercial, no attribution (2026-10-26)"
 commercial_use_source: "[[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]"
 status: active
-status_source: "[[meshy-7-1-ultra-4k-detail-richness-benchmark-45c8801a]]"
+status_source: "[[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]"
 last_release: unknown
 arena_rank: []
 arena_rank_source: []
@@ -68,6 +69,14 @@ On the product side, Meshy 3D Agent Beta (a chat-based, multi-step ideation-to-a
 > The official USD pricing page lists Pro at 20 USD/month and Studio at 70 USD/month; the EUR version lists Pro at 19 EUR and Studio at 67 EUR. All paid plans include commercial-use rights and a private license. [[meshy-pricing-credits-plans-and-usage-62da5fc3]]
 
 > Models generated on the Meshy free plan are licensed under CC BY 4.0, which permits commercial use if Meshy is credited. If you are a paid customer, you own the assets created through our platform. [[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]
+
+**Meshy N1 — first native texturing model (2026-11-18).** Meshy N1 is the first native texturing model that generates color directly on the 3D surface instead of projecting 2D images onto a mesh, eliminating seams and color bleeding [[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]. At approximately 20 seconds per output, it is the fastest texturing model on the market, roughly 3× faster than Meshy 7's ~60 seconds. N1 outputs a 2K base color map only — it does not generate PBR maps and does not support 4K or 8K resolution. It works from reference images rather than text prompts. N1 is available to all registered users through the Meshy API (Retexture, Image to 3D, Multi-Image to 3D, and Text to 3D refine) and is the default texture mode for T-series models in the web app; multi-view texturing (which takes several reference images) is limited to subscribers [[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]].
+
+> Meshy N1 is our first native texturing model. Instead of projecting multiple 2D images onto a mesh, it generates color directly on the 3D surface, which removes seams and color bleeding. [[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]
+
+> N1 is the fastest texturing model on the market, producing textured output in about 20 seconds, compared with roughly a minute for Meshy 7. [[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]
+
+> N1 outputs a 2K base color map only. It does not generate PBR maps and does not support 4K or 8K resolution. It works from reference images, not text prompts. [[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]
 
 ## Disputes
 
