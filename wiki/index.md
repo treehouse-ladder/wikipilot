@@ -119,6 +119,10 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[audio-tools]]
 - [[image-tools]]
 - [[video-tools]]
+- [[gpt-6-2-astra]]
+- [[gpt-6-2-sol]]
+- [[nano-banana-pro]]
+- [[qwen-image]]
 
 ## Sources
 
@@ -1131,6 +1135,21 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[introducing-pika-h3-flex-0a7ab440]]
 - [[pika-on-x-meet-pika-h3-flex-96454635]]
 - [[runway-dev-plugins-for-coding-agents-35216bb0]]
+- [[einaudi-and-richter-honoured-at-inaugural-ivors-composer-awards-f1d8f182]]
+- [[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]
+- [[europe-s-game-unions-pen-manifesto-warning-against-genai-usage-c4808739]]
+- [[all-the-game-awards-2026-nominees-revealed-5323943a]]
+- [[introducing-gpt-6-2-astra-and-sol-8f6af8c4]]
+- [[openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol-c19f50a3]]
+- [[gpt-6-2-astra-intelligence-performance-price-analysis-63f294bd]]
+- [[gpt-6-2-sol-intelligence-performance-price-analysis-c8b8562e]]
+- [[release-v2-1-327-anthropics-claude-code-8f7a055a]]
+- [[release-0-170-0-openai-codex-ad076a99]]
+- [[nano-banana-pro-gemini-3-pro-image-model-from-google-deepmind-db47f003]]
+- [[developers-can-build-with-nano-banana-pro-gemini-3-pro-image-499efe55]]
+- [[google-nano-banana-pro-advanced-ai-image-generator-and-editor-653e22b0]]
+- [[nano-banana-pro-gemini-3-pro-image-model-elo-generation-time-and-price-analysis-2eaaaa75]]
+- [[qwen-qwen-image-2512-4bc8318c]]
 
 ## Answers
 
@@ -1566,6 +1585,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-11-18]]
 - [[2026-11-17]]
 - [[2026-11-16]]
 - [[2026-11-14]]
