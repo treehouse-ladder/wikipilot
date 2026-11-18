@@ -1,8 +1,10 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-17
+last_updated: 2026-11-18
 sources:
+  - "[[release-v2-1-327-anthropics-claude-code-8f7a055a]]"
+  - "[[release-0-170-0-openai-codex-ad076a99]]"
   - "[[release-v2-1-326-anthropics-claude-code-4e2b4f15]]"
   - "[[release-v2-1-325-anthropics-claude-code-e58a3ce1]]"
   - "[[release-0-169-0-openai-codex-a0c08c46]]"
@@ -545,6 +547,16 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-18
+
+**Claude Code v2.1.327 — MCP and safety improvements.** Claude Code v2.1.327 ships several incremental improvements: `claude mcp add-json <name> -` reads MCP server JSON from stdin so tokens stay off the command line (not available inside a CC session); `/install-github-app` now requires confirmation before modifying a repository to prevent accidental changes; `/tui classic` becomes the new name for the non-fullscreen renderer (`/tui default` still works); auto mode now ignores additional allow rules that run arbitrary packages such as `Bash(pnpm dlx *)` and path/version forms of already-ignored rules, deferring to the safety check [[release-v2-1-327-anthropics-claude-code-8f7a055a]].
+
+> Added claude mcp add-json <name> - to read the server's JSON from stdin, so tokens can stay off the command line; not available inside a Claude Code session [[release-v2-1-327-anthropics-claude-code-8f7a055a]]
+
+**OpenAI Codex 0.170.0 — WebRTC voice and experimental multi-environment MCP.** Codex 0.170.0 adds WebRTC negotiation for realtime voice calls in the TUI and experimental support for identically named MCP servers in different environments (a collision scenario not previously handled); oversized WebSocket requests now gracefully drop to HTTP without retrying [[release-0-170-0-openai-codex-ad076a99]].
+
+> Added WebRTC negotiation for realtime voice calls in the TUI [[release-0-170-0-openai-codex-ad076a99]]
 
 ### Updates 2026-11-17
 
