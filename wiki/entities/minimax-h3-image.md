@@ -6,7 +6,7 @@ sources:
   - "[[minimax-h3-image-bringing-4k-image-generation-into-the-10-second-era-0e365028]]"
   - "[[minimax-h3-image-4k-ai-image-generator-and-editor-4b0c4b72]]"
   - "[[aa-image-t2i-v2-1-open-weights-leaderboard-top-ai-image-models-cbe6c9ba]]"
-last_updated: 2026-11-14
+last_updated: 2026-11-18
 last_verified: 2026-11-14
 freshness_window_days: 30
 profile: tool
@@ -46,7 +46,7 @@ API pricing (as of launch, 2026-11-13): ~$0.022 per image at 1K resolution, ~$0.
 
 > MiniMax's official pricing lists H3-Image standard text-to-image at about $0.022 per image at 1K, about $0.023 at 2K, and about $0.069 at 4K, with a limited-time 50 percent launch discount bringing 4K to about $0.034 per image. [[minimax-h3-image-4k-ai-image-generator-and-editor-4b0c4b72]]
 
-As of 2026-11-14, MiniMax H3-Image ranks **#1 on the Artificial Analysis AA-Image-T2I v2.1 Open Weights Leaderboard** at Elo 1067, ahead of Alibaba Qwen-Image-2.1 and FLUX 3 Image Klein [[aa-image-t2i-v2-1-open-weights-leaderboard-top-ai-image-models-cbe6c9ba]]. Note: H3-Image does not appear on the main (all-models) T2I v2.1 board — this ranking is on the open-weights-only sub-leaderboard.
+As of 2026-11-14, MiniMax H3-Image ranks **#1 on the Artificial Analysis AA-Image-T2I v2.1 Open Weights Leaderboard** at Elo 1067, ahead of Alibaba [[qwen-image]] (Qwen-Image-2.1) and FLUX 3 Image Klein [[aa-image-t2i-v2-1-open-weights-leaderboard-top-ai-image-models-cbe6c9ba]]. Note: H3-Image does not appear on the main (all-models) T2I v2.1 board — this ranking is on the open-weights-only sub-leaderboard.
 
 > MiniMax's H3-Image (Hugging Face) tops the open-weights text-to-image board at Elo 1067, with Alibaba's Qwen-Image-2.1 and Black Forest Labs' FLUX 3 Image Klein following close behind. [[aa-image-t2i-v2-1-open-weights-leaderboard-top-ai-image-models-cbe6c9ba]]
 
@@ -65,4 +65,6 @@ _no contradictions or gaps known yet (last reviewed: 2026-11-13)_
 
 - [[generative-media-models]]
 - [[minimax-h3]]
+- [[qwen-image]]
+- [[flux]]
 - [[image-tools]]
