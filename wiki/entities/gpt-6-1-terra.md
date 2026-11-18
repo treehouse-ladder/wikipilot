@@ -3,7 +3,7 @@ title: "GPT-6.1 Terra"
 kind: entity
 aliases: ["GPT 6.1 Terra", "gpt61-terra"]
 sources: ["[[introducing-gpt-6-1-terra-35e334c1]]", "[[gpt-6-1-terra-pushes-the-cost-efficiency-frontier-e51c1515]]"]
-last_updated: 2026-11-08
+last_updated: 2026-11-18
 last_verified: 2026-11-08
 freshness_window_days: 30
 ---
@@ -37,3 +37,5 @@ Independent (Artificial Analysis) evaluation published 2026-11-08 [[gpt-6-1-terr
 - [[frontier-models]]
 - [[gpt-6-1-sol]]
 - [[gpt-6-astra]]
+- [[gpt-6-2-astra]]
+- [[gpt-6-2-sol]]
