@@ -2,6 +2,34 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-18] daily | _report — 6 topics, 15 sources, 31 pages
+
+All 6 topic PRs merged: game-music (#1165, 1 source), ai-in-game-dev (#1166, 2 sources), games-of-note (#1167, 1 source), frontier-models (#1168, 4 sources), agentic-coding (#1169, 2 sources), generative-media-models (#1170, 5 sources). New entities: gpt-6-2-astra, gpt-6-2-sol (frontier-models); nano-banana-pro, qwen-image (generative-media-models). Creator tooling: nano-banana-pro newly tracked (image, Gemini 3 Pro Image); qwen-image newly tracked (image, Apache-2.0 open-weights). GPT-6.2 Astra now #2 on AA Intelligence Index v5 (score 62).
+
+## [2026-11-18] daily | generative-media-models — 5 sources, 12 pages
+
+New image models: [[nano-banana-pro]] (Google DeepMind Gemini 3 Pro Image, mid-board AA ~Elo 1119, fal $0.15–0.30/image) and [[qwen-image]] (Alibaba Qwen-Image-2512, Apache-2.0, 20B open-weights, ~24 GB GPU). GPT Image 2.6 Sunburst (max) remains measured AA-Image-T2I v2.1 leader; MiniMax H3-Image remains open-weights leader.
+
+## [2026-11-18] daily | agentic-coding — 2 sources, 3 pages
+
+Claude Code v2.1.327 (memory improvements, branch handling); OpenAI Codex 0.170.0 (bug fixes and usability improvements). No summary-affecting changes.
+
+## [2026-11-18] daily | frontier-models — 4 sources, 8 pages
+
+OpenAI launches GPT-6.2 Astra (#2 AA Intelligence Index v5, score 62, input $8/Mtoken) and GPT-6.2 Sol (#3, score 57, input $2/Mtoken). Two new entity pages added. GPT-6.2 Astra not yet in roster (human-owned topics.yaml); flagged in PR body.
+
+## [2026-11-18] daily | games-of-note — 1 source, 2 pages
+
+The Game Awards 2026 nominees revealed: 10 GOTY-category candidates including Black Myth: Wukong 2 and Clair Obscur: Expedition 33 among frontrunners. Summary regenerated.
+
+## [2026-11-18] daily | ai-in-game-dev — 2 sources, 4 pages
+
+Meshy N1 launched as cleanest/fastest AI texturing model. EU game union manifesto warns against unregulated GenAI usage in games industry. Summary regenerated.
+
+## [2026-11-18] daily | game-music — 1 source, 2 pages
+
+Inaugural Ivors Composer Awards ceremony: The Flight won Best Score for 007: First Light; Peter Gabriel received Outstanding Contribution Award. Summary regenerated.
+
 ## [2026-11-17] daily | _report — 6 topics, 8 sources, 13 pages
 
 Full run complete. PRs #1157–1162 all merged. Sources: Claude Code v2.1.326 (agentic-coding), Unity acquires Synty Studios + Hyper3D Rodin ToS (ai-in-game-dev), GTA 6 gold + TGA nominees + Fortis shutdown (games-of-note), FFXIV Piano Collections review (game-music), Recraft V4.1 Flash V2 (generative-media-models). Creator tooling: Hyper3D Rodin commercial_use confirmed; Recraft newly tracked.
