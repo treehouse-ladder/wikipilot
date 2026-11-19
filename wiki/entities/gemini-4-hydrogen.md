@@ -6,7 +6,7 @@ sources:
   - "[[gemini-4-hydrogen-model-card-google-deepmind-441ce58c]]"
   - "[[introducing-gemini-4-hydrogen-for-agentic-workflows-d7c21c50]]"
   - "[[gemini-4-hydrogen-xhigh-intelligence-performance-price-analysis-38ea2af2]]"
-last_updated: 2026-11-13
+last_updated: 2026-11-19
 last_verified: 2026-11-13
 freshness_window_days: 14
 input_cost_per_mtoken: 1.50
@@ -54,6 +54,7 @@ _no contradictions or gaps known yet (last reviewed: 2026-11-13)_
 
 - [[frontier-models]]
 - [[gemini-4-argon]]
+- [[gemini-4-neon]]
 - [[gemini-4-carbon]]
 - [[benchmark-leaders]]
 - [[cost-comparison]]
