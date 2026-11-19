@@ -2,6 +2,20 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-19] daily | _report — 6 topics, 9 sources, 17 pages
+
+## [2026-11-19] daily | generative-media-models — 1 source, 3 pages
+
+## [2026-11-19] daily | ai-in-game-dev — 1 source, 3 pages
+
+## [2026-11-19] daily | games-of-note — 3 sources, 4 pages
+
+## [2026-11-19] daily | frontier-models — 3 sources, 5 pages
+
+## [2026-11-19] daily | agentic-coding — 1 source, 1 page
+
+## [2026-11-19] daily | game-music — 0 sources, 1 page
+
 ## [2026-11-18] daily | _report — 6 topics, 15 sources, 31 pages
 
 All 6 topic PRs merged: game-music (#1165, 1 source), ai-in-game-dev (#1166, 2 sources), games-of-note (#1167, 1 source), frontier-models (#1168, 4 sources), agentic-coding (#1169, 2 sources), generative-media-models (#1170, 5 sources). New entities: gpt-6-2-astra, gpt-6-2-sol (frontier-models); nano-banana-pro, qwen-image (generative-media-models). Creator tooling: nano-banana-pro newly tracked (image, Gemini 3 Pro Image); qwen-image newly tracked (image, Apache-2.0 open-weights). GPT-6.2 Astra now #2 on AA Intelligence Index v5 (score 62).
