@@ -123,6 +123,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gpt-6-2-sol]]
 - [[nano-banana-pro]]
 - [[qwen-image]]
+- [[gemini-4-neon]]
+- [[z-image]]
 
 ## Sources
 
@@ -2136,3 +2138,20 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ### New pages
 - [[recraft]]
+
+## 2026-11-19
+
+### New sources
+- [[release-v2-1-328-anthropics-claude-code-1590e3f6]]
+- [[introducing-gemini-4-neon-be0aed2f]]
+- [[gemini-4-neon-model-card-93dc5dee]]
+- [[google-continues-to-accelerate-its-release-cadence-with-gemini-4-neon-61858885]]
+- [[gta-6-debuts-with-an-astonishing-99-metacritic-score-currently-tied-for-best-reviewed-game-of-all-time-932eeb35]]
+- [[rockstar-founder-issues-rare-statement-as-gta-6-launches-to-superb-reviews-and-huge-sales-117b0439]]
+- [[take-two-lays-off-firaxis-employees-on-eve-of-grand-theft-auto-vi-launch-d3016398]]
+- [[meshy-rigging-api-engine-targeted-skeleton-templates-and-finger-bones-182d1bf5]]
+- [[tongyi-mai-z-image-turbo-hugging-face-4542559f]]
+
+### New pages
+- [[gemini-4-neon]]
+- [[z-image]]
