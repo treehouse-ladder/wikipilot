@@ -12,12 +12,13 @@ sources:
   - "[[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]"
   - "[[meshy-pricing-credits-plans-and-usage-62da5fc3]]"
   - "[[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]"
-last_updated: 2026-11-18
-last_verified: 2026-11-18
+  - "[[meshy-rigging-api-engine-targeted-skeleton-templates-and-finger-bones-182d1bf5]]"
+last_updated: 2026-11-19
+last_verified: 2026-11-19
 freshness_window_days: 30
 profile: tool
 modality: 3d
-tasks: ["text-to-3d", "image-to-3d", "multi-image-to-3d", "retexture", "low-poly-mode"]
+tasks: ["text-to-3d", "image-to-3d", "multi-image-to-3d", "retexture", "low-poly-mode", "rigging"]
 vendor: "Meshy"
 model_ids: ["meshy-6", "meshy-7", "meshy-7.1", "meshy-t2.5"]
 access: ["web", "api"]
@@ -69,6 +70,12 @@ On the product side, Meshy 3D Agent Beta (a chat-based, multi-step ideation-to-a
 > The official USD pricing page lists Pro at 20 USD/month and Studio at 70 USD/month; the EUR version lists Pro at 19 EUR and Studio at 67 EUR. All paid plans include commercial-use rights and a private license. [[meshy-pricing-credits-plans-and-usage-62da5fc3]]
 
 > Models generated on the Meshy free plan are licensed under CC BY 4.0, which permits commercial use if Meshy is credited. If you are a paid customer, you own the assets created through our platform. [[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]
+
+**Meshy Rigging API — engine-targeted skeleton templates and finger bones (2026-11-19).** The Meshy Rigging API (v1 and v2) supports six **skeleton templates**: `meshyrig`, `mixamo`, `ue5_mannequin`, `max_biped`, `unity_humanoid`, and `maya_human_ik` [[meshy-rigging-api-engine-targeted-skeleton-templates-and-finger-bones-182d1bf5]]. The v1 endpoint defaults to `meshyrig`; the v2 endpoint defaults to `mixamo`. An optional `include_fingers` parameter adds standard finger bones (using Mixamo naming: `LeftHandThumb1` etc.) and is only available on the biped rig. Input requirements: textured humanoid GLB delivered as an HTTP/HTTPS URL (≤400 MB) or data URI (≤100 MB), with ≤380,000 triangles [[meshy-rigging-api-engine-targeted-skeleton-templates-and-finger-bones-182d1bf5]].
+
+> skeleton_template supports meshyrig, mixamo, ue5_mannequin, max_biped, unity_humanoid, and maya_human_ik. The v1 Rigging defaults to meshyrig; the v2 endpoint defaults to mixamo. [[meshy-rigging-api-engine-targeted-skeleton-templates-and-finger-bones-182d1bf5]]
+
+> include_fingers adds finger bones to the biped rig using Mixamo naming (LeftHandThumb1, etc.). [[meshy-rigging-api-engine-targeted-skeleton-templates-and-finger-bones-182d1bf5]]
 
 **Meshy N1 — first native texturing model (2026-11-18).** Meshy N1 is the first native texturing model that generates color directly on the 3D surface instead of projecting 2D images onto a mesh, eliminating seams and color bleeding [[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]. At approximately 20 seconds per output, it is the fastest texturing model on the market, roughly 3× faster than Meshy 7's ~60 seconds. N1 outputs a 2K base color map only — it does not generate PBR maps and does not support 4K or 8K resolution. It works from reference images rather than text prompts. N1 is available to all registered users through the Meshy API (Retexture, Image to 3D, Multi-Image to 3D, and Text to 3D refine) and is the default texture mode for T-series models in the web app; multi-view texturing (which takes several reference images) is limited to subscribers [[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]].
 
