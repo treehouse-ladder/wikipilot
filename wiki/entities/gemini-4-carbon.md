@@ -5,7 +5,7 @@ aliases: ["Carbon", "gemini-4-carbon", "Gemini 4 Carbon (High)"]
 sources:
   - "[[gemini-4-carbon-our-next-frontier-model-a92d7b7e]]"
   - "[[gemini-4-carbon-is-the-new-1-on-the-artificial-analysis-intelligence-index-v5-53854855]]"
-last_updated: 2026-10-30
+last_updated: 2026-11-19
 last_verified: 2026-10-30
 freshness_window_days: 14
 input_cost_per_mtoken: 4.00
@@ -62,5 +62,6 @@ On the **Coding Agent Index it places #2 at 59**, 3 points behind Claude Code wi
 
 - [[frontier-models]]
 - [[gemini-4-argon]]
+- [[gemini-4-neon]]
 - [[benchmark-leaders]]
 - [[cost-comparison]]
