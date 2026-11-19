@@ -1,8 +1,9 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-18
+last_updated: 2026-11-19
 sources:
+  - "[[release-v2-1-328-anthropics-claude-code-1590e3f6]]"
   - "[[release-v2-1-327-anthropics-claude-code-8f7a055a]]"
   - "[[release-0-170-0-openai-codex-ad076a99]]"
   - "[[release-v2-1-326-anthropics-claude-code-4e2b4f15]]"
@@ -547,6 +548,20 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-19
+
+**Claude Code v2.1.328 — auto mode extended to Bedrock, Foundry, and GCP Agent Platform; mcp_tool hooks gain `onFailure: "block"`.** Claude Code v2.1.328 extends the interactive-session **auto mode** default to **Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry, and the Claude apps gateway** — meaning operator deployments on these platforms can now run sessions that start in auto mode without additional configuration [[release-v2-1-328-anthropics-claude-code-1590e3f6]]. This matters for agentic workflows running on managed cloud platforms, where the auto-mode classifier can dynamically route to the most cost-efficient model tier.
+
+The `mcp_tool` hook type gains the **`"onFailure": "block"`** option, aligning it with the existing behavior of command and HTTP hooks; a failing mcp_tool hook now blocks the tool call rather than passing through [[release-v2-1-328-anthropics-claude-code-1590e3f6]]. A new env var, **`CLAUDE_CODE_DISABLE_DEFERRED_TOOL_RESUME`**, lets a host stop `claude -p --resume` and `--continue` from running a tool call that a hook deferred — giving platform operators finer control over deferred-tool replay in unattended sessions [[release-v2-1-328-anthropics-claude-code-1590e3f6]].
+
+Bug fixes relevant to harness operators: automatic compaction was reusing the session's earlier system prompt instead of rebuilding it the way `/compact` does (now fixed); Code Mode could lose a loaded skill, hook context, or approval note when resuming a session where one reply ran multiple scripts; Code Mode was incorrectly offering `write()` and `edit()` to read-only subagents that lacked those tools; and the Bedrock/Foundry/GCP effort refusal in v2.1.327 that zeroed out a subagent's effort model for the rest of the session is now fixed [[release-v2-1-328-anthropics-claude-code-1590e3f6]].
+
+> Added auto mode for Claude Opus 4.6 and Sonnet 4.6 on Amazon Bedrock, Google Cloud's Agent Platform, Microsoft Foundry and Claude apps gateway; interactive sessions with no permission mode start in it [[release-v2-1-328-anthropics-claude-code-1590e3f6]]
+
+> Added "onFailure": "block" for mcp_tool hooks, as for command and HTTP hooks: a hook whose call fails blocks the action [[release-v2-1-328-anthropics-claude-code-1590e3f6]]
+
+> Added CLAUDE_CODE_DISABLE_DEFERRED_TOOL_RESUME, which lets a host stop claude -p --resume and --continue from running a tool call that a hook deferred [[release-v2-1-328-anthropics-claude-code-1590e3f6]]
 
 ### Updates 2026-11-18
 
@@ -3548,6 +3563,7 @@ lint stays quiet until each page actually exists:
 - [ ] Does the domain-expertise advantage in Claude Code sessions [[agentic-coding-and-persistent-returns-to-expertise-a6ebb163]] generalize to other agentic coding tools (Cursor, Codex), or is it specific to Claude Code's interaction model?
 - [ ] Probe-and-refine AGENTS.md tuning [[probe-and-refine-tuning-of-repository-guidance-for-coding-agents-86f1891b]] achieves a 4.7pp SWE-bench Verified gain from automated guidance-file curation — does this gap persist when the static knowledge base is human-curated rather than LLM-generated?
 - [ ] Does the C-compiler agent-team result [[building-a-c-compiler-with-a-team-of-parallel-claudes-1eba12a4]] generalize beyond the unusual property that a known-good oracle (GCC) existed to decompose the monolithic compile task — i.e. how do you parallelize a monolithic task with no oracle to diff against?
+- [ ] Does v2.1.328's extension of the auto-mode default onto Amazon Bedrock, Google Cloud's Agent Platform, and Microsoft Foundry run the server-side auto-mode classifier on the cloud provider's side, or does it still phone home to Claude.ai's classifier? The release note is silent on where the routing decision happens, which matters for air-gapped and data-residency deployments [[release-v2-1-328-anthropics-claude-code-1590e3f6]].
 - [ ] What is the per-completed-task cost delta between the Managed Agents brain/hands-decoupled architecture [[scaling-managed-agents-decoupling-the-brain-from-the-hands-8537165d]] and a coupled single-session harness, given the extra event-transformation layer it inserts before context?
 - [ ] SkillsBench finds self-generated Skills provide no average benefit [[skillsbench-benchmarking-how-well-agent-skills-work-across-diverse-tasks-1743f5a5]]; does this contradict the Agentic Harness Engineering claim that an evolution agent can productively edit its own skills/sub-agents [[agentic-harness-engineering-observability-driven-automatic-evolution-of-coding-agent-harnesses-56d6e4c6]], or is AHE's human-in-the-loop observability the missing ingredient?
 - [ ] Does SWE-Judge's LLM-based scoring [[swe-cycle-benchmarking-code-agents-across-the-complete-issue-resolution-cycle-3256d47f]] introduce model-family bias (does an LLM judge score agents using the same base model more favorably), and is that bias measured against the human-annotation validation set?
