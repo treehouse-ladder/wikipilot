@@ -1,8 +1,10 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-19
+last_updated: 2026-11-20
 sources:
+  - "[[release-v2-1-329-anthropics-claude-code-f3d370a5]]"
+  - "[[release-0-171-0-openai-codex-1e02ab9c]]"
   - "[[release-v2-1-328-anthropics-claude-code-1590e3f6]]"
   - "[[release-v2-1-327-anthropics-claude-code-8f7a055a]]"
   - "[[release-0-170-0-openai-codex-ad076a99]]"
@@ -415,8 +417,8 @@ sources:
   - "[[release-v2-1-318-anthropics-claude-code-797aba84]]"
   - "[[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]]"
   - "[[build-live-apps-in-cursor-c30b3225]]"
-last_verified: 2026-10-31
-last_updated: 2026-11-17
+last_verified: 2026-11-20
+last_updated: 2026-11-20
 freshness_window_days: 30
 ---
 
@@ -548,6 +550,30 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-20
+
+**Claude Code v2.1.329 and OpenAI Codex 0.171.0 — incremental hardening plus two notable defaults (Codex's default model and the Codex TUI workspace both graduate).** Two new stable releases landed in-window, both continuing the hardening/ergonomics cadence this page tracks.
+
+**Claude Code v2.1.329** adds a memory guard to Code Mode (the control-flow-collapse feature from v2.1.323): a runaway loop that was filling the machine's memory is now stopped at a limit [[release-v2-1-329-anthropics-claude-code-f3d370a5]]. The release also changes Code Mode's PreToolUse-hook-error semantics — a hook that *errors* no longer refuses the script's tool call by default (aligning Code Mode with behavior outside Code Mode); a hook that must refuse now has to set `"onFailure": "block"` explicitly, the same block option v2.1.328 added for `mcp_tool` hooks [[release-v2-1-329-anthropics-claude-code-f3d370a5]]. This flips the default direction of the hook surface the page has tracked through the fail-open→fail-closed oscillation since v2.1.273: the safe-by-default is now opt-in rather than automatic. Supervision/trust ergonomics improve elsewhere: the trust dialog now warns where a folder's hooks are declared, and `/tasks` now surfaces this session's scheduled tasks, `/loop` wakeups, the goal, and conversation forks (press `x` to stop one after a confirm) [[release-v2-1-329-anthropics-claude-code-f3d370a5]]. Robustness fixes: `~/.claude.json` was being reset to defaults when a network stall or file lock made it unreadable during a save (now fixed), and `/code-review <pr number>` could silently review the checked-out branch instead of the named PR [[release-v2-1-329-anthropics-claude-code-f3d370a5]].
+
+> Fixed a runaway loop in Code Mode filling the machine's memory; it is now stopped at a limit [[release-v2-1-329-anthropics-claude-code-f3d370a5]]
+
+> Changed Code Mode so a PreToolUse hook that errors no longer refuses a script's tool call, as outside Code Mode; set "onFailure": "block" on a command, HTTP or MCP tool hook that must refuse [[release-v2-1-329-anthropics-claude-code-f3d370a5]]
+
+> Added a trust dialog warning that says where a folder's hooks are declared [[release-v2-1-329-anthropics-claude-code-f3d370a5]]
+
+> Added this session's scheduled tasks, /loop wakeups, the goal and this conversation's forks to /tasks; x stops one after asking [[release-v2-1-329-anthropics-claude-code-f3d370a5]]
+
+**OpenAI Codex 0.171.0** (first stable after 0.170.0) adds GPT-6.2 Sol and Astra to the model catalogs and makes **Sol the default catalog selection** [[release-0-171-0-openai-codex-1e02ab9c]] — a default-model change worth noting for anyone standardizing on Codex, cross-relevant to [[frontier-models]]. It also graduates the TUI workspace from the opt-in `features.tui_workspace` flag (introduced 0.168/0.169) to **enabled by default**, now with searchable document previews, image previews, and subagent transcripts alongside the main conversation, and adds `codex exec --remote` to run an exec session on a remote environment [[release-0-171-0-openai-codex-1e02ab9c]].
+
+> Added GPT-6.2 Sol and Astra to the model catalogs, with Sol as the default catalog selection [[release-0-171-0-openai-codex-1e02ab9c]]
+
+> Enabled the TUI workspace by default, with searchable document previews, image previews, and subagent transcripts alongside the main conversation. [[release-0-171-0-openai-codex-1e02ab9c]]
+
+> Added codex exec --remote to run an exec session on a remote environment [[release-0-171-0-openai-codex-1e02ab9c]]
+
+Both are incremental releases — no capability-frontier shift — so the Summary view is left untouched. No new Cursor changelog entry since the Nov 17 CLI release (already surfaced), and no methodology-confirmed in-window SWE-bench/agent-eval paper on the allowlisted domains. qmd-search MCP was unavailable this run (CONNECT_TIMEOUT); dedupe done via direct Read/Grep.
 
 ### Updates 2026-11-19
 
@@ -3510,6 +3536,7 @@ lint stays quiet until each page actually exists:
 
 ## Open questions
 
+- [ ] Does Claude Code v2.1.329's new Code Mode hook-error default — a PreToolUse hook that errors no longer blocks the script's tool call unless `"onFailure": "block"` is set explicitly [[release-v2-1-329-anthropics-claude-code-f3d370a5]] — open a supervision gap relative to the fail-closed direction of earlier permission/sandbox releases, for operators who relied on an erroring hook to halt a Code Mode script?
 - [ ] Does v2.1.319's removal of the local-classifier fallback behind gateways (auto mode now asks-about-or-denies calls the server cannot verify) [[release-v2-1-319-anthropics-claude-code-7cf21137]] actually close the safety gap raised for the Bedrock/Vertex/Foundry local-classifier default [[release-v2-1-273-anthropics-claude-code-6726c9df]], or does failing closed merely convert the weaker-classifier risk into an availability/usability regression that pressures users toward CLAUDE_CODE_AUTO_MODE_SERVER=0?
 - [ ] What is the prompt-injection / exfiltration blast radius of Cursor's Grok-Voice-backed voice agent that can hand coding work to the chat agent mid-run [[voice-chat-with-agents-cursor-c9e26081]] — does the voice channel inherit the same sandbox/permission tier as the edit-loop agent, and can an instruction routed through spoken input bypass text-layer injection checks?
 - [ ] Does Codex 0.167.0's agent command center (codex agents --no-daemon, unread-result markers) [[release-0-167-0-openai-codex-b8ddb6db]] converge with Cursor's Agents Window and Anthropic's workflow UI on a shared multi-agent-supervision mental model, or is each vendor's command center a closed substrate?
