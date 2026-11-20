@@ -1587,6 +1587,8 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-11-20]]
+- [[2026-11-19]]
 - [[2026-11-18]]
 - [[2026-11-17]]
 - [[2026-11-16]]
@@ -2155,3 +2157,17 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 ### New pages
 - [[gemini-4-neon]]
 - [[z-image]]
+
+## 2026-11-20
+
+### New sources
+- [[release-v2-1-329-anthropics-claude-code-f3d370a5]]
+- [[release-0-171-0-openai-codex-1e02ab9c]]
+- [[grammy-nominations-for-video-games-announced-unbeatable-developers-lament-the-preference-against-vocal-songs-71122080]]
+- [[gta-6-launch-live-updates-news-conversations-and-discoveries-27d7ca2d]]
+- [[ubisoft-lays-off-166-across-montreal-and-quebec-city-49c872ce]]
+- [[ubisoft-says-it-has-a-very-big-pipeline-of-productions-as-it-lays-off-over-150-more-developers-and-starts-an-ai-studio-49273f3c]]
+
+### New pages
+
+_none_
