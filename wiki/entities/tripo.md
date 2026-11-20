@@ -9,8 +9,8 @@ sources:
   - "[[3d-assets-license-guide-scale-game-dev-with-tripo-ai-a3638764]]"
   - "[[tripo-agentic-canvas-the-ai-agent-that-gets-your-3d-work-done-93f2bd5a]]"
   - "[[changelog-tripo-developers-fe455299]]"
-last_updated: 2026-11-08
-last_verified: 2026-11-05
+last_updated: 2026-11-20
+last_verified: 2026-11-20
 freshness_window_days: 30
 profile: tool
 modality: 3d
