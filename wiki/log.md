@@ -2,6 +2,22 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-20] daily | _report — 6 topics, 6 sources, 7 pages
+
+All 6 topic PRs merged: frontier-models (#1179, 0 sources), agentic-coding (#1180, 2 sources), generative-media-models (#1181, 0 sources), game-music (#1182, 1 source), games-of-note (#1183, 3 sources), ai-in-game-dev (#1184, 0 sources). Creator tooling changes: Tripo re-verified (fields unchanged). No new tool entities this run.
+
+## [2026-11-20] daily | ai-in-game-dev — 0 sources, 2 pages
+
+## [2026-11-20] daily | games-of-note — 3 sources, 1 page
+
+## [2026-11-20] daily | game-music — 1 source, 1 page
+
+## [2026-11-20] daily | generative-media-models — 0 sources, 1 page
+
+## [2026-11-20] daily | agentic-coding — 2 sources, 1 page
+
+## [2026-11-20] daily | frontier-models — 0 sources, 1 page
+
 ## [2026-11-19] daily | _report — 6 topics, 9 sources, 17 pages
 
 ## [2026-11-19] daily | generative-media-models — 1 source, 3 pages
