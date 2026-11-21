@@ -2,6 +2,22 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-21] daily | _report — 6 topics, 13 sources, 18 pages
+
+All 6 topic PRs merged: game-music (#1186, 0 sources), agentic-coding (#1187, 4 sources), frontier-models (#1188, 2 sources), ai-in-game-dev (#1189, 1 source), games-of-note (#1190, 3 sources), generative-media-models (#1191, 3 sources). Creator tooling changes: 3 new tool entities (MAI-Image-2.7, Kling Image 4.0, Suno Speech). See wiki/reports/2026-11-21.md.
+
+## [2026-11-21] daily | generative-media-models — 3 sources, 7 pages
+
+## [2026-11-21] daily | games-of-note — 3 sources, 1 page
+
+## [2026-11-21] daily | ai-in-game-dev — 1 source, 1 page
+
+## [2026-11-21] daily | frontier-models — 2 sources, 2 pages
+
+## [2026-11-21] daily | agentic-coding — 4 sources, 6 pages
+
+## [2026-11-21] daily | game-music — 0 sources, 1 page
+
 ## [2026-11-20] daily | _report — 6 topics, 6 sources, 7 pages
 
 All 6 topic PRs merged: frontier-models (#1179, 0 sources), agentic-coding (#1180, 2 sources), generative-media-models (#1181, 0 sources), game-music (#1182, 1 source), games-of-note (#1183, 3 sources), ai-in-game-dev (#1184, 0 sources). Creator tooling changes: Tripo re-verified (fields unchanged). No new tool entities this run.
