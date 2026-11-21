@@ -2,8 +2,8 @@
 title: "Inkling"
 kind: entity
 aliases: ["Thinking Machines Inkling", "Inkling MoE"]
-sources: ["[[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]", "[[inkling-our-open-weights-model-06531d4a]]", "[[introducing-inkling-small-5c51c45f]]", "[[inkling-small-lands-within-a-point-of-inkling-on-the-artificial-analysis-intelligence-index-with-less-than-a-third-of-the-parameters-805cabb6]]", "[[thinking-machines-inkling-2-small-the-highest-scoring-open-weights-model-outside-of-china-pending-weights-release-b70ccc60]]", "[[introducing-inkling-2-small-187bb7cb]]"]
-last_updated: 2026-11-07
+sources: ["[[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]", "[[inkling-our-open-weights-model-06531d4a]]", "[[introducing-inkling-small-5c51c45f]]", "[[inkling-small-lands-within-a-point-of-inkling-on-the-artificial-analysis-intelligence-index-with-less-than-a-third-of-the-parameters-805cabb6]]", "[[thinking-machines-inkling-2-small-the-highest-scoring-open-weights-model-outside-of-china-pending-weights-release-b70ccc60]]", "[[introducing-inkling-2-small-187bb7cb]]", "[[thinking-machines-has-released-inkling-2-mini-an-open-weights-looped-transformer-f4aa7e73]]", "[[welcome-inkling-2-mini-cutting-edge-performance-for-your-local-setup-824c03b9]]"]
+last_updated: 2026-11-21
 last_verified: 2026-07-31
 freshness_window_days: 30
 aa_intelligence_index: 41
@@ -50,6 +50,12 @@ Thinking Machines previewed **Inkling 2 Small** on 2026-11-07 (closed-weights fo
 > Inkling 2 Small scores 31 on the Artificial Analysis Intelligence Index v5.0.1, up 18 points from Inkling Small, with roughly 4x as many output tokens per task. It matches Gemini 3.8 Flash (high) and surpasses MiMo-V2.6-Pro. Once the weights are released, the model would be the highest-scoring open weights model developed outside China based on current rankings. [[thinking-machines-inkling-2-small-the-highest-scoring-open-weights-model-outside-of-china-pending-weights-release-b70ccc60]]
 
 > Thinking Machines intends to make the full weights of Inkling 2 Small available under an Apache 2.0 license next week, after the completion of external safety testing and red-teaming; it is launched as a closed-weight model on the Tinker platform. [[introducing-inkling-2-small-187bb7cb]]
+
+**Inkling 2 Mini** (released 2026-11-20) is the small, local-deployable member of the Inkling 2 family: a 26.4B-total / 3.4B-active / 5.4B-effective-active-per-token MoE "looped transformer" (its middle 12 layers, 6–17, run three times per token with shared weights — the lab's first released looped transformer), under an Apache 2.0 license with text+image input and a 1M-token context window [[welcome-inkling-2-mini-cutting-edge-performance-for-your-local-setup-824c03b9]]. Artificial Analysis independently scores it 20 on the Intelligence Index — above the median of 10 for comparably-sized open-weights models, matching Qwen3.8 27B (xhigh) with ~5× fewer active parameters, on the Pareto frontier for intelligence-vs-size, and small enough to run on a MacBook or DGX Spark [[thinking-machines-has-released-inkling-2-mini-an-open-weights-looped-transformer-f4aa7e73]]. Thinking Machines claims it leads every open-weights model under 100B total parameters on DeepSWE v1.1 (48.2%) and Vals Index v2.2 (46.5%) [[welcome-inkling-2-mini-cutting-edge-performance-for-your-local-setup-824c03b9]]. It is notably verbose (161M tokens per Index run vs an 85.7M median), at ~$0.59 and 9.0 min per Index task [[thinking-machines-has-released-inkling-2-mini-an-open-weights-looped-transformer-f4aa7e73]].
+
+> Inkling 2 Mini is a 26B total parameter, 5.4B active parameter mixture-of-experts model, released under an Apache 2.0 license with text and image input and a 1M token context window. It is small enough to run on a MacBook or DGX Spark. [[thinking-machines-has-released-inkling-2-mini-an-open-weights-looped-transformer-f4aa7e73]]
+
+> Inkling 2 Mini leads every open-weights model with less than 100B total parameters on benchmarks such as DeepSWE v1.1 (48.2%) and Vals Index v2.2 (46.5%). [[welcome-inkling-2-mini-cutting-edge-performance-for-your-local-setup-824c03b9]]
 
 ## Disputes
 
