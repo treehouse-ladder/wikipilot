@@ -125,6 +125,9 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[qwen-image]]
 - [[gemini-4-neon]]
 - [[z-image]]
+- [[kling-image]]
+- [[mai-image-2-7]]
+- [[suno-speech]]
 
 ## Sources
 
@@ -1584,9 +1587,23 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[the-game-awards-2026-nominees-to-be-revealed-on-17th-november-a4f73df1]]
 - [[final-fantasy-xiv-piano-collections-till-dawn-my-tears-flow-music-review-1771f68e]]
 - [[recraft-v4-1-flash-v2-the-fastest-ai-image-model-on-the-market-2b7c5ee7]]
+- [[after-indie-games-dominated-the-game-awards-last-year-they-re-missing-in-2026-5d49828f]]
+- [[ai-generated-assets-were-unintentionally-included-in-crimson-desert-devs-say-d25e6f9d]]
+- [[expertcrowd-swe-measuring-frontier-coding-agents-on-expert-authored-engineering-tasks-in-unfamiliar-codebases-6d632061]]
+- [[external-sandboxes-for-coding-agents-e45fd791]]
+- [[golden-joystick-awards-2026-winners-resident-evil-requiem-wins-ultimate-game-of-the-year-a33e8271]]
+- [[how-gaijin-integrated-and-tuned-dlss-5-with-3d-guided-neural-rendering-for-war-thunder-72c3d2cb]]
+- [[introducing-speech-beta-2f956a47]]
+- [[kling-image-4-0-ai-image-generator-with-native-8k-and-image-sets-3fdafbfd]]
+- [[mai-image-2-7-microsoft-ai-image-generator-and-editor-7d6eaf21]]
+- [[release-v2-1-330-anthropics-claude-code-fdc4cffb]]
+- [[swe-recreation-benchmarking-coding-agents-for-software-recreation-1f399357]]
+- [[thinking-machines-has-released-inkling-2-mini-an-open-weights-looped-transformer-f4aa7e73]]
+- [[welcome-inkling-2-mini-cutting-edge-performance-for-your-local-setup-824c03b9]]
 
 ## Reports
 
+- [[2026-11-21]]
 - [[2026-11-20]]
 - [[2026-11-19]]
 - [[2026-11-18]]

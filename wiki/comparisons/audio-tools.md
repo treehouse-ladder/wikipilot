@@ -14,7 +14,7 @@ comparison_of:
 - underdog-woof
 freshness_window_days: 30
 kind: comparison
-last_updated: 2026-11-20
+last_updated: 2026-11-21
 last_verified: 2026-10-24
 sources: []
 title: Audio tools (speech, music, SFX)
