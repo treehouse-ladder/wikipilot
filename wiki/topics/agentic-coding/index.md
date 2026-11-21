@@ -1,8 +1,12 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-20
+last_updated: 2026-11-21
 sources:
+  - "[[release-v2-1-330-anthropics-claude-code-fdc4cffb]]"
+  - "[[external-sandboxes-for-coding-agents-e45fd791]]"
+  - "[[expertcrowd-swe-measuring-frontier-coding-agents-on-expert-authored-engineering-tasks-in-unfamiliar-codebases-6d632061]]"
+  - "[[swe-recreation-benchmarking-coding-agents-for-software-recreation-1f399357]]"
   - "[[release-v2-1-329-anthropics-claude-code-f3d370a5]]"
   - "[[release-0-171-0-openai-codex-1e02ab9c]]"
   - "[[release-v2-1-328-anthropics-claude-code-1590e3f6]]"
@@ -550,6 +554,34 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-21
+
+Four new in-window sources: a new Claude Code stable release, an external-sandbox pattern writeup, and two agentic-coding eval benchmarks. qmd-search MCP was unavailable this run (tool timeout); conceptual dedupe performed via direct Read/Grep over the vault.
+
+**Claude Code v2.1.330 (2026-11-20) — incremental, with two additions worth flagging.** The next stable after v2.1.329 continues the hardening/ergonomics cadence this page tracks, but adds a handful of capability-adjacent items: **Enterprise Admin Console sign-in** (`claude auth login` now applies a managed org's settings and routes through its cloud provider/gateway), the built-in **`easel`** chart mod, and an increase of recurring scheduled tasks / `/loop` lifetime from 7 to **30 days** [[release-v2-1-330-anthropics-claude-code-fdc4cffb]]. The VS Code extension gains `/fork` (fork a conversation after its last reply) and `/workflows` (opens the agent map with running workflows) [[release-v2-1-330-anthropics-claude-code-fdc4cffb]] — the IDE surface catching up to the session-forking and dynamic-workflows levers already in the CLI.
+
+> Added sign-in to organizations managed in Anthropic's Enterprise Admin Console: after claude auth login, Claude Code applies the organization's settings and uses its cloud provider or gateway. [[release-v2-1-330-anthropics-claude-code-fdc4cffb]]
+
+> Recurring scheduled tasks and /loop now run up to 30 days instead of 7 while their session keeps running. [[release-v2-1-330-anthropics-claude-code-fdc4cffb]]
+
+> [VSCode] Added /fork to fork a conversation after its last reply. [VSCode] Added /workflows, which opens the agent map with running workflows. [[release-v2-1-330-anthropics-claude-code-fdc4cffb]]
+
+**External sandboxes for coding agents (Simon Willison, 2026-11-17) — a cross-tool sandboxing pattern.** Willison describes the **external-sandbox pattern**: the agent runs *outside* a dedicated sandbox and sends code-execution requests *into* it, inverting the usual "sandbox the whole agent" model and letting one sandbox serve several harnesses [[external-sandboxes-for-coding-agents-e45fd791]]. His implementation ships three interchangeable servers (v86/WebAssembly Alpine, a container-based Python server, and a Microsoft Quicksand-backed Python server) behind one shared localhost API that Pi, Claude Code, and Codex can all be pointed at, plus an optional allow-list HTTP/HTTPS proxy and a credential-replacement mechanism so the agent makes authenticated calls without ever holding the secret [[external-sandboxes-for-coding-agents-e45fd791]]. This is a concrete, harness-agnostic answer to the capability/isolation gap tracked on [[agent-sandboxing]].
+
+> Code executed by the agent runs inside a dedicated sandbox while the agent itself lives outside of that sandbox. [[external-sandboxes-for-coding-agents-e45fd791]]
+
+> All three offer the same localhost API. You can then configure Pi, Claude Code, or Codex to send API calls to that sandbox any time they want to execute code. [[external-sandboxes-for-coding-agents-e45fd791]]
+
+**Two new agentic-coding eval benchmarks.** **ExpertCrowd-SWE** (arXiv, 2026-11-09) is a 100-task benchmark of expert-authored, multi-file tasks across 87 open-source projects and 11 languages, run over seven frontier models (five runs each, 3,495 scored runs) in a **single platform harness that gives each model its provider-native tool interface** [[expertcrowd-swe-measuring-frontier-coding-agents-on-expert-authored-engineering-tasks-in-unfamiliar-codebases-6d632061]] — a clean instance of the harness-disclosure discipline this topic has tracked (holding the harness constant while varying the model). **SWE-Recreation** (arXiv, 2026-11-19) evaluates pixels-only app recreation: agents see only rendered pixels and act through pointer/keyboard, with no DOM, source, logs, or back-end access, then build and self-check a replica; five frontier systems top out at just **0.530 weighted fidelity and 22.9% fully reproduced requirements** across 54 apps [[swe-recreation-benchmarking-coding-agents-for-software-recreation-1f399357]].
+
+> The authors evaluate seven frontier models, five runs each (3,495 scored runs), in a single platform harness that gives each model its provider-native tool interface. [[expertcrowd-swe-measuring-frontier-coding-agents-on-expert-authored-engineering-tasks-in-unfamiliar-codebases-6d632061]]
+
+> Across the 54 applications, five frontier systems reach at most 0.530 weighted fidelity and 22.9% fully reproduced requirements under application-equal averaging. [[swe-recreation-benchmarking-coding-agents-for-software-recreation-1f399357]]
+
+These are incremental-release + additive-eval findings — no capability-frontier, leader, or best-practice shift — so the Summary view is left untouched.
+
+_no contradictions or gaps known yet (last reviewed: 2026-11-21)_
 
 ### Updates 2026-11-20
 
@@ -3904,6 +3936,8 @@ lint stays quiet until each page actually exists:
 - [ ] What is the per-task cost or credit consumption for Build Live Apps cloud agents on paid Cursor plans — not stated in the source [[build-live-apps-in-cursor-c30b3225]]?
 - [ ] Does Claude Code's switch to Claude Fable 5.2 as the default Fable model (1M context, $0.20/Mtok cache reads) [[release-v2-1-321-anthropics-claude-code-ace31f3b]] move any published SWE-bench Verified / Terminal-Bench 2.x Claude Code standings, and does the cheaper cache-read tier change the prompt-cache cost math for long tool-heavy sessions, or is it priced lower because of an accuracy/speed regression vs the prior default Fable model?
 - [ ] Does v2.1.321's `--settings <file>` for `claude remote-control` (one settings file applied to every spawned session) [[release-v2-1-321-anthropics-claude-code-ace31f3b]] materially shrink the agentic-coding attack surface for fleets of remote-control sessions, or does it only govern which settings load while leaving the runtime tool-output trust-level confusion unaddressed — mirroring the open enterprise-managed-settings-vs-runtime-injection question?
+- [ ] Does the external-sandbox localhost API (Willison's three servers) converge toward a de-facto standard that Claude Code / Codex / Cursor adopt natively, or stay a bespoke bring-your-own-sandbox integration?
+- [ ] SWE-Recreation's 0.530 weighted-fidelity ceiling is pixels-only with no source access — how much of the gap is exploration/evidence vs implementation, and does it track SWE-bench-style source-available resolve rates at all?
 
 ## See also
 
