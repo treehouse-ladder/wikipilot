@@ -5,7 +5,7 @@ aliases: ["Kling", "Kling 4.0 Flash", "kling.ai"]
 sources:
   - "[[kling-4-0-and-4-0-flash-video-generation-models-launch-b0391b87]]"
   - "[[kling-api-pricing-fba30089]]"
-last_updated: 2026-10-26
+last_updated: 2026-11-21
 last_verified: 2026-10-26
 freshness_window_days: 30
 profile: tool
@@ -51,3 +51,4 @@ _no contradictions or gaps known yet (last reviewed: 2026-10-26)_
 ## See also
 
 - [[generative-media-models]]
+- [[kling-image]]
