@@ -5,7 +5,7 @@ aliases: ["Suno AI", "Suno music"]
 sources:
   - "[[suno-mcp-beta-fbbc54a2]]"
   - "[[can-i-distribute-my-songs-to-spotify-etc-25684551]]"
-last_updated: 2026-11-07
+last_updated: 2026-11-21
 last_verified: 2026-11-07
 freshness_window_days: 30
 profile: tool
@@ -58,5 +58,6 @@ Capabilities via MCP: create songs from plain-language descriptions, start from 
 
 - [[generative-media-models]]
 - [[suno-mcp-beta-fbbc54a2]]
+- [[suno-speech]]
 
 _no contradictions or gaps known yet (last reviewed: 2026-10-31)_

@@ -9,7 +9,7 @@ sources:
   - "[[introducing-images-2-6-295354ff]]"
   - "[[gpt-image-2-6-sunburst-model-e5a487dd]]"
   - "[[aa-image-editing-v2-1-leaderboard-top-ai-image-models-9069ca61]]"
-last_updated: 2026-11-18
+last_updated: 2026-11-21
 last_verified: 2026-11-10
 freshness_window_days: 30
 profile: tool
@@ -73,3 +73,4 @@ _no contradictions or gaps known yet (last reviewed: 2026-10-26)_
 - [[nano-banana-2-1]]
 - [[nano-banana]]
 - [[image-tools]]
+- [[mai-image-2-7]]
