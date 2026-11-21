@@ -32,7 +32,8 @@ sources:
   - "[[release-0-169-0-openai-codex-a0c08c46]]"
   - "[[release-0-168-0-openai-codex-6cfc942e]]"
   - "[[release-v2-1-326-anthropics-claude-code-4e2b4f15]]"
-last_updated: 2026-11-17
+  - "[[external-sandboxes-for-coding-agents-e45fd791]]"
+last_updated: 2026-11-21
 last_verified: 2026-09-21
 freshness_window_days: 30
 ---
@@ -150,6 +151,12 @@ The same release adds `engines["claude-code"]` to `plugin.json`, so plugins outs
 > Fixed Bash commands that delete or overwrite files (`find -delete`, `cat a > b`, `sort -o`) being summed up in the transcript as a search or a read [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]
 
 > Fixed background sessions losing the LLM gateway your shell exported after a crash, after a reopen from another folder, or when the background service lacks it: they now stop before any model request [[release-v2-1-326-anthropics-claude-code-4e2b4f15]]
+
+**External-sandbox pattern (Willison, 2026-11).** A complementary inversion of the usual "sandbox the whole agent" model: the agent process runs *outside* a dedicated sandbox and sends code-execution requests *into* it over a shared localhost API, so one sandbox can serve multiple harnesses (Pi, Claude Code, Codex) [[external-sandboxes-for-coding-agents-e45fd791]]. The reference implementation offers three interchangeable backends (v86/WebAssembly Alpine, a container-based Python server, and a Microsoft Quicksand-backed Python server), an optional allow-list HTTP/HTTPS egress proxy, and a credential-replacement layer that lets the agent make authenticated calls without ever holding the secret [[external-sandboxes-for-coding-agents-e45fd791]] — addressing both the execution-isolation and the credential-exfiltration surfaces this page tracks.
+
+> Code executed by the agent runs inside a dedicated sandbox while the agent itself lives outside of that sandbox. [[external-sandboxes-for-coding-agents-e45fd791]]
+
+> The sandboxes also include an optional allow-list proxy for HTTP/HTTPS traffic, plus a credential replacement mechanism so the agent can make authenticated calls without holding the secret. [[external-sandboxes-for-coding-agents-e45fd791]]
 
 ## Disputes
 
