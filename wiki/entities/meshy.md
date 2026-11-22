@@ -13,7 +13,7 @@ sources:
   - "[[meshy-pricing-credits-plans-and-usage-62da5fc3]]"
   - "[[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]"
   - "[[meshy-rigging-api-engine-targeted-skeleton-templates-and-finger-bones-182d1bf5]]"
-last_updated: 2026-11-19
+last_updated: 2026-11-22
 last_verified: 2026-11-19
 freshness_window_days: 30
 profile: tool
@@ -94,6 +94,10 @@ On the product side, Meshy 3D Agent Beta (a chat-based, multi-step ideation-to-a
 - Open questions section claims "Commercial-use terms per plan (free vs subscribed) — only 'subscribed users can download 7.1 models' is on record" but frontmatter cites [[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]] with full commercial-use details (free tier: CC BY 4.0 with attribution required; all paid plans: full private ownership, no attribution). Status: unresolved (confidence: high; sweep: 2026-11-01)
 
 > Models generated on the Meshy free plan are licensed under CC BY 4.0, which permits commercial use if Meshy is credited. If you are a paid customer, you own the assets created through our platform. Models generated while you were on a paid plan keep the rights associated with that plan. [[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]
+
+- [[ai-in-game-dev]] Updates 2026-11-19 claims "Meshy was last_verified 2026-11-07... no `last_verified` bumps this run"; [[meshy]] frontmatter shows last_verified: 2026-11-19. Status: unresolved (confidence: high; sweep: 2026-11-22)
+
+> Roster sweep (tool entities — ai-in-game-dev derived roster). Meshy was last_verified 2026-11-07 (pricing completeness update) and Tripo was last_verified 2026-11-05. No new source from today's run contains updated pricing, commercial_use, status, or arena_rank data for either tool; no `last_verified` bumps this run. [[ai-in-game-dev]]
 
 ## Open questions
 
