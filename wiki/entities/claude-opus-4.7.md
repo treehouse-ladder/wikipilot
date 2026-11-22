@@ -2,7 +2,7 @@
 title: "Claude Opus 4.7"
 kind: entity
 sources: ["[[introducing-claude-opus-47-b8af8104]]", "[[claude-opus-47-everything-you-need-to-know-751c1827]]", "[[swe-chain-benchmarking-coding-agents-on-chained-release-level-package-upgrades-26980c45]]", "[[building-a-c-compiler-with-a-team-of-parallel-claudes-1eba12a4]]", "[[swe-bench-verified-leaderboard-may-2026-marc0-dev-4c34ac5d]]", "[[arc-agi-2-benchmark-leaderboard-benchlm-ai-caa132e2]]", "[[cybergym-benchmark-leaderboard-llm-stats-com-81499a0b]]", "[[roadmapbench-evaluating-long-horizon-agentic-software-development-across-version-upgrades-b9814b39]]", "[[featurebench-benchmarking-agentic-coding-for-complex-feature-development-12948611]]", "[[claude-opus-4-8-takes-the-lead-on-the-artificial-analysis-intelligence-index-57303c9c]]", "[[itbench-aa-frontier-models-score-below-50-on-the-first-benchmark-for-agentic-enterprise-it-tasks-c6a7b34a]]"]
-last_updated: 2026-09-21
+last_updated: 2026-11-22
 last_verified: 2026-05-31
 freshness_window_days: 30
 input_cost_per_mtoken: 5.00
@@ -59,6 +59,7 @@ As of May 28, 2026, Opus 4.7 is superseded by [[claude-opus-4.8]] as Anthropic's
 ## Disputes
 
 - [[claude-opus-47-everything-you-need-to-know-751c1827]] claims Opus 4.7 leads GDPval-AA at 1753 Elo "around 79 Elo points ahead of the next closest models"; the live [[gdpval-aa-leaderboard-artificial-analysis-5d24e844]] now shows GPT-5.5 (xhigh) ahead at 1769 Elo and GPT-5.5 (high) at 1754 — both released after the Opus 4.7 article. Status: resolved-toward-current-leaderboard — Opus 4.7's "ahead by 79 Elo" was true at its April 16 launch but was overtaken by GPT-5.5 on April 23.
+- Entity page (last_verified 2026-05-31) states "As of May 28, 2026, Opus 4.7 is superseded by [[claude-opus-4.8]] as Anthropic's flagship model" as the final noted succession; [[qwen3-8-max-0902-same-price-much-better-at-coding-and-office-work-still-behind-opus-5-528b2db1]] (September 2026) references Claude Opus 5, and [[frontier-models]] topic index (November 2026) documents that Anthropic's current flagship is [[claude-opus-5.5]] (released September 2026), with [[claude-fable-5.2]] as the Mythos-class leader — the succession continued well beyond 4.8. Status: unresolved (confidence: medium; sweep: 2026-11-22)
 
 ## Open questions
 

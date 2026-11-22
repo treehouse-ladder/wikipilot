@@ -3,7 +3,7 @@ title: "Inkling"
 kind: entity
 aliases: ["Thinking Machines Inkling", "Inkling MoE"]
 sources: ["[[thinking-machines-has-released-inkling-the-new-leading-u-s-open-weights-model-4ae0655f]]", "[[inkling-our-open-weights-model-06531d4a]]", "[[introducing-inkling-small-5c51c45f]]", "[[inkling-small-lands-within-a-point-of-inkling-on-the-artificial-analysis-intelligence-index-with-less-than-a-third-of-the-parameters-805cabb6]]", "[[thinking-machines-inkling-2-small-the-highest-scoring-open-weights-model-outside-of-china-pending-weights-release-b70ccc60]]", "[[introducing-inkling-2-small-187bb7cb]]", "[[thinking-machines-has-released-inkling-2-mini-an-open-weights-looped-transformer-f4aa7e73]]", "[[welcome-inkling-2-mini-cutting-edge-performance-for-your-local-setup-824c03b9]]"]
-last_updated: 2026-11-21
+last_updated: 2026-11-22
 last_verified: 2026-07-31
 freshness_window_days: 30
 aa_intelligence_index: 41
@@ -59,7 +59,11 @@ Thinking Machines previewed **Inkling 2 Small** on 2026-11-07 (closed-weights fo
 
 ## Disputes
 
-_none yet_
+- [[thinking-machines-has-released-inkling-2-mini-an-open-weights-looped-transformer-f4aa7e73]] reports Inkling 2 Mini as 26B total / 5.4B active parameters; [[welcome-inkling-2-mini-cutting-edge-performance-for-your-local-setup-824c03b9]] reports 26.4B total / 3.4B active parameters (5.4B effective-active per token due to looped architecture). Status: unresolved (confidence: medium; sweep: 2026-11-22)
+
+> Inkling 2 Mini is a 26B total parameter, 5.4B active parameter mixture-of-experts model, released under an Apache 2.0 license with text and image input and a 1M token context window. [[thinking-machines-has-released-inkling-2-mini-an-open-weights-looped-transformer-f4aa7e73]]
+
+> The middle 12 layers (layers 6 to 17) run three times per token with shared weights, giving 5.4B effective active parameters per token from 3.4B active parameters and 26.4B total parameters. [[welcome-inkling-2-mini-cutting-edge-performance-for-your-local-setup-824c03b9]]
 
 ## Open questions
 

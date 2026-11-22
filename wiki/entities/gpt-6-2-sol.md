@@ -16,7 +16,7 @@ cybergym_source: null
 arc_agi_2: null
 arc_agi_2_source: null
 sources: ["[[introducing-gpt-6-2-astra-and-sol-8f6af8c4]]", "[[gpt-6-2-sol-intelligence-performance-price-analysis-c8b8562e]]", "[[openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol-c19f50a3]]"]
-last_updated: 2026-11-18
+last_updated: 2026-11-22
 last_verified: 2026-11-18
 freshness_window_days: 30
 ---
@@ -45,7 +45,11 @@ Safety: GPT-6.2 Sol falls below the "High" threshold for AI Self-Improvement cap
 
 ## Disputes
 
-_no contradictions or gaps known yet (last reviewed: 2026-11-18)_
+- [[gpt-6-2-sol-intelligence-performance-price-analysis-c8b8562e]] claims GPT-6.2 Sol's AA Intelligence Index score of 57 is "unchanged from GPT-6.1 Sol"; the frontier-models topic page places GPT-6.1 Sol at 55 on v5 at launch (2026-10-27), implying GPT-6.2 Sol represents a +2 increase, not unchanged. Status: unresolved (confidence: high; sweep: 2026-11-22)
+
+> GPT-6.2 Sol scores 57 on the AA Intelligence Index (max), unchanged from GPT-6.1 Sol. [[gpt-6-2-sol-intelligence-performance-price-analysis-c8b8562e]]
+
+> At launch Claude Opus 5.5 (max) was #1 at 58, ahead of GPT-6 Astra (57) and GPT-6.1 Sol (55). [[frontier-models]]
 
 ## Open questions
 
