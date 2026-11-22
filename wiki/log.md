@@ -2,6 +2,10 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-22] health | weekly sweep — 4 disputes filed
+
+4 disputes filed across gpt-6-2-sol (AA index score conflict), meshy (last_verified inconsistency), inkling (parameter count conflict), claude-opus-4.7 (succession claim outdated). 59 stale pages flagged. PR #1193. See wiki/reports/health-2026-11-22.md.
+
 ## [2026-11-21] daily | _report — 6 topics, 13 sources, 18 pages
 
 All 6 topic PRs merged: game-music (#1186, 0 sources), agentic-coding (#1187, 4 sources), frontier-models (#1188, 2 sources), ai-in-game-dev (#1189, 1 source), games-of-note (#1190, 3 sources), generative-media-models (#1191, 3 sources). Creator tooling changes: 3 new tool entities (MAI-Image-2.7, Kling Image 4.0, Suno Speech). See wiki/reports/2026-11-21.md.
