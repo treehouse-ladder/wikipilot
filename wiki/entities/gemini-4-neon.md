@@ -3,10 +3,12 @@ title: "Gemini 4 Neon"
 kind: entity
 aliases: ["Neon", "gemini-4-neon", "Gemini 4 Neon (xhigh)"]
 sources:
+  - "[[introducing-gemini-4-neon-fd9bebbf]]"
+  - "[[antigravity-cli-coding-agent-index-score-performance-price-a0d47cb6]]"
   - "[[introducing-gemini-4-neon-be0aed2f]]"
   - "[[gemini-4-neon-model-card-93dc5dee]]"
   - "[[google-continues-to-accelerate-its-release-cadence-with-gemini-4-neon-61858885]]"
-last_updated: 2026-11-19
+last_updated: 2026-11-23
 last_verified: 2026-11-19
 freshness_window_days: 14
 input_cost_per_mtoken: 3.00
@@ -29,6 +31,12 @@ arc_agi_2_source: null
 **Gemini 4 Neon** is Google DeepMind's mid-tier frontier model, launched 2026-11-19, positioned between Gemini 4 Carbon (long-horizon, $4/$20 per Mtoken) and Gemini 4 Hydrogen (fast everyday work) [[gemini-4-neon-model-card-93dc5dee]]. At xhigh effort it **scores 61 on the Artificial Analysis Intelligence Index**, ranking **#3 globally** (behind Claude Fable 5.2 at 65 and GPT-6.2 Astra at 62) and **#2 on the Vals Index** [[google-continues-to-accelerate-its-release-cadence-with-gemini-4-neon-61858885]]. It also claims **#1 on Zapier AutomationBench and Andon Labs Vending-Bench 2** [[introducing-gemini-4-neon-be0aed2f]].
 
 > Gemini 4 Neon ranks #3 overall on the Artificial Analysis Intelligence Index with a score of 61, and #2 on the Vals Index. It also reports #1 results on Zapier's AutomationBench and Andon Labs' Vending-Bench 2. [[introducing-gemini-4-neon-be0aed2f]]
+
+**Coding agent performance:** Gemini 4 Neon ranks **#1 on the AA Coding Agent Index at 58.6** (high) [[introducing-gemini-4-neon-fd9bebbf]], with Terminal-Bench 4.1 at 65.2% and FrontierCode 2.0 at 46.2%. When run in **Antigravity CLI at xhigh effort, it scores 59 on the Coding Agent Index** — ahead of Claude Code + Claude Fable 5.2 (58), Gemini 4 Carbon (high, 55) and Codex + GPT-6.2 Astra (Max, 53) [[antigravity-cli-coding-agent-index-score-performance-price-a0d47cb6]]. In Antigravity it averages **$6.86/task** (cross-agent median $5.26, ~30.5 min/task) — cheaper than Claude Code + Fable 5.2 ($15.47/task) but pricier than Codex + GPT-6.2 Astra ($5.12/task).
+
+> Gemini 4 Neon ranks #1 on the Artificial Analysis Coding Agent Index with a score of 58.6. On Terminal-Bench 4.1 it scores 65.2% and on FrontierCode 2.0 it scores 46.2% at its default high setting. [[introducing-gemini-4-neon-fd9bebbf]]
+
+> Antigravity CLI with Gemini 4 Neon (Xhigh) scores 59 on the Artificial Analysis Coding Agent Index, at $6.86 per task (median $5.26) and ~30.5 min/task — 3 points ahead of Gemini 4 Carbon (high, 55). Codex with GPT-6.2 Astra (Max) scores 53 at $5.12/task; Claude Code with Claude Fable 5.2 scores 58 at $15.47/task. [[antigravity-cli-coding-agent-index-score-performance-price-a0d47cb6]]
 
 **Pricing and context:** $3/$15 per Mtoken, **1M-token context window**, knowledge cutoff March 2026 [[introducing-gemini-4-neon-be0aed2f]]. At xhigh effort the average task cost is **$6.44 — ~17% cheaper than Gemini 4 Carbon** ($7.76/task); at low effort it is the **cheapest option at $0.75/task**; task time is ~21 min at xhigh vs ~36 min for Carbon [[google-continues-to-accelerate-its-release-cadence-with-gemini-4-neon-61858885]].
 
