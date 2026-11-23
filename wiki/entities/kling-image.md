@@ -4,8 +4,8 @@ kind: entity
 aliases: ["Kling Image", "Kling Image 4"]
 sources:
   - "[[kling-image-4-0-ai-image-generator-with-native-8k-and-image-sets-3fdafbfd]]"
-last_updated: 2026-11-21
-last_verified: 2026-11-21
+last_updated: 2026-11-23
+last_verified: 2026-11-23
 freshness_window_days: 30
 profile: tool
 modality: image

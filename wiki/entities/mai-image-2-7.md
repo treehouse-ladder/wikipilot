@@ -4,8 +4,8 @@ kind: entity
 aliases: ["MAI Image 2.7", "MAI-Image-2.7 Flash", "Microsoft AI Image 2.7"]
 sources:
   - "[[mai-image-2-7-microsoft-ai-image-generator-and-editor-7d6eaf21]]"
-last_updated: 2026-11-21
-last_verified: 2026-11-21
+last_updated: 2026-11-23
+last_verified: 2026-11-23
 freshness_window_days: 30
 profile: tool
 modality: image
@@ -33,6 +33,8 @@ arena_rank_source: []
 **MAI-Image-2.7** (and **MAI-Image-2.7 Flash**) is Microsoft AI's closed-weights text-to-image and image-editing model, out of preview around 2026-11-17 and reachable on fal as four pay-per-use endpoints [[mai-image-2-7-microsoft-ai-image-generator-and-editor-7d6eaf21]]. A 1024x1024 output costs ~$0.035/image on the standard model and ~$0.010/image on Flash; fal states outputs can be used in commercial projects per its terms [[mai-image-2-7-microsoft-ai-image-generator-and-editor-7d6eaf21]]. Current Artificial Analysis snapshots place MAI-Image-2.7 at the top of AA-Image-Editing v2.1 (~Elo 1215), narrowly ahead of [[gpt-image]] GPT Image 2.6 Sunburst within margin of error, and #3-4 on AA-Image-T2I v2.1 — but that board URL is already ingested/immutable so the ranking is tracked under Open questions, not arena_rank.
 
 > MAI Image 2.7 is Microsoft AI's image generation and editing model, available on fal as four pay-per-use endpoints: text-to-image and edit for both the standard model and the cheaper Flash variant. A 1024x1024 output costs approximately $0.035 for the standard MAI-Image-2.7 model and approximately $0.010 for MAI-Image-2.7 Flash. [[mai-image-2-7-microsoft-ai-image-generator-and-editor-7d6eaf21]]
+
+> Content generated through the fal API is usable in commercial projects per fal's terms. [[mai-image-2-7-microsoft-ai-image-generator-and-editor-7d6eaf21]]
 
 ## Disputes
 

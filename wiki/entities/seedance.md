@@ -8,8 +8,8 @@ sources:
   - "[[introducing-seedance-2-5-78d1ddb7]]"
   - "[[seedance-2-5-us-image-to-video-api-on-fal-f520e761]]"
   - "[[aa-video-i2v-v2-1-leaderboard-top-ai-video-models-7458c112]]"
-last_updated: 2026-10-31
-last_verified: 2026-10-31
+last_updated: 2026-11-23
+last_verified: 2026-11-23
 freshness_window_days: 30
 profile: tool
 modality: video
@@ -47,6 +47,8 @@ Seedance 2.5 is now live on fal under `bytedance/seedance-2.5/us`, billed by out
 > Dreamina Seedance 2.0 720p currently leads among Image to Video models with audio output in the Artificial Analysis Image to Video Arena with an Elo score of 1197. In that table, it is listed at $9.07 /min. [[aa-video-i2v-v1-1-leaderboard-top-ai-video-models-d50415cf]]
 
 > Seedance 2.5 is able to generate high-quality, 30-second audio-video clips in a single pass, with multi-round extensions. Seedance 2.5 features one-take creation and flexible referencing, with up to 50 reference inputs. [[introducing-seedance-2-5-78d1ddb7]]
+
+> Seedance 2.5 is reachable on fal under bytedance/seedance-2.5/us. [[seedance-2-5-us-image-to-video-api-on-fal-f520e761]]
 
 > For 480p, your request will cost roughly $0.2205 per second of generated video, for 720p, you will be charged roughly $0.4730 per second of generated video, and for 1080p, roughly $1.164 per second of generated video. You're charged $0.0214 per 1,000 tokens at both 480p and 720p, with no subscription and no minimum. [[seedance-2-5-us-image-to-video-api-on-fal-f520e761]]
 
