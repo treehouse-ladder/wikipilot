@@ -35,7 +35,7 @@ sources:
   - "[[when-sub-agents-work-in-parallel-the-promises-and-pitfalls-of-dynamic-concurrency-in-long-horizon-coding-tasks-4a00350d]]"
   - "[[verifying-coordination-in-parallel-coding-agents-np-bench-and-a-scheduling-planner-d4e3b3d8]]"
   - "[[release-v2-1-326-anthropics-claude-code-4e2b4f15]]"
-last_updated: 2026-11-17
+last_updated: 2026-11-23
 last_verified: 2026-09-04
 freshness_window_days: 30
 ---
@@ -170,6 +170,7 @@ Claude Code v2.1.271 (2026-09-14) adds a subagent context-hygiene control, `omit
 - [ ] Does a fork-default subagent's inherited prompt cache [[claude-code-v2-1-230-to-v2-1-232-major-updates-sub-agent-fork-defaults-and-cross-session-mentions-2308d6cf]] survive the parent editing a file mid-run, or does fork-by-default simply make the cache-invalidation cliff the default failure mode for delegated work?
 - [ ] Cross-session SendMessage shares only thin text, never context [[message-your-other-claude-code-sessions-90ee76df]] — is there any prompt-cache or context sharing between independent peer sessions, or must each peer re-derive shared context from scratch, setting a coordination-cost floor for multi-session (as opposed to spawn-tree) workflows?
 - [ ] Does the Fable 5.1 post-tool-result cache gap that v2.1.260 fixed [[claude-code-2-1-260-a-diff-panel-in-fullscreen-cache-diagnostics-and-an-expensive-fable-5-1-bug-fixed-78ec55e7]] also affect fork-based parallel subagents that inherit the prompt cache, and does the fix actually restore the projected savings from Fable 5.1's 75%-cheaper cache reads?
+- [ ] Cursor's whole-file-rewrite guard (unreachable coverage, 2026-11-23) — a concurrency/supervision primitive that refuses full-file writes when the file changed after the agent last read/wrote it in-session; relevant to parallel-subagent coordination and the "agent writes / human reviews" dispute cluster, but not yet ingested due to proxy blocking cursor.com (flagged on [[agentic-coding]] 2026-11-23).
 
 ## See also
 

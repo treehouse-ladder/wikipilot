@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-21
+last_updated: 2026-11-23
 sources:
   - "[[release-v2-1-330-anthropics-claude-code-fdc4cffb]]"
   - "[[external-sandboxes-for-coding-agents-e45fd791]]"
@@ -554,6 +554,16 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-23
+
+Incremental/quiet run — no new ingestible sources. The fetchable allowlisted first-party surfaces had no new in-window material: Anthropic's canonical CHANGELOG confirms Claude Code **v2.1.330** (2026-11-20) remains the newest stable (a v2.1.331 tag 404s), already logged on 2026-11-21; OpenAI Codex's newest stable remains **0.171.0** (already logged 2026-11-20), with only 0.172.0-/0.173.0-alpha pre-releases since. No methodology-disclosed in-window SWE-bench/agent-eval paper surfaced on arxiv.org within the search index's current horizon (results capped at ~2610/November-lagging), and no new primary MCP spec or governance development beyond the already-logged Agentic AI Foundation donation.
+
+**Coverage gap flagged for the next run (no ingest):** two allowlisted domains carrying plausibly in-scope new material were unreachable through this session's egress proxy (HTTP 403 connect_rejected), so no verbatim evidence could be captured — nothing was ingested rather than cite paraphrased snippets as verbatim. (1) **cursor.com** — a 2026-11-09→17 release-notes batch (Cloud-Agent per-run PR default; "agent explains what it found and why before asking a question"; a whole-file-rewrite guard that refuses a full-file write when the file changed after the agent last read/wrote it in-session; a Cursor CLI update blocking other local processes from reading the agent's memory on Linux). (2) **simonwillison.net** — a 2026-11-18 note relaying Daniel Stenberg's commentary on an agent-driven curl C-to-Rust port. Re-attempt ingest when the proxy allows these hosts; the whole-file-rewrite guard in particular is a concurrency/supervision primitive relevant to [[parallel-subagents]] and the "agent writes / human reviews" dispute cluster.
+
+No capability-frontier, leader, or best-practice shift — the Summary view is left untouched.
+
+_no contradictions or gaps known yet (last reviewed: 2026-11-23)_
 
 ### Updates 2026-11-21
 
