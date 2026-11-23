@@ -1155,6 +1155,12 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[google-nano-banana-pro-advanced-ai-image-generator-and-editor-653e22b0]]
 - [[nano-banana-pro-gemini-3-pro-image-model-elo-generation-time-and-price-analysis-2eaaaa75]]
 - [[qwen-qwen-image-2512-4bc8318c]]
+- [[introducing-gemini-4-neon-fd9bebbf]]
+- [[antigravity-cli-coding-agent-index-score-performance-price-a0d47cb6]]
+- [[layoffs-ai-and-next-gen-what-2-600-game-professionals-told-gdc-this-year-8323b2e6]]
+- [[grand-theft-auto-vi-is-the-biggest-video-game-launch-of-all-time-34871891]]
+- [[gta-6-s-astonishing-4-billion-day-one-includes-32-5-million-copies-sold-a109c5a2]]
+- [[gta-6-owner-take-two-s-stock-adds-billions-after-rave-reviews-but-it-s-not-all-good-news-66ddf309]]
 
 ## Answers
 
@@ -1603,6 +1609,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-11-23]]
 - [[2026-11-21]]
 - [[2026-11-20]]
 - [[2026-11-19]]
@@ -2184,6 +2191,20 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gta-6-launch-live-updates-news-conversations-and-discoveries-27d7ca2d]]
 - [[ubisoft-lays-off-166-across-montreal-and-quebec-city-49c872ce]]
 - [[ubisoft-says-it-has-a-very-big-pipeline-of-productions-as-it-lays-off-over-150-more-developers-and-starts-an-ai-studio-49273f3c]]
+
+### New pages
+
+_none_
+
+## 2026-11-23
+
+### New sources
+- [[introducing-gemini-4-neon-fd9bebbf]]
+- [[antigravity-cli-coding-agent-index-score-performance-price-a0d47cb6]]
+- [[layoffs-ai-and-next-gen-what-2-600-game-professionals-told-gdc-this-year-8323b2e6]]
+- [[grand-theft-auto-vi-is-the-biggest-video-game-launch-of-all-time-34871891]]
+- [[gta-6-s-astonishing-4-billion-day-one-includes-32-5-million-copies-sold-a109c5a2]]
+- [[gta-6-owner-take-two-s-stock-adds-billions-after-rave-reviews-but-it-s-not-all-good-news-66ddf309]]
 
 ### New pages
 

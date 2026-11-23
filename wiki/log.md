@@ -2,6 +2,34 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-23] daily | _report — 6 topics, 6 sources, 18 pages
+
+All 6 topic PRs merged: agentic-coding (#1195, 0 sources), game-music (#1196, 0 sources), generative-media-models (#1197, 0 sources), frontier-models (#1198, 2 sources), ai-in-game-dev (#1199, 1 source), games-of-note (#1201, 3 sources). Key findings: GTA 6 official day-one 32.5M copies/$3.79B (biggest entertainment launch in history); Gemini 4 Neon takes AA Coding Agent Index #1 (Antigravity CLI, xhigh, 59). Creator tooling changes: none. See wiki/reports/2026-11-23.md.
+
+## [2026-11-23] daily | agentic-coding — 0 sources, 1 page
+
+Quiet run — no new in-scope agentic-coding sources found this run (cursor.com and simonwillison.net blocked by proxy).
+
+## [2026-11-23] daily | game-music — 0 sources, 1 page
+
+Quiet run — no new in-scope generative music sources found this run.
+
+## [2026-11-23] daily | generative-media-models — 0 sources, 4 pages
+
+Quiet run — no new in-scope, in-window, citable generative-media release found. Avatar models (HeyGen Avatar 6, Meituan LongCat Video Avatar 1.6) routed to ai-in-game-dev open questions. Roster re-confirmed: MAI-Image-2.7, Kling Image 4.0, Seedance 2.5 — all active, pricing unchanged.
+
+## [2026-11-23] daily | frontier-models — 2 sources, 5 pages
+
+Gemini 4 Neon takes AA Coding Agent Index #1 (Antigravity CLI, xhigh, 59), ahead of Claude Code + Fable 5.2 (58), Gemini 4 Carbon (high, 55), Codex + GPT-6.2 Astra Max (53). Index rebased to Terminal-Bench 4.1 — non-comparable to prior 62-basis read. AA Intelligence Index v5 unchanged: Fable 5.2 #1 at 65.
+
+## [2026-11-23] daily | ai-in-game-dev — 1 source, 3 pages
+
+GDC 2026 survey 2,600+ devs: more openness to select AI uses, though creative and player-facing content still largely off the table (~40% workplace genAI use). Meshy quadruped auto-rigging (animation_type: quadruped, bundled walk/run clips) confirmed active.
+
+## [2026-11-23] daily | games-of-note — 3 sources, 4 pages
+
+Take-Two confirms GTA 6 official day-one: 32.5M copies sold before release, ~$3.79B revenue — biggest entertainment launch in history. Supersedes Sensor Tower ~24.58M/$2.36B estimate. Take-Two stock up ~7% on reviews but still down ~20% YTD 2026.
+
 ## [2026-11-22] health | weekly sweep — 4 disputes filed
 
 4 disputes filed across gpt-6-2-sol (AA index score conflict), meshy (last_verified inconsistency), inkling (parameter count conflict), claude-opus-4.7 (succession claim outdated). 59 stale pages flagged. PR #1193. See wiki/reports/health-2026-11-22.md.
