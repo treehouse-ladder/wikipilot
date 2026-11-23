@@ -13,8 +13,8 @@ sources:
   - "[[meshy-pricing-credits-plans-and-usage-62da5fc3]]"
   - "[[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]"
   - "[[meshy-rigging-api-engine-targeted-skeleton-templates-and-finger-bones-182d1bf5]]"
-last_updated: 2026-11-22
-last_verified: 2026-11-19
+last_updated: 2026-11-23
+last_verified: 2026-11-23
 freshness_window_days: 30
 profile: tool
 modality: 3d
@@ -84,6 +84,8 @@ On the product side, Meshy 3D Agent Beta (a chat-based, multi-step ideation-to-a
 > N1 is the fastest texturing model on the market, producing textured output in about 20 seconds, compared with roughly a minute for Meshy 7. [[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]
 
 > N1 outputs a 2K base color map only. It does not generate PBR maps and does not support 4K or 8K resolution. It works from reference images, not text prompts. [[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]
+
+> Quadruped rigging: sending animation_type "quadruped" rigs a four-legged animal and includes walking and running animations; pricing matches the biped rig. [[meshy-7-is-live-higher-fidelity-image-to-3d-generation-with-ultra-mode-f27c1d9b]]
 
 ## Disputes
 
