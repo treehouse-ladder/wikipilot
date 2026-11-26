@@ -1,8 +1,9 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-23
+last_updated: 2026-11-26
 sources:
+  - "[[donating-agent-skills-to-the-agentic-ai-foundation-bdc7b775]]"
   - "[[introducing-gemini-4-neon-fd9bebbf]]"
   - "[[antigravity-cli-coding-agent-index-score-performance-price-a0d47cb6]]"
   - "[[release-v2-1-330-anthropics-claude-code-fdc4cffb]]"
@@ -556,6 +557,20 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-26
+
+**Agent Skills donated to the Agentic AI Foundation — the second agentic-coding primitive to go vendor-neutral under the Linux Foundation.** Anthropic has donated the Agent Skills open standard to the Agentic AI Foundation (AAIF), the same Linux Foundation directed fund that already houses MCP [[donating-agent-skills-to-the-agentic-ai-foundation-bdc7b775]]. This moves Agent Skills into the same vendor-neutral governance posture as MCP, with cross-lab individual maintainers (Lead Maintainers David Soria Parra and Mahesh Murag) rather than Anthropic ownership. Adoption scale is now first-party quantified: 70+ agent platforms (ChatGPT, Cursor, GitHub Copilot, VS Code) have integrated the standard, with ~1M skills published and ~280M installed.
+
+> Today, we're donating Agent Skills, the open standard that gives AI agents specialized knowledge and workflows, to the Agentic AI Foundation (AAIF). [[donating-agent-skills-to-the-agentic-ai-foundation-bdc7b775]]
+
+> More than 70 agent platforms, including ChatGPT, Cursor, GitHub Copilot, and VS Code, have integrated Agent Skills since we published the standard in December 2025. [[donating-agent-skills-to-the-agentic-ai-foundation-bdc7b775]]
+
+> So far, 1 million skills have been published and nearly 280 million installed. [[donating-agent-skills-to-the-agentic-ai-foundation-bdc7b775]]
+
+(Note: post is dated 2026-10-22, before the current run window, but was previously uncovered — ingested as a backfill because it is a governance change to a primitive the topic tracks. The AAIF roadmap proposes 'security guidance for people who write and install skills,' relevant to the poisoned-SKILL.md attack surface [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]].)
+
+**Coverage gap flagged for the next run (no ingest).** Claude Code v2.1.331 (removed system-prompt confirmation for risky actions; Code Mode for cloud terminal sessions; MCP stall fix) and v2.1.332 (skills from MCP servers [beta]; new PreSkillShellCommand hook; Sonnet 5.5 as default on some cloud platforms; compaction-hang fix), OpenAI Codex CLI 0.172.0 (per-app tool approval reviewers; `codex exec resume`; gRPC for Code Mode host connections), and Cursor Nov 9–19 changelog batch (Cloud Agents PR-per-run default; per-environment MCP-server allowlist; CLI-cloud handoff pushes commits first) were on hosts the egress proxy refused (cursor.com, GitHub release API, docs.anthropic.com all returned HTTP 403 or no response) — discoverable via WebSearch but not ingestable with verbatim evidence.
 
 ### Updates 2026-11-23
 
@@ -3612,6 +3627,7 @@ lint stays quiet until each page actually exists:
 - [ ] Is externalized verified task-state (LongHorizon-Harness's Manage-Execute-Audit loop) composable with fork-based parallel-subagent orchestration, or does the read-only auditor / fresh-context executor pattern serialize what the products parallelize? [[longhorizon-harness-advancing-long-horizon-agents-for-real-world-tasks-7b19f9de]]
 - [ ] Does code-execution-with-MCP's 'tools as code on a filesystem' design [[code-execution-with-mcp-building-more-efficient-ai-agents-9b88bfec]] break prompt caching when the agent edits the tool definitions mid-session?
 - [ ] Does AgentRoom's CRDT shared workspace [[agentroom-concurrent-multi-agent-coding-in-a-crdt-backed-shared-workspace-4f6448bf]] prevent semantically-conflicting-but-textually-clean concurrent edits, or only character-level collisions? CRDTs guarantee textual convergence, not semantic non-conflict, so the "integration failures" it targets may reappear at the semantic layer that worktree-per-agent's post-hoc merge at least surfaces explicitly.
+- [ ] Does the AAIF's proposed 'security guidance for people who write and install skills' [[donating-agent-skills-to-the-agentic-ai-foundation-bdc7b775]] materially address the poisoned-SKILL.md installation attack surface catalogued in [[prompt-injection-attacks-on-agentic-coding-assistants-a-systematic-analysis-of-vulnerabilities-in-skills-tools-and-protocol-ecosystems-300ff8a5]], or is vendor-neutral governance orthogonal to the loader-containment problem — i.e. does moving the standard to the Linux Foundation change who is accountable for a malicious skill reaching ~280M installs?
 - [ ] Does SWE Refactor Bench's agentic-verification stage — six independent agents searching for hidden behavioral differences after submission [[swe-refactor-bench-can-coding-agents-complete-a-long-horizon-whole-repository-stack-migration-26f52ec1]] — inherit the Verification-Horizon limitation (verification harder than generation beyond a complexity threshold), and could a stronger migrating agent also fool the verifying agents?
 - [ ] What is the prompt-injection and exfiltration blast radius of a Cursor repo-less Cloud Agent that publishes an agent-built app to a public Vercel URL [[start-from-scratch-without-a-repo-13d1b5da]], given the contextual-integrity impossibility framing [[ai-agents-may-always-fall-for-prompt-injections-ad0e4e5e]] — does the publish path run inside the same sandbox tier as the build, or does it broaden network egress?
 - [ ] Are Codex custom-agent TOML files [[subagents-openai-codex-developers-openai-com-8334be02]] portable to Claude Code's markdown-based `.claude/agents/` definitions, or is the cross-vendor subagent convergence purely conceptual?
