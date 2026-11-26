@@ -1609,6 +1609,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-11-26]]
 - [[2026-11-23]]
 - [[2026-11-21]]
 - [[2026-11-20]]
@@ -2205,6 +2206,22 @@ _none_
 - [[grand-theft-auto-vi-is-the-biggest-video-game-launch-of-all-time-34871891]]
 - [[gta-6-s-astonishing-4-billion-day-one-includes-32-5-million-copies-sold-a109c5a2]]
 - [[gta-6-owner-take-two-s-stock-adds-billions-after-rave-reviews-but-it-s-not-all-good-news-66ddf309]]
+
+### New pages
+
+_none_
+
+## 2026-11-26
+
+### New sources
+- [[donating-agent-skills-to-the-agentic-ai-foundation-bdc7b775]]
+- [[artificial-analysis-intelligence-index-v5-0-2-benchmarking-methodology-1ea3e75f]]
+- [[can-language-models-drive-a-humanoid-robot-introducing-aa-robotics-sim-v0-1-a1210e53]]
+- [[ling-3-2-air-intelligence-performance-price-analysis-e79b19a5]]
+- [[an-update-on-blueprints-and-the-path-to-ue6-1a2257bd]]
+- [[what-s-new-for-game-developers-ai-animation-and-rtx-tools-2144450e]]
+- [[gta-6-is-playstation-s-biggest-launch-of-all-time-with-over-39-million-players-d2c4976a]]
+- [[gta-6-review-bombed-on-metacritic-over-woke-story-4aef39f7]]
 
 ### New pages
 

@@ -2,6 +2,34 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-26] daily | _report — 6 topics, 8 sources, 11 pages
+
+All 6 topic PRs merged: game-music (#1206, 0 sources), agentic-coding (#1207, 1 source), generative-media-models (#1208, 0 sources), frontier-models (#1209, 3 sources), ai-in-game-dev (#1210, 2 sources), games-of-note (#1213, 2 sources). Key findings: Epic confirms UE6 ships without Blueprints/AGF (AI Blueprint→Verse conversion bet); GTA 6 is PS5's biggest launch ever (39M players); AA Intelligence Index v5.0.2 rebases on Terminal-Bench 4.1 (all models regraded; Fable 5.2 max=65 remains #1); AA-Robotics-Sim v0.1 introduced (GPT-6.2 Astra leads embodied control at 71.0); AAIF takes governance of Agent Skills. Creator tooling changes: none. See wiki/reports/2026-11-26.md.
+
+## [2026-11-26] daily | games-of-note — 2 sources, 1 page
+
+GTA 6 sets PlayStation record: 39M PS5 players on day one, surpassing any prior PS5 launch. Metacritic review-bomb controversy over game narrative framing. Sources: [[gta-6-is-playstation-s-biggest-launch-of-all-time-with-over-39-million-players-d2c4976a]], [[gta-6-review-bombed-on-metacritic-over-woke-story-4aef39f7]].
+
+## [2026-11-26] daily | ai-in-game-dev — 2 sources, 2 pages
+
+Epic confirms Blueprints deprecated in UE6, replaced by AGF (Agentic Game Framework) scripting. Kimodo AI rigging integration confirmed in UE 5.9 preview. Sources: [[an-update-on-blueprints-and-the-path-to-ue6-1a2257bd]], [[what-s-new-for-game-developers-ai-animation-and-rtx-tools-2144450e]].
+
+## [2026-11-26] daily | frontier-models — 3 sources, 1 page
+
+AA Intelligence Index v5.0.2 rebased to Terminal-Bench 4.1 (methodology update). AA Robotics Sim v0.1 introduced for embodied AI evaluation. Ling-3.2-Air pricing analysis added. Sources: [[artificial-analysis-intelligence-index-v5-0-2-benchmarking-methodology-1ea3e75f]], [[can-language-models-drive-a-humanoid-robot-introducing-aa-robotics-sim-v0-1-a1210e53]], [[ling-3-2-air-intelligence-performance-price-analysis-e79b19a5]].
+
+## [2026-11-26] daily | generative-media-models — 0 sources, 4 pages
+
+Quiet run — no new in-scope generative media sources found this run. Freshness bumps on entities: gpt-image, elevenlabs, cartesia + topic index.
+
+## [2026-11-26] daily | agentic-coding — 1 source, 2 pages
+
+AAIF (Agentic AI Foundation) governance framework for Agent Skills published. Source: [[donating-agent-skills-to-the-agentic-ai-foundation-bdc7b775]].
+
+## [2026-11-26] daily | game-music — 0 sources, 1 page
+
+Quiet run — no new in-scope generative music sources found this run. Topic index freshness bump.
+
 ## [2026-11-23] daily | _report — 6 topics, 6 sources, 18 pages
 
 All 6 topic PRs merged: agentic-coding (#1195, 0 sources), game-music (#1196, 0 sources), generative-media-models (#1197, 0 sources), frontier-models (#1198, 2 sources), ai-in-game-dev (#1199, 1 source), games-of-note (#1201, 3 sources). Key findings: GTA 6 official day-one 32.5M copies/$3.79B (biggest entertainment launch in history); Gemini 4 Neon takes AA Coding Agent Index #1 (Antigravity CLI, xhigh, 59). Creator tooling changes: none. See wiki/reports/2026-11-23.md.
