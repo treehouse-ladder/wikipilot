@@ -10,7 +10,7 @@ sources:
   - "[[gpt-image-2-6-sunburst-model-e5a487dd]]"
   - "[[aa-image-editing-v2-1-leaderboard-top-ai-image-models-9069ca61]]"
 last_updated: 2026-11-21
-last_verified: 2026-11-10
+last_verified: 2026-11-26
 freshness_window_days: 30
 profile: tool
 modality: image
