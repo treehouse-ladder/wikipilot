@@ -6,7 +6,7 @@ sources:
   - "[[introducing-sonic-3-6-1274d75a]]"
   - "[[controlled-voice-leaderboard-top-ai-voice-models-0313c536]]"
 last_updated: 2026-11-10
-last_verified: 2026-11-10
+last_verified: 2026-11-26
 freshness_window_days: 30
 profile: tool
 modality: voice
