@@ -5,8 +5,9 @@ aliases: ["NVIDIA Kimodo", "Kimodo-SOMA-RP", "Kimodo-G1", "nv-tlabs/kimodo"]
 sources:
   - "[[kimodo-scaling-controllable-human-motion-generation-fe9ff887]]"
   - "[[nvidia-kimodo-soma-rp-v1-1-hugging-face-3543d52b]]"
-last_updated: 2026-10-26
-last_verified: 2026-10-26
+  - "[[what-s-new-for-game-developers-ai-animation-and-rtx-tools-2144450e]]"
+last_updated: 2026-11-26
+last_verified: 2026-11-26
 freshness_window_days: 60
 profile: tool
 modality: motion
@@ -21,7 +22,7 @@ pricing_source: "[[kimodo-scaling-controllable-human-motion-generation-fe9ff887]
 commercial_use: "SOMA-SEED-v1.1 commercial-ready; G1 variants under NVIDIA Open Model License; at least one SMPL-X variant research-only (2026-10-26)"
 commercial_use_source: "[[nvidia-kimodo-soma-rp-v1-1-hugging-face-3543d52b]]"
 status: active
-status_source: "[[kimodo-scaling-controllable-human-motion-generation-fe9ff887]]"
+status_source: "[[what-s-new-for-game-developers-ai-animation-and-rtx-tools-2144450e]]"
 last_release: 2026-10-15
 arena_rank: []
 arena_rank_source: []
@@ -43,6 +44,10 @@ The release (GitHub `nv-tlabs/kimodo`) bundles code, a CLI to generate motions o
 
 > Licensing varies by variant: one SMPL-X model is for non-commercial research use only, the SOMA-SEED-v1.1 model is ready for commercial use, and the G1 models are released under the NVIDIA Open Model License. [[nvidia-kimodo-soma-rp-v1-1-hugging-face-3543d52b]]
 
+As of the UE 5.9 Preview (Nov 2026), Kimodo is the first AI motion-generation model integrated with Unreal Engine's guided animation framework, letting animators generate character motion directly inside Sequencer from a text prompt, a drawn spline path, and target poses at specific frames [[what-s-new-for-game-developers-ai-animation-and-rtx-tools-2144450e]]. A companion Animotive Kimodo Unreal Engine plugin ships alongside (Blender and Maya integrations to follow), so animators can refine, layer, and hand-key the AI-generated motion on their own rigs without leaving the editor [[what-s-new-for-game-developers-ai-animation-and-rtx-tools-2144450e]]. UE 5.9 is still a Preview.
+
+> Kimodo is the first AI motion-generation model integrated with the guided animation framework in Unreal Engine 5.9 Preview, enabling animators to generate character motion right inside Sequencer. [[what-s-new-for-game-developers-ai-animation-and-rtx-tools-2144450e]]
+
 ## Disputes
 
 _no contradictions or gaps known yet (last reviewed: 2026-10-26)_
@@ -51,6 +56,7 @@ _no contradictions or gaps known yet (last reviewed: 2026-10-26)_
 
 - [ ] Does Kimodo's constraint-controllable output (keyframes / 2D waypoints / dense 2D paths) export engine-ready FBX/BVH that retargets cleanly onto Unity/Unreal character rigs, or does the SMPL-X/SOMA/G1 skeleton output still need manual retargeting? [[kimodo-scaling-controllable-human-motion-generation-fe9ff887]]
 - [ ] Which specific Kimodo model variants are safe for a commercial game pipeline — only SOMA-SEED-v1.1 and the NVIDIA-Open-Model-License G1 variants, or do the RP (rotation-prediction) SOMA/SMPL-X variants also permit commercial use? [[nvidia-kimodo-soma-rp-v1-1-hugging-face-3543d52b]]
+- [ ] Is the Animotive Kimodo UE plugin open/self-hostable (matching Kimodo's open-weights posture) or a paid Animotive Cloud service, and does its in-editor workflow export engine-ready FBX/BVH that retargets cleanly onto UE5/Unity rigs? [[what-s-new-for-game-developers-ai-animation-and-rtx-tools-2144450e]]
 
 ## See also
 
