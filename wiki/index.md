@@ -109,6 +109,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 - [[gemini-4-hydrogen]]
 - [[muse-ember]]
 - [[minimax-h3-image]]
+- [[pan-2]]
 
 ## Comparisons
 
@@ -1609,6 +1610,7 @@ This file is **LLM-write, human-read**. Do not hand-edit; routines maintain it.
 
 ## Reports
 
+- [[2026-11-28]]
 - [[2026-11-26]]
 - [[2026-11-23]]
 - [[2026-11-21]]
@@ -2210,6 +2212,20 @@ _none_
 ### New pages
 
 _none_
+
+## 2026-11-28
+
+### New sources
+- [[ernie-5-5-flash-preview-intelligence-performance-price-analysis-21bfaeb8]]
+- [[pan-2-a-general-purpose-interactable-video-world-model-mbzuai-ifm-9676145e]]
+- [[attempts-to-vibe-code-pc-ports-of-gta-6-are-being-shut-down-but-it-might-be-too-late-to-put-the-genie-back-in-the-bottle-357c3445]]
+- [[rockstar-games-has-a-gta-6-hit-on-its-hands-but-its-union-vote-is-a-loss-61dc73ed]]
+- [[union-vote-fails-in-landslide-at-gta-6-studio-rockstar-games-as-75-percent-of-devs-vote-no-92ec30c8]]
+- [[meshy-7-5-automated-low-poly-low-distortion-uvs-readable-text-1a0c9e8d]]
+- [[migrating-our-messages-api-to-rust-69fbec99]]
+
+### New pages
+- [[pan-2]]
 
 ## 2026-11-26
 
