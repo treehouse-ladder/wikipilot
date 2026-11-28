@@ -2,6 +2,34 @@
 
 Chronological, append-only record of every routine run. Parseable with `grep "^## \[" wiki/log.md`.
 
+## [2026-11-28] daily | _report — 6 topics, 7 sources, 9 pages
+
+All 6 topic PRs merged: game-music (#1218, 0 sources), frontier-models (#1219, 1 source), generative-media-models (#1220, 1 source), games-of-note (#1221, 3 sources), ai-in-game-dev (#1223, 1 source), agentic-coding (#1224, 1 source). Key findings: Baidu ERNIE 5.5 Flash Preview (280B/14B-active MoE, AA Index 31, Apache-2.0); MBZUAI PAN 2 video world model (29B, action-conditioned simulation, Apache-2.0); Rockstar IWGB union vote rejected 75% No; GTA 6 vibe-coding DMCA (3,007+ repos); Meshy 7.5 (Low-Poly mode, UV algorithm); Anthropic Messages API Rust migration ("verification is the new bottleneck"). Creator tooling changes: Meshy 7.5 — `last_release` bumped to 2026-11-27, `model_ids` extended with `meshy-7.5`, `status_source` updated. See wiki/reports/2026-11-28.md.
+
+## [2026-11-28] daily | agentic-coding — 1 source, 1 page
+
+Anthropic published technical post on Messages API Python→Rust migration via agentic pipeline with production verifier, three-loop architecture (fast inner/slow outer/memory); "verification is the new bottleneck" (~70% less CPU per request, ~20% faster TTFT, shipped without downtime). Source: [[migrating-our-messages-api-to-rust-69fbec99]].
+
+## [2026-11-28] daily | ai-in-game-dev — 1 source, 3 pages
+
+Meshy 7.5 rolled out 2026-11-24–27: Low-Poly mode (~2% polycount, baked normals, 10 extra credits), new UV algorithm (lowest distortion vs Hi3D 3.0 and Tripo 3.1 on 33-object test), 99.9% multilingual text recovery on 42-object test. Source: [[meshy-7-5-automated-low-poly-low-distortion-uvs-readable-text-1a0c9e8d]].
+
+## [2026-11-28] daily | games-of-note — 3 sources, 1 page
+
+Rockstar IWGB union vote rejected in landslide (75% No, ~1,544 ballots, Nov 12–26). GTA 6 vibe-coding DMCA: 3,007+ GitHub repos targeted. Sources: [[union-vote-fails-in-landslide-at-gta-6-studio-rockstar-games-as-75-percent-of-devs-vote-no-92ec30c8]], [[rockstar-games-has-a-gta-6-hit-on-its-hands-but-its-union-vote-is-a-loss-61dc73ed]], [[attempts-to-vibe-code-pc-ports-of-gta-6-are-being-shut-down-but-it-might-be-too-late-to-put-the-genie-back-in-the-bottle-357c3445]].
+
+## [2026-11-28] daily | generative-media-models — 1 source, 2 pages
+
+MBZUAI IFM released PAN 2 (29B-parameter MMDiT, general-purpose interactable video world model for action-conditioned simulation, up to 20s clips, Apache-2.0). New entity page [[pan-2]] created. Source: [[pan-2-a-general-purpose-interactable-video-world-model-mbzuai-ifm-9676145e]].
+
+## [2026-11-28] daily | frontier-models — 1 source, 1 page
+
+Baidu released ERNIE 5.5 Flash Preview (280B-total/14B-active MoE, AA Index 31, 1M context, Apache-2.0, $0.19/1M blended). Value-tier addition; does not change open-weights leader (Kimi K3.1 Pro = 46) or aggregate #1 (Fable 5.2 = 65). Source: [[ernie-5-5-flash-preview-intelligence-performance-price-analysis-21bfaeb8]].
+
+## [2026-11-28] daily | game-music — 0 sources, 1 page
+
+Quiet run — 0 new in-scope/in-window sources from allowlist outlets. Watch items: GTA VI/Justice original score still uncovered by specialist outlets; Ivors specialist-corroboration gap persists.
+
 ## [2026-11-26] daily | _report — 6 topics, 8 sources, 11 pages
 
 All 6 topic PRs merged: game-music (#1206, 0 sources), agentic-coding (#1207, 1 source), generative-media-models (#1208, 0 sources), frontier-models (#1209, 3 sources), ai-in-game-dev (#1210, 2 sources), games-of-note (#1213, 2 sources). Key findings: Epic confirms UE6 ships without Blueprints/AGF (AI Blueprint→Verse conversion bet); GTA 6 is PS5's biggest launch ever (39M players); AA Intelligence Index v5.0.2 rebases on Terminal-Bench 4.1 (all models regraded; Fable 5.2 max=65 remains #1); AA-Robotics-Sim v0.1 introduced (GPT-6.2 Astra leads embodied control at 71.0); AAIF takes governance of Agent Skills. Creator tooling changes: none. See wiki/reports/2026-11-26.md.
