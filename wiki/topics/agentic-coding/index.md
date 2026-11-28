@@ -1,7 +1,7 @@
 ---
 title: Agentic coding tools and harnesses
 kind: topic
-last_updated: 2026-11-26
+last_updated: 2026-11-28
 sources:
   - "[[donating-agent-skills-to-the-agentic-ai-foundation-bdc7b775]]"
   - "[[introducing-gemini-4-neon-fd9bebbf]]"
@@ -424,6 +424,7 @@ sources:
   - "[[release-v2-1-318-anthropics-claude-code-797aba84]]"
   - "[[claude-code-changelog-v2-1-317-and-v2-1-318-ea47242b]]"
   - "[[build-live-apps-in-cursor-c30b3225]]"
+  - "[[migrating-our-messages-api-to-rust-69fbec99]]"
 last_verified: 2026-11-20
 last_updated: 2026-11-20
 freshness_window_days: 30
@@ -563,6 +564,18 @@ The agentic-coding category reached visible convergence in mid-2026 and has sinc
 > Restrictions on a shared capability can block legitimate work as well as malicious work, and allowed tools can leave unauthorized operations reachable through other execution paths. [[harnesssecurity-bench-do-security-mechanisms-really-protect-coding-agent-harnesses-22562821]]
 
 ## Recent updates
+
+### Updates 2026-11-28
+
+**Anthropic ships the Messages API in Rust using an agentic migration pipeline — 70% less CPU, 20% faster TTFT.** Anthropic published a technical post describing a production migration of the Messages API from Python to Rust, using a multi-agent system for the migration work itself [[migrating-our-messages-api-to-rust-69fbec99]]. The key architecture: the production Python API was used as a **verifier** — running both Python and Rust versions on live traffic and comparing outputs automatically, dispatching agents to fix any divergence. The agent loop had three nested loops: a **fast inner loop** (agent gets a cloud sandbox with both codebases + fast local checks), a **slow outer loop** (a proposed fix is validated in production only after PR review — humans focus on evaluating agent-proposed fixes, not writing code), and a **memory loop** (mistakes recorded so agents learn over time) [[migrating-our-messages-api-to-rust-69fbec99]]. Result: ~70% less CPU per request and ~20% faster median TTFT, shipped without taking the service offline or freezing feature development. The key meta-claim — **"verification is the new bottleneck"** — directly maps to the agentic-coding lens: agents can generate code fast enough that the main constraint is now how quickly you can verify results, not how quickly you write them [[migrating-our-messages-api-to-rust-69fbec99]].
+
+> This allowed us to ship an API on Rust that uses about 70% less CPU per request and cuts median time to first token by about 20% without ever taking the service offline or freezing feature development. [[migrating-our-messages-api-to-rust-69fbec99]]
+
+> A fast inner loop gave agents a sandbox in which they could test ideas and propose fixes. A slower outer loop then validated fixes in production. In addition, a memory loop recorded any mistakes along the way, saving them so that agents could learn over time. [[migrating-our-messages-api-to-rust-69fbec99]]
+
+> Verification is the new bottleneck. Previously, large software projects like migrations were hard to justify because they took too much effort and carried too much risk. But if writing code is no longer the bottleneck, the main constraint becomes how quickly you can verify results. [[migrating-our-messages-api-to-rust-69fbec99]]
+
+> We allowed a fix to cross into the outer loop only after it had undergone PR review; this allowed engineers to focus their attention on proposed fixes (rather than on guesses) and on the questions the verifiers couldn't answer, such as whether a difference between the Rust and Python APIs was the result of a bug or a deliberate change. [[migrating-our-messages-api-to-rust-69fbec99]]
 
 ### Updates 2026-11-26
 
