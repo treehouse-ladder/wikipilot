@@ -13,14 +13,15 @@ sources:
   - "[[meshy-pricing-credits-plans-and-usage-62da5fc3]]"
   - "[[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]"
   - "[[meshy-rigging-api-engine-targeted-skeleton-templates-and-finger-bones-182d1bf5]]"
-last_updated: 2026-11-23
-last_verified: 2026-11-23
+  - "[[meshy-7-5-automated-low-poly-low-distortion-uvs-readable-text-1a0c9e8d]]"
+last_updated: 2026-11-28
+last_verified: 2026-11-28
 freshness_window_days: 30
 profile: tool
 modality: 3d
 tasks: ["text-to-3d", "image-to-3d", "multi-image-to-3d", "retexture", "low-poly-mode", "rigging"]
 vendor: "Meshy"
-model_ids: ["meshy-6", "meshy-7", "meshy-7.1", "meshy-t2.5"]
+model_ids: ["meshy-6", "meshy-7", "meshy-7.1", "meshy-7.5", "meshy-t2.5"]
 access: ["web", "api"]
 open_weights_license: unknown
 hardware_floor: unknown
@@ -29,8 +30,8 @@ pricing_source: "[[meshy-pricing-credits-plans-and-usage-62da5fc3]]"
 commercial_use: "free tier CC BY 4.0 (commercial with attribution); all paid plans full private commercial, no attribution (2026-10-26)"
 commercial_use_source: "[[can-i-use-meshy-assets-commercially-license-copyright-explained-f2a86115]]"
 status: active
-status_source: "[[meshy-n1-cleanest-and-fastest-ai-texturing-c7deb738]]"
-last_release: unknown
+status_source: "[[meshy-7-5-automated-low-poly-low-distortion-uvs-readable-text-1a0c9e8d]]"
+last_release: 2026-11-27
 arena_rank: []
 arena_rank_source: []
 ---
@@ -87,6 +88,14 @@ On the product side, Meshy 3D Agent Beta (a chat-based, multi-step ideation-to-a
 
 > Quadruped rigging: sending animation_type "quadruped" rigs a four-legged animal and includes walking and running animations; pricing matches the biped rig. [[meshy-7-is-live-higher-fidelity-image-to-3d-generation-with-ultra-mode-f27c1d9b]]
 
+**Meshy 7.5 — Low-Poly mode and new UV algorithm (Nov 24–27, 2026).** The 7.5 release ships two pipeline improvements. Low-Poly mode returns a ~2%-polycount mesh alongside the standard high-poly output, with a normal map baked from the raw generated geometry; it costs 10 extra credits per generation and is designed to cut the generate-then-retopo two-step to one [[meshy-7-5-automated-low-poly-low-distortion-uvs-readable-text-1a0c9e8d]]. A new UV unwrapping algorithm achieves the lowest angle and area distortion vs Hi3D 3.0 and Tripo 3.1 on a 33-object test set while utilizing more of the available texture space [[meshy-7-5-automated-low-poly-low-distortion-uvs-readable-text-1a0c9e8d]]. The update also claims 99.9% text-recovery accuracy on a 42-object multilingual test (Latin, Cyrillic, Chinese, Japanese, Korean) scored by VLM transcription [[meshy-7-5-automated-low-poly-low-distortion-uvs-readable-text-1a0c9e8d]].
+
+> Meshy 7.5 introduces a new Low-Poly mode that generates both high-poly and low-poly models simultaneously, with a normal map baked from raw generated geometry. [[meshy-7-5-automated-low-poly-low-distortion-uvs-readable-text-1a0c9e8d]]
+
+> Our new UV unwrapping algorithm achieves the lowest angle and area distortion compared to Hi3D 3.0 and Tripo 3.1 across a 33-object test set, while utilizing more texture space. [[meshy-7-5-automated-low-poly-low-distortion-uvs-readable-text-1a0c9e8d]]
+
+> Meshy 7.5 achieves 99.9% text recovery accuracy on a 42-object multilingual test, encompassing Latin, Cyrillic, and CJK scripts, evaluated using VLM-based transcription scoring. [[meshy-7-5-automated-low-poly-low-distortion-uvs-readable-text-1a0c9e8d]]
+
 ## Disputes
 
 - Open questions section claims "Pricing (per-credit / per-generation cost and plan tiers) — no ingested source states a figure" but frontmatter cites [[meshy-pricing-credits-plans-and-usage-62da5fc3]] with confirmed plan tiers (free 100 credits/mo; Pro $20/mo with 1,000 credits; Studio $70/mo with 5,500 shared credits). Status: unresolved (confidence: high; sweep: 2026-11-01)
@@ -108,6 +117,7 @@ On the product side, Meshy 3D Agent Beta (a chat-based, multi-step ideation-to-a
 - [ ] Exact release dates for Meshy 7 and 7.1 (sources carry no dates; `last_release` is `unknown`).
 - [ ] Is Meshy listed on any third-party board (Artificial Analysis image-to-3D arena, etc.)? Only the vendor-run Detail Richness benchmark is cited.
 - [ ] fal / Replicate endpoint ids, if any (`model_ids` carries vendor ids only).
+- [ ] Meshy 7.5 UV and Low-Poly benchmarks use 33- and 42-object internal test sets; independent large-scale comparison vs Hi3D 3.0 and Tripo 3.1 needed to validate the angle/area distortion claims. [[meshy-7-5-automated-low-poly-low-distortion-uvs-readable-text-1a0c9e8d]]
 
 ## See also
 
